@@ -1,0 +1,93 @@
+{
+  "name": "Gather Information — Sample Prompts",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "Small starter set of GM answer prompts for a successful gather-information roll.",
+  "results": [
+    {
+      "_id": "cfc402a54b516dd8",
+      "type": 0,
+      "text": "You learn a weakness or vulnerability to exploit.",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.cfc402a54b516dd8"
+    },
+    {
+      "_id": "de14de9a439369ff",
+      "type": 0,
+      "text": "You learn who is really in charge here.",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.de14de9a439369ff"
+    },
+    {
+      "_id": "13a2859dac62f86f",
+      "type": 0,
+      "text": "You learn what/who is the biggest threat to your plan.",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.13a2859dac62f86f"
+    },
+    {
+      "_id": "f79b09a359585751",
+      "type": 0,
+      "text": "You learn what is really going on beneath the surface.",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.f79b09a359585751"
+    },
+    {
+      "_id": "c8c9c4c6bef2d136",
+      "type": 0,
+      "text": "You learn the best way in, past, or through.",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.c8c9c4c6bef2d136"
+    },
+    {
+      "_id": "b10e3d1dfe9eb419",
+      "type": 0,
+      "text": "You learn who benefits most if the job goes wrong.",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!98926f7c1e25db3c.b10e3d1dfe9eb419"
+    }
+  ],
+  "formula": "1d6",
+  "replacement": false,
+  "displayRoll": true,
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "_id": "98926f7c1e25db3c",
+  "_key": "!tables!98926f7c1e25db3c"
+}

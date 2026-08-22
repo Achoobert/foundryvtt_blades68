@@ -1,0 +1,167 @@
+<div class="char-columns">
+  <div class="char-column-left">
+    <fieldset class="keys-deadlocks sheet-section">
+      <legend>{{localize "BLADES68.KeysAndDeadlocks"}}</legend>
+      <ul class="key-deadlock-list">
+        {{#each keyDeadlockPairs as |pair|}}
+        <li class="key-deadlock-row">
+          <div class="key-cell">
+            <input type="text" name="system.keys.{{pair.index}}.label" value="{{pair.key.label}}"
+              placeholder="{{localize 'BLADES68.Key'}}" />
+            {{> "systems/blades68/templates/partials/dot-track.hbs"
+            value=pair.key.marks max=3 path=(concat "system.keys." pair.index ".marks") }}
+          </div>
+          <label class="boom-toggle" title="{{localize 'BLADES68.Boom'}}">
+            <input type="checkbox" name="system.keys.{{pair.index}}.boom" {{checked pair.key.boom}} />
+            <span class="boom-icon"></span>
+          </label>
+          <div class="deadlock-cell">
+            <input type="text" name="system.deadlocks.{{pair.index}}.label" value="{{pair.deadlock.label}}"
+              placeholder="{{localize 'BLADES68.Deadlock'}}" />
+            <label class="triggered-toggle">
+              <input type="checkbox" name="system.deadlocks.{{pair.index}}.triggered" {{checked pair.deadlock.triggered}} />
+              {{localize "BLADES68.Triggered"}}
+            </label>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+
+    <fieldset class="harm-resources">
+      <legend>{{localize "BLADES68.Harm"}}</legend>
+      <div class="harm-grid">
+        {{#each harmTiers as |tier|}}
+        <div class="harm-tier">
+          <label>{{localize tier.labelKey}}</label>
+          {{#each tier.slots as |slot|}}
+          <input type="text" name="system.harm.{{tier.key}}.{{slot.slotKey}}" value="{{slot.value}}" />
+          {{/each}}
+        </div>
+        {{/each}}
+      </div>
+
+      <div class="coin-and-stash">
+        <div class="track-row coin-track">
+          <label>{{localize "BLADES68.Coin"}}</label>
+          {{> "systems/blades68/templates/partials/dot-track.hbs"
+          value=system.coin.value max=system.coin.max path="system.coin.value" }}
+        </div>
+        <div class="track-row">
+          <label>{{localize "BLADES68.Stash"}}</label>
+          <input type="number" name="system.stash.value" value="{{system.stash.value}}" min="0"
+            max="{{system.stash.max}}" />
+          / {{system.stash.max}}
+        </div>
+      </div>
+
+      <div class="special-resource">
+        <input type="text" name="system.specialResource.name" value="{{system.specialResource.name}}"
+          placeholder="{{localize 'BLADES68.SpecialResourceName'}}" />
+        <div class="track-row">
+          <label>{{localize "BLADES68.Value"}}</label>
+          <input type="number" name="system.specialResource.value" value="{{system.specialResource.value}}" min="0" />
+          <label>{{localize "BLADES68.Max"}}</label>
+          <input type="number" name="system.specialResource.max" value="{{system.specialResource.max}}" min="0" />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="items-block">
+      <legend>{{localize "BLADES68.Items"}} <span class="items-hint">{{localize "BLADES68.ItemsHint"}}</span>
+      </legend>
+      <ul class="item-checklist">
+        {{#each gearItems as |item|}}
+        <li>
+          <label class="carried-toggle">
+            <input type="checkbox" data-action="toggleCarried" data-item-id="{{item.id}}" {{checked item.system.carried}} />
+            <span class="carried-box"></span>
+          </label>
+          <span class="item-name">{{item.name}}</span>
+          <span class="item-load">{{item.system.load}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </fieldset>
+
+    <fieldset class="planning-load">
+      <legend>{{localize "BLADES68.PlanningAndLoad"}}</legend>
+      <p>{{{localize "BLADES68.PlanningDescription"}}}</p>
+    </fieldset>
+
+    <fieldset class="xp-tracks">
+      <legend>{{localize "BLADES68.MarkingXP"}}</legend>
+      <div class="track-row">
+        <label>{{localize "BLADES68.PlaybookXP"}}</label>
+        {{> "systems/blades68/templates/partials/dot-track.hbs"
+        value=system.xp.playbook.value max=system.xp.playbook.max path="system.xp.playbook.value" }}
+      </div>
+      {{#each (array "insight" "prowess" "resolve") as |attribute|}}
+      <div class="track-row">
+        <label>{{localize (concat "BLADES68.Attribute." attribute)}}</label>
+        {{> "systems/blades68/templates/partials/dot-track.hbs"
+        value=(lookup (lookup ../system.xp attribute) "value")
+        max=(lookup (lookup ../system.xp attribute) "max")
+        path=(concat "system.xp." attribute ".value") }}
+      </div>
+      {{/each}}
+    </fieldset>
+  </div>
+
+  <div class="char-column-right">
+    <div class="playbook-banner">
+      <div class="playbook-name">{{playbookItem.name}}</div>
+      <div class="playbook-tagline">{{playbookItem.system.tagline}}</div>
+    </div>
+
+    <div class="load-indicator">
+      <span class="label">{{localize "BLADES68.LoadTier"}}</span>
+      <span class="load-total">{{loadSummary.total}}</span>
+      <span class="load-tier-label">{{localize (concat "BLADES68.Load." loadSummary.tier)}}</span>
+      <span class="load-threshold">
+        <input type="number" name="system.load.quietMax" value="{{loadSummary.quietMax}}" min="0" />
+        {{localize "BLADES68.Load.quiet"}}
+      </span>
+      <span class="load-threshold">
+        <input type="number" name="system.load.loudMin" value="{{loadSummary.loudMin}}" min="0" />
+        {{localize "BLADES68.Load.loud"}}
+      </span>
+    </div>
+
+    {{#each config.ATTRIBUTES as |attribute|}}
+    <div class="attribute-panel">
+      <div class="attribute-header">
+        <span class="attribute-name">{{localize (concat "BLADES68.Attribute." attribute)}}</span>
+        <div class="attribute-xp" data-tooltip="{{localize "BLADES68.MarkXpForDesperateActions"}}">
+          {{> "systems/blades68/templates/partials/dot-track.hbs"
+          value=(lookup (lookup ../system.xp attribute) "value")
+          max=(lookup (lookup ../system.xp attribute) "max")
+          path=(concat "system.xp." attribute ".value") }}
+        </div>
+      </div>
+      <div class="attribute-body">
+        {{#each (actionsFor attribute) as |action|}}
+        <div class="action-row">
+          <a class="action-label" data-action="rollAction" data-attribute="{{attribute}}" data-action-key="{{action}}">
+            {{localize (concat "BLADES68.Action." action)}}
+          </a>
+          {{> "systems/blades68/templates/partials/dot-track.hbs"
+          value=(actionRating ../../system attribute action)
+          max=4
+          path=(concat "system.attributes." attribute ".actions." action) }}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+
+    <div class="bonus-die">
+      <strong>{{localize "BLADES68.BonusDie"}}</strong>
+      <p>{{localize "BLADES68.BonusDieHint"}}</p>
+    </div>
+
+    <button type="button" class="fortune-button" data-action="rollFortune">
+      {{localize "BLADES68.FortuneRoll"}}
+    </button>
+  </div>
+</div>

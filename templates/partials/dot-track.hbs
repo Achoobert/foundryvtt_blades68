@@ -1,0 +1,9 @@
+<div class="dot-track">
+  {{#each (dotsFor value max) as |dot|}}
+    <span class="dot {{#if dot.filled}}filled{{/if}}"
+          data-action="{{#if ../action}}{{../action}}{{else}}setRating{{/if}}"
+          data-path="{{../path}}"
+          {{#if ../actorId}}data-actor-id="{{../actorId}}"{{/if}}
+          data-value="{{dot.value}}"></span>
+  {{/each}}
+</div>

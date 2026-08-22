@@ -1,0 +1,26 @@
+{
+  "id": "blades68-quench-tests",
+  "title": "Blades68 Quench Tests",
+  "description": "Quench batches exercising the Blades68 system's data models, dice engine, and clocks.",
+  "authors": [{ "name": "Achoobert" }],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "relationships": {
+    "requires": [
+      {
+        "id": "blades68",
+        "type": "system",
+        "reason": "Tests target the Blades68 system's actors, items, and dice engine."
+      },
+      {
+        "id": "quench",
+        "type": "module",
+        "reason": "Runs the test batches via Mocha."
+      }
+    ]
+  },
+  "esmodules": ["module.js"]
+}

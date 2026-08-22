@@ -1,0 +1,18 @@
+{
+  "_id": "752cf70ee471922f",
+  "_key": "!items!752cf70ee471922f",
+  "name": "Pleasure",
+  "type": "vice",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You lose yourself in fine company, food, or company of a more private kind.</p>",
+    "purveyor": "The Grove Factory, a discreet pleasure house"
+  }
+}

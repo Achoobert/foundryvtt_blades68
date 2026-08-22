@@ -1,0 +1,19 @@
+{
+  "_id": "a1ab6fe33af2dec9",
+  "_key": "!items!a1ab6fe33af2dec9",
+  "name": "Groove Machine",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You always know where the nearest music is playing, and when you start dancing, others feel compelled to join.</p>",
+    "playbook": "swinger",
+    "unlocked": false
+  }
+}

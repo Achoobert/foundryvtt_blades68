@@ -1,0 +1,126 @@
+<div class="blades68-sheet-root">
+<header class="sheet-header">
+  <img class="brand-logo" src="./systems/blades68/assets/roll20/images/bladesin68_logo.png" alt="Blades68" />
+  <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" title="{{actor.name}}" />
+  <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" /></h1>
+  <input type="text" class="reputation" name="system.reputation" value="{{system.reputation}}" placeholder="{{localize 'BLADES68.Reputation'}}" />
+</header>
+
+<section class="sheet-body">
+  <fieldset class="crew-tier">
+    <legend>{{localize "BLADES68.TierAndHold"}}</legend>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Tier"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.tier max=4 path="system.tier" }}
+    </div>
+    <label>{{localize "BLADES68.Hold"}}
+      <select name="system.hold">
+        {{#each config.HOLD as |hold|}}
+          <option value="{{hold}}" {{#ifEquals hold ../system.hold}}selected{{/ifEquals}}>{{localize (concat "BLADES68.HoldState." hold)}}</option>
+        {{/each}}
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset class="crew-trackers">
+    <legend>{{localize "BLADES68.Trackers"}}</legend>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Rep"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.rep.value max=system.rep.max
+      path="system.rep.value" }}
+    </div>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Heat"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.heat.value max=system.heat.max
+      path="system.heat.value" }}
+    </div>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Wanted"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.wanted.value max=system.wanted.max
+      path="system.wanted.value" }}
+    </div>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Turf"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.turf.value max=system.turf.max
+      path="system.turf.value" }}
+    </div>
+    <div class="track-row">
+      <label>{{localize "BLADES68.Vault"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.vault.value max=system.vault.max
+      path="system.vault.value" }}
+    </div>
+    <div class="track-row stack-track">
+      <label>{{localize "BLADES68.Stacks"}}</label>
+      {{> "systems/blades68/templates/partials/dot-track.hbs" value=system.stacks.value max=system.stacks.max
+      path="system.stacks.value" }}
+    </div>
+  </fieldset>
+
+  <fieldset class="hunting-grounds">
+    <legend>{{localize "BLADES68.HuntingGrounds"}}</legend>
+    <input type="text" name="system.huntingGrounds.type" value="{{system.huntingGrounds.type}}" placeholder="{{localize 'BLADES68.HuntingGroundsType'}}" />
+    {{editor system.huntingGrounds.description target="system.huntingGrounds.description" button=true engine="prosemirror" collaborate=false}}
+  </fieldset>
+
+  <nav class="sheet-tabs">
+    <a data-tab="upgrades">{{localize "BLADES68.Tabs.Upgrades"}}</a>
+    <a data-tab="cohorts">{{localize "BLADES68.Tabs.Cohorts"}}</a>
+    <a data-tab="claims">{{localize "BLADES68.Tabs.Claims"}}</a>
+    <a data-tab="abilities">{{localize "BLADES68.Tabs.Abilities"}}</a>
+    <a data-tab="clocks">{{localize "BLADES68.Tabs.Clocks"}}</a>
+    <a data-tab="xp">{{localize "BLADES68.Tabs.XP"}}</a>
+    <a data-tab="notes">{{localize "BLADES68.Tabs.Notes"}}</a>
+  </nav>
+
+  {{#each (array "upgrades" "cohorts" "claims" "abilities") as |tabId|}}
+    <div class="tab {{tabId}}" data-tab="{{tabId}}">
+      <ol class="item-list">
+        {{#each ../items as |item|}}
+          {{#ifItemTypeMatches item.type tabId}}
+            <li class="item" data-item-id="{{item.id}}">
+              <span class="item-name">{{item.name}}</span>
+            </li>
+          {{/ifItemTypeMatches}}
+        {{/each}}
+      </ol>
+    </div>
+  {{/each}}
+
+  <div class="tab clocks" data-tab="clocks">
+    <div class="clock-grid">
+      {{#each clocks as |clock|}}
+        <div class="clock-entry">
+          {{> "systems/blades68/templates/partials/clock-svg.hbs"
+              value=clock.system.value max=clock.system.max color=clock.system.color
+              label=clock.name action="setClockValue" itemId=clock.id }}
+          <label class="clock-shared-toggle">
+            <input type="checkbox" data-action="toggleClockShared" data-item-id="{{clock.id}}" {{checked clock.system.shared}} />
+            {{localize "BLADES68.Shared"}}
+          </label>
+          <a data-action="deleteClock" data-item-id="{{clock.id}}">{{localize "BLADES68.Delete"}}</a>
+        </div>
+      {{/each}}
+    </div>
+    <button type="button" data-action="addClock">{{localize "BLADES68.AddClock"}}</button>
+  </div>
+
+  <div class="tab xp" data-tab="xp">
+    <div class="clock-grid">
+      {{#each system.xpClocks as |clock i|}}
+        <div class="clock-entry">
+          {{> "systems/blades68/templates/partials/dot-track.hbs"
+              value=clock.value max=clock.max path=(concat "system.xpClocks." i ".value") }}
+          <label>{{localize "BLADES68.Max"}}
+            <input type="number" name="system.xpClocks.{{i}}.max" value="{{clock.max}}" min="1" />
+          </label>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="tab notes" data-tab="notes">
+    {{editor system.base target="system.base" button=true engine="prosemirror" collaborate=false}}
+  </div>
+</section>
+<img class="credit-block" src="./systems/blades68/assets/roll20/images/credit_block.png" alt="" />
+</div>

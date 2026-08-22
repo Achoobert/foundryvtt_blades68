@@ -1,0 +1,17 @@
+<div class="clock-widget-wrapper">
+  <svg class="clock-widget" viewBox="0 0 100 100" style="--clock-color: {{color}}">
+    {{#each (clockSegments value max) as |segment|}}
+      {{#if segment.fullCircle}}
+        <circle cx="50" cy="50" r="45" class="clock-segment {{#if segment.filled}}filled{{/if}}"
+          data-action="{{../action}}" data-item-id="{{../itemId}}" data-actor-id="{{../actorId}}"
+          data-path="{{../path}}" data-value="{{segment.index}}" />
+      {{else}}
+        <path d="{{segment.path}}" class="clock-segment {{#if segment.filled}}filled{{/if}}"
+          data-action="{{../action}}" data-item-id="{{../itemId}}" data-actor-id="{{../actorId}}"
+          data-path="{{../path}}" data-value="{{segment.index}}" />
+      {{/if}}
+    {{/each}}
+    <circle cx="50" cy="50" r="45" class="clock-outline" />
+  </svg>
+  <div class="clock-label">{{label}} ({{value}}/{{max}})</div>
+</div>

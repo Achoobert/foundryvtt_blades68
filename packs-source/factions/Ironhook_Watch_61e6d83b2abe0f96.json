@@ -1,0 +1,28 @@
+{
+  "_id": "61e6d83b2abe0f96",
+  "_key": "!actors!61e6d83b2abe0f96",
+  "name": "Ironhook Watch",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "prototypeToken": {
+    "name": "Ironhook Watch",
+    "actorLink": false,
+    "depth": 1
+  },
+  "system": {
+    "category": "institutions",
+    "tier": 4,
+    "hold": "strong",
+    "status": -1,
+    "war": false,
+    "notes": "<p>Sample institutional faction: the city's overworked, under-trusted constabulary.</p>"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_id": "61a7cc3e459b7656",
+  "_key": "!actors!61a7cc3e459b7656",
+  "name": "The Nightmarket Union",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "prototypeToken": {
+    "name": "The Nightmarket Union",
+    "actorLink": false,
+    "depth": 1
+  },
+  "system": {
+    "category": "citizenry",
+    "tier": 2,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "notes": "<p>Sample citizenry faction: stallholders organized against extortion.</p>"
+  }
+}

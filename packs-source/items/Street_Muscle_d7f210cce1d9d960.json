@@ -1,0 +1,21 @@
+{
+  "_id": "d7f210cce1d9d960",
+  "_key": "!items!d7f210cce1d9d960",
+  "name": "Street Muscle",
+  "type": "cohort",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A loyal gang of enforcers and lookouts.</p>",
+    "type": "gang",
+    "quality": 1,
+    "harm": 0,
+    "armor": 0
+  }
+}

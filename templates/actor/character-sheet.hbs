@@ -1,0 +1,124 @@
+<div class="blades68-sheet-root">
+  <header class="sheet-header">
+    <img class="brand-logo" src="./systems/blades68/assets/roll20/images/bladesin68_logo.png" alt="Blades68" />
+    <img class="profile-img" src="{{actor.img}}" data-action="editImage" data-edit="img" title="{{actor.name}}" />
+    <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" /></h1>
+    <fieldset class="stress-block sheet-section">
+      <legend>{{localize "BLADES68.Stress"}}</legend>
+      <div class="track-row stress-track">
+        {{> "systems/blades68/templates/partials/dot-track.hbs"
+        value=system.stress.value max=system.stress.max path="system.stress.value" }}
+      </div>
+      <div class="trauma">
+        <label>{{localize "BLADES68.Trauma"}}</label>
+        <ul class="string-list">
+          {{#each system.trauma as |entry i|}}
+          <li>
+            <input type="text" name="system.trauma.{{i}}" value="{{entry}}" />
+            <a data-action="deleteArrayItem" data-path="system.trauma" data-index="{{i}}">&times;</a>
+          </li>
+          {{/each}}
+        </ul>
+        <button type="button" data-action="addArrayItem" data-path="system.trauma">
+          {{localize "BLADES68.AddTrauma"}}
+        </button>
+      </div>
+    </fieldset>
+  </header>
+
+  <nav class="sheet-tabs">
+    <a data-tab="character">{{localize "BLADES68.Tabs.Character"}}</a>
+    <a data-tab="score">{{localize "BLADES68.Tabs.Score"}}</a>
+    <a data-tab="downtime">{{localize "BLADES68.Tabs.Downtime"}}</a>
+    <a data-tab="playbook">{{localize "BLADES68.Tabs.Playbook"}}</a>
+    <a data-tab="clocks">{{localize "BLADES68.Tabs.Clocks"}}</a>
+    <a data-tab="notes">{{localize "BLADES68.Tabs.Notes"}}</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab character" data-tab="character" data-dupe-group="character">
+      <fieldset class="identity-block sheet-section">
+        <legend>{{actor.name}}</legend>
+        <div class="identity-grid">
+          <label>{{localize "BLADES68.Alias"}}
+            <input type="text" name="system.alias" value="{{system.alias}}" />
+          </label>
+          <label>{{localize "BLADES68.Look"}}
+            <input type="text" name="system.look" value="{{system.look}}" />
+          </label>
+          <label>{{localize "BLADES68.Wearing"}}
+            <input type="text" name="system.wearing" value="{{system.wearing}}" />
+          </label>
+          <label>{{localize "BLADES68.Heritage"}}
+            <span class="identity-display">{{heritageItem.name}}</span>
+          </label>
+          <label class="span-2">{{localize "BLADES68.Background"}}
+            <input type="text" name="system.background" value="{{system.background}}" />
+          </label>
+        </div>
+      </fieldset>
+
+      {{> "systems/blades68/templates/partials/character-common.hbs"}}
+    </div>
+
+    <div class="tab score" data-tab="score" data-dupe-group="character">
+      {{> "systems/blades68/templates/partials/character-common.hbs"}}
+    </div>
+
+    <div class="tab downtime" data-tab="downtime">
+      <fieldset class="vice-block">
+        <legend>{{localize "BLADES68.VicePurveyor"}}</legend>
+        <div class="vice-info">{{localize "BLADES68.ViceInfo"}}</div>
+        <div class="vice-row">
+          <span class="identity-display">{{viceItem.name}}</span>
+          <button type="button" class="vice-button" data-action="rollAction">
+            {{localize "BLADES68.IndulgeVice"}}
+          </button>
+        </div>
+      </fieldset>
+
+      <fieldset class="healing-block">
+        <legend>{{localize "BLADES68.Healing"}}</legend>
+        {{> "systems/blades68/templates/partials/clock-svg.hbs"
+        value=system.healing.value max=system.healing.max color="#7aa2f7"
+        label=(localize "BLADES68.Healing") action="setRating" path="system.healing.value" }}
+      </fieldset>
+    </div>
+
+    <div class="tab playbook" data-tab="playbook">
+      <ol class="item-list">
+        {{#each items as |item|}}
+        {{#ifEquals item.type "ability"}}
+        <li class="item ability ability-card">
+          <strong>{{item.name}}</strong>
+          <div class="description">{{{item.system.description}}}</div>
+        </li>
+        {{/ifEquals}}
+        {{/each}}
+      </ol>
+    </div>
+
+    <div class="tab clocks" data-tab="clocks">
+      <div class="clock-grid">
+        {{#each clocks as |clock|}}
+        <div class="clock-entry">
+          {{> "systems/blades68/templates/partials/clock-svg.hbs"
+          value=clock.system.value max=clock.system.max color=clock.system.color
+          label=clock.name action="setClockValue" itemId=clock.id }}
+          <label class="clock-shared-toggle">
+            <input type="checkbox" data-action="toggleClockShared" data-item-id="{{clock.id}}" {{checked clock.system.shared}} />
+            {{localize "BLADES68.Shared"}}
+          </label>
+          <a data-action="deleteClock" data-item-id="{{clock.id}}">{{localize "BLADES68.Delete"}}</a>
+        </div>
+        {{/each}}
+      </div>
+      <button type="button" data-action="addClock">{{localize "BLADES68.AddClock"}}</button>
+    </div>
+
+    <div class="tab notes" data-tab="notes">
+      {{editor system.notes target="system.notes" button=true engine="prosemirror" collaborate=false}}
+    </div>
+  </section>
+  <img class="credit-block" src="./systems/blades68/assets/roll20/images/credit_block.png" alt="" />
+</div>

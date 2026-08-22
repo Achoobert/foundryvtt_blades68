@@ -1,0 +1,90 @@
+{
+  "id": "blades68",
+  "title": "Blades68",
+  "description": "Fan-made Foundry VTT system for Blades68, a Forged in the Dark hack featuring the Trouble Engine, Keys & Deadlocks, and reimagined playbooks.",
+  "url": "https://github.com/Achoobert/blades68",
+  "manifest": "https://raw.githubusercontent.com/Achoobert/blades68/main/system.json",
+  "download": "https://github.com/Achoobert/blades68/releases/latest/download/blades68.zip",
+  "license": "LICENSE.txt",
+  "authors": [
+    { "name": "Achoobert" }
+  ],
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "html", "hbs", "json"],
+      "paths": ["css", "templates", "lang"]
+    }
+  },
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {},
+      "crew": {},
+      "faction": {}
+    },
+    "Item": {
+      "playbook": {},
+      "ability": {},
+      "heritage": {},
+      "vice": {},
+      "gear": {},
+      "contact": {},
+      "crew-playbook": {},
+      "crew-ability": {},
+      "upgrade": {},
+      "cohort": {},
+      "claim": {},
+      "clock": {}
+    }
+  },
+  "esmodules": ["module/blades68.js"],
+  "styles": ["css/blades68.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [
+    {
+      "name": "playbooks",
+      "label": "Playbooks & Abilities",
+      "path": "packs/playbooks",
+      "type": "Item",
+      "system": "blades68"
+    },
+    {
+      "name": "items",
+      "label": "Gear, Heritage, Vice & Crew Items",
+      "path": "packs/items",
+      "type": "Item",
+      "system": "blades68"
+    },
+    {
+      "name": "factions",
+      "label": "Factions of Doskvol",
+      "path": "packs/factions",
+      "type": "Actor",
+      "system": "blades68"
+    },
+    {
+      "name": "tables",
+      "label": "Trouble & Faction Decks",
+      "path": "packs/tables",
+      "type": "RollTable",
+      "system": "blades68"
+    }
+  ],
+  "grid": {
+    "distance": 1,
+    "units": ""
+  },
+  "primaryTokenAttribute": "stress"
+}

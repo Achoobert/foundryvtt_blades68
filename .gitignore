@@ -1,0 +1,16 @@
+node_modules/
+fvtt.config.js
+packs/*/
+tests/e2e/fvtt.config.js
+tests/e2e/build/
+tests/e2e/cypress/screenshots/
+tests/e2e/cypress/videos/
+tests/e2e/diagnostic-output.json
+.DS_Store
+*.log
+.*/
+*.pdf
+
+# Local-only reference copy of the official Roll20 sheet (may embed rulebook text
+# transcribed by the sheet author) — kept for local consultation, not redistributed.
+example files from roll 20/

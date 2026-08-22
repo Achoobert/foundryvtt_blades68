@@ -1,0 +1,52 @@
+<form class="blades68-roll-prompt">
+  <div class="form-group">
+    <label class="group-label">{{localize "BLADES68.Dialog.Position"}}</label>
+    <div class="radio-row">
+      {{#each positions as |position|}}
+        <label>
+          <input type="radio" name="position" value="{{position}}" {{#ifEquals position ../defaultPosition}}checked{{/ifEquals}} />
+          {{localize (concat "BLADES68.Position." position)}}
+        </label>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="group-label">{{localize "BLADES68.Dialog.Effect"}}</label>
+    <div class="radio-row">
+      {{#each effects as |effect|}}
+        <label>
+          <input type="radio" name="effect" value="{{effect}}" {{#ifEquals effect ../defaultEffect}}checked{{/ifEquals}} />
+          {{localize (concat "BLADES68.Effect." effect)}}
+        </label>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="dice-summary">
+    <div class="dice-summary-row">
+      <label>{{localize "BLADES68.Dialog.BaseDice"}}</label>
+      <span>{{rating}}d</span>
+    </div>
+    <div class="dice-summary-row">
+      <label for="roll-prompt-modifier">{{localize "BLADES68.Dialog.Modifier"}}</label>
+      <input id="roll-prompt-modifier" type="number" name="modifier" value="0" min="-3" max="3" />
+    </div>
+    <div class="dice-summary-row total">
+      <label>{{localize "BLADES68.Dialog.TotalDice"}}</label>
+      <span class="total-dice-value">{{rating}}</span><span>d</span>
+    </div>
+  </div>
+
+  <fieldset class="roll-options-reminder">
+    <legend>{{localize "BLADES68.Dialog.RollOptions"}}</legend>
+    <ul>
+      <li>{{localize "BLADES68.Dialog.OptionAssist"}}</li>
+      <li>{{localize "BLADES68.Dialog.OptionGambit"}}</li>
+      <li>{{localize "BLADES68.Dialog.OptionPush"}}</li>
+      <li>{{localize "BLADES68.Dialog.OptionDevilsBargain"}}</li>
+      <li>{{localize "BLADES68.Dialog.OptionGroupAction"}}</li>
+      <li>{{localize "BLADES68.Dialog.OptionSetupAction"}}</li>
+    </ul>
+  </fieldset>
+</form>

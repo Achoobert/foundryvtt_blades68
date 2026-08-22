@@ -1,0 +1,19 @@
+{
+  "_id": "8350e2e780b77a09",
+  "_key": "!items!8350e2e780b77a09",
+  "name": "Mutual Aid",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You lend support to one allied faction as you go. Your crew counts as one tier higher for that faction's long-term projects, if you wish.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

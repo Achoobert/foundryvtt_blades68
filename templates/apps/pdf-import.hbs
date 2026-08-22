@@ -1,0 +1,84 @@
+<div class="blades68-sheet-root sheet-body">
+<form class="pdf-import-form">
+  <section class="pdf-import-section">
+    <h2>{{localize "BLADES68.PdfImport.RulebookSection"}}</h2>
+    <p class="hint">{{localize "BLADES68.PdfImport.RulebookHint"}}</p>
+    <input type="file" name="rulebookFile" accept="application/pdf" />
+  </section>
+
+  <section class="pdf-import-section">
+    <h2>{{localize "BLADES68.PdfImport.FactionsSection"}}</h2>
+    <p class="hint">{{localize "BLADES68.PdfImport.FactionsHint"}}</p>
+    <button type="button" data-action="parseFactions">{{localize "BLADES68.PdfImport.ParseFactions"}}</button>
+
+    <h3>{{localize "BLADES68.PdfImport.DeckSection"}}</h3>
+    <p class="hint">{{localize "BLADES68.PdfImport.DeckHint"}}</p>
+    <input type="file" name="deckFile" accept="application/pdf" />
+    <button type="button" data-action="extractDeckArt">{{localize "BLADES68.PdfImport.ExtractArt"}}</button>
+
+    <div class="faction-preview"></div>
+    <button type="button" data-action="createFactions" disabled>
+      {{localize "BLADES68.PdfImport.CreateFactions"}}
+    </button>
+  </section>
+
+  <section class="pdf-import-section">
+    <h2>{{localize "BLADES68.PdfImport.PlaybooksSection"}}</h2>
+    <p class="hint">{{localize "BLADES68.PdfImport.PlaybooksHint"}}</p>
+
+    <div class="page-range-row">
+      <label>{{localize "BLADES68.PdfImport.CharacterPlaybooksFile"}}</label>
+      <input type="file" name="playbooksFile" accept="application/pdf" />
+      <button type="button" data-action="parsePlaybooks" data-kind="character">
+        {{localize "BLADES68.PdfImport.ParsePlaybooks"}}
+      </button>
+    </div>
+
+    <div class="page-range-row">
+      <label>{{localize "BLADES68.PdfImport.CrewPlaybooksFile"}}</label>
+      <input type="file" name="crewPlaybooksFile" accept="application/pdf" />
+      <button type="button" data-action="parsePlaybooks" data-kind="crew">
+        {{localize "BLADES68.PdfImport.ParsePlaybooks"}}
+      </button>
+    </div>
+  </section>
+
+  <section class="pdf-import-section">
+    <h2>{{localize "BLADES68.PdfImport.CardDecksSection"}}</h2>
+    <p class="hint">{{localize "BLADES68.PdfImport.CardDecksHint"}}</p>
+
+    <div class="page-range-row">
+      <label>{{localize "BLADES68.PdfImport.TroubleDeckFile"}}</label>
+      <input type="file" name="troubleDeckFile" accept="application/pdf" />
+      <button
+        type="button"
+        data-action="createCardsDeck"
+        data-input="troubleDeckFile"
+        data-deck-name="Trouble Deck"
+        data-subdir="troubledeck"
+      >
+        {{localize "BLADES68.PdfImport.CreateCardsDeck"}}
+      </button>
+    </div>
+
+    <div class="page-range-row">
+      <label>{{localize "BLADES68.PdfImport.FactionDeckFile"}}</label>
+      <input type="file" name="factionCardsFile" accept="application/pdf" />
+      <button
+        type="button"
+        data-action="createCardsDeck"
+        data-input="factionCardsFile"
+        data-deck-name="Faction Deck"
+        data-subdir="factiondeck"
+      >
+        {{localize "BLADES68.PdfImport.CreateCardsDeck"}}
+      </button>
+    </div>
+  </section>
+
+  <section class="pdf-import-section">
+    <h2>{{localize "BLADES68.PdfImport.Log"}}</h2>
+    <div class="pdf-import-log"></div>
+  </section>
+</form>
+</div>

@@ -1,0 +1,17 @@
+{
+  "_id": "a3f82d637e03f755",
+  "_key": "!items!a3f82d637e03f755",
+  "name": "Militants",
+  "type": "crew-playbook",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Activists pushing revolutionary change against unjust authority.</p>"
+  }
+}

@@ -1,0 +1,74 @@
+<div class="blades68-sheet-root">
+<header class="sheet-header">
+  <img class="profile-img" src="{{item.img}}" data-action="editImage" data-edit="img" title="{{item.name}}" />
+  <h1 class="itemname"><input name="name" type="text" value="{{item.name}}" /></h1>
+  <span class="item-type-badge">{{item.type}}</span>
+</header>
+
+<section class="sheet-body">
+  {{#ifEquals item.type "playbook"}}
+    <label>{{localize "BLADES68.Tagline"}} <input type="text" name="system.tagline" value="{{system.tagline}}" /></label>
+    <label>{{localize "BLADES68.StartingLoad"}} <input type="text" name="system.startingLoad" value="{{system.startingLoad}}" /></label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "ability"}}
+    <label>{{localize "BLADES68.PlaybookKey"}} <input type="text" name="system.playbook" value="{{system.playbook}}" /></label>
+    <label><input type="checkbox" name="system.unlocked" {{checked system.unlocked}} /> {{localize "BLADES68.Unlocked"}}</label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "vice"}}
+    <label>{{localize "BLADES68.Purveyor"}} <input type="text" name="system.purveyor" value="{{system.purveyor}}" /></label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "gear"}}
+    <label>{{localize "BLADES68.LoadCost"}} <input type="number" name="system.load" value="{{system.load}}" min="0" /></label>
+    <label><input type="checkbox" name="system.carried" {{checked system.carried}} /> {{localize "BLADES68.Carried"}}</label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "contact"}}
+    <label>{{localize "BLADES68.Relationship"}} <input type="text" name="system.relationship" value="{{system.relationship}}" /></label>
+    <label>{{localize "BLADES68.Faction"}} <input type="text" name="system.faction" value="{{system.faction}}" /></label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "crew-ability"}}
+    <label>{{localize "BLADES68.Cost"}} <input type="number" name="system.cost" value="{{system.cost}}" min="0" /></label>
+    <label><input type="checkbox" name="system.unlocked" {{checked system.unlocked}} /> {{localize "BLADES68.Unlocked"}}</label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "upgrade"}}
+    <label>{{localize "BLADES68.Quality"}} <input type="number" name="system.quality" value="{{system.quality}}" min="0" /></label>
+    <label><input type="checkbox" name="system.purchased" {{checked system.purchased}} /> {{localize "BLADES68.Purchased"}}</label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "cohort"}}
+    <label>{{localize "BLADES68.CohortType"}}
+      <select name="system.type">
+        {{#each config.COHORT_TYPES as |type|}}
+          <option value="{{type}}" {{#ifEquals type ../system.type}}selected{{/ifEquals}}>{{localize (concat "BLADES68.CohortTypeName." type)}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label>{{localize "BLADES68.Quality"}} <input type="number" name="system.quality" value="{{system.quality}}" min="0" max="6" /></label>
+    <label>{{localize "BLADES68.Harm"}} <input type="number" name="system.harm" value="{{system.harm}}" min="0" max="3" /></label>
+    <label>{{localize "BLADES68.Armor"}} <input type="number" name="system.armor" value="{{system.armor}}" min="0" /></label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "claim"}}
+    <label><input type="checkbox" name="system.controlled" {{checked system.controlled}} /> {{localize "BLADES68.Controlled"}}</label>
+  {{/ifEquals}}
+
+  {{#ifEquals item.type "clock"}}
+    <label>{{localize "BLADES68.Value"}} <input type="number" name="system.value" value="{{system.value}}" min="0" /></label>
+    <label>{{localize "BLADES68.Max"}} <input type="number" name="system.max" value="{{system.max}}" min="1" /></label>
+    <label>{{localize "BLADES68.Color"}} <input type="color" name="system.color" value="{{system.color}}" /></label>
+    <label><input type="checkbox" name="system.shared" {{checked system.shared}} /> {{localize "BLADES68.Shared"}}</label>
+  {{/ifEquals}}
+
+  {{#unless (ifEquals item.type "clock")}}
+    <fieldset>
+      <legend>{{localize "BLADES68.Description"}}</legend>
+      {{editor system.description target="system.description" button=true engine="prosemirror" collaborate=false}}
+    </fieldset>
+  {{/unless}}
+</section>
+</div>

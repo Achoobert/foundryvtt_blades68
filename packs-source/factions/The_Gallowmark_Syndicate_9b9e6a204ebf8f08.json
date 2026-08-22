@@ -1,0 +1,28 @@
+{
+  "_id": "9b9e6a204ebf8f08",
+  "_key": "!actors!9b9e6a204ebf8f08",
+  "name": "The Gallowmark Syndicate",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "prototypeToken": {
+    "name": "The Gallowmark Syndicate",
+    "actorLink": false,
+    "depth": 1
+  },
+  "system": {
+    "category": "underworld",
+    "tier": 3,
+    "hold": "strong",
+    "status": 0,
+    "war": false,
+    "notes": "<p>Sample underworld faction: a smuggling ring with fingers in every dock warehouse.</p>"
+  }
+}

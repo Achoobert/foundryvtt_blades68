@@ -1,0 +1,12 @@
+<div class="clock-grid">
+  {{#each clocks as |clock|}}
+    <div class="clock-entry">
+      {{> "systems/blades68/templates/partials/clock-svg.hbs"
+          value=clock.value max=clock.max color=clock.color
+          label=clock.label action="setClockValue" itemId=clock.itemId actorId=clock.actorId }}
+    </div>
+  {{/each}}
+  {{#unless clocks.length}}
+    <p class="empty-notice">{{localize "BLADES68.ClockTracker.Empty"}}</p>
+  {{/unless}}
+</div>

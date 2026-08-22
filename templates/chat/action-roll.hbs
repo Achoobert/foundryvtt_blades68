@@ -1,0 +1,16 @@
+<div class="blades68 roll-card tier-{{tier}}">
+  <header class="roll-card-header">
+    <strong class="roll-title">{{title}}</strong>
+    {{#if subtitle}}<span class="roll-subtitle">{{subtitle}}</span>{{/if}}
+  </header>
+  <div class="pool-size">({{poolSize}}d)</div>
+  {{#if zeroDice}}<div class="zero-dice-banner">{{localize "BLADES68.ZeroDice"}}</div>{{/if}}
+  <div class="dice-results">
+    {{#each dice as |die|}}
+      <span class="die {{#ifEquals die 6}}six{{/ifEquals}}">{{die}}</span>
+    {{/each}}
+  </div>
+  <div class="tier-label">{{tierLabel}}</div>
+  {{#if outcome}}<div class="roll-outcome">{{{outcome}}}</div>{{/if}}
+  {{#if extra}}<div class="roll-extra">{{extra}}</div>{{/if}}
+</div>

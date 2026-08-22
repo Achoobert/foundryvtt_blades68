@@ -1,0 +1,171 @@
+{
+  "name": "Faction Deck (Sample)",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "Starter sample of the Faction Deck (see rule_books/b68_factiondeck_v1.pdf for the full deck). Draw during downtime/planning to generate a faction opportunity or move.",
+  "results": [
+    {
+      "_id": "224dd6522414a645",
+      "type": 0,
+      "text": "A faction offers a lucrative but morally grey job.",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.224dd6522414a645"
+    },
+    {
+      "_id": "fd33768be47b7eb8",
+      "type": 0,
+      "text": "Two factions escalate a turf dispute near your base.",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.fd33768be47b7eb8"
+    },
+    {
+      "_id": "f7265ac77acfd4f3",
+      "type": 0,
+      "text": "A faction leader requests a private meeting.",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.f7265ac77acfd4f3"
+    },
+    {
+      "_id": "0cc9f7cd7166513b",
+      "type": 0,
+      "text": "A faction move threatens one of your claims.",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.0cc9f7cd7166513b"
+    },
+    {
+      "_id": "7e2a11c383c5f548",
+      "type": 0,
+      "text": "A faction extends an alliance offer with strings attached.",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.7e2a11c383c5f548"
+    },
+    {
+      "_id": "9f7a7d5db6225580",
+      "type": 0,
+      "text": "A faction puts a bounty on someone connected to the crew.",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.9f7a7d5db6225580"
+    },
+    {
+      "_id": "21d4a37cf27145f8",
+      "type": 0,
+      "text": "A faction's enforcer starts asking questions about you.",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.21d4a37cf27145f8"
+    },
+    {
+      "_id": "28c1f721fe822301",
+      "type": 0,
+      "text": "A faction's hold weakens, creating an opening.",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.28c1f721fe822301"
+    },
+    {
+      "_id": "44ab8c1fb76d055d",
+      "type": 0,
+      "text": "A faction calls in an old favor.",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.44ab8c1fb76d055d"
+    },
+    {
+      "_id": "9a7ef5b19f5e8ec2",
+      "type": 0,
+      "text": "A faction publicly blames the crew for something they did not do.",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.9a7ef5b19f5e8ec2"
+    },
+    {
+      "_id": "f8d4d050f279f3b7",
+      "type": 0,
+      "text": "A faction's internal conflict spills into the open.",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.f8d4d050f279f3b7"
+    },
+    {
+      "_id": "5d8f10d1a33cc373",
+      "type": 0,
+      "text": "A faction offers exclusive information for a price.",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!d60e123375769a74.5d8f10d1a33cc373"
+    }
+  ],
+  "formula": "1d12",
+  "replacement": false,
+  "displayRoll": true,
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "_id": "d60e123375769a74",
+  "_key": "!tables!d60e123375769a74"
+}

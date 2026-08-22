@@ -1,0 +1,19 @@
+{
+  "_id": "29eec3230f3db9e1",
+  "_key": "!items!29eec3230f3db9e1",
+  "name": "Concealed Blade",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A slim knife, easy to hide.</p>",
+    "load": 0,
+    "carried": true
+  }
+}

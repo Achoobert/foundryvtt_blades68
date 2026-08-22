@@ -1,0 +1,171 @@
+{
+  "name": "Trouble Deck (Sample)",
+  "img": "icons/svg/d20-grey.svg",
+  "description": "Starter sample of the Trouble Deck (see rule_books/b68_troubledeck_v1.pdf for the full deck). Draw without replacement mid-score when a complication is called for.",
+  "results": [
+    {
+      "_id": "21b1e71909903192",
+      "type": 0,
+      "text": "A patrol crosses your path at the worst possible moment.",
+      "weight": 1,
+      "range": [
+        1,
+        1
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.21b1e71909903192"
+    },
+    {
+      "_id": "22c2d5981d8523fa",
+      "type": 0,
+      "text": "The lock/security measure is tougher than expected.",
+      "weight": 1,
+      "range": [
+        2,
+        2
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.22c2d5981d8523fa"
+    },
+    {
+      "_id": "ef7e690248a0072a",
+      "type": 0,
+      "text": "An old contact recognizes a member of the crew.",
+      "weight": 1,
+      "range": [
+        3,
+        3
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.ef7e690248a0072a"
+    },
+    {
+      "_id": "b2e3bd4f3f0f8f34",
+      "type": 0,
+      "text": "The job site has changed since your information was gathered.",
+      "weight": 1,
+      "range": [
+        4,
+        4
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.b2e3bd4f3f0f8f34"
+    },
+    {
+      "_id": "e4ade2ebec049608",
+      "type": 0,
+      "text": "A rival crew is already working an angle here.",
+      "weight": 1,
+      "range": [
+        5,
+        5
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.e4ade2ebec049608"
+    },
+    {
+      "_id": "0b3141fb2c370731",
+      "type": 0,
+      "text": "Someone talks too loud, too soon.",
+      "weight": 1,
+      "range": [
+        6,
+        6
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.0b3141fb2c370731"
+    },
+    {
+      "_id": "b13d90c2671b5a5f",
+      "type": 0,
+      "text": "The weather turns, complicating escape or approach.",
+      "weight": 1,
+      "range": [
+        7,
+        7
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.b13d90c2671b5a5f"
+    },
+    {
+      "_id": "2bcf626f329672c8",
+      "type": 0,
+      "text": "A witness sees more than they should.",
+      "weight": 1,
+      "range": [
+        8,
+        8
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.2bcf626f329672c8"
+    },
+    {
+      "_id": "97087d051ccbb6e6",
+      "type": 0,
+      "text": "Equipment fails at a critical moment.",
+      "weight": 1,
+      "range": [
+        9,
+        9
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.97087d051ccbb6e6"
+    },
+    {
+      "_id": "d56bde1a6838762a",
+      "type": 0,
+      "text": "A guard is more alert or capable than anticipated.",
+      "weight": 1,
+      "range": [
+        10,
+        10
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.d56bde1a6838762a"
+    },
+    {
+      "_id": "918d9d8cd57cdeb1",
+      "type": 0,
+      "text": "An unexpected ally needs help right now.",
+      "weight": 1,
+      "range": [
+        11,
+        11
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.918d9d8cd57cdeb1"
+    },
+    {
+      "_id": "f5cea5fa2371c13c",
+      "type": 0,
+      "text": "The plan leaks — someone already knows you are coming.",
+      "weight": 1,
+      "range": [
+        12,
+        12
+      ],
+      "drawn": false,
+      "flags": {},
+      "_key": "!tables.results!aeb246c34323f8ba.f5cea5fa2371c13c"
+    }
+  ],
+  "formula": "1d12",
+  "replacement": false,
+  "displayRoll": true,
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "_id": "aeb246c34323f8ba",
+  "_key": "!tables!aeb246c34323f8ba"
+}

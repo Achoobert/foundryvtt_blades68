@@ -1,0 +1,17 @@
+{
+  "_id": "e9550c8b8aa58829",
+  "_key": "!items!e9550c8b8aa58829",
+  "name": "Dagger Isles/Akoros",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Raised among the trade routes and rivalries of the Dagger Isles.</p>"
+  }
+}
