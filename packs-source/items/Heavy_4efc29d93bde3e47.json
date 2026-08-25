@@ -1,0 +1,20 @@
+{
+  "_id": "4efc29d93bde3e47",
+  "_key": "!items!4efc29d93bde3e47",
+  "name": "+Heavy",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The addition of chain mail, metal plates, a metal helm</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

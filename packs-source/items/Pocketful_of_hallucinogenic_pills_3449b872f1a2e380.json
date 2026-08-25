@@ -1,0 +1,20 @@
+{
+  "_id": "3449b872f1a2e380",
+  "_key": "!items!3449b872f1a2e380",
+  "name": "Pocketful of hallucinogenic pills",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Induces a psychedelic state, altering the user's fundamental perception of reality. They partially lose control of their body, becoming confused and disoriented (moderate harm, may be resisted). Some find that this state frees their true consciousness, allowing deep spiritual connection to take place; may improve the effect of actions relating to attunement.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

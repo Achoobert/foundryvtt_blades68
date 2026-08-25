@@ -1,0 +1,19 @@
+{
+  "_id": "c11b7776ffa671ff",
+  "_key": "!items!c11b7776ffa671ff",
+  "name": "Pamphleteer",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can publish revolutionary literature as a 4-segment long-term project. Name each work. Once complete, a published work can tick another long-term project clock related to the revolution, once per downtime (maximum of four such works may be in effective circulation). If you die or get imprisoned, each work adds two ticks.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "10b7a589d7ff767d",
+  "_key": "!items!10b7a589d7ff767d",
+  "name": "Feral Whispers",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can Attune to animals to have them do your bidding.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

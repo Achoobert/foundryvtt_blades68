@@ -1,0 +1,19 @@
+{
+  "_id": "afbb6481b810ef6b",
+  "_key": "!items!afbb6481b810ef6b",
+  "name": "Precognition",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Two times per score, you can assist a teammate without paying Stress. Tell us how you prepared for this in advance.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

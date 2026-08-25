@@ -1,0 +1,19 @@
+{
+  "_id": "0ce191f3c3c47a4f",
+  "_key": "!items!0ce191f3c3c47a4f",
+  "name": "Interface",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You may Attune to the local electroplasmic power field to control it or something connected to it (including another hull).</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

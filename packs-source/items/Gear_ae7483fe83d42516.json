@@ -1,0 +1,19 @@
+{
+  "_id": "ae7483fe83d42516",
+  "_key": "!items!ae7483fe83d42516",
+  "name": "Gear",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Burglary Gear and Climbing Gear.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "a7d8012fa6238510",
+  "_key": "!items!a7d8012fa6238510",
+  "name": "Documents",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Documents.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

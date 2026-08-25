@@ -1,0 +1,18 @@
+{
+  "_id": "26471f05e1d1493c",
+  "_key": "!items!26471f05e1d1493c",
+  "name": "Temple",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Command and Sway on-site</p>",
+    "controlled": false
+  }
+}

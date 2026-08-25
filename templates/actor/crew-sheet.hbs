@@ -72,7 +72,7 @@
     <a data-tab="notes">{{localize "BLADES68.Tabs.Notes"}}</a>
   </nav>
 
-  {{#each (array "upgrades" "cohorts" "claims" "abilities") as |tabId|}}
+  {{#each (array "upgrades" "cohorts" "claims") as |tabId|}}
     <div class="tab {{tabId}}" data-tab="{{tabId}}">
       <ol class="item-list">
         {{#each ../items as |item|}}
@@ -85,6 +85,18 @@
       </ol>
     </div>
   {{/each}}
+
+  <div class="tab abilities" data-tab="abilities">
+    <ol class="item-list crew-ability-list">
+      {{#each crewAbilityItems as |item|}}
+        <li class="item crew-ability-row" data-action="openItem" data-item-id="{{item.id}}"
+            title="{{item.descriptionText}}">
+          <strong class="item-name">{{item.name}}</strong>
+          <div class="crew-ability-description">{{{item.description}}}</div>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
 
   <div class="tab clocks" data-tab="clocks">
     <div class="clock-grid">

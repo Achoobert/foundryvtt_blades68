@@ -1,32 +1,13 @@
 import { buildFactionClockData } from '../utils/faction-clocks.js';
 import { getOrCreateFolder } from './folders.js';
+import { resolveFactionItems } from './faction-item-resolver.js';
 
 export async function createFactionItems(factions, { folder = null } = {}) {
-  const created = [];
+  const created = await resolveFactionItems(factions, { folder });
   let clockFolder = null;
 
-  for (const faction of factions) {
-    const item = await Item.create({
-      name: faction.name,
-      type: 'faction',
-      img: faction.imagePath || undefined,
-      folder,
-      system: {
-        category: faction.category ?? 'underworld',
-        tier: faction.tier ?? 0,
-        hold: faction.hold ?? 'weak',
-        description: faction.description ?? '',
-        turf: faction.turf ?? '',
-        npcs: faction.npcs ?? '',
-        notableAssets: faction.notableAssets ?? '',
-        quirks: faction.quirks ?? '',
-        allies: faction.allies ?? '',
-        enemies: faction.enemies ?? '',
-        situation: faction.situation ?? '',
-        prestigeAbility: faction.prestigeAbility ?? { name: '', description: '' }
-      }
-    });
-
+  for (const [index, faction] of factions.entries()) {
+    const item = created[index];
     if (faction.projects?.length) {
       clockFolder ??= (await getOrCreateFolder('Project Clocks', 'Item', folder))?.id ?? null;
       await Item.createDocuments(
@@ -36,8 +17,6 @@ export async function createFactionItems(factions, { folder = null } = {}) {
         }))
       );
     }
-
-    created.push(item);
   }
 
   return created;

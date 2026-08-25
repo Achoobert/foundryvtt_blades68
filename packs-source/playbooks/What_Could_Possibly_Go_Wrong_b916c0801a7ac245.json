@@ -1,0 +1,20 @@
+{
+  "_id": "b916c0801a7ac245",
+  "_key": "!items!b916c0801a7ac245",
+  "name": "What Could Possibly Go Wrong",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your crew has shadow twins in the Resonance Field. You may call your doppelgänger into this reality to complete an action for you; they do it with increased effect and no need to roll—treat the result as a crit. Your shadow twin remains in the world and is controlled by the GM from this point forward.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

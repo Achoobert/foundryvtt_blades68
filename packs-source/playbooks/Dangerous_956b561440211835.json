@@ -1,0 +1,20 @@
+{
+  "_id": "956b561440211835",
+  "_key": "!items!956b561440211835",
+  "name": "Dangerous",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC may add +1 action rating to Hunt, Skirmish, or Wreck (up to a max rating of 3).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

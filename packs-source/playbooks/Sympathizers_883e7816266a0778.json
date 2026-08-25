@@ -1,0 +1,20 @@
+{
+  "_id": "883e7816266a0778",
+  "_key": "!items!883e7816266a0778",
+  "name": "Sympathizers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The common citizenry of your home ground, and any turf you hold, are sympathetic to you and your cause. You can consider them allies (status +3). When asked, they will: give you shelter or a place to hide, redirect Bluecoats or other enemies, or give you other aid if they can.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

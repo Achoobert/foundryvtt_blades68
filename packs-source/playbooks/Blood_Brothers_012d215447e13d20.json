@@ -1,0 +1,20 @@
+{
+  "_id": "012d215447e13d20",
+  "_key": "!items!012d215447e13d20",
+  "name": "Blood Brothers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you fight alongside your cohorts in combat, they get +1d for teamwork rolls (setup and group actions). All of your cohorts get the thugs type for free (if they're already thugs, add another type).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "99823421c52134d1",
+  "_key": "!items!99823421c52134d1",
+  "name": "True Believers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your cohorts will undertake any service, no matter how dangerous or strange. They gain +1d to rolls against enemies of the Utopian Vision.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

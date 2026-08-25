@@ -1,0 +1,18 @@
+{
+  "_id": "550e632df440c676",
+  "_key": "!items!550e632df440c676",
+  "name": "Deathlands Race",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 4 opponents, 10 Rep, 15 stacks (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

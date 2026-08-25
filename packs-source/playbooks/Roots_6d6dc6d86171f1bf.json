@@ -1,0 +1,20 @@
+{
+  "_id": "6d6dc6d86171f1bf",
+  "_key": "!items!6d6dc6d86171f1bf",
+  "name": "Roots",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>During downtime one of your contacts or cohorts may take a downtime action to acquire an asset, reduce heat, or recover.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

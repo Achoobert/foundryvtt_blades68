@@ -1,0 +1,19 @@
+{
+  "_id": "5fe2100a30f1d9f5",
+  "_key": "!items!5fe2100a30f1d9f5",
+  "name": "Quantum Displacement",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take 1 Instability to teleport anywhere you can see.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "1dd61bdfddd9f785",
+  "_key": "!items!1dd61bdfddd9f785",
+  "name": "Just a Scratch",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Harm doesn’t slow you down during a score, and never factors into effect (level 4 harm is still fatal, and you still roll for harm complications). You gain potency when you Consort with someone who has caused you to mark harm.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

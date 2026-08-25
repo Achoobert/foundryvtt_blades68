@@ -1,0 +1,19 @@
+{
+  "_id": "1e3ad0756cae0103",
+  "_key": "!items!1e3ad0756cae0103",
+  "name": "Parapsychology",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You're immune to the terror that paranormal entities inflict on sight. Take +1d to resistance rolls with Resolve. Take +1d when you gather info about the paranormal.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

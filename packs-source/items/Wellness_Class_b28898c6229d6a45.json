@@ -1,0 +1,18 @@
+{
+  "_id": "b28898c6229d6a45",
+  "_key": "!items!b28898c6229d6a45",
+  "name": "Wellness Class",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "_id": "79916c0b84427134",
+  "_key": "!items!79916c0b84427134",
+  "name": "Paxton",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A champion bare-knuckle boxer and a larger-than-life personality. Has spent more time inside Ironhook than out. Just got out on parole for the 7th time.</p>"
+  }
+}

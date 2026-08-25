@@ -1,0 +1,18 @@
+{
+  "_id": "8f25e6866cace205",
+  "_key": "!items!8f25e6866cace205",
+  "name": "Dive Bar",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks from lower-class clients</p>",
+    "controlled": false
+  }
+}

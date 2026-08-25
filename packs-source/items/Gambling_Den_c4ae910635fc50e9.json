@@ -1,0 +1,18 @@
+{
+  "_id": "c4ae910635fc50e9",
+  "_key": "!items!c4ae910635fc50e9",
+  "name": "Gambling Den",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "a6c0a4d144e95cac",
+  "_key": "!items!a6c0a4d144e95cac",
+  "name": "Weapons",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Weapons.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

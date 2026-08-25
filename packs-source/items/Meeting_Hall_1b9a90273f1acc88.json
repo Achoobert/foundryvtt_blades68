@@ -1,0 +1,18 @@
+{
+  "_id": "1b9a90273f1acc88",
+  "_key": "!items!1b9a90273f1acc88",
+  "name": "Meeting Hall",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Consort and Sway on-site</p>",
+    "controlled": false
+  }
+}

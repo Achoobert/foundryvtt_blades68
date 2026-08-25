@@ -1,0 +1,20 @@
+{
+  "_id": "e1b82e373ec56c11",
+  "_key": "!items!e1b82e373ec56c11",
+  "name": "Avengers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC may add +1 action rating to Hunt, Prowl, or Command (up to a max rating of 3).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

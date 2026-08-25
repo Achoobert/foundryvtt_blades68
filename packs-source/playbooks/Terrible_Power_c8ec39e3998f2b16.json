@@ -1,0 +1,19 @@
+{
+  "_id": "c8ec39e3998f2b16",
+  "_key": "!items!c8ec39e3998f2b16",
+  "name": "Terrible Power",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take 1 Stress to perform a feat of superhuman strength or speed (run faster than an autopod, bend steel with bare hands, leap onto the roof of a building, etc.). This factors into effect.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

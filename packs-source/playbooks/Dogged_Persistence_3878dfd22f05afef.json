@@ -1,0 +1,19 @@
+{
+  "_id": "3878dfd22f05afef",
+  "_key": "!items!3878dfd22f05afef",
+  "name": "Dogged Persistence",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per score, you may use your tenacity to resist a consequence of exhaustion or mental harm (fear, confusion, losing track of someone) or to push yourself for influencing someone or searching for clues.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

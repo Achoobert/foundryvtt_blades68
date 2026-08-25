@@ -1,0 +1,18 @@
+{
+  "_id": "9031a8c2987b7e07",
+  "_key": "!items!9031a8c2987b7e07",
+  "name": "Sanctuary",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Command<br>and Sway on site</p>",
+    "controlled": false
+  }
+}

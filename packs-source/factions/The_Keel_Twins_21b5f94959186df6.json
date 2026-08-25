@@ -1,0 +1,34 @@
+{
+  "_id": "21b5f94959186df6",
+  "_key": "!items!21b5f94959186df6",
+  "name": "The Keel Twins",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>Identical twin sisters, ruthless gangsters, and minor nightlife celebrities. Many smaller gangs pay up to the Keels.</p>"
+  }
+}

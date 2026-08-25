@@ -1,0 +1,20 @@
+{
+  "_id": "c93be6f73a19ef58",
+  "_key": "!items!c93be6f73a19ef58",
+  "name": "War Dogs",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you’re at war (-3 faction status), your crew does not suffer -1 hold and PCs still get two downtime activities, instead of just one.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

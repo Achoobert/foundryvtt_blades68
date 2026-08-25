@@ -1,0 +1,18 @@
+{
+  "_id": "97e0f1e290e0390d",
+  "_key": "!items!97e0f1e290e0390d",
+  "name": "Ancient Tomes",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2d engagement for Reality Tear score</p>",
+    "controlled": false
+  }
+}

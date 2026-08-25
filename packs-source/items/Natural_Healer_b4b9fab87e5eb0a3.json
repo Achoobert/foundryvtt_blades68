@@ -1,0 +1,18 @@
+{
+  "_id": "b4b9fab87e5eb0a3",
+  "_key": "!items!b4b9fab87e5eb0a3",
+  "name": "Natural Healer",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "",
+    "controlled": false
+  }
+}

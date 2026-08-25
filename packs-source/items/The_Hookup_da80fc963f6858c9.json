@@ -1,0 +1,18 @@
+{
+  "_id": "da80fc963f6858c9",
+  "_key": "!items!da80fc963f6858c9",
+  "name": "The Hookup",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Smugglers, +1d to<br>acquire asets</p>",
+    "controlled": false
+  }
+}

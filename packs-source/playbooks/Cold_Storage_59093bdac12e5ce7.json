@@ -1,0 +1,20 @@
+{
+  "_id": "59093bdac12e5ce7",
+  "_key": "!items!59093bdac12e5ce7",
+  "name": "Cold Storage",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Every crew member can always find a convenient place to hide a body near to hand. Take 1 Stress to hide the body in the resonance field instead (it will rematerialize after a few hours).</p>",
+    "dcDescription": "<p><strong>Action:</strong> Take 1 Stress at any time to find a convenient place to hide a body, near to hand.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

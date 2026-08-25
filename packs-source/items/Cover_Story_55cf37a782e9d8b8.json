@@ -1,0 +1,18 @@
+{
+  "_id": "55cf37a782e9d8b8",
+  "_key": "!items!55cf37a782e9d8b8",
+  "name": "Cover Story",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2d engagement for Checkmate score</p>",
+    "controlled": false
+  }
+}

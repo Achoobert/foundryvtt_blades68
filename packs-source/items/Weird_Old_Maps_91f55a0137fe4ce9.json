@@ -1,0 +1,18 @@
+{
+  "_id": "91f55a0137fe4ce9",
+  "_key": "!items!91f55a0137fe4ce9",
+  "name": "Weird Old Maps",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2d engagement for Deathlands Race score</p>",
+    "controlled": false
+  }
+}

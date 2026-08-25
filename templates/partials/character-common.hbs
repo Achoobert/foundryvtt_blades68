@@ -1,7 +1,10 @@
 <div class="char-columns">
   <div class="char-column-left">
-    <fieldset class="keys-deadlocks sheet-section">
-      <legend>{{localize "BLADES68.KeysAndDeadlocks"}}</legend>
+    <div class="keys-deadlocks sheet-section">
+      <div class="keys-deadlocks-head">
+        <span>{{localize "BLADES68.Keys"}}</span>
+        <span>{{localize "BLADES68.Deadlocks"}}</span>
+      </div>
       <ul class="key-deadlock-list">
         {{#each keyDeadlockPairs as |pair|}}
         <li class="key-deadlock-row">
@@ -16,28 +19,31 @@
             <span class="boom-icon"></span>
           </label>
           <div class="deadlock-cell">
+            <label class="boom-toggle deadlock-spark" title="{{localize 'BLADES68.Triggered'}}">
+              <input type="checkbox" name="system.deadlocks.{{pair.index}}.triggered" {{checked pair.deadlock.triggered}} />
+              <span class="boom-icon"></span>
+            </label>
             <input type="text" name="system.deadlocks.{{pair.index}}.label" value="{{pair.deadlock.label}}"
               placeholder="{{localize 'BLADES68.Deadlock'}}" />
-            <label class="triggered-toggle">
-              <input type="checkbox" name="system.deadlocks.{{pair.index}}.triggered" {{checked pair.deadlock.triggered}} />
-              {{localize "BLADES68.Triggered"}}
-            </label>
           </div>
         </li>
         {{/each}}
       </ul>
-    </fieldset>
+    </div>
 
     <fieldset class="harm-resources">
       <legend>{{localize "BLADES68.Harm"}}</legend>
-      <div class="harm-grid">
+      <div class="harm-table">
         {{#each harmTiers as |tier|}}
-        <div class="harm-tier">
-          <label>{{localize tier.labelKey}}</label>
-          {{#each tier.slots as |slot|}}
-          <input type="text" name="system.harm.{{tier.key}}.{{slot.slotKey}}" value="{{slot.value}}" />
-          {{/each}}
-        </div>
+        <div class="harm-tier slots-{{tier.slots.length}}">
+          <span class="harm-level">{{tier.level}}</span>
+          <div class="harm-slots">
+            {{#each tier.slots as |slot|}}
+            <input type="text" name="system.harm.{{tier.key}}.{{slot.slotKey}}" value="{{slot.value}}" />
+            {{/each}}
+          </div>
+          <span class="harm-label">{{localize tier.labelKey}}</span>
+          </div>
         {{/each}}
       </div>
 
@@ -70,18 +76,42 @@
     <fieldset class="items-block">
       <legend>{{localize "BLADES68.Items"}} <span class="items-hint">{{localize "BLADES68.ItemsHint"}}</span>
       </legend>
-      <ul class="item-checklist">
-        {{#each gearItems as |item|}}
-        <li>
-          <label class="carried-toggle">
-            <input type="checkbox" data-action="toggleCarried" data-item-id="{{item.id}}" {{checked item.system.carried}} />
-            <span class="carried-box"></span>
-          </label>
-          <span class="item-name">{{item.name}}</span>
-          <span class="item-load">{{item.system.load}}</span>
+      <ul class="item-checklist playbook-gear">
+        {{#each playbookGear as |item|}}
+        <li class="gear-row">
+          <button type="button" class="load-pips {{#if item.system.carried}}carried{{/if}}" data-action="toggleCarried"
+            data-item-id="{{item.id}}">
+            {{#each (loadBoxes item.system.load)}}
+            <span class="load-pip"></span>
+            {{/each}}
+          </button>
+          <span class="item-name {{#ifEquals item.system.load 0}}zero-load{{/ifEquals}}" data-action="openItem"
+            data-item-id="{{item.id}}">{{item.name}}</span>
         </li>
         {{/each}}
       </ul>
+      <div class="list-footer">
+        <button type="button" class="list-add" data-action="createItem" data-type="gear"
+          title="{{localize 'BLADES68.AddItem'}}">+</button>
+      </div>
+      <ul class="item-checklist common-gear">
+        {{#each commonGear as |item|}}
+        <li class="gear-row">
+          <button type="button" class="load-pips {{#if item.system.carried}}carried{{/if}}" data-action="toggleCarried"
+            data-item-id="{{item.id}}">
+            {{#each (loadBoxes item.system.load)}}
+            <span class="load-pip"></span>
+            {{/each}}
+          </button>
+          <span class="item-name {{#ifEquals item.system.load 0}}zero-load{{/ifEquals}}" data-action="openItem"
+            data-item-id="{{item.id}}">{{item.name}}</span>
+        </li>
+        {{/each}}
+      </ul>
+      <div class="list-footer">
+        <button type="button" class="list-add" data-action="createItem" data-type="gear"
+          title="{{localize 'BLADES68.AddItem'}}">+</button>
+      </div>
     </fieldset>
 
     <fieldset class="planning-load">

@@ -1,0 +1,19 @@
+{
+  "_id": "10c5dc4dd460ab22",
+  "_key": "!items!10c5dc4dd460ab22",
+  "name": "Vault",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your lair has a secure vault, increasing your storage capacity for coin to 8. A second upgrade increases your capacity to 16. A separate part of your vault can be used as a holding cell.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

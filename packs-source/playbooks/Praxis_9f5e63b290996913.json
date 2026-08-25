@@ -1,0 +1,19 @@
+{
+  "_id": "9f5e63b290996913",
+  "_key": "!items!9f5e63b290996913",
+  "name": "Praxis",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>If you loudly and visibly destroy a symbolic target during a score, gain +2 result levels to any long-term project rolls related to your revolutionary work during the following personal business phase.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

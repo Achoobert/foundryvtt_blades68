@@ -1,0 +1,18 @@
+{
+  "_id": "839856e0fe043894",
+  "_key": "!items!839856e0fe043894",
+  "name": "Slush Fund",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Acquire Asset rolls</p>",
+    "controlled": false
+  }
+}

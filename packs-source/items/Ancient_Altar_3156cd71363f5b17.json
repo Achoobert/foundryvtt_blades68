@@ -1,0 +1,18 @@
+{
+  "_id": "3156cd71363f5b17",
+  "_key": "!items!3156cd71363f5b17",
+  "name": "Ancient Altar",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement for paranormal approaches</p>",
+    "controlled": false
+  }
+}

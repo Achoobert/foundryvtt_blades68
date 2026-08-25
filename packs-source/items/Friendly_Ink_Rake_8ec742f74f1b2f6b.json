@@ -1,0 +1,18 @@
+{
+  "_id": "8ec742f74f1b2f6b",
+  "_key": "!items!8ec742f74f1b2f6b",
+  "name": "Friendly Ink Rake",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 Rep per score</p>",
+    "controlled": false
+  }
+}

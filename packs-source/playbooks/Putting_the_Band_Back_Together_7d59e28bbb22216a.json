@@ -1,0 +1,20 @@
+{
+  "_id": "7d59e28bbb22216a",
+  "_key": "!items!7d59e28bbb22216a",
+  "name": "Putting the Band Back Together",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When any PC deadlocks, they drop out of the score entirely. Introduce a new character who makes an entrance at any time of your choosing. The character starts with bonus action dots, playbook abilities, full rows of bank, and deadlocks equal to the crew Tier (up to a max of 3).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

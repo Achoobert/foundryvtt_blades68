@@ -1,0 +1,20 @@
+{
+  "_id": "c060429854a059a8",
+  "_key": "!items!c060429854a059a8",
+  "name": "Benefactor",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you take this ability, the crew immediately receives 4 stacks. Whenever you advance your Tier, it costs half the stacks it normally would. Who’s backing you? Why do they help you?</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> You have a benefactor that helps your crew in Downtime by reducing one crew upgrade cost by 2 -or- reducing your Heat by 2. They also count as turf. Who is your patron? Why do they help you?</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

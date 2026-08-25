@@ -1,0 +1,20 @@
+{
+  "_id": "5b0d435192b63a80",
+  "_key": "!items!5b0d435192b63a80",
+  "name": "Anointed",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You get +1d to resistance rolls against supernatural threats. You get +1d to healing rolls when you have supernatural harm.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

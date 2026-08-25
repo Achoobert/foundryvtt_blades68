@@ -1,0 +1,18 @@
+{
+  "_id": "3d997997a3ade40f",
+  "_key": "!items!3d997997a3ade40f",
+  "name": "High-Stakes Game",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "ae0ce2dddb715b1f",
+  "_key": "!items!ae0ce2dddb715b1f",
+  "name": "Mutual Aid",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can lend support to one allied faction, and their Tier counts as one higher as long as you do. Your crew gets one free downtime action to work one of that faction’s long-term project clocks, if you wish. You can switch support once per downtime.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

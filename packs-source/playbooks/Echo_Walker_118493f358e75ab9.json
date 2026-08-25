@@ -1,0 +1,19 @@
+{
+  "_id": "118493f358e75ab9",
+  "_key": "!items!118493f358e75ab9",
+  "name": "Echo Walker",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Pay 2 Stress to step into the resonance field and disappear. Reappear at a moment of your choice, wherever you want (you have to be able to move there physically). When you reappear you are so cold (level 1 harm, can be resisted).</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

@@ -191,6 +191,24 @@
   padding: 0.15rem 0;
   border-bottom: 1px solid #333;
 }
+.blades68.sheet .item-list .crew-ability-row {
+  align-items: baseline;
+  flex-wrap: wrap;
+  cursor: pointer;
+  padding: 0.4rem 0;
+}
+.blades68.sheet .item-list .crew-ability-row .item-name {
+  flex: 0 1 11rem;
+}
+.blades68.sheet .item-list .crew-ability-row .crew-ability-description {
+  flex: 1 1 18rem;
+}
+.blades68.sheet .item-list .crew-ability-row .crew-ability-description > :first-child {
+  margin-top: 0;
+}
+.blades68.sheet .item-list .crew-ability-row .crew-ability-description > :last-child {
+  margin-bottom: 0;
+}
 .blades68.sheet .action-label {
   cursor: pointer;
 }
@@ -318,17 +336,317 @@
   color: #900;
   font-weight: bold;
 }
-.blades68.sheet .harm-tier {
-  margin-bottom: 0.5rem;
+.blades68.sheet .char-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+.blades68.sheet .list-footer {
   display: flex;
+  justify-content: flex-start;
+  padding: 0.15rem 0 0.35rem;
+  border-top: 1px solid var(--b68-brown-light);
+}
+.blades68.sheet .list-add {
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+  background: transparent;
+  border: 1px solid var(--b68-brown-light);
+  color: var(--b68-ink);
+  cursor: pointer;
+}
+.blades68.sheet .keys-deadlocks {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--b68-brown-light);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  background: var(--b68-parchment);
+}
+.blades68.sheet .keys-deadlocks .keys-deadlocks-head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+  color: var(--b68-parchment);
+}
+.blades68.sheet .keys-deadlocks .keys-deadlocks-head span {
+  padding: 0.2rem 0.5rem;
+  background: var(--b68-brown);
+}
+.blades68.sheet .keys-deadlocks .keys-deadlocks-head span:last-child {
+  background: var(--b68-accent);
+}
+.blades68.sheet .keys-deadlocks .keys-deadlocks-head span:first-child {
+  grid-column: 1;
+}
+.blades68.sheet .keys-deadlocks .keys-deadlocks-head span:last-child {
+  grid-column: 3;
+}
+.blades68.sheet .key-deadlock-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem;
+}
+.blades68.sheet .key-deadlock-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 0.35rem;
+  padding: 0.2rem 0.35rem;
+  margin-bottom: 0.25rem;
+  border: 1px solid var(--b68-brown-light);
+  border-radius: 6px;
+  background: var(--b68-parchment-dark);
 }
-.blades68.sheet .harm-tier label {
-  min-width: 90px;
+.blades68.sheet .key-deadlock-row .key-cell,
+.blades68.sheet .key-deadlock-row .deadlock-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
 }
-.blades68.sheet .harm-tier input[type=text] {
+.blades68.sheet .key-deadlock-row input[type=text] {
   flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+}
+.blades68.sheet .key-deadlock-row .key-cell .dot-track .dot {
+  width: 4px;
+  height: 14px;
+  border-radius: 1px;
+  border: none;
+  background: var(--b68-parchment);
+  transform: rotate(18deg);
+  background-image: none;
+}
+.blades68.sheet .key-deadlock-row .key-cell .dot-track .dot.filled {
+  background: var(--b68-ink);
+}
+.blades68.sheet .key-deadlock-row .key-cell .dot-track .dot.filled::after {
+  content: none;
+}
+.blades68.sheet .harm-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--b68-brown);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+.blades68.sheet .harm-tier {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 5.5rem;
+  align-items: stretch;
+  border-bottom: 1px solid var(--b68-brown);
+  min-height: 1.7rem;
+  margin-bottom: 0;
+}
+.blades68.sheet .harm-tier:last-child {
+  border-bottom: none;
+}
+.blades68.sheet .harm-tier .harm-level {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  background: var(--b68-parchment-header);
+  border-right: 1px solid var(--b68-brown);
+}
+.blades68.sheet .harm-tier .harm-slots {
+  display: grid;
+  background: var(--b68-ink);
+}
+.blades68.sheet .harm-tier.slots-1 .harm-slots {
+  grid-template-columns: 1fr;
+}
+.blades68.sheet .harm-tier.slots-2 .harm-slots {
+  grid-template-columns: 1fr 1fr;
+}
+.blades68.sheet .harm-tier .harm-slots input[type=text] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--b68-brown-light);
+  color: var(--b68-parchment);
+  padding: 0.2rem 0.35rem;
+}
+.blades68.sheet .harm-tier .harm-slots input[type=text]:last-child {
+  border-right: none;
+}
+.blades68.sheet .harm-tier .harm-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  background: var(--b68-brown-light);
+  color: var(--b68-parchment);
+  border-left: 1px solid var(--b68-brown);
+}
+.blades68.sheet .item-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.blades68.sheet .item-checklist.playbook-gear {
+  margin-bottom: 0.15rem;
+}
+.blades68.sheet .item-checklist.common-gear {
+  border-top: 1px solid var(--b68-brown-light);
+  padding-top: 0.15rem;
+}
+.blades68.sheet .gear-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0;
+  border-bottom: 1px solid var(--b68-parchment-dark);
+}
+.blades68.sheet .load-pips {
+  display: inline-flex;
+  gap: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.blades68.sheet .load-pips .load-pip {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1px solid var(--b68-ink);
+  background: var(--b68-parchment);
+  margin-left: -1px;
+}
+.blades68.sheet .load-pips.carried .load-pip {
+  background: var(--b68-accent);
+}
+.blades68.sheet .item-name {
+  cursor: pointer;
+  font-weight: 600;
+}
+.blades68.sheet .item-name.zero-load {
+  font-style: italic;
+  font-weight: 400;
+}
+.blades68.sheet .items-hint {
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: "Open Sans", sans-serif;
+}
+.blades68.sheet .ability-list,
+.blades68.sheet .friend-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.blades68.sheet .ability-row {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 0.45rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--b68-brown-light);
+  align-items: start;
+}
+.blades68.sheet .ability-mark {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: 0.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--b68-ink);
+  background: var(--b68-parchment);
+  padding: 0;
+  cursor: pointer;
+}
+.blades68.sheet .ability-mark.unlocked {
+  background: var(--b68-accent);
+  border-color: var(--b68-accent);
+}
+.blades68.sheet .ability-body {
+  cursor: pointer;
+  min-width: 0;
+}
+.blades68.sheet .ability-body strong {
+  margin-right: 0.35rem;
+}
+.blades68.sheet .ability-body .description {
+  display: inline;
+  font-size: 0.85rem;
+}
+.blades68.sheet .ability-body .description p {
+  display: inline;
+  margin: 0;
+}
+.blades68.sheet .friend-row {
+  display: grid;
+  grid-template-columns: 0.9rem 1fr;
+  gap: 0.4rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--b68-brown-light);
+  align-items: start;
+}
+.blades68.sheet .rel-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding-top: 0.2rem;
+}
+.blades68.sheet .rel-up,
+.blades68.sheet .rel-down {
+  width: 0;
+  height: 0;
+  padding: 0;
+  border-style: solid;
+  background: transparent;
+  cursor: pointer;
+}
+.blades68.sheet .rel-up {
+  border-width: 0 0.35rem 0.45rem 0.35rem;
+  border-color: transparent transparent var(--b68-parchment-header) transparent;
+}
+.blades68.sheet .rel-up.active {
+  border-bottom-color: var(--b68-accent);
+}
+.blades68.sheet .rel-down {
+  border-width: 0.45rem 0.35rem 0 0.35rem;
+  border-color: var(--b68-parchment-header) transparent transparent transparent;
+}
+.blades68.sheet .rel-down.active {
+  border-top-color: var(--b68-accent);
+}
+.blades68.sheet .friend-row details {
+  min-width: 0;
+}
+.blades68.sheet .friend-row details summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+.blades68.sheet .friend-row details summary::-webkit-details-marker {
+  display: none;
+}
+.blades68.sheet .friend-row details[open] summary {
+  margin-bottom: 0.2rem;
+}
+.blades68.sheet .friend-notes {
+  font-size: 0.85rem;
+  color: var(--b68-brown);
+  cursor: pointer;
+  background: var(--b68-parchment-header);
+  padding: 0.25rem 0.35rem;
+  border-radius: 2px;
 }
 .blades68.sheet prose-mirror {
   min-height: 6rem;
@@ -359,33 +677,3 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.blades68.sheet .key-deadlock-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.blades68.sheet .key-deadlock-row {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0;
-  border-bottom: 1px solid #333;
-}
-.blades68.sheet .key-deadlock-row .key-cell,
-.blades68.sheet .key-deadlock-row .deadlock-cell {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-.blades68.sheet .key-deadlock-row input[type=text] {
-  flex: 1;
-  min-width: 80px;
-}
-.blades68.sheet .key-deadlock-row label {
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-
-/*# sourceMappingURL=blades68.css.map */

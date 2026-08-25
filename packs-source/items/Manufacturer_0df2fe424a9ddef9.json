@@ -1,0 +1,18 @@
+{
+  "_id": "0df2fe424a9ddef9",
+  "_key": "!items!0df2fe424a9ddef9",
+  "name": "Manufacturer",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per personal business, take 1 Heat to gain 2 units</p>",
+    "controlled": false
+  }
+}

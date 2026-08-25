@@ -1,0 +1,19 @@
+{
+  "_id": "e2fa449b4063e2af",
+  "_key": "!items!e2fa449b4063e2af",
+  "name": "Medium",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can communicate with all paranormal entities, even those not present in the physical realm. Take +1d and potency when you do.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

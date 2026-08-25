@@ -1,0 +1,18 @@
+{
+  "_id": "e6c2b24b9a2cf245",
+  "_key": "!items!e6c2b24b9a2cf245",
+  "name": "Hidden Paths",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Prowl back<br>to your lair</p>",
+    "controlled": false
+  }
+}

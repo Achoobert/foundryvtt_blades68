@@ -1,0 +1,20 @@
+{
+  "_id": "571800aaeb38cae8",
+  "_key": "!items!571800aaeb38cae8",
+  "name": "Enlightened",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You get +1d to resistance rolls against paranormal threats and consequences. You get +1d to healing rolls when you have paranormal harm.</p>",
+    "dcDescription": "<p><strong>Action:</strong> You get +1d when you push yourself to avoid or reduce a paranormal consequence. Add +1 tick to healing clock when you have paranormal harm.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

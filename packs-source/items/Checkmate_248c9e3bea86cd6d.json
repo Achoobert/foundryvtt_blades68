@@ -1,0 +1,18 @@
+{
+  "_id": "248c9e3bea86cd6d",
+  "_key": "!items!248c9e3bea86cd6d",
+  "name": "Checkmate",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 5 target, 30 stacks, complete any clock (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

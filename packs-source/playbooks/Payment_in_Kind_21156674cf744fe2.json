@@ -1,0 +1,20 @@
+{
+  "_id": "21156674cf744fe2",
+  "_key": "!items!21156674cf744fe2",
+  "name": "Payment in Kind",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can use units to purchase crew upgrades. 1 crew upgrade costs 5 units (so a new cohort would cost 10 units).</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> You can use units to purchase crew upgrades. Units can be used instead of, or in combination with Stacks, one for one.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

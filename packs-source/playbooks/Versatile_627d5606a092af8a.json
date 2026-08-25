@@ -1,0 +1,20 @@
+{
+  "_id": "627d5606a092af8a",
+  "_key": "!items!627d5606a092af8a",
+  "name": "Versatile",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Choose a special ability from another crew (can be taken more than once).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

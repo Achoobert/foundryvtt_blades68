@@ -1,0 +1,20 @@
+{
+  "_id": "7132cb9df27f0a6a",
+  "_key": "!items!7132cb9df27f0a6a",
+  "name": "Sleepy Time",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Everyone on the crew adds tranquilizer rounds (0 load, compatible with any firearm) to their playbook items.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

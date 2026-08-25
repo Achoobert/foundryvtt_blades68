@@ -1,0 +1,34 @@
+{
+  "_id": "b4bc35ce7a00c876",
+  "_key": "!items!b4bc35ce7a00c876",
+  "name": "Ironhook Prison",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A rusting relic of centuries past, where many scoundrels spend the bulk of their lives. In danger of being replaced by the Lusk Reform Technique.</p>"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "d06e3791146c65f1",
+  "_key": "!items!d06e3791146c65f1",
+  "name": "Reality Shift",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 4 target, creates new major anomaly (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

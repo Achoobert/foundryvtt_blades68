@@ -1,0 +1,20 @@
+{
+  "_id": "5a80e37a63296dce",
+  "_key": "!items!5a80e37a63296dce",
+  "name": "Altered States",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC gains an additional vice: Ritual Hedonism. When you indulge this vice, you don't overindulge if you clear excess Stress. In addition, your ecstatic visions of the future mean you can perform one flashback for free.</p>",
+    "dcDescription": "<p><strong>Action:</strong> Each PC gains an additional vice: Ritual Hedonism. When you indulge this vice, you can't overindulge and you gain 1 Edge. In addition, your ecstatic visions of the future mean you can perform one flashback for free.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

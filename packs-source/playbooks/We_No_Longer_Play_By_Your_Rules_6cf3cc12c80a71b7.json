@@ -1,0 +1,20 @@
+{
+  "_id": "6cf3cc12c80a71b7",
+  "_key": "!items!6cf3cc12c80a71b7",
+  "name": "We No Longer Play By Your Rules",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you take this advance, immediately pick two more advances.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

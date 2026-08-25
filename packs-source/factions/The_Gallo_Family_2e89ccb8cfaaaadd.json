@@ -1,0 +1,34 @@
+{
+  "_id": "2e89ccb8cfaaaadd",
+  "_key": "!items!2e89ccb8cfaaaadd",
+  "name": "The Gallo Family",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A tight-knit criminal enterprise with deep roots in Silkshore. Gambling, loan sharking, and narcotics trafficking.</p>"
+  }
+}

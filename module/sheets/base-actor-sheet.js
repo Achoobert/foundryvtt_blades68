@@ -22,7 +22,9 @@ export default class Blades68ActorSheet extends HbsAppMixin(ActorSheetV2) {
       deleteClock: this._onDeleteClock,
       setClockValue: this._onSetClockValue,
       toggleClockShared: this._onToggleClockShared,
-      toggleCarried: this._onToggleCarried
+      toggleCarried: this._onToggleCarried,
+      createItem: this._onCreateItem,
+      openItem: this._onOpenItem
     }
   };
 
@@ -81,6 +83,19 @@ export default class Blades68ActorSheet extends HbsAppMixin(ActorSheetV2) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
     await item.update({ 'system.carried': !item.system.carried });
+  }
+
+  static async _onCreateItem(event, target) {
+    const type = target.dataset.type;
+    if (!type) return;
+    const [item] = await this.actor.createEmbeddedDocuments('Item', [
+      { name: game.i18n.localize(`TYPES.Item.${type}`), type }
+    ]);
+    await item?.sheet.render(true);
+  }
+
+  static async _onOpenItem(event, target) {
+    this.actor.items.get(target.dataset.itemId)?.sheet.render(true);
   }
 
   static async _onAddClock(event, target) {

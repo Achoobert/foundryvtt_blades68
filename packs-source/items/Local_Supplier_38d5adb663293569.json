@@ -1,0 +1,18 @@
+{
+  "_id": "38d5adb663293569",
+  "_key": "!items!38d5adb663293569",
+  "name": "Local Supplier",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per personal business, take 1 Heat to gain 1 unit</p>",
+    "controlled": false
+  }
+}

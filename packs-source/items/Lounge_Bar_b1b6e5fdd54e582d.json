@@ -1,0 +1,18 @@
+{
+  "_id": "b1b6e5fdd54e582d",
+  "_key": "!items!b1b6e5fdd54e582d",
+  "name": "Lounge Bar",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Consort and Sway on-site</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "3d453e4c405f809c",
+  "_key": "!items!3d453e4c405f809c",
+  "name": "Escape Velocity",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>One of the crew’s vehicles is fitted with a device that activates at a specific speed. This requires filling an 8-segment acceleration clock during the score. When the clock is filled and the vehicle hits the target speed, choose an effect: break the laws of gravity—create a tear in reality—travel into the resonance field— travel backward or forward through time.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

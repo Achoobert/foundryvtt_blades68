@@ -1,0 +1,20 @@
+{
+  "_id": "a4b8c9d36ecfd7dc",
+  "_key": "!items!a4b8c9d36ecfd7dc",
+  "name": "Chameleons",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take +1d to the engagement roll for stealth or deception approaches. When you subdue someone and don their outfit, the disguise has increased effect.</p>",
+    "dcDescription": "<p><strong>Action:</strong> When your opening gambit involves stealth or subterfuge, take +1d to the engagement roll. When you subdue someone and don their outfit, the disguise has increased effect.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

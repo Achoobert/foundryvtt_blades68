@@ -1,0 +1,20 @@
+{
+  "_id": "da25f6cb507ddef2",
+  "_key": "!items!da25f6cb507ddef2",
+  "name": "Ghost Passage",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>From harsh experience or occult ritual, all crew members become immune to possession by spirits, but may choose to \"carry\" a second ghost as a passenger within their body.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

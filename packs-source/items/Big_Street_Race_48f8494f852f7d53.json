@@ -1,0 +1,18 @@
+{
+  "_id": "48f8494f852f7d53",
+  "_key": "!items!48f8494f852f7d53",
+  "name": "Big Street Race",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 3 opponents, 15 stacks (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

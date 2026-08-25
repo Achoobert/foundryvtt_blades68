@@ -1,0 +1,19 @@
+{
+  "_id": "2badfc3a7809b4de",
+  "_key": "!items!2badfc3a7809b4de",
+  "name": "Sinister Guile",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>During downtime, choose one: get a free additional downtime activity, or take +1d to all downtime activity rolls.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

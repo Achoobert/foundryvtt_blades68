@@ -1,0 +1,18 @@
+{
+  "_id": "06045b8652d78a23",
+  "_key": "!items!06045b8652d78a23",
+  "name": "Bluecoat Intimidation",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>-2 heat per score</p>",
+    "controlled": false
+  }
+}

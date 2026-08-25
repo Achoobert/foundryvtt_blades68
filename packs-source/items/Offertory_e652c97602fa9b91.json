@@ -1,0 +1,18 @@
+{
+  "_id": "e652c97602fa9b91",
+  "_key": "!items!e652c97602fa9b91",
+  "name": "Offertory",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 coin for occult<br>operations</p>",
+    "controlled": false
+  }
+}

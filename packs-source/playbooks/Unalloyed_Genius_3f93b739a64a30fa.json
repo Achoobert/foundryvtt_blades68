@@ -1,0 +1,19 @@
+{
+  "_id": "3f93b739a64a30fa",
+  "_key": "!items!3f93b739a64a30fa",
+  "name": "Unalloyed Genius",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you craft an invention, take +1 result level to the roll. Invention clocks start with 1 segment already filled.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

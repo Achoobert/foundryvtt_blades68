@@ -1,0 +1,18 @@
+{
+  "_id": "cfd9fd132b623e46",
+  "_key": "!items!cfd9fd132b623e46",
+  "name": "Clock the Routine",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>3 free flashbacks during Legendary Target score</p>",
+    "controlled": false
+  }
+}

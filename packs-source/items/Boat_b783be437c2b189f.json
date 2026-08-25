@@ -1,0 +1,19 @@
+{
+  "_id": "b783be437c2b189f",
+  "_key": "!items!b783be437c2b189f",
+  "name": "Boat",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have a boat, a dock on a waterway, and a small shack to store boating supplies. A second upgrade improves the boat with armor and more cargo capacity.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

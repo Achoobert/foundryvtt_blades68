@@ -1,0 +1,34 @@
+{
+  "_id": "8318ba17993b0793",
+  "_key": "!items!8318ba17993b0793",
+  "name": "Red Torque",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A tight-knit gang of elite racing drivers who use their skills for criminal ends. Ambitious, angry, and fast.</p>"
+  }
+}

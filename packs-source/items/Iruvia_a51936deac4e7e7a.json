@@ -1,0 +1,17 @@
+{
+  "_id": "a51936deac4e7e7a",
+  "_key": "!items!a51936deac4e7e7a",
+  "name": "Iruvia",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

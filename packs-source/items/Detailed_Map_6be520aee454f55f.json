@@ -1,0 +1,18 @@
+{
+  "_id": "6be520aee454f55f",
+  "_key": "!items!6be520aee454f55f",
+  "name": "Detailed Map",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2d engagement for Legendary Target score</p>",
+    "controlled": false
+  }
+}

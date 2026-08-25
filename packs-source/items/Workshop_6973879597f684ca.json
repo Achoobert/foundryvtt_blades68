@@ -1,0 +1,19 @@
+{
+  "_id": "6973879597f684ca",
+  "_key": "!items!6973879597f684ca",
+  "name": "Workshop",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your base has a workshop with tools for tinkering and invention, some sparktech equipment like a tape recorder and basic computer, as well as a collection of books, documents, and maps. You may accomplish long- term projects with these assets without leaving your base. When you work on an invention long-term project with the workshop, increase the result level of the roll by one. You can spend stacks to increase the result further as usual.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

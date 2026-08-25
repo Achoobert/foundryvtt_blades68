@@ -1,0 +1,34 @@
+{
+  "_id": "f59239c4176da98d",
+  "_key": "!items!f59239c4176da98d",
+  "name": "The Golden Hand",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A high-tech criminal organisation, known for using gold-plated hulls to do its dirty work.</p>"
+  }
+}

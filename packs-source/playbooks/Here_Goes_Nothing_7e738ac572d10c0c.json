@@ -1,0 +1,19 @@
+{
+  "_id": "7e738ac572d10c0c",
+  "_key": "!items!7e738ac572d10c0c",
+  "name": "Here Goes Nothing",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take 2 Stress to roll your Sway or Consort rating while performing a different action. Use a free flashback to reveal who you convinced to teach you this particular technique or approach.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

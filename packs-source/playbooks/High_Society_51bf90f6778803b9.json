@@ -1,0 +1,20 @@
+{
+  "_id": "51bf90f6778803b9",
+  "_key": "!items!51bf90f6778803b9",
+  "name": "High Society",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>It's all about who you know. Take -1 heat during downtime and +1d to gather info about the city's elite.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

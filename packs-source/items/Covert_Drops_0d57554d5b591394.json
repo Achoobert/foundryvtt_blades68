@@ -1,0 +1,18 @@
+{
+  "_id": "0d57554d5b591394",
+  "_key": "!items!0d57554d5b591394",
+  "name": "Covert Drops",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 coin for espionage<br>or sabotage</p>",
+    "controlled": false
+  }
+}

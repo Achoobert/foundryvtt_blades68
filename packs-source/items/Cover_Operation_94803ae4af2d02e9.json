@@ -1,0 +1,18 @@
+{
+  "_id": "94803ae4af2d02e9",
+  "_key": "!items!94803ae4af2d02e9",
+  "name": "Cover Operation",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>-2 Heat per score</p>",
+    "controlled": false
+  }
+}

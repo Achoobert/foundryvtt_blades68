@@ -1,0 +1,18 @@
+{
+  "_id": "3b8f4badc766df3d",
+  "_key": "!items!3b8f4badc766df3d",
+  "name": "Protection Racket",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

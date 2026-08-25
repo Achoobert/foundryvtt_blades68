@@ -1,0 +1,18 @@
+{
+  "_id": "4554eda0f08facd3",
+  "_key": "!items!4554eda0f08facd3",
+  "name": "VIP Lounge",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks from high-class clients</p>",
+    "controlled": false
+  }
+}

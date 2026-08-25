@@ -1,0 +1,18 @@
+{
+  "_id": "e34235fd8a2074a1",
+  "_key": "!items!e34235fd8a2074a1",
+  "name": "City Records",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement for stealth approaches</p>",
+    "controlled": false
+  }
+}

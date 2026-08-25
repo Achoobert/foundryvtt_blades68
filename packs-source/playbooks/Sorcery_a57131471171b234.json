@@ -1,0 +1,19 @@
+{
+  "_id": "a57131471171b234",
+  "_key": "!items!a57131471171b234",
+  "name": "Sorcery",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you push yourself, you can also do one of the following: communicate without words—view another location clairvoyantly—temporarily increase your strength and speed—supernaturally interface with electroplasmic technology.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

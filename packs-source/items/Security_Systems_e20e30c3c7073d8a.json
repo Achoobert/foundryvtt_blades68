@@ -1,0 +1,19 @@
+{
+  "_id": "e20e30c3c7073d8a",
+  "_key": "!items!e20e30c3c7073d8a",
+  "name": "Security Systems",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your lair has cameras, alarms, and traps to thwart intruders. If you’re raided, add +1d to the engagement roll and you have always have access to a minimum of 4 load. A second upgrade improves the defenses to include measures that work against paranormal intrusion, and you add +2d total to raid engagement rolls.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

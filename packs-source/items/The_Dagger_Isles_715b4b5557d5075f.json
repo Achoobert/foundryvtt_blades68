@@ -1,0 +1,17 @@
+{
+  "_id": "715b4b5557d5075f",
+  "_key": "!items!715b4b5557d5075f",
+  "name": "The Dagger Isles",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "b722ad2fcc20c284",
+  "_key": "!items!b722ad2fcc20c284",
+  "name": "Patron",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you?</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

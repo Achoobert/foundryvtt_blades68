@@ -1,0 +1,19 @@
+{
+  "_id": "f6703bf6fa959ca1",
+  "_key": "!items!f6703bf6fa959ca1",
+  "name": "Fixer",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>During downtime, you get +1 result level when you Acquire Asset or Reduce Heat. When incarcerated, take +1d to any real time prison rolls, or take +2d to a prison time skip roll.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

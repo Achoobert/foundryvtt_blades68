@@ -1,0 +1,19 @@
+{
+  "_id": "60f7eec277e36d0b",
+  "_key": "!items!60f7eec277e36d0b",
+  "name": "Third Eye Opened",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You’re always aware of resonance entities in your vicinity. You can Attune to the resonance field to force a nearby entity to appear and obey a command you give it.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

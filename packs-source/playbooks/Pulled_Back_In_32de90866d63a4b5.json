@@ -1,0 +1,20 @@
+{
+  "_id": "32de90866d63a4b5",
+  "_key": "!items!32de90866d63a4b5",
+  "name": "Pulled Back In",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can bring a retired PC backwith a 10-step long term project clock (distribute 2 free ticks amongst any such clocks during each downtime). A returning character clears all harm and stress, and 1 deadlock becomes a key again.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

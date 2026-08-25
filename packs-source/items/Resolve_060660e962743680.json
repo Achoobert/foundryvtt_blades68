@@ -1,0 +1,19 @@
+{
+  "_id": "060660e962743680",
+  "_key": "!items!060660e962743680",
+  "name": "Resolve",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Earn 2 xp when training resolve during downtime.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

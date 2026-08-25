@@ -1,0 +1,18 @@
+{
+  "_id": "53fd67c14160cc6d",
+  "_key": "!items!53fd67c14160cc6d",
+  "name": "Legendary Target",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 5 target, 15 Rep, 10 stacks (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

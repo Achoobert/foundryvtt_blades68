@@ -1,0 +1,18 @@
+{
+  "_id": "efc6d4334bf6293d",
+  "_key": "!items!efc6d4334bf6293d",
+  "name": "Critical Strike",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 5 target, target drops 2 Tiers</p>",
+    "controlled": false
+  }
+}

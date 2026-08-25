@@ -1,0 +1,17 @@
+{
+  "_id": "e3001d4265be6e19",
+  "_key": "!items!e3001d4265be6e19",
+  "name": "Tycheros",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

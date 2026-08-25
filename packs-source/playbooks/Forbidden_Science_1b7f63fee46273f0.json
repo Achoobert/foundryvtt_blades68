@@ -1,0 +1,19 @@
+{
+  "_id": "1b7f63fee46273f0",
+  "_key": "!items!1b7f63fee46273f0",
+  "name": "Forbidden Science",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can use a downtime action to perform a paranormal experiment to manifest a supernatural effect or being. Gain one free downtime action to perform such experiments.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

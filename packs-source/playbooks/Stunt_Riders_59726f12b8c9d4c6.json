@@ -1,0 +1,20 @@
+{
+  "_id": "59726f12b8c9d4c6",
+  "_key": "!items!59726f12b8c9d4c6",
+  "name": "Stunt Riders",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The first time one of the crew’s signature stunts is performed during a score, take +2d and increased effect. Choose one to start with. The crew masters an additional signature stunt each time you take this ability. You can do any of these stunts even if they’re not a signature, but don’t get bonus dice etc.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

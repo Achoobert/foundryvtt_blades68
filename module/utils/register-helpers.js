@@ -51,6 +51,11 @@ export default function registerHandlebarsHelpers() {
     return dots;
   });
 
+  Handlebars.registerHelper('loadBoxes', (load) => {
+    const count = Math.max(1, Number(load) || 0);
+    return Array.from({ length: count }, (_, i) => i);
+  });
+
   Handlebars.registerHelper('concat', (...args) => args.slice(0, -1).join(''));
 
   Handlebars.registerHelper('array', (...args) => args.slice(0, -1));

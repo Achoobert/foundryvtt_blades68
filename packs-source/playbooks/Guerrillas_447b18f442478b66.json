@@ -1,0 +1,20 @@
+{
+  "_id": "447b18f442478b66",
+  "_key": "!items!447b18f442478b66",
+  "name": "Guerrillas",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When the target of a score is two or more Tier higher than you, take no penalty to the engagement roll, and gain +2 Rep after the score (whether you were successful or not).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "a5f6faca2da6af26",
+  "_key": "!items!a5f6faca2da6af26",
+  "name": "Yeah, Baby",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you agree to an NPC’s proposal, even though it complicates the crew’s goals, everyone else on the crew marks 1 xp while you clear 3 Stress.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

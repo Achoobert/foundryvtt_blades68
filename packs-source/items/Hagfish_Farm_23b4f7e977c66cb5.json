@@ -1,0 +1,18 @@
+{
+  "_id": "23b4f7e977c66cb5",
+  "_key": "!items!23b4f7e977c66cb5",
+  "name": "Hagfish Farm",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Body disposal, +1d to reduce Heat after killing</p>",
+    "controlled": false
+  }
+}

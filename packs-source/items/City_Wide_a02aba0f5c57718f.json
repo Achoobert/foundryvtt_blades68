@@ -1,0 +1,18 @@
+{
+  "_id": "a02aba0f5c57718f",
+  "_key": "!items!a02aba0f5c57718f",
+  "name": "City-Wide",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>All turf generates +1 stack when moving units</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "f403cd927a8b3246",
+  "_key": "!items!f403cd927a8b3246",
+  "name": "Doskvol's Most Wanted",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 rep on scores<br>against the law</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "249666c6ef2c18a1",
+  "_key": "!items!249666c6ef2c18a1",
+  "name": "Convoy",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your cohorts have their own vehicles</p>",
+    "controlled": false
+  }
+}

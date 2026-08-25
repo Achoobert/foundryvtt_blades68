@@ -1,0 +1,18 @@
+{
+  "_id": "0f65d3c20a547016",
+  "_key": "!items!0f65d3c20a547016",
+  "name": "Street Fence",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 coin for lower-<br>class targets</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "9b020957e24c4870",
+  "_key": "!items!9b020957e24c4870",
+  "name": "Notable Skeptic",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Successful Reality Tear score includes +4 Rep</p>",
+    "controlled": false
+  }
+}

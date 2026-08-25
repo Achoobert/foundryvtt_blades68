@@ -1,0 +1,20 @@
+{
+  "_id": "139b178e6f227708",
+  "_key": "!items!139b178e6f227708",
+  "name": "Slippery",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

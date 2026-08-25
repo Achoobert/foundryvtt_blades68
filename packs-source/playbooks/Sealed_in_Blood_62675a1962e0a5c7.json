@@ -1,0 +1,20 @@
+{
+  "_id": "62675a1962e0a5c7",
+  "_key": "!items!62675a1962e0a5c7",
+  "name": "Sealed in Blood",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each human sacrifice yields -3 stress cost for any ritual you perform.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

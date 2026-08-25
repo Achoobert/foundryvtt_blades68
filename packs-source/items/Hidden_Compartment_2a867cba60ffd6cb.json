@@ -1,0 +1,20 @@
+{
+  "_id": "2a867cba60ffd6cb",
+  "_key": "!items!2a867cba60ffd6cb",
+  "name": "Hidden Compartment",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your frame has a secret compartment that escapes even the most thorough search. Lead-lined to prevent x-ray scanning.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

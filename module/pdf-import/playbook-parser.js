@@ -14,16 +14,22 @@ function toTitleCase(str) {
 // assumed to match some known label string; an item starts a new ability
 // when its font differs from the column's (majority) body font and its text
 // ends with ":".
+// The abilities column's right edge also varies: on character sheets the gear
+// ("ITEMS") column sits immediately to its right and must be excluded, while
+// crew sheets have no gear column and their abilities run to the page edge.
 const MARKER_TOLERANCE = 6;
-const MAX_COLUMN_X = 647;
 
 function extractTitle(items) {
   const sorted = [...items].sort((a, b) => (b.h ?? 0) - (a.h ?? 0));
   return sorted[0]?.str.trim() ?? '';
 }
 
+export function findGearHeader(items) {
+  return items.find((item) => /^ITEMS$/i.test(item.str.trim()));
+}
+
 export function extractGear(items) {
-  const header = items.find((item) => /^ITEMS$/i.test(item.str.trim()));
+  const header = findGearHeader(items);
   if (!header) return [];
 
   const rows = [];
@@ -64,9 +70,9 @@ function runAbilityStateMachine(items, bodyFont) {
   return abilities;
 }
 
-function extractAbilities(items, header) {
+function extractAbilities(items, header, maxX) {
   const below = items
-    .filter((item) => item.y < header.y && item.x >= header.x - MARKER_TOLERANCE && item.x <= MAX_COLUMN_X)
+    .filter((item) => item.y < header.y && item.x >= header.x - MARKER_TOLERANCE && item.x <= maxX)
     .sort((a, b) => b.y - a.y || a.x - b.x);
 
   const terminatorIndex = below.findIndex((item) => isNearX(item, header.x));
@@ -83,12 +89,14 @@ function extractAbilities(items, header) {
 
   let abilities;
   if (columnXs.length > 1) {
-    const splitX = (columnXs[0] + columnXs[columnXs.length - 1]) / 2;
-    const columns = columnXs.map((_, i) =>
-      i === 0
-        ? scoped.filter((item) => item.x < splitX)
-        : scoped.filter((item) => item.x >= splitX)
-    );
+    // An item belongs to the rightmost column whose left edge it starts at or
+    // after: a mid-sentence bold run sits well right of its own column's edge
+    // but still left of the next column's, so a midpoint split would steal it.
+    const columnOf = (item) => {
+      const index = columnXs.findIndex((x) => item.x + MARKER_TOLERANCE < x);
+      return index === -1 ? columnXs.length - 1 : Math.max(0, index - 1);
+    };
+    const columns = columnXs.map((_, i) => scoped.filter((item) => columnOf(item) === i));
     abilities = columns.flatMap((col) => runAbilityStateMachine(col, bodyFont));
   } else {
     abilities = runAbilityStateMachine(scoped, bodyFont);
@@ -111,7 +119,7 @@ function findHeader(items) {
 }
 
 async function parseSheetPage(pdfDoc, pageNumber) {
-  const { items } = await getPageItems(pdfDoc, pageNumber);
+  const { width, items } = await getPageItems(pdfDoc, pageNumber);
   const header = findHeader(items);
   if (!header) return null;
 
@@ -123,7 +131,8 @@ async function parseSheetPage(pdfDoc, pageNumber) {
     (item) => item.y < 545 && item.y > 530 && item.font === subtitleFont && item.str.trim() !== title
   )?.str.trim();
 
-  const abilities = extractAbilities(items, header);
+  const gearHeader = findGearHeader(items);
+  const abilities = extractAbilities(items, header, gearHeader ? gearHeader.x - MARKER_TOLERANCE : width);
   const gear = extractGear(items);
   return { name: title, subtitle, abilities, gear };
 }

@@ -1,0 +1,20 @@
+{
+  "_id": "e87823d896a04233",
+  "_key": "!items!e87823d896a04233",
+  "name": "Accord",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Sometimes friends are as good as territory. You may count up to three +3 faction statuses you hold as if they are turf.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "7d464e5a95b8ee45",
+  "_key": "!items!7d464e5a95b8ee45",
+  "name": "Direct Action",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you make a desperate roll with either Wreck or Command, you gain both potency and scale. Remember that you can trade position for effect to make almost any action desperate, if you dare.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

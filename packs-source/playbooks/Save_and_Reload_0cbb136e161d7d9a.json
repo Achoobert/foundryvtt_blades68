@@ -1,0 +1,19 @@
+{
+  "_id": "0cbb136e161d7d9a",
+  "_key": "!items!0cbb136e161d7d9a",
+  "name": "Save and Reload",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take 5 Instability to rewind the timeline of your physical body to a pre-injured state. Clear all harm.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

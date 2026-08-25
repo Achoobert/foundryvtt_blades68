@@ -1,0 +1,19 @@
+{
+  "_id": "a1395ac515ed3a32",
+  "_key": "!items!a1395ac515ed3a32",
+  "name": "Frame Upgrade",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Choose two additional frame features. This trait may be taken twice.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

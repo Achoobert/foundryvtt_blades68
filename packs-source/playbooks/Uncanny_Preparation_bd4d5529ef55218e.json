@@ -1,0 +1,20 @@
+{
+  "_id": "bd4d5529ef55218e",
+  "_key": "!items!bd4d5529ef55218e",
+  "name": "Uncanny Preparation",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per session during a Desperate action, improve your effect or position. Describe a flashback that gives you the advantage now (setup action).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

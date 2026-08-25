@@ -1,0 +1,18 @@
+{
+  "_id": "2fb8736bbe4b1329",
+  "_key": "!items!2fb8736bbe4b1329",
+  "name": "Bets Placed",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+5 bonus stacks for Deathlands Race score</p>",
+    "controlled": false
+  }
+}

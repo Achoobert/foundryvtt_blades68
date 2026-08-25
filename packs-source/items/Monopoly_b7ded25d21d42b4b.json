@@ -1,0 +1,18 @@
+{
+  "_id": "b7ded25d21d42b4b",
+  "_key": "!items!b7ded25d21d42b4b",
+  "name": "Monopoly",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 5 target, all Turf can move 2 units per downtime for the same Heat</p>",
+    "controlled": false
+  }
+}

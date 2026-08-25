@@ -1,0 +1,19 @@
+{
+  "_id": "a1f11a7eaa60e27f",
+  "_key": "!items!a1f11a7eaa60e27f",
+  "name": "Supplies",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Subterfuge Supplies.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

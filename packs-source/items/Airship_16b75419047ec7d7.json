@@ -1,0 +1,18 @@
+{
+  "_id": "16b75419047ec7d7",
+  "_key": "!items!16b75419047ec7d7",
+  "name": "Airship",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per personal business, take 1 Heat to gain 3 units</p>",
+    "controlled": false
+  }
+}

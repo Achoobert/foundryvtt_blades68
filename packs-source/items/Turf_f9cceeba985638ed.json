@@ -1,0 +1,18 @@
+{
+  "_id": "f9cceeba985638ed",
+  "_key": "!items!f9cceeba985638ed",
+  "name": "Turf",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Expand hunting grounds and add new preferred operation</p>",
+    "controlled": false
+  }
+}

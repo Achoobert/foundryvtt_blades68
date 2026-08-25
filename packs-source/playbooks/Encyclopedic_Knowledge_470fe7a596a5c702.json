@@ -1,0 +1,19 @@
+{
+  "_id": "470fe7a596a5c702",
+  "_key": "!items!470fe7a596a5c702",
+  "name": "Encyclopedic Knowledge",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you push yourself, you can also do one of the following: instantly find a weak point or exploitable pattern in an obstacle—dazzle an audience with your intellect, leaving them confused and distracted.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

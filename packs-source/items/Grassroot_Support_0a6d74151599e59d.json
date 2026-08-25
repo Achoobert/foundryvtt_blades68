@@ -1,0 +1,18 @@
+{
+  "_id": "0a6d74151599e59d",
+  "_key": "!items!0a6d74151599e59d",
+  "name": "Grassroot Support",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>New faction from Catalyst Action score will be +3 status</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "d4e1568e8a653866",
+  "_key": "!items!d4e1568e8a653866",
+  "name": "Covert Fixer",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks for surveillance or sabotage</p>",
+    "controlled": false
+  }
+}

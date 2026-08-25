@@ -1,0 +1,19 @@
+{
+  "_id": "5eee7f46a882f167",
+  "_key": "!items!5eee7f46a882f167",
+  "name": "Personal",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Earn 2 xp when training playbook during downtime.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

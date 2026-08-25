@@ -1,0 +1,19 @@
+{
+  "_id": "4df81bc14938a57a",
+  "_key": "!items!4df81bc14938a57a",
+  "name": "Double Agent",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You gain a second backing faction of your choice immediately. You get +2d when working on long-term projects to influence any of your backing factions. How long have you been secretly building this relationship? Does your first backing faction know about it?</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

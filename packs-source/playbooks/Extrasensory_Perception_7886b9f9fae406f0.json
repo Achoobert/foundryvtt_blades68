@@ -1,0 +1,19 @@
+{
+  "_id": "7886b9f9fae406f0",
+  "_key": "!items!7886b9f9fae406f0",
+  "name": "Extrasensory Perception",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per score, you may use your sixth sense to resist a paranormal consequence, or to push yourself when you deal with paranormal forces.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

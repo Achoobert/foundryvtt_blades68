@@ -1,0 +1,20 @@
+{
+  "_id": "72d0389c86845269",
+  "_key": "!items!72d0389c86845269",
+  "name": "Don't Forget the Duffel Bag",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per score, the crew can flashback to an Acquire Asset roll with +2d. Both the flashback and the downtime activity are free.</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> Once per score, the crew can flashback to Acquire an item with Quality equal to your Tier +1 without spending Stacks or using a Downtime activity.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "5bffc4a23053dfca",
+  "_key": "!items!5bffc4a23053dfca",
+  "name": "Interested Party",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Reality Tear score includes +6 bonus stacks</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "67df84a47853f42f",
+  "_key": "!items!67df84a47853f42f",
+  "name": "Shady Hotel",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 scale for your Infiltrator cohorts</p>",
+    "controlled": false
+  }
+}

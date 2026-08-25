@@ -1,0 +1,18 @@
+{
+  "_id": "e950b57f410c5224",
+  "_key": "!items!e950b57f410c5224",
+  "name": "Key Conspirator",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2d engagement for Critical Strike score</p>",
+    "controlled": false
+  }
+}

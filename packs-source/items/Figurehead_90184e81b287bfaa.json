@@ -1,0 +1,18 @@
+{
+  "_id": "90184e81b287bfaa",
+  "_key": "!items!90184e81b287bfaa",
+  "name": "Figurehead",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>NPC can take the fall to remove 3 Wanted Levels</p>",
+    "controlled": false
+  }
+}

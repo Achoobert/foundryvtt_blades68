@@ -1,0 +1,18 @@
+{
+  "_id": "e22a4d5581310a84",
+  "_key": "!items!e22a4d5581310a84",
+  "name": "Abandoned Lab",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Attune on-site</p>",
+    "controlled": false
+  }
+}

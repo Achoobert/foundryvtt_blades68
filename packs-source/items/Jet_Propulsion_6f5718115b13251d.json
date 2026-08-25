@@ -1,0 +1,20 @@
+{
+  "_id": "6f5718115b13251d",
+  "_key": "!items!6f5718115b13251d",
+  "name": "Jet Propulsion",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your frame includes jet boosters that provide a limited form of flight (either slow or temporary).</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

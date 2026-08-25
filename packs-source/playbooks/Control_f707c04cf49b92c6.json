@@ -1,0 +1,19 @@
+{
+  "_id": "f707c04cf49b92c6",
+  "_key": "!items!f707c04cf49b92c6",
+  "name": "Control",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 Stress at most regardless of the number of failed rolls, and you may count multiple 6s from different rolls as a critical.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

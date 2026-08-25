@@ -1,0 +1,34 @@
+{
+  "_id": "b5fb2800a5b316b9",
+  "_key": "!items!b5fb2800a5b316b9",
+  "name": "Gondoliers",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>Most boats are now automated, but a handful of old gondoliers still work the canals. Said to know forgotten secrets of the dark.</p>"
+  }
+}

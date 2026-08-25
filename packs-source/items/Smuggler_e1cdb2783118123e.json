@@ -1,0 +1,18 @@
+{
+  "_id": "e1cdb2783118123e",
+  "_key": "!items!e1cdb2783118123e",
+  "name": "Smuggler",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per personal business, take 1 Heat to gain 2 units</p>",
+    "controlled": false
+  }
+}

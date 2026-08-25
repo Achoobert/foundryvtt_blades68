@@ -1,0 +1,20 @@
+{
+  "_id": "77582697c4fba0e3",
+  "_key": "!items!77582697c4fba0e3",
+  "name": "Commune",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You may use teamwork with any crew member, regardless of the distance separating you. By taking 1 Stress, your projected thoughts are heard by every crew member as telepathic communication.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

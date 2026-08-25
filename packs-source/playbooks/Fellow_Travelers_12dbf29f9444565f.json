@@ -1,0 +1,19 @@
+{
+  "_id": "12dbf29f9444565f",
+  "_key": "!items!12dbf29f9444565f",
+  "name": "Fellow Travelers",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>In any scene with more than one NPC, ask the GM which of them are sympathetic to your cause. It’s always at least one, but often a few, many, or sometimes all of them.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

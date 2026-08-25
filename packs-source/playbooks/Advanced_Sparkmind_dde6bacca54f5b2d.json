@@ -1,0 +1,19 @@
+{
+  "_id": "dde6bacca54f5b2d",
+  "_key": "!items!dde6bacca54f5b2d",
+  "name": "Advanced Sparkmind",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Choose an additional type, or add an edge, or remove a flaw.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

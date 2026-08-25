@@ -1,0 +1,20 @@
+{
+  "_id": "2f012a6dcf8f8f5a",
+  "_key": "!items!2f012a6dcf8f8f5a",
+  "name": "Echo Safe House",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The crew has access to a safe house in the resonance field. It can be accessed once per score, from anywhere. The door always returns to the same place it was entered from. Use it as a hiding place, to reequip, repair, or just take a breather. Any PCs who enter gain +1 load. One PC may clear all level 1 harm via emergency medical supplies there. Note that time still passes in the outside world.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

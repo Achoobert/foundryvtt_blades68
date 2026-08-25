@@ -1,0 +1,20 @@
+{
+  "_id": "85ed5d7bf90c9467",
+  "_key": "!items!85ed5d7bf90c9467",
+  "name": "On Retainer",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have an expert lawyer representing your crew. Their Quality is equal to crew Tier +2. When you take the Reduce Heat downtime action, you can have your lawyer roll their Quality instead. When you take the rap, your Wanted Level counts as one lower for the purposes of sentencing.</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> You have an expert lawyer, with Quality equal to crew Tier + 2. When you take the Reduce Heat downtime action, instead of using faction Status, you can reduce Heat by 1 per lawyer quality. When you take the rap, your Wanted Level counts as one lower for the purposes of sentencing.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

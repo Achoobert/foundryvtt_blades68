@@ -1,0 +1,19 @@
+{
+  "_id": "b96238b02d741bb2",
+  "_key": "!items!b96238b02d741bb2",
+  "name": "Echo Chamber",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The resonance echoes of the downtrodden are drawn to you, and when you open yourself to them, your poetry reverberates with their power. Whenever you loudly recite poetry, a crowd gathers to listen (if possible). When you use poetry as a means to an end, take +1d, and gain potency dealing with the paranormal.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

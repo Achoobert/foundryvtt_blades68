@@ -1,0 +1,18 @@
+{
+  "_id": "d75f81f9d4bafaa3",
+  "_key": "!items!d75f81f9d4bafaa3",
+  "name": "Surplus Caches",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 coin for product<br>sale or supply</p>",
+    "controlled": false
+  }
+}

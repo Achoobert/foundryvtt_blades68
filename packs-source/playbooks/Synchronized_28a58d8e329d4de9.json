@@ -1,0 +1,20 @@
+{
+  "_id": "28a58d8e329d4de9",
+  "_key": "!items!28a58d8e329d4de9",
+  "name": "Synchronized",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you perform a group action, you may count multiple 6s from different rolls as a critical success.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

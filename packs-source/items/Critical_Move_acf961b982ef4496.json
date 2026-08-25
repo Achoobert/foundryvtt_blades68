@@ -1,0 +1,18 @@
+{
+  "_id": "acf961b982ef4496",
+  "_key": "!items!acf961b982ef4496",
+  "name": "Critical Move",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 4 target, 15 stacks, +4 ticks on any clock (one-off opportunity)</p>",
+    "controlled": false
+  }
+}

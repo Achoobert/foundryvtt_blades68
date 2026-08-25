@@ -1,0 +1,20 @@
+{
+  "_id": "d736278239db7558",
+  "_key": "!items!d736278239db7558",
+  "name": "Truth serum syringe",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Delivers one dose of a truth serum. The victim becomes delirious and suggestible for up to an hour, open to answering all sorts of questions.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

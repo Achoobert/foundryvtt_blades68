@@ -1,0 +1,20 @@
+{
+  "_id": "8d75099903b69ef7",
+  "_key": "!items!8d75099903b69ef7",
+  "name": "Paradise Manifest",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you take this advance, your base and the area around transforms into a small fragment of your utopia, manifest in this reality. Take +2d to the engagement roll for any raids. All crew members gain potency when acting in the base and its surrounds, and all downtime actions conducted in the base get +1 result level. This will attract significant attention from Section 6 and other high-Tier factions.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

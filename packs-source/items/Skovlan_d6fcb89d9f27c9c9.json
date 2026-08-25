@@ -1,0 +1,17 @@
+{
+  "_id": "d6fcb89d9f27c9c9",
+  "_key": "!items!d6fcb89d9f27c9c9",
+  "name": "Skovlan",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

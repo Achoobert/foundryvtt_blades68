@@ -1,0 +1,19 @@
+{
+  "_id": "9880cdcabc0a7899",
+  "_key": "!items!9880cdcabc0a7899",
+  "name": "Military Discipline",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per score, you may use your training to resist harm from an attack in combat or to push yourself during a fight.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

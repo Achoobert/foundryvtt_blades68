@@ -1,0 +1,18 @@
+{
+  "_id": "c6c5812fcdedecbb",
+  "_key": "!items!c6c5812fcdedecbb",
+  "name": "Personal Clothier",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement<br>roll for social plans</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "2a451c7662b58032",
+  "_key": "!items!2a451c7662b58032",
+  "name": "Researcher",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per score, you may use your research to resist a consequence of fatigue, weakness, or resonance effects, or to push yourself when working with technical skill or handling resonance objects.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

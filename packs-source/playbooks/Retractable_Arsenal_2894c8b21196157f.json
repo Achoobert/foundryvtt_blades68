@@ -1,0 +1,19 @@
+{
+  "_id": "2894c8b21196157f",
+  "_key": "!items!2894c8b21196157f",
+  "name": "Retractable Arsenal",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your items are built into your frame and may recess beneath panels out of sight. Your frame can now carry +2 load.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

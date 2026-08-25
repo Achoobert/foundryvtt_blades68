@@ -1,0 +1,20 @@
+{
+  "_id": "4f1bbf5bb4ad04cf",
+  "_key": "!items!4f1bbf5bb4ad04cf",
+  "name": "Tiny tracking device",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A small tracking device (adhesive and/or magnetic) and a handheld gadget that show the device's current location. Works reliably up to a distance of two city districts away.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

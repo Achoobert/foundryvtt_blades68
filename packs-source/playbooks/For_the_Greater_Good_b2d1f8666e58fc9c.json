@@ -1,0 +1,20 @@
+{
+  "_id": "b2d1f8666e58fc9c",
+  "_key": "!items!b2d1f8666e58fc9c",
+  "name": "For the Greater Good",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A human sacrifice removes the Stress cost for any paranormal experiment you perform, and such sacrifices performed in your base do not trigger the Death Radar or generate Heat.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "4dca57816b865839",
+  "_key": "!items!4dca57816b865839",
+  "name": "Door Kickers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you execute an assault plan, take +1d to the engagement roll.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

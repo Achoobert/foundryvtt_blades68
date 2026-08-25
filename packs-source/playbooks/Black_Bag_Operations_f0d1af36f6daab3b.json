@@ -1,0 +1,20 @@
+{
+  "_id": "f0d1af36f6daab3b",
+  "_key": "!items!f0d1af36f6daab3b",
+  "name": "Black Bag Operations",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you execute a clandestine infiltration, you get +1d to the engagement roll. You may attempt to install surveillance equipment during a score on any faction’s turf. So long as the wire remains in place, take +1d on any future gather information rolls related to that faction. The GM may make a fortune roll with the faction’s Tier to see if they notice the bug and remove it during personal business.</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> When you execute a clandestine infiltration, you get +1d to the engagement roll. You may attempt to install surveillance equipment during a score on any faction’s turf. So long as the wire remains in place, take +1 tick when you work on an investigation project related to that faction. The GM may make a fortune roll with the faction’s Tier to see if they notice the bug and remove it during personal business.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

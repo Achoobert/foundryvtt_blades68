@@ -1,0 +1,18 @@
+{
+  "_id": "5e35f7c46b9b8378",
+  "_key": "!items!5e35f7c46b9b8378",
+  "name": "Reality Tear",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 5 target, creates new mega anomaly</p>",
+    "controlled": false
+  }
+}

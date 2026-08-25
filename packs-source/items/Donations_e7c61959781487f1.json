@@ -1,0 +1,18 @@
+{
+  "_id": "e7c61959781487f1",
+  "_key": "!items!e7c61959781487f1",
+  "name": "Donations",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks for paranormal operations</p>",
+    "controlled": false
+  }
+}

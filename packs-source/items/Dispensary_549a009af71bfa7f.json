@@ -1,0 +1,18 @@
+{
+  "_id": "549a009af71bfa7f",
+  "_key": "!items!549a009af71bfa7f",
+  "name": "Dispensary",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to healing rolls</p>",
+    "controlled": false
+  }
+}

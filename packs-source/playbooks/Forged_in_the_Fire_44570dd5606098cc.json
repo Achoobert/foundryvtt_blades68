@@ -1,0 +1,20 @@
+{
+  "_id": "44570dd5606098cc",
+  "_key": "!items!44570dd5606098cc",
+  "name": "Forged in the Fire",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC has been toughened by cruel experience. You get +1d to resistance rolls.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

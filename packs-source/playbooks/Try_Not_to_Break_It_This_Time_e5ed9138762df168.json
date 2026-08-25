@@ -1,0 +1,19 @@
+{
+  "_id": "e5ed9138762df168",
+  "_key": "!items!e5ed9138762df168",
+  "name": "Try Not to Break It This Time",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Any flashbacks to give another crew member just the right gadget before the score cost 0 Stress. Gain one free downtime action to craft such a gadget in a flashback.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

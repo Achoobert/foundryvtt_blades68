@@ -1,0 +1,18 @@
+{
+  "_id": "a579c7b2c91a6a8e",
+  "_key": "!items!a579c7b2c91a6a8e",
+  "name": "Social Clubs",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

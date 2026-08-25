@@ -1,0 +1,20 @@
+{
+  "_id": "b149477abd82fa0e",
+  "_key": "!items!b149477abd82fa0e",
+  "name": "Loopers",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your crew is caught in an anomaly, and regularly experiences time loops where events are replayed. Usually you don’t retain memory between loops, but you can jump loops with some effort. Take 4 Stress after any action roll to roll it again, and take the best result between the two rolls. The second roll uses the exact same number of dice (pushes, assists, etc.). You can choose to do this after the GM has announced the consequences, but not after any resistance rolls.</p>",
+    "dcDescription": "<p><strong>Action:</strong> Whether intentionally or not, your crew is caught in an anomaly and repeats every day twice. Usually you don't retain memory between loops, but each PC in the crew may jump loops once per day. Take 4 Stress after any Threat roll to roll it again, and take the best result between the two rolls. The second roll uses the exact same number of dice and threats. You can choose to do this after the GM has announced the consequences, but not after you have pushed yourself to reduce any consequences.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

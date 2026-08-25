@@ -1,0 +1,18 @@
+{
+  "_id": "316ee9ad17764d40",
+  "_key": "!items!316ee9ad17764d40",
+  "name": "Catalyst Action",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tier 4 target, creates new Tier 2 faction (+2 status)</p>",
+    "controlled": false
+  }
+}

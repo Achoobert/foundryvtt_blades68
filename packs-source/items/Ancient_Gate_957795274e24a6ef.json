@@ -1,0 +1,18 @@
+{
+  "_id": "957795274e24a6ef",
+  "_key": "!items!957795274e24a6ef",
+  "name": "Ancient Gate",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Safe passage out of the Bubble</p>",
+    "controlled": false
+  }
+}

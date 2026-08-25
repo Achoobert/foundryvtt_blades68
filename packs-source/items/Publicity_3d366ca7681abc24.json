@@ -1,0 +1,18 @@
+{
+  "_id": "3d366ca7681abc24",
+  "_key": "!items!3d366ca7681abc24",
+  "name": "Publicity",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 rep on<br>takedown scores</p>",
+    "controlled": false
+  }
+}

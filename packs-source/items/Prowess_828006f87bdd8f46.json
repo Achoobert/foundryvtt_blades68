@@ -1,0 +1,19 @@
+{
+  "_id": "828006f87bdd8f46",
+  "_key": "!items!828006f87bdd8f46",
+  "name": "Prowess",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Earn 2 xp when training prowess during downtime.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

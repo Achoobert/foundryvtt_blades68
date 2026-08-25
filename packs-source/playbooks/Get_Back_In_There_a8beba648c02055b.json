@@ -1,0 +1,19 @@
+{
+  "_id": "a8beba648c02055b",
+  "_key": "!items!a8beba648c02055b",
+  "name": "Get Back In There",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You were subject to experimental procedures designed to increase the shelf life of frontline soldiers. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

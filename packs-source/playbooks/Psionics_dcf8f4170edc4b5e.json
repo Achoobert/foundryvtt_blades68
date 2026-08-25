@@ -1,0 +1,19 @@
+{
+  "_id": "dcf8f4170edc4b5e",
+  "_key": "!items!dcf8f4170edc4b5e",
+  "name": "Psionics",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you push yourself, you can also do one of the following: communicate without words—view another location clairvoyantly—temporarily increase your strength and speed—mentally interface with technology.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

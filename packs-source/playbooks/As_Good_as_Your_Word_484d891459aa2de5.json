@@ -1,0 +1,20 @@
+{
+  "_id": "484d891459aa2de5",
+  "_key": "!items!484d891459aa2de5",
+  "name": "As Good as Your Word",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You may spend rep as coin in downtime actions. Vigilantes gain Obligation as a second vice.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

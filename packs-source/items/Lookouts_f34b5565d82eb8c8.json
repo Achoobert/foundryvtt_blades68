@@ -1,0 +1,18 @@
+{
+  "_id": "f34b5565d82eb8c8",
+  "_key": "!items!f34b5565d82eb8c8",
+  "name": "Lookouts",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Survey or<br>Hunt on your turf</p>",
+    "controlled": false
+  }
+}

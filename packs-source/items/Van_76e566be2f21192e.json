@@ -1,0 +1,19 @@
+{
+  "_id": "76e566be2f21192e",
+  "_key": "!items!76e566be2f21192e",
+  "name": "Van",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have a transport autopod, big enough for the whole crew and their gear. A second upgrade improves the van with armor and a more powerful engine.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

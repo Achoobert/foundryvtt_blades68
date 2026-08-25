@@ -1,0 +1,19 @@
+{
+  "_id": "e96c166bc56064f2",
+  "_key": "!items!e96c166bc56064f2",
+  "name": "Ancient Martial Techniques",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have been trained in mystical combat arts lost to time. Your bare hands count as a fine weapon. When there's a question about who acts first, the answer is you.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

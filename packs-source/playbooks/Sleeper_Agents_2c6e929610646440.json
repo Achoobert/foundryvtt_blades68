@@ -1,0 +1,19 @@
+{
+  "_id": "2c6e929610646440",
+  "_key": "!items!2c6e929610646440",
+  "name": "Sleeper Agents",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Once per score, pay 2 Stress and nominate a minor NPC. They’ve been working for you this whole time.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

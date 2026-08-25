@@ -1,0 +1,20 @@
+{
+  "_id": "3f6bad12477688d5",
+  "_key": "!items!3f6bad12477688d5",
+  "name": "Cat and Mouse",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>The GM will tell you about any special Mandates investigating your crew, and put their clocks on the table from now on. You get +2d to the engagement roll against any raids (Mandates or otherwise).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

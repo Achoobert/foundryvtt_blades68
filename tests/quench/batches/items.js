@@ -13,7 +13,7 @@ const ITEM_TYPE_DEFAULTS = {
   gear: { load: 1, carried: false, playbook: '' },
   contact: { relationship: 'friend', faction: '' },
   'crew-playbook': {},
-  'crew-ability': { cost: 0, unlocked: false },
+  'crew-ability': { dcDescription: '', cost: 0, unlocked: false },
   upgrade: { quality: 0, purchased: false },
   cohort: { type: 'gang', quality: 0, harm: 0, armor: 0 },
   claim: { controlled: false },

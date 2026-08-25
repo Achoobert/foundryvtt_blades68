@@ -1,0 +1,17 @@
+{
+  "_id": "d14daff49851157b",
+  "_key": "!items!d14daff49851157b",
+  "name": "Akoros",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

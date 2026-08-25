@@ -1,0 +1,20 @@
+{
+  "_id": "8c5874665b8541c3",
+  "_key": "!items!8c5874665b8541c3",
+  "name": "Thorn in your Side",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you use Stealth or Assault plans against a higher Tier faction, your Tier counts as +1.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "911320cb55878ba1",
+  "_key": "!items!911320cb55878ba1",
+  "name": "Pack Rats",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

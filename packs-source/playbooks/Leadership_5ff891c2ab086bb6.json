@@ -1,0 +1,19 @@
+{
+  "_id": "5ff891c2ab086bb6",
+  "_key": "!items!5ff891c2ab086bb6",
+  "name": "Leadership",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain increased effect and 1 armor.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

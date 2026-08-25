@@ -1,0 +1,19 @@
+{
+  "_id": "00be7cf6f7e06711",
+  "_key": "!items!00be7cf6f7e06711",
+  "name": "Implements",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Paranormal Implements.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

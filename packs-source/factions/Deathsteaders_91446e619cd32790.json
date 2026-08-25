@@ -1,0 +1,34 @@
+{
+  "_id": "91446e619cd32790",
+  "_key": "!items!91446e619cd32790",
+  "name": "Deathsteaders",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>Survivalists, fugitives, and free-thinkers who have left the safety of the Bubble to make a living in the forbidden Deathlands beyond.</p>"
+  }
+}

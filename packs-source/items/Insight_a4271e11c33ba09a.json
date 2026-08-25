@@ -1,0 +1,19 @@
+{
+  "_id": "a4271e11c33ba09a",
+  "_key": "!items!a4271e11c33ba09a",
+  "name": "Insight",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Earn 2 xp when training insight during downtime.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

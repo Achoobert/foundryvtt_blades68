@@ -1,0 +1,19 @@
+{
+  "_id": "0f38a844fddddb00",
+  "_key": "!items!0f38a844fddddb00",
+  "name": "Mentalist",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can deduce trivial details about anyone. Study them to reveal their current intentions as well as a deep desire they’re keeping secret or didn’t even know they had; gain +1d and potency when acting on this information.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

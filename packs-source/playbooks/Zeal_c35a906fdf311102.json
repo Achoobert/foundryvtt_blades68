@@ -1,0 +1,20 @@
+{
+  "_id": "c35a906fdf311102",
+  "_key": "!items!c35a906fdf311102",
+  "name": "Zeal",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Every PC gets +1d and potency when they evangelize about the Utopian Vision.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

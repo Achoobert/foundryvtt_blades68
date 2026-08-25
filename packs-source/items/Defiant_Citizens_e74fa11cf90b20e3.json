@@ -1,0 +1,18 @@
+{
+  "_id": "e74fa11cf90b20e3",
+  "_key": "!items!e74fa11cf90b20e3",
+  "name": "Defiant Citizens",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Large gang who<br>will fight for you</p>",
+    "controlled": false
+  }
+}

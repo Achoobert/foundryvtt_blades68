@@ -1,0 +1,20 @@
+{
+  "_id": "ac8d050d782a22ed",
+  "_key": "!items!ac8d050d782a22ed",
+  "name": "The Family Takes a Cut",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Before payout for a smuggling or hijacking score, the crew can skim the goods for +4 stacks. The GM will tick a clock.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

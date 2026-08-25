@@ -1,0 +1,18 @@
+{
+  "_id": "0240dff4e00493b2",
+  "_key": "!items!0240dff4e00493b2",
+  "name": "Warehouse",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Stockpiles give you +1d to Acquire Asset rolls</p>",
+    "controlled": false
+  }
+}

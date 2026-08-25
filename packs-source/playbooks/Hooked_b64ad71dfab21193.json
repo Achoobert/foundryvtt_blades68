@@ -1,0 +1,20 @@
+{
+  "_id": "b64ad71dfab21193",
+  "_key": "!items!b64ad71dfab21193",
+  "name": "Hooked",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your gang members use your product. Add the savage, unreliable, or wild flaw to your gangs to give them +1 quality.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

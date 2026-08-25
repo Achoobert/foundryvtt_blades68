@@ -1,0 +1,18 @@
+{
+  "_id": "d3d2ddc7fc084cae",
+  "_key": "!items!d3d2ddc7fc084cae",
+  "name": "Local Graft",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 coin for<br>show of force or<br>socialize</p>",
+    "controlled": false
+  }
+}

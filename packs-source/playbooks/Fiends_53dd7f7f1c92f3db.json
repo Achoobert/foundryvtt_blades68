@@ -1,0 +1,20 @@
+{
+  "_id": "53dd7f7f1c92f3db",
+  "_key": "!items!53dd7f7f1c92f3db",
+  "name": "Fiends",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Fear is as good as respect. You may count each wanted level as if it was turf.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

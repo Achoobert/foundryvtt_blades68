@@ -1,0 +1,18 @@
+{
+  "_id": "020e23c510fd4203",
+  "_key": "!items!020e23c510fd4203",
+  "name": "Expropriation",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Critical Strike score includes +10 bonus stacks</p>",
+    "controlled": false
+  }
+}

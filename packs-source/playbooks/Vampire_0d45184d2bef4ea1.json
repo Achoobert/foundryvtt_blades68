@@ -1,0 +1,19 @@
+{
+  "_id": "0d45184d2bef4ea1",
+  "_key": "!items!0d45184d2bef4ea1",
+  "name": "Vampire",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You are a resonance echo who animates an undying body. Your deadlocks are maxed out. Choose four that reflect your vampiric nature. Paranormal attacks are potent against you. If you suffer mortal harm or another deadlock, you are overwhelmed. You take level 3 harm: \"Incapacitated\" until you feed enough to recover. If you suffer paranormal harm while in this state, you are destroyed utterly. Your xp tracks are longer (you now advance more slowly). You have more Stress boxes.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

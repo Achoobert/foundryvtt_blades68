@@ -1,0 +1,18 @@
+{
+  "_id": "38efb77f3c036c72",
+  "_key": "!items!38efb77f3c036c72",
+  "name": "Branding",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement roll for social plans, +2 stacks for bulk sale or supply</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_id": "463d891ca147afe9",
+  "_key": "!items!463d891ca147afe9",
+  "name": "Above the Law",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>-1 Wanted Level<br>if Citizens faction<br>status is +3</p>",
+    "controlled": false
+  }
+}

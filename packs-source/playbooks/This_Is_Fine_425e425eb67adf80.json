@@ -1,0 +1,20 @@
+{
+  "_id": "425e425eb67adf80",
+  "_key": "!items!425e425eb67adf80",
+  "name": "This Is Fine",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>If every PC works together (group action), you can summon a denizen of your Utopian Vision into this reality: a Class V Resonance Entity.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

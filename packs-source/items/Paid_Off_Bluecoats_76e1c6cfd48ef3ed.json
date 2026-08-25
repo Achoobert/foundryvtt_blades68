@@ -1,0 +1,18 @@
+{
+  "_id": "76e1c6cfd48ef3ed",
+  "_key": "!items!76e1c6cfd48ef3ed",
+  "name": "Paid-Off Bluecoats",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>-2 Heat per score</p>",
+    "controlled": false
+  }
+}

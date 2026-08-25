@@ -1,0 +1,20 @@
+{
+  "_id": "984c2d463cdfa8df",
+  "_key": "!items!984c2d463cdfa8df",
+  "name": "Moral Compass",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC gains an additional xp trigger: You fulfilled an obligation at a cost to you or the crew.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

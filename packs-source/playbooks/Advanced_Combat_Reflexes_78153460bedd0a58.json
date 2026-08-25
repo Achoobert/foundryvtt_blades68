@@ -1,0 +1,19 @@
+{
+  "_id": "78153460bedd0a58",
+  "_key": "!items!78153460bedd0a58",
+  "name": "Advanced Combat Reflexes",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Cybernetic implants and futuristic combat training let you react to threats in a fraction of a second and even dodge bullets. Your bare hands count as a fine weapon. When there's a question about who acts first, the answer is you.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

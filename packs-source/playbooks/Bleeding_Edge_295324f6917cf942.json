@@ -1,0 +1,20 @@
+{
+  "_id": "295324f6917cf942",
+  "_key": "!items!295324f6917cf942",
+  "name": "Bleeding Edge",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have an experimental new product that pays out twice the stacks but generates twice the heat during supply and distribution. Track these units separately.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

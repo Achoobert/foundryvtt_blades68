@@ -1,0 +1,20 @@
+{
+  "_id": "c25fe4d29181f43e",
+  "_key": "!items!c25fe4d29181f43e",
+  "name": "Bandolier",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A strap worn across the body, fitted with specially-padded pouches to hold three explosives or bombs. When you employ an item from the bandolier, choose one from the list (or one of your own custom-made explosives). During downtime, you automatically refill your bandoliers, so long as you have reasonable access to a supplier or workshop.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

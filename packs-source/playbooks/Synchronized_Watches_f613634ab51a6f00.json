@@ -1,0 +1,20 @@
+{
+  "_id": "f613634ab51a6f00",
+  "_key": "!items!f613634ab51a6f00",
+  "name": "Synchronized Watches",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You may use assists or setup actions with any crew member, regardless of the distance separating you. When you perform a group action, you may count multiple 6s from different rolls as a critical success.</p>",
+    "dcDescription": "<p><strong>Action:</strong> When you execute a coordinated maneuver as a team, any 6s rolled by any team member can be freely distributed to teammates to use on their rolls.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

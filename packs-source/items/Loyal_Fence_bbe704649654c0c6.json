@@ -1,0 +1,18 @@
+{
+  "_id": "bbe704649654c0c6",
+  "_key": "!items!bbe704649654c0c6",
+  "name": "Loyal Fence",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks for smuggling or hijacking</p>",
+    "controlled": false
+  }
+}

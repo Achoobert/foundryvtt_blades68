@@ -1,0 +1,19 @@
+{
+  "_id": "0aadf9d0b9040a57",
+  "_key": "!items!0aadf9d0b9040a57",
+  "name": "Tools",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1 quality for Demolition Tools and Tinkering Tools.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

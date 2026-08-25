@@ -1,0 +1,20 @@
+{
+  "_id": "c1c386fbd72024d3",
+  "_key": "!items!c1c386fbd72024d3",
+  "name": "Tinkering Tools",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Tools and spare parts for messing with electronics and mechanisms. A wrench, drill, and spanner. Tweezers, pliers, precision screwdrivers. A soldering iron. A second wrench. Oscilloscope, circuit tester, and heat sink. Jumper wires. Magnifying loupe.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

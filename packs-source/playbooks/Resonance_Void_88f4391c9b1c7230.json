@@ -1,0 +1,19 @@
+{
+  "_id": "88f4391c9b1c7230",
+  "_key": "!items!88f4391c9b1c7230",
+  "name": "Resonance Void",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You are invisible to resonance entities and may not be harmed by them. Take 2 Stress to cause living things to avert their gaze and fail to observe you for a few moments.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

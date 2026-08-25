@@ -1,0 +1,17 @@
+{
+  "_id": "c18a624da90ff5f3",
+  "_key": "!items!c18a624da90ff5f3",
+  "name": "Severos",
+  "type": "heritage",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": ""
+  }
+}

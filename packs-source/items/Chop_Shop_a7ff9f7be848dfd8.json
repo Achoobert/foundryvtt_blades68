@@ -1,0 +1,18 @@
+{
+  "_id": "a7ff9f7be848dfd8",
+  "_key": "!items!a7ff9f7be848dfd8",
+  "name": "Chop Shop",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "8a2895e5914a3916",
+  "_key": "!items!8a2895e5914a3916",
+  "name": "Under the Radar",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you kill someone during a score, you can take 2 Stress so that it doesn’t count towards Heat afterwards. How does your crew avoid the Death Radar?</p>",
+    "dcDescription": "<p><strong>Downtime:</strong> Use a Downtime activity and spend 2 Stacks to consecrate a member of the crew. Until their next Downtime, any killings they commit will be hidden from the Death Radar.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

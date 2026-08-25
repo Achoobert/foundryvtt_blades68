@@ -1,0 +1,18 @@
+{
+  "_id": "809524d8311e02df",
+  "_key": "!items!809524d8311e02df",
+  "name": "Double Contract",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Legendary Target includes second hit, for +10 bonus stacks</p>",
+    "controlled": false
+  }
+}

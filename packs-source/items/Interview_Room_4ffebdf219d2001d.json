@@ -1,0 +1,18 @@
+{
+  "_id": "4ffebdf219d2001d",
+  "_key": "!items!4ffebdf219d2001d",
+  "name": "\"Interview Room\"",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Command and Sway on-site</p>",
+    "controlled": false
+  }
+}

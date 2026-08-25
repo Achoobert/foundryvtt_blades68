@@ -1,0 +1,18 @@
+{
+  "_id": "c92ea1f2c8e7ce6c",
+  "_key": "!items!c92ea1f2c8e7ce6c",
+  "name": "Inside Mark",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Target for Checkmate counts as -1 Tier for that score</p>",
+    "controlled": false
+  }
+}

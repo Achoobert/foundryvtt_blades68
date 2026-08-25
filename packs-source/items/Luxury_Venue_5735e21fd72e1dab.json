@@ -1,0 +1,18 @@
+{
+  "_id": "5735e21fd72e1dab",
+  "_key": "!items!5735e21fd72e1dab",
+  "name": "Luxury Venue",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Consort and Sway on-site, +2 stacks for social intrigue</p>",
+    "controlled": false
+  }
+}

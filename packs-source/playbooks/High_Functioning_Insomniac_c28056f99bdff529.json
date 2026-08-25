@@ -1,0 +1,19 @@
+{
+  "_id": "c28056f99bdff529",
+  "_key": "!items!c28056f99bdff529",
+  "name": "High-Functioning Insomniac",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>During downtime, you get two ticks to distribute among any long-term project clocks that involve research, investigation, or crafting.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

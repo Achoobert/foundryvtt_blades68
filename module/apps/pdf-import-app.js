@@ -4,16 +4,11 @@ import { parsePlaybookSheets } from '../pdf-import/playbook-parser.js';
 import { extractDeckCardImages, uploadImageBlob, uploadJson } from '../pdf-import/card-image-extractor.js';
 import { createFactionItems, createPlaybookItems, createCardsDeck } from '../pdf-import/create-documents.js';
 import { classifyCardDeck, classifyPlaybookPdf } from '../pdf-import/classify-pdf.js';
-import { getOrCreateFolderPath } from '../pdf-import/folders.js';
 
 // The rulebook's Faction chapter has a fixed layout (there is only one
 // official rulebook, and its pagination doesn't change): pages 353-355 are
 // the short Rolodex entries, 356-395 are the full per-faction dossiers.
 const DEFAULT_FACTION_PAGES = { rolodexStart: 353, rolodexEnd: 355, detailsStart: 356, detailsEnd: 395 };
-
-// Everything an import creates lands under one sidebar root per document type,
-// so a re-import (or a bad parse) is easy to find and clear out in bulk.
-const IMPORT_ROOT = 'Blades68 Import';
 
 const { ApplicationV2 } = foundry.applications.api;
 const HbsAppMixin = foundry.applications.api.HandlebarsApplicationMixin;
@@ -54,14 +49,6 @@ export default class PdfImportApp extends HbsAppMixin(ApplicationV2) {
     line.textContent = message;
     log.appendChild(line);
     log.scrollTop = log.scrollHeight;
-  }
-
-  // Logs the resolved folder so a run that silently lands documents at the
-  // sidebar root can be told apart from a run using stale client code.
-  async _folder(path, type) {
-    const id = await getOrCreateFolderPath(path, type);
-    this._log(`${type} folder: ${path.join(' / ')} (${id})`);
-    return id;
   }
 
   static async _onParseRulebook(event, target) {
@@ -117,9 +104,8 @@ export default class PdfImportApp extends HbsAppMixin(ApplicationV2) {
     }
 
     this._log(game.i18n.localize('BLADES68.PdfImport.CreatingItems'));
-    const folder = await this._folder([IMPORT_ROOT, 'Factions'], 'Item');
-    const created = await createFactionItems(factions, { folder });
-    this._log(game.i18n.format('BLADES68.PdfImport.CreatedFactions', { count: created.length }));
+    const created = await createFactionItems(factions);
+    this._log(game.i18n.format('BLADES68.PdfImport.CreatedItems', { count: created.length }));
   }
 
   async _importPlaybooksIfPresent(inputName) {
@@ -134,17 +120,12 @@ export default class PdfImportApp extends HbsAppMixin(ApplicationV2) {
     const { kind, playbookType, abilityType } = classifyPlaybookPdf(file.name);
     await uploadJson(playbooks, kind === 'crew' ? 'crew-playbooks.json' : 'playbooks.json');
 
-    const folder = await this._folder([IMPORT_ROOT, kind === 'crew' ? 'Crew Playbooks' : 'Playbooks'], 'Item');
-    const created = await createPlaybookItems(playbooks, { playbookType, abilityType, folder });
+    const created = await createPlaybookItems(playbooks, { playbookType, abilityType });
     this._log(game.i18n.format('BLADES68.PdfImport.CreatedItems', { count: created.length }));
   }
 
   async _importCardDecks() {
     const files = this._getFiles('cardDeckFile');
-    if (!files.length) return;
-
-    const folder = await this._folder([IMPORT_ROOT], 'Cards');
-
     for (const file of files) {
       const { deckName, subdir } = classifyCardDeck(file.name);
       this._log(game.i18n.format('BLADES68.PdfImport.ExtractingDeck', { name: deckName }));
@@ -160,7 +141,7 @@ export default class PdfImportApp extends HbsAppMixin(ApplicationV2) {
         uploaded.push({ path });
       }
 
-      const deck = await createCardsDeck(deckName, uploaded, { folder });
+      const deck = await createCardsDeck(deckName, uploaded);
       this._log(game.i18n.format('BLADES68.PdfImport.CreatedDeck', { name: deck.name, count: uploaded.length }));
     }
   }

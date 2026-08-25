@@ -1,0 +1,18 @@
+{
+  "_id": "ab58355b900b999b",
+  "_key": "!items!ab58355b900b999b",
+  "name": "Covert Funding",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks for sabotage or assassination</p>",
+    "controlled": false
+  }
+}

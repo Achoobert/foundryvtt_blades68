@@ -1,0 +1,20 @@
+{
+  "_id": "94bc794658f718f4",
+  "_key": "!items!94bc794658f718f4",
+  "name": "Speed Demons",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you go into conflict aboard a vehicle, you gain increased effect for vehicle damage and speed. If the vehicle has armor, you can use it for your own protection.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "d885f317928dd8ff",
+  "_key": "!items!d885f317928dd8ff",
+  "name": "Misdirection",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>At the end of a score, you may sacrifice half the rep gained to make another faction lose status with your target instead of your crew. How do you pin it on someone else?</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

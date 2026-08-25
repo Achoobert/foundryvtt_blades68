@@ -1,0 +1,19 @@
+{
+  "_id": "a4569f9d3a204ff9",
+  "_key": "!items!a4569f9d3a204ff9",
+  "name": "Versatile",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Choose a special ability from another source (can be taken more than once).</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

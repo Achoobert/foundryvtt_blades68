@@ -19,6 +19,79 @@ export default function registerSheetBatches(quench) {
   quench.registerBatch('blades68.sheets', (context) => {
     const { describe, it, assert } = context;
 
+    describe('Character sheet layouts', () => {
+      it('renders keys, harm, load items, abilities, and friends', async () => {
+        const actor = await Actor.create({ name: 'Quench Layout PC', type: 'character' });
+        try {
+          await actor.createEmbeddedDocuments('Item', [
+            {
+              name: 'Fine wrenching tools',
+              type: 'gear',
+              system: { load: 0, playbook: 'intellectual', carried: false }
+            },
+            {
+              name: 'A Blade or Two',
+              type: 'gear',
+              system: { load: 1, playbook: '', carried: false }
+            },
+            {
+              name: 'Unalloyed Genius',
+              type: 'ability',
+              system: { unlocked: true, description: '<p>Craft better.</p>' }
+            },
+            {
+              name: 'Faden, an innovative doctor',
+              type: 'contact',
+              system: { relationship: 'friend', description: '<p>A dangerous fraud.</p>' }
+            }
+          ]);
+          await actor.sheet.render(true);
+          const root = actor.sheet.element;
+          assert.exists(root.querySelector('.keys-deadlocks-head'), 'keys header');
+          assert.lengthOf(root.querySelectorAll('.harm-tier'), 4);
+          assert.exists(root.querySelector('.harm-tier.slots-2'), 'two-slot harm row');
+          assert.exists(root.querySelector('.playbook-gear .zero-load'), 'italic zero-load gear');
+          assert.exists(root.querySelector('.common-gear .gear-row'), 'common gear');
+          assert.exists(root.querySelector('.ability-row .ability-mark.unlocked'), 'unlocked ability');
+          assert.exists(root.querySelector('.friend-row .rel-up.active'), 'friend relationship');
+        } finally {
+          await actor.sheet.close();
+          await actor.delete();
+        }
+      });
+    });
+
+    describe('Crew sheet abilities', () => {
+      it('shows an ability title, inline description, hover text, and item action', async () => {
+        const actor = await Actor.create({ name: 'Quench Ability Crew', type: 'crew' });
+        try {
+          const [ability] = await actor.createEmbeddedDocuments('Item', [
+            {
+              name: 'Mutual Aid',
+              type: 'crew-ability',
+              system: { description: '<p>Support one allied faction.</p>' }
+            }
+          ]);
+          await actor.sheet.render(true);
+
+          const row = actor.sheet.element.querySelector(
+            `.crew-ability-row[data-item-id="${ability.id}"]`
+          );
+          assert.exists(row, 'crew ability row');
+          assert.equal(row.querySelector('.item-name').textContent.trim(), 'Mutual Aid');
+          assert.equal(
+            row.querySelector('.crew-ability-description').textContent.trim(),
+            'Support one allied faction.'
+          );
+          assert.equal(row.getAttribute('title'), 'Support one allied faction.');
+          assert.equal(row.dataset.action, 'openItem');
+        } finally {
+          await actor.sheet.close();
+          await actor.delete();
+        }
+      });
+    });
+
     describe('Actor sheets render without throwing', () => {
       for (const type of ACTOR_TYPES) {
         it(`renders the "${type}" actor sheet`, async () => {

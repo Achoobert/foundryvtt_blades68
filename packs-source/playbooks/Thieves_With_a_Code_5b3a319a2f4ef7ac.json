@@ -1,0 +1,20 @@
+{
+  "_id": "5b3a319a2f4ef7ac",
+  "_key": "!items!5b3a319a2f4ef7ac",
+  "name": "Thieves With a Code",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you complete a score with no deaths having occurred, gain +1 faction status with the local citizenry.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

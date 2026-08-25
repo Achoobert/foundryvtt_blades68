@@ -1,0 +1,19 @@
+{
+  "_id": "252711bd1689c9a9",
+  "_key": "!items!252711bd1689c9a9",
+  "name": "Powerhouse",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Take 1 Drain to perform a feat of extreme strength or speed (run faster than an autopod, rend metal with your hands, etc.). This factors into effect.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

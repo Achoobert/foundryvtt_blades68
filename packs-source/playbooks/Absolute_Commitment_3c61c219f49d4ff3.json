@@ -1,0 +1,20 @@
+{
+  "_id": "3c61c219f49d4ff3",
+  "_key": "!items!3c61c219f49d4ff3",
+  "name": "Absolute Commitment",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You have all sworn solemn vows of service to the cause. You get +1d to resistance rolls.</p>",
+    "dcDescription": "<p><strong>Action:</strong> You have all sworn solemn vows of service to the cause. You get +1d when you push yourself to avoid or reduce a consequence.</p>",
+    "cost": 0,
+    "unlocked": false
+  }
+}

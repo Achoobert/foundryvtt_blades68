@@ -1,0 +1,19 @@
+{
+  "_id": "4af4ded15e969d03",
+  "_key": "!items!4af4ded15e969d03",
+  "name": "Heavy Vehicle",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A semi-truck, bulldozer, tractor, barge, bus, drilling rig, limousine, or armored car. A second upgrade adds another heavy vehicle.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

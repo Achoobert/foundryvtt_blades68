@@ -34,6 +34,10 @@
   {{#ifEquals item.type "crew-ability"}}
     <label>{{localize "BLADES68.Cost"}} <input type="number" name="system.cost" value="{{system.cost}}" min="0" /></label>
     <label><input type="checkbox" name="system.unlocked" {{checked system.unlocked}} /> {{localize "BLADES68.Unlocked"}}</label>
+    <fieldset>
+      <legend>{{localize "BLADES68.DCDescription"}}</legend>
+      {{formInput systemFields.dcDescription value=system.dcDescription enriched=(lookup enriched "dcDescription") toggled=true}}
+    </fieldset>
   {{/ifEquals}}
 
   {{#ifEquals item.type "upgrade"}}

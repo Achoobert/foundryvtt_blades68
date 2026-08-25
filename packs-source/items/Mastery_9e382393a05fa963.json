@@ -1,0 +1,19 @@
+{
+  "_id": "9e382393a05fa963",
+  "_key": "!items!9e382393a05fa963",
+  "name": "Mastery",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your crew has access to master level training. You may advance your PCs' action ratings to 4 (until you unlock this upgrade, PC action ratings are capped at 3). This costs four upgrade boxes to unlock.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

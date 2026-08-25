@@ -1,0 +1,20 @@
+{
+  "_id": "a76e5383e3d08095",
+  "_key": "!items!a76e5383e3d08095",
+  "name": "One Last Job",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Before a job, any player may declare that this will be their character’s last score. When this is declared, the character clears all stress and gets 3 free downtime actions to use immediately or during flashbacks. Add +1d to the engagement roll. That PC must retire after the score.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

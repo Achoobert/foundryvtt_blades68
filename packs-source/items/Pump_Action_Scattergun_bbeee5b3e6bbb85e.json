@@ -1,0 +1,20 @@
+{
+  "_id": "bbeee5b3e6bbb85e",
+  "_key": "!items!bbeee5b3e6bbb85e",
+  "name": "Pump-Action Scattergun",
+  "type": "gear",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>A simple but very effective firearm that delivers blasts of shot over short distances. Developed for use in the narrow streets and cramped alleyways of modern cities.</p>",
+    "load": 1,
+    "carried": false,
+    "playbook": ""
+  }
+}

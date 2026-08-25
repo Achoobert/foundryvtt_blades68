@@ -1,0 +1,18 @@
+{
+  "_id": "85967ca97ee6feda",
+  "_key": "!items!85967ca97ee6feda",
+  "name": "Fierce Allies",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>All your experts<br>are loyal</p>",
+    "controlled": false
+  }
+}

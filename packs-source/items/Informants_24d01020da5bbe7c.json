@@ -1,0 +1,18 @@
+{
+  "_id": "24d01020da5bbe7c",
+  "_key": "!items!24d01020da5bbe7c",
+  "name": "Informants",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to gather info for scores</p>",
+    "controlled": false
+  }
+}

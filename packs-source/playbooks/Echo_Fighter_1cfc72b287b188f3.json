@@ -1,0 +1,19 @@
+{
+  "_id": "1cfc72b287b188f3",
+  "_key": "!items!1cfc72b287b188f3",
+  "name": "Echo Fighter",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Thanks to special training, you may engage enemies in combat with nothing but your mind. You gain potency in combat vs. the paranormal. You can attempt to read people’s next intentions.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

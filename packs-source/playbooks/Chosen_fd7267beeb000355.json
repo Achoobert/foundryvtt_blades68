@@ -1,0 +1,20 @@
+{
+  "_id": "fd7267beeb000355",
+  "_key": "!items!fd7267beeb000355",
+  "name": "Chosen",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC may add +1 action rating to Attune, Study, or Sway (up to a max rating of 3).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

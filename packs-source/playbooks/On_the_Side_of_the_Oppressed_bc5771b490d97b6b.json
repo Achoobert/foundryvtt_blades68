@@ -1,0 +1,20 @@
+{
+  "_id": "bc5771b490d97b6b",
+  "_key": "!items!bc5771b490d97b6b",
+  "name": "On the Side of the Oppressed",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You loudly and openly oppose the Bluecoats and their authoritarianism. You may count each Wanted Level as if it were turf.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

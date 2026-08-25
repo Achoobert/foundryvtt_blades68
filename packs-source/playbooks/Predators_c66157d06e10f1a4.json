@@ -1,0 +1,20 @@
+{
+  "_id": "c66157d06e10f1a4",
+  "_key": "!items!c66157d06e10f1a4",
+  "name": "Predators",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you use stealth or subterfuge to commit murder, take +1d to the engagement roll.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

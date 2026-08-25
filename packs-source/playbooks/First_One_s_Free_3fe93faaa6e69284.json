@@ -1,0 +1,20 @@
+{
+  "_id": "3fe93faaa6e69284",
+  "_key": "!items!3fe93faaa6e69284",
+  "name": "First One's Free",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>You can give away your product to build Rep during downtime. 1 Rep costs 1 unit.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

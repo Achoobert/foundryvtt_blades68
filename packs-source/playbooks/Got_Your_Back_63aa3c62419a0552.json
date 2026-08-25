@@ -1,0 +1,19 @@
+{
+  "_id": "63aa3c62419a0552",
+  "_key": "!items!63aa3c62419a0552",
+  "name": "Got Your Back",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you protect a teammate, clear 1 Stress and take +1d to any resistance rolls.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

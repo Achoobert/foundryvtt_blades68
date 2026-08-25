@@ -1,0 +1,19 @@
+{
+  "_id": "c11a770ff009fec9",
+  "_key": "!items!c11a770ff009fec9",
+  "name": "True Believer",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Twice per score, you may use your conviction to resist a consequence of law-breaking (being arrested or hassled by Bluecoats, etc.) or to push yourself when fighting for your ideology.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

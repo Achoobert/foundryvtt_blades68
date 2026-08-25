@@ -1,0 +1,18 @@
+{
+  "_id": "6017b5a9562817d1",
+  "_key": "!items!6017b5a9562817d1",
+  "name": "Catacombs",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d to Study or<br>Tinker on site</p>",
+    "controlled": false
+  }
+}

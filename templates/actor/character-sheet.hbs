@@ -77,16 +77,53 @@
     </div>
 
     <div class="tab playbook" data-tab="playbook">
-      <ol class="item-list">
-        {{#each items as |item|}}
-        {{#ifEquals item.type "ability"}}
-        <li class="item ability ability-card">
-          <strong>{{item.name}}</strong>
-          <div class="description">{{{item.system.description}}}</div>
-        </li>
-        {{/ifEquals}}
-        {{/each}}
-      </ol>
+      <fieldset class="ability-block sheet-section">
+        <legend>{{localize "BLADES68.SpecialAbilities"}}</legend>
+        <ul class="ability-list">
+          {{#each abilityItems as |item|}}
+          <li class="ability-row">
+            <button type="button" class="ability-mark {{#if item.system.unlocked}}unlocked{{/if}}" data-action="toggleAbility"
+              data-item-id="{{item.id}}" title="{{localize 'BLADES68.Unlocked'}}"></button>
+            <div class="ability-body" data-action="openItem" data-item-id="{{item.id}}">
+              <strong>{{item.name}}</strong>
+              <div class="description">{{{item.system.description}}}</div>
+            </div>
+            </li>
+            {{/each}}
+            </ul>
+            <div class="list-footer">
+              <button type="button" class="list-add" data-action="createItem" data-type="ability"
+                title="{{localize 'BLADES68.AddItem'}}">+</button>
+            </div>
+            </fieldset>
+            
+            <fieldset class="friends-block sheet-section">
+              <legend>{{localize "BLADES68.Friends"}}</legend>
+              <ul class="friend-list">
+                {{#each contactItems as |item|}}
+                <li class="friend-row">
+                  <div class="rel-toggles">
+                    <button type="button" class="rel-up {{#ifEquals item.system.relationship 'friend'}}active{{/ifEquals}}"
+                      data-action="setContactRelationship" data-item-id="{{item.id}}" data-relationship="friend"
+                      title="{{localize 'BLADES68.Relationship'}}"></button>
+                    <button type="button" class="rel-down {{#ifEquals item.system.relationship 'rival'}}active{{/ifEquals}}"
+                      data-action="setContactRelationship" data-item-id="{{item.id}}" data-relationship="rival"
+                      title="{{localize 'BLADES68.Relationship'}}"></button>
+                  </div>
+                  <details>
+                    <summary>{{item.name}}</summary>
+                    <div class="friend-notes" data-action="openItem" data-item-id="{{item.id}}">
+                      {{{item.system.description}}}
+                    </div>
+                  </details>
+          </li>
+          {{/each}}
+        </ul>
+        <div class="list-footer">
+          <button type="button" class="list-add" data-action="createItem" data-type="contact"
+            title="{{localize 'BLADES68.AddItem'}}">+</button>
+        </div>
+        </fieldset>
     </div>
 
     <div class="tab clocks" data-tab="clocks">

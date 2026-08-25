@@ -1,0 +1,18 @@
+{
+  "_id": "c918cb9b1cb52250",
+  "_key": "!items!c918cb9b1cb52250",
+  "name": "Cover Identities",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement for deception and social approaches</p>",
+    "controlled": false
+  }
+}

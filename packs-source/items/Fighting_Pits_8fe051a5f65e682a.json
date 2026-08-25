@@ -1,0 +1,18 @@
+{
+  "_id": "8fe051a5f65e682a",
+  "_key": "!items!8fe051a5f65e682a",
+  "name": "Fighting Pits",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>(Tier roll) - Heat = stacks in downtime</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "f5590859c45a26e7",
+  "_key": "!items!f5590859c45a26e7",
+  "name": "Lounge and Quarters",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your lair includes a shared lounge as well as living quarters for the crew. Add another piece of flair to the base. Whenever the crew unwinds (at the end of crew business), clear all passing harm. Without this upgrade, each PC sleeps elsewhere, and is vulnerable when they do so.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

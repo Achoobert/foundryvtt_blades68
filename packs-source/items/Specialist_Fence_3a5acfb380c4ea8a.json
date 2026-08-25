@@ -1,0 +1,18 @@
+{
+  "_id": "3a5acfb380c4ea8a",
+  "_key": "!items!3a5acfb380c4ea8a",
+  "name": "Specialist Fence",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+2 stacks for heists or subterfuge</p>",
+    "controlled": false
+  }
+}

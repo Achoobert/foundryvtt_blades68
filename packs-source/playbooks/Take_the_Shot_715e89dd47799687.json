@@ -1,0 +1,20 @@
+{
+  "_id": "715e89dd47799687",
+  "_key": "!items!715e89dd47799687",
+  "name": "Take the Shot",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When any PC takes the decisive action to eliminate a key target, they get +1d.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

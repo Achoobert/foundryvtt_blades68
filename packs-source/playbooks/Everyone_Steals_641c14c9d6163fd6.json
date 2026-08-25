@@ -1,0 +1,20 @@
+{
+  "_id": "641c14c9d6163fd6",
+  "_key": "!items!641c14c9d6163fd6",
+  "name": "Everyone Steals",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3).</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

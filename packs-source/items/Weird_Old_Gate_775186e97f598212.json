@@ -1,0 +1,18 @@
+{
+  "_id": "775186e97f598212",
+  "_key": "!items!775186e97f598212",
+  "name": "Weird Old Gate",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "",
+    "controlled": false
+  }
+}

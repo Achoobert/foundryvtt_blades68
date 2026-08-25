@@ -1,0 +1,19 @@
+{
+  "_id": "6f5a3f9913d96d1b",
+  "_key": "!items!6f5a3f9913d96d1b",
+  "name": "Vehicles",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Every PC starts with their own autopod, autocycle, or boat. A second upgrade improves the vehicles with armor and carrying capacity</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

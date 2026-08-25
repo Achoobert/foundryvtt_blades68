@@ -1,0 +1,20 @@
+{
+  "_id": "60b1a5c6a107286d",
+  "_key": "!items!60b1a5c6a107286d",
+  "name": "Ghost Market",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Through arcane ritual or hard-won experience, you have discovered how to prepare your product for sale to ghosts and/or demons. They do not pay in coin. What do they pay with?</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

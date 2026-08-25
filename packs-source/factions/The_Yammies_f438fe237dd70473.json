@@ -1,0 +1,34 @@
+{
+  "_id": "f438fe237dd70473",
+  "_key": "!items!f438fe237dd70473",
+  "name": "The Yammies",
+  "type": "faction",
+  "img": "icons/svg/city.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "category": "underworld",
+    "tier": 0,
+    "hold": "weak",
+    "status": 0,
+    "war": false,
+    "description": "",
+    "turf": "",
+    "npcs": "",
+    "notableAssets": "",
+    "quirks": "",
+    "allies": "",
+    "enemies": "",
+    "situation": "",
+    "prestigeAbility": {
+      "name": "",
+      "description": ""
+    },
+    "notes": "<p>A large countercultural protest group that started amongst the students of Charterhall University. The “yammies” stage theatrical protests and sit-ins that involve performance art and spectacle, aimed at disrupting</p>"
+  }
+}

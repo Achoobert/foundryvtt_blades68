@@ -1,0 +1,18 @@
+{
+  "_id": "87e94dba5d446cb6",
+  "_key": "!items!87e94dba5d446cb6",
+  "name": "Popular Support",
+  "type": "claim",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>+1d engagement for stealth approaches</p>",
+    "controlled": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_id": "81adf968f326b9c3",
+  "_key": "!items!81adf968f326b9c3",
+  "name": "Favors",
+  "type": "crew-ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Spend one rep and describe how one of your contacts is put out to help you. Everyone in your crew gets one dot in an action your contact is skilled in for this score.</p>",
+    "dcDescription": "",
+    "cost": 0,
+    "unlocked": false
+  }
+}

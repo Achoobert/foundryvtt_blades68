@@ -1,0 +1,19 @@
+{
+  "_id": "09690d8c61009e29",
+  "_key": "!items!09690d8c61009e29",
+  "name": "Hidden",
+  "type": "upgrade",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Your base has a secret location and is disguised to hide it from view. Maybe it’s a new base, or maybe you find a way to hide your current base. If you’re raided, it can’t be at your base until they work out where it is (if they try to raid you outside your base, you take +2d to engagement roll). If your base is discovered, use two downtime activities and pay stacks equal to your Tier to hide it once again.</p>",
+    "quality": 0,
+    "purchased": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "_id": "d36a0afb9f22a169",
+  "_key": "!items!d36a0afb9f22a169",
+  "name": "Total Dedication",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}

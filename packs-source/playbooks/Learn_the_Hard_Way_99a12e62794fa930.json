@@ -1,0 +1,19 @@
+{
+  "_id": "99a12e62794fa930",
+  "_key": "!items!99a12e62794fa930",
+  "name": "Learn the Hard Way",
+  "type": "ability",
+  "img": "icons/svg/item-bag.svg",
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "system": {
+    "description": "<p>Whenever you take harm, clear an amount of Stress equal to the harm level, and it counts as a successful gather information roll (with a level of detail equal to the harm level). The GM will tell you what you learn.</p>",
+    "playbook": "",
+    "unlocked": false
+  }
+}
