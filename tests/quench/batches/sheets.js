@@ -1,5 +1,6 @@
-const ACTOR_TYPES = ['character', 'npc', 'crew', 'faction'];
+const ACTOR_TYPES = ['character', 'npc', 'crew'];
 const ITEM_TYPES = [
+  'faction',
   'playbook',
   'ability',
   'heritage',
@@ -46,6 +47,60 @@ export default function registerSheetBatches(quench) {
           }
         });
       }
+    });
+
+    describe('Rich text fields use an active ProseMirror element', () => {
+      it('renders system.notes as a <prose-mirror> element', async () => {
+        const actor = await Actor.create({ name: 'Quench Sheet Editor', type: 'npc' });
+        try {
+          await actor.sheet.render(true);
+          const editor = actor.sheet.element.querySelector('prose-mirror[name="system.notes"]');
+          assert.exists(editor, 'notes editor element');
+        } finally {
+          await actor.sheet.close();
+          await actor.delete();
+        }
+      });
+    });
+
+    describe('NPC playbook drop target', () => {
+      const dropOn = (element, data) => {
+        const dataTransfer = new DataTransfer();
+        dataTransfer.setData('text/plain', JSON.stringify(data));
+        element.dispatchEvent(new DragEvent('drop', { dataTransfer, bubbles: true }));
+      };
+
+      it('writes a dropped playbook name into system.playbook', async () => {
+        const actor = await Actor.create({ name: 'Quench Sheet Drop', type: 'npc' });
+        const playbook = await Item.create({ name: 'Quench Cutter', type: 'playbook' });
+        try {
+          await actor.sheet.render(true);
+          const zone = actor.sheet.element.querySelector('[data-drop="playbook"]');
+          dropOn(zone, { type: 'Item', uuid: playbook.uuid });
+          await new Promise((resolve) => setTimeout(resolve, 100));
+          assert.equal(actor.system.playbook, 'Quench Cutter');
+        } finally {
+          await actor.sheet.close();
+          await playbook.delete();
+          await actor.delete();
+        }
+      });
+
+      it('ignores dropped items that are not playbooks', async () => {
+        const actor = await Actor.create({ name: 'Quench Sheet Drop Ignored', type: 'npc' });
+        const gear = await Item.create({ name: 'Quench Crowbar', type: 'gear' });
+        try {
+          await actor.sheet.render(true);
+          const zone = actor.sheet.element.querySelector('[data-drop="playbook"]');
+          dropOn(zone, { type: 'Item', uuid: gear.uuid });
+          await new Promise((resolve) => setTimeout(resolve, 100));
+          assert.equal(actor.system.playbook, '');
+        } finally {
+          await actor.sheet.close();
+          await gear.delete();
+          await actor.delete();
+        }
+      });
     });
 
     describe('Faction Tracker and Clock Tracker apps', () => {

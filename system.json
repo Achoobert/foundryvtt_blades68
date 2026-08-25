@@ -25,10 +25,10 @@
     "Actor": {
       "character": {},
       "npc": {},
-      "crew": {},
-      "faction": {}
+      "crew": {}
     },
     "Item": {
+      "faction": {},
       "playbook": {},
       "ability": {},
       "heritage": {},
@@ -71,7 +71,7 @@
       "name": "factions",
       "label": "Factions of Doskvol",
       "path": "packs/factions",
-      "type": "Actor",
+      "type": "Item",
       "system": "blades68"
     },
     {

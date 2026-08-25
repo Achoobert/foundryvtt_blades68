@@ -1,11 +1,16 @@
-export async function createFactionActors(factions) {
+import { buildFactionClockData } from '../utils/faction-clocks.js';
+import { getOrCreateFolder } from './folders.js';
+
+export async function createFactionItems(factions, { folder = null } = {}) {
   const created = [];
+  let clockFolder = null;
 
   for (const faction of factions) {
-    const actor = await Actor.create({
+    const item = await Item.create({
       name: faction.name,
       type: 'faction',
       img: faction.imagePath || undefined,
+      folder,
       system: {
         category: faction.category ?? 'underworld',
         tier: faction.tier ?? 0,
@@ -23,29 +28,73 @@ export async function createFactionActors(factions) {
     });
 
     if (faction.projects?.length) {
-      await actor.createEmbeddedDocuments(
-        'Item',
+      clockFolder ??= (await getOrCreateFolder('Project Clocks', 'Item', folder))?.id ?? null;
+      await Item.createDocuments(
         faction.projects.map((project) => ({
-          name: project.name,
-          type: 'clock',
-          system: { max: project.max ?? 4, shared: true }
+          ...buildFactionClockData(item.uuid, { name: project.name, max: project.max ?? 4 }),
+          folder: clockFolder
         }))
       );
     }
 
-    created.push(actor);
+    created.push(item);
   }
 
   return created;
 }
 
-export async function createPlaybookItems(playbooks, { playbookType = 'playbook', abilityType = 'ability' } = {}) {
+export async function createPlaybookItems(
+  playbooks,
+  { playbookType = 'playbook', abilityType = 'ability', folder = null } = {}
+) {
   const created = [];
+  const normalize = (value) => value.trim().toLowerCase();
+  const gearPlaybooks = new Map();
+  const commonThreshold = Math.max(2, Math.ceil(playbooks.length * 0.75));
+  const isCommonGear = (key) => gearPlaybooks.get(key)?.size >= commonThreshold;
+
+  if (playbookType === 'playbook') {
+    for (const [index, playbook] of playbooks.entries()) {
+      for (const gear of playbook.gear ?? []) {
+        const key = normalize(gear.name);
+        if (!gearPlaybooks.has(key)) gearPlaybooks.set(key, new Set());
+        gearPlaybooks.get(key).add(index);
+      }
+    }
+
+    const commonGear = new Map();
+    for (const playbook of playbooks) {
+      for (const gear of playbook.gear ?? []) {
+        if (isCommonGear(normalize(gear.name))) {
+          commonGear.set(normalize(gear.name), gear);
+        }
+      }
+    }
+
+    const commonGearFolder = commonGear.size
+      ? (await getOrCreateFolder('Common Gear', 'Item', folder))?.id ?? folder
+      : folder;
+
+    for (const gear of commonGear.values()) {
+      const gearItem = await Item.create({
+        name: gear.name,
+        type: 'gear',
+        folder: commonGearFolder,
+        system: { load: gear.load ?? 1, carried: false, playbook: '' }
+      });
+      created.push(gearItem);
+    }
+  }
 
   for (const playbook of playbooks) {
+    // One subfolder per playbook keeps its abilities and gear together instead
+    // of scattering hundreds of items across a single flat list.
+    const playbookFolder = (await getOrCreateFolder(playbook.name, 'Item', folder))?.id ?? folder;
+
     const playbookItem = await Item.create({
       name: playbook.name,
       type: playbookType,
+      folder: playbookFolder,
       system: { description: playbook.description ?? '' }
     });
     created.push(playbookItem);
@@ -54,9 +103,27 @@ export async function createPlaybookItems(playbooks, { playbookType = 'playbook'
       const abilityItem = await Item.create({
         name: ability.name,
         type: abilityType,
+        folder: playbookFolder,
         system: { description: ability.description ?? '', playbook: playbook.name.toLowerCase() }
       });
       created.push(abilityItem);
+    }
+
+    if (playbookType === 'playbook') {
+      const playbookKey = normalize(playbook.name);
+      const uniqueGear = new Map(
+        (playbook.gear ?? []).map((gear) => [normalize(gear.name), gear])
+      );
+      for (const [key, gear] of uniqueGear) {
+        if (isCommonGear(key)) continue;
+        const gearItem = await Item.create({
+          name: gear.name,
+          type: 'gear',
+          folder: playbookFolder,
+          system: { load: gear.load ?? 1, carried: false, playbook: playbookKey }
+        });
+        created.push(gearItem);
+      }
     }
   }
 
@@ -69,7 +136,7 @@ export async function createPlaybookItems(playbooks, { playbookType = 'playbook'
  * (e.g. its built-in Tarot deck) use: a Cards document with an embedded Card
  * per image, each Card with a single face pointing at that image.
  */
-export async function createCardsDeck(name, images) {
+export async function createCardsDeck(name, images, { folder = null } = {}) {
   const cards = images.map((image, index) => ({
     name: `${name} ${index + 1}`,
     faces: [{ name: `${name} ${index + 1}`, img: image.path }],
@@ -81,6 +148,7 @@ export async function createCardsDeck(name, images) {
     name,
     type: 'deck',
     img: images[0]?.path,
+    folder,
     cards
   });
 }

@@ -5,14 +5,47 @@
 </header>
 
 <section class="sheet-body">
-  <label>{{localize "BLADES68.Role"}} <input type="text" name="system.role" value="{{system.role}}" /></label>
-  <label>{{localize "BLADES68.Faction"}} <input type="text" name="system.faction" value="{{system.faction}}" /></label>
+  <label>{{localize "BLADES68.ShortDescription"}}
+    <input type="text" name="system.shortDescription" value="{{system.shortDescription}}" />
+  </label>
+  <label class="playbook-drop" data-drop="playbook">
+    {{localize "BLADES68.Playbook"}}
+    <input type="text" name="system.playbook" value="{{system.playbook}}"
+      placeholder="{{localize 'BLADES68.DropPlaybookHint'}}" />
+  </label>
+  <div class="faction-link">
+    <label>{{localize "BLADES68.Faction"}}
+      <select name="system.factionUuid">
+        <option value="">{{localize "BLADES68.NoFaction"}}</option>
+        {{#each factionChoices as |bucket|}}
+        <optgroup label="{{bucket.group}}">
+          {{#each bucket.options as |choice|}}
+          <option value="{{choice.uuid}}" {{#ifEquals choice.uuid ../../system.factionUuid}}selected{{/ifEquals}}>
+            {{choice.name}}</option>
+          {{/each}}
+        </optgroup>
+        {{/each}}
+      </select>
+    </label>
+    {{#if faction}}
+    <a class="faction-open" data-action="openFaction">
+      {{localize "BLADES68.Tier"}} {{faction.tier}} &middot;
+      {{localize (concat "BLADES68.HoldState." faction.hold)}} &middot;
+      {{localize "BLADES68.Status"}} {{faction.status}}
+    </a>
+    {{/if}}
+  </div>
 
   <div class="track-row">
     <a class="action-label" data-action="rollAction">{{localize "BLADES68.ActionRating"}}</a>
     {{> "systems/blades68/templates/partials/dot-track.hbs"
         value=system.actionRating max=4 path="system.actionRating" }}
   </div>
+
+  <fieldset class="npc-description">
+    <legend>{{localize "BLADES68.Description"}}</legend>
+    {{formInput systemFields.description value=system.description enriched=(lookup enriched "description") toggled=true}}
+  </fieldset>
 
   <fieldset class="npc-harm">
     <legend>{{localize "BLADES68.Harm"}}</legend>
@@ -42,7 +75,7 @@
 
   <fieldset>
     <legend>{{localize "BLADES68.Notes"}}</legend>
-    {{editor system.notes target="system.notes" button=true engine="prosemirror" collaborate=false}}
+    {{formInput systemFields.notes value=system.notes enriched=(lookup enriched "notes") toggled=true}}
   </fieldset>
 </section>
 </div>

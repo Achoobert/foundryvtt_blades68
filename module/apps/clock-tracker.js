@@ -1,5 +1,13 @@
+import { FACTION_CLOCK_FLAG } from '../utils/faction-clocks.js';
+import FactionTrackerApp from './faction-tracker.js';
+
 const { ApplicationV2 } = foundry.applications.api;
 const HbsAppMixin = foundry.applications.api.HandlebarsApplicationMixin;
+
+function resolveFactionClockOwner(clock) {
+  const uuid = clock.getFlag('blades68', FACTION_CLOCK_FLAG);
+  return uuid ? fromUuidSync(uuid) : null;
+}
 
 export default class ClockTrackerApp extends HbsAppMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
@@ -19,7 +27,7 @@ export default class ClockTrackerApp extends HbsAppMixin(ApplicationV2) {
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
 
-    context.clocks = game.actors.contents.flatMap((actor) =>
+    const embedded = game.actors.contents.flatMap((actor) =>
       actor.items
         .filter((item) => item.type === 'clock' && item.system.shared)
         .map((item) => ({
@@ -32,12 +40,31 @@ export default class ClockTrackerApp extends HbsAppMixin(ApplicationV2) {
         }))
     );
 
+    // Faction clocks live at world level because Items cannot embed Items.
+    const world = game.items.contents
+      .filter((item) => item.type === 'clock' && item.system.shared)
+      .map((item) => {
+        const owner = resolveFactionClockOwner(item);
+        return {
+          itemId: item.id,
+          actorId: '',
+          label: owner ? `${owner.name}: ${item.name}` : item.name,
+          value: item.system.value,
+          max: item.system.max,
+          color: item.system.color
+        };
+      });
+
+    context.clocks = [...embedded, ...world];
+
     return context;
   }
 
   static async _onSetClockValue(event, target) {
-    const actor = game.actors.get(target.dataset.actorId);
-    const item = actor?.items.get(target.dataset.itemId);
+    const actorId = target.dataset.actorId;
+    const item = actorId
+      ? game.actors.get(actorId)?.items.get(target.dataset.itemId)
+      : game.items.get(target.dataset.itemId);
     if (!item) return;
     const clicked = Number(target.dataset.value);
     const value = item.system.value === clicked ? clicked - 1 : clicked;
@@ -45,14 +72,14 @@ export default class ClockTrackerApp extends HbsAppMixin(ApplicationV2) {
   }
 }
 
-export function registerClockTrackerRefreshHooks() {
-  const refreshOpenTracker = () => {
+export function registerTrackerRefreshHooks() {
+  const refreshOpenTrackers = () => {
     for (const app of foundry.applications.instances.values()) {
-      if (app instanceof ClockTrackerApp) app.render();
+      if (app instanceof ClockTrackerApp || app instanceof FactionTrackerApp) app.render();
     }
   };
 
-  Hooks.on('createItem', refreshOpenTracker);
-  Hooks.on('updateItem', refreshOpenTracker);
-  Hooks.on('deleteItem', refreshOpenTracker);
+  Hooks.on('createItem', refreshOpenTrackers);
+  Hooks.on('updateItem', refreshOpenTrackers);
+  Hooks.on('deleteItem', refreshOpenTrackers);
 }

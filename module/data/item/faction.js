@@ -3,7 +3,7 @@ export default class FactionData extends foundry.abstract.TypeDataModel {
     const { NumberField, StringField, BooleanField, HTMLField, SchemaField } = foundry.data.fields;
 
     return {
-      schemaVersion: new NumberField({ initial: 2 }),
+      schemaVersion: new NumberField({ initial: 3 }),
       category: new StringField({ initial: 'underworld' }),
       tier: new NumberField({ initial: 1, min: 0, max: 6, integer: true }),
       hold: new StringField({ initial: 'weak' }),

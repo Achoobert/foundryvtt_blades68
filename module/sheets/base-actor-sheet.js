@@ -1,6 +1,7 @@
 import { BLADES68 } from '../config.js';
 import { rollAction, rollFlatPool, rollFortune } from '../dice/roll-engine.js';
 import { promptActionRoll, promptDicePoolSize } from '../dice/roll-dialog.js';
+import { enrichSystemHtml } from '../utils/enrich-html.js';
 
 const { ActorSheetV2 } = foundry.applications.sheets;
 const HbsAppMixin = foundry.applications.api.HandlebarsApplicationMixin;
@@ -113,6 +114,8 @@ export default class Blades68ActorSheet extends HbsAppMixin(ActorSheetV2) {
     context.items = this.actor.items;
     context.config = BLADES68;
     context.clocks = this.actor.items.filter((item) => item.type === 'clock');
+    context.systemFields = this.actor.system.schema.fields;
+    context.enriched = await enrichSystemHtml(this.actor);
     return context;
   }
 

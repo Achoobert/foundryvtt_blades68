@@ -6,8 +6,8 @@ import Blades68Item from './documents/item.js';
 import CharacterData from './data/actor/character.js';
 import NpcData from './data/actor/npc.js';
 import CrewData from './data/actor/crew.js';
-import FactionData from './data/actor/faction.js';
 
+import FactionData from './data/item/faction.js';
 import PlaybookData from './data/item/playbook.js';
 import AbilityData from './data/item/ability.js';
 import HeritageData from './data/item/heritage.js';
@@ -30,8 +30,9 @@ import Blades68ItemSheet from './sheets/item-sheet.js';
 import registerHandlebarsHelpers from './utils/register-helpers.js';
 import preloadHandlebarsTemplates from './templates.js';
 import FactionTrackerApp from './apps/faction-tracker.js';
-import ClockTrackerApp, { registerClockTrackerRefreshHooks } from './apps/clock-tracker.js';
+import ClockTrackerApp, { registerTrackerRefreshHooks } from './apps/clock-tracker.js';
 import PdfImportApp from './apps/pdf-import-app.js';
+import { registerPlaybookGearHooks } from './utils/playbook-gear.js';
 
 const { Actors, Items } = foundry.documents.collections;
 
@@ -42,11 +43,11 @@ Hooks.once('init', () => {
   Object.assign(CONFIG.Actor.dataModels, {
     character: CharacterData,
     npc: NpcData,
-    crew: CrewData,
-    faction: FactionData
+    crew: CrewData
   });
 
   Object.assign(CONFIG.Item.dataModels, {
+    faction: FactionData,
     playbook: PlaybookData,
     ability: AbilityData,
     heritage: HeritageData,
@@ -70,8 +71,7 @@ Hooks.once('init', () => {
   const actorSheetClassMap = {
     character: CharacterSheet,
     npc: NpcSheet,
-    crew: CrewSheet,
-    faction: FactionSheet
+    crew: CrewSheet
   };
 
   for (const [actorType, SheetClass] of Object.entries(actorSheetClassMap)) {
@@ -84,7 +84,14 @@ Hooks.once('init', () => {
 
   Items.registerSheet(BLADES68.ID, Blades68ItemSheet, {
     makeDefault: true,
-    label: 'BLADES68.Sheet.item'
+    label: 'BLADES68.Sheet.item',
+    types: Object.keys(CONFIG.Item.dataModels).filter((type) => type !== 'faction')
+  });
+
+  Items.registerSheet(BLADES68.ID, FactionSheet, {
+    makeDefault: true,
+    label: 'BLADES68.Sheet.faction',
+    types: ['faction']
   });
 
   game.blades68 = {
@@ -99,7 +106,8 @@ Hooks.once('init', () => {
     openPdfImport: () => new PdfImportApp().render(true)
   };
 
-  registerClockTrackerRefreshHooks();
+  registerTrackerRefreshHooks();
+  registerPlaybookGearHooks();
 
   game.settings.registerMenu(BLADES68.ID, 'pdfImport', {
     name: 'BLADES68.PdfImport.MenuName',

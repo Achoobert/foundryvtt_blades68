@@ -13,16 +13,16 @@
           <li class="faction-row {{#if faction.system.war}}at-war{{/if}}">
             <span class="faction-name">{{faction.name}}</span>
             {{> "systems/blades68/templates/partials/dot-track.hbs"
-                value=faction.system.tier max=6 action="setTier" actorId=faction.id }}
-            <a class="hold-toggle" data-action="cycleHold" data-actor-id="{{faction.id}}">
+                value=faction.system.tier max=6 action="setTier" itemId=faction.id }}
+            <a class="hold-toggle" data-action="cycleHold" data-item-id="{{faction.id}}">
               {{localize (concat "BLADES68.HoldState." faction.system.hold)}}
             </a>
             <span class="status-control">
-              <a data-action="adjustStatus" data-actor-id="{{faction.id}}" data-delta="-1">-</a>
+              <a data-action="adjustStatus" data-item-id="{{faction.id}}" data-delta="-1">-</a>
               <span class="status-value">{{faction.system.status}}</span>
-              <a data-action="adjustStatus" data-actor-id="{{faction.id}}" data-delta="1">+</a>
+              <a data-action="adjustStatus" data-item-id="{{faction.id}}" data-delta="1">+</a>
             </span>
-            <a class="war-toggle {{#if faction.system.war}}active{{/if}}" data-action="toggleWar" data-actor-id="{{faction.id}}">
+            <a class="war-toggle {{#if faction.system.war}}active{{/if}}" data-action="toggleWar" data-item-id="{{faction.id}}">
               {{localize "BLADES68.AtWar"}}
             </a>
           </li>

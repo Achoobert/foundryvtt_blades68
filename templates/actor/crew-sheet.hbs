@@ -59,7 +59,7 @@
   <fieldset class="hunting-grounds">
     <legend>{{localize "BLADES68.HuntingGrounds"}}</legend>
     <input type="text" name="system.huntingGrounds.type" value="{{system.huntingGrounds.type}}" placeholder="{{localize 'BLADES68.HuntingGroundsType'}}" />
-    {{editor system.huntingGrounds.description target="system.huntingGrounds.description" button=true engine="prosemirror" collaborate=false}}
+    {{formInput systemFields.huntingGrounds.fields.description value=system.huntingGrounds.description enriched=(lookup enriched "huntingGrounds.description") toggled=true}}
   </fieldset>
 
   <nav class="sheet-tabs">
@@ -119,7 +119,7 @@
   </div>
 
   <div class="tab notes" data-tab="notes">
-    {{editor system.base target="system.base" button=true engine="prosemirror" collaborate=false}}
+    {{formInput systemFields.base value=system.base enriched=(lookup enriched "base") toggled=true}}
   </div>
 </section>
 <img class="credit-block" src="./systems/blades68/assets/roll20/images/credit_block.png" alt="" />

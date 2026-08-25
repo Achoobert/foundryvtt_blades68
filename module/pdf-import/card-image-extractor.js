@@ -1,4 +1,4 @@
-const UPLOAD_DIR = 'assets/blades68/images';
+const UPLOAD_DIR = 'import_rulebook';
 
 function getFilePickerClass() {
   return foundry.applications.apps?.FilePicker?.implementation ?? foundry.applications.apps.FilePicker;
@@ -26,6 +26,11 @@ export async function uploadImageBlob(blob, filename, subdir = '') {
   const file = new File([blob], filename, { type: blob.type || 'image/png' });
   const response = await FilePickerClass.upload('data', targetDir, file, {});
   return response?.path ?? null;
+}
+
+export async function uploadJson(data, filename, subdir = '') {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  return uploadImageBlob(blob, filename, subdir);
 }
 
 /**

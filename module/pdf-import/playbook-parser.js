@@ -22,6 +22,28 @@ function extractTitle(items) {
   return sorted[0]?.str.trim() ?? '';
 }
 
+export function extractGear(items) {
+  const header = items.find((item) => /^ITEMS$/i.test(item.str.trim()));
+  if (!header) return [];
+
+  const rows = [];
+  for (const item of items
+    .filter((entry) => entry.x > header.x && entry.y < header.y - 5)
+    .sort((a, b) => b.y - a.y || a.x - b.x)) {
+    const row = rows.find((candidate) => Math.abs(candidate.y - item.y) < 2);
+    if (row) row.items.push(item);
+    else rows.push({ y: item.y, items: [item] });
+  }
+
+  return rows.flatMap((row) => {
+    const tokens = row.items.sort((a, b) => a.x - b.x).map((item) => item.str.trim());
+    const quantity = tokens.find((token) => /^x\d+$/i.test(token));
+    const name = tokens.filter((token) => !/^x\d+$/i.test(token)).join(' ').trim();
+    if (!name) return [];
+    return [{ name, load: quantity ? Number(quantity.slice(1)) : 1 }];
+  });
+}
+
 function isNearX(item, x) {
   return Math.abs(item.x - x) <= MARKER_TOLERANCE;
 }
@@ -102,7 +124,8 @@ async function parseSheetPage(pdfDoc, pageNumber) {
   )?.str.trim();
 
   const abilities = extractAbilities(items, header);
-  return { name: title, subtitle, abilities };
+  const gear = extractGear(items);
+  return { name: title, subtitle, abilities, gear };
 }
 
 function dedupeNames(entries) {
@@ -123,14 +146,19 @@ function dedupeNames(entries) {
 /**
  * Parses every page of a fillable playbook-sheet PDF (one playbook per page,
  * except multi-page playbooks which repeat the same base title) into
- * {name, description, abilities} entries.
+ * {name, description, abilities, gear} entries.
  */
 export async function parsePlaybookSheets(pdfDoc) {
   const entries = [];
   for (let pageNumber = 1; pageNumber <= pdfDoc.numPages; pageNumber++) {
     const parsed = await parseSheetPage(pdfDoc, pageNumber);
     if (parsed && parsed.abilities.length) {
-      entries.push({ name: parsed.name, description: '', abilities: parsed.abilities });
+      entries.push({
+        name: parsed.name,
+        description: '',
+        abilities: parsed.abilities,
+        gear: parsed.gear
+      });
     }
   }
   return dedupeNames(entries);

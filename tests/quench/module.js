@@ -3,13 +3,15 @@ import registerItemBatches from './batches/items.js';
 import registerDiceBatches from './batches/dice.js';
 import registerClockBatches from './batches/clocks.js';
 import registerSheetBatches from './batches/sheets.js';
+import registerPdfImportBatches from './batches/pdf-import.js';
 
 const REGISTRARS = [
   ['actors', registerActorBatches],
   ['items', registerItemBatches],
   ['dice', registerDiceBatches],
   ['clocks', registerClockBatches],
-  ['sheets', registerSheetBatches]
+  ['sheets', registerSheetBatches],
+  ['pdf-import', registerPdfImportBatches]
 ];
 
 window.__blades68QuenchModuleLoaded = true;

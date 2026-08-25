@@ -28,6 +28,19 @@ export default function registerActorBatches(quench) {
         assert.equal(actor.system.actionRating, 0);
         assert.isArray(actor.system.harm);
         assert.isArray(actor.system.tags);
+        assert.equal(actor.system.shortDescription, '');
+        assert.equal(actor.system.description, '');
+        assert.equal(actor.system.playbook, '');
+      });
+
+      it('migrates a legacy npc role into the short description', async () => {
+        const actor = await Actor.create({
+          name: 'Quench NPC Legacy',
+          type: 'npc',
+          system: { role: 'A Bluecoat' }
+        });
+        created.push(actor);
+        assert.equal(actor.system.shortDescription, 'A Bluecoat');
       });
 
       it('creates a crew with default tier and hold', async () => {
@@ -41,12 +54,18 @@ export default function registerActorBatches(quench) {
         assert.lengthOf(actor.system.xpClocks, 4);
       });
 
-      it('creates a faction with default category and status', async () => {
-        const actor = await Actor.create({ name: 'Quench Faction', type: 'faction' });
+      it('points an npc at a faction item by uuid', async () => {
+        const faction = await Item.create({ name: 'Quench NPC Faction', type: 'faction' });
+        const actor = await Actor.create({ name: 'Quench NPC Linked', type: 'npc' });
         created.push(actor);
-        assert.equal(actor.system.category, 'underworld');
-        assert.equal(actor.system.status, 0);
-        assert.isFalse(actor.system.war);
+
+        try {
+          await actor.update({ 'system.factionUuid': faction.uuid });
+          assert.equal(actor.system.factionUuid, faction.uuid);
+          assert.equal(fromUuidSync(actor.system.factionUuid).name, 'Quench NPC Faction');
+        } finally {
+          await faction.delete();
+        }
       });
 
       it('updates a character attribute rating via document update', async () => {

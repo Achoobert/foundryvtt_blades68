@@ -21,6 +21,7 @@
   {{/ifEquals}}
 
   {{#ifEquals item.type "gear"}}
+    <label>{{localize "BLADES68.PlaybookKey"}} <input type="text" name="system.playbook" value="{{system.playbook}}" /></label>
     <label>{{localize "BLADES68.LoadCost"}} <input type="number" name="system.load" value="{{system.load}}" min="0" /></label>
     <label><input type="checkbox" name="system.carried" {{checked system.carried}} /> {{localize "BLADES68.Carried"}}</label>
   {{/ifEquals}}
@@ -67,7 +68,7 @@
   {{#unless (ifEquals item.type "clock")}}
     <fieldset>
       <legend>{{localize "BLADES68.Description"}}</legend>
-      {{editor system.description target="system.description" button=true engine="prosemirror" collaborate=false}}
+      {{formInput systemFields.description value=system.description enriched=(lookup enriched "description") toggled=true}}
     </fieldset>
   {{/unless}}
 </section>

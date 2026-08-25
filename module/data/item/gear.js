@@ -1,11 +1,12 @@
 export default class GearData extends foundry.abstract.TypeDataModel {
   static defineSchema() {
-    const { NumberField, BooleanField, HTMLField } = foundry.data.fields;
+    const { NumberField, BooleanField, HTMLField, StringField } = foundry.data.fields;
 
     return {
       description: new HTMLField(),
       load: new NumberField({ initial: 1, min: 0, integer: true }),
-      carried: new BooleanField({ initial: false })
+      carried: new BooleanField({ initial: false }),
+      playbook: new StringField({ initial: '' })
     };
   }
 }

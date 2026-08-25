@@ -28,15 +28,13 @@
 
   <nav class="sheet-tabs">
     <a data-tab="character">{{localize "BLADES68.Tabs.Character"}}</a>
-    <a data-tab="score">{{localize "BLADES68.Tabs.Score"}}</a>
-    <a data-tab="downtime">{{localize "BLADES68.Tabs.Downtime"}}</a>
     <a data-tab="playbook">{{localize "BLADES68.Tabs.Playbook"}}</a>
     <a data-tab="clocks">{{localize "BLADES68.Tabs.Clocks"}}</a>
     <a data-tab="notes">{{localize "BLADES68.Tabs.Notes"}}</a>
   </nav>
 
   <section class="sheet-body">
-    <div class="tab character" data-tab="character" data-dupe-group="character">
+    <div class="tab character" data-tab="character">
       <fieldset class="identity-block sheet-section">
         <legend>{{actor.name}}</legend>
         <div class="identity-grid">
@@ -58,14 +56,6 @@
         </div>
       </fieldset>
 
-      {{> "systems/blades68/templates/partials/character-common.hbs"}}
-    </div>
-
-    <div class="tab score" data-tab="score" data-dupe-group="character">
-      {{> "systems/blades68/templates/partials/character-common.hbs"}}
-    </div>
-
-    <div class="tab downtime" data-tab="downtime">
       <fieldset class="vice-block">
         <legend>{{localize "BLADES68.VicePurveyor"}}</legend>
         <div class="vice-info">{{localize "BLADES68.ViceInfo"}}</div>
@@ -83,6 +73,7 @@
         value=system.healing.value max=system.healing.max color="#7aa2f7"
         label=(localize "BLADES68.Healing") action="setRating" path="system.healing.value" }}
       </fieldset>
+{{> "systems/blades68/templates/partials/character-common.hbs"}}
     </div>
 
     <div class="tab playbook" data-tab="playbook">
@@ -117,8 +108,9 @@
     </div>
 
     <div class="tab notes" data-tab="notes">
-      {{editor system.notes target="system.notes" button=true engine="prosemirror" collaborate=false}}
+      {{formInput systemFields.notes value=system.notes enriched=(lookup enriched "notes") toggled=true}}
     </div>
-  </section>
+
   <img class="credit-block" src="./systems/blades68/assets/roll20/images/credit_block.png" alt="" />
+  </section>
 </div>

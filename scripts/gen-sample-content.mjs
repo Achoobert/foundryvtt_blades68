@@ -26,23 +26,8 @@ function buildItem(collectionKey, type, name, system) {
   };
 }
 
-function buildFactionActor(name, system) {
-  const id = genId();
-  return {
-    _id: id,
-    _key: `!actors!${id}`,
-    name,
-    type: 'faction',
-    img: 'icons/svg/city.svg',
-    items: [],
-    effects: [],
-    folder: null,
-    sort: 0,
-    ownership: { default: 0 },
-    flags: {},
-    prototypeToken: { name, actorLink: false, depth: 1 },
-    system
-  };
+function buildFaction(name, system) {
+  return { ...buildItem('items', 'faction', name, system), img: 'icons/svg/city.svg' };
 }
 
 async function writeDocs(subdir, docs) {
@@ -131,7 +116,7 @@ const itemDocs = [
 ];
 
 const factionDocs = [
-  buildFactionActor('The Gallowmark Syndicate', {
+  buildFaction('The Gallowmark Syndicate', {
     category: 'underworld',
     tier: 3,
     hold: 'strong',
@@ -139,7 +124,7 @@ const factionDocs = [
     war: false,
     notes: '<p>Sample underworld faction: a smuggling ring with fingers in every dock warehouse.</p>'
   }),
-  buildFactionActor('Ironhook Watch', {
+  buildFaction('Ironhook Watch', {
     category: 'institutions',
     tier: 4,
     hold: 'strong',
@@ -147,7 +132,7 @@ const factionDocs = [
     war: false,
     notes: '<p>Sample institutional faction: the city\'s overworked, under-trusted constabulary.</p>'
   }),
-  buildFactionActor('Saltford Banking Concern', {
+  buildFaction('Saltford Banking Concern', {
     category: 'corporate',
     tier: 4,
     hold: 'weak',
@@ -155,7 +140,7 @@ const factionDocs = [
     war: false,
     notes: '<p>Sample corporate faction: old money looking for new leverage.</p>'
   }),
-  buildFactionActor('The Nightmarket Union', {
+  buildFaction('The Nightmarket Union', {
     category: 'citizenry',
     tier: 2,
     hold: 'weak',

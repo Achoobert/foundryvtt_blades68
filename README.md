@@ -6,11 +6,12 @@ Built against modern Foundry APIs (v13 minimum, v14 verified): DataModel-driven 
 
 ## What's here
 
-- **Actors**: `character` (PC), `npc`, `crew`, `faction`
-- **Items**: `playbook`, `ability`, `heritage`, `vice`, `gear`, `contact`, `crew-playbook`, `crew-ability`, `upgrade`, `cohort`, `claim`, `clock`
+- **Actors**: `character` (PC), `npc`, `crew`
+- **Items**: `faction`, `playbook`, `ability`, `heritage`, `vice`, `gear`, `contact`, `crew-playbook`, `crew-ability`, `upgrade`, `cohort`, `claim`, `clock`
+- **Factions are Items**, so an NPC can point at one: the NPC sheet stores a `system.factionUuid` reference to the canonical faction rather than a copy, and a faction's project clocks live as world-level `clock` Items flagged with the owning faction's uuid (Foundry Items cannot embed Items)
 - **Dice engine** (`module/dice/`): action rolls, resistance rolls, and fortune rolls on the standard Forged-in-the-Dark dice pool (highest die wins, 6+6 crits, 0-dice rolls 2d6 keep-lowest)
 - **Clocks**: embeddable `clock` items with an SVG wedge widget, plus a standalone Clock Tracker app that surfaces any clock marked "shared" across all actors
-- **Faction Tracker**: a standalone app grouping all `faction` actors by category (Underworld/Institutions/Corporate/Citizenry/Fringe), matching the tabletop Factions-of-Doskvol tracker sheet
+- **Faction Tracker**: a standalone app grouping all `faction` items by category (Underworld/Institutions/Corporate/Citizenry/Fringe), matching the tabletop Factions-of-Doskvol tracker sheet
 - **Compendiums**: sample playbooks/items/factions and starter Trouble Deck / Faction Deck roll tables (minimal content — full SRD transcription is a later pass; see `rule_books/`)
 - **Tests**: Quench batches (`tests/quench/`) covering data models, dice math, clocks, and sheet rendering, driven by a Cypress harness (`tests/e2e/`) against a live Foundry instance
 

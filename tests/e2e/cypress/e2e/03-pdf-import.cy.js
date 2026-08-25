@@ -22,31 +22,17 @@ describe('Blades68 PDF import', () => {
 
     cy.get('#blades68-pdf-import input[name="rulebookFile"]').selectFile(RULEBOOK_PATH, { force: true })
 
-    cy.get('#blades68-pdf-import [data-action="parseFactions"]').click()
+    cy.get('#blades68-pdf-import [data-action="parseRulebook"]').click()
 
-    cy.get('#blades68-pdf-import .pdf-import-log', { timeout: 60000 }).should(
+    cy.get('#blades68-pdf-import .pdf-import-log', { timeout: 120000 }).should(
       'contain.text',
-      'Parsed'
+      'Created'
     )
-
-    cy.get('#blades68-pdf-import .faction-preview-row', { timeout: 10000 }).should(
-      'have.length.at.least',
-      5
-    )
-
-    cy.get('#blades68-pdf-import .faction-preview').should(
-      'contain.text',
-      'Anixis Field Unit'
-    )
-
-    cy.get('#blades68-pdf-import [data-action="createFactions"]').should('not.be.disabled').click()
-
-    cy.get('#blades68-pdf-import .pdf-import-log').should('contain.text', 'Created')
 
     cy.window().then((win) => {
-      const factions = win.game.actors.contents.filter((actor) => actor.type === 'faction')
-      const anixis = factions.find((actor) => actor.name === 'Anixis Field Unit')
-      expect(anixis, 'Anixis Field Unit actor was created').to.exist
+      const factions = win.game.items.contents.filter((item) => item.type === 'faction')
+      const anixis = factions.find((item) => item.name === 'Anixis Field Unit')
+      expect(anixis, 'Anixis Field Unit item was created').to.exist
       expect(anixis.system.tier).to.equal(2)
       expect(anixis.system.hold).to.equal('strong')
     })
