@@ -11,6 +11,16 @@ export const registerSystemSettings = function() {
     default: 0
   });
   
+	game.settings.register('blades68', 'GambitsMax', {
+		name: game.i18n.localize('BITD.Settings.GambitsMax.Name'),
+		hint: game.i18n.localize('BITD.Settings.GambitsMax.Hint'),
+		config: true,
+		scope: 'world',
+		type: Number,
+		range: { min: 0, max: 12, step: 1 },
+		default: 6
+	});
+
   if (foundry.utils.isNewerVersion(game.version, 12)) {
 
     game.settings.register('blades68', 'ActionRoll', {

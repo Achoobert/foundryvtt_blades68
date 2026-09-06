@@ -371,8 +371,7 @@
         "max": 0
       },
       "gambits": {
-        "value": 0,
-        "max": 0
+        "value": 0
       },
       "turf": {
         "descriptions": [],

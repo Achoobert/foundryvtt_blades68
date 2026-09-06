@@ -50,7 +50,16 @@ export class BladesCrewSheet extends BladesSheet {
 	turfs_amount = turfs_amount + sheetData.system.turf.bonus;
 	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
     sheetData.system.turfs_amount = turfs_amount;
-	
+
+    // Gambit boxes are sized by a world setting, not per-crew data.
+    const gambits_max = Number(game.settings.get("blades68", "GambitsMax")) || 0;
+    const gambits_value = Number(sheetData.system.gambits?.value) || 0;
+    sheetData.gambits_max = gambits_max;
+    sheetData.system.gambits = {
+      ...sheetData.system.gambits,
+      value: Math.min(Math.max(gambits_value, 0), gambits_max)
+    };
+
 	//return data
     return sheetData;
 	

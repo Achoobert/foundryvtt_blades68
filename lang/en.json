@@ -631,6 +631,10 @@
       "Name": "Default Observable Clocks",
       "Hint": "All newly made Clock actors will have permissions set to Observer for all players."
     },
+    "GambitsMax": {
+      "Name": "Maximum Gambits",
+      "Hint": "Number of Gambit boxes on crew sheets."
+    },
     "Blades68": {
       "Name": "Blades '68 Mode",
       "Hint": "Replaces the character sheet's Trauma section with Keys & Deadlocks and applies the Blades '68 bright color theme."

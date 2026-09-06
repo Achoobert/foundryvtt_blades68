@@ -140,10 +140,14 @@
         <div class="stripe">
           <b>{{localize "BITD.Gambits"}}</b>
         </div>
-        <div class="flex-horizontal" style="align-items:center; gap:2px;">
-          <input type="number" id="crew-{{_id}}-gambits-value" name="system.gambits.value" value="{{system.gambits.value}}" min="0" style="width:2.5em;">
-          <span>/</span>
-          <input type="number" id="crew-{{_id}}-gambits-max" name="system.gambits.max" value="{{system.gambits.max}}" min="0" style="width:2.5em;">
+        <div class="crew-coins coins-vault">
+          {{#multiboxes system.gambits.value}}
+          <input type="radio" id="crew-{{_id}}-gambits-0" name="system.gambits.value" value="0" checked="checked">
+          {{#times_from 1 gambits_max}}
+          <input id="crew-{{../_id}}-gambits-{{this}}" type="radio" name="system.gambits.value" value="{{this}}">
+          <label class="radio-toggle" for="crew-{{../_id}}-gambits-{{this}}"></label>
+          {{/times_from}}
+          {{/multiboxes}}
         </div>
       </div>
 
