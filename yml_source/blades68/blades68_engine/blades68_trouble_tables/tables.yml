@@ -1,0 +1,783 @@
+_id: 7a1b0c2d3e4f5401
+name: Crew Trouble Heat 0-3
+img: icons/svg/d20-grey.svg
+description: >-
+  If their Wanted Level is zero, roll two dice and keep the lowest result. This will tell you whether there’s no new
+  trouble, a new light trouble, or a new heavy trouble.
+results:
+  - _id: 7a1b0c2d3e4f6001
+    type: 0
+    text: None
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 1
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6002
+    type: 0
+    text: Light Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 4
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 5
+  - _id: 7a1b0c2d3e4f6003
+    type: 0
+    text: Heavy Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 6
+    rangeH: 6
+formula: 1d6
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5402
+name: Crew Trouble Heat 4-5
+img: icons/svg/d20-grey.svg
+description: ''
+results:
+  - _id: 7a1b0c2d3e4f6004
+    type: 0
+    text: None
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 1
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6005
+    type: 0
+    text: Light Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 4
+  - _id: 7a1b0c2d3e4f6006
+    type: 0
+    text: Heavy Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 5
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 5
+    rangeH: 6
+formula: 1d6
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5403
+name: Crew Trouble Heat 6+
+img: icons/svg/d20-grey.svg
+description: ''
+results:
+  - _id: 7a1b0c2d3e4f6007
+    type: 0
+    text: Light Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 1
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6008
+    type: 0
+    text: Heavy Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 4
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 6
+formula: 1d6
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5404
+name: Light Crew Troubles
+img: icons/svg/d20-grey.svg
+description: Random light crew trouble.
+results:
+  - _id: 7a1b0c2d3e4f6009
+    type: 2
+    text: Asking Around
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5001
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 1
+  - _id: 7a1b0c2d3e4f6010
+    type: 2
+    text: Debt
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5002
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    flags: {}
+    rangeL: 2
+    rangeH: 2
+  - _id: 7a1b0c2d3e4f6011
+    type: 2
+    text: Friendly Favor
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5003
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 3
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6012
+    type: 2
+    text: Gang Trouble
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5004
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 4
+  - _id: 7a1b0c2d3e4f6013
+    type: 2
+    text: Interrogation
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5005
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 5
+    rangeH: 5
+  - _id: 7a1b0c2d3e4f6014
+    type: 2
+    text: Patrols
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5006
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 6
+    rangeH: 6
+  - _id: 7a1b0c2d3e4f6015
+    type: 2
+    text: Rattling the Cage
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5007
+    weight: 1
+    range:
+      - 7
+      - 7
+    drawn: false
+    flags: {}
+    rangeL: 7
+    rangeH: 7
+  - _id: 7a1b0c2d3e4f6016
+    type: 2
+    text: Shakedown
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5008
+    weight: 1
+    range:
+      - 8
+      - 8
+    drawn: false
+    flags: {}
+    rangeL: 8
+    rangeH: 8
+  - _id: 7a1b0c2d3e4f6017
+    type: 2
+    text: Thieving Bastards
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5009
+    weight: 1
+    range:
+      - 9
+      - 9
+    drawn: false
+    flags: {}
+    rangeL: 9
+    rangeH: 9
+  - _id: 7a1b0c2d3e4f6018
+    type: 2
+    text: Things Get Weird
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f500a
+    weight: 1
+    range:
+      - 10
+      - 10
+    drawn: false
+    flags: {}
+    rangeL: 10
+    rangeH: 10
+  - _id: 7a1b0c2d3e4f6019
+    type: 2
+    text: Under Investigation
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f500b
+    weight: 1
+    range:
+      - 11
+      - 11
+    drawn: false
+    flags: {}
+    rangeL: 11
+    rangeH: 11
+  - _id: 7a1b0c2d3e4f6020
+    type: 2
+    text: Wrong Place, Wrong Time
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f500c
+    weight: 1
+    range:
+      - 12
+      - 12
+    drawn: false
+    flags: {}
+    rangeL: 12
+    rangeH: 12
+formula: 1d12
+replacement: false
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5405
+name: Heavy Crew Troubles
+img: icons/svg/d20-grey.svg
+description: Random heavy crew trouble.
+results:
+  - _id: 7a1b0c2d3e4f6021
+    type: 2
+    text: Arrest
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5101
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 1
+  - _id: 7a1b0c2d3e4f6022
+    type: 2
+    text: Assassination
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5102
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    flags: {}
+    rangeL: 2
+    rangeH: 2
+  - _id: 7a1b0c2d3e4f6023
+    type: 2
+    text: Challenged Claim
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5103
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 3
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6024
+    type: 2
+    text: Flipped
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5104
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 4
+  - _id: 7a1b0c2d3e4f6025
+    type: 2
+    text: Invasion
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5105
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 5
+    rangeH: 5
+  - _id: 7a1b0c2d3e4f6026
+    type: 2
+    text: Show of Force
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5106
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 6
+    rangeH: 6
+formula: 1d6
+replacement: false
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5406
+name: Local Trouble
+img: icons/svg/d20-grey.svg
+description: >-
+  Fortune roll for whether a new local trouble appears. Critical: a festival or celebration takes place in the local
+  district, and any PC who wishes to take part clears 1 Stress.
+results:
+  - _id: 7a1b0c2d3e4f6027
+    type: 0
+    text: Light Trouble
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 1
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6028
+    type: 0
+    text: None, but take -1d to this roll next time
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 4
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 5
+  - _id: 7a1b0c2d3e4f6029
+    type: 0
+    text: None
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 6
+    rangeH: 6
+formula: 1d6
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5407
+name: Light Local Troubles
+img: icons/svg/d20-grey.svg
+description: Random light local trouble.
+results:
+  - _id: 7a1b0c2d3e4f6030
+    type: 2
+    text: Denounced
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5201
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 1
+  - _id: 7a1b0c2d3e4f6031
+    type: 2
+    text: Disappearance
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5202
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    flags: {}
+    rangeL: 2
+    rangeH: 2
+  - _id: 7a1b0c2d3e4f6032
+    type: 2
+    text: Disaster
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5203
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 3
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6033
+    type: 2
+    text: Local Unrest
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5204
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 4
+  - _id: 7a1b0c2d3e4f6034
+    type: 2
+    text: No-Go Zone
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5205
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 5
+    rangeH: 5
+  - _id: 7a1b0c2d3e4f6035
+    type: 2
+    text: Paranormal Activity
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5206
+    weight: 1
+    range:
+      - 6
+      - 6
+    drawn: false
+    flags: {}
+    rangeL: 6
+    rangeH: 6
+  - _id: 7a1b0c2d3e4f6036
+    type: 2
+    text: Patrols
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5207
+    weight: 1
+    range:
+      - 7
+      - 7
+    drawn: false
+    flags: {}
+    rangeL: 7
+    rangeH: 7
+  - _id: 7a1b0c2d3e4f6037
+    type: 2
+    text: Protests
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5208
+    weight: 1
+    range:
+      - 8
+      - 8
+    drawn: false
+    flags: {}
+    rangeL: 8
+    rangeH: 8
+  - _id: 7a1b0c2d3e4f6038
+    type: 2
+    text: Public Outrage
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5209
+    weight: 1
+    range:
+      - 9
+      - 9
+    drawn: false
+    flags: {}
+    rangeL: 9
+    rangeH: 9
+  - _id: 7a1b0c2d3e4f6039
+    type: 2
+    text: Resource Crisis
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f520a
+    weight: 1
+    range:
+      - 10
+      - 10
+    drawn: false
+    flags: {}
+    rangeL: 10
+    rangeH: 10
+  - _id: 7a1b0c2d3e4f6040
+    type: 2
+    text: Sharks in the Water
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f520b
+    weight: 1
+    range:
+      - 11
+      - 11
+    drawn: false
+    flags: {}
+    rangeL: 11
+    rangeH: 11
+  - _id: 7a1b0c2d3e4f6041
+    type: 2
+    text: Vandalism
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f520c
+    weight: 1
+    range:
+      - 12
+      - 12
+    drawn: false
+    flags: {}
+    rangeL: 12
+    rangeH: 12
+formula: 1d12
+replacement: false
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5408
+name: Heavy Local Troubles
+img: icons/svg/d20-grey.svg
+description: Random heavy local trouble.
+results:
+  - _id: 7a1b0c2d3e4f6042
+    type: 2
+    text: Affliction
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5301
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 1
+  - _id: 7a1b0c2d3e4f6043
+    type: 2
+    text: Ominous Object
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5302
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    flags: {}
+    rangeL: 2
+    rangeH: 2
+  - _id: 7a1b0c2d3e4f6044
+    type: 2
+    text: Rioting
+    img: icons/svg/item-bag.svg
+    collection: blades68.blades68_troubles
+    resultId: 7a1b0c2d3e4f5303
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 3
+    rangeH: 3
+formula: 1d3
+replacement: false
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5409
+name: Escalations
+img: icons/svg/d20-grey.svg
+description: If an ongoing trouble is not dealt with, roll an escalation.
+results:
+  - _id: 7a1b0c2d3e4f6045
+    type: 0
+    text: 'The trouble draws the attention of the law: take 1 Heat.'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 1
+      - 1
+    drawn: false
+    flags: {}
+    rangeL: 1
+    rangeH: 1
+  - _id: 7a1b0c2d3e4f6046
+    type: 0
+    text: 'The crew lose face: forfeit 1 Rep.'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 2
+      - 2
+    drawn: false
+    flags: {}
+    rangeL: 2
+    rangeH: 2
+  - _id: 7a1b0c2d3e4f6047
+    type: 0
+    text: Reduce a faction status by 1.
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 3
+      - 3
+    drawn: false
+    flags: {}
+    rangeL: 3
+    rangeH: 3
+  - _id: 7a1b0c2d3e4f6048
+    type: 0
+    text: Tick a relevant faction clock.
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 4
+      - 4
+    drawn: false
+    flags: {}
+    rangeL: 4
+    rangeH: 4
+  - _id: 7a1b0c2d3e4f6049
+    type: 0
+    text: Increase the magnitude of the ongoing trouble.
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range:
+      - 5
+      - 5
+    drawn: false
+    flags: {}
+    rangeL: 5
+    rangeH: 5
+formula: 1d5
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

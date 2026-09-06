@@ -223,6 +223,7 @@
       <a class="item" data-tab="contacts">{{localize "BITD.Contacts"}}</a>
       <a class="item" data-tab="cohorts">{{localize "BITD.Cohorts"}}</a>
       <a class="item" data-tab="prison">{{localize "BITD.Prison"}}</a>
+      <a class="item" data-tab="trouble">{{localize "BITD.Trouble"}}</a>
       <a class="item" data-tab="notes">{{localize "BITD.Notes"}}</a>
       <a class="item" data-tab="all-items">{{localize "BITD.AllItems"}}</a>
       {{#if isGM}}
@@ -411,6 +412,37 @@
       {{#if (eq item.type "prison")}}
       <div class="item" data-item-id="{{item._id}}">
         {{> "systems/blades68/templates/parts/turf-list.html" _id=../_id turfs_data=item.system.turfs can_edit=false not_prison=false}}
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
+
+    {{!-- Troubles --}}
+    <div id="crew-{{_id}}-trouble" class="tab" data-tab="trouble">
+      <div class="label-stripe flex-horizontal">
+        <p><label>{{localize "BITD.Trouble"}}</label></p>
+        <p><a class="item-add-popup" data-distinct="true" data-item-type="trouble"><i class="fas fa-plus-square"></i></a>
+        </p>
+      </div>
+      {{#each items as |item id|}}
+      {{#if (eq item.type "trouble")}}
+      <div class="item flex-vertical" data-item-id="{{item._id}}">
+        <div class="item flex-horizontal">
+          <div class="item-body item-sheet-open flex-horizontal">
+            <b>
+              <div class="item-name">{{item.name}}</div>
+            </b>
+            {{#if item.system.ongoing}}<div class="item-description">({{localize "BITD.Ongoing"}})</div>{{/if}}
+          </div>
+          <a class="item-control item-delete" style="max-width: 10px !important;"
+            data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+          <a class="item-control item-post" style="max-width: 10px !important;"
+            data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+        </div>
+        <div class="item-description">{{{item.system.description}}}</div>
+        {{#if item.system.escilation}}
+        <div class="item-description"><b>{{localize "BITD.Escalation"}}:</b> {{{item.system.escilation}}}</div>
+        {{/if}}
       </div>
       {{/if}}
       {{/each}}

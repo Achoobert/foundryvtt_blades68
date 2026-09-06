@@ -434,7 +434,8 @@
       "crew_reputation",
       "crew_upgrade",
       "crew_ability",
-      "prison"
+      "prison",
+      "trouble"
     ],
     "templates": {
       "default": {
@@ -921,6 +922,13 @@
           "connects": []
         }
       }
+    },
+    "trouble": {
+      "name": "",
+      "description": "",
+      "ongoing": false,
+      "escilation": "",
+      "group": ""
     }
   }
 }

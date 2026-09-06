@@ -1,0 +1,806 @@
+# Light Crew Troubles
+---
+_id: 7a1b0c2d3e4f5001
+name: Asking Around
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    An investigator from another faction asks around about your crew,
+    looking for insights. They could be an Inspector, a Bluecoat, a hound, a
+    Reality Warden, or a corporate fixer.
+
+    Make a 1d fortune roll to see how much dirt they come up with in the
+    local community (1-3: +2 Heat and the faction learns a vulnerability or
+    secret of the crew, 4/5: +2 Heat, 6: nothing).
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5002
+name: Debt
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: true
+  escilation: >-
+    The debt gets bigger: increase the clock size.
+
+    An unpleasant message is sent to the debtor.
+  description: >-
+    Something has put a character or one of their close friends in the hole, and
+    they need to make good on the debt.
+
+    Create a 4-segment debt clock. Fill segments by spending stacks during
+    downtime. Until the debt clock is filled, the debt hangs over the crew and
+    might cause various other problems. The GM might create a second clock
+    for the creditor’s patience, escalating each time it fills.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5003
+name: Friendly Favor
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    A friendly faction (or a contact) puts pressure on the crew to do something
+    dangerous for them.
+
+    This request will usually require a full score, but could be a smaller favor.
+    Handle it like a personal mission with a failure clock, but it’s for the whole
+    crew. Failure means -1 faction status.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5004
+name: Gang Trouble
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    One of your gangs or other cohorts causes trouble due to their flaw(s).
+
+    You can lose face (forfeit Rep equal to your Tier +1), make an example of
+    one of the gang members, or face reprisals from the wronged party.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5005
+name: Interrogation
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    One of the PCs is collared and hauled in for questioning. It’s quite likely
+    the Bluecoats, but could be any faction who have the motive and means.
+    How did they manage to capture you?
+
+    Either pay them off with 3 stacks, or they beat you up (level 2 harm) and
+    you tell them what they want to know (+3 Heat). You can resist each of
+    those consequences separately.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5006
+name: Patrols
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Under Investigation.
+
+    A patrol does a raid on the crew’s base.
+  description: >-
+    A faction, probably the Bluecoats but maybe not, starts frequent patrols
+    in your local district. They are armed and ready for trouble. They will
+    suppress everything objectionable they can get away with.
+
+    Take -1d to the engagement roll for scores in this district. An armed patrol
+    unit is a potential complication in any such score.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5007
+name: Rattling the Cage
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    An unfriendly faction sends a group into the district to cause trouble.
+    They might be testing boundaries, gathering intel, delivering payback, or
+    just trying to provoke trouble.
+
+    Either leave them to it and forfeit 2 Rep per Tier of the faction, or
+    confront them. This would involve a free play action roll or two—
+    potentially costing Stress, harm, or other consequences like negative
+    faction status.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5008
+name: Shakedown
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    Someone on the periphery of your crew is forced to spill what they know
+    about you. They will not enjoy the experience.
+
+    Decide which faction is behind the shakedown (Bluecoats are a good
+    default) and identify an NPC member of the crew, a friend, or other close
+    contact most likely to be singled out by them. Who is most vulnerable?
+
+    Pay the culprits off with 2 stacks, or make a fortune roll to see how much
+    the victim talks (1-3: +2 Heat; 4/5: +1 Heat; 6: nothing; critical: the
+    NPC escapes with some useful information about the faction behind the
+    shakedown).
+
+    Roll 2d for a normal person to see how well they keep quiet. If they’re an
+    experienced underworld type or some kind of tough, give them 3d or 4d
+    instead. If they’re soft or if they have some loyalty to the law, give them 1d
+    or 0d.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5009
+name: Thieving Bastards
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    Thieves target the crew’s base for a heist.
+
+    Take away something belonging to the crew. It could be a piece of special
+    equipment, their stacks (if they don’t have a vault), or something used as
+    part of their downtime activities.
+
+    This could be staged as a raid, giving the opportunity for the crew to
+    defend themselves.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f500a
+name: Things Get Weird
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    A Class VI Metadimensional Entity (a “demon”) approaches the crew with
+    a dark offer.
+
+    Their desires can be impenetrable, but the rewards can be great: money,
+    crew upgrades, or a favor owed by this all-powerful entity. What is the
+    request and reward? Is it made to one person, or the whole crew?
+
+    The request might require a score, or something simpler. If the deal is
+    completed, the reward will be delivered. If the deal is refused, a rival
+    faction might complete it instead.
+
+    Accept their bargain, hide until it loses interest (forfeit 3 Rep), or deal
+    with it another way.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f500b
+name: Under Investigation
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: true
+  escilation: >-
+    More trouble: Interrogation, Shakedown.
+
+    Tipped off: This surveillance crew tips off the target of your next score.
+    Take an additional -1d to the engagement roll (-2d total).
+  description: >-
+    Another faction has your crew under surveillance. This is probably the
+    Bluecoats, but could be any faction with the means and motive.
+
+    As long as you’re under investigation, every score generates +1 Heat, and
+    you take -1d to the engagement roll.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f500c
+name: 'Wrong Place, Wrong Time'
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    A friend or contact of the characters is found badly beaten. By who? Why?
+
+    Let it go and lose Rep equal to your Tier, or go get payback. This would
+    involve a free play action roll or two—potentially costing Stress, harm, or
+    other consequences like negative faction status.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+# Heavy Crew Troubles
+_id: 7a1b0c2d3e4f5101
+name: Arrest
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    The Bluecoats send a detail to arrest you.
+
+    Raid. The scale of the arrest detail is equal to your Wanted Level, at a
+    minimum. Pay them off with stacks equal to your Wanted Level +4, hand
+    someone over for arrest, or defend against the raid.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5102
+name: Assassination
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    An enemy faction makes a lethal move against your crew.
+
+    Raid, but not necessarily on the crew’s base. What faction ordered the hit?
+    The target might be one of the PCs or their cohorts. Alternatively, it could
+    be a friend to a PC, or otherwise in their close circle. A good engagement roll
+    result might mean the PCs get tipped off to the assassination in advance; a
+    poor engagement roll might leave them desperately trying to staunch the
+    bleeding before the target dies.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5103
+name: Challenged Claim
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    Another faction makes a move against one of the crew’s claims.
+
+    Raid, but on a claim. Choose a claim. The faction will make a swift and
+    serious attack against it. If the attack is successful, the crew loses the claim
+    and it falls under the control of the rivals.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5104
+name: Flipped
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    One of the PCs’ rivals arranges for one of your contacts or vice purveyors
+    to switch allegiances due to the Heat on you. They’re loyal to another
+    faction now.
+
+    The PCs lose access to the NPC in question and any associated services.
+    Acquiring a new vice purveyor involves a long-term project.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5105
+name: Invasion
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    An outside faction invades the district with a specific objective in mind.
+
+    Raid. The force could be a gang from another district, an elite corporate
+    team, or a Bluecoat task force. They want to destroy something or grab
+    someone. Target a person or place that matters to the crew (but probably
+    not their base) and hit them hard.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5106
+name: Show of Force
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_crew
+  ongoing: false
+  escilation: ''
+  description: >-
+    An enemy faction makes a play against you.
+
+    Raid by a faction with whom you have a negative status. Offer them a claim
+    to bribe them off, or defend against the raid.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+# Light Local Troubles
+_id: 7a1b0c2d3e4f5201
+name: Denounced
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Protests (against the crew).
+
+    Take -1 faction status with local citizenry.
+
+    The group behind the campaign organizes a vigilante raid.
+  description: >-
+    Loud voices in the local district rail against the PC crew and their
+    dangerous ways.
+
+    This trouble has no immediate mechanical effect, but will sour the crew’s
+    relationship with the local citizens if it’s left unresolved.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5202
+name: Disappearance
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Sharks in the Water.
+
+    A ransom note appears.
+  description: >-
+    Someone goes missing.
+
+    Choose a contact or friend. They disappear without immediate
+    explanation. They could have been abducted, run away, died without
+    anyone knowing it, been arrested... This trouble remains ongoing until
+    their fate is known, or people stop wondering.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5203
+name: Disaster
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: false
+  escilation: ''
+  description: >-
+    A storm, a fire, a flood, an anomaly tear, a hole opening up in the street...
+    Local people are in danger.
+
+    Disasters are usually random city trouble, but might be deliberately
+    caused by a faction. This might not have a direct impact on the PCs, but
+    will they help out anyway?
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5204
+name: Local Unrest
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Gang Trouble, Protests, Vandalism.
+
+    The crew lose face: Forfeit 1 Rep.
+  description: >-
+    The mood in the district worsens noticeably. Tempers fray, and violence is
+    not far from the surface. Why are people angry?
+
+    Actions involving angry people are always at least risky.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5205
+name: No-Go Zone
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Rioting, Vandalism.
+
+    The zone is expanded and extended.
+  description: >-
+    A portion of the city is divided by a barrier, either between two districts
+    or through the middle of one. It could be police barricades, a military
+    blockade, an armed protest or insurrection, a construction project, a
+    quarantine, or even just a mysterious wall.
+
+    As long as the no-go zone is in place, it’s likely to give -1d to engagement
+    rolls for scores outside the local district, given the difficulty going to and
+    from your base.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5206
+name: Paranormal Activity
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Disappearance, Local Unrest, Ominous Object.
+
+    The activity intensifies; increase the magnitude of the trouble.
+  description: >-
+    One or more resonance entities are haunting the local district, or even the
+    crew’s base.
+
+    This has no immediate effect on the crew, but might escalate into a larger
+    problem.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5207
+name: Patrols
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Under Investigation.
+
+    A patrol does a raid on the crew’s base.
+  description: >-
+    A faction, probably the Bluecoats but maybe not, starts frequent patrols
+    in your local district. They are armed and ready for trouble. They will
+    suppress everything objectionable they can get away with.
+
+    Take -1d to the engagement roll for scores in this district. An armed patrol
+    unit is a potential complication in any such score.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5208
+name: Protests
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Rioting.
+
+    Counterprotests begin.
+  description: >-
+    A section of the community begins to protest some larger problem. If they
+    call upon the crew to join them, what will the characters do?
+
+    The protests will continue until the source problem is resolved, or until
+    they run out of steam. Which section of the community is protesting?
+    How do other groups feel about it?
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5209
+name: Public Outrage
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Protests.
+
+    A mob tries to punish the troublemaker themselves.
+  description: >-
+    A contact or a friend does something controversial, creating a local
+    backlash against them. Is it a lifestyle choice, a reality crime, a form of
+    protest, or something else?
+
+    Unless the PCs figure out some kind of solution, their contact or friend
+    may face harm (or even death).
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f520a
+name: Resource Crisis
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Affliction, Local Unrest.
+
+    A rival faction raids the crew’s remaining supply of the resource.
+  description: >-
+    Something the district needs (food, medicine, plasmoleum) is suddenly
+    inaccessible.
+
+    The crisis could be engineered by a rival faction, by a disastrous oversight,
+    or as a consequence of some other effect elsewhere. A long-term project
+    could solve it, but the right score might do so sooner.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f520b
+name: Sharks in the Water
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Disappearance, Patrols.
+
+    The predators raid the PC crew’s base.
+  description: >-
+    An outside faction begins hunting in the local district. They could be
+    con artists, religious fanatics seeking converts, a Bluecoat task force
+    looking for easy arrests to fill a quota, or similar.
+
+    Choose a faction and decide how they will prey on the local district. They
+    will continue this work so long as it remains profitable for them.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f520c
+name: Vandalism
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: light_local
+  ongoing: true
+  escilation: >-
+    More trouble: Local Unrest, Patrols, Public Outrage.
+
+    Locals catch a vandal and prepare an excessive punishment.
+  description: >-
+    Windows get broken, walls get defaced, fires are started. Is it just kids
+    acting out, or something bigger? Is the damage random, or does it have a
+    specific target?
+
+    If it affects a friend or contact, they cannot help on downtime actions
+    unless given a stack to help with repairs.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+# Heavy Local Troubles
+_id: 7a1b0c2d3e4f5301
+name: Affliction
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_local
+  ongoing: true
+  escilation: >-
+    More trouble: Resource Crisis, Local Unrest, Riots.
+
+    The affliction spreads to other districts.
+
+    A random PC is afflicted and takes level 2 harm (can be resisted).
+  description: >-
+    Sickness, starvation, or paranormal effects plague the district.
+
+    Acquire and distribute medicine, food, or some other salve to slow or halt
+    the affliction. It may otherwise escalate.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5302
+name: Ominous Object
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_local
+  ongoing: true
+  escilation: >-
+    More trouble: Things Get Weird, Local Unrest, Disaster, Affliction.
+
+    Harm to locals or to the crew.
+
+    A faction starts making use of the object’s dark power, increasing in
+    Tier immediately.
+  description: >-
+    Something strange is discovered in the local district. Maybe it’s a
+    monolith of black stone, a large rock that fell from the sky, an unusual
+    beast, or a gleaming silver ship that won’t open. Whatever it is, it’s a
+    source of paranormal danger and harm.
+
+    Decide the manner of harm it might deliver (radiation, attracting
+    resonance entities, sinking the district into the water, psychic trauma,
+    etc.). Escalations will reflect this harm.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
+---
+_id: 7a1b0c2d3e4f5303
+name: Rioting
+type: trouble
+img: icons/svg/item-bag.svg
+system:
+  group: heavy_local
+  ongoing: true
+  escilation: >-
+    More trouble: Vandalism, No-Go Zone, Shakedown, Patrols.
+
+    Rioters break into the crew’s base (Raid).
+  description: >-
+    The streets are engulfed in waves of riots. The riots may have spread from
+    elsewhere in the city, or been provoked by local events. The riots could
+    have noble motives or be driven by the worst prejudices. The crew might
+    agree with the cause or despise it.
+
+    Take -1d to the engagement roll, as well as +2 Heat, for any scores in this
+    district while the riots are ongoing.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

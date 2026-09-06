@@ -1,0 +1,5 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+name: "blades68_troubles"
+label: "Blades '68 Troubles"
+type: "Item"
+path: "./packs/blades68_troubles.db"

@@ -1,0 +1,32 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+      <img src="{{img}}" data-edit="img" title="{{name}}"/>
+      <div class="header-fields">
+          <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+      </div>
+  </header>
+
+  <section class="sheet-body flex-vertical">
+    <label class="label-stripe">{{localize "BITD.TroubleGroup"}}</label>
+    <select name="system.group">
+      <option value="light_crew" {{#if (eq system.group "light_crew")}}selected{{/if}}>Light Crew</option>
+      <option value="heavy_crew" {{#if (eq system.group "heavy_crew")}}selected{{/if}}>Heavy Crew</option>
+      <option value="light_local" {{#if (eq system.group "light_local")}}selected{{/if}}>Light Local</option>
+      <option value="heavy_local" {{#if (eq system.group "heavy_local")}}selected{{/if}}>Heavy Local</option>
+    </select>
+
+    <label class="label-stripe">{{localize "BITD.Ongoing"}}</label>
+    <input type="checkbox" name="system.ongoing" {{checked system.ongoing}}/>
+
+    <label class="label-stripe">{{localize "BITD.Description"}}</label>
+    {{editor system.description target="system.description" button=true editable=editable}}
+
+    <label class="label-stripe">{{localize "BITD.Escalation"}}</label>
+    <textarea name="system.escilation" rows="6">{{{system.escilation}}}</textarea>
+
+    {{#if isGM}}
+      <div class="label-stripe">{{localize "BITD.Effects"}}</div>
+      <div id="effects">{{> "systems/blades68/templates/parts/active-effects.html"}}</div>
+    {{/if}}
+  </section>
+</form>

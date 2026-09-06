@@ -267,6 +267,20 @@
       "system": "blades68",
       "path": "./packs/blades68_macros.db",
       "type": "Macro"
+    },
+    {
+      "name": "blades68_troubles",
+      "label": "Blades '68 Troubles",
+      "system": "blades68",
+      "path": "./packs/blades68_troubles.db",
+      "type": "Item"
+    },
+    {
+      "name": "blades68_trouble_tables",
+      "label": "Blades '68 Trouble Tables",
+      "system": "blades68",
+      "path": "./packs/blades68_trouble_tables.db",
+      "type": "RollTable"
     }
   ],
   "packFolders": [
@@ -324,6 +338,14 @@
         "blades68_crew_upgrades",
         "blades68_factions",
         "blades68_macros"
+      ]
+    },
+    {
+      "name": "Blades68 Engine",
+      "sorting": "m",
+      "packs": [
+        "blades68_troubles",
+        "blades68_trouble_tables"
       ]
     }
   ],

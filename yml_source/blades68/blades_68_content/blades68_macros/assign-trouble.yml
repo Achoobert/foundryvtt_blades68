@@ -1,0 +1,132 @@
+_id: 7a1b0c2d3e4f7001
+name: Assign Trouble
+type: script
+author: ''
+img: icons/svg/explosion.svg
+scope: global
+command: |
+  // Assign Trouble
+  // Pick crew vs local and light vs heavy, draw a random trouble, embed it
+  // on the selected crew actor.
+  (async () => {
+    const SYSTEM_ID = "blades68";
+
+    const token = canvas.tokens.controlled[0];
+    let actor = token?.actor;
+    if (actor && actor.type !== "crew") actor = null;
+    if (!actor) {
+      actor = game.actors.find((a) => a.type === "crew" && a.isOwner);
+    }
+
+    const crews = game.actors.filter((a) => a.type === "crew");
+    if (!crews.length) {
+      ui.notifications.warn("No crew actors in this world.");
+      return;
+    }
+
+    const { openFormDialog } = await import(
+      foundry.utils.getRoute(`systems/${SYSTEM_ID}/module/lib/dialog-compat.js`)
+    );
+
+    const tablePack = game.packs.get(`${SYSTEM_ID}.blades68_trouble_tables`);
+    const itemPack = game.packs.get(`${SYSTEM_ID}.blades68_troubles`);
+    if (!tablePack || !itemPack) {
+      ui.notifications.error("Blades '68 trouble compendiums are not available.");
+      return;
+    }
+
+    const crewOptions = crews
+      .map((c) => `<option value="${c.id}" ${c.id === actor?.id ? "selected" : ""}>${c.name}</option>`)
+      .join("");
+
+    const result = await openFormDialog({
+      title: "Assign Trouble",
+      content: `
+        <form>
+          <div class="form-group">
+            <label>Crew</label>
+            <select name="crewId" style="width:100%">${crewOptions}</select>
+          </div>
+          <div class="form-group">
+            <label>Scope</label>
+            <select name="scope" style="width:100%">
+              <option value="crew">Crew</option>
+              <option value="local">Local</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Weight</label>
+            <select name="weight" style="width:100%">
+              <option value="light">Light</option>
+              <option value="heavy">Heavy</option>
+            </select>
+          </div>
+        </form>
+      `,
+      okLabel: "Assign",
+      cancelLabel: "Cancel",
+    });
+    if (!result?.crewId) return;
+
+    const crew = game.actors.get(result.crewId);
+    if (!crew || crew.type !== "crew") {
+      ui.notifications.error("Selected crew not found.");
+      return;
+    }
+
+    const tableNames = {
+      "crew:light": "Light Crew Troubles",
+      "crew:heavy": "Heavy Crew Troubles",
+      "local:light": "Light Local Troubles",
+      "local:heavy": "Heavy Local Troubles",
+    };
+    const groupKeys = {
+      "crew:light": "light_crew",
+      "crew:heavy": "heavy_crew",
+      "local:light": "light_local",
+      "local:heavy": "heavy_local",
+    };
+    const key = `${result.scope}:${result.weight}`;
+    const tableName = tableNames[key];
+    const group = groupKeys[key];
+
+    const tables = await tablePack.getDocuments();
+    const table = tables.find((t) => t.name === tableName);
+    const troubles = (await itemPack.getDocuments()).filter((i) => i.system?.group === group);
+
+    let drawnItem = null;
+    if (table) {
+      const rolled = await table.roll();
+      if (typeof table.toMessage === "function") {
+        await table.toMessage(rolled.results, { roll: rolled.roll });
+      }
+      const drawn = rolled.results?.[0];
+      const docId = drawn?.resultId || drawn?.documentId;
+      if (docId) {
+        drawnItem = troubles.find((i) => i.id === docId) || await itemPack.getDocument(docId);
+      }
+    }
+    if (!drawnItem) {
+      if (!troubles.length) {
+        ui.notifications.error(`No trouble items found for ${tableName}.`);
+        return;
+      }
+      drawnItem = troubles[Math.floor(Math.random() * troubles.length)];
+    }
+
+    const already = crew.items.find(
+      (i) => i.type === "trouble" && i.name === drawnItem.name && i.system?.group === drawnItem.system?.group
+    );
+    if (already) {
+      ui.notifications.warn(`${crew.name} already has ${drawnItem.name}.`);
+      return;
+    }
+
+    await crew.createEmbeddedDocuments("Item", [drawnItem.toObject()]);
+    ui.notifications.info(`Assigned ${drawnItem.name} to ${crew.name}.`);
+  })();
+folder: null
+sort: 0
+ownership:
+  default: 0
+flags: {}

@@ -50,7 +50,7 @@ export function packPlacement(system) {
     if (!folder) {
       throw new Error(`Pack "${pack.name}" missing from packFolders`);
     }
-    const isBlades68 = folder.name === "Blades '68 Content";
+    const isBlades68 = /68/.test(folder.name);
     placement.set(pack.name, {
       game: isBlades68 ? "blades68" : "blades_in_the_dark",
       folderSlug: folderSlug(folder.name),
@@ -124,33 +124,37 @@ export function loadPackDocuments(packDir) {
 
   for (const entry of entries) {
     const file = path.join(packDir, entry);
-    let source;
+    let loaded;
     try {
-      source = yaml.load(fs.readFileSync(file, "utf8"));
+      loaded = yaml.loadAll(fs.readFileSync(file, "utf8"));
     } catch (err) {
       problems.push(`${file}: invalid YAML - ${err.message}`);
       continue;
     }
-    if (source == null) continue;
-    if (typeof source !== "object" || Array.isArray(source)) {
-      problems.push(`${file}: expected a single document mapping`);
-      continue;
+    const sources = loaded.filter((source) => source != null);
+    for (let i = 0; i < sources.length; i++) {
+      const source = sources[i];
+      const loc = sources.length > 1 ? `${file}#${i + 1}` : file;
+      if (typeof source !== "object" || Array.isArray(source)) {
+        problems.push(`${loc}: expected a document mapping`);
+        continue;
+      }
+      if (!source._id) {
+        problems.push(`${loc}: missing required \`_id\``);
+        continue;
+      }
+      if (!source.name) {
+        problems.push(`${loc}: missing required \`name\``);
+        continue;
+      }
+      const id = String(source._id);
+      if (seenIds.has(id)) {
+        problems.push(`${loc}: duplicate _id ${id} (also ${seenIds.get(id)})`);
+        continue;
+      }
+      seenIds.set(id, loc);
+      docs.push(source);
     }
-    if (!source._id) {
-      problems.push(`${file}: missing required \`_id\``);
-      continue;
-    }
-    if (!source.name) {
-      problems.push(`${file}: missing required \`name\``);
-      continue;
-    }
-    const id = String(source._id);
-    if (seenIds.has(id)) {
-      problems.push(`${file}: duplicate _id ${id} (also ${seenIds.get(id)})`);
-      continue;
-    }
-    seenIds.set(id, file);
-    docs.push(source);
   }
   return { docs, problems };
 }

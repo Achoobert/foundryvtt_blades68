@@ -1,0 +1,5 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+name: "blades68_trouble_tables"
+label: "Blades '68 Trouble Tables"
+type: "RollTable"
+path: "./packs/blades68_trouble_tables.db"

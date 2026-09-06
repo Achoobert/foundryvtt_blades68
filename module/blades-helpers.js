@@ -20,7 +20,10 @@ export class BladesHelpers {
     // Remove Duplicate items from the array.
     actor.items.forEach(i => {
       let has_double = (item_data.type === i.type);
-      if (((i.name === item_data.name) || (should_be_distinct && has_double)) && !(allowed_types.includes(item_data.type)) && (item_data._id !== i.id)) {
+      const same_name = item_data.type === "trouble"
+        ? (i.name === item_data.name && (item_data.system?.group ?? "") === (i.system?.group ?? ""))
+        : (i.name === item_data.name);
+      if ((same_name || (should_be_distinct && has_double)) && !(allowed_types.includes(item_data.type)) && (item_data._id !== i.id)) {
         dupe_list.push(i.id);
       }
     });
@@ -98,6 +101,7 @@ export class BladesHelpers {
       crew_type: "blades68_crew_types",
       crew_ability: "blades68_crew_abilities",
       crew_upgrade: "blades68_crew_upgrades",
+      trouble: "blades68_troubles",
     }[item_type];
   }
 
@@ -122,9 +126,10 @@ export class BladesHelpers {
       // the Dark one (some playbook names collide between the two rulesets, e.g. "Hound", so
       // this must replace rather than merge with the base pack).
       const blades68PackName = this.getBlades68PackName(item_type);
-      const packName = (blades68PackName && game.settings.get("blades68", "Blades68Mode"))
-        ? blades68PackName
-        : item_type;
+      const useBlades68Pack = blades68PackName && (
+        item_type === "trouble" || game.settings.get("blades68", "Blades68Mode")
+      );
+      const packName = useBlades68Pack ? blades68PackName : item_type;
       let packs = game.packs.filter(e => e.metadata.name === packName);
       let compendium_contents = await Promise.all(packs.map(pack => pack.getDocuments()));
       for(const compendium_content of compendium_contents) {

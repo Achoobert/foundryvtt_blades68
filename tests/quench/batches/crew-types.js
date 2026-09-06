@@ -125,6 +125,7 @@ export default function register(quench) {
           assert.equal(BladesHelpers.getBlades68PackName('crew_type'), 'blades68_crew_types');
           assert.equal(BladesHelpers.getBlades68PackName('crew_ability'), 'blades68_crew_abilities');
           assert.equal(BladesHelpers.getBlades68PackName('crew_upgrade'), 'blades68_crew_upgrades');
+          assert.equal(BladesHelpers.getBlades68PackName('trouble'), 'blades68_troubles');
         });
 
         it('lists B68 crew types/abilities/upgrades when Blades68Mode is on', async function () {

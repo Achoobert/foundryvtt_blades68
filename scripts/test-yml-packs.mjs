@@ -25,6 +25,7 @@ test("folderSlug mirrors sidebar names", () => {
   assert.equal(folderSlug("Character Options"), "character_options");
   assert.equal(folderSlug("Factions & NPCs"), "factions_and_npcs");
   assert.equal(folderSlug("Blades '68 Content"), "blades_68_content");
+  assert.equal(folderSlug("Blades68 Engine"), "blades68_engine");
 });
 
 test("docSlug is filesystem-safe", () => {
@@ -50,6 +51,26 @@ test("writeNedb sorts by _id and is deterministic", () => {
   ]);
   assert.equal(fs.readFileSync(file, "utf8"), once);
   assert.deepEqual(readNedb(file).map((d) => d._id), ["a", "b"]);
+});
+
+test("loadPackDocuments accepts multi-document YAML in one file", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "yml-packs-"));
+  fs.writeFileSync(
+    path.join(dir, "many.yml"),
+    [
+      "name: First",
+      "_id: id1",
+      "type: item",
+      "---",
+      "name: Second",
+      "_id: id2",
+      "type: item",
+      "",
+    ].join("\n")
+  );
+  const { docs, problems } = loadPackDocuments(dir);
+  assert.deepEqual(problems, []);
+  assert.deepEqual(docs.map((d) => d._id), ["id1", "id2"]);
 });
 
 test("loadPackDocuments rejects missing _id and duplicates", () => {
