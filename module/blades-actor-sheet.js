@@ -171,7 +171,7 @@ export class BladesActorSheet extends BladesSheet {
 
         // this is really the best way to do this???????
         sheetData.otherItems = itemResult.other.map(i => {
-            const usesMax = Math.min(3, Math.max(1, parseInt(i.system?.uses) || 1));
+            const usesMax = parseInt(i.system?.uses) || 1;
             const numAvailable = Math.max(1, parseInt(i.system?.num_available) || 1);
             return {
                 _id: i.id,
