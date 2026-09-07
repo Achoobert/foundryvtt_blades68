@@ -403,7 +403,7 @@ export async function simpleRollPopup() {
           </select>
         </div>
         <fieldset class="form-group">
-          <legend>Roll Types</legend>
+          <legend>Downtime Rolls</legend>
           <div style="display:grid; grid-template-columns:auto auto auto; column-gap:0.5em; row-gap:0.4em; align-items:center;">
             <label><input type="radio" id="fortune" name="rollSelection" value="fortune" checked=true> ${game.i18n.localize("BITD.Fortune")}</label>
             <span style="grid-column:2 / 4;"></span>
