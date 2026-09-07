@@ -59,6 +59,27 @@ $b68-border: #795c4a; // --b68-brown-light
     color: $b68-header-text;
   }
 
+    &.crew.sheet {
+      nav.tabs.folder-tabs>.item {
+        background: $b68-accent-2;
+        border-color: $b68-border;
+        color: $b68-ink;
+  
+        &::before,
+        &::after {
+          border-color: $b68-border;
+        }
+  
+        &.active {
+          background: $b68-gold;
+        }
+      }
+  
+      section.tab-content.folder-tab-content {
+        background: $b68-bg;
+        border-color: $b68-border;
+      }
+    }
   .keys-container {
     .keys-header {
       background: linear-gradient(to right, $b68-header 0%, $b68-header 68%, $b68-accent 68%, $b68-accent 100%);

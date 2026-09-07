@@ -651,6 +651,69 @@
 .blades68.crew.sheet nav {
   padding-bottom: 10px;
 }
+.blades68.crew.sheet nav.tabs.folder-tabs {
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  padding: 0 0 0 16px;
+  margin: 10px 0 0 0;
+  border: none;
+  overflow: visible;
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item {
+  position: relative;
+  z-index: 2;
+  margin: 0 18px -1px 0;
+  padding: 2px 4px 3px;
+  background: #ccc4aa;
+  border: 1px solid #7a6a52;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-shadow: none;
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.crew.sheet nav.tabs.folder-tabs > .item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: inherit;
+  border: 1px solid #7a6a52;
+  border-bottom: none;
+  z-index: -1;
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item::before {
+  left: -6px;
+  border-right: none;
+  border-radius: 4px 0 0 0;
+  transform: skewX(-20deg);
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item::after {
+  right: -6px;
+  border-left: none;
+  border-radius: 0 4px 0 0;
+  transform: skewX(20deg);
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item:hover {
+  background: rgb(83%, 80.3333333333%, 71.6666666667%);
+}
+.blades68.crew.sheet nav.tabs.folder-tabs > .item.active {
+  z-index: 3;
+  background: #f3eedd;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+.blades68.crew.sheet section.tab-content.folder-tab-content {
+  position: relative;
+  z-index: 1;
+  background: #f3eedd;
+  border: 1px solid #7a6a52;
+  border-radius: 0 4px 4px 4px;
+  padding: 10px;
+}
 .blades68.crew.sheet .crew-coins {
   display: flex;
 }
@@ -2584,6 +2647,21 @@
 .blades68.blades68-theme .section-header {
   background-color: #4c372a;
   color: #e9e4ce;
+}
+.blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item {
+  background: #dad1bc;
+  border-color: #795c4a;
+  color: #220e10;
+}
+.blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::after {
+  border-color: #795c4a;
+}
+.blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item.active {
+  background: #e8c05b;
+}
+.blades68.blades68-theme.crew.sheet section.tab-content.folder-tab-content {
+  background: #e9e4ce;
+  border-color: #795c4a;
 }
 .blades68.blades68-theme .keys-container .keys-header {
   background: linear-gradient(to right, #4c372a 0%, #4c372a 68%, #eb5000 68%, #eb5000 100%);

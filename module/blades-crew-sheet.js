@@ -1,6 +1,7 @@
 import { BladesSheet } from "./blades-sheet.js";
 import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
+import { simpleRollPopup } from "./blades-roll.js";
 
 /**
  * @extends {BladesSheet}
@@ -102,6 +103,10 @@ export class BladesCrewSheet extends BladesSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    html.find('.roll-quick-popup').click(async () => {
+      await simpleRollPopup();
+    });
 
     // Add Crew Type
     html.find(".crew-class").click(this._onItemAddClick.bind(this));

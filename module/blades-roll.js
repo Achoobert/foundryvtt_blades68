@@ -397,7 +397,7 @@ export async function simpleRollPopup() {
       <h2>${game.i18n.localize("BITD.RollSomeDice")}</h2>
       <form class="bitd-simple-roll-dialog">
         <div class="form-group">
-          <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>t
+          <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
           <select id="qty" name="qty">
             ${Array(11).fill().map((item, i) => `<option value="${i}">${i}d</option>`).join('')}
           </select>
