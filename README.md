@@ -11,9 +11,9 @@
 https://github.com/achoobert/foundryvtt_blades68/releases/latest/download/system.json
 ```
 🚧 🚧 🚧 🚧 
-WARNING this is a UNOFFICIAL work in progress from an inexperienced foundry-system dev. 
+WARNING this is a UNOFFICIAL work in progress. 
 My goal is to provide nice player-facing sheets and rolls NOT to perfectly model everything in the rulebook!
-I seriously doubt this can be merged back into the base blades system at this point, and I'm going to be too busy running games to try. Thus even though I'm keeping it close to the base Blades system this will be a seperate fork for the time being.
+I seriously doubt this can be merged back into the base blades system at this point, and I'm going to be too busy running games to try anytime soon. Thus even though I'm keeping it close to the base Blades system this will be a seperate fork for the time being.
 
 If this game system helped you, I may have some games open if you want to play some blades68! 
 https://startplaying.games/gm/achoobert
@@ -75,10 +75,10 @@ TODO update
 - Some assets were taken from here (thank you  timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
 
 
-[screenshot_all]: ./images/screenshot_all.png "screenshot_all"
-[screenshot_compendium]: ./images/screenshot_compendium.png "screenshot_compendium"
-[screenshot_roll_1]: ./images/screenshot_roll_1.png "screenshot_roll_1"
-[screenshot_roll_2]: ./images/screenshot_roll_2.png "screenshot_roll_2"
+[screenshot_all]: ./images/screenshot_all.jpg "screenshot_all"
+[screenshot_compendium]: ./images/screenshot_compendium.jpg "screenshot_compendium"
+[screenshot_roll_1]: ./images/screenshot_roll_1.jpg "screenshot_roll_1"
+[screenshot_roll_2]: ./images/screenshot_roll_2.jpg "screenshot_roll_2"
 
 
 text and icons imported from:
