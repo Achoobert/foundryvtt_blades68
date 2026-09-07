@@ -1,7 +1,7 @@
 # Builds a rolling "latest" GitHub Release on every push to the default
-# branch. Only the minor semver segment is bumped in the packaged
-# system.json (major stays as in the repo, patch reset to 0). The repo
-# file is not committed back — version stamping is release-only.
+# branch. Only the patch semver segment is bumped in the packaged
+# system.json (major.minor stay as in the repo). The repo file is not
+# committed back — version stamping is release-only.
 #
 # This complements main.yml (which packages a specific, manually-published
 # GitHub Release). This workflow instead gives players a stable
@@ -14,7 +14,7 @@ name: Build Rolling Latest Release
 on:
   push:
     branches:
-      - master
+      - main
 
 concurrency:
   group: release-latest
@@ -42,17 +42,17 @@ jobs:
       - name: Build Compendium Packs
         run: npm run packs:build
 
-      # Stamp only the minor segment for this rolling build.
-      # Repo system.json stays put (e.g. 6.1.2). Artifact version is
-      # major.(minor + run_number).0 so each push is newer for Foundry
-      # (run 1 -> 6.2.0, run 2 -> 6.3.0, ...).
+      # Stamp only the patch segment for this rolling build.
+      # Repo system.json stays put (e.g. 6.4.0). Artifact version is
+      # major.minor.(patch + run_number) so each push is newer for Foundry
+      # (6.4.0 run 3 -> 6.4.3, run 5 -> 6.4.5, ...).
       - name: Compute Next Version
         id: bump_version
         run: |
           current=$(jq -r '.version' system.json)
           IFS='.' read -r major minor patch <<< "$current"
-          next="${major}.$((minor + ${{ github.run_number }})).0"
-          echo "Bumping version: ${current} -> ${next} (minor only, release artifact)"
+          next="${major}.${minor}.$((10#${patch:-0} + GITHUB_RUN_NUMBER))"
+          echo "Bumping version: ${current} -> ${next} (patch only, release artifact)"
           echo "current=${current}" >> "$GITHUB_OUTPUT"
           echo "next=${next}" >> "$GITHUB_OUTPUT"
 
@@ -96,7 +96,7 @@ jobs:
           makeLatest: true
           tag: latest
           commit: ${{ github.sha }}
-          name: "Latest (v${{ steps.bump_version.outputs.next }})"
+          name: "Latest (${{ steps.bump_version.outputs.next }})"
           body: "Automated rolling build from ${{ github.repository }}@${{ github.sha }}."
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './system.json, ./system.zip'
