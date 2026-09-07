@@ -1,17 +1,17 @@
 # FoundryVTT Blades in the Dark character and crew sheets
 
 <p align="center">
-<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/dez384/foundryvtt-blades-in-the-dark"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dez384/foundryvtt-blades-in-the-dark"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/dez384/foundryvtt-blades-in-the-dark/total" /> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/dez384/foundryvtt-blades-in-the-dark?label=latest%20release" /> 
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/Achoobert/foundryvtt_blades68"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Achoobert/foundryvtt_blades68"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/Achoobert/foundryvtt_blades68/total" /> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/Achoobert/foundryvtt_blades68?label=latest%20release" /> 
 </p>
 <p align="center">
-<img alt="GitHub" src="https://img.shields.io/github/license/dez384/foundryvtt-blades-in-the-dark"> <a href="https://github.com/dez384/foundryvtt-blades-in-the-dark/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/dez384/foundryvtt-blades-in-the-dark"></a> <a href="https://github.com/dez384/foundryvtt-blades-in-the-dark/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/dez384/foundryvtt-blades-in-the-dark"></a> <a href="https://github.com/dez384/foundryvtt-blades-in-the-dark/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/dez384/foundryvtt-blades-in-the-dark"></a> 
+<img alt="GitHub" src="https://img.shields.io/github/license/Achoobert/foundryvtt_blades68"> <a href="https://github.com/Achoobert/foundryvtt_blades68/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Achoobert/foundryvtt_blades68"></a> <a href="https://github.com/Achoobert/foundryvtt_blades68/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Achoobert/foundryvtt_blades68"></a> <a href="https://github.com/Achoobert/foundryvtt_blades68/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Achoobert/foundryvtt_blades68"></a> 
 </p>
 
 ```console
-https://github.com/achoobert/foundryvtt-blades-in-the-dark/releases/latest/download/system.json
+https://github.com/achoobert/foundryvtt_blades68/releases/latest/download/system.json
 ```
 🚧 🚧 🚧 🚧 
-WARNING this is a UNOFFICIAL work in progress from an inexperienced dev. 
+WARNING this is a UNOFFICIAL work in progress from an inexperienced foundry-system dev. 
 My goal is to provide nice player-facing sheets and rolls NOT to perfectly model everything in the rulebook!
 I seriously doubt this can be merged back into the base blades system at this point, and I'm going to be too busy running games to try. Thus even though I'm keeping it close to the base Blades system this will be a seperate fork for the time being.
 
