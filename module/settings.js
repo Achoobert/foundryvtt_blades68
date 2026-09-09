@@ -149,16 +149,21 @@ export const registerSystemSettings = function() {
 	  
 	}
 
-	// Foundry registers this world setting with initial:true. BitD tokens are
-	// portraits, not facing sprites, so the system default is off. GM can still
-	// turn it back on in Configure Settings.
-	const tokenAutoRotate = game.settings.settings.get("core.tokenAutoRotate");
-	if (tokenAutoRotate) {
-		tokenAutoRotate.default = false;
-		if (tokenAutoRotate.type) tokenAutoRotate.type.initial = false;
-  }
-
 };
+
+/**
+ * Foundry registers core.tokenAutoRotate with initial:true during Game#initialize,
+ * which runs after the "init" hook fires (Game#initialize calls Hooks.callAll("init")
+ * before this.registerSettings()). So this must run on "setup" or later, not "init",
+ * or the setting won't exist yet. BitD tokens are portraits, not facing sprites, so
+ * the system default is off. GM can still turn it back on in Configure Settings.
+ */
+export function overrideTokenAutoRotateDefault() {
+	const tokenAutoRotate = game.settings.settings.get("core.tokenAutoRotate");
+	if (!tokenAutoRotate) return;
+	tokenAutoRotate.default = false;
+	if (tokenAutoRotate.type) tokenAutoRotate.type.initial = false;
+}
 
 /**
  * Persist the off default once so existing worlds pick it up. After that the

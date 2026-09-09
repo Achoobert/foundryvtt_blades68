@@ -5,7 +5,7 @@
  */
 
 // Import Modules
-import { registerSystemSettings, applyTokenAutoRotateDefault } from "./settings.js";
+import { registerSystemSettings, applyTokenAutoRotateDefault, overrideTokenAutoRotateDefault } from "./settings.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -401,6 +401,14 @@ Hooks.once("init", async function() {
 	  return (game.settings.get('blades68', string));
 
   });
+});
+
+/**
+ * core.tokenAutoRotate isn't registered yet during "init" (Foundry registers it right
+ * after firing that hook), so the default-value override has to happen on "setup".
+ */
+Hooks.once("setup", function() {
+  overrideTokenAutoRotateDefault();
 });
 
 /**
