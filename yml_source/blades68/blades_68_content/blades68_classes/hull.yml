@@ -31,7 +31,30 @@ system:
     sway:
       - 0
   starting_ability: Automaton
-effects: []
+# override keys.max to 0 at priority -10 so later add/+1 (priority 0) can grant keys one at a time
+# specifically "human_memories" unlocked by filling the special clock
+effects:
+  - _id: disabledKeysHull
+    name: No Keys
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.keys.max
+          type: override
+          value: 0
+          priority: -10
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
+    flags: {}
 folder: null
 sort: 0
 permission:

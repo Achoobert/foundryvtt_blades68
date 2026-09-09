@@ -11,6 +11,13 @@ export const registerSystemSettings = function() {
     default: 0
   });
   
+	game.settings.register('blades68', 'tokenAutoRotateDefaultApplied', {
+		scope: 'world',
+		config: false,
+		type: Boolean,
+		default: false
+	});
+
 	game.settings.register('blades68', 'PauseAnimation', {
 		name: game.i18n.localize('BITD.Settings.PauseAnimation.Name'),
 		hint: game.i18n.localize('BITD.Settings.PauseAnimation.Hint'),
@@ -140,6 +147,27 @@ export const registerSystemSettings = function() {
 	});
   }
 	  
+	}
+
+	// Foundry registers this world setting with initial:true. BitD tokens are
+	// portraits, not facing sprites, so the system default is off. GM can still
+	// turn it back on in Configure Settings.
+	const tokenAutoRotate = game.settings.settings.get("core.tokenAutoRotate");
+	if (tokenAutoRotate) {
+		tokenAutoRotate.default = false;
+		if (tokenAutoRotate.type) tokenAutoRotate.type.initial = false;
   }
 
 };
+
+/**
+ * Persist the off default once so existing worlds pick it up. After that the
+ * stored world value (including a GM turning it back on) is left alone.
+ */
+export async function applyTokenAutoRotateDefault() {
+	if (!game.user.isGM) return;
+	if (!game.settings.settings.has("core.tokenAutoRotate")) return;
+	if (game.settings.get("blades68", "tokenAutoRotateDefaultApplied")) return;
+	await game.settings.set("core", "tokenAutoRotate", false);
+	await game.settings.set("blades68", "tokenAutoRotateDefaultApplied", true);
+}

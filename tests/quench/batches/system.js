@@ -53,6 +53,14 @@ export default function register(quench) {
           assert.isBoolean(game.settings.get('blades68', 'Blades68Mode'));
         });
 
+        it('disables Foundry automatic token rotation by default', function () {
+          requireSystemActive();
+          const setting = game.settings.settings.get('core.tokenAutoRotate');
+          if (!setting) this.skip();
+          assert.equal(setting.default, false);
+          assert.equal(game.settings.get('core', 'tokenAutoRotate'), false);
+        });
+
         it('offers every pause background as a world setting', function () {
           requireSystemActive();
           const setting = game.settings.settings.get('blades68.PauseAnimation');

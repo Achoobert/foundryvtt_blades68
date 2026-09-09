@@ -34,28 +34,32 @@
         gap: 8px;
         margin-bottom: 10px;
       }
-  
+            .memory-box-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+            }
       .memory-box {
         position: relative;
+        display: flex;
+          flex-direction: column;
         border: 1px solid $lightgray;
-        border-radius: 4px;
+        border-radius: 2px;
         padding: 8px;
-        padding-right: 70px;
         min-height: 110px;
         background: #fafafa;
   
         .memory-prompt {
           font-weight: bold;
           font-size: 12px;
-          margin-bottom: 4px;
+          max-width: 80%;
+            margin-bottom: 1px;
         }
   
         .memory-clock {
-          position: absolute;
-          top: 6px;
-          right: 6px;
-          transform: scale(0.55);
-          transform-origin: top right;
+          @include clock(8, 56);
+          flex: 0 0 auto;
         }
   
         textarea {
@@ -91,7 +95,11 @@
         }
   
         .failure-clock {
+          @include clock(4, 56);
           text-align: center;
+.blades-clock {
+    margin: 0 auto;
+  }
   
           .failure-label {
             font-weight: bold;

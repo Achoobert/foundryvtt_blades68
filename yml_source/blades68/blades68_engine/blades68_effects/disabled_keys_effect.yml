@@ -1,0 +1,23 @@
+# Reusable snippet: copy onto an Item that should start with zero Key slots.
+# priority -10 so later `add` changes on system.keys.max (default priority 0) can grant slots.
+- _id: todo-effect-id
+  name: No Keys
+  img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+  type: base
+  origin: null
+  disabled: false
+  transfer: true
+  system:
+    changes:
+      - key: system.keys.max
+        type: override
+        value: 0
+        priority: -10
+        phase: initial
+  duration:
+    startTime: null
+  description: ''
+  tint: '#ffffff'
+  statuses: []
+  showIcon: 1
+  flags: {}

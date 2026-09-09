@@ -5,7 +5,7 @@
  */
 
 // Import Modules
-import { registerSystemSettings } from "./settings.js";
+import { registerSystemSettings, applyTokenAutoRotateDefault } from "./settings.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -375,8 +375,6 @@ Hooks.once("init", async function() {
       current_value = type;
     }
 
-    // Label for 0
-    html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
     html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, "black")}');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
@@ -425,6 +423,7 @@ Hooks.once("ready", async function() {
   registerItemSheet("blades", BladesItemSheet, {makeDefault: true});
 
   await preloadHandlebarsTemplates();
+  await applyTokenAutoRotateDefault();
 
 /**
   // Determine whether a system migration is required

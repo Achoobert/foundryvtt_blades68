@@ -1,3 +1,4 @@
+- Disable Foundry's Automatic Token Rotation world setting by default (portraits don't need facing)
 - Hull playbook zeros Key slots via an override Active Effect on `system.keys.max` (priority -10 so later add effects still stack)
 - Converted images to webp
 - Crew upgrades now grant their bonuses through passive Active Effects on the crew instead of

@@ -1,19 +1,18 @@
-_id: y0J5HT4aTsJs0AhP
+_id: 6b0a4c1de7f24a91
 name: Mastery
-permission:
-  default: 0
-  BwbqQh8sHfeKmUax: 3
 type: crew_upgrade
+img: icons/svg/item-bag.svg
 system:
   description: >-
     Your crew has access to master level training. You may advance your PCs' action ratings to 4 (until you unlock this
     upgrade, PC action ratings are capped at 3).
   class: ''
   price: '4'
+  purchased: false
   logic: ''
   crew_type: ''
 effects:
-  - _id: XCdAZ0Vp4OIYq8ug
+  - _id: qtAMCwrLRVMu4vZa
     name: Mastery
     img: systems/blades68/styles/assets/icons/Icon.3_13.webp
     type: base
@@ -35,5 +34,7 @@ effects:
     showIcon: 1
     flags: {}
 folder: null
-sort: 1200001
+sort: 0
+permission:
+  default: 0
 flags: {}

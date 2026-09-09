@@ -155,6 +155,46 @@ export default function register(quench) {
           assert.equal(character.getMaxKeys(), 5);
           assert.lengthOf(character.getComputedKeys(), 5);
         });
+
+        it('Hull class overrides keys.max to 0 and add effects can grant slots back', async function () {
+          requireSystemActive();
+          const pack = game.packs.get('blades68.blades68_classes');
+          const docs = await pack.getDocuments();
+          const hull = docs.find((doc) => doc.name === 'Hull');
+          assert.isOk(hull, 'Hull should be in the blades68 classes pack');
+
+          const character = tracker.track(await Actor.create({ name: 'Quench Hull Keys PC', type: 'character' }));
+          await character.createEmbeddedDocuments('Item', [hull.toObject()]);
+
+          assert.equal(Number(character.system.keys.max), 0, 'Hull playbook AE should zero keys.max');
+          assert.equal(character.getMaxKeys(), 0);
+          assert.lengthOf(character.getComputedKeys(), 0, 'computed list should truncate to max 0');
+
+          await character.createEmbeddedDocuments('Item', [{
+            name: 'Human Memories',
+            type: 'ability',
+            effects: [{
+              name: 'add key',
+              img: 'systems/blades68/styles/assets/icons/Icon.3_13.webp',
+              transfer: true,
+              disabled: false,
+              type: 'base',
+              system: {
+                changes: [{
+                  key: 'system.keys.max',
+                  type: 'add',
+                  value: '1',
+                  priority: null,
+                  phase: 'initial'
+                }]
+              }
+            }]
+          }]);
+
+          assert.equal(Number(character.system.keys.max), 1, 'add-key AE should stack on Hull override');
+          assert.equal(character.getMaxKeys(), 1);
+          assert.lengthOf(character.getComputedKeys(), 1);
+        });
       });
 
       describe('crew Mastery effect', function () {

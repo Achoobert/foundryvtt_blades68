@@ -132,7 +132,7 @@ export class BladesHelpers {
       const packName = useBlades68Pack ? blades68PackName : item_type;
       let packs = game.packs.filter(e => e.metadata.name === packName);
       let compendium_contents = await Promise.all(packs.map(pack => pack.getDocuments()));
-      for(const compendium_content of compendium_contents) {
+      for (const compendium_content of compendium_contents) {
         compendium_items = compendium_items.concat(compendium_content)
       }
       list_of_items = world_items.concat(compendium_items);
@@ -243,15 +243,15 @@ export class BladesHelpers {
     const themeColor = color || "black";
     const blades68 = game.settings.get("blades68", "Blades68Mode");
     if (blades68) {
-      const pngColor = BladesHelpers._clockPngColor(themeColor, size);
-      if (pngColor) {
-        return `systems/blades68/themes/progressclocks-png-68/Progress_Clock_${pngColor}_${size}-${tick}.webp`;
+      const webpColor = BladesHelpers._clockwebpColor(themeColor, size);
+      if (webpColor) {
+        return `systems/blades68/themes/progressclocks-68/Progress_Clock_${webpColor}_${size}-${tick}.webp`;
       }
     }
     return `systems/blades68/themes/${themeColor}/${size}clock_${tick}.svg`;
   }
 
-  static _clockPngColor(color, size) {
+  static _clockwebpColor(color, size) {
     const yellowSizes = new Set(["4", "6", "8", "12"]);
     const blueSizes = new Set(["4", "6", "12"]);
     if ((color || "").toLowerCase() === "blue" && blueSizes.has(size)) {
@@ -307,7 +307,7 @@ export class BladesHelpers {
       return oldAcq.id == acq.id;
     });
     if (unique_id) {
-      await actor.update({system: {acquaintances: current_acquaintances.concat([acquaintance])}});
+      await actor.update({ system: { acquaintances: current_acquaintances.concat([acquaintance]) } });
     } else {
       ui.notifications.info(game.i18n.localize("BITD.log.info.SameNPC"));
     }
@@ -316,7 +316,7 @@ export class BladesHelpers {
   static async removeAcquaintance(actor, acqId) {
     let current_acquaintances = actor.system.acquaintances;
     let updated_acquaintances = current_acquaintances.filter(acq => acq._id !== acqId && acq.id !== acqId);
-    await actor.update({system: {acquaintances: updated_acquaintances}});
+    await actor.update({ system: { acquaintances: updated_acquaintances } });
   }
 
   static async importAcquaintance(actor, acqId) {
@@ -331,7 +331,7 @@ export class BladesHelpers {
       // update Acquaintance on actor with new UUID
       let updated_acquaintances = actor.system.acquaintances;
       updated_acquaintances[old_index].id = new_id;
-      await actor.update({system: {acquaintances: updated_acquaintances}});
+      await actor.update({ system: { acquaintances: updated_acquaintances } });
       await new_actor.sheet.render(true);
     } catch (error) {
       ui.notifications.warn(game.i18n.localize(("BITD.log.warn.NoNPC")));
@@ -686,7 +686,7 @@ export class BladesHelpers {
     });
 
     if (unique_id) {
-      actor.update({system: {crew: [new_crew]}});
+      actor.update({ system: { crew: [new_crew] } });
 
     } else {
       ui.notifications.info(game.i18n.localize("BITD.log.info.SameCrew"));
@@ -697,7 +697,7 @@ export class BladesHelpers {
   static async removeCrew(actor, crewId) {
     let current_crew = actor.system.crew;
     let updated_crew = current_crew.filter(acq => acq._id !== crewId && acq.id !== crewId);
-    await actor.update({system: {crew: updated_crew}});
+    await actor.update({ system: { crew: updated_crew } });
   }
 
   /**
