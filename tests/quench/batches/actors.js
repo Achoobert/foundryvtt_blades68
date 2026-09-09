@@ -157,6 +157,72 @@ export default function register(quench) {
         });
       });
 
+      describe('crew Mastery effect', function () {
+        async function masteryUpgradeFromPack() {
+          const pack = game.packs.get('blades68.blades68_crew_upgrades');
+          const docs = await pack.getDocuments();
+          return docs.find((doc) => doc.name === 'Mastery');
+        }
+
+        it('transfers mastery onto the owning crew', async function () {
+          requireSystemActive();
+          const upgrade = await masteryUpgradeFromPack();
+          assert.isOk(upgrade, 'Mastery should be in the blades68 crew upgrades pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Mastery Crew', type: 'crew' }));
+          assert.equal(crew.system.scoundrel.mastery, false);
+
+          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          assert.equal(
+            crew.system.scoundrel.mastery,
+            true,
+            'passive upgrade effect should set crew system.scoundrel.mastery'
+          );
+        });
+
+        it('linked character may mark the 4th box in every skill', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+
+          const upgrade = await masteryUpgradeFromPack();
+          assert.isOk(upgrade, 'Mastery should be in the blades68 crew upgrades pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Mastery Linked Crew', type: 'crew' }));
+          const character = tracker.track(await Actor.create({ name: 'Quench Mastery PC', type: 'character' }));
+
+          assert.isFalse(character.getHasMastery(), 'unlinked PC should have no mastery');
+          const capped = character.getComputedAttributes();
+          assert.equal(capped.insight.skills.hunt.max, 3, 'action ratings cap at 3 without mastery');
+
+          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          await character.update({
+            'system.crew': [{ id: crew.id, name: crew.name, description: '', img: crew.img }]
+          });
+
+          assert.isTrue(character.getHasMastery(), 'linked PC should pick up crew mastery');
+          const mastered = character.getComputedAttributes();
+          for (const [attribute, data] of Object.entries(mastered)) {
+            for (const [skill, values] of Object.entries(data.skills)) {
+              assert.equal(values.max, 4, `${attribute}.${skill} should allow a 4th rating box`);
+            }
+          }
+
+          const sheet = character.sheet;
+          await sheet._render(true);
+          try {
+            const huntBoxes = sheet.element.find('[id^="attributes-"][id*="-hunt-"]');
+            assert.isAbove(huntBoxes.filter('[value="4"]').length, 0, 'a 4th rating radio should render');
+            assert.lengthOf(
+              sheet.element.find(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
+              0,
+              'the "lacks Mastery" placeholder box should be gone'
+            );
+          } finally {
+            await sheet.close();
+          }
+        });
+      });
+
       describe('crew actor defaults', function () {
         it('creates a crew with the tier/coin/turf/vault defaults', async function () {
           requireSystemActive();

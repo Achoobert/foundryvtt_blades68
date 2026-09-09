@@ -1,9 +1,9 @@
 
-This repo is Foundry VTT system, and testing module 
+This repo is both Foundry VTT system, and testing module 
 
-Only the system is built and distributed, but I use quech and cypress to test. These can be run and built as you make changes to the repo
+Only the system is built and distributed, but this repo also has quech and cypress - these are used for regression testing. These should be run as you make changes to the repo
 
-Watch: : **edit → dump into Foundry userdata → Quench in world → Cypress poke Quench 
+Watch: : **on edit → dump into Foundry userdata → Quench in world → Cypress poke Quench 
 
 You will need to setup your
 `fvtt.config.js`
@@ -20,14 +20,14 @@ You will need to setup your
 `prewatch` / `prebuild` often sync `.env` from this file so Docker bind-mount = same `userDataPath`. Placeholder `YOUR_USERNAME` = fail.
 ---
 
-I strongly recommend using docker, it makes it easier to restart foundry. 
+I strongly recommend using docker, it makes it easier to reset and restart foundry. 
 
 
 ## `npm run test:ci`
 
 Headless Cypress: `cypress run --headless --browser chrome`.
 
-**Need Foundry already up** with world + Quench + product + test module enabled.
+**Need Foundry already up** with world + Quench + product + test module **enabled.**
 
 **Quench** = in-Foundry Mocha. Real `game` / packs / dice. Cypress = robot: login → open Quench → Run → fail if batch fail or **zero tests ran**.
 

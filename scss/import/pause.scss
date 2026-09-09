@@ -1,12 +1,312 @@
+// Core rules for #pause: position: fixed, width: 100%, height: 180px, pointer-events: none.
+// Do not override the box model here, or the overlay drops into normal flow and shifts the UI.
+// setPauseImage() in module/blades.js tags the overlay with data-b68-pause-animation, which
+// picks the background below; the logo and caption are shared by both modes.
 #pause {
+  // VHS tuning knobs
+  --b68-vhs-width: 100%;
+    --b68-scanline-color: rgba(0, 0, 0, 0.3);
+    --b68-scanline-size: 3px;
+    --b68-vhs-tint: rgba(90, 190, 255, 0.06);
+  // Bluetime tuning knobs
+    --b68-bluetime-liquid: #2964da;
+    --b68-bluetime-goop: rgb(81, 148, 214);
+    --b68-bluetime-blur: 3px;
+    // the contrast filter crushes mid tones into unrelated hues; lower it if the bar smears
+    --b68-bluetime-contrast: 4;
+  
+    // fade the edges of either background so it follows core's gradient bar instead of cutting off
+    --b68-pause-fade: linear-gradient(to right, transparent 0%, black 35%, black 65%, transparent 100%);
+  
+  img,
+    #pause-icon {
+      // keep the logo above the background layers
+      position: relative;
+      z-index: 3;
+      width: auto;
+      max-width: 400px;
+      height: auto;
+    // core spins its round default icon; the logo is wide, so drop it (VHS adds jitter instead)
+      animation: none;
+    }
+
+    figcaption {
+      position: relative;
+      z-index: 3;
+    }
+  
+    /*
+    *  VHS tape: canvas static under scanlines, a colour tint, and a rolling tracking band
+    */
+    &[data-b68-pause-animation="vhs"] {
+    // VHS static, painted by setPauseImage() in module/blades.js
+    canvas.blades68-vhs-static {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.22;
+      image-rendering: pixelated;
+      pointer-events: none;
+      mask-image: var(--b68-pause-fade);
+    }
+
+        img,
+          #pause-icon {
+          animation: b68-vhs-jitter 5s steps(1, end) infinite;
+      filter:
+        drop-shadow(2px 0 0 rgba(255, 0, 64, 0.5)) drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+    }
+
+        figcaption {
+      text-shadow:
+        1.5px 0 0 rgba(255, 0, 64, 0.6),
+        -1.5px 0 0 rgba(0, 255, 255, 0.5);
+      animation: b68-vhs-flicker 2.5s linear infinite;
+    }
+
+    // scanlines + colour tint, centred over the logo only
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: min(var(--b68-vhs-width), 100%);
+      margin-left: calc(min(var(--b68-vhs-width), 100%) / -2);
+      pointer-events: none;
+      mask-image: var(--b68-pause-fade);
+    }
+
+    &::before {
+      z-index: 1;
+      background:
+        linear-gradient(var(--b68-vhs-tint), var(--b68-vhs-tint)),
+        repeating-linear-gradient(to bottom,
+          transparent,
+          transparent calc(var(--b68-scanline-size) - 1px),
+          var(--b68-scanline-color) var(--b68-scanline-size));
+      animation: b68-vhs-flicker 0.25s linear infinite;
+    }
+
+    // rolling tracking band; animate background-position so nothing escapes the box
+    &::after {
+      z-index: 2;
+      background: linear-gradient(to bottom,
+          transparent 0%,
+          rgba(255, 255, 255, 0.09) 45%,
+          rgba(255, 255, 255, 0.16) 50%,
+          rgba(255, 255, 255, 0.09) 55%,
+          transparent 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 40%;
+      background-position: 0 -40%;
+      // 2.5s sweep + 4s idle; keep in sync with the b68-vhs-roll keyframe stops
+      animation: b68-vhs-roll 6.5s linear infinite;
+    }
+    }
+    /*
+    *  Bluetime: blurred blobs rise and fall through the bar, and the parent's contrast filter
+    *  snaps their soft edges back together so they read as liquid instead of fog.
+    */
+    &[data-b68-pause-animation="bluetime"] {
+  
+      figcaption {
+        color: var(--b68-bluetime-goop);
+        text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+      }
+  
+      .blades68-bluetime {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        background: var(--b68-bluetime-liquid);
+        filter: contrast(var(--b68-bluetime-contrast));
+        mask-image: var(--b68-pause-fade);
+  
+        // pools of goop welded to the top and bottom edges, so blobs melt into them
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          // the bar is only 180px tall, so the reference lamp's 50px pools would flood it
+          height: 24px;
+          border-radius: 50%;
+          background: var(--b68-bluetime-goop);
+          filter: blur(var(--b68-bluetime-blur));
+        }
+  
+        &::before {
+          top: -14px;
+        }
+  
+        &::after {
+          bottom: -14px;
+        }
+      }
+  
+      .blades68-bluetime-blob {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--b68-bluetime-goop);
+        filter: blur(var(--b68-bluetime-blur));
+  
+        // five blobs on staggered paths and speeds, so the loop never looks metronomic
+        &:nth-of-type(1) {
+          width: 80px;
+          height: 80px;
+          left: 12%;
+          bottom: -80px;
+          animation: b68-bluetime-rise 9s ease-in infinite;
+        }
+  
+        &:nth-of-type(2) {
+          width: 80px;
+          height: 80px;
+          left: 38%;
+          bottom: -80px;
+          animation: b68-bluetime-rise 12s ease-in 1s infinite;
+        }
+  
+        &:nth-of-type(3) {
+          width: 60px;
+          height: 70px;
+          right: 18%;
+          top: -80px;
+          animation: b68-bluetime-fall 15s ease-in infinite;
+        }
+  
+        &:nth-of-type(4) {
+          width: 40px;
+          height: 40px;
+          left: 58%;
+          top: -80px;
+          animation: b68-bluetime-fall 12s ease-in 3s infinite;
+        }
+  
+        &:nth-of-type(5) {
+          width: 90px;
+          height: 90px;
+          left: 76%;
+          bottom: -80px;
+          animation: b68-bluetime-rise 15s ease-in 3s infinite;
+        }
+      }
+    }
+    }
+@keyframes b68-vhs-jitter {
+
+  0%,
+  92%,
+  100% {
+    transform: translate(0, 0);
+    filter:
+      drop-shadow(2px 0 0 rgba(255, 0, 64, 0.5)) drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+
+  93% {
+    transform: translate(-3px, 1px) skewX(-1.5deg);
+    filter:
+      drop-shadow(5px 0 0 rgba(255, 0, 64, 0.65)) drop-shadow(-5px 0 0 rgba(0, 255, 255, 0.55)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+
+  95% {
+    transform: translate(3px, -1px) skewX(1.5deg);
+    filter:
+      drop-shadow(-4px 0 0 rgba(255, 0, 64, 0.6)) drop-shadow(4px 0 0 rgba(0, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+
+  97% {
+    transform: translate(-1px, 0);
+  }
+}
+
+@keyframes b68-vhs-flicker {
+
+  0%,
+  96% {
+    opacity: 1;
+  }
+
+  97% {
+    opacity: 0.85;
+  }
+
+  98% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0.92;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes b68-vhs-roll {
+  0% {
+    background-position: 0 -40%;
+  }
+
+  // sweep done at 2.5s of the 6.5s cycle, then park off-screen for 4s
+  38.5%,
+  100% {
+    background-position: 0 140%;
+  }
+}
+// #pause is 180px tall; overshoot both ends so blobs enter and leave through the goop pools
+@keyframes b68-bluetime-rise {
+  0% {
+    bottom: -80px;
+  }
+
+  100% {
+    bottom: 200px;
+  }
+}
+
+@keyframes b68-bluetime-fall {
+  0% {
+    top: -80px;
+  }
+
+  100% {
+    top: 200px;
+  }
+}
+
+// Reduced motion drops the layers that flash or snap — logo jitter, caption and scanline
+// flicker, the rolling tracking band — and keeps the ones that only drift: the grain canvas
+// (slowed to PAUSE_STATIC_FPS_CALM in module/blades.js) and the bluetime blobs, run slower here.
+// Freezing everything left the bar looking broken rather than calm.
+@mixin b68-pause-calm {
 
   img,
-  #pause-icon {
-    // core spins the round default icon; the logo is wide, so keep it still
-    animation: none;
-    width: auto;
-    max-width: 400px;
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  #pause-icon,
+  figcaption,
+  &::before,
+  &::after {
+      animation: none;
+    }
+.blades68-bluetime-blob {
+  animation-duration: 24s;
+}
+}
+// setPauseImage() sets this when Foundry's Photosensitivity Mode is on, which CSS cannot read
+#pause[data-b68-reduced-motion] {
+  @include b68-pause-calm;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pause {
+    @include b68-pause-calm;
   }
 }

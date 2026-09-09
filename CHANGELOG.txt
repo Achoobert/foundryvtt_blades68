@@ -1,3 +1,26 @@
+- Hull playbook zeros Key slots via an override Active Effect on `system.keys.max` (priority -10 so later add effects still stack)
+- Converted images to webp
+- Crew upgrades now grant their bonuses through passive Active Effects on the crew instead of
+  sheet-template logic: "+1 key/deadlock" upgrades add to `system.scoundrel.bonus_keys`, and
+  Mastery overrides `system.scoundrel.mastery`
+- Linked characters read those crew values: extra Key slots appear on the character sheet
+  (getMaxKeys/getComputedKeys), and Mastery unlocks the 4th box in every action rating
+- Character-side abilities can raise Key slots on their own with an effect on `system.keys.max`
+- Open character sheets now refresh when their linked crew (or a crew item/effect) changes
+- Base character Key slots set to 4 in template.json
+- Fixed dev:sync writing compendium LevelDB packs with embedded documents inline, which made
+  Foundry load every pack item with an empty Active Effects collection (and put RollTable,
+  JournalEntry and Actor packs in the wrong sublevel)
+- Respect `prefers-reduced-motion` and Foundry's own Photosensitivity Mode: the pause bar drops
+  its flashing layers (logo jitter, caption/scanline flicker, tracking roll) but keeps drifting
+  — grain at 6fps, Bluetime blobs slowed — the stress pulse stops, hover transitions are dropped
+- New "Pause Screen Animation" world setting picks the pause background: VHS tape, the new
+  Bluetime lamp (blurred blobs drifting through liquid), or None for the bare logo. Default is
+  Bluetime, and the logo no longer inherits core's spinning-icon animation
+- Added `npm run test` (pack unit tests, pack build, system + Quench sync, Cypress/Quench run)
+- Quench coverage for the crew extra-Key and Mastery effects
+
+
 v.6.1.2
 - Fix the alignment of roll dialog options (#76, Karlinator)
 - Changed positive faction status color from `deepskyblue` to `blue` to increase readibility (#73)

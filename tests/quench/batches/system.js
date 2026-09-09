@@ -52,6 +52,15 @@ export default function register(quench) {
           requireSystemActive();
           assert.isBoolean(game.settings.get('blades68', 'Blades68Mode'));
         });
+
+        it('offers every pause background as a world setting', function () {
+          requireSystemActive();
+          const setting = game.settings.settings.get('blades68.PauseAnimation');
+          assert.isOk(setting, 'PauseAnimation should be registered');
+          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla']);
+          assert.equal(setting.default, 'bluetime');
+          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla']);
+        });
       });
     },
     { displayName: 'System config' }

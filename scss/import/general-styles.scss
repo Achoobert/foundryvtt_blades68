@@ -13,6 +13,9 @@ textarea {
 
 .rollable-text {
   transition: color $transition-period;
+@media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 .rollable-text:hover {
   cursor: pointer;

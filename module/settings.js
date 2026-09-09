@@ -11,6 +11,22 @@ export const registerSystemSettings = function() {
     default: 0
   });
   
+	game.settings.register('blades68', 'PauseAnimation', {
+		name: game.i18n.localize('BITD.Settings.PauseAnimation.Name'),
+		hint: game.i18n.localize('BITD.Settings.PauseAnimation.Hint'),
+		config: true,
+		scope: 'world',
+		type: String,
+		choices: {
+			vhs: game.i18n.localize('BITD.Settings.PauseAnimation.VHS'),
+			bluetime: game.i18n.localize('BITD.Settings.PauseAnimation.Bluetime'),
+			vanilla: game.i18n.localize('BITD.Settings.PauseAnimation.Vanilla')
+		},
+		default: 'bluetime',
+		// The pause overlay rebuilds its background on render, so no reload is needed
+		onChange: () => ui.pause?.render()
+	});
+
 	game.settings.register('blades68', 'GambitsMax', {
 		name: game.i18n.localize('BITD.Settings.GambitsMax.Name'),
 		hint: game.i18n.localize('BITD.Settings.GambitsMax.Hint'),

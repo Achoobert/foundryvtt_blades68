@@ -22,6 +22,7 @@
     "dev:sync": "node scripts/dev-sync.mjs",
     "dev:world": "node scripts/ensure-world.mjs",
     "dev": "npm run build:css && npm run packs:build && npm run dev:sync && npm run dev:world && npm run test:quench:sync",
+    "test": "npm run packs:test && npm run packs:build && npm run dev:sync && npm run test:quench:sync && npm run test:e2e",
     "test:quench:sync": "node scripts/sync-quench-module.mjs",
     "test:quench": "node scripts/note-quench.mjs",
     "test:e2e": "cd tests/e2e && npm run tests:ci",

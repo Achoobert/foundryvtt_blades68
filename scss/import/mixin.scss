@@ -7,6 +7,9 @@
   transition: filter $transition-period;
   cursor: pointer;
 
+  @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   &:hover {
     filter: brightness($hover-brightness);
     opacity: $hover-opacity;

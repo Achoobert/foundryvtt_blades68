@@ -85,6 +85,9 @@
 
       &.bitd-stress-pulse {
         animation: bitd-stress-vibrate 0.3s linear infinite;
+@media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
       }
     }
   }

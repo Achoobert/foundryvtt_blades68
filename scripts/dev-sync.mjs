@@ -21,6 +21,48 @@ const ENTRIES_TO_SYNC = [
   'packs',
 ];
 
+/** LevelDB sublevel that holds each primary document type. */
+const SUBLEVELS = {
+  Item: 'items',
+  Actor: 'actors',
+  Macro: 'macros',
+  RollTable: 'tables',
+  JournalEntry: 'journal',
+  Cards: 'cards',
+  Playlist: 'playlists',
+  Scene: 'scenes'
+};
+
+/** Embedded collections Foundry stores in their own sublevels, keyed by owning document type. */
+const EMBEDDED = {
+  Item: { effects: 'ActiveEffect' },
+  Actor: { items: 'Item', effects: 'ActiveEffect' },
+  RollTable: { results: 'TableResult' },
+  JournalEntry: { pages: 'JournalEntryPage' }
+};
+
+/**
+ * Write one document, hoisting each embedded collection into its own sublevel the way Foundry
+ * does: the parent record keeps only the child ids, and every child lives under
+ * `!<parent sublevel>.<field>!<parentId>.<childId>`. Writing children inline instead makes
+ * Foundry read the parent with an empty collection, which silently drops item Active Effects.
+ */
+function writeDocument(batch, doc, { documentName, sublevel, key }) {
+  const record = { ...doc };
+  for (const [field, childName] of Object.entries(EMBEDDED[documentName] ?? {})) {
+    const children = Array.isArray(doc[field]) ? doc[field] : [];
+    record[field] = children.map((child) => child._id);
+    for (const child of children) {
+      writeDocument(batch, child, {
+        documentName: childName,
+        sublevel: `${sublevel}.${field}`,
+        key: `${key}.${child._id}`
+      });
+    }
+  }
+  batch.put(`!${sublevel}!${key}`, JSON.stringify(record));
+}
+
 /**
  * Foundry migrates NeDB `foo.db` packs into a LevelDB folder `foo/` and then
  * keeps reading that folder — later `.db` overwrites are ignored. Rebuild the
@@ -28,11 +70,21 @@ const ENTRIES_TO_SYNC = [
  */
 async function rebuildPackLevelDbs(packsDir) {
   if (!existsSync(packsDir)) return;
+  const system = JSON.parse(readFileSync(path.join(ROOT, 'system.json'), 'utf8'));
+  const documentNames = new Map(
+    system.packs.map((pack) => [path.basename(pack.path), pack.type])
+  );
   const entries = await readdir(packsDir);
   for (const name of entries) {
     if (!name.endsWith('.db')) continue;
     const dbPath = path.join(packsDir, name);
     const levelDir = dbPath.replace(/\.db$/i, '');
+    const documentName = documentNames.get(name) ?? 'Item';
+    const sublevel = SUBLEVELS[documentName];
+    if (!sublevel) {
+      console.warn(`Skipping ${name}: no LevelDB sublevel known for ${documentName} packs.`);
+      continue;
+    }
     try {
       const docs = readFileSync(dbPath, 'utf8')
         .split('\n')
@@ -42,13 +94,12 @@ async function rebuildPackLevelDbs(packsDir) {
       const db = new ClassicLevel(levelDir, { keyEncoding: 'utf8', valueEncoding: 'utf8' });
       await db.open();
       const batch = db.batch();
-      const prefix = name.includes('macro') ? '!macros!' : '!items!';
       for (const doc of docs) {
-        batch.put(`${prefix}${doc._id}`, JSON.stringify(doc));
+        writeDocument(batch, doc, { documentName, sublevel, key: doc._id });
       }
       await batch.write();
       await db.close();
-      console.log(`Rebuilt LevelDB ${path.basename(levelDir)} (${docs.length} docs)`);
+      console.log(`Rebuilt LevelDB ${path.basename(levelDir)} (${docs.length} ${documentName} docs)`);
     } catch (err) {
       console.warn(`Could not rebuild LevelDB for ${name}: ${err.message}`);
       console.warn('Close Foundry / unlock the pack, then re-run npm run dev:sync.');

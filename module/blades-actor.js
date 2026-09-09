@@ -744,6 +744,9 @@ export class BladesActor extends Actor {
     while (normalized.length < max) {
       normalized.push(emptySlot());
     }
+    if (normalized.length > max) {
+      return normalized.slice(0, Math.max(0, max));
+    }
     return normalized;
   }
 }

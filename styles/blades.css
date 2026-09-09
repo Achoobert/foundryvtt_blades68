@@ -106,6 +106,11 @@
 .blades68 .rollable-text {
   transition: color 0.2s;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .rollable-text {
+    transition: none;
+  }
+}
 .blades68 .rollable-text:hover {
   cursor: pointer;
   color: red;
@@ -198,6 +203,11 @@
   transition: filter 0.2s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68 i.nullifier {
+    transition: none;
+  }
+}
 .blades68 i.nullifier:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -285,6 +295,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .clocks.clocks-4 .blades-clock label {
+    transition: none;
+  }
+}
 .blades68 .clocks.clocks-4 .blades-clock label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -331,6 +346,11 @@
   transform-origin: 0% 100%;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .clocks.clocks-6 .blades-clock label {
+    transition: none;
+  }
 }
 .blades68 .clocks.clocks-6 .blades-clock label:hover {
   filter: brightness(0.8);
@@ -384,6 +404,11 @@
   transform-origin: 0% 100%;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .clocks.clocks-8 .blades-clock label {
+    transition: none;
+  }
 }
 .blades68 .clocks.clocks-8 .blades-clock label:hover {
   filter: brightness(0.8);
@@ -443,6 +468,11 @@
   transform-origin: 0% 100%;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .clocks.clocks-10 .blades-clock label {
+    transition: none;
+  }
 }
 .blades68 .clocks.clocks-10 .blades-clock label:hover {
   filter: brightness(0.8);
@@ -508,6 +538,11 @@
   transform-origin: 0% 100%;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68 .clocks.clocks-12 .blades-clock label {
+    transition: none;
+  }
 }
 .blades68 .clocks.clocks-12 .blades-clock label:hover {
   filter: brightness(0.8);
@@ -579,6 +614,11 @@
   vertical-align: middle;
   transition: filter 0.2s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .coins label {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .coins label:hover {
   filter: brightness(0.8);
@@ -716,6 +756,11 @@
   transition: filter 0.2s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .crew-coins label {
+    transition: none;
+  }
+}
 .blades68.crew.sheet .crew-coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -749,6 +794,11 @@
   vertical-align: middle;
   transition: filter 0.2s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .crew-gambits label {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .crew-gambits label:hover {
   filter: brightness(0.8);
@@ -794,6 +844,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .crew-reputation label {
+    transition: none;
+  }
+}
 .blades68.crew.sheet .crew-reputation label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -836,6 +891,11 @@
 .blades68.crew.sheet .turf-list.section-non-editable .turf-block {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .turf-list.section-non-editable .turf-block {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .turf-list.section-non-editable .turf-block:hover {
   filter: brightness(0.8);
@@ -914,6 +974,11 @@
 .blades68.crew.sheet .turf-list.section-editable .turf-block {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .turf-list.section-editable .turf-block {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .turf-list.section-editable .turf-block:hover {
   filter: brightness(0.8);
@@ -1115,6 +1180,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .crew-hold label {
+    transition: none;
+  }
+}
 .blades68.crew.sheet .crew-hold label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -1154,6 +1224,11 @@
 .blades68.crew.sheet .crew-tier label {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .crew-tier label {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .crew-tier label:hover {
   filter: brightness(0.8);
@@ -1319,6 +1394,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .big-teeth-section .big-teeth label {
+    transition: none;
+  }
+}
 .blades68.crew.sheet .big-teeth-section .big-teeth label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -1397,6 +1477,11 @@
   margin-right: 10px;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.crew.sheet .big-teeth-section .trauma-list label {
+    transition: none;
+  }
 }
 .blades68.crew.sheet .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
@@ -1518,6 +1603,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .big-teeth-section .big-teeth label {
+    transition: none;
+  }
+}
 .blades68.actor.pc * .big-teeth-section .big-teeth label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -1597,6 +1687,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .big-teeth-section .trauma-list label {
+    transition: none;
+  }
+}
 .blades68.actor.pc * .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -1623,6 +1718,11 @@
 }
 .blades68.actor.pc * .character-stress label.bitd-stress-pulse {
   animation: bitd-stress-vibrate 0.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .character-stress label.bitd-stress-pulse {
+    animation: none;
+  }
 }
 .blades68.actor.pc * .abilities .item-name, .blades68.actor.pc * .loadout .item-name {
   width: 100px;
@@ -1667,6 +1767,11 @@
 .blades68.actor.pc * .teeth-experience label {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .teeth-experience label {
+    transition: none;
+  }
 }
 .blades68.actor.pc * .teeth-experience label:hover {
   filter: brightness(0.8);
@@ -1729,6 +1834,11 @@
   transform-origin: 0% 100%;
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .harm-armor .character-health-clock .blades-clock label {
+    transition: none;
+  }
 }
 .blades68.actor.pc * .harm-armor .character-health-clock .blades-clock label:hover {
   filter: brightness(0.8);
@@ -1808,6 +1918,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
+    transition: none;
+  }
+}
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
@@ -1854,6 +1969,11 @@
   transition: filter 0.1s;
   cursor: pointer;
 }
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .attributes .attributes-container label {
+    transition: none;
+  }
+}
 .blades68.actor.pc * .attributes .attributes-container label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
@@ -1870,6 +1990,11 @@
 .blades68.actor.pc * .attributes .attributes-container input:checked + label {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .attributes .attributes-container input:checked + label {
+    transition: none;
+  }
 }
 .blades68.actor.pc * .attributes .attributes-container input:checked + label:hover {
   filter: brightness(0.7);
@@ -1929,6 +2054,11 @@
   vertical-align: middle;
   transition: filter 0.2s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .coins label {
+    transition: none;
+  }
 }
 .blades68.actor.pc * .coins label:hover {
   filter: brightness(0.8);
@@ -2191,6 +2321,11 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks label {
   transition: filter 0.1s;
   cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blades68.actor.pc * .keys-container .key-slot .key-marks label {
+    transition: none;
+  }
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label:hover {
   filter: brightness(0.8);
@@ -2741,6 +2876,7 @@
 
 .add-items-list {
   max-height: 60vh;
+  max-width: 40vh;
   overflow-y: auto;
   padding-right: 8px;
 }
@@ -2844,15 +2980,234 @@
   opacity: 1;
 }
 
+#pause {
+  --b68-vhs-width: 100%;
+  --b68-scanline-color: rgba(0, 0, 0, 0.3);
+  --b68-scanline-size: 3px;
+  --b68-vhs-tint: rgba(90, 190, 255, 0.06);
+  --b68-bluetime-liquid: #2964da;
+  --b68-bluetime-goop: rgb(81, 148, 214);
+  --b68-bluetime-blur: 3px;
+  --b68-bluetime-contrast: 4;
+  --b68-pause-fade: linear-gradient(to right, transparent 0%, black 35%, black 65%, transparent 100%);
+}
 #pause img,
 #pause #pause-icon {
-  animation: none;
+  position: relative;
+  z-index: 3;
   width: auto;
   max-width: 400px;
   height: auto;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  animation: none;
+}
+#pause figcaption {
+  position: relative;
+  z-index: 3;
+}
+#pause {
+  /*
+  *  VHS tape: canvas static under scanlines, a colour tint, and a rolling tracking band
+  */
+}
+#pause[data-b68-pause-animation=vhs] canvas.blades68-vhs-static {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.22;
+  image-rendering: pixelated;
+  pointer-events: none;
+  mask-image: var(--b68-pause-fade);
+}
+#pause[data-b68-pause-animation=vhs] img,
+#pause[data-b68-pause-animation=vhs] #pause-icon {
+  animation: b68-vhs-jitter 5s steps(1, end) infinite;
+  filter: drop-shadow(2px 0 0 rgba(255, 0, 64, 0.5)) drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+}
+#pause[data-b68-pause-animation=vhs] figcaption {
+  text-shadow: 1.5px 0 0 rgba(255, 0, 64, 0.6), -1.5px 0 0 rgba(0, 255, 255, 0.5);
+  animation: b68-vhs-flicker 2.5s linear infinite;
+}
+#pause[data-b68-pause-animation=vhs]::before, #pause[data-b68-pause-animation=vhs]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: min(var(--b68-vhs-width), 100%);
+  margin-left: calc(min(var(--b68-vhs-width), 100%) / -2);
+  pointer-events: none;
+  mask-image: var(--b68-pause-fade);
+}
+#pause[data-b68-pause-animation=vhs]::before {
+  z-index: 1;
+  background: linear-gradient(var(--b68-vhs-tint), var(--b68-vhs-tint)), repeating-linear-gradient(to bottom, transparent, transparent calc(var(--b68-scanline-size) - 1px), var(--b68-scanline-color) var(--b68-scanline-size));
+  animation: b68-vhs-flicker 0.25s linear infinite;
+}
+#pause[data-b68-pause-animation=vhs]::after {
+  z-index: 2;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.09) 45%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0.09) 55%, transparent 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 -40%;
+  animation: b68-vhs-roll 6.5s linear infinite;
+}
+#pause {
+  /*
+  *  Bluetime: blurred blobs rise and fall through the bar, and the parent's contrast filter
+  *  snaps their soft edges back together so they read as liquid instead of fog.
+  */
+}
+#pause[data-b68-pause-animation=bluetime] figcaption {
+  color: var(--b68-bluetime-goop);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--b68-bluetime-liquid);
+  filter: contrast(var(--b68-bluetime-contrast));
+  mask-image: var(--b68-pause-fade);
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime::before, #pause[data-b68-pause-animation=bluetime] .blades68-bluetime::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--b68-bluetime-goop);
+  filter: blur(var(--b68-bluetime-blur));
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime::before {
+  top: -14px;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime::after {
+  bottom: -14px;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--b68-bluetime-goop);
+  filter: blur(var(--b68-bluetime-blur));
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob:nth-of-type(1) {
+  width: 80px;
+  height: 80px;
+  left: 12%;
+  bottom: -80px;
+  animation: b68-bluetime-rise 9s ease-in infinite;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob:nth-of-type(2) {
+  width: 80px;
+  height: 80px;
+  left: 38%;
+  bottom: -80px;
+  animation: b68-bluetime-rise 12s ease-in 1s infinite;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob:nth-of-type(3) {
+  width: 60px;
+  height: 70px;
+  right: 18%;
+  top: -80px;
+  animation: b68-bluetime-fall 15s ease-in infinite;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob:nth-of-type(4) {
+  width: 40px;
+  height: 40px;
+  left: 58%;
+  top: -80px;
+  animation: b68-bluetime-fall 12s ease-in 3s infinite;
+}
+#pause[data-b68-pause-animation=bluetime] .blades68-bluetime-blob:nth-of-type(5) {
+  width: 90px;
+  height: 90px;
+  left: 76%;
+  bottom: -80px;
+  animation: b68-bluetime-rise 15s ease-in 3s infinite;
 }
 
+@keyframes b68-vhs-jitter {
+  0%, 92%, 100% {
+    transform: translate(0, 0);
+    filter: drop-shadow(2px 0 0 rgba(255, 0, 64, 0.5)) drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.4)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+  93% {
+    transform: translate(-3px, 1px) skewX(-1.5deg);
+    filter: drop-shadow(5px 0 0 rgba(255, 0, 64, 0.65)) drop-shadow(-5px 0 0 rgba(0, 255, 255, 0.55)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+  95% {
+    transform: translate(3px, -1px) skewX(1.5deg);
+    filter: drop-shadow(-4px 0 0 rgba(255, 0, 64, 0.6)) drop-shadow(4px 0 0 rgba(0, 255, 255, 0.5)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.75));
+  }
+  97% {
+    transform: translate(-1px, 0);
+  }
+}
+@keyframes b68-vhs-flicker {
+  0%, 96% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.85;
+  }
+  98% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.92;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes b68-vhs-roll {
+  0% {
+    background-position: 0 -40%;
+  }
+  38.5%, 100% {
+    background-position: 0 140%;
+  }
+}
+@keyframes b68-bluetime-rise {
+  0% {
+    bottom: -80px;
+  }
+  100% {
+    bottom: 200px;
+  }
+}
+@keyframes b68-bluetime-fall {
+  0% {
+    top: -80px;
+  }
+  100% {
+    top: 200px;
+  }
+}
+#pause[data-b68-reduced-motion] img,
+#pause[data-b68-reduced-motion] #pause-icon,
+#pause[data-b68-reduced-motion] figcaption, #pause[data-b68-reduced-motion]::before, #pause[data-b68-reduced-motion]::after {
+  animation: none;
+}
+#pause[data-b68-reduced-motion] .blades68-bluetime-blob {
+  animation-duration: 24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pause img,
+  #pause #pause-icon,
+  #pause figcaption, #pause::before, #pause::after {
+    animation: none;
+  }
+  #pause .blades68-bluetime-blob {
+    animation-duration: 24s;
+  }
+}
 @keyframes bitd-stress-vibrate {
   0%, 100% {
     transform: translate(0, 0);
@@ -2870,3 +3225,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */

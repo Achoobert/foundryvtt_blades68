@@ -638,6 +638,13 @@
     "Blades68": {
       "Name": "Blades '68 Mode",
       "Hint": "Keys & Deadlocks, bright clocks, Blades '68 color theme."
+    },
+    "PauseAnimation": {
+      "Name": "Pause Screen Animation",
+      "Hint": "Animated background behind the pause logo.",
+      "VHS": "VHS tape",
+      "Bluetime": "Bluetime",
+      "Vanilla": "None (logo only)"
     }
   },
   "BITD.log": {

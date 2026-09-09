@@ -444,6 +444,36 @@ Hooks.once("ready", async function() {
  * Hooks
  */
 
+/**
+ * Crew upgrades/abilities grant their bonuses (Mastery, extra Keys, extra stress/trauma) by
+ * writing to the crew's own `system.scoundrel.*` via transferred Active Effects. Linked
+ * characters read those values off the crew while rendering, so a change on the crew side has
+ * to refresh any open character sheet that points at it.
+ */
+function rerenderLinkedCharacterSheets(crew) {
+  if (crew?.type !== "crew") return;
+  for (const actor of game.actors) {
+    if (actor.type !== "character") continue;
+    if (actor.system?.crew?.[0]?.id !== crew.id) continue;
+    if (actor.sheet?.rendered) actor.sheet.render(false);
+  }
+}
+
+/** Walk up from an embedded document to the Actor that owns it, if any. */
+function ownerActorOf(doc) {
+  let parent = doc?.parent;
+  while (parent && parent.documentName !== "Actor") parent = parent.parent;
+  return parent ?? null;
+}
+
+Hooks.on("updateActor", (actor) => rerenderLinkedCharacterSheets(actor));
+for (const hook of ["createItem", "updateItem", "deleteItem"]) {
+  Hooks.on(hook, (item) => rerenderLinkedCharacterSheets(ownerActorOf(item)));
+}
+for (const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"]) {
+  Hooks.on(hook, (effect) => rerenderLinkedCharacterSheets(ownerActorOf(effect)));
+}
+
 // getSceneControlButtons
 Hooks.on('getSceneControlButtons', controls => {
 	
@@ -474,6 +504,113 @@ Hooks.on("renderSceneControls", async (app, html) => {
 
 const PAUSE_IMAGE = "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
 
+// VHS static is drawn at low resolution and stretched by CSS, so the loop stays cheap
+const PAUSE_STATIC_WIDTH = 256;
+const PAUSE_STATIC_HEIGHT = 48;
+const PAUSE_STATIC_FPS = 24;
+// reduced motion keeps the grain alive, just slow enough to stop reading as flicker
+const PAUSE_STATIC_FPS_CALM = 6;
+const PAUSE_BLUETIME_BLOBS = 5;
+const PAUSE_MODES = ["vhs", "bluetime", "vanilla"];
+
+let pauseStaticFrame = null;
+
+function drawPauseStatic(canvas) {
+  const ctx = canvas.getContext("2d");
+  const frame = ctx.createImageData(canvas.width, canvas.height);
+  const pixels = frame.data;
+
+  for (let i = 0; i < pixels.length; i += 4) {
+    const value = Math.random() * 255;
+    pixels[i] = value;
+    pixels[i + 1] = value;
+    pixels[i + 2] = value;
+    pixels[i + 3] = 255;
+  }
+
+  ctx.putImageData(frame, 0, 0);
+}
+
+/**
+ * Foundry's core "Photosensitivity Mode" exists for exactly these effects, so it counts as a
+ * request for reduced motion alongside the OS-level media query.
+ */
+function prefersReducedMotion() {
+  try {
+    if (game.settings.get("core", "photosensitiveMode")) return true;
+  } catch (error) {
+    // settings are not registered yet; fall back to the media query alone
+  }
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+}
+
+/** Which pause background the world asked for: "vhs", "bluetime" or "vanilla" (logo only). */
+function pauseAnimationMode() {
+  let mode;
+  try {
+    mode = game.settings.get("blades68", "PauseAnimation");
+  } catch (error) {
+    // settings are not registered yet
+  }
+  // a world saved under an older name can hold a mode that no longer exists
+  return PAUSE_MODES.includes(mode) ? mode : "bluetime";
+}
+
+function stopPauseStatic() {
+  if (pauseStaticFrame !== null) {
+    cancelAnimationFrame(pauseStaticFrame);
+    pauseStaticFrame = null;
+  }
+}
+
+/**
+ * Bluetime background: blobs are plain elements so CSS owns the motion. The blur/contrast
+ * filters that fuse them into liquid live in scss/import/pause.scss.
+ */
+function buildPauseBluetime(root) {
+  if (root.querySelector(".blades68-bluetime")) return;
+
+  const bluetime = document.createElement("div");
+  bluetime.className = "blades68-bluetime";
+
+  for (let i = 0; i < PAUSE_BLUETIME_BLOBS; i += 1) {
+    const blob = document.createElement("span");
+    blob.className = "blades68-bluetime-blob";
+    bluetime.append(blob);
+  }
+
+  root.prepend(bluetime);
+}
+
+function runPauseStatic(canvas) {
+  stopPauseStatic();
+
+  // Reduced motion slows the grain and drops the tracking jitter rather than freezing the bar;
+  // the flashing CSS layers (flicker, roll, logo jitter) are the ones gated off in pause.scss.
+  const calm = prefersReducedMotion();
+  const interval = 1000 / (calm ? PAUSE_STATIC_FPS_CALM : PAUSE_STATIC_FPS);
+  let last = 0;
+
+  const loop = (now) => {
+    // stop the loop once the overlay is gone or the game is unpaused
+    if (!canvas.isConnected || !game.paused) {
+      pauseStaticFrame = null;
+      return;
+    }
+
+    if (now - last >= interval) {
+      last = now;
+      drawPauseStatic(canvas);
+      // horizontal jitter, like a tape losing tracking
+      canvas.style.transform = calm ? "" : `translateX(${(Math.random() - 0.5) * 8}px)`;
+    }
+
+    pauseStaticFrame = requestAnimationFrame(loop);
+  };
+
+  pauseStaticFrame = requestAnimationFrame(loop);
+}
+
 function setPauseImage(target) {
   // renderGamePause (V13+) passes an HTMLElement, renderPause (V12 and older) passes jQuery
   const root = target instanceof HTMLElement ? target : target?.[0];
@@ -482,6 +619,43 @@ function setPauseImage(target) {
   if (image) {
     image.src = PAUSE_IMAGE;
   }
+
+  if (!root) return;
+
+  // The stylesheet keys the backgrounds off this attribute
+  const mode = pauseAnimationMode();
+  root.dataset.b68PauseAnimation = mode;
+  // CSS can read the OS media query but not Foundry's Photosensitivity Mode, so hand it over
+  root.toggleAttribute("data-b68-reduced-motion", prefersReducedMotion());
+
+  if (mode !== "vhs") {
+    stopPauseStatic();
+    root.querySelector("canvas.blades68-vhs-static")?.remove();
+  }
+
+  if (mode !== "bluetime") {
+    root.querySelector(".blades68-bluetime")?.remove();
+  }
+
+  // "vanilla" is the bare logo: no background layers, nothing running
+  if (mode === "vanilla") return;
+
+  if (mode === "bluetime") {
+    buildPauseBluetime(root);
+    return;
+  }
+
+  let canvas = root.querySelector("canvas.blades68-vhs-static");
+
+  if (!canvas) {
+    canvas = document.createElement("canvas");
+    canvas.className = "blades68-vhs-static";
+    canvas.width = PAUSE_STATIC_WIDTH;
+    canvas.height = PAUSE_STATIC_HEIGHT;
+    root.prepend(canvas);
+  }
+
+  runPauseStatic(canvas);
 }
 
 Hooks.on("renderGamePause", (app, element) => setPauseImage(element));
