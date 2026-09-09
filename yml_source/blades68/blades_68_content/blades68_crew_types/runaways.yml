@@ -1,0 +1,284 @@
+_id: 47a0e4b58d7f9a2d
+name: Runaways
+type: crew_type
+img: icons/svg/city.svg
+system:
+  description: Fugitives, Scapegoats, And Test Subjects Caught In A Deadly Game Of Cat And Mouse
+  experience_clues: You executed a successful chase, cleanup, exposure, or fake-out operation.
+  turfs:
+    '1':
+      name: Pawn Shop
+      value: false
+      description: (Tier roll) - Heat = stacks in downtime
+      highlight: false
+      connects:
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '2':
+      name: Vanishing Act
+      value: false
+      description: Target Bastards - 30 Stacks + Reset Heat and wanted levels
+      highlight: true
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '3':
+      name: Abandoned Lib.
+      value: false
+      description: +1d to gather info on the City and its History at this location
+      highlight: false
+      connects:
+        - left
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '4':
+      name: Fool's Gambit
+      value: false
+      description: Bastards drop 2 tiers and reset faction clocks
+      highlight: true
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '5':
+      name: Weapons Cache
+      value: false
+      description: 2 free load for weapons with assault approach
+      highlight: false
+      connects:
+        - left
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '6':
+      name: Unlikely Allies
+      value: false
+      description: +5 Rep and +1 status with a faction of your choice
+      highlight: true
+      connects:
+        - top
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '7':
+      name: Safe House
+      value: false
+      description: Turf and add new preferred operation
+      highlight: false
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '8':
+      name: Decision Point
+      value: false
+      description: +3 free activities to prep for Vanishing Act or Fool's Gambit
+      highlight: true
+      connects:
+        - left
+        - top
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '9':
+      name: Mole Hills
+      value: false
+      description: Infiltrators are also Muscle and vice versa
+      highlight: false
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '10':
+      name: Key Witness
+      value: false
+      description: Target drops another tier on Fool's Gambit completion
+      highlight: true
+      connects:
+        - left
+        - top
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '11':
+      name: Graffiti Wall
+      value: false
+      description: +1 Rep per score
+      highlight: false
+      connects:
+        - top
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '12':
+      name: Go Bags
+      value: false
+      description: +2 stacks per score with speed approach
+      highlight: false
+      connects:
+        - left
+        - right
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '13':
+      name: Shady Canal
+      value: false
+      description: +1d to gather info for chase or cleanup scores
+      highlight: false
+      connects:
+        - left
+        - top
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '14':
+      name: Safe House
+      value: false
+      description: Turf and add new preferred operation
+      highlight: false
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '15':
+      name: Dead Drop
+      value: false
+      description: +2 stacks from fake-out or exposure scores
+      highlight: false
+      connects:
+        - left
+        - top
+        - bottom
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '16':
+      name: Safe House
+      value: false
+      description: Turf and add new preferred operation
+      highlight: false
+      connects:
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '17':
+      name: No-Tell Motel
+      value: false
+      description: Healing treatment rolls made here also reduce heat by 1
+      highlight: false
+      connects:
+        - left
+        - top
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '18':
+      name: Base
+      value: true
+      description: Safe House
+      highlight: false
+      connects:
+        - left
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '19':
+      name: Cover ID.
+      value: false
+      description: +1d to engagement rolls for deception or stealth approach
+      highlight: false
+      connects:
+        - left
+        - top
+        - right
+      connected:
+        - false
+        - false
+        - false
+        - false
+    '20':
+      name: Clean Supplies
+      value: false
+      description: Hustlers roll +1d to Reduce Heat or cover your tracks
+      highlight: false
+      connects:
+        - left
+        - top
+      connected:
+        - false
+        - false
+        - false
+        - false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

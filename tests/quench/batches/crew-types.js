@@ -31,6 +31,7 @@ const B68_CREW_TYPES = [
   'Hit Squad',
   'Militants',
   'Racers',
+  'Runaways',
   'Shadows',
   'Utopians',
   'Vigilantes'

@@ -1,0 +1,19 @@
+_id: 61294a2afa517f3e
+name: Vanishing Point
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    Once per score, when you steal a vehicle that doesn't belong to you, the crew gains 2 free load to spend as they
+    please. Additionally, when you roll to hot-wire or hijack a vehicle, the work is much quicker and quieter than it
+    should be.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

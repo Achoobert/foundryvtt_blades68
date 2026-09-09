@@ -1,0 +1,18 @@
+_id: b8bf5a04b38c58a3
+name: Calculated Risk
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    Once during personal business, when you engage with someone you really shouldn't, they offer you a special
+    opportunity with maximum payout and a 3-stack called shot. Receive +1d to the engagement roll if you pursue it.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

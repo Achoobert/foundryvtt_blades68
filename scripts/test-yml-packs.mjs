@@ -84,6 +84,42 @@ test("loadPackDocuments rejects missing _id and duplicates", () => {
   assert.ok(problems.some((p) => p.includes("duplicate _id")));
 });
 
+test("Runaways ships its abilities and crew upgrades", () => {
+  const contentDir = path.join(
+    process.cwd(),
+    "yml_source",
+    "blades68",
+    "blades_68_content"
+  );
+  const abilities = loadPackDocuments(path.join(contentDir, "blades68_crew_abilities")).docs;
+  const upgrades = loadPackDocuments(path.join(contentDir, "blades68_crew_upgrades")).docs;
+
+  const runawayAbilities = abilities
+    .filter((doc) => doc.system?.class === "Runaways")
+    .map((doc) => doc.name)
+    .sort();
+  assert.deepEqual(runawayAbilities, [
+    "Burn It All",
+    "Calculated Risk",
+    "Echo Position",
+    "Mutants",
+    "Public Enemies",
+    "Scatter",
+    "Vanishing Point",
+  ]);
+
+  const runawayUpgrades = upgrades
+    .filter((doc) => doc.system?.crew_type === "Runaways")
+    .map((doc) => doc.name)
+    .sort();
+  assert.deepEqual(runawayUpgrades, [
+    "Acclimated (+1 key/deadlock)",
+    "Elite Hustlers",
+    "Elite Infiltrators",
+    "Runaway Rig (2 free load for docs or supplies)",
+  ]);
+});
+
 test("dump/load round-trip preserves fields including multiline command", () => {
   const doc = {
     _id: "abc123",

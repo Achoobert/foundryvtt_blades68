@@ -1,0 +1,18 @@
+_id: 106a13ed0bd25663
+name: Mutants
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    Each crew member chooses a sensory gift: night sight—scent tracking—tremor touch—chemist's tongue—audio
+    isolation—human receiver—etc. Though useful, these same sensitivities can be exploited to hurt you.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

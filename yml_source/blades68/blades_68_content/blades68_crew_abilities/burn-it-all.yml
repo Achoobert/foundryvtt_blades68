@@ -1,0 +1,19 @@
+_id: 8dda3973bcbf02d4
+name: Burn It All
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    You keep a burn list of bastards that have wronged you. When you eliminate or destroy a bastard, participating
+    scoundrels clear stress as if they'd performed the Indulge Vice activity. If you overindulge during a score it
+    plays out during the personal business phase.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

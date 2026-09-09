@@ -1,0 +1,18 @@
+_id: f978282f0f6a06fd
+name: Echo Position
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    So long as you can hear one another, you may spend 1 Stress to traverse the resonance field and swap positions
+    with a crew member.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

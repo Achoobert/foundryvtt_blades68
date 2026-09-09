@@ -1,0 +1,38 @@
+_id: 054bc1557805df4d
+name: Acclimated (+1 key/deadlock)
+type: crew_upgrade
+img: icons/svg/item-bag.svg
+system:
+  description: ''
+  class: ''
+  price: '3'
+  purchased: false
+  logic: ''
+  crew_type: Runaways
+effects:
+  - _id: 0974e55ec4a01e67
+    name: +1 Key/Deadlock
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.scoundrel.bonus_keys
+          type: add
+          value: '1'
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
+    flags: {}
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

@@ -1,0 +1,18 @@
+_id: 47d0561198f7d2c1
+name: Public Enemies
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    Your minimum Wanted Level is 1 and you may substitute your Wanted Level for lifestyle quality any time it would
+    be rolled (such as when you Acquire Assets).
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

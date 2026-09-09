@@ -1,0 +1,19 @@
+_id: 166d14147b4ebf52
+name: Scatter
+type: crew_ability
+img: icons/svg/item-bag.svg
+system:
+  description: >-
+    Once each score, when one or more crew members abruptly veer off or forge their own path, you may perform a free
+    flashback to reveal that all is proceeding as planned. So long as the crew stays separated and follows the plan
+    they add +1d to resistance rolls.
+  class: Runaways
+  class_default: Runaways
+  price: '1'
+  purchased: false
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}
