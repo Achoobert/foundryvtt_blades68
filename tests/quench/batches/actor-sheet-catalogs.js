@@ -195,7 +195,7 @@ export default function register(quench) {
           assert.isFalse(Array.isArray(actor.system.keys.list), 'setup should reproduce the object-shaped list');
 
           const keys = actor.getComputedKeys();
-          assert.lengthOf(keys, 5, 'should still pad to 5 slots');
+          assert.lengthOf(keys, 4, 'should still pad to 4 slots');
           assert.equal(keys[0].key, 'Defiant', 'the existing slot should be preserved, not dropped');
           assert.equal(keys[0].experience, 1, 'legacy marks should migrate into experience');
 
@@ -208,11 +208,11 @@ export default function register(quench) {
           }
         });
 
-        it('pads a fresh actor to 5 empty Key slots (no leftover "example" placeholder)', async function () {
+        it('pads a fresh actor to 4 empty Key slots (no leftover "example" placeholder)', async function () {
           requireSystemActive();
           const actor = tracker.track(await Actor.create({ name: 'Quench Keys Padding PC', type: 'character' }));
           const keys = actor.getComputedKeys();
-          assert.lengthOf(keys, 5);
+          assert.lengthOf(keys, 4);
           assert.isTrue(keys.every((slot) => slot.key === ''), 'every slot should start empty and addable');
         });
 

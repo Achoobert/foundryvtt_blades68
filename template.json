@@ -43,12 +43,16 @@
         "list": []
       },
       "keys": {
-        "max": 5,
+        "max": 4,
         "list": [
           { "key": "", "experience": 0, "deadlocked": false, "deadlocked_to": "" },
           { "key": "", "experience": 0, "deadlocked": false, "deadlocked_to": "" },
-          { "key": "", "experience": 0, "deadlocked": false, "deadlocked_to": "" },
-          { "key": "", "experience": 0, "deadlocked": false, "deadlocked_to": "" },
+          {
+            "key": "",
+            "experience": 0,
+            "deadlocked": false,
+            "deadlocked_to": ""
+          },
           { "key": "", "experience": 0, "deadlocked": false, "deadlocked_to": "" }
         ]
       },
@@ -388,7 +392,8 @@
       "scoundrel": {
         "add_trauma": 0,
         "add_stress": 0,
-        "mastery": false
+        "mastery": false,
+        "bonus_keys": 0
       },
       "max": {
         "heat": 9,

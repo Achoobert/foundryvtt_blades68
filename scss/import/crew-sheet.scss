@@ -1,6 +1,3 @@
-$coin_size: 15px;
-$coin_margin: 3px;
-
 @import 'coins.scss';
 
 .item {
@@ -132,14 +129,12 @@ section.tab-content.folder-tab-content {
 
 // Crew Coins
 .crew-coins {
-  @include custom_radio_square($coin_size);
-  flex-wrap: wrap;
-  max-width: 4 * ($coin_size + $coin_margin);
-
-  label {
-    margin-right: $coin_margin;
-    margin-bottom: $coin_margin;
+  @include coin_stacks;
+    max-width: 4 * ($coin_width + $coin_margin);
   }
+.crew-gambits {
+  @include image_multibox(15px, 16px, "assets/blades68/dice_bg.webp", "assets/blades68/dice_bg_black.webp", $coin_margin);
+  max-width: 4 * (15px + $coin_margin);
 }
 
 

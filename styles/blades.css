@@ -12,6 +12,10 @@
  * Custom Radio Squared
  */
 /*
+ * Image-backed multibox radios (coins, gambits).
+ * Default filled; radios after the checked value switch to empty.
+ */
+/*
  * Checkboxes underscored.
  */
 /*
@@ -560,54 +564,34 @@
 }
 .blades68.crew.sheet .coins {
   display: flex;
+  flex-wrap: wrap;
 }
 .blades68.crew.sheet .coins label {
-  height: 15px;
+  height: 20px;
   width: 15px;
-  background-color: #DAA520;
+  background-color: transparent;
+  background-image: url("assets/blades68/stack_filled.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  margin-right: 3px;
+  margin-bottom: 3px;
   vertical-align: middle;
-  border: 1px solid #191813;
-}
-.blades68.crew.sheet .coins label[for$="-0"] {
-  margin-right: 0px;
-}
-.blades68.crew.sheet .coins label {
-  transition: filter 0.1s;
+  transition: filter 0.2s;
   cursor: pointer;
 }
 .blades68.crew.sheet .coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-.blades68.crew.sheet .coins {
-  /* Hide the browser's default checkbox */
-}
 .blades68.crew.sheet .coins input {
   display: none;
 }
 .blades68.crew.sheet .coins input:checked ~ label {
-  background-color: #EEEFFF;
+  background-image: url("assets/blades68/stack_empty.webp");
 }
 .blades68.crew.sheet .coins input:checked + label {
-  background-color: #DAA520;
-}
-.blades68.crew.sheet .coins {
-  flex-wrap: wrap;
-}
-.blades68.crew.sheet .coins input ~ label {
-  margin-right: 3px;
-  margin-bottom: 3px;
-}
-.blades68.crew.sheet .coins input ~ label[for$="0"] {
-  border-width: 2px;
-}
-.blades68.crew.sheet .coins input ~ label {
-  transition: filter 0.2s;
-  cursor: pointer;
-}
-.blades68.crew.sheet .coins input ~ label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
+  background-image: url("assets/blades68/stack_filled.webp");
 }
 .blades68.crew.sheet .coins.coins-hands {
   width: 36px;
@@ -716,44 +700,71 @@
 }
 .blades68.crew.sheet .crew-coins {
   display: flex;
+  flex-wrap: wrap;
 }
 .blades68.crew.sheet .crew-coins label {
-  height: 15px;
+  height: 20px;
   width: 15px;
-  background-color: #DAA520;
+  background-color: transparent;
+  background-image: url("assets/blades68/stack_filled.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  margin-right: 3px;
+  margin-bottom: 3px;
   vertical-align: middle;
-  border: 1px solid #191813;
-}
-.blades68.crew.sheet .crew-coins label[for$="-0"] {
-  margin-right: 0px;
-}
-.blades68.crew.sheet .crew-coins label {
-  transition: filter 0.1s;
+  transition: filter 0.2s;
   cursor: pointer;
 }
 .blades68.crew.sheet .crew-coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-.blades68.crew.sheet .crew-coins {
-  /* Hide the browser's default checkbox */
-}
 .blades68.crew.sheet .crew-coins input {
   display: none;
 }
 .blades68.crew.sheet .crew-coins input:checked ~ label {
-  background-color: #EEEFFF;
+  background-image: url("assets/blades68/stack_empty.webp");
 }
 .blades68.crew.sheet .crew-coins input:checked + label {
-  background-color: #DAA520;
+  background-image: url("assets/blades68/stack_filled.webp");
 }
 .blades68.crew.sheet .crew-coins {
-  flex-wrap: wrap;
   max-width: 72px;
 }
-.blades68.crew.sheet .crew-coins label {
+.blades68.crew.sheet .crew-gambits {
+  display: flex;
+  flex-wrap: wrap;
+}
+.blades68.crew.sheet .crew-gambits label {
+  height: 16px;
+  width: 15px;
+  background-color: transparent;
+  background-image: url("assets/blades68/dice_bg.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
   margin-right: 3px;
   margin-bottom: 3px;
+  vertical-align: middle;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+.blades68.crew.sheet .crew-gambits label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+.blades68.crew.sheet .crew-gambits input {
+  display: none;
+}
+.blades68.crew.sheet .crew-gambits input:checked ~ label {
+  background-image: url("assets/blades68/dice_bg_black.webp");
+}
+.blades68.crew.sheet .crew-gambits input:checked + label {
+  background-image: url("assets/blades68/dice_bg.webp");
+}
+.blades68.crew.sheet .crew-gambits {
+  max-width: 72px;
 }
 .blades68.crew.sheet .crew-reputation {
   border-top: 3px solid #191813;
@@ -1425,6 +1436,10 @@
    * Custom Radio Squared
    */
   /*
+   * Image-backed multibox radios (coins, gambits).
+   * Default filled; radios after the checked value switch to empty.
+   */
+  /*
    * Checkboxes underscored.
    */
   /*
@@ -1899,54 +1914,34 @@
 }
 .blades68.actor.pc * .coins {
   display: flex;
+  flex-wrap: wrap;
 }
 .blades68.actor.pc * .coins label {
-  height: 15px;
+  height: 20px;
   width: 15px;
-  background-color: #DAA520;
+  background-color: transparent;
+  background-image: url("assets/blades68/stack_filled.webp");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  margin-right: 3px;
+  margin-bottom: 3px;
   vertical-align: middle;
-  border: 1px solid #191813;
-}
-.blades68.actor.pc * .coins label[for$="-0"] {
-  margin-right: 0px;
-}
-.blades68.actor.pc * .coins label {
-  transition: filter 0.1s;
+  transition: filter 0.2s;
   cursor: pointer;
 }
 .blades68.actor.pc * .coins label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
 }
-.blades68.actor.pc * .coins {
-  /* Hide the browser's default checkbox */
-}
 .blades68.actor.pc * .coins input {
   display: none;
 }
 .blades68.actor.pc * .coins input:checked ~ label {
-  background-color: #EEEFFF;
+  background-image: url("assets/blades68/stack_empty.webp");
 }
 .blades68.actor.pc * .coins input:checked + label {
-  background-color: #DAA520;
-}
-.blades68.actor.pc * .coins {
-  flex-wrap: wrap;
-}
-.blades68.actor.pc * .coins input ~ label {
-  margin-right: 3px;
-  margin-bottom: 3px;
-}
-.blades68.actor.pc * .coins input ~ label[for$="0"] {
-  border-width: 2px;
-}
-.blades68.actor.pc * .coins input ~ label {
-  transition: filter 0.2s;
-  cursor: pointer;
-}
-.blades68.actor.pc * .coins input ~ label:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
+  background-image: url("assets/blades68/stack_filled.webp");
 }
 .blades68.actor.pc * .coins.coins-hands {
   width: 36px;
@@ -2875,5 +2870,3 @@
     transform: translate(2px, 1px);
   }
 }
-
-/*# sourceMappingURL=blades.css.map */

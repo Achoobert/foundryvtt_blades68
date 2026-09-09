@@ -676,6 +676,30 @@ export class BladesActor extends Actor {
     return Boolean(crew_actor?.system?.scoundrel?.mastery);
   }
 
+  /**
+   * Extra Key slots granted by the linked crew. Crew upgrades carry a transferred Active
+   * Effect that adds to the crew's `system.scoundrel.bonus_keys`, so the bonus is read off
+   * the crew actor after core has applied its effects.
+   */
+  getBonusKeys() {
+    const crew_actor = this._getCrewActor();
+    if (!crew_actor) {
+      return 0;
+    }
+    const bonus = Number(crew_actor?.system?.scoundrel?.bonus_keys);
+    return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
+  }
+
+  /**
+   * Key slot count: the actor's own max (which owned abilities can raise via Active Effect)
+   * plus any crew-granted slots.
+   */
+  getMaxKeys() {
+    const own = Number(this.system.keys?.max);
+    const base = Number.isFinite(own) ? own : 4;
+    return base + this.getBonusKeys();
+  }
+
   getHealingMin() {
     let current_healing = parseInt(this.system.healing_clock.value);
     if (current_healing < this.system.healing_clock.min) {
@@ -687,7 +711,7 @@ export class BladesActor extends Actor {
   /**
    * Keys/Deadlocks self-heal: older actors (and the pre-fix template default) only ever
    * seeded a single, non-empty "example" slot, which left no empty slot for Add Key to fill
-   * and only rendered 1 of the intended 5 rows. Pad the list up to system.keys.max with empty
+   * and only rendered 1 of the intended rows. Pad the list up to getMaxKeys() with empty
    * slots and normalize any leftover "example" placeholder to an empty, addable slot.
    *
    * Also migrates legacy per-slot fields (`marks` → `experience`, `boomed` → `deadlocked`)
@@ -695,7 +719,7 @@ export class BladesActor extends Actor {
    * `{ key, experience, deadlocked, deadlocked_to }`.
    */
   getComputedKeys() {
-    const max = this.system.keys?.max ?? 5;
+    const max = this.getMaxKeys();
     const rawList = this.system.keys?.list ?? [];
     // Partial dot-notation updates (e.g. "system.keys.list.0.key") can leave Foundry's merge
     // with a plain object keyed by index ({"0": {...}, "1": {...}}) instead of a real array;

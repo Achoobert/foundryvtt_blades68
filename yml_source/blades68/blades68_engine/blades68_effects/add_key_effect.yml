@@ -1,0 +1,45 @@
+    {
+      "name": "add key",
+      "img": "systems/blades68/styles/assets/icons/Icon.3_13.webp",
+      "origin": "Item.3tD1iaeu6yKrs8p2",
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "disabled": false,
+      "_id": "sDAn9qY3E1hwR4Eg",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.keys.max",
+            "type": "add",
+            "value": 1,
+            "priority": null,
+            "phase": "initial"
+          }
+        ]
+      },
+      "start": null,
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.359",
+        "systemId": "blades68",
+        "systemVersion": "6.4.0",
+        "createdTime": 1788934867365,
+        "modifiedTime": 1788934892998,
+        "lastModifiedBy": "RxPunVGcY2dZpYsD",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      }
+    }

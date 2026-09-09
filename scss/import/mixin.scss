@@ -169,6 +169,42 @@
 }
 
 /*
+ * Image-backed multibox radios (coins, gambits).
+ * Default filled; radios after the checked value switch to empty.
+ */
+@mixin image_multibox($width, $height, $filled, $empty, $margin: 3px) {
+  display: flex;
+  flex-wrap: wrap;
+
+  label {
+    height: $height;
+    width: $width;
+    background-color: transparent;
+    background-image: url($filled);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    margin-right: $margin;
+    margin-bottom: $margin;
+    vertical-align: middle;
+    @include changeable($transition-period, $hover-brightness, $hover-opacity);
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+      &~label {
+        background-image: url($empty);
+      }
+
+      &+label {
+        background-image: url($filled);
+      }
+    }
+  }
+}
+/*
  * Checkboxes underscored.
  */
 @mixin check_underscore() {

@@ -1,20 +1,13 @@
-$coin_size: 15px;
+$coin_width: 15px;
+$coin_height: 20px;
 $coin_margin: 3px;
 
+@mixin coin_stacks {
+  @include image_multibox($coin_width, $coin_height, "assets/blades68/stack_filled.webp", "assets/blades68/stack_empty.webp", $coin_margin);
+}
+
 .coins {
-  @include custom_radio_square($coin_size);
-  flex-wrap: wrap;
-
-  input ~ label {
-    margin-right: $coin_margin;
-    margin-bottom: $coin_margin;
-
-    &[for$="0"] {
-      border-width: 2px;
-    }
-
-    @include changeable($transition-period, $hover-brightness, $hover-opacity);
-  }
+  @include coin_stacks;
 
   &.coins-hands {
     width: 36px;
@@ -22,6 +15,6 @@ $coin_margin: 3px;
 
   &.coins-stashed {
     width: 190px;
-  }
-
+  
+}
 }
