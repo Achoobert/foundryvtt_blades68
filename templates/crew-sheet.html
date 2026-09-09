@@ -352,7 +352,7 @@
       {{#if (eq item.type "crew_ability")}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">
         <div class="item-body item-sheet-open flex-horizontal">
-          <b><div class="item-name">{{item.name}}</div></b>
+          <div class="item-name" style="min-width: 120px;"><b>{{item.name}}</b></div>
           <div class="item-description">{{{item.system.description}}}</div>
         </div>
         <a class="item-control item-delete" style="max-width: 10px !important;"
@@ -489,9 +489,9 @@
           <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
           <div class="item-name">{{item.name}}</div>
         </div>
-        <a class="item-control item-delete" style="max-width: 10px !important;"
+        <a class="item-control item-delete"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-        <a class="item-control item-post" style="max-width: 10px !important;"
+        <a class="item-control item-post"
           data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
       </div>
       {{/each}}

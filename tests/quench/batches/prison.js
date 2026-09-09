@@ -6,10 +6,10 @@ const EXPECTED_IRONHOOK_CONNECTS = {
   1: ['right', 'bottom'],
   2: ['right', 'bottom'],
   3: ['left'],
-  4: ['left', 'top', 'bottom'],
+  4: ['top', 'right', 'bottom'],
   5: ['right', 'bottom'],
   6: ['left'],
-  7: ['left'],
+  7: [],
   8: ['right'],
   9: ['left']
 };
@@ -45,7 +45,7 @@ export default function register(quench) {
           assert.equal(turfs['1']?.name, 'Smuggling');
           assert.include(turfs['1']?.description ?? '', '+2 load');
           assert.equal(turfs['3']?.name, 'Cell Block Control');
-          assert.include(turfs['3']?.description ?? '', 'trauma');
+          assert.include(turfs['3']?.description ?? '', 'Doing Time');
           assert.equal(turfs['5']?.name, 'Hardcase');
           assert.equal(turfs['6']?.name, 'Outside Claim');
           assert.equal(turfs['7']?.name, 'Guard Payoff');

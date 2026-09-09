@@ -108,7 +108,7 @@ system:
         - false
         - false
     '9':
-      name: Parloe Infulence
+      name: Parole Influence
       value: false
       description: Wanted Level counts as one lower for sentence
       highlight: false

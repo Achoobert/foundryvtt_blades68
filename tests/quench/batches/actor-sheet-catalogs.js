@@ -20,6 +20,23 @@ async function fireChange(checkbox, until) {
   }
 }
 
+/**
+ * Poll for an open DialogV2 <dialog>. A just-closed dialog keeps its `open` attribute
+ * (and an `[open]` match) for up to ~1s while Application#close animates it out via a
+ * "minimizing" class, so when a test opens a second dialog right after closing the
+ * first, `document.querySelector('dialog[open]')` can return that stale closing one
+ * instead of the new one. Always take the last match (most recently opened) instead.
+ */
+async function waitForOpenDialog() {
+  let dialogEl;
+  for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    const open = document.querySelectorAll('dialog[open]:not(.minimizing)');
+    dialogEl = open[open.length - 1];
+  }
+  return dialogEl ?? null;
+}
+
 export default function register(quench) {
   quench.registerBatch(
     'blades68.actor-sheet-catalogs',
@@ -50,7 +67,7 @@ export default function register(quench) {
             const data = await sheet.getData();
             assert.lengthOf(data.otherAbilities, 1);
             assert.equal(data.otherAbilities[0].name, '(Some Other Class) Borrowed Ability');
-            assert.isEmpty(sheet.element.find('.special-abilities-panel .ability-catalog'));
+            assert.lengthOf(sheet.element.find('.special-abilities-panel .ability-catalog'), 0);
           } finally {
             await sheet.close();
           }
@@ -126,7 +143,11 @@ export default function register(quench) {
 
             let checkbox = slotCheckbox(1);
             checkbox.checked = true;
-            await fireChange(checkbox, () => ownedBandoliers().length === 1);
+            // The actor update and the sheet's own re-render (which rebinds fresh listeners
+            // and reflects the new ownedCount as each slot's `checked` attribute) are two
+            // separate async steps - wait for both, or the next slotCheckbox() query can
+            // still return a stale, pre-re-render node.
+            await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(1)?.checked === true);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
               1,
@@ -135,7 +156,7 @@ export default function register(quench) {
 
             checkbox = slotCheckbox(2);
             checkbox.checked = true;
-            await fireChange(checkbox, () => ownedBandoliers().length === 2);
+            await fireChange(checkbox, () => ownedBandoliers().length === 2 && slotCheckbox(2)?.checked === true);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
               2,
@@ -144,7 +165,7 @@ export default function register(quench) {
 
             checkbox = slotCheckbox(2);
             checkbox.checked = false;
-            await fireChange(checkbox, () => ownedBandoliers().length === 1);
+            await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(2)?.checked === false);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
               1,
@@ -232,11 +253,7 @@ export default function register(quench) {
           try {
             sheet.element.find('.add-key-popup').click();
             // Wait for the Add Key DialogV2 to render.
-            let dialogEl;
-            for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
-              await new Promise((resolve) => setTimeout(resolve, 150));
-              dialogEl = document.querySelector('dialog[open]');
-            }
+            const dialogEl = await waitForOpenDialog();
             assert.isOk(dialogEl, 'the Add Key dialog should open');
 
             const checkbox = dialogEl.querySelector('input[name="select_keys"]');
@@ -313,11 +330,7 @@ export default function register(quench) {
           await sheet._render(true);
           try {
             const popupPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
-            let dialogEl;
-            for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
-              await new Promise((resolve) => setTimeout(resolve, 150));
-              dialogEl = document.querySelector('dialog[open]');
-            }
+            const dialogEl = await waitForOpenDialog();
             assert.isOk(dialogEl, 'the Choose Deadlock dialog should open');
 
             const radio = dialogEl.querySelector('input[name="select_deadlock"][value="controlling"]');
@@ -357,11 +370,7 @@ export default function register(quench) {
           await actor.update({ 'system.keys.list': keysList });
 
           const cancelPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
-          let dialogEl;
-          for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
-            await new Promise((resolve) => setTimeout(resolve, 150));
-            dialogEl = document.querySelector('dialog[open]');
-          }
+          let dialogEl = await waitForOpenDialog();
           assert.isOk(dialogEl, 'cancel dialog should open');
           dialogEl.querySelector('button[data-action="cancel"]').click();
           assert.isNotOk(await cancelPromise);
@@ -369,11 +378,7 @@ export default function register(quench) {
           assert.equal(actor.getComputedKeys()[0].deadlocked_to, '');
 
           const customPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
-          dialogEl = null;
-          for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
-            await new Promise((resolve) => setTimeout(resolve, 150));
-            dialogEl = document.querySelector('dialog[open]');
-          }
+          dialogEl = await waitForOpenDialog();
           assert.isOk(dialogEl, 'custom dialog should open');
           const customInput = dialogEl.querySelector('input[name="custom_deadlock"]');
           customInput.value = 'overbearing';

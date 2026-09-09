@@ -29,10 +29,10 @@ export default function register(quench) {
           assert.lengthOf(game.system.traumas, 8);
         });
 
-        it('registers 54 Blades68 personality Keys with matching localization keys', function () {
+        it('registers 55 Blades68 personality Keys with matching localization keys', function () {
           requireSystemActive();
           const keys = game.system.blades68Keys;
-          assert.lengthOf(keys, 54);
+          assert.lengthOf(keys, 55);
           for (const key of keys) {
             assert.equal(key.label, `BITD.Key${key.id}`);
             assert.equal(key.drift, `BITD.Key${key.id}Drift`);

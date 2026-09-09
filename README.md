@@ -45,7 +45,6 @@ npm run packs:build
 Local `npm run watch` / `npm run dev` rebuild packs from YAML before syncing into Foundry. Release workflows build packs before zipping.
 
 ## Screenshots
-TODO update
 ### Character Sheet, Crew Sheet and Clock
 ![alt screen][screenshot_all]
 ![alt screen][industrial_clock]
@@ -80,13 +79,15 @@ TODO update
 - Some assets were taken from here (thank you  timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
 
 
-[screenshot_all]: ./images/screenshot_all.webp "screenshot_all"
-[industrial_clock]: ./images/industrial_clocks.webp "industrial clocks from old dog games"
-[screenshot_compendium]: ./images/screenshot_compendium.webp "screenshot_compendium"
-[screenshot_roll_1]: ./images/screenshot_roll_1.webp "screenshot_roll_1"
-[screenshot_roll_2]: ./images/screenshot_roll_2.webp "screenshot_roll_2"
-[faction_image_import]: .images/faction_image_import.webp "faction_image_import"
+[screenshot_all]: ./info_images/screenshot_all.webp "screenshot_all"
+[industrial_clock]: ./info_images/industrial_clocks.webp "industrial clocks from old dog games"
+[screenshot_compendium]: ./info_images/screenshot_compendium.webp "screenshot_compendium"
+[screenshot_roll_1]: ./info_images/screenshot_roll_1.webp "screenshot_roll_1"
+[screenshot_roll_2]: ./info_images/screenshot_roll_2.webp "screenshot_roll_2"
+[faction_image_import]: ./info_images/faction_image_import.webp "faction_image_import"
 
+Get the runaways
+https://moth-lands.itch.io/runnaways
 
 text and icons imported from:
 https://github.com/Roll20/roll20-character-sheets/tree/master/Blades%2068
