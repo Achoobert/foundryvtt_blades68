@@ -16,7 +16,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png
+    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
     label: Compartments
     origin: Item.5goOpDb9pPrONuRS
     transfer: true

@@ -1,7 +1,7 @@
 name: Show of Force
 type: hunting_grounds
 _id: dO7gKKkL0bTRmnz1
-img: systems/blades-in-the-dark/styles/assets/icons/Icons8_28.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icons8_28.webp
 system:
   description: <p>Make an example of an enemy to dominate a territory.</p>
   class: Hawkers

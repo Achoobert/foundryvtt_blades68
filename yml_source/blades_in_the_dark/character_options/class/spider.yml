@@ -1,7 +1,7 @@
 _id: P6LMZBrG5U9eCjhX
 name: Spider
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.7_60.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.7_60.webp
 system:
   description: A devious mastermind
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png
+    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
     label: Spider
     origin: Compendium.blades-in-the-dark.class.P6LMZBrG5U9eCjhX
     transfer: true

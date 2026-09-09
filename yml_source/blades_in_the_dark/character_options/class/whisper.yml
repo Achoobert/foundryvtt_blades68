@@ -1,7 +1,7 @@
 _id: zOg14xy8ZEku6bNq
 name: Whisper
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_88.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_88.webp
 system:
   description: An Arcane adept and channeler
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png
+    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
     label: Whisper
     origin: Compendium.blades-in-the-dark.class.zOg14xy8ZEku6bNq
     transfer: true

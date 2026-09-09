@@ -1,7 +1,7 @@
 name: Acquisition
 type: hunting_grounds
 _id: qlldHIVyJfvjsTcT
-img: systems/blades-in-the-dark/styles/assets/icons/Icons8_06.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icons8_06.webp
 system:
   description: <p>Procue an arcane artifact and attune it to your god.</p>
   class: Cult

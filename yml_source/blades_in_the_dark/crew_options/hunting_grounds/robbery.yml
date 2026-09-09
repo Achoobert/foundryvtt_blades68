@@ -1,7 +1,7 @@
 name: Robbery
 type: hunting_grounds
 _id: mQ6394HVPUWkQClX
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_53.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_53.webp
 system:
   description: <p>Theft by force or threats.</p>
   class: Shadows

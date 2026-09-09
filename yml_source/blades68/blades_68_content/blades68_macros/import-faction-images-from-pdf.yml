@@ -181,7 +181,7 @@ command: |
               if (expected) unmatched.push(`#${image.pageNumber} (${expected})`);
               continue;
             }
-            const filename = `${item.name.replace(/[^a-z0-9]+/gi, "_").toLowerCase()}.png`;
+            const filename = `${item.name.replace(/[^a-z0-9]+/gi, "_").toLowerCase()}.webp`;
             const path = await uploadImageBlob(image.blob, filename, deck.subdir);
             if (!path) continue;
             await item.update({ img: path });

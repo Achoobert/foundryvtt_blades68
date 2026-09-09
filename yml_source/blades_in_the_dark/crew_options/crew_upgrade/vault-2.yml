@@ -41,7 +41,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png
+    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
     label: ''
     origin: Compendium.blades-in-the-dark.crew_upgrade.RmjU5DHgecia43Cf
     transfer: true

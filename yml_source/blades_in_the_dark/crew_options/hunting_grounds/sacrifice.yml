@@ -1,7 +1,7 @@
 name: Sacrifice
 type: hunting_grounds
 _id: hOC4Y7LD55FW1JwA
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_52.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_52.webp
 system:
   description: <p>Destroy what is valuable or good in honor of your god.</p>
   class: Cult

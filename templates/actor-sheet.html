@@ -176,11 +176,8 @@
       <a class="down-exp-clock" data-tooltip="{{localize 'BITD.MinusXP'}}"><i class="fas fa-caret-down"></i></a>
     </div>
     <img
-      src="systems/blades68/themes/{{system.exp_clock.color}}/{{system.exp_clock.size}}clock_{{system.exp_clock.value}}.svg"
+      src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_{{system.exp_clock.size}}-{{system.exp_clock.value}}.webp"
       height="45" width="45" style="border-style: none" />
-    <!--
-                <img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock {{system.exp_clock.size}}-{{system.exp_clock.value}}.svg" height="45" width="45" style="border-style: none"/>
-            	-->
     {{#if (gteq system.exp_clock.number 1)}}
     <div class="flex-vertical" style="font-size: 16px">
       <a class="add-exp-clock" data-tooltip="{{localize 'BITD.MinusXPClock'}}" style="visibility:hidden"><i
@@ -189,11 +186,13 @@
     </div>
     {{#if (lteq system.exp_clock.number 10)}}
     {{#times_from 1 system.exp_clock.number}}
-    <img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock 6-6.svg" height="45" width="45"
+    <img src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_6-6.webp" height="45"
+      width="45"
       style="border-style: none" />
     {{/times_from}}
     {{else}}
-    <img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock 6-6.svg" height="45" width="45"
+    <img src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_6-6.webp" height="45"
+      width="45"
       style="border-style: none" />
     <p style="font-family: Kirsty, serif; font-size: 24px">x {{system.exp_clock.number}}</p>
     {{/if}}
@@ -333,7 +332,7 @@
           </span>
           <label class="key-boom" data-tooltip="{{localize 'BITD.Deadlocks'}}">
             <input type="checkbox" {{checked slot.deadlocked}}>
-            <i class="fas fa-burst"></i>
+            <span class="boom-icon"></span>
           </label>
         </div>
         {{/each}}

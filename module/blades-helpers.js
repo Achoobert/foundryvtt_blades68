@@ -234,6 +234,36 @@ export class BladesHelpers {
   }
 
   /**
+   * Clock face URL. Blades '68 mode uses industrial PNG clocks (yellow/blue);
+   * sizes with no PNG (10) fall back to themed SVGs.
+   */
+  static clockImageUrl(type, value, color = "black") {
+    const size = String(type);
+    const tick = String(value ?? 0);
+    const themeColor = color || "black";
+    const blades68 = game.settings.get("blades68", "Blades68Mode");
+    if (blades68) {
+      const pngColor = BladesHelpers._clockPngColor(themeColor, size);
+      if (pngColor) {
+        return `systems/blades68/themes/progressclocks-png-68/Progress_Clock_${pngColor}_${size}-${tick}.webp`;
+      }
+    }
+    return `systems/blades68/themes/${themeColor}/${size}clock_${tick}.svg`;
+  }
+
+  static _clockPngColor(color, size) {
+    const yellowSizes = new Set(["4", "6", "8", "12"]);
+    const blueSizes = new Set(["4", "6", "12"]);
+    if ((color || "").toLowerCase() === "blue" && blueSizes.has(size)) {
+      return "Blue";
+    }
+    if (yellowSizes.has(size)) {
+      return "Yellow";
+    }
+    return null;
+  }
+
+  /**
    * Creates options for faction clocks.
    *
    * @param {int[]} sizes

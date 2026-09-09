@@ -1,7 +1,7 @@
 name: Battle
 type: hunting_grounds
 _id: 1LkMykBsiEDXtXeL
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.1_52.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.1_52.webp
 system:
   description: <p>Defeat an enemy with overwhelming force.</p>
   class: Bravos

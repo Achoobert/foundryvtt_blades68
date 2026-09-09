@@ -230,7 +230,7 @@ Hooks.once("init", async function() {
     for (let i = 1; i <= max_rep; i++) {
 
       if (i > max_rep - turfs_amount_int) {
-        html += `<input disabled type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i} dtype="Radio"><label style="background-image: url('systems/blades-in-the-dark/styles/assets/blades68/stresspill_filled.png')" class="radio-toggle" for="crew-${_id}-reputation-${i}"></label>`;
+        html += `<input disabled type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i} dtype="Radio"><label style="background-image: url('systems/blades-in-the-dark/styles/assets/blades68/stresspill_filled.webp')" class="radio-toggle" for="crew-${_id}-reputation-${i}"></label>`;
 	  } else {
 	  html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle" for="crew-${_id}-reputation-${i}"></label>`;
 	  }
@@ -346,7 +346,7 @@ Hooks.once("init", async function() {
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/themes/${color}/${type}clock_${current_value}.svg');">`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
     html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
@@ -377,7 +377,7 @@ Hooks.once("init", async function() {
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/themes/black/${type}clock_${current_value}.svg');">`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, "black")}');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
     html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
@@ -472,7 +472,7 @@ Hooks.on("renderSceneControls", async (app, html) => {
 
 });
 
-const PAUSE_IMAGE = "systems/blades68/styles/assets/blades68/bladesin68_logo.png";
+const PAUSE_IMAGE = "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
 
 function setPauseImage(target) {
   // renderGamePause (V13+) passes an HTMLElement, renderPause (V12 and older) passes jQuery

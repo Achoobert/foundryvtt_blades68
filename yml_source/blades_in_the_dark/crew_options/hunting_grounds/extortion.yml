@@ -1,7 +1,7 @@
 name: Extortion
 type: hunting_grounds
 _id: MxwTDH33YxRO3F4t
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.2_24.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.2_24.webp
 system:
   description: <p>Threaten violence unless you're paid off.</p>
   class: Bravos

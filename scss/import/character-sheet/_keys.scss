@@ -62,7 +62,7 @@
 
       .key-marks {
         display: flex;
-        @include toothradio(15px, 25px, "assets/blades68/stresspill_empty.png", "assets/blades68/stresspill_filled.png");
+        @include toothradio(15px, 25px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
 
         &.is-disabled {
           opacity: 0.45;
@@ -79,14 +79,16 @@
           display: none;
         }
 
-        i {
-          color: $lightgray;
-          font-size: 16px;
+                .boom-icon {
+                  width: 22px;
+                  height: 22px;
+                  background-image: url("assets/blades68/boom_empty.webp");
+                  background-repeat: no-repeat;
+                  background-size: 100% 100%;
         }
 
-        input:checked + i {
-          color: red;
-          outline: 1px solid black;
+                input:checked+.boom-icon {
+                  background-image: url("assets/blades68/boom_checked.webp");
         }
       }
     }

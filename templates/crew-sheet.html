@@ -238,10 +238,9 @@
           <a class="up-exp-clock" data-tooltip="{{localize 'BITD.AddXP'}}"><i class="fas fa-caret-up"></i></a>
           <a class="down-exp-clock" data-tooltip="{{localize 'BITD.MinusXP'}}"><i class="fas fa-caret-down"></i></a>
         </div>
-		<img src="systems/blades68/themes/{{system.exp_clock.color}}/{{system.exp_clock.size}}clock_{{system.exp_clock.value}}.svg" height="40" width="40" style="border-style: none; padding-top: 8px"/>
-        <!--
-		<img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock {{system.exp_clock.size}}-{{system.exp_clock.value}}.svg" height="40" width="40" style="border-style: none; padding-top: 8px"/>
-		-->
+    <img
+      src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_{{system.exp_clock.size}}-{{system.exp_clock.value}}.webp"
+      height="40" width="40" style="border-style: none; padding-top: 8px" />
         {{#if (gteq system.exp_clock.number 1)}}
         <div class="flex-vertical" style="font-size: 14px; padding-left: 2px; padding-right: 2px">
           <a class="add-exp-clock" data-tooltip="{{localize 'BITD.MinusXPClock'}}" style="visibility:hidden"><i class="fas fa-angles-up"></i></a>
@@ -249,10 +248,12 @@
         </div>
         {{#if (lteq system.exp_clock.number 4)}}
         {{#times_from 1 system.exp_clock.number}}
-        <img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock 6-6.svg" height="40" width="40" style="border-style: none; padding-top: 8px"/>
+        <img src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_6-6.webp" height="40"
+          width="40" style="border-style: none; padding-top: 8px" />
         {{/times_from}}
         {{else}}
-        <img src="systems/blades68/styles/assets/progressclocks-svg/Progress Clock 6-6.svg" height="40" width="40" style="border-style: none; padding-top: 8px"/>
+        <img src="systems/blades68/themes/progressclocks-png-68/Progress_Clock_Yellow_6-6.webp" height="40"
+          width="40" style="border-style: none; padding-top: 8px" />
         <p style="font-family: Kirsty, serif; font-size: 21px; padding-top: 7px">x {{system.exp_clock.number}}</p>
         {{/if}}
         {{/if}}

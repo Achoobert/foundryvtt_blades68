@@ -1,7 +1,7 @@
 name: Sale
 type: hunting_grounds
 _id: 2UUqMnwJRcWYv6lY
-img: systems/blades-in-the-dark/styles/assets/icons/Icons8_89.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icons8_89.webp
 system:
   description: <p>A significant transcation with a special buyer of illicit product.</p>
   class: Hawkers

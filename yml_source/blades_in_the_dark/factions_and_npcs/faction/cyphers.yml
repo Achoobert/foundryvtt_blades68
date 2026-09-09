@@ -36,6 +36,6 @@ system:
     name_default: BITD.Status
     name: BITD.Status
 flags: {}
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_36.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_36.webp
 notes: ''
 effects: []

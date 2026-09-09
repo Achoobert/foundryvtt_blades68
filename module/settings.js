@@ -91,7 +91,7 @@ export const registerSystemSettings = function() {
 	name: game.i18n.localize('BITD.Settings.Blades68.Name'),
 	hint: game.i18n.localize('BITD.Settings.Blades68.Hint'),
 	config: true,
-	default: false,
+			 default: true,
 	scope: 'world',
 	type: new foundry.data.fields.BooleanField(),
 	requiresReload: true

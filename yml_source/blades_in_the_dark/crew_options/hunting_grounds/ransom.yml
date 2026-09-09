@@ -1,7 +1,7 @@
 name: Ransom
 type: hunting_grounds
 _id: 6YZguiLOY6wGyz5x
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.1_50.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.1_50.webp
 system:
   description: <p>A kidnapping and demand for payment for their return.</p>
   class: Assassins

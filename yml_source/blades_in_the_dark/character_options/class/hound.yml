@@ -1,7 +1,7 @@
 _id: JGxBjlbooxuUHe4E
 name: Hound
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_33.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_33.webp
 system:
   description: A deadly sharpshooter and tracker
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png
+    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
     label: Hound
     origin: Compendium.blades-in-the-dark.class.JGxBjlbooxuUHe4E
     transfer: true

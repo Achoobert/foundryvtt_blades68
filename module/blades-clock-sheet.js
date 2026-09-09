@@ -1,5 +1,6 @@
 
 import { BladesSheet } from "./blades-sheet.js";
+import { BladesHelpers } from "./blades-helpers.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -50,7 +51,7 @@ export class BladesClockSheet extends BladesSheet {
 
   /** @override */
   async _updateObject(event, formData) {
-    let image_path = `systems/blades68/themes/${formData['system.color']}/${formData['system.type']}clock_${formData['system.value']}.svg`;
+    let image_path = BladesHelpers.clockImageUrl(formData['system.type'], formData['system.value'], formData['system.color']);
     formData['img'] = image_path;
     formData['prototypeToken.texture.src'] = image_path;
     let data = [];

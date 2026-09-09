@@ -52,14 +52,14 @@
 
     // Stress
     .big-teeth {
-        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.png", "assets/blades68/stresspill_filled.png");
+        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
     }
 
     /* Trauma */
     .small-teeth-container {
 
       .small-teeth-wrap {
-        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.png", "assets/blades68/stresspill_empty.png", false);
+        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_empty.webp", false);
         flex-direction: column;
 
         .small-teeth {

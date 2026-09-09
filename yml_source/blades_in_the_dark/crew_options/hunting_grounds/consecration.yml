@@ -1,7 +1,7 @@
 name: Consecration
 type: hunting_grounds
 _id: X860Vmu1pIwy7FCD
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.5_14.png
+img: systems/blades-in-the-dark/styles/assets/icons/Icon.5_14.webp
 system:
   description: <p>Anoint a place for your deity.</p>
   class: Cult
