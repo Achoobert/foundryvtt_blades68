@@ -212,7 +212,7 @@
         <thead>
         <th class="black-white" colspan="4">{{localize "BITD.Harm"}}</th>
         <th class="black-white"><label>{{localize "BITD.Healing"}}</label></th>
-        <th class="black-white">{{localize "BITD.Armor"}}</th>
+        <th class="black-white">{{localize "B68.RESOURCES"}}</th>
         </thead>
         <tbody>
         <tr>
@@ -233,12 +233,15 @@
               <input id="character-{{_id}}-armor-uses-armor" type="checkbox" name="system.armor-uses.armor" {{checked system.armor-uses.armor}}>
             </div>
             <div>
-              <label for="character-{{_id}}-armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
-              <input id="character-{{_id}}-armor-uses-heavy" type="checkbox" name="system.armor-uses.heavy" {{checked system.armor-uses.heavy}}>
-            </div>
-            <div>
-              <label for="character-{{_id}}-armor-uses-special">{{localize "BITD.Special"}}</label>
-              <input id="character-{{_id}}-armor-uses-special" type="checkbox" name="system.armor-uses.special" {{checked system.armor-uses.special}}>
+              <label for="character-{{_id}}-armor-uses-special">{{#if
+                selectedClass.system.special_resource}}{{selectedClass.system.special_resource}}{{else}}{{localize
+                "BITD.Special"}}{{/if}}</label>
+              <span class="special-uses">
+                <input id="character-{{_id}}-armor-uses-special" type="checkbox" name="system.armor-uses.special" {{checked
+                  system.armor-uses.special}}>
+                <input id="character-{{_id}}-armor-uses-special-2" type="checkbox" name="system.armor-uses.special_2" {{checked
+                  system.armor-uses.special_2}}>
+                </span>
             </div>
           </td>
         </tr>

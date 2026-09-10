@@ -1868,6 +1868,10 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.blades68.actor.pc * .harm-armor .character-armor-uses .special-uses {
+  display: flex;
+  flex-direction: row;
+}
 .blades68.actor.pc * .attributes {
   display: flex;
   flex-direction: column;
@@ -3348,3 +3352,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */

@@ -660,5 +660,6 @@
   "B68.Mortal": "Mortal",
   "B68.Critical": "Critical",
   "B68.Major": "Major",
-  "B68.Passing": "Passing"
+  "B68.Passing": "Passing",
+  "B68.RESOURCES": "Resources"
 }

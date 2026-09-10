@@ -101,7 +101,8 @@
       "armor-uses": {
         "armor": 0,
         "heavy": 0,
-        "special": 0
+        "special": 0,
+        "special_2": 0
       },
       "attributes": {
         "insight": {
@@ -552,7 +553,7 @@
         "consort": [0],
         "sway": [0]
       },
-      "special_resource": ""
+      "special_resource": "Special"
     },
     "ability": {
       "templates": ["ability", "logic", "activatedEffect"]
