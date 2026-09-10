@@ -46,6 +46,20 @@ jobs:
       # version number: its patch segment is incremented by one. Everything
       # else in the packaged manifest comes from the repo system.json.
       # If the repo bumps major.minor, that wins and patch restarts at 0.
+      # A manifest/download URL pointing at some other repo means Foundry
+      # checks for updates against a repo this workflow never publishes to,
+      # so installs silently stay on an old build. Fail loudly instead.
+      - name: Verify Manifest URLs Point At This Repo
+        run: |
+          expected="https://github.com/${{ github.repository }}/releases/latest/download"
+          for field in manifest download; do
+            url=$(jq -r ".$field" system.json)
+            case "$url" in
+              "$expected"/*) ;;
+              *) echo "system.json .$field is '$url', expected '$expected/...'"; exit 1 ;;
+            esac
+          done
+
       - name: Compute Next Version
         id: bump_version
         run: |

@@ -2,7 +2,7 @@
   "id": "blades68",
   "title": "Blades '68",
   "description": "Blades '68, a swinging system.",
-  "version": "6.4.8",
+  "version": "6.4.9",
   "compatibility": {
     "minimum": 14,
     "verified": "14.362"
@@ -334,6 +334,6 @@
       ]
     }
   ],
-  "manifest": "https://github.com/Achoobert/foundryvtt-blades-in-the-dark/releases/latest/download/system.json",
-  "download": "https://github.com/Achoobert/foundryvtt-blades-in-the-dark/releases/latest/download/system.zip"
+  "manifest": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.json",
+  "download": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.zip"
 }
