@@ -1,11 +1,15 @@
 /**
  * Shared helpers for lossless YAML <-> NeDB pack compile/extract.
  */
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 
 export const PACK_MANIFEST = "_pack.yml";
+
+/** Packs with this build_order compile after every other pack. */
+export const BUILD_ORDER_LAST = "last";
 
 /** Map Foundry packFolders name -> filesystem slug. */
 export function folderSlug(name) {
@@ -38,11 +42,15 @@ export function loadSystemManifest(root) {
  */
 export function packPlacement(system) {
   const folderByPack = new Map();
-  for (const folder of system.packFolders ?? []) {
-    for (const packName of folder.packs ?? []) {
-      folderByPack.set(packName, folder);
+  function walkFolders(folders) {
+    for (const folder of folders ?? []) {
+      for (const packName of folder.packs ?? []) {
+        folderByPack.set(packName, folder);
+      }
+      walkFolders(folder.folders);
     }
   }
+  walkFolders(system.packFolders);
 
   const placement = new Map();
   for (const pack of system.packs ?? []) {
@@ -106,6 +114,11 @@ export function loadPackManifest(manifestPath) {
   for (const key of ["name", "label", "type", "path"]) {
     if (!raw[key]) throw new Error(`${manifestPath}: missing required \`${key}\``);
   }
+  if (raw.build_order != null && raw.build_order !== BUILD_ORDER_LAST) {
+    throw new Error(
+      `${manifestPath}: build_order must be "${BUILD_ORDER_LAST}" when set (got "${raw.build_order}")`
+    );
+  }
   return raw;
 }
 
@@ -157,6 +170,152 @@ export function loadPackDocuments(packDir) {
     }
   }
   return { docs, problems };
+}
+
+/** Foundry document class for a pack type, used to build compendium UUIDs. */
+const PACK_DOCUMENT_CLASS = {
+  Item: "Item",
+  Actor: "Actor",
+  Macro: "Macro",
+  RollTable: "RollTable",
+  JournalEntry: "JournalEntry",
+};
+
+/** Stable 16-char id for a document embedded on an owner document. */
+export function embeddedItemId(ownerId, packName, sourceId, position) {
+  return crypto
+    .createHash("sha256")
+    .update([ownerId, packName, sourceId, position].join("\0"))
+    .digest("hex")
+    .slice(0, 16);
+}
+
+/**
+ * Index compiled packs for cross-pack lookup.
+ * Input: iterable of { name, type, docs }.
+ * Returns { byId, byName } keyed by pack + id / pack + lowercased name; each
+ * entry is { pack, packType, doc }.
+ */
+export function buildPackIndex(packs) {
+  const byId = new Map();
+  const byName = new Map();
+  for (const { name: pack, type: packType, docs } of packs) {
+    for (const doc of docs ?? []) {
+      const entry = { pack, packType, doc };
+      byId.set(indexKey(pack, doc._id), entry);
+      const key = indexKey(pack, String(doc.name ?? "").toLowerCase());
+      if (!byName.has(key)) byName.set(key, []);
+      byName.get(key).push(entry);
+    }
+  }
+  return { byId, byName };
+}
+
+function indexKey(pack, suffix) {
+  return `${pack}\u0000${suffix}`;
+}
+
+function isPlainObject(value) {
+  return value != null && typeof value === "object" && !Array.isArray(value);
+}
+
+/** Deep merge `patch` onto a clone of `base`; arrays and scalars are replaced. */
+export function mergeDeep(base, patch) {
+  if (!isPlainObject(base) || !isPlainObject(patch)) {
+    return structuredClone(patch === undefined ? base : patch);
+  }
+  const out = structuredClone(base);
+  for (const [key, value] of Object.entries(patch)) {
+    out[key] = isPlainObject(value) && isPlainObject(out[key]) ? mergeDeep(out[key], value) : structuredClone(value);
+  }
+  return out;
+}
+
+function lookupRef(ref, index) {
+  const pack = ref.pack;
+  if (!pack) return { error: "ref needs `pack`" };
+  if (ref.id) {
+    const entry = index.byId.get(indexKey(pack, ref.id));
+    return entry ? { entry } : { error: `no document with _id "${ref.id}" in pack "${pack}"` };
+  }
+  if (!ref.name) return { error: "ref needs `name` or `id`" };
+
+  const wantedType = ref.type ? String(ref.type).toLowerCase() : null;
+  const matches = (index.byName.get(indexKey(pack, String(ref.name).toLowerCase())) ?? []).filter(
+    (entry) => !wantedType || String(entry.doc.type ?? "").toLowerCase() === wantedType
+  );
+  if (!matches.length) {
+    const typeHint = ref.type ? ` of type "${ref.type}"` : "";
+    return { error: `no document named "${ref.name}"${typeHint} in pack "${pack}"` };
+  }
+  if (matches.length > 1) {
+    const ids = matches.map((m) => m.doc._id).join(", ");
+    return {
+      error: `"${ref.name}" is ambiguous in pack "${pack}" (${matches.length} matches: ${ids}); use \`id\``,
+    };
+  }
+  return { entry: matches[0] };
+}
+
+/**
+ * Expand a document's `item_refs` list into a concrete embedded `items` array.
+ *
+ * Each entry is either a reference to a document in an already-compiled pack:
+ *   - pack: blades68_items
+ *     name: Armor            # or `id:` for exact match, `type:` to disambiguate
+ *     overrides:             # deep-merged onto the pack document
+ *       system: { equipped: true }
+ * or a bespoke document that exists nowhere else:
+ *   - inline:
+ *       name: Getaway drivers
+ *       type: cohort
+ *
+ * Returns { doc, problems }; `doc` keeps everything else untouched and drops
+ * `item_refs`. Referenced documents get a stable embedded `_id` and record the
+ * source compendium in `_stats.compendiumSource`.
+ */
+export function resolveItemRefs(doc, { index, scope, loc = "document" } = {}) {
+  if (!Array.isArray(doc.item_refs)) return { doc, problems: [] };
+
+  const { item_refs: refs, ...rest } = doc;
+  const problems = [];
+  const items = Array.isArray(rest.items) ? [...rest.items] : [];
+
+  refs.forEach((ref, i) => {
+    const where = `${loc}: item_refs[${i}]`;
+    if (!isPlainObject(ref)) {
+      problems.push(`${where}: expected a mapping`);
+      return;
+    }
+
+    if (ref.inline) {
+      const inline = structuredClone(ref.inline);
+      inline._id = inline._id ?? embeddedItemId(doc._id, "inline", inline.name ?? "", i);
+      inline.sort = inline.sort ?? (i + 1) * 100000;
+      items.push(inline);
+      return;
+    }
+
+    const { entry, error } = lookupRef(ref, index);
+    if (error) {
+      problems.push(`${where}: ${error}`);
+      return;
+    }
+
+    const { pack, packType, doc: source } = entry;
+    const { folder, ownership, permission, _key, ...item } = structuredClone(source);
+    const documentClass = PACK_DOCUMENT_CLASS[packType] ?? packType;
+    const merged = mergeDeep(item, ref.overrides ?? {});
+    merged._id = embeddedItemId(doc._id, pack, source._id, i);
+    merged.sort = (i + 1) * 100000;
+    merged._stats = {
+      ...(merged._stats ?? {}),
+      compendiumSource: scope ? `Compendium.${scope}.${pack}.${documentClass}.${source._id}` : null,
+    };
+    items.push(merged);
+  });
+
+  return { doc: { ...rest, items }, problems };
 }
 
 /** Dump a Foundry document to YAML with multiline strings as block scalars. */

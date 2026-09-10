@@ -7,6 +7,9 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/Achoobert/foundryvtt_blades68"> <a href="https://github.com/Achoobert/foundryvtt_blades68/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Achoobert/foundryvtt_blades68"></a> <a href="https://github.com/Achoobert/foundryvtt_blades68/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Achoobert/foundryvtt_blades68"></a> <a href="https://github.com/Achoobert/foundryvtt_blades68/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Achoobert/foundryvtt_blades68"></a> 
 </p>
 
+https://foundryvtt.com/packages/blades68
+
+
 ```console
 https://github.com/achoobert/foundryvtt_blades68/releases/latest/download/system.json
 ```
@@ -95,3 +98,18 @@ under an MIT lisence
 
 Industrial-Fantasy Clocks from Tim Denee
 https://www.olddog.games/Industrial-Fantasy-Clocks
+
+Credits and License
+This work is based on Blades 68, product of Evil Hat, developed and authored by  Tim Denee
+text and icons imported from: roll20-character-sheets where they are shared under an MIT lisence
+
+Also contains work is based on Blades in the Dark, product of One Seven Design, developed and authored by John Harper, and licensed for our use under the Creative Commons Attribution 3.0 Unported license.
+This game system is a modified fork of one originally made and maintained by Dez384: foundryvtt-blades-in-the-dark who forked it from Megastruktur: https://github.com/megastruktur/foundryvtt-blades-in-the-dark
+
+Also uses character sheet styling from foundry-bitd-alternate-sheets
+
+Dice popup styling from foundryvtt-fitdroller, with some design taken from the foundryvtt-scum-and-villainy system
+Some assets were taken from here (thank you timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
+
+Industrial-Fantasy Clocks from Tim Denee https://www.olddog.games/Industrial-Fantasy-Clocks
+Get rules for the "Runaways" crew here: Runnaways

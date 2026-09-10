@@ -1,0 +1,910 @@
+{
+  "name": "Crew",
+  "type": "crew",
+  "prototypeToken": {
+    "actorLink": true,
+    "name": "Crew",
+    "displayName": 0,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "https://schubertquest-foundry-assets.s3.ap-southeast-2.amazonaws.com/arc_dream/Gods_teeth_handouts/264%20Alligators.webp",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "img": "icons/magic/perception/shadow-stealth-eyes-purple.webp",
+  "system": {
+    "name": "",
+    "reputation": "5",
+    "lair": "An Airship",
+    "tier": "2",
+    "deity": "",
+    "rep2": {
+      "value": "",
+      "visible": false,
+      "label": "BITD.Description"
+    },
+    "hold": "weak",
+    "experience": "6",
+    "exp_clock": {
+      "value": 0,
+      "number": 0,
+      "size": 6,
+      "color": "black"
+    },
+    "hold_types": [
+      "weak",
+      "strong"
+    ],
+    "coins": {
+      "max": 4,
+      "value": "2"
+    },
+    "vault": {
+      "value": [
+        0
+      ],
+      "max": 0
+    },
+    "gambits": {
+      "value": "2"
+    },
+    "turf": {
+      "descriptions": [],
+      "max": 6,
+      "bonus": 0
+    },
+    "features": [],
+    "heat": "4",
+    "wanted": "1",
+    "acquaintances": [
+      {
+        "id": "f3b9cgDD5hORtV4E",
+        "name": "Vestine Keel",
+        "description_short": "a crime boss",
+        "standing": "neutral"
+      },
+      {
+        "id": "QLJmsqVjBRITKm8L",
+        "name": "Beesby",
+        "description_short": "a deal broker",
+        "standing": "neutral"
+      },
+      {
+        "id": "xMEfcOS6GcACi78f",
+        "name": "Tilton",
+        "description_short": "a vengeful aristocrat",
+        "standing": "neutral"
+      },
+      {
+        "id": "DxotzCuCnan4t3Jr",
+        "name": "Mowsley",
+        "description_short": "a cult leader",
+        "standing": "friend"
+      },
+      {
+        "id": "iskyc3KorQaZ9fTh",
+        "name": "Hush",
+        "description_short": "a Reality Warden",
+        "standing": "neutral"
+      },
+      {
+        "id": "atvtfuJTALLP9TQo",
+        "name": "Yugo Xantara",
+        "description_short": "a powerful CEO",
+        "standing": "rival"
+      }
+    ],
+    "acquaintances_label": "BITD.Contacts",
+    "hunting_grounds": [],
+    "hunting_grounds_label": "BITD.HuntingGrounds",
+    "scoundrel": {
+      "add_trauma": 0,
+      "add_stress": 0,
+      "mastery": false,
+      "bonus_keys": 0
+    },
+    "max": {
+      "heat": 9,
+      "tier": 4,
+      "wanted": 4,
+      "rep": 12,
+      "exp": 10
+    },
+    "description": ""
+  },
+  "items": [
+    {
+      "_id": "fG6CVP4fBwClI6uj",
+      "name": "Hit Squad",
+      "type": "crew_type",
+      "img": "icons/svg/city.svg",
+      "system": {
+        "description": "Contract Killers, Discreet And Skilled Assassins",
+        "experience_clues": "You executed a successful accident, disappearance, murder, or ransom operation.",
+        "turfs": {
+          "1": {
+            "name": "Friendly Ink Rake",
+            "value": false,
+            "description": "+1 Rep per score",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "2": {
+            "name": "City Records",
+            "value": false,
+            "description": "+1d engagement for stealth approaches",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "3": {
+            "name": "Legendary Target",
+            "value": false,
+            "description": "Tier 5 target, 15 Rep, 10 stacks (one-off opportunity)",
+            "connects": [
+              "right"
+            ],
+            "highlight": true,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "4": {
+            "name": "Double Contract",
+            "value": false,
+            "description": "Legendary Target includes second hit, for +10 bonus stacks",
+            "connects": [
+              "right"
+            ],
+            "highlight": true,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "5": {
+            "name": "Cover Identities",
+            "value": false,
+            "description": "+1d engagement for deception and social approaches",
+            "connects": [
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "6": {
+            "name": "Protection Racket",
+            "value": false,
+            "description": "(Tier roll) - Heat = stacks in downtime",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "7": {
+            "name": "Shady Hotel",
+            "value": false,
+            "description": "+1 scale for your Infiltrator cohorts",
+            "connects": [
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "8": {
+            "name": "Detailed Map",
+            "value": false,
+            "description": "+2d engagement for Legendary Target score",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": true,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "9": {
+            "name": "Cover Operation",
+            "value": false,
+            "description": "-2 Heat per score",
+            "connects": [
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "10": {
+            "name": "Hagfish Farm",
+            "value": false,
+            "description": "Body disposal, +1d to reduce Heat after killing",
+            "connects": [
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "11": {
+            "name": "Elusive Target",
+            "value": false,
+            "description": "Tier 4 target, +5 bonus Rep (one-off opportunity)",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": true,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "12": {
+            "name": "Gambling Hall",
+            "value": false,
+            "description": "(Tier roll) - Heat = stacks in downtime",
+            "connects": [
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "13": {
+            "name": "VIP Lounge",
+            "value": true,
+            "description": "+2 stacks from high-class clients",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "14": {
+            "name": "Dispensary",
+            "value": true,
+            "description": "+1d to healing rolls",
+            "connects": [
+              "right",
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "15": {
+            "name": "Informants",
+            "value": false,
+            "description": "+1d to gather info for scores",
+            "connects": [
+              "bottom"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "16": {
+            "name": "Dive Bar",
+            "value": false,
+            "description": "+2 stacks from lower-class clients",
+            "connects": [
+              "left",
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "17": {
+            "name": "Turf",
+            "value": false,
+            "description": "Expand hunting grounds and add new preferred operation",
+            "connects": [],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "18": {
+            "name": "Base",
+            "value": true,
+            "description": "Base",
+            "connects": [
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "19": {
+            "name": "Turf",
+            "value": false,
+            "description": "Expand hunting grounds and add new preferred operation",
+            "connects": [
+              "right"
+            ],
+            "highlight": false,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          },
+          "20": {
+            "name": "Clock the Routine",
+            "value": false,
+            "description": "3 free flashbacks during Ledgendary Target score",
+            "connects": [],
+            "highlight": true,
+            "connected": [
+              false,
+              false,
+              false,
+              false
+            ]
+          }
+        },
+        "turf_headers": {
+          "1": {
+            "name": "",
+            "subheader": "",
+            "unlock": "",
+            "select": 0,
+            "options": [],
+            "selected": [],
+            "units": 0,
+            "value": false,
+            "units_filled": 0
+          },
+          "2": {
+            "name": "",
+            "subheader": "",
+            "unlock": "",
+            "select": 0,
+            "options": [],
+            "selected": [],
+            "units": 0,
+            "value": false,
+            "units_filled": 0
+          },
+          "3": {
+            "name": "",
+            "subheader": "",
+            "unlock": "",
+            "select": 0,
+            "options": [],
+            "selected": [],
+            "units": 0,
+            "value": false,
+            "units_filled": 0
+          },
+          "4": {
+            "name": "",
+            "subheader": "",
+            "unlock": "",
+            "select": 0,
+            "options": [],
+            "selected": [],
+            "units": 0,
+            "value": false,
+            "units_filled": 0
+          }
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011913296,
+        "modifiedTime": 1789011922930,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "name": "Murder",
+      "type": "hunting_grounds",
+      "_id": "MOL9jlVNRjPdoEBW",
+      "img": "systems/blades68/styles/assets/icons/Icon.2_46.webp",
+      "system": {
+        "description": "<p>An obvious killing that send a message.</p>",
+        "class": "Assassins"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "B7A33cKMwj3J5fQB": 3,
+        "lHEIlfO0nObkG8cg": 3
+      },
+      "flags": {},
+      "_stats": {
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "coreVersion": "14.367",
+        "createdTime": 1789011958276,
+        "modifiedTime": 1789011958276,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      }
+    },
+    {
+      "name": "Getaway drivers",
+      "type": "cohort",
+      "_id": "f2n1e6XWCj1rc0VM",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "",
+        "cohort": "Gang",
+        "scale": 0,
+        "quality": 0,
+        "cohort_list": {
+          "Gang": {
+            "label": "BITD.Gang"
+          },
+          "Expert": {
+            "label": "BITD.Expert"
+          }
+        },
+        "gang_type": [
+          "Rovers"
+        ],
+        "gang_type_list": {
+          "Adepts": {
+            "label": "BITD.GangTypeAdepts",
+            "description": "BITD.GangTypeAdeptsDescription"
+          },
+          "Rooks": {
+            "label": "BITD.GangTypeRooks",
+            "description": "BITD.GangTypeRooksDescription"
+          },
+          "Rovers": {
+            "label": "BITD.GangTypeRovers",
+            "description": "BITD.GangTypeRoversDescription"
+          },
+          "Skulks": {
+            "label": "BITD.GangTypeSkulks",
+            "description": "BITD.GangTypeSkulksDescription"
+          },
+          "Thugs": {
+            "label": "BITD.GangTypeThugs",
+            "description": "BITD.GangTypeThugsDescription"
+          }
+        },
+        "expert_type": "",
+        "status": [],
+        "statuses": [],
+        "edges": [],
+        "edges_list": {
+          "Fearsome": {
+            "label": "BITD.EdgesFearsome",
+            "description": "BITD.EdgesFearsomeDescription",
+            "selected": false
+          },
+          "Independent": {
+            "label": "BITD.EdgesIndependent",
+            "description": "BITD.EdgesIndependentDescription",
+            "selected": false
+          },
+          "Loyal": {
+            "label": "BITD.EdgesLoyal",
+            "description": "BITD.EdgesLoyalDescription",
+            "selected": false
+          },
+          "Tenacious": {
+            "label": "BITD.EdgesTenacious",
+            "description": "BITD.EdgesTenaciousDescription",
+            "selected": true
+          }
+        },
+        "flaws": [],
+        "flaws_list": {
+          "Principled": {
+            "label": "BITD.FlawsPrincipled",
+            "description": "BITD.FlawsPrincipledDescription",
+            "selected": false
+          },
+          "Savage": {
+            "label": "BITD.FlawsSavage",
+            "description": "BITD.FlawsSavageDescription",
+            "selected": false
+          },
+          "Unreliable": {
+            "label": "BITD.FlawsUnreliable",
+            "description": "BITD.FlawsUnreliableDescription",
+            "selected": true
+          },
+          "Wild": {
+            "label": "BITD.FlawsWild",
+            "description": "BITD.FlawsWildDescription",
+            "selected": false
+          }
+        },
+        "harm": "Impaired",
+        "harm_list": {
+          "No": {
+            "label": "BITD.HarmNoHarm",
+            "description": "BITD.HarmNoHarmDescription",
+            "value": 0
+          },
+          "Weakened": {
+            "label": "BITD.HarmWeakened",
+            "description": "BITD.HarmWeakenedDescription",
+            "value": 1
+          },
+          "Impaired": {
+            "label": "BITD.HarmImpaired",
+            "description": "BITD.HarmImpairedDescription",
+            "value": 2
+          },
+          "Broken": {
+            "label": "BITD.HarmBroken",
+            "description": "BITD.HarmBrokenDescription",
+            "value": 3
+          },
+          "Dead": {
+            "label": "BITD.HarmDead",
+            "description": "BITD.HarmDeadDescription",
+            "value": 4
+          }
+        },
+        "armor": false
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789012000015,
+        "modifiedTime": 1789012020243,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      }
+    },
+    {
+      "_id": "zJz5VTFpkuUxFhu1",
+      "name": "Assassin rigging (2 free load of weapons or gear)",
+      "type": "crew_upgrade",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "crew_type": "Hit Squad",
+        "description": "",
+        "class": "",
+        "price": "1",
+        "purchased": false,
+        "logic": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789012041404,
+        "modifiedTime": 1789012041405,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "F9x4yXZcEMXQKTmK",
+      "name": "Chameleons",
+      "type": "crew_ability",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Take +1d to the engagement roll for stealth or deception approaches. When you subdue someone and don their outfit, the disguise has increased effect.",
+        "class": "Hit Squad",
+        "price": "1",
+        "uses": 0,
+        "uses_text": "",
+        "uses_used": 0,
+        "purchased": false,
+        "class_default": "Hit Squad"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789012050076,
+        "modifiedTime": 1789012050077,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "rWWDeo18TwCeXYJn",
+      "name": "Cold Storage",
+      "type": "crew_ability",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Every crew member can always find a convenient place to hide a body near to hand. Take 1 Stress to hide the body in the resonance field instead (it will rematerialize after a few hours).",
+        "class": "Hit Squad",
+        "price": "1",
+        "uses": 0,
+        "uses_text": "",
+        "uses_used": 0,
+        "purchased": false,
+        "class_default": "Hit Squad"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789012054876,
+        "modifiedTime": 1789012054876,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "OZ7g3paGsHCF6o80",
+      "name": "Asking Around",
+      "type": "trouble",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "name": "",
+        "description": "An investigator from another faction asks around about your crew, looking for insights. They could be an Inspector, a Bluecoat, a hound, a Reality Warden, or a corporate fixer.\nMake a 1d fortune roll to see how much dirt they come up with in the local community (1-3: +2 Heat and the faction learns a vulnerability or secret of the crew, 4/5: +2 Heat, 6: nothing).",
+        "ongoing": false,
+        "escilation": "",
+        "group": "light_crew"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789012070420,
+        "modifiedTime": 1789012070420,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "blades68",
+    "systemVersion": "6.4.7",
+    "createdTime": 1789011484039,
+    "modifiedTime": 1789012122498,
+    "lastModifiedBy": "lHEIlfO0nObkG8cg",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": {
+      "worldId": "blades68",
+      "uuid": "Actor.jB8fhRRxzEiHyl7o",
+      "coreVersion": "14.367",
+      "systemId": "blades68",
+      "systemVersion": "6.4.7"
+    }
+  }
+}

@@ -104,7 +104,10 @@ export default function register(quench) {
 
       describe('Loadout checklist', function () {
         it('renders one checkbox per system.num_available slot and reconciles owned copies when toggled', async function () {
-          this.timeout(10000);
+          // 3 sequential toggle round-trips, each waiting on both the actor update and the
+          // sheet's own re-render to settle (up to fireChange's ~3s poll window) - under load
+          // that stacks past a 10s budget without actually being stuck.
+          this.timeout(20000);
           requireSystemActive();
 
           const className = `Quench Class ${foundry.utils.randomID()}`;

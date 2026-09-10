@@ -1,7 +1,7 @@
 name: Passengers
 type: hunting_grounds
 _id: CXtfRzDaepUZF3D6
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.4_33.webp
+img: systems/blades68/styles/assets/icons/Icon.4_33.webp
 system:
   description: <p>People or livestock traveling in secret.</p>
   class: Smugglers

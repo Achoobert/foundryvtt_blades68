@@ -1,0 +1,1495 @@
+{
+  "name": "John Hound",
+  "type": "character",
+  "prototypeToken": {
+    "actorLink": true,
+    "name": "Hound",
+    "displayName": 0,
+    "width": 1,
+    "height": 1,
+    "depth": 1,
+    "texture": {
+      "src": "blades68/character_art/Screenshot%202026-09-10%20at%2010.35.15%E2%80%AFAM.jpg",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "displayBars": 0,
+    "bar1": {
+      "attribute": null
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 0,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "flags": {},
+    "randomImg": false,
+    "appendNumber": false,
+    "prependAdjective": false
+  },
+  "img": "blades68/character_art/Screenshot%202026-09-10%20at%2010.35.15%E2%80%AFAM.jpg",
+  "system": {
+    "alias": "Hound",
+    "look": "",
+    "heritage": "",
+    "background": "",
+    "background-details": "",
+    "vice": "",
+    "vice-purveyor": "",
+    "playbook": "Hound",
+    "crew": [
+      {
+        "id": "jB8fhRRxzEiHyl7o",
+        "name": "Crew",
+        "description": "",
+        "img": "https://schubertquest-foundry-assets.s3.ap-southeast-2.amazonaws.com/arc_dream/Gods_teeth_handouts/264%20Alligators.webp"
+      }
+    ],
+    "edge": {
+      "value": 0,
+      "max": 1
+    },
+    "acquaintances": [
+      {
+        "id": "lANB9jmHDNM6OViG",
+        "name": "Vanden",
+        "description_short": "a lazy Bluecoat",
+        "standing": "neutral"
+      },
+      {
+        "id": "XzXG2Q9J8J9FOxjk",
+        "name": "Chatterley",
+        "description_short": "a secret agent",
+        "standing": "neutral"
+      },
+      {
+        "id": "z0jK2gGYs09CtXX6",
+        "name": "Mira",
+        "description_short": "a nightclub owner",
+        "standing": "neutral"
+      },
+      {
+        "id": "MNzHwjoMii3rjw8h",
+        "name": "Zam",
+        "description_short": "a street kid",
+        "standing": "neutral"
+      },
+      {
+        "id": "uMr0rZoOHsgpGTHP",
+        "name": "Hendrik",
+        "description_short": "a veterinarian",
+        "standing": "neutral"
+      }
+    ],
+    "acquaintances_label": "BITD.Acquaintances",
+    "stress": {
+      "value": "4",
+      "max": 9,
+      "max_default": 9,
+      "name_default": "BITD.Stress",
+      "name": "BITD.Stress"
+    },
+    "trauma": {
+      "max": 4,
+      "max_default": 4,
+      "value": [
+        0
+      ],
+      "name": "BITD.Trauma",
+      "name_default": "BITD.Trauma",
+      "options": [
+        "BITD.TraumaCold",
+        "BITD.TraumaHaunted",
+        "BITD.TraumaObsessed",
+        "BITD.TraumaParanoid",
+        "BITD.TraumaReckless",
+        "BITD.TraumaSoft",
+        "BITD.TraumaUnstable",
+        "BITD.TraumaVicious"
+      ],
+      "list": []
+    },
+    "keys": {
+      "max": 4,
+      "list": [
+        {
+          "key": "Bitter",
+          "experience": 2,
+          "deadlocked": false,
+          "deadlocked_to": ""
+        },
+        {
+          "key": "Brooding",
+          "experience": 0,
+          "deadlocked": false,
+          "deadlocked_to": ""
+        },
+        {
+          "key": "Comical",
+          "experience": 0,
+          "deadlocked": true,
+          "deadlocked_to": "unhinged"
+        },
+        {
+          "key": "Curious",
+          "experience": 2,
+          "deadlocked": true,
+          "deadlocked_to": "disinterested"
+        }
+      ]
+    },
+    "healing-clock": [
+      0
+    ],
+    "healing_clock": {
+      "value": "3",
+      "max": 4,
+      "min": 0
+    },
+    "experience": "0",
+    "experience_max": 8,
+    "experience_clues": [
+      "BITD.ClassExpClue3",
+      "BITD.ClassExpClue2"
+    ],
+    "exp_clock": {
+      "value": 0,
+      "number": 0,
+      "size": 6,
+      "color": "black"
+    },
+    "coins": "2",
+    "coins_stashed": "16",
+    "coins_max": {
+      "hand": 4,
+      "stash": 40
+    },
+    "special_abilities": [],
+    "loadout": 0,
+    "load_level": "",
+    "selected_load_level": "BITD.Light",
+    "base_max_load": 0,
+    "harm": {
+      "light": {
+        "one": "Stubbed Toe",
+        "two": ""
+      },
+      "medium": {
+        "one": "",
+        "two": ""
+      },
+      "heavy": {
+        "one": ""
+      },
+      "deadly": {
+        "one": ""
+      }
+    },
+    "armor-uses": {
+      "armor": false,
+      "heavy": false,
+      "special": false
+    },
+    "attributes": {
+      "insight": {
+        "exp": "0",
+        "exp_max": 6,
+        "bonus": 0,
+        "label": "BITD.SkillsInsight",
+        "skills": {
+          "hunt": {
+            "label": "BITD.SkillsHunt",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          },
+          "study": {
+            "label": "BITD.SkillsStudy",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          },
+          "survey": {
+            "label": "BITD.SkillsSurvey",
+            "value": 1,
+            "max": 3,
+            "min": 0
+          },
+          "tinker": {
+            "label": "BITD.SkillsTinker",
+            "value": 3,
+            "max": 3,
+            "min": 0
+          }
+        }
+      },
+      "prowess": {
+        "exp": "0",
+        "exp_max": 6,
+        "bonus": 0,
+        "label": "BITD.SkillsProwess",
+        "skills": {
+          "finesse": {
+            "label": "BITD.SkillsFinesse",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          },
+          "prowl": {
+            "label": "BITD.SkillsProwl",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          },
+          "skirmish": {
+            "label": "BITD.SkillsSkirmish",
+            "value": 3,
+            "max": 3,
+            "min": 0
+          },
+          "wreck": {
+            "label": "BITD.SkillsWreck",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          }
+        }
+      },
+      "resolve": {
+        "exp": "0",
+        "exp_max": 6,
+        "bonus": 0,
+        "label": "BITD.SkillsResolve",
+        "skills": {
+          "attune": {
+            "label": "BITD.SkillsAttune",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          },
+          "command": {
+            "label": "BITD.SkillsCommand",
+            "value": 1,
+            "max": 3,
+            "min": 0
+          },
+          "consort": {
+            "label": "BITD.SkillsConsort",
+            "value": 2,
+            "max": 3,
+            "min": 0
+          },
+          "sway": {
+            "label": "BITD.SkillsSway",
+            "value": 0,
+            "max": 3,
+            "min": 0
+          }
+        }
+      }
+    },
+    "unique-data": {
+      "hound": {
+        "name": "John Pet",
+        "edges": "Swears",
+        "flaws": "Chubby",
+        "type": "Parrot",
+        "abilities": "Fly, talk",
+        "weak": false,
+        "impaired": false,
+        "broken": false,
+        "armor": 0
+      },
+      "hull": {
+        "memories": {
+          "name_heritage": {
+            "text": "",
+            "clock": 0
+          },
+          "unfinished": {
+            "text": "",
+            "clock": 0
+          },
+          "background_love": {
+            "text": "",
+            "clock": 0
+          },
+          "crime": {
+            "text": "",
+            "clock": 0
+          }
+        }
+      },
+      "intellectual": {
+        "sparkmind": {
+          "name": "",
+          "edges": "",
+          "flaws": "",
+          "abilities": "",
+          "function": "",
+          "housing": "",
+          "weak": false,
+          "impaired": false,
+          "broken": false
+        }
+      },
+      "operative": {
+        "backing_faction": {
+          "faction": "",
+          "personal_mission": "",
+          "prestige_ability": "",
+          "failure": 0
+        }
+      },
+      "paranormalist": {
+        "resonance": {
+          "name": "",
+          "edges": "",
+          "flaws": "",
+          "type": "Paranormal assistant",
+          "abilities": "",
+          "weak": false,
+          "impaired": false,
+          "broken": false,
+          "armor": 0
+        }
+      },
+      "radical": {
+        "explosives": {
+          "bandolier1": {
+            "slot1": false,
+            "slot2": false,
+            "slot3": false
+          },
+          "bandolier2": {
+            "slot1": false,
+            "slot2": false,
+            "slot3": false
+          }
+        }
+      },
+      "swinger": {
+        "autopod": {
+          "name": "",
+          "style": "",
+          "type": "",
+          "weak": false,
+          "impaired": false,
+          "broken": false
+        }
+      },
+      "veteran": {
+        "damage": "",
+        "helps": ""
+      },
+      "vampire": {
+        "strictures": {
+          "dayfire": true,
+          "slumber": false,
+          "forbidden": false,
+          "repelled": false,
+          "bestial": false,
+          "bound": false
+        }
+      },
+      "time_traveler": {
+        "mission": "",
+        "prevent": {
+          "detail1": {
+            "done": false,
+            "text": ""
+          },
+          "detail2": {
+            "done": false,
+            "text": ""
+          },
+          "detail3": {
+            "done": false,
+            "text": ""
+          },
+          "detail4": {
+            "done": false,
+            "text": ""
+          }
+        },
+        "chase": {
+          "detail1": {
+            "done": false,
+            "text": ""
+          },
+          "detail2": {
+            "done": false,
+            "text": ""
+          },
+          "detail3": {
+            "done": false,
+            "text": ""
+          },
+          "detail4": {
+            "done": false,
+            "text": ""
+          }
+        }
+      }
+    },
+    "description": "John Hound is an expert tracker"
+  },
+  "items": [
+    {
+      "_id": "MDz5AVk3ZrvuWPaT",
+      "name": "Hound",
+      "type": "class",
+      "img": "icons/creatures/claws/claw-bear-paw-swipe-red.webp",
+      "system": {
+        "description": "A Hard-Bitten Fixer Who Follows Their Instincts",
+        "logic": "",
+        "experience_clues": "You addressed a challenge with talking or determination.",
+        "base_skills": {
+          "hunt": [
+            0
+          ],
+          "study": [
+            0
+          ],
+          "survey": [
+            1
+          ],
+          "tinker": [
+            0
+          ],
+          "finesse": [
+            0
+          ],
+          "prowl": [
+            0
+          ],
+          "skirmish": [
+            0
+          ],
+          "wreck": [
+            0
+          ],
+          "attune": [
+            0
+          ],
+          "command": [
+            0
+          ],
+          "consort": [
+            2
+          ],
+          "sway": [
+            0
+          ]
+        },
+        "special_resource": "Tenacity",
+        "starting_ability": "Hound's Instincts"
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789010956497,
+        "modifiedTime": 1789011597479,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "name": "Binoculars",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "See distant objects with greater clarity and detail. Amazing.",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011416233,
+        "modifiedTime": 1789011416233,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      },
+      "_id": "asZZcp422Rpkrnmj"
+    },
+    {
+      "_id": "V2eAcAH06cfLbClh",
+      "name": "Hound's Instincts",
+      "type": "ability",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "When you push yourself, you can also do one of the following: figure out where to go next, even with zero leads—make someone stop and listen to you for a few moments, no matter how unlikely it is.",
+        "class": "Hound",
+        "price": "1",
+        "uses": 0,
+        "uses_text": "",
+        "uses_used": 0,
+        "purchased": false,
+        "class_default": "Hound",
+        "logic": ""
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431691,
+        "modifiedTime": 1789011431698,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "esoj5lc1kHJ230zR",
+      "name": "RF radio handset",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A resonance field radio. A small handheld unit tuned to a secure frequency.",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431691,
+        "modifiedTime": 1789011431699,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "XQ3v4F9fA6V52XsN",
+      "name": "A loyal, clever pet",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Companion might be a better word - a hunter. They never let you down (except when they do). Did you choose them, or did they choose you?",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431692,
+        "modifiedTime": 1789011431699,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "Xy6holTNNJ3OArn3",
+      "name": "Binoculars",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "See distant objects with greater clarity and detail. Amazing.",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431692,
+        "modifiedTime": 1789011431699,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "SqpF7igy9L803tzM",
+      "name": "Hipflask of the good stuff",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Numb pain, clean wounds, or bond with new friends. What's engraved on the outside?",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431692,
+        "modifiedTime": 1789011431699,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "uPivIWs6uT1tSF7s",
+      "name": "Fine snub-nosed handcannon",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Maybe you're no great shot, but this thing packs a hell of a punch and can be concealed in a pocket.",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431693,
+        "modifiedTime": 1789011431700,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "cwonMs4LaKJ25Uql",
+      "name": "Pocketful of focus pills",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "For when you need steady hands, an alert mind, and laser-like concentration. Highly addictive; tick a 4-segment addiction clock when used (this can be resisted). If the clock fills, you no longer get any benefit from the pills but have to take them every score anyway or suffer the moderate harm 'withdrawal symptoms'. Once this harm is taken, reset the addiction clock.",
+        "logic": "",
+        "class": "Hound",
+        "load": "0",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431693,
+        "modifiedTime": 1789011431700,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "fXGo9oSezAlwRfCB",
+      "name": "Silenced Shooter",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A semi-automatic handgun with a modest calibre. Quiet as a whisper.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431693,
+        "modifiedTime": 1789011431700,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "VqFAl40bd5Xk1COr",
+      "name": "Pump-Action Scattergun",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A simple but very effective firearm that delivers blasts of shot over short distances. Developed for use in the narrow streets and cramped alleyways of modern cities. ",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 2,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431694,
+        "modifiedTime": 1789011431701,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "e8bfOqNo91aDQ0qe",
+      "name": "Burglary Gear",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A set of lockpicks. A small pry-bar. Cannister of lubricant to silence squeaky hinges. A spool of high-tensile wire and a set of powerful magnets. A small pouch of fine sand. A glasscutter.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431694,
+        "modifiedTime": 1789011431701,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "tC0YMEU3TnNgQgLZ",
+      "name": "Documents",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A folder of paperwork on a variety of topics, including a registry of the nobility, bluecoat commanders, and other notable citizens. Blank pages, a pen. A number of interesting maps. Some relevant print-outs of archival information, prepared before the score.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431694,
+        "modifiedTime": 1789011431701,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "n2Oshj6k5ELhxSDM",
+      "name": "Tinkering Tools",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Tools and spare parts for messing with electronics and mechanisms. A wrench, drill, and spanner. Tweezers, pliers, precision screwdrivers. A soldering iron. A second wrench. Oscilloscope, circuit tester, and heat sink. Jumper wires. Magnifying loupe. ",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431695,
+        "modifiedTime": 1789011431702,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "KXjNhaIiJoGBGHCM",
+      "name": "Subterfuge Supplies",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A disguise kit. A selection of blank documents, ready for the forger's hand. Invisible ink. A forged ID card. Microfilm camera.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431695,
+        "modifiedTime": 1789011431702,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "6kGly0am16DixGUZ",
+      "name": "Electro-Blade",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A broad, heavy blade with a plasmoleum-powered device built into the hilt. If the sharpened edge doesn’t finish them, the explosive release of electricity will. ",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 2,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431695,
+        "modifiedTime": 1789011431702,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "xwPKAaD7ctItiany",
+      "name": "Armor",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Layers of impact-resistant fabric combined with areas of rigid plate. Bulky and uncomfortable, but offers unparalleled protection.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 3,
+        "uses_used": 2,
+        "additional_info": "",
+        "equipped": true,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431696,
+        "modifiedTime": 1789011717345,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "iWEJUCxaNQPL7f16",
+      "name": "Arclighter",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A handheld tool that carries a small reserve of plasmoleum. A flick of the thumb produces a small arc of crackling energy, and with a twist of the dial it turns into a steady beam of light. Used as a flashlight, cigarette lighter, welding torch, or for anything from supercharging firearm rounds, overloading electronic systems, or even jamming into a knife’s hilt to jury-rig a quick electro-blade.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431696,
+        "modifiedTime": 1789011431703,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "0PfWCJGBCAuchgXs",
+      "name": "Demolition Tools",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A heavy drill. Crowbar. Explosive putty and blasting caps. Thermite charges. Vials of acid. A sledgehammer. A blowtorch.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 2,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431696,
+        "modifiedTime": 1789011431703,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "khbGiCNPuJzHhC27",
+      "name": "Paranormal Implements",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A resonance gauge for monitoring resonance field activity. Infrared thermometer. Echo frequency scanner. A small mirror. A vial of ultraplasm. A portable echo containment unit. A resonance disruptor. Safety goggles and gloves. ",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431697,
+        "modifiedTime": 1789011431703,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "p5U6UP92yBKh2N44",
+      "name": "A Blade or Two",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "Perhaps you carry a butterfly knife. Or a big military-issue combat knife. Or a heavy butcher’s cleaver. Or a machete.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 1,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431697,
+        "modifiedTime": 1789011431704,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "nJDJfaw1W2UsUxc2",
+      "name": "Handcannon",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A heavy, large-bore handgun that hits like a sledgehammer. Loud. Slow to reload.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 3,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": true,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431697,
+        "modifiedTime": 1789011720074,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "ZsvajiMCNyWAGnEb",
+      "name": "Climbing Gear",
+      "type": "item",
+      "img": "icons/svg/item-bag.svg",
+      "system": {
+        "description": "A large coil of nylon rope. Grappling hooks. A small pouch of chalk dust. A climbing harness with loops and carabiners. A set of steel pitons and a small mallet. Suction cups.",
+        "logic": "",
+        "class": "",
+        "load": "1",
+        "uses": 2,
+        "uses_used": 0,
+        "additional_info": "",
+        "equipped": false,
+        "bonus_equipped": false,
+        "num_available": 1
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011431698,
+        "modifiedTime": 1789011431704,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "w12iuZL9Qx0Ec9VJ",
+      "name": "Labor",
+      "type": "background",
+      "system": {
+        "description": "A servant, a factory worker, a coach driver, a docker, a sailor, a Rail Jack, etc. A stevedore for the North Hook Company."
+      },
+      "folder": "YkuVHwuSV9IfsxU0",
+      "sort": 200000,
+      "flags": {},
+      "img": "systems/blades68/styles/assets/icons/Icon.1_29.png",
+      "effects": [],
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011451893,
+        "modifiedTime": 1789011467551,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      }
+    },
+    {
+      "_id": "1rcEljay8csxZUim",
+      "name": "Tycheros",
+      "type": "heritage",
+      "system": {
+        "description": "If you want to be weird, you can be from Tycheros. It’s a semi-mythical place, far away beyond the northern Void Sea. Everyone says that the people there are part-demon. If you choose Tycherosi heritage, also create a demonic telltale(like black shark eyes, feathers instead of hair, etc.) that marks your character."
+      },
+      "sort": 600000,
+      "flags": {},
+      "effects": [],
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011474443,
+        "modifiedTime": 1789011474444,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      },
+      "img": "icons/svg/item-bag.svg",
+      "folder": null
+    },
+    {
+      "_id": "q0Y1wifvgtQ84n43",
+      "name": "Gambling",
+      "type": "vice",
+      "system": {
+        "description": "- Spogg’s dice game, Crow’s Foot.\n- Grist, boxing, the Docks.\n- Helene, Silver Stag casino, Silkshore.\n- Master Vreen, hound racing, Nightmarket.\n- Lady Dusk, the Dusk Manor Club, Whitecrown.\n- Sergeant Velk, the fighting pits, Dunslough."
+      },
+      "folder": "Jz1yD35kaDA2NZtZ",
+      "sort": 200000,
+      "flags": {},
+      "effects": [],
+      "_stats": {
+        "coreVersion": "14.367",
+        "systemId": "blades68",
+        "systemVersion": "6.4.7",
+        "createdTime": 1789011537261,
+        "modifiedTime": 1789011577637,
+        "lastModifiedBy": "lHEIlfO0nObkG8cg",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0,
+        "lHEIlfO0nObkG8cg": 3
+      },
+      "img": "icons/commodities/currency/coins-plain-stack-gold.webp"
+    }
+  ],
+  "effects": [],
+  "folder": null,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.367",
+    "systemId": "blades68",
+    "systemVersion": "6.4.7",
+    "createdTime": 1789010948068,
+    "modifiedTime": 1789011886018,
+    "lastModifiedBy": "lHEIlfO0nObkG8cg",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": {
+      "worldId": "blades68",
+      "uuid": "Actor.yHAfn2gs31pVs4En",
+      "coreVersion": "14.367",
+      "systemId": "blades68",
+      "systemVersion": "6.4.7"
+    }
+  }
+}

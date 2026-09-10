@@ -1,7 +1,7 @@
 _id: 8jExf4Zqad6e3bvn
 name: Leech
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icons8_64.webp
+img: systems/blades68/styles/assets/icons/Icons8_64.webp
 system:
   description: A saboteur and technician
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Leech
     origin: Compendium.blades-in-the-dark.class.8jExf4Zqad6e3bvn
     transfer: true

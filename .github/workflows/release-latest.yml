@@ -1,7 +1,7 @@
 # Builds a rolling "latest" GitHub Release on every push to the default
-# branch. Only the patch semver segment is bumped in the packaged
-# system.json (major.minor stay as in the repo). The repo file is not
-# committed back — version stamping is release-only.
+# branch. The packaged system.json is the repo file with a single field
+# changed: version, whose patch segment continues from the previously
+# released artifact. The repo file is not committed back.
 #
 # This complements main.yml (which packages a specific, manually-published
 # GitHub Release). This workflow instead gives players a stable
@@ -42,28 +42,40 @@ jobs:
       - name: Build Compendium Packs
         run: npm run packs:build
 
-      # Stamp only the patch segment for this rolling build.
-      # Repo system.json stays put (e.g. 6.4.0). Artifact version is
-      # major.minor.(patch + run_number) so each push is newer for Foundry
-      # (6.4.0 run 3 -> 6.4.3, run 5 -> 6.4.5, ...).
+      # The previously published "latest" artifact is the only source for the
+      # version number: its patch segment is incremented by one. Everything
+      # else in the packaged manifest comes from the repo system.json.
+      # If the repo bumps major.minor, that wins and patch restarts at 0.
       - name: Compute Next Version
         id: bump_version
         run: |
-          current=$(jq -r '.version' system.json)
-          IFS='.' read -r major minor patch <<< "$current"
-          next="${major}.${minor}.$((10#${patch:-0} + GITHUB_RUN_NUMBER))"
-          echo "Bumping version: ${current} -> ${next} (patch only, release artifact)"
-          echo "current=${current}" >> "$GITHUB_OUTPUT"
+          repo_version=$(jq -r '.version' system.json)
+          IFS='.' read -r repo_major repo_minor _ <<< "$repo_version"
+
+          released_version=$(curl -fsSL \
+            "https://github.com/${{ github.repository }}/releases/latest/download/system.json" \
+            | jq -r '.version // empty' || true)
+
+          if [ -n "$released_version" ]; then
+            IFS='.' read -r old_major old_minor old_patch <<< "$released_version"
+          fi
+
+          if [ "${old_major:-}" = "$repo_major" ] && [ "${old_minor:-}" = "$repo_minor" ]; then
+            next="${repo_major}.${repo_minor}.$((10#${old_patch:-0} + 1))"
+          else
+            next="${repo_major}.${repo_minor}.0"
+          fi
+
+          echo "Released version: ${released_version:-none}; repo: ${repo_version}; next: ${next}"
+          echo "released=${released_version}" >> "$GITHUB_OUTPUT"
           echo "next=${next}" >> "$GITHUB_OUTPUT"
 
-      # Write the new version and stamp the static "latest" manifest/download
-      # URLs so Foundry's Install Module dialog can find updates.
+      # Only the version is overwritten; manifest/download and all other
+      # fields ship exactly as committed in system.json.
       - name: Update system.json
         run: |
           jq --arg version "${{ steps.bump_version.outputs.next }}" \
-             --arg manifest "https://github.com/${{ github.repository }}/releases/latest/download/system.json" \
-             --arg download "https://github.com/${{ github.repository }}/releases/latest/download/system.zip" \
-             '.version = $version | .manifest = $manifest | .download = $download' \
+             '.version = $version' \
              system.json > system.json.tmp
           mv system.json.tmp system.json
 

@@ -1,7 +1,7 @@
 _id: tEob41rtEbHcswNM
 name: Cutter
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.2_43.webp
+img: systems/blades68/styles/assets/icons/Icon.2_43.webp
 system:
   description: A dangerous & intimidating fighter
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Cutter
     origin: Compendium.blades-in-the-dark.class.tEob41rtEbHcswNM
     transfer: true

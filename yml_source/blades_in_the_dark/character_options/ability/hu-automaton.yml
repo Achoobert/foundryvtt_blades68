@@ -31,7 +31,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Automaton
     origin: Item.z1kysRvqqbX5lRVA
     transfer: true

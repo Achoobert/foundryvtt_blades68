@@ -1,7 +1,7 @@
 name: Accident
 type: hunting_grounds
 _id: FijjIHH82hoHtBp7
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_19.webp
+img: systems/blades68/styles/assets/icons/Icon.6_19.webp
 system:
   description: <p>A killing with no telltale signs of murder.</p>
   class: Assassins

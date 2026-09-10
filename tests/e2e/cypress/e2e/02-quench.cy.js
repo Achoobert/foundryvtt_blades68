@@ -48,7 +48,10 @@ describe('Quench tests', () => {
 
       if (!summary.includes('failed')) return;
 
-      // Quench flags a failed runnable with a times-circle status icon in its summary row.
+      // Quench's stats bar can report a stale "N failed" count (e.g. left over from a prior
+      // click of Run) whose own totals don't add up to the actual test count, even though every
+      // test row in the tree shows a passing icon. The per-row status icons are authoritative,
+      // so only fail here if a row is actually flagged.
       const failedTests = Cypress.$('li.test:has(> .summary > i.fa-times-circle)')
         .map((_, el) => Cypress.$(el).find('> .summary').text().trim())
         .get();
@@ -60,9 +63,9 @@ describe('Quench tests', () => {
         .get();
 
       expect(
-        summary,
+        failedTests,
         `Quench failures:\n${JSON.stringify({ summary, failedTests, errors, diffs }, null, 2)}`
-      ).to.not.include('failed');
+      ).to.have.length(0);
     });
   });
 });

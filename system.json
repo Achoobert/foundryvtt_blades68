@@ -1,19 +1,29 @@
 {
   "id": "blades68",
-  "title": "Blades '68 (test build)",
-  "description": "Blades '68 support built on the Blades in the Dark game system (test build).",
-  "version": "6.4.0",
+  "title": "Blades '68",
+  "description": "Blades '68, a swinging system.",
+  "version": "6.4.8",
   "compatibility": {
     "minimum": 14,
     "verified": "14.362"
   },
   "background": "systems/blades68/images/blades68/blades68_cover.webp",
   "authors": [
-    { "name": "megastruktur" },
-    { "name": "drewg13" },
-    { "name": "justinross" },
-    { "name": "Dez384" }, 
-    { "name": "achoobert" }
+    {
+      "name": "megastruktur"
+    },
+    {
+      "name": "drewg13"
+    },
+    {
+      "name": "justinross"
+    },
+    {
+      "name": "Dez384"
+    },
+    {
+      "name": "achoobert"
+    }
   ],
   "esmodules": [
     "module/blades.js"
@@ -241,48 +251,62 @@
       "system": "blades68",
       "path": "./packs/blades68_trouble_tables.db",
       "type": "RollTable"
+    },
+    {
+      "name": "blades68_example_characters",
+      "label": "Blades '68 Example Characters",
+      "system": "blades68",
+      "path": "./packs/blades68_example_characters.db",
+      "type": "Actor"
     }
   ],
   "packFolders": [
     {
-      "name": "Character Options",
+      "name": "Blades in the Dark",
       "sorting": "m",
-      "packs": [
-        "class",
-        "ability",
-        "item",
-        "background",
-        "heritage",
-        "vice"
-      ]
-    },
-    {
-      "name": "Crew Options",
-      "sorting": "m",
-      "packs": [
-        "crew_type",
-        "crew_ability",
-        "crew_upgrade",
-        "prison",
-        "crew_reputation",
-        "hunting_grounds"
-      ]
-    },
-    {
-      "name": "Factions & NPCs",
-      "sorting": "m",
-      "packs": [
-        "faction",
-        "npc"
-      ]
-    },
-    {
-      "name": "Entanglements",
-      "sorting": "m",
-      "packs": [
-        "entanglements-macro",
-        "entanglements",
-        "entanglements-journals"
+      "packs": [],
+      "folders": [
+        {
+          "name": "Character Options",
+          "sorting": "m",
+          "packs": [
+            "class",
+            "ability",
+            "item",
+            "background",
+            "heritage",
+            "vice"
+          ]
+        },
+        {
+          "name": "Crew Options",
+          "sorting": "m",
+          "packs": [
+            "crew_type",
+            "crew_ability",
+            "crew_upgrade",
+            "prison",
+            "crew_reputation",
+            "hunting_grounds"
+          ]
+        },
+        {
+          "name": "Factions & NPCs",
+          "sorting": "m",
+          "packs": [
+            "faction",
+            "npc"
+          ]
+        },
+        {
+          "name": "Entanglements",
+          "sorting": "m",
+          "packs": [
+            "entanglements-macro",
+            "entanglements",
+            "entanglements-journals"
+          ]
+        }
       ]
     },
     {
@@ -296,16 +320,17 @@
         "blades68_crew_types",
         "blades68_crew_abilities",
         "blades68_crew_upgrades",
-        "blades68_factions",
-        "blades68_macros"
-      ]
-    },
-    {
-      "name": "Blades68 Engine",
-      "sorting": "m",
-      "packs": [
-        "blades68_troubles",
-        "blades68_trouble_tables"
+        "blades68_factions"
+      ],
+      "folders": [
+        {
+          "name": "Blades68 Engine",
+          "sorting": "m",
+          "packs": [
+            "blades68_troubles",
+            "blades68_trouble_tables"
+          ]
+        }
       ]
     }
   ],

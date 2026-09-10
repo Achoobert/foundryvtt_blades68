@@ -2,7 +2,7 @@
 /**
  * One-time (re-runnable) extraction: packs/*.db (+ LevelDB fallback) -> yml_source/.
  *
- * Layout mirrors system.json packFolders:
+ * Layout mirrors system.json packFolders (nested BITD folders use the leaf name):
  *   yml_source/blades_in_the_dark/<folder>/<pack>/...
  *   yml_source/blades68/blades_68_content/<pack>/...
  *

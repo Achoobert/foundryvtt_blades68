@@ -1,7 +1,7 @@
 name: Espionage
 type: hunting_grounds
 _id: 2Aj3aqMWqqACv4KU
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.7_75.webp
+img: systems/blades68/styles/assets/icons/Icon.7_75.webp
 system:
   description: <p>Obtain secret information by covert or clandestine means.</p>
   class: Shadows

@@ -1,0 +1,7 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+# build_order: last so `item_refs` can pull documents from the other packs.
+name: "blades68_example_characters"
+label: "Blades '68 Example Characters"
+type: "Actor"
+path: "./packs/blades68_example_characters.db"
+build_order: "last"

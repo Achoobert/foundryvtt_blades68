@@ -1,7 +1,7 @@
 _id: GjmMFKjGfUaoDiTr
 name: Ghost
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.6_18.webp
+img: systems/blades68/styles/assets/icons/Icon.6_18.webp
 system:
   description: A disembodied spirit, craving vengeance
   logic: |-
@@ -47,7 +47,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Ghost
     origin: Compendium.blades-in-the-dark.class.GjmMFKjGfUaoDiTr
     transfer: true

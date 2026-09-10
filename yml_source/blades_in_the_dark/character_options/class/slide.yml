@@ -1,7 +1,7 @@
 _id: YUGDdyADj0PTBVcP
 name: Slide
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_39.webp
+img: systems/blades68/styles/assets/icons/Icon.3_39.webp
 system:
   description: A subtle manipulator and spy
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Slide
     origin: Compendium.blades-in-the-dark.class.YUGDdyADj0PTBVcP
     transfer: true

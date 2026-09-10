@@ -1,7 +1,7 @@
 name: Sabotage
 type: hunting_grounds
 _id: Q2UCwzqAtBn7pNQg
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.3_45.webp
+img: systems/blades68/styles/assets/icons/Icon.3_45.webp
 system:
   description: <p>Hurt an opponent by destroying something.</p>
   class: Shadows

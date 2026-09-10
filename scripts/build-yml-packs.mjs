@@ -9,6 +9,10 @@
  * Each _pack.yml must declare name, label, type, path (matching system.json).
  * Document YAML is a full Foundry document; _id and name are required.
  *
+ * A pack may declare `build_order: last` to compile after all other packs; its
+ * documents can then use `item_refs` to embed documents from those packs
+ * instead of duplicating them (see resolveItemRefs in lib/yml-packs.mjs).
+ *
  * Run: node scripts/build-yml-packs.mjs
  */
 import fs from "node:fs";
@@ -20,6 +24,9 @@ import {
   loadPackDocuments,
   writeNedb,
   loadSystemManifest,
+  buildPackIndex,
+  resolveItemRefs,
+  BUILD_ORDER_LAST,
 } from "./lib/yml-packs.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -31,6 +38,8 @@ export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir 
   const expected = new Map((system.packs ?? []).map((p) => [p.name, p]));
   const problems = [];
   const built = new Map();
+  const candidates = [];
+  const seenNames = new Set();
 
   const manifests = findPackManifests(sourceDir);
   if (!manifests.length) {
@@ -72,10 +81,11 @@ export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir 
       }
     }
 
-    if (built.has(meta.name)) {
+    if (seenNames.has(meta.name)) {
       problems.push(`${manifestPath}: duplicate pack name "${meta.name}"`);
       continue;
     }
+    seenNames.add(meta.name);
 
     const outRel = String(meta.path).replace(/^\.\//, "");
     const outPath = path.join(root, outRel);
@@ -89,8 +99,38 @@ export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir 
 
     if (docProblems.length) continue;
 
+    candidates.push({ manifestPath, meta, outPath, docs });
+  }
+
+  // Packs marked `build_order: last` compile after the rest so their documents
+  // can pull in already-compiled documents by reference.
+  const first = candidates.filter((c) => c.meta.build_order !== BUILD_ORDER_LAST);
+  const last = candidates.filter((c) => c.meta.build_order === BUILD_ORDER_LAST);
+
+  for (const { meta, outPath, docs } of first) {
     const written = writeNedb(outPath, docs);
     built.set(meta.name, { path: outPath, count: written.length, meta });
+  }
+
+  if (last.length) {
+    const index = buildPackIndex(first.map((c) => ({ name: c.meta.name, type: c.meta.type, docs: c.docs })));
+    for (const { manifestPath, meta, outPath, docs } of last) {
+      const resolved = [];
+      let failed = false;
+      for (const doc of docs) {
+        const { doc: out, problems: refProblems } = resolveItemRefs(doc, {
+          index,
+          scope: system.id,
+          loc: `${manifestPath} (${doc.name})`,
+        });
+        problems.push(...refProblems);
+        if (refProblems.length) failed = true;
+        resolved.push(out);
+      }
+      if (failed) continue;
+      const written = writeNedb(outPath, resolved);
+      built.set(meta.name, { path: outPath, count: written.length, meta });
+    }
   }
 
   for (const name of expected.keys()) {

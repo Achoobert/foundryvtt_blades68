@@ -22,6 +22,16 @@ You will need to setup your
 
 I strongly recommend using docker, it makes it easier to reset and restart foundry. 
 
+## manual testing
+The **Blades '68 Example Characters** pack gives us a played-in character and crew. Its actors compile last (`build_order: "last"` in `_pack.yml`) and list their gear, abilities and playbook as `item_refs` into the other packs, so the examples stay in sync with the real compendium content instead of holding copies of it.
+
+```yaml
+item_refs:
+  - pack: blades68_items
+    name: Armor
+    overrides:
+      system: { equipped: true, uses_used: 2 }
+```
 
 ## `npm run test:ci`
 

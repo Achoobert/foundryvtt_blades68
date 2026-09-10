@@ -1,7 +1,7 @@
 _id: QzcDnJbWCY1ueVt7
 name: Vampire
 type: class
-img: systems/blades-in-the-dark/styles/assets/icons/Icon.1_19.webp
+img: systems/blades68/styles/assets/icons/Icon.1_19.webp
 system:
   description: A spirit animating an undead body
   logic: ''
@@ -43,7 +43,7 @@ effects:
     disabled: false
     duration:
       startTime: null
-    icon: systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.webp
+    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
     label: Vampire
     origin: Compendium.blades-in-the-dark.class.QzcDnJbWCY1ueVt7
     transfer: true
