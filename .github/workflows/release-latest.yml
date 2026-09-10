@@ -70,19 +70,18 @@ jobs:
           echo "released=${released_version}" >> "$GITHUB_OUTPUT"
           echo "next=${next}" >> "$GITHUB_OUTPUT"
 
-      # Only the version is overwritten; manifest/download and all other
-      # fields ship exactly as committed in system.json.
-      - name: Update system.json
+      # Stamp version onto the working-tree system.json *before* zip so both
+      # the standalone artifact and the copy inside system.zip match.
+      # Manifest/download and all other fields stay as committed.
+      - name: Update system.json and Create Module Archive
         run: |
           jq --arg version "${{ steps.bump_version.outputs.next }}" \
              '.version = $version' \
              system.json > system.json.tmp
           mv system.json.tmp system.json
 
-      # Note that `zip` will only emit warnings when a file or directory
-      # doesn't exist, it will not fail.
-      - name: Create Module Archive
-        run: |
+          # Note that `zip` will only emit warnings when a file or directory
+          # doesn't exist, it will not fail.
           zip                                    \
             --recurse-paths                      \
             ./system.zip                         \
@@ -99,6 +98,9 @@ jobs:
             scss/                                \
             images/                              \
             lang/
+
+          unzip -p ./system.zip system.json | jq -e --arg version "${{ steps.bump_version.outputs.next }}" \
+            '.version == $version'
 
       - name: Update Rolling "latest" Release
         uses: ncipollo/release-action@v1
