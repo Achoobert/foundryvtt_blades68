@@ -655,6 +655,10 @@
     "warn": {
       "NoNPC": "This NPC does not exist in the World or in a Compendium."
     }
-  }
+  },
 
+  "B68.Mortal": "Mortal",
+  "B68.Critical": "Critical",
+  "B68.Major": "Major",
+  "B68.Passing": "Passing"
 }
