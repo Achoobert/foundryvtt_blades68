@@ -186,7 +186,8 @@ export class BladesActor extends Actor {
       okLabel: game.i18n.localize("BITD.Roll"),
       cancelLabel: game.i18n.localize("Close"),
       defaultButton: "cancel",
-      hideOkButton: actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name),
+      hideOkButton:
+        actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name),
       onRender: (form, submit) => this._wireRollDialog(form, submit),
     });
 
@@ -214,7 +215,9 @@ export class BladesActor extends Actor {
       }
       if (dialogResult.optDevilsBargain) {
         bonusDice += 1;
-        optionNotes.push(game.i18n.localize("BITD.RollOptionDevilsBargainShort"));
+        optionNotes.push(
+          game.i18n.localize("BITD.RollOptionDevilsBargainShort"),
+        );
       }
       if (dialogResult.optGroupAction) {
         optionNotes.push(game.i18n.localize("BITD.RollOptionGroupActionShort"));
@@ -227,7 +230,9 @@ export class BladesActor extends Actor {
     const modifier = (Number(dialogResult.mod ?? 0) || 0) + bonusDice;
     let note = dialogResult.note ?? "";
     if (optionNotes.length) {
-      note = note ? `${note} (${optionNotes.join(", ")})` : optionNotes.join(", ");
+      note = note
+        ? `${note} (${optionNotes.join(", ")})`
+        : optionNotes.join(", ");
     }
     const rollData = this.getRollData();
     const actionDiceAmount = rollData.dice_amount[attribute_name] + modifier;
@@ -286,17 +291,19 @@ export class BladesActor extends Actor {
         );
         break;
       case "reduceHeat":
+        await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "");
+        break;
+      case "indulgeVice":
         await bladesRoll(
-          actionDiceAmount,
-          "BITD.ReduceHeat",
+          viceDiceAmount,
+          "BITD.Vice",
           "",
           "",
           note,
-          "",
+          stress,
+          undefined,
+          this,
         );
-        break;
-      case "indulgeVice":
-        await bladesRoll(viceDiceAmount, "BITD.Vice", "", "", note, stress, undefined, this);
         break;
       case "engagement": {
         const engagementDice =
@@ -427,7 +434,8 @@ export class BladesActor extends Actor {
 
     form.querySelectorAll("[data-roll-for]").forEach((button) => {
       button.addEventListener("click", () => {
-        if (rollSelectionInput) rollSelectionInput.value = button.dataset.rollFor;
+        if (rollSelectionInput)
+          rollSelectionInput.value = button.dataset.rollFor;
         submit();
       });
     });
@@ -516,7 +524,9 @@ export class BladesActor extends Actor {
     if (!root) return;
 
     for (let i = fromValue + 1; i <= toValue; i++) {
-      const label = root.querySelector(`label[for="character-${this.id}-stress-${i}"]`);
+      const label = root.querySelector(
+        `label[for="character-${this.id}-stress-${i}"]`,
+      );
       if (!label) continue;
       label.classList.add("bitd-stress-pulse");
       setTimeout(() => label.classList.remove("bitd-stress-pulse"), 3000);
@@ -726,17 +736,22 @@ export class BladesActor extends Actor {
     // normalize either shape back into an array before working with it.
     const asArray = Array.isArray(rawList) ? rawList : Object.values(rawList);
     const list = foundry.utils.deepClone(asArray);
-    const emptySlot = () => ({ key: "", experience: 0, deadlocked: false, deadlocked_to: "" });
+    const emptySlot = () => ({
+      key: "",
+      experience: 0,
+      deadlocked: false,
+      deadlocked_to: "",
+    });
     const normalized = list.map((slot) => {
       const key = slot?.key === "example" ? "" : (slot?.key ?? "");
-      const experience = Number(
-        slot?.experience ?? slot?.marks ?? 0
-      );
+      const experience = Number(slot?.experience ?? slot?.marks ?? 0);
       const deadlocked = Boolean(slot?.deadlocked ?? slot?.boomed ?? false);
       const deadlocked_to = deadlocked ? String(slot?.deadlocked_to ?? "") : "";
       return {
         key,
-        experience: Number.isFinite(experience) ? Math.max(0, Math.min(3, experience)) : 0,
+        experience: Number.isFinite(experience)
+          ? Math.max(0, Math.min(3, experience))
+          : 0,
         deadlocked,
         deadlocked_to,
       };

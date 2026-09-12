@@ -2225,9 +2225,14 @@
 }
 .blades68.actor.pc * .items-panel .item-catalog .item-catalog-item label {
   font-size: 13px;
-}
-.blades68.actor.pc * .items-panel .other-items .item-catalog-item label {
   flex-grow: 1;
+}
+.blades68.actor.pc * .items-panel .item-catalog .item-catalog-item .item-load-icons {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+  font-size: 11px;
+  opacity: 0.7;
 }
 .blades68.actor.pc * .items-panel .other-items .item-catalog-item .item-bonus-toggle {
   margin: 0;

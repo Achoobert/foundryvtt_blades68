@@ -73,16 +73,21 @@
 
         label {
           font-size: 13px;
+          flex-grow: 1;
+        }
+
+        .item-load-icons {
+          display: flex;
+          gap: 3px;
+          flex-shrink: 0;
+          font-size: 11px;
+          opacity: 0.7;
         }
       }
     }
 
     .other-items {
       .item-catalog-item {
-        label {
-          flex-grow: 1;
-        }
-
         .item-bonus-toggle {
           margin: 0;
           flex-shrink: 0;

@@ -173,6 +173,7 @@ export class BladesActorSheet extends BladesSheet {
         sheetData.otherItems = itemResult.other.map(i => {
             const usesMax = parseInt(i.system?.uses) || 1;
             const numAvailable = Math.max(1, parseInt(i.system?.num_available) || 1);
+            const loadValue = Math.max(0, parseInt(i.system?.load) || 0);
             return {
                 _id: i.id,
                 name: i.name,
@@ -181,7 +182,9 @@ export class BladesActorSheet extends BladesSheet {
                 extraUseIndexes: Array.from({ length: usesMax - 1 }, (_, idx) => idx + 1),
                 usesSpent: Math.max(0, parseInt(i.system?.uses_used) || 0),
                 hasBonus: numAvailable > 1,
-                bonusLabel: `x${numAvailable}`
+                bonusLabel: `x${numAvailable}`,
+                loadIndexes: Array.from({ length: loadValue }, (_, idx) => idx + 1),
+                hasNoLoad: loadValue === 0
             };
         });
 
@@ -223,13 +226,16 @@ export class BladesActorSheet extends BladesSheet {
 
             const slots = slotsField ? Math.max(1, parseInt(source.system?.[slotsField]) || 1) : 1;
             const ownedMatches = owned.filter(i => BladesHelpers.trimClassFromName(i.name) === displayName);
+            const loadValue = Math.max(0, parseInt(source.system?.load) || 0);
             catalog.push({
                 id: source.id,
                 name: displayName,
                 description: BladesHelpers.stripHtml(source.system?.description || ""),
                 slots,
                 slotIndexes: Array.from({ length: slots }, (_, i) => i + 1),
-                ownedCount: ownedMatches.length
+                ownedCount: ownedMatches.length,
+                loadIndexes: Array.from({ length: loadValue }, (_, i) => i + 1),
+                hasNoLoad: loadValue === 0
             });
         }
         catalog.sort((a, b) => a.name.localeCompare(b.name));

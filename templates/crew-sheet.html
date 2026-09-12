@@ -68,8 +68,16 @@
         <input type="text" id="crew-{{_id}}-lair" name="system.lair" value="{{system.lair}}" placeholder="{{localize "BITD.Lair"}} {{localize "BITD.Description"}}">
       </div>
 
+    </div>
+  </section>
 
       <div class="flex-horizontal">
+  <div class="quick-roll-actions flex-horizontal">
+    <a class="roll-quick-popup rollable-text" data-tooltip="{{localize 'BITD.RollSomeDice'}}">
+      <i class="fas fa-dice"></i> 
+    </a>
+  </div>
+
         <div id="crew-{{_id}}-hold-box" class="flex-horizontal crew-hold">
           <div class="black-label">{{localize "BITD.Hold"}}</div>
           {{#multiboxes system.hold}}
@@ -99,13 +107,7 @@
         </div>
       </div>
 
-    </div>
-  </section>
 
-  <div class="quick-roll-actions flex-horizontal">
-    <a class="roll-quick-popup rollable-text" data-tooltip="{{localize 'BITD.RollSomeDice'}}">
-      <i class="fas fa-dice"></i> {{localize "BITD.RollSomeDice"}}
-    </a>
   </div>
 
   <section class="flex-horizontal" style="padding-top: 4px;">

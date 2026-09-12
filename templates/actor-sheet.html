@@ -425,6 +425,15 @@
                 {{/each}}
               </span>
               <label for="character-{{../_id}}-item-catalog-{{index}}-0">{{item.name}}</label>
+              <span class="item-load-icons" data-tooltip="{{localize 'BITD.Load'}}">
+                {{#if item.hasNoLoad}}
+                <i class="fa-solid fa-feather"></i>
+                {{else}}
+                {{#each item.loadIndexes}}
+                <i class="fa-solid fa-weight-hanging"></i>
+                {{/each}}
+                {{/if}}
+              </span>
             </li>
             {{/each}}
           </ul>
@@ -447,6 +456,15 @@
                   {{/each}}
                 </span>
                 <label for="character-{{../_id}}-other-item-{{item._id}}">{{item.name}}</label>
+                <span class="item-load-icons" data-tooltip="{{localize 'BITD.Load'}}">
+                  {{#if item.hasNoLoad}}
+                  <i class="fa-solid fa-feather"></i>
+                  {{else}}
+                  {{#each item.loadIndexes}}
+                  <i class="fa-solid fa-weight-hanging"></i>
+                  {{/each}}
+                  {{/if}}
+                </span>
                 {{#if item.hasBonus}}
                 <input type="checkbox" class="item-bonus-toggle" id="character-{{../_id}}-other-item-{{item._id}}-bonus"
                        data-item-id="{{item._id}}" {{#if item.system.bonus_equipped}}checked{{/if}}>
