@@ -1,0 +1,21 @@
+_id: BCVCPXLGiBTcvGvG
+name: Weird
+img: systems/blades68/styles/assets/icons/Icon.7_74.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Experimenting with fringe science, consorting with strange entities, observing bizarre rituals or taboos, etc.</p>
+    <ul>
+      <li>Milos, president of the Plasmovision Social Club, Charhollow.</li>
+      <li>Brainwave-60, a sparkmind construct and expert redcheck player, Charterhall.</li>
+      <li>Blargo the Goblin, Tycherosi airship pilot, Nightmarket.</li>
+      <li>Maymuun, wayfarer and deathlands guide, Gaddoc Monorail Station.</li>
+      <li>Mysticus, a cursed and abandoned animatronic sideshow attraction, Silkshore.</li>
+      <li>Wilka Eadon, the God Experience (modern art installation), Silkshore.</li>
+      <li>Captain Laudius Blanchet, Void Sea Aquarium and Research Facility, the Docks.</li>
+    </ul>
+folder: null
+sort: 700000
+flags: {}

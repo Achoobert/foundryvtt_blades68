@@ -1,0 +1,13 @@
+_id: Ih7yfJs1ON43xKmT
+name: Professional
+img: systems/blades68/styles/assets/icons/Icons8_74.webp
+permission:
+  default: 0
+type: background
+system:
+  description: >-
+    A lawyer, office clerk, accountant, architect, terminal programmer, advertising executive, claims adjuster,
+    civil servant, PR agent.
+folder: null
+sort: 500000
+flags: {}

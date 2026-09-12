@@ -1,0 +1,11 @@
+_id: 9Wvgfygw2wMqZcUD
+name: Trade
+img: systems/blades68/styles/assets/icons/Icons8_78.webp
+permission:
+  default: 0
+type: background
+system:
+  description: A sparktech, plumber, autopod mechanic, record shop owner, tattooist, salesperson, street vendor, projectionist.
+folder: null
+sort: 400000
+flags: {}

@@ -1,0 +1,18 @@
+_id: dukWoJbJYkHgX96w
+name: Faith
+img: systems/blades68/styles/assets/icons/Icon.2_29.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Dedication to the church, a new age cult, etc.</p>
+    <ul>
+      <li>Ankhuset, the Kethrys Lodge, Silkshore.</li>
+      <li>Supreme Director of Guidance, the New Dawn Center, Six Towers.</li>
+      <li>Preceptor Aldo, the Sanctorium grand cathedral, Brightstone.</li>
+      <li>Prichard, Librarian at Morlan Hall's Restricted Collection of Archaic Religious Texts, Charterhall.</li>
+    </ul>
+folder: null
+sort: 100000
+flags: {}

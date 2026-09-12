@@ -1,0 +1,11 @@
+_id: ecQoXsf2o3gyrDO1
+name: Aristocrat
+img: systems/blades68/styles/assets/icons/Icon.7_41.webp
+permission:
+  default: 0
+type: background
+system:
+  description: Old money, nobility, dilettante, scion of a fallen house, new money with aspirations, socialite.
+folder: null
+sort: 600000
+flags: {}

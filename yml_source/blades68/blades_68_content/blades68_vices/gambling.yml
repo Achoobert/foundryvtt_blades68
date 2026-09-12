@@ -1,0 +1,20 @@
+_id: a4uB79OVwOcaCNkw
+name: Gambling
+img: systems/blades68/styles/assets/icons/Icon.1_48.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Games of chance, sports betting, visiting casinos, etc.</p>
+    <ul>
+      <li>Bug's five-card braggart game, the Docks.</li>
+      <li>Remira, wrestling, Charhollow.</li>
+      <li>Karter, the Sky High casino, above Doskvol.</li>
+      <li>Marek, the Iruvian Sands casino, Silkshore.</li>
+      <li>Vesper, bookmaker at the Vreen Autodrome, Nightmarket.</li>
+      <li>Sybil Bexley, Paddles private members' club, Whitecrown.</li>
+    </ul>
+folder: null
+sort: 200000
+flags: {}

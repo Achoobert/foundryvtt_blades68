@@ -1,0 +1,11 @@
+_id: UpkDyr7OSJoRu1XX
+name: Labor
+img: systems/blades68/styles/assets/icons/Icon.5_76.webp
+permission:
+  default: 0
+type: background
+system:
+  description: A factory worker, janitor, dock worker, cab driver, bellhop, waiter, short order cook, farmhand, garbage collector.
+folder: null
+sort: 800000
+flags: {}

@@ -1,0 +1,21 @@
+_id: NjmxcBy10jiutuY2
+name: Luxury
+img: systems/blades68/styles/assets/icons/Icon.6_13.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Expensive or ostentatious displays of opulence.</p>
+    <ul>
+      <li>Songbird, Sapphire Lounge, Silkshore.</li>
+      <li>Diamond, Diamond Palace, Nightmarket.</li>
+      <li>Dunridge & Sons old-fashioned tailoring, Nightmarket.</li>
+      <li>Jeduin's fashionable clothing boutique, Nightmarket.</li>
+      <li>Sybil Bexley, Paddles private members' club, Whitecrown.</li>
+      <li>Chef Kalani, Dagger Room restaurant, Brightstone.</li>
+      <li>Chef Lisanne, Golden Plum restaurant, Six Towers.</li>
+    </ul>
+folder: null
+sort: 300000
+flags: {}

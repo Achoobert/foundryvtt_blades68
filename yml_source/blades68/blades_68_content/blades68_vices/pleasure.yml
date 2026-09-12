@@ -1,0 +1,30 @@
+_id: lGWdzltLEPrpl6Kk
+name: Pleasure
+img: systems/blades68/styles/assets/icons/Icons8_59.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Gratification from lovers, food, drink, drugs, art, music, etc.</p>
+    <ul>
+      <li>Songbird, Sapphire Lounge, Silkshore.</li>
+      <li>Diamond, Diamond Palace, Nightmarket.</li>
+      <li>Dunridge & Sons old-fashioned tailoring, Nightmarket.</li>
+      <li>Jeduin's fashionable clothing boutique, Nightmarket.</li>
+      <li>Sybil Bexley, Paddles private members' club, Whitecrown.</li>
+      <li>Chef Kalani, Dagger Room restaurant, Brightstone.</li>
+      <li>Chef Lisanne, Golden Plum restaurant, Six Towers.</li>
+      <li>Benson, the Black Goat (tavern), the Docks.</li>
+      <li>Rennie, the Eyrie (underground lounge bar), Crowfoot.</li>
+      <li>Harald Tipton, the House of Tomorrow (black lotus den), New Horizon.</li>
+      <li>Lemmy's smoking room and kaff house, Charhollow.</li>
+      <li>Amara, the Key Club (brothel), Silkshore.</li>
+      <li>Rasp, powder dealer, New Horizon.</li>
+      <li>Alfie's Adult Plasmocinema, Crowfoot.</li>
+      <li>The Silver Echoes, Groove Factory, Crowfoot.</li>
+      <li>Lorna, Xantara Pharm Pill Dispensary, Nightmarket.</li>
+    </ul>
+folder: null
+sort: 500000
+flags: {}

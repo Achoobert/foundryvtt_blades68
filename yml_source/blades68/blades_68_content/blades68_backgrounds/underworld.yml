@@ -1,0 +1,11 @@
+_id: BcbfnoGMbJmTPSIA
+name: Underworld
+img: systems/blades68/styles/assets/icons/Icon.5_67.webp
+permission:
+  default: 0
+type: background
+system:
+  description: A street kid, gang member, hustler, pickpocket, cultist, dealer, fence.
+folder: null
+sort: 200000
+flags: {}

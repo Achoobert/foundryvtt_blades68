@@ -1,0 +1,13 @@
+_id: xkxwnQrS7RPeMOkI
+name: Military
+img: systems/blades68/styles/assets/icons/Icon.2_67.webp
+permission:
+  default: 0
+type: background
+system:
+  description: >-
+    A soldier, officer, mercenary, intelligence operative, strategist, radar operator, medic, R&D scientist,
+    engineer.
+folder: null
+sort: 700000
+flags: {}

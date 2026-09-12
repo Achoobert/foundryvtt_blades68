@@ -1580,8 +1580,8 @@
   display: flex;
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label {
-  height: 40px;
-  width: 17px;
+  height: 35px;
+  width: 15px;
   background-image: url("assets/blades68/stresspill_filled.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1631,8 +1631,8 @@
   display: flex;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
-  height: 40px;
-  width: 17px;
+  height: 35px;
+  width: 15px;
   background-image: url("assets/blades68/stresspill_empty.webp");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -1724,13 +1724,16 @@
     animation: none;
   }
 }
-.blades68.actor.pc * .abilities .item-name, .blades68.actor.pc * .loadout .item-name {
+.blades68.actor.pc * .abilities .item-name,
+.blades68.actor.pc * .loadout .item-name {
   width: 100px;
 }
-.blades68.actor.pc * .abilities .item-body, .blades68.actor.pc * .loadout .item-body {
+.blades68.actor.pc * .abilities .item-body,
+.blades68.actor.pc * .loadout .item-body {
   width: auto;
 }
-.blades68.actor.pc * .abilities .item-description, .blades68.actor.pc * .loadout .item-description {
+.blades68.actor.pc * .abilities .item-description,
+.blades68.actor.pc * .loadout .item-description {
   width: 260px;
 }
 .blades68.actor.pc * .abilities .label-stripe p:first-child {
@@ -3352,5 +3355,3 @@
     transform: translate(2px, 1px);
   }
 }
-
-/*# sourceMappingURL=blades.css.map */

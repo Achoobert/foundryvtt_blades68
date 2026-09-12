@@ -1,0 +1,13 @@
+_id: oCLrZ3aWZkSBvrjn
+name: Performer
+img: icons/svg/item-bag.svg
+permission:
+  default: 0
+type: background
+system:
+  description: >-
+    An artist, poet, lounge singer, racer, painter, guitarist, filmmaker, dancer, model, experimental sound collage
+    artist, stage magician, playwright.
+folder: null
+sort: 300000
+flags: {}

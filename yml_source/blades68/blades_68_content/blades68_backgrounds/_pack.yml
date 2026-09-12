@@ -1,0 +1,5 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+name: "blades68_backgrounds"
+label: "Blades '68 Backgrounds"
+type: "Item"
+path: "./packs/blades68_backgrounds.db"

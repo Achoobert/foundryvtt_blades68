@@ -5,9 +5,8 @@
  */
 
 & * {
-  .name-alias{
-
-    img.portrait{
+  .name-alias {
+    img.portrait {
       max-width: 200px;
       max-height: 200px;
       width: auto;
@@ -15,9 +14,9 @@
     }
   }
 
-  .tab[data-tab]{
+  .tab[data-tab] {
     display: none;
-    &.active{
+    &.active {
       display: block;
     }
   }
@@ -31,7 +30,6 @@
   // Stress and Trauma
 
   .big-teeth-section {
-
     border-top: 3px solid $almost_black;
     display: flex;
     flex-direction: row;
@@ -52,14 +50,24 @@
 
     // Stress
     .big-teeth {
-        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+      @include toothradio(
+        15px,
+        35px,
+        "assets/blades68/stresspill_empty.webp",
+        "assets/blades68/stresspill_filled.webp"
+      );
     }
 
     /* Trauma */
     .small-teeth-container {
-
       .small-teeth-wrap {
-        @include toothradio(17px, 40px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_empty.webp", false);
+        @include toothradio(
+          15px,
+          35px,
+          "assets/blades68/stresspill_empty.webp",
+          "assets/blades68/stresspill_empty.webp",
+          false
+        );
         flex-direction: column;
 
         .small-teeth {
@@ -74,7 +82,6 @@
       justify-content: space-between;
       align-items: flex-start;
     }
-
   }
 
   .character-stress {
@@ -85,15 +92,16 @@
 
       &.bitd-stress-pulse {
         animation: bitd-stress-vibrate 0.3s linear infinite;
-@media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
+        }
       }
     }
   }
 
   //Abilitiers and loadout
-  .abilities, .loadout {
+  .abilities,
+  .loadout {
     .item-name {
       width: 100px;
     }

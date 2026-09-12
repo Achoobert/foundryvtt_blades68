@@ -12,7 +12,7 @@ export class BladesNPCSheet extends BladesSheet {
 	  return foundry.utils.mergeObject(super.defaultOptions, {
   	  classes: ["blades68", "sheet", "actor"],
   	  template: "systems/blades68/templates/npc-sheet.html",
-      width: 900,
+      width: 510,
       height: 'auto',
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
     });

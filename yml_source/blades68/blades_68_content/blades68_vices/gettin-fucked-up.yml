@@ -1,0 +1,23 @@
+_id: nfdqETCLVY9GJ82R
+name: Gettin' Fucked Up
+img: systems/blades68/styles/assets/icons/Icon.1_72.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Oblivion in the abuse of drugs, drinking to excess, getting beaten to a pulp in the fighting pits, etc.</p>
+    <ul>
+      <li>Benson, the Black Goat (tavern), the Docks.</li>
+      <li>Rennie, the Eyrie (underground lounge bar), Crowfoot.</li>
+      <li>Harald Tipton, the House of Tomorrow (black lotus den), New Horizon.</li>
+      <li>Lemmy's smoking room and kaff house, Charhollow.</li>
+      <li>Amara, the Key Club (brothel), Silkshore.</li>
+      <li>Rasp, powder dealer, New Horizon.</li>
+      <li>Alfie's Adult Plasmocinema, Crowfoot.</li>
+      <li>The Silver Echoes, Groove Factory, Crowfoot.</li>
+      <li>Lorna, Xantara Pharm Pill Dispensary, Nightmarket.</li>
+    </ul>
+folder: null
+sort: 600000
+flags: {}

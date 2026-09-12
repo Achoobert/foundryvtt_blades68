@@ -102,6 +102,9 @@ export class BladesHelpers {
       crew_ability: "blades68_crew_abilities",
       crew_upgrade: "blades68_crew_upgrades",
       trouble: "blades68_troubles",
+      vice: "blades68_vices",
+      heritage: "blades68_heritages",
+      background: "blades68_backgrounds",
     }[item_type];
   }
 

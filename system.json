@@ -190,6 +190,20 @@
       "type": "Item"
     },
     {
+      "name": "blades68_vices",
+      "label": "Blades '68 Vices",
+      "system": "blades68",
+      "path": "./packs/blades68_vices.db",
+      "type": "Item"
+    },
+    {
+      "name": "blades68_backgrounds",
+      "label": "Blades '68 Backgrounds",
+      "system": "blades68",
+      "path": "./packs/blades68_backgrounds.db",
+      "type": "Item"
+    },
+    {
       "name": "blades68_abilities",
       "label": "Blades '68 Abilities",
       "system": "blades68",
@@ -315,6 +329,8 @@
       "packs": [
         "blades68_classes",
         "blades68_heritages",
+        "blades68_vices",
+        "blades68_backgrounds",
         "blades68_abilities",
         "blades68_items",
         "blades68_crew_types",

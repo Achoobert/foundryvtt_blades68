@@ -1,0 +1,20 @@
+_id: EeuWNuMo9eLYrHQl
+name: Obligation
+img: systems/blades68/styles/assets/icons/Icon.1_01.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Devotion to a family, cause, organization, charity, etc.</p>
+    <ul>
+      <li>Family members (heritage) or former co-workers (background).</li>
+      <li>Carro "Cake" Danfield, Iron Weightlifting (gym), Crowfoot.</li>
+      <li>Ms. Asta, Blackthorn Park controller, the Docks.</li>
+      <li>Prichard, Palace handler, Charterhall.</li>
+      <li>Director of Success, the New Dawn Center, Six Towers.</li>
+      <li>Helda, Skovlander community leader, New Horizon.</li>
+    </ul>
+folder: null
+sort: 400000
+flags: {}
