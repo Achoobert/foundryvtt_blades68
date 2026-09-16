@@ -5,7 +5,7 @@
  */
 
 // Import Modules
-import { registerSystemSettings, applyTokenAutoRotateDefault, overrideTokenAutoRotateDefault } from "./settings.js";
+import { registerSystemSettings, applyTokenAutoRotateDefault, overrideTokenAutoRotateDefault, importExistingImagesOnce } from "./settings.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -432,6 +432,7 @@ Hooks.once("ready", async function() {
 
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
+  await importExistingImagesOnce();
 
 /**
   // Determine whether a system migration is required

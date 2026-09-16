@@ -1,3 +1,5 @@
+import { attachExistingImportedImages } from "./pdf-import/attach-existing-images.js";
+
 export const registerSystemSettings = function() {
 
   /**
@@ -12,6 +14,13 @@ export const registerSystemSettings = function() {
   });
   
 	game.settings.register('blades68', 'tokenAutoRotateDefaultApplied', {
+		scope: 'world',
+		config: false,
+		type: Boolean,
+		default: false
+	});
+
+	game.settings.register('blades68', 'existingImagesImported', {
 		scope: 'world',
 		config: false,
 		type: Boolean,
@@ -175,4 +184,23 @@ export async function applyTokenAutoRotateDefault() {
 	if (game.settings.get("blades68", "tokenAutoRotateDefaultApplied")) return;
 	await game.settings.set("core", "tokenAutoRotate", false);
 	await game.settings.set("blades68", "tokenAutoRotateDefaultApplied", true);
+}
+
+/**
+ * The first time any world is opened after this, check the shared blades68/
+ * data directory for faction art and city map pages a different world's GM
+ * already imported via the PDF importer macros, and attach/create them the
+ * same way those macros do. After that the stored flag is left alone, so a
+ * GM who later clears the images out (or re-imports different ones) isn't
+ * fought by this running again every ready hook.
+ */
+export async function importExistingImagesOnce() {
+	if (!game.user.isGM) return;
+	if (game.settings.get("blades68", "existingImagesImported")) return;
+	try {
+		await attachExistingImportedImages();
+	} catch (err) {
+		console.error("blades68 | Failed to import previously-uploaded faction/map images:", err);
+	}
+	await game.settings.set("blades68", "existingImagesImported", true);
 }
