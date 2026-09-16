@@ -7,7 +7,7 @@ system:
     Your frame has a secret compartment that escapes even the most thorough search. Lead-lined to prevent x-ray
     scanning.
   class: Hull
-  load: '0'
+  load: "1"
   additional_info: frame_feature
 effects: []
 folder: null

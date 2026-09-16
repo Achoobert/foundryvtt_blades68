@@ -432,6 +432,7 @@ item_refs:
   - pack: blades68_items
     name: Electro-Blade
   - pack: blades68_items
+    id: aab565d3522c2bd4
     name: Armor
     overrides:
       system:

@@ -7,8 +7,8 @@ system:
     A plasmoleum-fueled device that generates a continuous beam of electroplasmic radiation. A dangerous and potentially
     unstable weapon that will incinerate pretty much anything it's pointed at.
   class: Intellectual
-  load: '0'
-  uses: 2
+  load: "2"
+  uses: 0
 effects: []
 folder: null
 sort: 0

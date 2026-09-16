@@ -7,7 +7,7 @@ system:
     The latest in military technology, an advanced electro-blade that superheats to red hot intensity. Can cut through
     steel. Well balanced and deadly.
   class: Veteran
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

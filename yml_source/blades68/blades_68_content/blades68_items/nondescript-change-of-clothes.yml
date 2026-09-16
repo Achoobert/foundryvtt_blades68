@@ -5,7 +5,7 @@ img: icons/svg/item-bag.svg
 system:
   description: An outfit of perfectly ordinary cut, for blending in with the crowd of whatever district you're in.
   class: Radical
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

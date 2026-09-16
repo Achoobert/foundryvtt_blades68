@@ -7,7 +7,7 @@ system:
     A handheld device that measures resonance in its vicinity. Can be used to detect paranormal activity and locate
     resonance entities.
   class: Paranormalist
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

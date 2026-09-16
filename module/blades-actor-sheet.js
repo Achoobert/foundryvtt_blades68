@@ -362,6 +362,7 @@ export class BladesActorSheet extends BladesSheet {
                 if (!source) return;
                 const data = source.toObject();
                 delete data._id;
+                if (data.type === "item") data.system.equipped = true;
                 const toCreate = Array.from({ length: diff }, () => foundry.utils.deepClone(data));
                 await this.actor.createEmbeddedDocuments("Item", toCreate);
             } else if (diff < 0) {

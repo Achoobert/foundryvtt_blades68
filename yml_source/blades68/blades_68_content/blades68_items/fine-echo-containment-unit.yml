@@ -7,7 +7,7 @@ system:
     A device used to hold a single resonance entity for containment and safe transport. Designed for Class I - IV
     resonance entities. Not advised for Class V or above.
   class: Paranormalist
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

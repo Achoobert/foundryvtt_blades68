@@ -1,11 +1,12 @@
-_id: d45d6c8406d556c6
-name: Fine future pistol
+_id: a75d28fb0af52a76
+name: Surveillance Hardware
 type: item
 img: icons/svg/item-bag.svg
 system:
-  description: ""
-  class: Time Traveler Future
+  description:
+  class: Hull
   load: "1"
+  additional_info: frame_feature
 effects: []
 folder: null
 sort: 0

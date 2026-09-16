@@ -8,7 +8,7 @@ system:
     employ an item from the bandolier, choose one from the list (or one of your own custom-made explosives). During
     downtime, you automatically refill your bandoliers, so long as you have reasonable access to a supplier or workshop.
   class: Radical
-  load: '0'
+  load: "1"
   uses: 3
 effects: []
 folder: null

@@ -6,9 +6,9 @@ system:
   description: >-
     A large coil of nylon rope. Grappling hooks. A small pouch of chalk dust. A climbing harness with loops and
     carabiners. A set of steel pitons and a small mallet. Suction cups.
-  class: ''
-  load: '1'
-  uses: 2
+  class: ""
+  load: "2"
+  uses: 0
 effects: []
 folder: null
 sort: 0

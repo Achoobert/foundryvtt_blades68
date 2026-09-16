@@ -8,7 +8,7 @@ system:
     wig. Could fool their own family, assuming you're roughly the same height and build. If you’re carrying this item as
     a second outfit to change into, it counts as 2 load.
   class: Operative
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

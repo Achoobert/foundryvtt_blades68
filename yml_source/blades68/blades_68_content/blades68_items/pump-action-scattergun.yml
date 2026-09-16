@@ -5,10 +5,10 @@ img: icons/svg/item-bag.svg
 system:
   description: >-
     A simple but very effective firearm that delivers blasts of shot over short distances. Developed for use in the
-    narrow streets and cramped alleyways of modern cities. 
-  class: ''
-  load: '1'
-  uses: 2
+    narrow streets and cramped alleyways of modern cities.
+  class: ""
+  load: "2"
+  uses: 0
 effects: []
 folder: null
 sort: 0

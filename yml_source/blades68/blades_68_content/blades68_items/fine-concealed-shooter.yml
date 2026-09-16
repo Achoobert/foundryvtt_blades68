@@ -7,7 +7,7 @@ system:
     A semi-automatic handgun with a modest calibre. It’s very difficult to detect on your person, even if you’re
     searched.
   class: Swinger
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

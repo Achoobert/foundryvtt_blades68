@@ -3,9 +3,9 @@ name: Holo-projector
 type: item
 img: icons/svg/item-bag.svg
 system:
-  description: ''
+  description: ""
   class: Time Traveler Future
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

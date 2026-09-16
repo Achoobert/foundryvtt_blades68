@@ -7,7 +7,7 @@ system:
     Utilizing the latest super-realistic latex, you are masterfully crafted to pass for a living being (unless closely
     scrutinized).
   class: Hull
-  load: '0'
+  load: "1"
   additional_info: frame_feature
 effects: []
 folder: null

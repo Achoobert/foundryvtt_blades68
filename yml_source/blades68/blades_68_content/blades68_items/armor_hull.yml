@@ -1,13 +1,13 @@
-_id: aab565d3522c2bd4
+_id: bb1f6c6a1f3e9d02
 name: Armor
 type: item
 img: icons/svg/item-bag.svg
 system:
   description: >-
-    Layers of impact-resistant fabric combined with areas of rigid plate. Bulky and uncomfortable, but offers
+    Areas of rigid plate. You are made of metal!
     unparalleled protection.
-  class: ""
-  load: "3"
+  class: Hull
+  load: "0"
   uses: 0
 effects: []
 folder: null

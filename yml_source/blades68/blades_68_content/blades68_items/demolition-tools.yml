@@ -6,9 +6,9 @@ system:
   description: >-
     A heavy drill. Crowbar. Explosive putty and blasting caps. Thermite charges. Vials of acid. A sledgehammer. A
     blowtorch.
-  class: ''
-  load: '1'
-  uses: 2
+  class: ""
+  load: "2"
+  uses: 0
 effects: []
 folder: null
 sort: 0

@@ -5,7 +5,7 @@ img: icons/svg/item-bag.svg
 system:
   description: They go boom.
   class: Veteran
-  load: '0'
+  load: "1"
   uses: 3
 effects: []
 folder: null

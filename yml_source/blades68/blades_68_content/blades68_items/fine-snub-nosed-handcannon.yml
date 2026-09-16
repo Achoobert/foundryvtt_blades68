@@ -5,7 +5,7 @@ img: icons/svg/item-bag.svg
 system:
   description: Maybe you're no great shot, but this thing packs a hell of a punch and can be concealed in a pocket.
   class: Hound
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

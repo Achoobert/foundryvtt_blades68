@@ -5,7 +5,7 @@ img: icons/svg/item-bag.svg
 system:
   description: Your eyes can switch to various visual modes, including night vision, heat vision, and ultra-zoom.
   class: Hull
-  load: '0'
+  load: "1"
   additional_info: frame_feature
 effects: []
 folder: null

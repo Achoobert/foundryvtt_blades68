@@ -5,7 +5,7 @@ img: icons/svg/item-bag.svg
 system:
   description: A finely-made semi-automatic handgun with a modest calibre. Quiet as a whisper.
   class: Operative
-  load: '0'
+  load: "1"
 effects: []
 folder: null
 sort: 0

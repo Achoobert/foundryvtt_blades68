@@ -116,7 +116,7 @@ export default function register(quench) {
             await Item.create({
               name: 'Test Bandolier',
               type: 'item',
-              system: { class: className, num_available: 2 }
+              system: { class: className, num_available: 2, load: 1 }
             })
           );
 
@@ -155,6 +155,15 @@ export default function register(quench) {
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
               1,
               'checking one slot should create one owned copy'
+            );
+            assert.isTrue(
+              ownedBandoliers()[0].system.equipped,
+              'a catalog-created copy should be equipped so it counts toward load'
+            );
+            assert.equal(
+              (await sheet.getData()).system.loadout,
+              1,
+              'checking a loadout slot should add its load to system.loadout'
             );
 
             checkbox = slotCheckbox(2);
