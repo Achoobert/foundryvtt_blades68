@@ -33,6 +33,35 @@
   margin-bottom: 10px;
 }
 
+.crew-upgrade-locked {
+  .item-name,
+  .item-description {
+    text-decoration: line-through;
+  }
+}
+
+.crew-upgrade-price-pips {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+
+  .crew-upgrade-price-pip {
+    cursor: pointer;
+    margin-right: 0 !important;
+    color: $gray;
+    font-size: 12px;
+
+    i {
+      margin-right: 0 !important;
+    }
+
+    &.unlocked {
+      color: $orange;
+    }
+  }
+}
+
 .name,
 .lair,
 {

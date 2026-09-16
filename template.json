@@ -454,7 +454,8 @@
         "uses_text": "",
         "uses_used": 0,
         "purchased": false,
-        "class_default": false
+        "class_default": false,
+        "unlocked": 0
       },
       "logic": {
         "logic": ""

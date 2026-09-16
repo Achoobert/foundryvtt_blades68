@@ -218,6 +218,7 @@
   "BITD.CrewTypeBox": "Click to choose a Crew Type",
   "BITD.FactionType": "Faction Type",
   "BITD.Price": "Price",
+  "BITD.ToggleUpgradeUnlock": "Click to unlock/lock this point",
   "BITD.Logic": "Logic",
   "BITD.ExpClues": "Exp Clues",
   "BITD.AbilityPrice": "Ability Price",

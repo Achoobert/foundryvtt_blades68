@@ -330,10 +330,25 @@
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_upgrade")}}
-      <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body item-sheet-open flex-horizontal">
-          <b><div class="item-name">{{item.name}}</div></b>
-          <div class="item-description">{{{item.system.description}}}</div>
+      <div class="item flex-horizontal {{#unless (lteq item.system.price item.system.unlocked)}}crew-upgrade-locked{{/unless}}" data-item-id="{{item._id}}">
+        <div class="item-body flex-vertical">
+          <div class="item-name-row flex-horizontal">
+            <div class="item-sheet-open item-name-row-open flex-horizontal">
+              <b><div class="item-name">{{item.name}}</div></b>
+            </div>
+            {{#if item.system.price}}
+            <span class="crew-upgrade-price-pips">
+              {{#times_from_1 item.system.price}}
+              <span class="crew-upgrade-price-pip {{#if (lteq this item.system.unlocked)}}unlocked{{/if}}"
+                data-item-id="{{item._id}}" data-price-index="{{this}}"
+                data-tooltip="{{localize 'BITD.ToggleUpgradeUnlock'}}">
+                <i class="fas {{#if (lteq this item.system.unlocked)}}fa-unlock{{else}}fa-lock{{/if}}"></i>
+              </span>
+              {{/times_from_1}}
+            </span>
+            {{/if}}
+          </div>
+          <div class="item-description item-sheet-open">{{{item.system.description}}}</div>
         </div>
         <a class="item-control item-delete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
@@ -352,10 +367,25 @@
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_ability")}}
-      <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body item-sheet-open flex-horizontal">
-          <div class="item-name" style="min-width: 120px;"><b>{{item.name}}</b></div>
-          <div class="item-description">{{{item.system.description}}}</div>
+      <div class="item flex-horizontal {{#unless (lteq item.system.price item.system.unlocked)}}crew-upgrade-locked{{/unless}}" data-item-id="{{item._id}}">
+        <div class="item-body flex-vertical">
+          <div class="item-name-row flex-horizontal">
+            <div class="item-sheet-open item-name-row-open flex-horizontal">
+              <div class="item-name" style="min-width: 120px;"><b>{{item.name}}</b></div>
+            </div>
+            {{#if item.system.price}}
+            <span class="crew-upgrade-price-pips">
+              {{#times_from_1 item.system.price}}
+              <span class="crew-upgrade-price-pip {{#if (lteq this item.system.unlocked)}}unlocked{{/if}}"
+                data-item-id="{{item._id}}" data-price-index="{{this}}"
+                data-tooltip="{{localize 'BITD.ToggleUpgradeUnlock'}}">
+                <i class="fas {{#if (lteq this item.system.unlocked)}}fa-unlock{{else}}fa-lock{{/if}}"></i>
+              </span>
+              {{/times_from_1}}
+            </span>
+            {{/if}}
+          </div>
+          <div class="item-description item-sheet-open">{{{item.system.description}}}</div>
         </div>
         <a class="item-control item-delete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>

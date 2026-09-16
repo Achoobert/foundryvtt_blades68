@@ -171,6 +171,23 @@ export class BladesCrewSheet extends BladesSheet {
       this.render(false);
     });
 
+    // Crew Upgrade price pips: click a pip to unlock up through it, or click an
+    // already-unlocked pip to undo back to just before it (cumulative dot track).
+    html.find('.crew-upgrade-price-pip').click(async ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const target = $(ev.currentTarget);
+      const item_id = target.data("itemId");
+      const price_index = Number(target.data("priceIndex"));
+      if (!item_id || !Number.isFinite(price_index)) return;
+
+      const item = this.actor.items.get(item_id);
+      const current = Number(item?.system?.unlocked ?? 0) || 0;
+      const next = price_index <= current ? price_index - 1 : price_index;
+      await item.update({ "system.unlocked": next });
+      this.render(false);
+    });
+
     // Turf row header: Utopians Vision word select (persist bold)
     html.find('.turf-header-option').click(async ev => {
       ev.preventDefault();
