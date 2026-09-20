@@ -50,7 +50,7 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		type: Number,
 		range: { min: 0, max: 12, step: 1 },
-		default: 6
+		default: 0
 	});
 
   if (foundry.utils.isNewerVersion(game.version, 12)) {

@@ -2893,6 +2893,44 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
 }
+.blades68.item.sheet #cohort-type-list.cohort-type-row {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  justify-content: flex-start;
+}
+.blades68.item.sheet #cohort-type-list.cohort-type-row label {
+  margin-right: 4px;
+}
+.blades68.item.sheet #gang-type-boxes.gang-type-row {
+  align-items: flex-start;
+}
+.blades68.item.sheet #gang-type-boxes.gang-type-row select[multiple] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  width: 100%;
+  height: auto;
+}
+.blades68.item.sheet #gang-type-boxes.gang-type-row select[multiple] option {
+  display: inline-block;
+  width: auto;
+  padding: 2px 6px;
+}
+.blades68.item.sheet #quality-scale .quality-scale-row {
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  justify-content: flex-start;
+}
+.blades68.item.sheet #quality-scale .quality-scale-row .field-under {
+  align-items: center;
+  gap: 6px;
+}
+.blades68.item.sheet #quality-scale .quality-scale-row .field-under input[type=number] {
+  width: 40px;
+  text-align: center;
+}
 .blades68.blades68-theme {
   /*
    * Blades '68 theme.

@@ -577,6 +577,8 @@
       "cohort": ["Gang"],
       "scale": 0,
       "quality": 0,
+      "scale_override": false,
+      "quality_override": false,
       "cohort_list": {
         "Gang": {
           "label": "BITD.Gang"

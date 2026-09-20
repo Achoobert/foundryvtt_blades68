@@ -235,6 +235,7 @@
   "BITD.Flaws": "Flaws",
   "BITD.Scale": "Scale",
   "BITD.Quality": "Quality",
+  "BITD.Override": "Override",
   "BITD.AddAdditionalTypeOfGangText": "You can add an additional type to a gang or expert by spending two crew upgrades.<br>When a cohort performs actions for which its types apply, it uses its full quality rating. Otherwise, its quality is zero. A given cohort can have up to two types. Some crew upgrades will add the “Elite” feature to a gang, which gives them +1d when they roll for a given Type.",
   "BITD.ClassExpClue1": "Every time you roll a <b>desperate action</b> or a <b>zero-dot action</b>, mark xp in any attribute of your choice.",
   "BITD.ClassExpClue2": "Once per session when you <b>hit a key</b>, mark 1 xp and mark the key.",

@@ -18,7 +18,7 @@
 
     <div class="label-stripe">{{localize "BITD.CohortType"}}</div>
 
-    <div id="cohort-type-list">
+    <div id="cohort-type-list" class="flex-horizontal cohort-type-row">
       {{#each system.cohort_list as |cohort key|}}
       {{#multiboxes ../system.cohort}}
       <label for="{{key}}-cohort">{{localize cohort.label}}</label>
@@ -32,7 +32,7 @@
     {{#if (eq system.cohort "Gang")}}
 
       <div class="label-stripe">{{localize "BITD.GangType"}}</div>
-      <div id="gang-type-boxes" class="flex-horizontal">
+      <div id="gang-type-boxes" class="flex-horizontal gang-type-row">
 
         <select name="system.gang_type" multiple>
           {{selectOptionsWithLabel system.gang_type_list selected=system.gang_type localize=true}}
@@ -55,16 +55,31 @@
     {{/if}}
   </section>
 
-  {{!-- Scale and Quality if attached to Actor --}}
-  {{#if (eq document.parent.documentName "Actor")}}
+  {{!-- Scale and Quality: auto-computed from the actor's tier by default, but the user can override either value --}}
   <section id="quality-scale" class="flex-vertical">
     <div class="label-stripe">{{localize "BITD.ScaleAndQuality"}}</div>
-    <div>
-      {{localize "BITD.Quality"}}: {{system.quality}}
-      {{localize "BITD.Scale"}}: {{system.scale}}
+    <div class="flex-horizontal quality-scale-row">
+
+      <div class="field-under flex-horizontal">
+        <label for="cohort-quality">{{localize "BITD.Quality"}}</label>
+        <input id="cohort-quality" type="number" name="system.quality" value="{{system.quality}}"
+               {{#unless system.quality_override}}readonly{{/unless}}>
+        <label for="cohort-quality-override">{{localize "BITD.Override"}}</label>
+        <input id="cohort-quality-override" type="checkbox" data-dType="Boolean" name="system.quality_override"
+               {{checked system.quality_override}}>
+      </div>
+
+      <div class="field-under flex-horizontal">
+        <label for="cohort-scale">{{localize "BITD.Scale"}}</label>
+        <input id="cohort-scale" type="number" name="system.scale" value="{{system.scale}}"
+               {{#unless system.scale_override}}readonly{{/unless}}>
+        <label for="cohort-scale-override">{{localize "BITD.Override"}}</label>
+        <input id="cohort-scale-override" type="checkbox" data-dType="Boolean" name="system.scale_override"
+               {{checked system.scale_override}}>
+      </div>
+
     </div>
   </section>
-  {{/if}}
 
   {{!-- Edges and Flaws --}}
   <section id="edges-flaws" class="flex-vertical">
