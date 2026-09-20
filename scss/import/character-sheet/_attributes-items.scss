@@ -1,7 +1,5 @@
 & * {
-
   .attributes {
-
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -20,14 +18,20 @@
     }
     .attribute-skill-label {
       letter-spacing: 1px;
+      color: black;
+      text-shadow: 1px 1px 2px red;
     }
     .attributes-exp {
-
       position: relative;
       margin-bottom: 10px;
 
       .stripe-tooth-body {
-        @include toothradio(15px, 26px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+        @include toothradio(
+          15px,
+          26px,
+          "assets/blades68/stresspill_empty.webp",
+          "assets/blades68/stresspill_filled.webp"
+        );
         position: absolute;
         top: 0px;
         right: 1px;
@@ -47,11 +51,9 @@
 
   // ITEM
   .item {
-
     justify-content: space-between;
 
     .item-body {
-
       margin-bottom: 10px;
       * {
         margin-right: 10px;

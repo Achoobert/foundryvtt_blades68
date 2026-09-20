@@ -12,6 +12,10 @@
         <input type="text" id="character-{{_id}}-name" class="name" name="name" value="{{name}}">
       </div>
 
+      <div id="character-{{_id}}-pronouns-line" class="pronouns-line">
+        <input type="text" name="system.pronouns" value="{{system.pronouns}}" placeholder="{{localize 'BITD.Pronouns'}}">
+      </div>
+
       <div id="character-{{_id}}-look-line" class="look-line">
         <input type="text" name="system.look" value="{{system.look}}" placeholder="{{localize 'BITD.Look'}}">
       </div>
@@ -275,7 +279,7 @@
 
     <div class="col-abilities">
 
-      {{#if blades68}}
+      {{#if showKeys}}
       <div id="character-{{_id}}-keys-container" class="keys-container section-block">
         <header class="keys-header">
           <span class="keys-side" data-tooltip="{{localize 'BITD.KeysExplanation'}}">{{localize "BITD.Keys"}}</span>

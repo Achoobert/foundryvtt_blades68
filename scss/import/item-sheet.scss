@@ -41,3 +41,53 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
 }
+
+// Cohort item sheet: keep the narrow Cohort Type / Gang Type rows flowing
+// horizontally instead of stacking, and lay out the Quality/Scale fields.
+#cohort-type-list.cohort-type-row {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  justify-content: flex-start;
+
+  label {
+    margin-right: 4px;
+  }
+}
+
+#gang-type-boxes.gang-type-row {
+  align-items: flex-start;
+
+  select[multiple] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    width: 100%;
+    height: auto;
+
+    option {
+      display: inline-block;
+      width: auto;
+      padding: 2px 6px;
+    }
+  }
+}
+
+#quality-scale {
+  .quality-scale-row {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    justify-content: flex-start;
+
+    .field-under {
+      align-items: center;
+      gap: 6px;
+
+      input[type="number"] {
+        width: 40px;
+        text-align: center;
+      }
+    }
+  }
+}

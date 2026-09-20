@@ -36,7 +36,8 @@ export const registerSystemSettings = function() {
 		choices: {
 			vhs: game.i18n.localize('BITD.Settings.PauseAnimation.VHS'),
 			bluetime: game.i18n.localize('BITD.Settings.PauseAnimation.Bluetime'),
-			vanilla: game.i18n.localize('BITD.Settings.PauseAnimation.Vanilla')
+			vanilla: game.i18n.localize('BITD.Settings.PauseAnimation.Vanilla'),
+			classic: game.i18n.localize('BITD.Settings.PauseAnimation.Classic')
 		},
 		default: 'bluetime',
 		// The pause overlay rebuilds its background on render, so no reload is needed
@@ -50,7 +51,7 @@ export const registerSystemSettings = function() {
 		scope: 'world',
 		type: Number,
 		range: { min: 0, max: 12, step: 1 },
-		default: 6
+		default: 0
 	});
 
   if (foundry.utils.isNewerVersion(game.version, 12)) {
@@ -129,6 +130,34 @@ export const registerSystemSettings = function() {
 	requiresReload: true
   });
 
+  	game.settings.register('blades68', 'ShowKeys', {
+	name: game.i18n.localize('BITD.Settings.ShowKeys.Name'),
+	hint: game.i18n.localize('BITD.Settings.ShowKeys.Hint'),
+	config: true,
+	default: true,
+	scope: 'world',
+	type: new foundry.data.fields.BooleanField(),
+	requiresReload: true
+  });
+
+  	game.settings.register('blades68', 'PipIconStyle', {
+	name: game.i18n.localize('BITD.Settings.PipIconStyle.Name'),
+	hint: game.i18n.localize('BITD.Settings.PipIconStyle.Hint'),
+	config: true,
+	scope: 'world',
+	type: String,
+	choices: {
+		pill: game.i18n.localize('BITD.Settings.PipIconStyle.Pill'),
+		sharp: game.i18n.localize('BITD.Settings.PipIconStyle.Sharp')
+	},
+	default: 'pill',
+	onChange: () => {
+		for (const app of Object.values(ui.windows)) {
+			if (app.element?.hasClass?.('blades68')) app.render(false);
+		}
+	}
+  });
+
   } //end if for game.version >12
   else {
 	  
@@ -140,7 +169,8 @@ export const registerSystemSettings = function() {
     ['ClockXP','ClockXP', false],
     ['Edge','Edge', false],
     ['PublicClocks','PublicClocks', false],
-    ['Blades68Mode','Blades68', true]
+    ['Blades68Mode','Blades68', true],
+    ['ShowKeys','ShowKeys', true]
   ];
  
   for (let i=0; i<set_array.length; i++) {

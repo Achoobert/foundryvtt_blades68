@@ -17,7 +17,8 @@ export class BladesSheet extends BaseActorSheet {
   /** @override */
 	activateListeners(html) {
     super.activateListeners(html);
-    html.toggleClass("blades68-theme", game.settings.get("blades68", "Blades68Mode"));
+    this.element.toggleClass("blades68-theme", game.settings.get("blades68", "Blades68Mode"));
+    this.element.toggleClass("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
     html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
 	

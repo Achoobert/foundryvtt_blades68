@@ -24,7 +24,7 @@ export class BladesActorSheet extends BladesSheet {
 
     /** @override */
     async getData(options) {
-        const superData = super.getData(options);
+        const superData = await super.getData(options);
         const sheetData = superData.data;
         sheetData.owner = superData.owner;
         sheetData.editable = superData.editable;
@@ -109,6 +109,7 @@ export class BladesActorSheet extends BladesSheet {
         sheetData.system.healing_clock.value = this.actor.getHealingMin();
 
         sheetData.blades68 = game.settings.get('blades68', 'Blades68Mode');
+        sheetData.showKeys = game.settings.get('blades68', 'ShowKeys');
         sheetData.blades68Keys = game.system.blades68Keys;
         sheetData.system.keys.max = this.actor.getMaxKeys();
         sheetData.system.keys.list = this.actor.getComputedKeys().map((slot) => ({

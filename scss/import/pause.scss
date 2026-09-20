@@ -25,6 +25,8 @@
       z-index: 3;
       width: auto;
       max-width: 400px;
+      // caps taller logos (e.g. the classic mode's wordmark) so figcaption stays inside the 180px bar
+      max-height: 150px;
       height: auto;
     // core spins its round default icon; the logo is wide, so drop it (VHS adds jitter instead)
       animation: none;

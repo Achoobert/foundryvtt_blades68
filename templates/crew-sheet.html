@@ -21,10 +21,6 @@
               <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
               <div class="item-name">{{item.name}}</div>
             </div>
-            <a class="item-control item-delete" style="max-width: 10px !important;" style="max-width: 10px !important;"
-              data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-            <a class="item-control item-post" style="max-width: 10px !important;" style="max-width: 10px !important;"
-              data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
           </div>
           {{/if}}
           {{/each}}
@@ -52,10 +48,6 @@
             <img src="{{item.img}}" data-tooltip="{{item.name}}" width="20" height="20"/>
             <div class="item-name">{{item.name}}</div>
           </div>
-          <a class="item-control item-delete" style="max-width: 10px !important;"
-            data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-          <a class="item-control item-post" style="max-width: 10px !important;"
-            data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
         </div>
         {{/if}}
         {{/each}}
@@ -68,16 +60,7 @@
         <input type="text" id="crew-{{_id}}-lair" name="system.lair" value="{{system.lair}}" placeholder="{{localize "BITD.Lair"}} {{localize "BITD.Description"}}">
       </div>
 
-    </div>
-  </section>
-
-      <div class="flex-horizontal">
-  <div class="quick-roll-actions flex-horizontal">
-    <a class="roll-quick-popup rollable-text" data-tooltip="{{localize 'BITD.RollSomeDice'}}">
-      <i class="fas fa-dice"></i> 
-    </a>
-  </div>
-
+      <div class="flex-column">
         <div id="crew-{{_id}}-hold-box" class="flex-horizontal crew-hold">
           <div class="black-label">{{localize "BITD.Hold"}}</div>
           {{#multiboxes system.hold}}
@@ -106,6 +89,16 @@
           {{/multiboxes}}
         </div>
       </div>
+    </div>
+  </section>
+
+      <div class="flex-horizontal">
+  <div class="quick-roll-actions flex-horizontal">
+    <a class="roll-quick-popup rollable-text" data-tooltip="{{localize 'BITD.RollSomeDice'}}">
+      <i class="fas fa-dice"></i>
+    </a>
+  </div>
+      </div>
 
 
   </div>
@@ -120,7 +113,7 @@
       {{#repturf _id system.turfs_amount system.max.rep}}
       {{/repturf}}
       {{/multiboxes}}
-      <div class="gray-label">{{localize "BITD.Turf"}}</div>
+      <div class="gray-label turf-claimed-label" title="{{localize 'BITD.TurfClaimedPrompt'}}">{{localize "BITD.Turf"}}</div>
     </div>
 
     {{!-- Coins --}}
@@ -163,6 +156,7 @@
       {{/if}}
 
       {{!-- Gambits --}}
+      {{#if gambits_max}}
       <div id="crew-{{_id}}-gambits" class="crew-coins-vault">
         <div class="stripe">
           <b>{{localize "BITD.Gambits"}}</b>
@@ -177,6 +171,7 @@
           {{/multiboxes}}
         </div>
       </div>
+      {{/if}}
 
     </div>
 
@@ -200,7 +195,7 @@
         <div id="crew-{{_id}}-wanted" class="small-teeth-wrap">
           <!--<label class="black-label" for="crew-{{_id}}-wanted-counter-0">{{localize "BITD.Wanted"}}</label>-->
           <div class="black-label">{{localize "BITD.Wanted"}}</div>
-          <div class="small-teeth">
+          <div class="small-teeth wanted-tracker">
             <input type="radio" id="crew-{{_id}}-wanted-counter-0" name="system.wanted" value="0">
             {{#times_from 1 system.max.wanted}}
             <input id="crew-{{../_id}}-wanted-counter-{{this}}" type="radio" name="system.wanted" value="{{this}}">

@@ -41,7 +41,8 @@ export class BladesItemSheet extends BaseItemSheet {
   /** @override */
 	activateListeners(html) {
     super.activateListeners(html);
-    html.toggleClass("blades68-theme", game.settings.get("blades68", "Blades68Mode"));
+    this.element.toggleClass("blades68-theme", game.settings.get("blades68", "Blades68Mode"));
+    this.element.toggleClass("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
 
 	//for compatibility with bitd-alternate-sheets v1.0.10
 	let alt_sheets = false;
@@ -76,7 +77,7 @@ export class BladesItemSheet extends BaseItemSheet {
 
   /** @override */
   async getData(options) {
-    const superData = super.getData( options );
+    const superData = await super.getData( options );
     const sheetData = superData.data;
 
     sheetData.isGM = game.user.isGM;

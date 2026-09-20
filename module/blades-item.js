@@ -59,7 +59,7 @@ export class BladesItem extends Item {
     let quality = 0;
     let scale = 0;
 
-    // Adds Scale and Quality
+    // Computes the default Scale and Quality from the actor's tier
     if (this.actor?.system) {
       switch (item_data.cohort) {
         case "Gang":
@@ -73,8 +73,13 @@ export class BladesItem extends Item {
       }
     }
 
-    this.system.scale = scale;
-    this.system.quality = quality;
+    // The computed value is only a default: once the user overrides it, leave it alone.
+    if (!item_data.scale_override) {
+      this.system.scale = scale;
+    }
+    if (!item_data.quality_override) {
+      this.system.quality = quality;
+    }
 }
 
   async sendToChat() {
