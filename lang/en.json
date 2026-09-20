@@ -660,7 +660,8 @@
       "Hint": "Animated background behind the pause logo.",
       "VHS": "VHS tape",
       "Bluetime": "Bluetime",
-      "Vanilla": "None (logo only)"
+      "Vanilla": "None (logo only)",
+      "Classic": "Classic (original Blades in the Dark logo)"
     }
   },
   "BITD.log": {

@@ -3295,6 +3295,7 @@
   z-index: 3;
   width: auto;
   max-width: 400px;
+  max-height: 150px;
   height: auto;
   animation: none;
 }
@@ -3523,3 +3524,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */

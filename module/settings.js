@@ -36,7 +36,8 @@ export const registerSystemSettings = function() {
 		choices: {
 			vhs: game.i18n.localize('BITD.Settings.PauseAnimation.VHS'),
 			bluetime: game.i18n.localize('BITD.Settings.PauseAnimation.Bluetime'),
-			vanilla: game.i18n.localize('BITD.Settings.PauseAnimation.Vanilla')
+			vanilla: game.i18n.localize('BITD.Settings.PauseAnimation.Vanilla'),
+			classic: game.i18n.localize('BITD.Settings.PauseAnimation.Classic')
 		},
 		default: 'bluetime',
 		// The pause overlay rebuilds its background on render, so no reload is needed
