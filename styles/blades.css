@@ -665,6 +665,9 @@
 .blades68.crew.sheet .item-class-label {
   margin-bottom: 10px;
 }
+.blades68.crew.sheet .wanted-tracker {
+  max-height: 30px;
+}
 .blades68.crew.sheet .crew-upgrade-locked .item-name,
 .blades68.crew.sheet .crew-upgrade-locked .item-description {
   text-decoration: line-through;
@@ -887,8 +890,11 @@
 .blades68.crew.sheet .crew-reputation input:checked + label {
   background-image: url("assets/blades68/stresspill_filled.webp");
 }
-.blades68.crew.sheet .crew-reputation input:disabled + label {
-  background-image: url(assets/blades68/stresspill_filled.webp);
+.blades68.crew.sheet .crew-reputation label.turf-claimed {
+  opacity: 0.45;
+}
+.blades68.crew.sheet .crew-reputation .turf-claimed-label {
+  cursor: pointer;
 }
 .blades68.crew.sheet .turf-container {
   overflow-x: scroll;
@@ -2960,10 +2966,12 @@
 }
 .blades68.blades68-theme a.item-add-popup,
 .blades68.blades68-theme .rollable-text {
-  color: #eb5000;
+  color: #e8c05b;
+  text-shadow: 1px 1px 1px black;
 }
 .blades68.blades68-theme .rollable-text:hover {
-  color: #e8c05b;
+  color: #eb5000;
+  text-shadow: 1px 1px 1px #e8c05b;
 }
 .blades68.blades68-theme input[type=text],
 .blades68.blades68-theme input[type=number],
@@ -3066,13 +3074,10 @@
 .blades68.sharp-icons .crew-reputation input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .crew-reputation input:disabled + label {
-  background-image: url("assets/teeth/stresstooth-black.webp") !important;
+.blades68.sharp-icons .crew-reputation label.turf-claimed {
+  opacity: 0.45;
 }
 .blades68.sharp-icons .crew-hold label {
-  background-image: url("assets/teeth/stresstooth-red.webp") !important;
-}
-.blades68.sharp-icons .crew-hold input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
 .blades68.sharp-icons .crew-hold input:checked + label {

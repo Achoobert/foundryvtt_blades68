@@ -1,11 +1,9 @@
-@import 'coins.scss';
+@import "coins.scss";
 
 .item {
-
   justify-content: space-between;
 
   .item-body {
-
     margin-bottom: 10px;
     * {
       margin-right: 10px;
@@ -31,6 +29,9 @@
 
 .item-class-label {
   margin-bottom: 10px;
+}
+.wanted-tracker {
+  max-height: 30px;
 }
 
 .crew-upgrade-locked {
@@ -63,8 +64,7 @@
 }
 
 .name,
-.lair,
-{
+.lair {
   margin-bottom: 10px;
 }
 
@@ -74,7 +74,7 @@ form {
   }
 }
 
-nav{
+nav {
   padding-bottom: 10px;
 }
 
@@ -94,7 +94,7 @@ nav.tabs.folder-tabs {
   border: none;
   overflow: visible;
 
-  >.item {
+  > .item {
     position: relative;
     z-index: 2;
     margin: 0 ($folder-tab-slant + 6px) -1px 0;
@@ -159,21 +159,36 @@ section.tab-content.folder-tab-content {
 // Crew Coins
 .crew-coins {
   @include coin_stacks;
-    max-width: 4 * ($coin_width + $coin_margin);
-  }
+  max-width: 4 * ($coin_width + $coin_margin);
+}
 .crew-gambits {
-  @include image_multibox(15px, 16px, "assets/blades68/dice_bg.webp", "assets/blades68/dice_bg_black.webp", $coin_margin);
+  @include image_multibox(
+    15px,
+    16px,
+    "assets/blades68/dice_bg.webp",
+    "assets/blades68/dice_bg_black.webp",
+    $coin_margin
+  );
   max-width: 4 * (15px + $coin_margin);
 }
-
 
 // Reputation
 .crew-reputation {
   border-top: 3px solid $almost_black;
-  @include toothradio(17px, 50px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+  @include toothradio(
+    17px,
+    50px,
+    "assets/blades68/stresspill_empty.webp",
+    "assets/blades68/stresspill_filled.webp"
+  );
 
-  input:disabled + label {
-    background-image: url(assets/blades68/stresspill_filled.webp);
+  // Claimed turf: greyed like a disabled pip, but stays clickable.
+  label.turf-claimed {
+    opacity: 0.45;
+  }
+
+  .turf-claimed-label {
+    cursor: pointer;
   }
 }
 
@@ -185,7 +200,6 @@ section.tab-content.folder-tab-content {
 }
 
 .turf-list {
-
   display: flex;
   flex-direction: column;
   width: 855px;
@@ -356,12 +370,16 @@ section.tab-content.folder-tab-content {
 }
 .crew-hold {
   border-top: 3px solid $almost_black;
-  @include toothradio_single(17px, 50px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+  @include toothradio_single(
+    17px,
+    50px,
+    "assets/blades68/stresspill_empty.webp",
+    "assets/blades68/stresspill_filled.webp"
+  );
   width: 221px;
 }
 
 .crew-tier {
-
   background-color: $gray;
   height: 33px;
   width: 145px;
@@ -374,14 +392,13 @@ section.tab-content.folder-tab-content {
   > * {
     margin-right: 5px;
   }
-
 }
 
 .heat-wanted {
   //justify-content: none;
-  .small-teeth{
+  .small-teeth {
     height: 20px;
-    label{
+    label {
       height: 100%;
       width: 100%;
       cursor: default;
@@ -404,23 +421,18 @@ section.tab-content.folder-tab-content {
 
 // Cohorts styling
 .edgeflaw {
-
   input {
     display: none;
 
     &:checked {
-
       & + label {
         color: $red;
       }
-
     }
   }
-
 }
 
 .gang-expert-type-selector {
-
   .gang-type-boxes {
     flex-wrap: wrap;
   }
@@ -509,7 +521,6 @@ section.tab-content.folder-tab-content {
 }
 
 .big-teeth-section {
-
   border-top: 3px solid $almost_black;
   display: flex;
   flex-direction: row;
@@ -529,14 +540,24 @@ section.tab-content.folder-tab-content {
 
   // Stress
   .big-teeth {
-    @include toothradio(17px, 50px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+    @include toothradio(
+      17px,
+      50px,
+      "assets/blades68/stresspill_empty.webp",
+      "assets/blades68/stresspill_filled.webp"
+    );
   }
 
   /* Trauma */
   .small-teeth-container {
-
     .small-teeth-wrap {
-      @include toothradio(17px, 50px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp", false);
+      @include toothradio(
+        17px,
+        50px,
+        "assets/blades68/stresspill_empty.webp",
+        "assets/blades68/stresspill_filled.webp",
+        false
+      );
       flex-direction: column;
 
       .small-teeth {
@@ -551,7 +572,6 @@ section.tab-content.folder-tab-content {
     justify-content: space-between;
     align-items: flex-start;
   }
-
 }
 
 header {

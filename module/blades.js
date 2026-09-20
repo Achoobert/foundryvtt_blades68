@@ -226,14 +226,11 @@ Hooks.once("init", async function() {
     Handlebars.registerHelper('repturf', (_id, turfs_amount, max_rep, options) => {
 
     let html = options.fn(this);
-	var turfs_amount_int = parseInt(turfs_amount);
+	var turfs_amount_int = parseInt(turfs_amount) || 0;
     for (let i = 1; i <= max_rep; i++) {
 
-      if (i > max_rep - turfs_amount_int) {
-        html += `<input disabled type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i} dtype="Radio"><label style="background-image: url('systems/blades68/styles/assets/blades68/stresspill_filled.webp')" class="radio-toggle" for="crew-${_id}-reputation-${i}"></label>`;
-	  } else {
-	  html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle" for="crew-${_id}-reputation-${i}"></label>`;
-	  }
+      const claimedClass = (i > max_rep - turfs_amount_int) ? " turf-claimed" : "";
+      html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle${claimedClass}" for="crew-${_id}-reputation-${i}"></label>`;
 	}
 
     return html;

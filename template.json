@@ -381,7 +381,8 @@
       "turf": {
         "descriptions": [],
         "max": 6,
-        "bonus": 0
+        "bonus": 0,
+        "claimed": 0
       },
       "features": [],
       "heat": [0],

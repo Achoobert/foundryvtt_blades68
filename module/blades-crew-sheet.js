@@ -2,6 +2,7 @@ import { BladesSheet } from "./blades-sheet.js";
 import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { simpleRollPopup } from "./blades-roll.js";
+import { openFormDialog } from "./lib/dialog-compat.js";
 
 /**
  * @extends {BladesSheet}
@@ -32,25 +33,13 @@ export class BladesCrewSheet extends BladesSheet {
     // Prepare active effects
     sheetData.effects = BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects);
 
-    // Calculate Turfs amount.
-    let turfs_amount = 0;
-	let turfs_max = sheetData.system.turf.max;
-
-    sheetData.items.forEach(item => {
-
-      if (item.type === "crew_type") {
-        Object.entries(item.system.turfs).forEach(([key, turf]) => {
-          if (turf.name === 'BITD.Turf') {
-            turfs_amount += (turf.value === true) ? 1 : 0;
-          }
-        });
-      }
-
-    });
-	
-	turfs_amount = turfs_amount + sheetData.system.turf.bonus;
-	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
-    sheetData.system.turfs_amount = turfs_amount;
+    // Turf claimed is a manually-entered value (set via the Turf label on the
+    // Rep tracker) - no auto-calculation from owned turf items.
+    let turfs_claimed = Number(sheetData.system.turf.claimed) || 0;
+    let turfs_max = sheetData.system.turf.max;
+    if (turfs_claimed > turfs_max) { turfs_claimed = turfs_max; }
+    if (turfs_claimed < 0) { turfs_claimed = 0; }
+    sheetData.system.turfs_amount = turfs_claimed;
 
     // Gambit boxes are sized by a world setting, not per-crew data.
     const gambits_max = Number(game.settings.get("blades68", "GambitsMax")) || 0;
@@ -235,6 +224,37 @@ export class BladesCrewSheet extends BladesSheet {
     // Add custom contact
     html.find('.add-custom-contact').click(() => {
       BladesHelpers.addCustomContact(this.actor);
+    });
+
+    // Set Turf Claimed. Manually entered - not auto-calculated from owned
+    // turf items. Greys out that many pips on the Rep tracker from the right.
+    html.find('.turf-claimed-label').click(async () => {
+      const max_rep = Number(this.actor.system.max?.rep) || 0;
+      const current = Number(this.actor.system.turf?.claimed) || 0;
+
+      const content = `
+        <form>
+          <div class="form-group">
+            <label>${game.i18n.localize('BITD.TurfClaimedLabel')}</label>
+            <input type="number" name="turf_claimed" value="${current}" min="0" max="${max_rep}" step="1" autofocus>
+          </div>
+        </form>
+      `;
+
+      const formResult = await openFormDialog({
+        title: game.i18n.localize('BITD.TurfClaimedDialogTitle'),
+        content,
+        okLabel: game.i18n.localize('Save'),
+        cancelLabel: game.i18n.localize('Cancel'),
+      });
+
+      if (!formResult) return;
+
+      let value = Number(formResult.turf_claimed);
+      if (!Number.isFinite(value)) value = 0;
+      value = Math.min(Math.max(value, 0), max_rep);
+
+      await this.actor.update({ "system.turf.claimed": value });
     });
 
   }

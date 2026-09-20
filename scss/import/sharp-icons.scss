@@ -19,6 +19,18 @@
   }
 }
 
+// For exclusive either/or toggles (e.g. crew hold: weak vs strong), not a
+// progressive fill scale. Each label defaults to unchecked and only its own
+// radio being checked lights it up.
+@mixin sharp_pip_single($unchecked, $checked) {
+  label {
+    background-image: url($unchecked) !important;
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
 // Character sheet: stress
 .big-teeth-section .big-teeth {
   @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
@@ -47,12 +59,12 @@
 // Crew sheet: reputation and hold
 .crew-reputation {
   @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
-  input:disabled + label {
-    background-image: url("assets/teeth/stresstooth-black.webp") !important;
+  label.turf-claimed {
+    opacity: 0.45;
   }
 }
 .crew-hold {
-  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+  @include sharp_pip_single("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
 }
 
 // Crew sheet: per-member stress/trauma roster
