@@ -2139,9 +2139,11 @@
 .blades68.actor.pc * .trait-line .item-block .item-class-label {
   margin-bottom: 0;
 }
+.blades68.actor.pc * .pronouns-line,
 .blades68.actor.pc * .look-line {
   margin-bottom: 4px;
 }
+.blades68.actor.pc * .pronouns-line input,
 .blades68.actor.pc * .look-line input {
   width: 100%;
   font-style: italic;
