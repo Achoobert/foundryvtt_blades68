@@ -1,0 +1,64 @@
+/*
+ * Sharp (classic "teeth") pip icon style.
+ * Applied only when the sheet root also carries .sharp-icons
+ * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+ * Overrides the default rounded "pill" icons set in character-sheet.scss /
+ * crew-sheet.scss with the original pointy tooth assets from ../assets/teeth,
+ * unused since they were replaced in commit 847c3aa "fix pills for stress".
+ */
+
+@mixin sharp_pips($unchecked, $checked) {
+  label {
+    background-image: url($checked) !important;
+  }
+  input:checked ~ label {
+    background-image: url($unchecked) !important;
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
+// Character sheet: stress
+.big-teeth-section .big-teeth {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+}
+
+// Character sheet: trauma
+.big-teeth-section .small-teeth-container .small-teeth-wrap {
+  @include sharp_pips("assets/teeth/shorttooth-grey.webp", "assets/teeth/shorttooth-red.webp");
+}
+
+// Character sheet: attribute/action experience pips
+.attributes-exp .stripe-tooth-body {
+  @include sharp_pips("assets/teeth/xptooth-white.webp", "assets/teeth/xptooth-red.webp");
+}
+
+// Character sheet: playbook experience clock teeth
+.teeth-experience {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+}
+
+// Character sheet: Keys XP pips (no historical "sharp" precedent; use the stress pair for consistency)
+.key-marks {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+}
+
+// Crew sheet: reputation and hold
+.crew-reputation {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+  input:disabled + label {
+    background-image: url("assets/teeth/stresstooth-black.webp") !important;
+  }
+}
+.crew-hold {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+}
+
+// Crew sheet: per-member stress/trauma roster
+.big-teeth {
+  @include sharp_pips("assets/teeth/stresstooth-halfgrey.webp", "assets/teeth/stresstooth-red.webp");
+}
+.small-teeth-container .small-teeth-wrap {
+  @include sharp_pips("assets/teeth/shorttooth-grey.webp", "assets/teeth/shorttooth-red.webp");
+}

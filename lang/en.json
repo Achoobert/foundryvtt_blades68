@@ -638,7 +638,17 @@
     },
     "Blades68": {
       "Name": "Blades '68 Mode",
-      "Hint": "Keys & Deadlocks, bright clocks, Blades '68 color theme."
+      "Hint": "Bright clocks and the Blades '68 color theme. Keys & Deadlocks and pip icon style have their own settings below."
+    },
+    "ShowKeys": {
+      "Name": "Show Keys & Deadlocks",
+      "Hint": "Shows the Keys & Deadlocks section on character sheets, independent of Blades '68 Mode."
+    },
+    "PipIconStyle": {
+      "Name": "Pip Icon Style",
+      "Hint": "The icon used for stress, trauma, XP, and reputation pips.",
+      "Pill": "Pill",
+      "Sharp": "Sharp (classic teeth)"
     },
     "PauseAnimation": {
       "Name": "Pause Screen Animation",

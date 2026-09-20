@@ -48,6 +48,10 @@ $hover-brightness: 0.8;
   &.blades68-theme{
     @import 'import/blades68-theme.scss';
   }
+
+  &.sharp-icons{
+    @import 'import/sharp-icons.scss';
+  }
 }
 
 //top-level styles

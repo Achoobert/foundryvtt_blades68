@@ -22,8 +22,8 @@ export class BladesCrewSheet extends BladesSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData(options) {
-    const superData = super.getData( options );
+  async getData(options) {
+    const superData = await super.getData( options );
     const sheetData = superData.data;
     sheetData.owner = superData.owner;
     sheetData.editable = superData.editable;

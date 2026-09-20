@@ -1915,6 +1915,8 @@
 }
 .blades68.actor.pc * .attributes .attribute-skill-label {
   letter-spacing: 1px;
+  color: black;
+  text-shadow: 1px 1px 2px red;
 }
 .blades68.actor.pc * .attributes .attributes-exp {
   position: relative;
@@ -2961,6 +2963,100 @@
 }
 .blades68.blades68-theme .keys-container .key-boom input:checked + i {
   color: #eb5000;
+}
+.blades68.sharp-icons {
+  /*
+   * Sharp (classic "teeth") pip icon style.
+   * Applied only when the sheet root also carries .sharp-icons
+   * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+   * Overrides the default rounded "pill" icons set in character-sheet.scss /
+   * crew-sheet.scss with the original pointy tooth assets from ../assets/teeth,
+   * unused since they were replaced in commit 847c3aa "fix pills for stress".
+   */
+}
+.blades68.sharp-icons .big-teeth-section .big-teeth label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .big-teeth-section .big-teeth input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .big-teeth-section .big-teeth input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  background-image: url("assets/teeth/shorttooth-red.webp") !important;
+}
+.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
+  background-image: url("assets/teeth/shorttooth-grey.webp") !important;
+}
+.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
+  background-image: url("assets/teeth/shorttooth-red.webp") !important;
+}
+.blades68.sharp-icons .attributes-exp .stripe-tooth-body label {
+  background-image: url("assets/teeth/xptooth-red.webp") !important;
+}
+.blades68.sharp-icons .attributes-exp .stripe-tooth-body input:checked ~ label {
+  background-image: url("assets/teeth/xptooth-white.webp") !important;
+}
+.blades68.sharp-icons .attributes-exp .stripe-tooth-body input:checked + label {
+  background-image: url("assets/teeth/xptooth-red.webp") !important;
+}
+.blades68.sharp-icons .teeth-experience label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .teeth-experience input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .teeth-experience input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .key-marks label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .key-marks input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .key-marks input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .crew-reputation label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .crew-reputation input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .crew-reputation input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .crew-reputation input:disabled + label {
+  background-image: url("assets/teeth/stresstooth-black.webp") !important;
+}
+.blades68.sharp-icons .crew-hold label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .crew-hold input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .crew-hold input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .big-teeth label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .big-teeth input:checked ~ label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+}
+.blades68.sharp-icons .big-teeth input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.sharp-icons .small-teeth-container .small-teeth-wrap label {
+  background-image: url("assets/teeth/shorttooth-red.webp") !important;
+}
+.blades68.sharp-icons .small-teeth-container .small-teeth-wrap input:checked ~ label {
+  background-image: url("assets/teeth/shorttooth-grey.webp") !important;
+}
+.blades68.sharp-icons .small-teeth-container .small-teeth-wrap input:checked + label {
+  background-image: url("assets/teeth/shorttooth-red.webp") !important;
 }
 
 .chat-label {
