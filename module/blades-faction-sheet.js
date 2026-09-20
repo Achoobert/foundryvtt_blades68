@@ -30,7 +30,7 @@ export class BladesFactionSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/faction-sheet.html" }
+    body: { template: "systems/blades68/templates/faction-sheet.html", classes: ["scrollable"] }
   };
 
   /* -------------------------------------------- */

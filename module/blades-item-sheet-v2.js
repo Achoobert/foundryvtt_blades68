@@ -67,6 +67,7 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(foundry.applications
     tempEl.innerHTML = htmlString;
     const element = tempEl.firstElementChild;
     element.dataset.applicationPart = "body";
+    element.classList.add("scrollable");
     return { body: element };
   }
 

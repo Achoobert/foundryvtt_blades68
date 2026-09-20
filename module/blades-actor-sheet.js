@@ -72,7 +72,7 @@ export class BladesActorSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/actor-sheet.html" }
+    body: { template: "systems/blades68/templates/actor-sheet.html", classes: ["scrollable"] }
   };
 
   static TABS = {

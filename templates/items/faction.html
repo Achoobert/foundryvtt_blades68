@@ -1,18 +1,24 @@
 <div class="{{cssClass}}" data-application-part="body">
-  <header class="sheet-header">
+  <header class="sheet-header flex-horizontal">
       <img src="{{img}}" data-edit="img" title="{{name}}"/>
-      <div class="header-fields">
+      <div class="header-fields grow-one">
           <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Faction'}}"/></h1>
+          <label class="label-stripe">{{localize "BITD.Tier"}}</label>
+          <textarea rows="1" name="system.tier">{{system.tier}}</textarea>
+          <label class="label-stripe">{{localize "BITD.FactionType"}}</label>
+          <textarea rows="1" name="system.type">{{system.type}}</textarea>
+          {{#if isGM}}
+          <label class="label-stripe">{{localize "BITD.Allies"}}</label>
+          <textarea rows="1" name="system.allies">{{system.allies}}</textarea>
+          <label class="label-stripe">{{localize "BITD.Enemies"}}</label>
+          <textarea rows="1" name="system.enemies">{{system.enemies}}</textarea>
+          {{/if}}
       </div>
   </header>
 
   <section class="flex-vertical">
 	<label class="label-stripe">{{localize "BITD.Description"}}</label>
     <textarea rows="2" name="system.description">{{system.description}}</textarea>
-	<label class="label-stripe">{{localize "BITD.FactionType"}}</label>
-    <textarea rows="1" name="system.type">{{system.type}}</textarea>
-	<label class="label-stripe">{{localize "BITD.Tier"}}</label>
-    <textarea rows="1" name="system.tier">{{system.tier}}</textarea>
 	<label class="label-stripe">{{localize "BITD.Notes"}}</label>
     <textarea rows="2" name="system.notes">{{system.notes}}</textarea>
 
@@ -63,10 +69,6 @@
         <textarea rows="1" name="system.assets">{{system.assets}}</textarea>
         <label class="label-stripe">{{localize "BITD.Quirks"}}</label>
         <textarea rows="1" name="system.quirks">{{system.quirks}}</textarea>
-        <label class="label-stripe">{{localize "BITD.Allies"}}</label>
-        <textarea rows="1" name="system.allies">{{system.allies}}</textarea>
-        <label class="label-stripe">{{localize "BITD.Enemies"}}</label>
-        <textarea rows="1" name="system.enemies">{{system.enemies}}</textarea>
         <label class="label-stripe">{{localize "BITD.Situation"}}</label>
         <textarea rows="10" name="system.situation">{{system.situation}}</textarea>
     {{/if}}

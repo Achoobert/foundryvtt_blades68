@@ -47,7 +47,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/crew-sheet.html" }
+    body: { template: "systems/blades68/templates/crew-sheet.html", classes: ["scrollable"] }
   };
 
   /* -------------------------------------------- */

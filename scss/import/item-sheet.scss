@@ -1,10 +1,8 @@
 // ITEM
 .item {
-
   justify-content: space-between;
 
   .item-body {
-
     margin-bottom: 10px;
     * {
       margin-right: 10px;
@@ -41,6 +39,7 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
   margin-right: 10px;
+  max-width: 250px;
 }
 
 // Item sheet header: name + short fields sit beside the portrait, matching
@@ -82,6 +81,19 @@
       display: inline-block;
       width: auto;
       padding: 2px 6px;
+    }
+  }
+}
+
+#cohort-harm {
+  #harm-list {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    justify-content: flex-start;
+
+    label {
+      margin-right: 4px;
     }
   }
 }

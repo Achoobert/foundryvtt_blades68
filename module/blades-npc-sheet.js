@@ -15,7 +15,7 @@ export class BladesNPCSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/npc-sheet.html" }
+    body: { template: "systems/blades68/templates/npc-sheet.html", classes: ["scrollable"] }
   };
 
   /* -------------------------------------------- */

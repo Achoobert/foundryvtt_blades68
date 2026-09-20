@@ -2881,6 +2881,7 @@
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
   margin-right: 10px;
+  max-width: 250px;
 }
 .blades68.item.sheet .sheet-header .header-fields {
   display: flex;
@@ -2911,6 +2912,15 @@
   display: inline-block;
   width: auto;
   padding: 2px 6px;
+}
+.blades68.item.sheet #cohort-harm #harm-list {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  justify-content: flex-start;
+}
+.blades68.item.sheet #cohort-harm #harm-list label {
+  margin-right: 4px;
 }
 .blades68.item.sheet #quality-scale .quality-scale-row {
   flex-wrap: wrap;
