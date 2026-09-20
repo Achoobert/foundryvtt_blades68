@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}" data-application-part="body">
   <header class="sheet-header">
       <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields">
@@ -21,21 +21,35 @@
 
         <div class="flex-vertical clock-block" id="faction-goal-clock">
           <div class="clocks clocks-{{system.goal_1_clock_max}} small" id="faction-clock-1">
-            {{{blades-clock "system.goal_1_clock_value" system.goal_1_clock_max system.goal_1_clock_value (concat _id "-1")}}}
+            <div id="blades-clock-{{_id}}-1" class="blades-clock clock-{{system.goal_1_clock_max}} clock-{{system.goal_1_clock_max}}-{{system.goal_1_clock_value}}" style="background-image:url('{{goalClock1Img}}');">
+              <label class="clock-zero-label" for="{{goalClock1.zeroId}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+              <input type="radio" value="0" id="{{goalClock1.zeroId}}" data-dtype="String" name="system.goal_1_clock_value" {{#if goalClock1.zeroChecked}}checked{{/if}}>
+              {{#each goalClock1.dots as |dot|}}
+              <input type="radio" value="{{dot.v}}" id="{{dot.id}}" data-dtype="String" name="system.goal_1_clock_value" {{#if dot.checked}}checked{{/if}}>
+              <label class="radio-toggle" data-action="bid.radioToggle" for="{{dot.id}}"></label>
+              {{/each}}
+            </div>
           </div>
           <div id="clock-max-1">
             <select id="max-1" name="system.goal_1_clock_max">
-              {{{system.size_list_1}}}
+              {{{size_list_1}}}
             </select>
           </div>
           <textarea rows="1" name="system.goal_1">{{system.goal_1}}</textarea>
 
           <div class="clocks clocks-{{system.goal_2_clock_max}} small" id="faction-clock-2">
-            {{{blades-clock "system.goal_2_clock_value" system.goal_2_clock_max system.goal_2_clock_value (concat _id "-2")}}}
+            <div id="blades-clock-{{_id}}-2" class="blades-clock clock-{{system.goal_2_clock_max}} clock-{{system.goal_2_clock_max}}-{{system.goal_2_clock_value}}" style="background-image:url('{{goalClock2Img}}');">
+              <label class="clock-zero-label" for="{{goalClock2.zeroId}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>
+              <input type="radio" value="0" id="{{goalClock2.zeroId}}" data-dtype="String" name="system.goal_2_clock_value" {{#if goalClock2.zeroChecked}}checked{{/if}}>
+              {{#each goalClock2.dots as |dot|}}
+              <input type="radio" value="{{dot.v}}" id="{{dot.id}}" data-dtype="String" name="system.goal_2_clock_value" {{#if dot.checked}}checked{{/if}}>
+              <label class="radio-toggle" data-action="bid.radioToggle" for="{{dot.id}}"></label>
+              {{/each}}
+            </div>
           </div>
           <div id="clock-max-2">
             <select id="max-2" name="system.goal_2_clock_max">
-              {{{system.size_list_2}}}
+              {{{size_list_2}}}
             </select>
 		  </div>
           <textarea rows="1" name="system.goal_2">{{system.goal_2}}</textarea>
@@ -58,4 +72,4 @@
     {{/if}}
   </section>
 
-</form>
+</div>

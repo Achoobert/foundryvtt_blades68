@@ -33,6 +33,22 @@ import {
   unregisterItemSheet,
 } from "./compat.js";
 import { ClockData } from "./data/clock.js";
+import { NPCData } from "./data/npc.js";
+import { FactionData } from "./data/faction.js";
+import { CrewData } from "./data/crew.js";
+import { CharacterData } from "./data/character.js";
+import { AbilityItemData } from "./data/items/ability.js";
+import { ClassItemData } from "./data/items/class.js";
+import { CohortItemData } from "./data/items/cohort.js";
+import { CrewAbilityItemData } from "./data/items/crew_ability.js";
+import { CrewTypeItemData } from "./data/items/crew_type.js";
+import { CrewUpgradeItemData } from "./data/items/crew_upgrade.js";
+import { FactionItemData } from "./data/items/faction.js";
+import { HuntingGroundsItemData } from "./data/items/hunting_grounds.js";
+import { ItemItemData } from "./data/items/item.js";
+import { PrisonItemData } from "./data/items/prison.js";
+import { SimpleItemData } from "./data/items/simple.js";
+import { TroubleItemData } from "./data/items/trouble.js";
 
 window.BladesHelpers = BladesHelpers;
 
@@ -135,7 +151,29 @@ Hooks.once("init", async function () {
   CONFIG.ActiveEffect.documentClass = BladesActiveEffect;
 
   CONFIG.Actor.dataModels = {
-    "🕛 clock": ClockData
+    "🕛 clock": ClockData,
+    npc: NPCData,
+    factions: FactionData,
+    crew: CrewData,
+    character: CharacterData,
+  };
+
+  CONFIG.Item.dataModels = {
+    faction: FactionItemData,
+    item: ItemItemData,
+    class: ClassItemData,
+    ability: AbilityItemData,
+    heritage: SimpleItemData,
+    background: SimpleItemData,
+    vice: SimpleItemData,
+    hunting_grounds: HuntingGroundsItemData,
+    crew_upgrade: CrewUpgradeItemData,
+    cohort: CohortItemData,
+    crew_type: CrewTypeItemData,
+    crew_reputation: SimpleItemData,
+    crew_ability: CrewAbilityItemData,
+    prison: PrisonItemData,
+    trouble: TroubleItemData,
   };
 
   // Register System Settings

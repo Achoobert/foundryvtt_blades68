@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}" data-application-part="body">
     <header class="sheet-header">
         <img src="{{img}}" data-edit="img" title="{{name}}"/>
         <div class="header-fields">
@@ -23,7 +23,47 @@
 <!--         <div class="label-stripe">{{localize "BITD.Logic"}}</div> -->
 <!--         <textarea name="system.logic">{{{system.logic}}}</textarea> -->
         <div class="label-stripe">{{localize "BITD.Effects"}}</div>
-        <div id="effects">{{> "systems/blades68/templates/parts/active-effects.html"}}</div>
+        <div id="effects">
+          <table class="items-list effects-list">
+          {{#each effects as |section sid|}}
+            <thead>
+              <tr class="name-stripe-gray flex-horizontal" data-effect-type="{{section.type}}">
+                  <th width="40%" class="item-name effect-name flex-horizontal">{{localize section.name}}</th>
+                  <th width="20%" class="effect-source">Source</th>
+                  <th width="20%" class="effect-source">Duration</th>
+                  <th width="20%" class="item-control effect-control right">
+                      <a class="effect-control" data-action="bid.itemEffectControl" data-effect-action="create" data-tooltip="{{localize 'BITD.EffectCreate'}}">
+                          <i class="fas fa-plus"></i> {{localize "BITD.Add"}}
+                      </a>
+                  </th>
+              </tr>
+            </thead>
+            <tbody class="item-list">
+              {{#each section.effects as |effect|}}
+                  <tr class="item effect flex-horizontal" data-effect-id="{{effect.id}}">
+                      <td width="40%" class="effect-name flex">
+                          <img class="item-image" src="{{effect.img}}" width="24" height="24"/>
+                          <h4>{{effect.name}}</h4>
+                      </td>
+                      <td width="20%" class="effect-source center">{{effect.sourceName}}</td>
+                      <td width="20%" class="effect-duration center">{{effect.duration.name}}</td>
+                      <td width="20%"><div class="item-controls effect-controls flex">
+                          <a class="effect-control" data-action="bid.itemEffectControl" data-effect-action="toggle" data-tooltip="{{localize 'BITD.EffectToggle'}}">
+                              <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
+                          </a>
+                          <a class="effect-control" data-action="bid.itemEffectControl" data-effect-action="edit" data-tooltip="{{localize 'BITD.EffectEdit'}}">
+                              <i class="fas fa-edit"></i>
+                          </a>
+                          <a class="effect-control" data-action="bid.itemEffectControl" data-effect-action="delete" data-tooltip="{{localize 'BITD.EffectDelete'}}">
+                              <i class="fas fa-trash"></i>
+                          </a>
+                      </div></td>
+                  </tr>
+              {{/each}}
+              </tbody>
+          {{/each}}
+          </table>
+        </div>
       {{/if}}
     </section>
-</form>
+</div>

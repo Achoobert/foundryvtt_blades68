@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}" data-application-part="body">
   <header class="sheet-header">
       <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields">
@@ -10,6 +10,64 @@
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
     {{editor system.description target="system.description" button=true editable=editable}}
     <label class="label-stripe">{{localize "BITD.Turf"}}</label>
-    <div id="turf-container">{{> "systems/blades68/templates/parts/turf-list.html" turfs_data=system.turfs can_edit=true editable=editable}}</div>
+    <div id="turf-container">
+      <div id="crew-{{_id}}-turf-list" class="turf-list {{#if can_edit}}section-editable{{else}}section-non-editable{{/if}}">
+
+        <div class="turf-row">
+         {{#each turfs_data as |turf id|}}
+
+          <div
+            class="turf-block {{#if (or turf.value (is_base_turf turf.name))}}turf-selected{{/if}} {{#if turf.highlight}}turf-highlight{{/if}} {{#if (is_base_turf turf.name)}}turf-base{{/if}}"
+            data-turf-id="{{id}}" data-turf-status="{{turf.value}}">
+
+              {{#each turf.connects as |connect key|}}
+
+                {{#is_turf_side key}}
+                  {{#if connect}}
+                  <div class="connector {{key}}"></div>
+                  {{/if}}
+                {{else}}
+                  <div class="connector {{connect}}"></div>
+                {{/is_turf_side}}
+
+              {{/each}}
+
+              {{#if ../can_edit}}
+                {{#unless (is_base_turf turf.name)}}
+                <input class="name-box" type="checkbox" data-dType="Boolean" name="system.turfs.{{id}}.value" {{checked turf.value}}>
+                {{/unless}}
+
+                <div>
+                  {{#multiboxes turf.connects}}
+                  <input type="checkbox" data-dType="Boolean" name="system.turfs.{{id}}.connects.left" class="fa-solid fa-arrow-left" {{checked turf.connects.left}}>
+					<input type="checkbox" data-dType="Boolean" name="system.turfs.{{id}}.connects.top" class="fa-solid fa-arrow-up" {{checked turf.connects.top }}>
+                  <input type="checkbox" data-dType="Boolean" name="system.turfs.{{id}}.connects.right" class="fa-solid fa-arrow-right" {{checked turf.connects.right}}>
+                  <input type="checkbox" data-dType="Boolean" name="system.turfs.{{id}}.connects.bottom" class="fa-solid fa-arrow-down" {{checked turf.connects.bottom}}>
+                  {{/multiboxes}}
+                </div>
+
+				<input class="turf-name" type="text" name="system.turfs.{{id}}.name" value="{{#if ../editable}}{{turf.name}}{{else}}{{localize turf.name}}{{/if}}">
+                {{#noteq turf.name "BITD.Turf"}}
+                {{#noteq turf.name "BITD.Lair"}}
+				<textarea class="turf-description" name="system.turfs.{{id}}.description">{{localize turf.description}}</textarea>
+                {{/noteq}}
+                {{/noteq}}
+              {{else}}
+                <p class="turf-name">{{localize turf.name}}</p>
+                {{#if turf.description}}
+                <p class="turf-description">{{{localize turf.description}}}</p>
+                {{/if}}
+              {{/if}}
+          </div>
+          {{#if (eq id "3")}}
+          </div><div class="turf-row">
+          {{/if}}
+          {{#if (eq id "6")}}
+          </div><div class="turf-row">
+          {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
   </section>
-</form>
+</div>

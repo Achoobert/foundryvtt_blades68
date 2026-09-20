@@ -1,4 +1,4 @@
-<form class="{{cssClass}} actor-sheet" autocomplete="off">
+<div class="{{cssClass}} actor-sheet" data-application-part="body">
 
   <section id="character-{{_id}}-name-alias" class="flex-horizontal name-alias">
 
@@ -24,17 +24,16 @@
         <div id="character-{{_id}}-stress-trauma" class="section big-teeth-section flex-right">
           <div id="character-{{_id}}-stress" class="big-teeth character-stress">
             {{#multiboxes system.stress.value}}
-      
+
             <input type="radio" id="character-{{_id}}-stress-0" name="system.stress.value" value="0" dtype="Radio">
-            <!--<label class="black-label" for="character-{{_id}}-stress-0">{{localize system.stress.name}}</label>-->
             <div class="black-label">{{localize system.stress.name}}</div>
-      
+
             {{#times_from 1 system.stress.max}}
             <input type="radio" id="character-{{../_id}}-stress-{{this}}" name="system.stress.value" value="{{this}}"
               dtype="Radio">
-            <label class="radio-toggle" for="character-{{../_id}}-stress-{{this}}"></label>
+            <label class="radio-toggle" data-action="bid.radioToggle" for="character-{{../_id}}-stress-{{this}}"></label>
             {{/times_from}}
-      
+
             {{/multiboxes}}
 
           </div>
@@ -49,7 +48,41 @@
         <input type="text" id="character-{{_id}}-alias" class="alias" name="system.alias" value="{{system.alias}}">
       </div>
 
-      {{> "systems/blades68/templates/parts/coins.html" actor=actor}}
+      {{!-- Coins: inlined from templates/parts/coins.html (shared partial, not editable here)
+            with bid.radioToggle wired onto the dot labels. --}}
+      <div id="character-{{_id}}-coins" class="flex-horizontal">
+
+        <div id="character-{{_id}}-coins-hands">
+          <div class="stripe">
+            <b>{{localize "BITD.Coin"}}</b>
+          </div>
+          <div class="coins coins-hands">
+            {{#multiboxes system.coins}}
+            <input type="radio" id="coins-{{_id}}-hands-0" name="system.coins" value="0" checked="checked">
+            {{#times_from 1 system.coins_max.hand}}
+            <input type="radio" id="coins-{{../_id}}-hands-{{this}}" name="system.coins" value="{{this}}">
+            <label class="radio-toggle" data-action="bid.radioToggle" for="coins-{{../_id}}-hands-{{this}}"></label>
+            {{/times_from}}
+            {{/multiboxes}}
+          </div>
+        </div>
+
+        <div id="coins-{{_id}}-coins-stashed">
+          <div class="stripe">
+            <b>{{localize "BITD.Stash"}}</b>
+          </div>
+          <div class="coins coins-stashed">
+            {{#multiboxes system.coins_stashed}}
+            <input type="radio" id="coins-{{_id}}-stashed-0" name="system.coins_stashed" value="0" checked="checked">
+            {{#times_from 1 system.coins_max.stash}}
+            <input type="radio" id="coins-{{_id}}-stashed-{{this}}" name="system.coins_stashed" value="{{this}}">
+            <label class="radio-toggle" data-action="bid.radioToggle" for="coins-{{_id}}-stashed-{{this}}"></label>
+            {{/times_from}}
+            {{/multiboxes}}
+          </div>
+        </div>
+
+      </div>
 
       {{#if (getSetting 'Edge')}}
       <div class="attributes" style="padding: 10px">
@@ -59,7 +92,7 @@
           <input type="radio" id="edge-{{_id}}-0" name="system.edge.value" value="0" checked="checked">
           {{#times_from 1 system.edge.max}}
           <input type="radio" id="edge-{{_id}}-{{this}}" name="system.edge.value" value="{{this}}">
-          <label class="radio-toggle" for="edge-{{_id}}-{{this}}"></label>
+          <label class="radio-toggle" data-action="bid.radioToggle" for="edge-{{_id}}-{{this}}"></label>
           {{/times_from}}
           {{/multiboxes}}
 
@@ -75,16 +108,16 @@
 
     <div class="item-block flex-horizontal subheader-item">
       {{#unless (hasItemType items "heritage")}}
-      <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="heritage"><b>{{localize "BITD.Heritage"}}</b></a></div>
+      <div class="item-class-label"><a class="item-add-popup" data-action="bid.itemAdd" data-distinct="true" data-item-type="heritage"><b>{{localize "BITD.Heritage"}}</b></a></div>
       {{/unless}}
       {{#each items as |item id|}}
       {{#if (eq item.type "heritage")}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body flex-horizontal subheader-item">
+        <div class="item-body flex-horizontal subheader-item" data-action="bid.itemOpen">
           <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
           <div class="item-name">{{item.name}}</div>
         </div>
-        <a class="item-control item-delete" style="max-width: 10px !important;"
+        <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}" style="max-width: 10px !important;"><i
             class="fas fa-trash"></i></a>
       </div>
@@ -94,16 +127,16 @@
 
     <div class="item-block flex-horizontal subheader-item">
       {{#unless (hasItemType items "background")}}
-      <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="background"><b>{{localize "BITD.Background"}}</b></a></div>
+      <div class="item-class-label"><a class="item-add-popup" data-action="bid.itemAdd" data-distinct="true" data-item-type="background"><b>{{localize "BITD.Background"}}</b></a></div>
       {{/unless}}
       {{#each items as |item id|}}
       {{#if (eq item.type "background")}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body flex-horizontal">
+        <div class="item-body flex-horizontal" data-action="bid.itemOpen">
           <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
           <div class="item-name">{{item.name}}</div>
         </div>
-        <a class="item-control item-delete" style="max-width: 10px !important;"
+        <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}" style="max-width: 10px !important;"><i
             class="fas fa-trash"></i></a>
       </div>
@@ -113,16 +146,16 @@
 
     <div class="item-block flex-horizontal subheader-item">
       {{#unless (hasItemType items "vice")}}
-      <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="vice"><b>{{localize "BITD.Vice"}}</b></a></div>
+      <div class="item-class-label"><a class="item-add-popup" data-action="bid.itemAdd" data-distinct="true" data-item-type="vice"><b>{{localize "BITD.Vice"}}</b></a></div>
       {{/unless}}
       {{#each items as |item id|}}
       {{#if (eq item.type "vice")}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body flex-horizontal">
+        <div class="item-body flex-horizontal" data-action="bid.itemOpen">
           <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
           <div class="item-name">{{item.name}}</div>
         </div>
-        <a class="item-control item-delete" style="max-width: 10px !important;"
+        <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}" style="max-width: 10px !important;"><i
             class="fas fa-trash"></i></a>
       </div>
@@ -132,16 +165,16 @@
 
     <div class="item-block flex-horizontal subheader-item">
       {{#unless (hasItemType items "class")}}
-      <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="class"><b>{{localize "BITD.Class"}}</b></a></div>
+      <div class="item-class-label"><a class="item-add-popup" data-action="bid.itemAdd" data-distinct="true" data-item-type="class"><b>{{localize "BITD.Class"}}</b></a></div>
       {{/unless}}
       {{#each items as |item id|}}
       {{#if (eq item.type "class")}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">
-        <div class="item-body flex-horizontal">
+        <div class="item-body flex-horizontal" data-action="bid.itemOpen">
           <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
           <div class="item-name">{{item.name}}</div>
         </div>
-        <a class="item-control item-delete" style="max-width: 10px !important;" style="max-width: 10px !important;"
+        <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
           data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
       </div>
       {{/if}}
@@ -150,19 +183,19 @@
 
     <div class="item-block">
       {{#unless system.crew.length}}
-      <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew"><b>{{localize "BITD.CrewName"}}</b></a></div>
+      <div class="item-class-label"><a class="item-add-popup" data-action="bid.itemAdd" data-distinct="true" data-item-type="crew"><b>{{localize "BITD.CrewName"}}</b></a></div>
       {{/unless}}
       {{#each system.crew as |item id|}}
       {{#unless (eq item.name undefined)}}
       <div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
-        <div class="open-friend flex-horizontal" style="margin-right: 10px">
+        <div class="open-friend flex-horizontal" data-action="bid.openFriend" style="margin-right: 10px">
           <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" style="margin-right: 10px"/>
           <div>
-            <a class="open-friend">{{item.name}}</a>
+            <a class="open-friend" data-action="bid.openFriend">{{item.name}}</a>
           </div>
         </div>
-        <a class="crew-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-        <a style="visibility:hidden" class="item-control item-post" style="max-width: 10px !important;"
+        <a class="crew-delete" data-action="bid.crewDelete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+        <a style="visibility:hidden" class="item-control item-post" data-action="bid.itemPost" style="max-width: 10px !important;"
           title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
       </div>
       {{/unless}}
@@ -170,23 +203,23 @@
 
     </div>
   </div>
-  
+
   {{!-- Experience --}}
   <section class="flex-horizontal experience">
     {{#if (getSetting 'ClockXP')}}
     <p class="black-label" style="width: 40px; padding-top: 3px"> {{localize "BITD.XP"}}</p>
     <div class="flex-vertical" style="font-size: 18px">
-      <a class="up-exp-clock" data-tooltip="{{localize 'BITD.AddXP'}}"><i class="fas fa-caret-up"></i></a>
-      <a class="down-exp-clock" data-tooltip="{{localize 'BITD.MinusXP'}}"><i class="fas fa-caret-down"></i></a>
+      <a class="up-exp-clock" data-action="bid.expClockUp" data-tooltip="{{localize 'BITD.AddXP'}}"><i class="fas fa-caret-up"></i></a>
+      <a class="down-exp-clock" data-action="bid.expClockDown" data-tooltip="{{localize 'BITD.MinusXP'}}"><i class="fas fa-caret-down"></i></a>
     </div>
     <img
       src="systems/blades68/themes/progressclocks-68/Progress_Clock_Yellow_{{system.exp_clock.size}}-{{system.exp_clock.value}}.webp"
       height="45" width="45" style="border-style: none" />
     {{#if (gteq system.exp_clock.number 1)}}
     <div class="flex-vertical" style="font-size: 16px">
-      <a class="add-exp-clock" data-tooltip="{{localize 'BITD.MinusXPClock'}}" style="visibility:hidden"><i
+      <a class="add-exp-clock" data-action="bid.addExpClock" data-tooltip="{{localize 'BITD.MinusXPClock'}}" style="visibility:hidden"><i
           class="fas fa-angles-up"></i></a>
-      <a class="minus-exp-clock" data-tooltip="{{localize 'BITD.MinusXPClock'}}"><i class="fas fa-angles-down"></i></a>
+      <a class="minus-exp-clock" data-action="bid.minusExpClock" data-tooltip="{{localize 'BITD.MinusXPClock'}}"><i class="fas fa-angles-down"></i></a>
     </div>
     {{#if (lteq system.exp_clock.number 10)}}
     {{#times_from 1 system.exp_clock.number}}
@@ -203,10 +236,75 @@
     {{/if}}
     {{/if}}
   </section>
-  
-  {{!-- Attributes --}}
+
+  {{!-- Attributes: inlined from templates/parts/attributes.html (shared partial, not editable
+        here) with bid.rollAttribute / bid.radioToggle wired onto the rollable labels and dots. --}}
   <section class="attributes-row">
-    {{> "systems/blades68/templates/parts/attributes.html" actor=actor}}
+    <div id="character-{{_id}}-attributes" class="attributes">
+
+      {{#each system.attributes as |attribute attribute_name|}}
+
+      <div id="character-{{../_id}}-attributes-{{attribute_name}}" class="attribute">
+        <div id="character-{{../_id}}-attributes-{{attribute_name}}-title" class="attributes-exp">
+          <div class="stripe">
+            <a class="attribute-label roll-die-attribute rollable-text" data-action="bid.rollAttribute" data-roll-attribute="{{attribute_name}}" data-tooltip="{{localize (concat attribute.label 'Context')}}">{{localize attribute.label}}</a>
+          </div>
+          <div class="stripe-tooth-body">
+            {{#if (getSetting 'ClockXP')}}
+            {{else}}
+            {{#multiboxes attribute.exp}}
+
+            <input type="radio" id="{{../_id}}-{{attribute_name}}-exp-0"
+                   name="system.attributes.{{attribute_name}}.exp" value="0" checked="checked">
+            {{#times_from 1 attribute.exp_max}}
+            <input type="radio" id="{{../../_id}}-{{attribute_name}}-exp-{{this}}"
+                   name="system.attributes.{{attribute_name}}.exp" value="{{this}}">
+            <label class="radio-toggle" data-action="bid.radioToggle" for="{{../../_id}}-{{attribute_name}}-exp-{{this}}"></label>
+            {{/times_from}}
+            {{/multiboxes}}
+          </div>
+          {{/if}}
+        </div>
+
+        {{!-- Skills --}}
+
+        {{#each attribute.skills as |skill skill_name|}}
+
+        <div class="flex-horizontal">
+          <div class="attributes-container">
+
+            {{#multiboxes skill.value}}
+            <input {{#if (lteq 0 (oneless skill.min))}}disabled {{/if}}
+                type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-0" data-dtype="Number"
+                name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="0">
+            {{#times_from 1 skill.max}}
+            <input {{#if (lteq this (oneless skill.min))}}disabled {{/if}}
+                type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" data-dtype="Number"
+                name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
+            <label {{#if (and (gt skill.min 0) (lteq this skill.min))}}
+                data-tooltip="{{localize "BITD.DisabledByAE"}}"
+                {{/if}}
+                {{#if (lteq this (oneless skill.min))}}style="filter: unset; opacity: unset; cursor: unset;"
+                {{/if}}
+              class="radio-toggle" data-action="bid.radioToggle" for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
+            {{/times_from}}
+
+            {{#if (eq skill.max 3)}}
+                <input type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" data-dtype="Number"
+                name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
+              <label data-tooltip="{{localize "BITD.NoMastery"}}" style="filter: unset; opacity: unset; cursor: unset; background-color: #dadbed; border-color: gray"></label>
+            {{/if}}
+
+            <div class="attribute-skill-label roll-die-attribute rollable-text" data-action="bid.rollAttribute" data-roll-attribute="{{skill_name}}" data-tooltip="{{localize (concat skill.label 'Context')}}">{{localize skill.label}}</div>
+            {{/multiboxes}}
+          </div>
+        </div>
+        {{/each}}
+
+      </div>
+      {{/each}}
+
+    </div>
   </section>
 
   {{!-- Harm, Healing and Armor --}}
@@ -283,7 +381,7 @@
       <div id="character-{{_id}}-keys-container" class="keys-container section-block">
         <header class="keys-header">
           <span class="keys-side" data-tooltip="{{localize 'BITD.KeysExplanation'}}">{{localize "BITD.Keys"}}</span>
-          <a class="add-key-popup" data-tooltip="{{localize 'BITD.AddKey'}}"><i class="fas fa-plus-square"></i></a>
+          <a class="add-key-popup" data-action="bid.addKeyPopup" data-tooltip="{{localize 'BITD.AddKey'}}"><i class="fas fa-plus-square"></i></a>
           <span class="header-spacer"></span>
           <span class="deadlocks-side">{{localize "BITD.Deadlocks"}}</span>
         </header>
@@ -321,9 +419,8 @@
           {{!--
           Key fields intentionally omit system.* names. Foundry form submit replaces arrays
           wholesale, which was wiping sibling Key slots when any one field changed.
-          Radio `name` is only for in-row exclusivity; stripped in _getSubmitData.
+          Radio `name` is only for in-row exclusivity; stripped in _prepareSubmitData.
           --}}
-          <!-- todo -->
           <span class="key-marks  {{#if slot.deadlocked}} is-disabled{{/if}}">
             <input type="radio" id="character-{{../_id}}-keys-{{i}}-xp-0" name="key-xp-{{../_id}}-{{i}}" value="0" {{#if (eq
               slot.experience 0)}}checked{{/if}} {{#if slot.deadlocked}}disabled{{/if}}>
@@ -339,7 +436,7 @@
             <label class="radio-toggle" for="character-{{../_id}}-keys-{{i}}-xp-3"></label>
           </span>
           <label class="key-boom" data-tooltip="{{localize 'BITD.Deadlocks'}}">
-            <input type="checkbox" {{checked slot.deadlocked}}>
+            <input type="checkbox" data-action="bid.keyBoomToggle" {{checked slot.deadlocked}}>
             <span class="boom-icon"></span>
           </label>
         </div>
@@ -350,7 +447,7 @@
       <section class="special-abilities-panel section-block" data-section-key="abilities">
         <header class="section-header">
           <span style="max-width: 125px;">{{localize "BITD.SpecialAbilities"}}</span>
-          <a class="item-add-popup" data-item-type="ability" data-tooltip="{{localize 'BITD.AddAbility'}}"><i class="fas fa-plus-square"></i></a>
+          <a class="item-add-popup" data-action="bid.itemAdd" data-item-type="ability" data-tooltip="{{localize 'BITD.AddAbility'}}"><i class="fas fa-plus-square"></i></a>
           {{#if (getSetting 'ClockXP')}}
           {{else}}
           <div id="character-{{_id}}-experience" class="teeth-experience">
@@ -358,7 +455,7 @@
             <input type="radio" id="character-{{_id}}-experience-0" name="system.experience" value="0" dtype="Radio">
             {{#times_from 1 system.experience_max}}
             <input type="radio" id="character-{{../_id}}-experience-{{this}}" name="system.experience" value="{{this}}" dtype="Radio">
-            <label class="radio-toggle" for="character-{{../_id}}-experience-{{this}}"></label>
+            <label class="radio-toggle" data-action="bid.radioToggle" for="character-{{../_id}}-experience-{{this}}"></label>
             {{/times_from}}
             {{/multiboxes}}
           </div>
@@ -370,14 +467,14 @@
           <div class="other-abilities">
             {{#each otherAbilities as |item id|}}
             <div class="item flex-horizontal compact" data-item-id="{{item._id}}">
-              <div class="item-body flex-vertical">
+              <div class="item-body flex-vertical" data-action="bid.itemOpen">
                 <div class="item-name-row">
                   <b class="item-name">{{item.name}}{{#if item.usesMax}}:{{/if}}</b>
                   {{#if item.usesMax}}
                   {{#if item.usesText}}<span class="ability-uses-text">{{item.usesText}}</span>{{/if}}
                   <span class="ability-uses">
                     {{#each item.usesIndexes as |useNum useIdx|}}
-                    <input type="checkbox" class="ability-uses-toggle" id="character-{{../../_id}}-ability-{{../_id}}-uses-{{useIdx}}"
+                    <input type="checkbox" class="ability-uses-toggle" data-action="bid.abilityUsesToggle" id="character-{{../../_id}}-ability-{{../_id}}-uses-{{useIdx}}"
                            data-item-id="{{../_id}}" {{#if (lteq useNum ../usesUsed)}}checked{{/if}}>
                     {{/each}}
                   </span>
@@ -385,9 +482,9 @@
                 </div>
                 <div class="item-description">{{{item.system.description}}}</div>
               </div>
-              <a class="item-control item-delete" style="max-width: 10px !important;" style="max-width: 10px !important;"
+              <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
                 data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-              <a class="item-control item-post" style="max-width: 10px !important;"
+              <a class="item-control item-post" data-action="bid.itemPost" style="max-width: 10px !important;"
                 data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
             </div>
             {{/each}}
@@ -398,7 +495,485 @@
         </div>
         {{#if playbookUnique}}
         <div class="section-body special-playbook-section">
-          {{> "systems/blades68/templates/parts/unique-data.html"}}
+          {{!-- Playbook-unique block: inlined from templates/parts/unique-data.html (shared
+                partial, not editable here). No custom JS behavior -- every field is a plain
+                named system.unique-data.* input bound by the normal submitOnChange form. --}}
+          {{#if playbookUnique}}
+          <div class="unique-data playbook-unique-{{playbookUnique}}">
+
+            {{!-- Hound: hunting pet cohort --}}
+            {{#if (eq playbookUnique "hound")}}
+            <div class="unique-card cohort-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.HuntingPet"}}</span>
+                <span class="unique-card-tag">{{localize "BITD.Cohort"}} ({{localize "BITD.Expert"}}: {{localize
+                  "BITD.Hunter"}})</span>
+              </header>
+              <div class="unique-card-body">
+                <div class="cohort-status-row">
+                  <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                    <input type="checkbox" name="system.unique-data.hound.weak" data-dType="Boolean" {{checked
+                      system.unique-data.hound.weak}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                    <input type="checkbox" name="system.unique-data.hound.impaired" data-dType="Boolean" {{checked
+                      system.unique-data.hound.impaired}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                    <input type="checkbox" name="system.unique-data.hound.broken" data-dType="Boolean" {{checked
+                      system.unique-data.hound.broken}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+                    <input type="number" name="system.unique-data.hound.armor" value="{{system.unique-data.hound.armor}}"
+                      data-dType="Number" min="0" max="9"></label>
+                </div>
+                <div class="cohort-fields">
+                  <div class="field-under"><input type="text" name="system.unique-data.hound.name"
+                      value="{{system.unique-data.hound.name}}"><label>{{localize "BITD.Name"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.hound.type"
+                      value="{{system.unique-data.hound.type}}"><label>{{localize "BITD.Type"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.hound.edges"
+                      value="{{system.unique-data.hound.edges}}"><label>{{localize "BITD.Edges"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.hound.flaws"
+                      value="{{system.unique-data.hound.flaws}}"><label>{{localize "BITD.Flaws"}}</label></div>
+                  <div class="field-abilities">
+                    <label>{{localize "BITD.Abilities"}}:</label>
+                    <textarea name="system.unique-data.hound.abilities" rows="2">{{system.unique-data.hound.abilities}}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Hull: human memories --}}
+            {{#if (eq playbookUnique "hull")}}
+            <div class="unique-card memories-card">
+              <header class="unique-card-header accent">
+                <span>{{localize "BITD.HumanMemories"}}</span>
+              </header>
+              <div class="unique-card-body">
+                <p class="unique-blurb">{{localize "BITD.MemoryBlurb"}}</p>
+                <div class="memory-grid">
+                  <div class="memory-box">
+                    <div class="memory-box-header">
+                      <div class="memory-prompt">{{localize "BITD.MemoryClock1"}}</div>
+                      <div class="memory-clock" title="{{localize 'BITD.MemoryClock'}}">
+                        {{{blades-clock "system.unique-data.hull.memories.name_heritage.clock" 8
+                        system.unique-data.hull.memories.name_heritage.clock (concat _id "-mem1")}}}
+                      </div>
+                    </div>
+                    <textarea name="system.unique-data.hull.memories.name_heritage.text"
+                      rows="3">{{system.unique-data.hull.memories.name_heritage.text}}</textarea>
+                    <p class="memory-footer">{{localize "BITD.Memory1Blurb"}}</p>
+                  </div>
+                  <div class="memory-box">
+                    <div class="memory-box-header">
+                      <div class="memory-prompt">{{localize "BITD.MemoryClock2"}}</div>
+                      <div class="memory-clock" title="{{localize 'BITD.MemoryClock'}}">
+                        {{{blades-clock "system.unique-data.hull.memories.unfinished.clock" 8
+                        system.unique-data.hull.memories.unfinished.clock (concat _id "-mem2")}}}
+                      </div>
+                    </div>
+                    <textarea name="system.unique-data.hull.memories.unfinished.text"
+                      rows="3">{{system.unique-data.hull.memories.unfinished.text}}</textarea>
+                    <p class="memory-footer">{{localize "BITD.Memory2Blurb"}}</p>
+                  </div>
+                  <div class="memory-box">
+                    <div class="memory-box-header">
+                      <div class="memory-prompt">{{localize "BITD.MemoryClock3"}}</div>
+                      <div class="memory-clock" title="{{localize 'BITD.MemoryClock'}}">
+                        {{{blades-clock "system.unique-data.hull.memories.background_love.clock" 8
+                        system.unique-data.hull.memories.background_love.clock (concat _id "-mem3")}}}
+                      </div>
+                    </div>
+                    <textarea name="system.unique-data.hull.memories.background_love.text"
+                      rows="3">{{system.unique-data.hull.memories.background_love.text}}</textarea>
+                    <p class="memory-footer">{{localize "BITD.Memory3Blurb"}}</p>
+                  </div>
+                  <div class="memory-box">
+                    <div class="memory-box-header">
+                      <div class="memory-prompt">{{localize "BITD.MemoryClock4"}}</div>
+                      <div class="memory-clock" title="{{localize 'BITD.MemoryClock'}}">
+                        {{{blades-clock "system.unique-data.hull.memories.crime.clock" 8
+                        system.unique-data.hull.memories.crime.clock (concat _id "-mem4")}}}
+                      </div>
+                    </div>
+                    <textarea name="system.unique-data.hull.memories.crime.text"
+                      rows="3">{{system.unique-data.hull.memories.crime.text}}</textarea>
+                    <p class="memory-footer">{{localize "BITD.Memory4Blurb"}}</p>
+                  </div>
+                </div>
+                <p class="unique-blurb">{{localize "BITD.MemoryFillAbility"}}</p>
+                <p class="unique-blurb">{{localize "BITD.MemoryAllComplete"}}</p>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Intellectual: sparkmind assistant --}}
+            {{#if (eq playbookUnique "intellectual")}}
+            <div class="unique-card cohort-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.SparkmindAssistant"}}</span>
+                <span class="unique-card-tag">{{localize "BITD.CohortExpertResearch"}}</span>
+              </header>
+              <div class="unique-card-body">
+                <div class="cohort-top-row">
+                  <div class="field-under"><input type="text" name="system.unique-data.intellectual.sparkmind.name"
+                      value="{{system.unique-data.intellectual.sparkmind.name}}"><label>{{localize "BITD.Name"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.intellectual.sparkmind.edges"
+                      value="{{system.unique-data.intellectual.sparkmind.edges}}"><label>{{localize "BITD.Edges"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.intellectual.sparkmind.flaws"
+                      value="{{system.unique-data.intellectual.sparkmind.flaws}}"><label>{{localize "BITD.Flaws"}}</label></div>
+                  <div class="cohort-status-row">
+                    <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                      <input type="checkbox" name="system.unique-data.intellectual.sparkmind.weak" data-dType="Boolean" {{checked
+                        system.unique-data.intellectual.sparkmind.weak}}></label>
+                    <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                      <input type="checkbox" name="system.unique-data.intellectual.sparkmind.impaired" data-dType="Boolean"
+                        {{checked system.unique-data.intellectual.sparkmind.impaired}}></label>
+                    <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                      <input type="checkbox" name="system.unique-data.intellectual.sparkmind.broken" data-dType="Boolean"
+                        {{checked system.unique-data.intellectual.sparkmind.broken}}></label>
+                  </div>
+                </div>
+                <div class="type-columns">
+                  <div class="type-col">
+                    <div class="type-heading">{{localize "BITD.Type"}}</div>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.intellectual.sparkmind.function"
+                        value="research" {{checked (eq system.unique-data.intellectual.sparkmind.function "research"
+                        )}}>{{localize "BITD.TypeResearch"}}</label>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.intellectual.sparkmind.function"
+                        value="analysis" {{checked (eq system.unique-data.intellectual.sparkmind.function "analysis"
+                        )}}>{{localize "BITD.TypeAnalysis"}}</label>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.intellectual.sparkmind.function"
+                        value="ingress" {{checked (eq system.unique-data.intellectual.sparkmind.function "ingress" )}}>{{localize
+                      "BITD.TypeIngress"}}</label>
+                  </div>
+                  <div class="type-col">
+                    <label class="radio-line"><input type="radio" name="system.unique-data.intellectual.sparkmind.housing"
+                        value="small" {{checked (eq system.unique-data.intellectual.sparkmind.housing "small" )}}>{{localize
+                      "BITD.HousingSmall"}}</label>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.intellectual.sparkmind.housing"
+                        value="large" {{checked (eq system.unique-data.intellectual.sparkmind.housing "large" )}}>{{localize
+                      "BITD.HousingLarge"}}</label>
+                  </div>
+                </div>
+                <div class="field-abilities">
+                  <label>{{localize "BITD.Abilities"}}:</label>
+                  <textarea name="system.unique-data.intellectual.sparkmind.abilities"
+                    rows="2">{{system.unique-data.intellectual.sparkmind.abilities}}</textarea>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Operative: backing faction --}}
+            {{#if (eq playbookUnique "operative")}}
+            <div class="unique-card backing-faction-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.FactionAffiliationTitle"}}</span>
+              </header>
+              <div class="unique-card-body backing-faction-body">
+                <p class="unique-blurb italic">{{{localize "BITD.FactionAffiliationInfo"}}}</p>
+                <div class="backing-fields">
+                  <div class="field-under"><input type="text" name="system.unique-data.operative.backing_faction.faction"
+                      value="{{system.unique-data.operative.backing_faction.faction}}"><label>{{localize
+                      "BITD.FactionAffiliationTitle"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.operative.backing_faction.personal_mission"
+                      value="{{system.unique-data.operative.backing_faction.personal_mission}}"><label>{{localize
+                      "BITD.PersonalMission"}}</label></div>
+                  <div class="field-under wide"><input type="text"
+                      name="system.unique-data.operative.backing_faction.prestige_ability"
+                      value="{{system.unique-data.operative.backing_faction.prestige_ability}}"><label>{{localize
+                      "BITD.PrestigeAbility"}}</label></div>
+                </div>
+                <div class="failure-clock">
+                  {{{blades-clock "system.unique-data.operative.backing_faction.failure" 4
+                  system.unique-data.operative.backing_faction.failure (concat _id "-fail")}}}
+                  <div class="failure-label">{{localize "BITD.Failure"}}</div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Paranormalist: loyal resonance entity --}}
+            {{#if (eq playbookUnique "paranormalist")}}
+            <div class="unique-card cohort-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.LoyalResonanceEntity"}}</span>
+                <span class="unique-card-tag">{{localize "BITD.CohortExpertParanormal"}}</span>
+              </header>
+              <div class="unique-card-body">
+                <div class="cohort-status-row">
+                  <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                    <input type="checkbox" name="system.unique-data.paranormalist.resonance.weak" data-dType="Boolean" {{checked
+                      system.unique-data.paranormalist.resonance.weak}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                    <input type="checkbox" name="system.unique-data.paranormalist.resonance.impaired" data-dType="Boolean"
+                      {{checked system.unique-data.paranormalist.resonance.impaired}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                    <input type="checkbox" name="system.unique-data.paranormalist.resonance.broken" data-dType="Boolean" {{checked
+                      system.unique-data.paranormalist.resonance.broken}}></label>
+                  <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+                    <input type="number" name="system.unique-data.paranormalist.resonance.armor"
+                      value="{{system.unique-data.paranormalist.resonance.armor}}" data-dType="Number" min="0" max="9"></label>
+                </div>
+                <div class="cohort-fields">
+                  <div class="field-under"><input type="text" name="system.unique-data.paranormalist.resonance.name"
+                      value="{{system.unique-data.paranormalist.resonance.name}}"><label>{{localize "BITD.Name"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.paranormalist.resonance.type"
+                      value="{{system.unique-data.paranormalist.resonance.type}}"><label>{{localize "BITD.Type"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.paranormalist.resonance.edges"
+                      value="{{system.unique-data.paranormalist.resonance.edges}}"><label>{{localize "BITD.Edges"}}</label></div>
+                  <div class="field-under"><input type="text" name="system.unique-data.paranormalist.resonance.flaws"
+                      value="{{system.unique-data.paranormalist.resonance.flaws}}"><label>{{localize "BITD.Flaws"}}</label></div>
+                  <div class="field-abilities">
+                    <label>{{localize "BITD.Abilities"}}:</label>
+                    <textarea name="system.unique-data.paranormalist.resonance.abilities"
+                      rows="2">{{system.unique-data.paranormalist.resonance.abilities}}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Radical: explosives / bandoliers --}}
+            {{#if (eq playbookUnique "radical")}}
+            <div class="unique-card explosives-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.Explosives"}}</span>
+                <span class="unique-card-rule">{{localize "BITD.ExplosivesHeat"}}</span>
+              </header>
+              <div class="unique-card-body explosives-body">
+                <div class="bandoliers">
+                  <div class="bandolier-row">
+                    <span>{{localize "BITD.Bandolier"}}</span>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier1.slot1" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier1.slot1}}>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier1.slot2" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier1.slot2}}>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier1.slot3" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier1.slot3}}>
+                  </div>
+                  <div class="bandolier-row">
+                    <span>{{localize "BITD.Bandolier"}}</span>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier2.slot1" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier2.slot1}}>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier2.slot2" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier2.slot2}}>
+                    <input type="checkbox" name="system.unique-data.radical.explosives.bandolier2.slot3" data-dType="Boolean"
+                      {{checked system.unique-data.radical.explosives.bandolier2.slot3}}>
+                  </div>
+                </div>
+                <div class="explosive-list">
+                  <p class="unique-blurb italic">{{localize "BITD.WhenYouUseBandolier"}}</p>
+                  <ul>
+                    <li>{{localize "BITD.ExplosiveGrenade"}}</li>
+                    <li>{{localize "BITD.ExplosivePlaced"}}</li>
+                    <li>{{localize "BITD.ExplosiveStun"}}</li>
+                    <li>{{localize "BITD.ExplosiveSmoke"}}</li>
+                    <li>{{localize "BITD.ExplosivePsychedelic"}}</li>
+                    <li>{{localize "BITD.ExplosiveGravity"}}</li>
+                    <li>{{localize "BITD.ExplosiveNullifier"}}</li>
+                    <li>{{localize "BITD.ExplosiveAmplifier"}}</li>
+                    <li>{{localize "BITD.ExplosiveAntiSpark"}}</li>
+                    <li>{{localize "BITD.ExplosiveFire"}}</li>
+                    <li>{{localize "BITD.ExplosiveProximity"}}</li>
+                    <li>{{localize "BITD.ExplosiveEuphoric"}}</li>
+                    <li>{{localize "BITD.ExplosiveCoolant"}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Swinger: two-seat autopod --}}
+            {{#if (eq playbookUnique "swinger")}}
+            <div class="unique-card cohort-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.FineAutopod"}}</span>
+                <span class="unique-card-tag">{{localize "BITD.CohortExpertAutopod"}}</span>
+              </header>
+              <div class="unique-card-body">
+                <div class="cohort-top-row">
+                  <div class="field-under grow"><input type="text" name="system.unique-data.swinger.autopod.name"
+                      value="{{system.unique-data.swinger.autopod.name}}"><label>{{localize "BITD.Name"}}</label></div>
+                  <div class="cohort-status-row">
+                    <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                      <input type="checkbox" name="system.unique-data.swinger.autopod.weak" data-dType="Boolean" {{checked
+                        system.unique-data.swinger.autopod.weak}}></label>
+                    <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                      <input type="checkbox" name="system.unique-data.swinger.autopod.impaired" data-dType="Boolean" {{checked
+                        system.unique-data.swinger.autopod.impaired}}></label>
+                    <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                      <input type="checkbox" name="system.unique-data.swinger.autopod.broken" data-dType="Boolean" {{checked
+                        system.unique-data.swinger.autopod.broken}}></label>
+                  </div>
+                </div>
+                <div class="type-columns">
+                  <div class="type-col">
+                    <div class="type-heading">{{localize "BITD.Type"}}</div>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.swinger.autopod.type" value="racing"
+                        {{checked (eq system.unique-data.swinger.autopod.type "racing" )}}>{{localize
+                      "BITD.PurposeRacing"}}</label>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.swinger.autopod.type"
+                        value="impressing" {{checked (eq system.unique-data.swinger.autopod.type "impressing" )}}>{{localize
+                      "BITD.PurposeImpressing"}}</label>
+                    <label class="radio-line"><input type="radio" name="system.unique-data.swinger.autopod.type"
+                        value="surprising" {{checked (eq system.unique-data.swinger.autopod.type "surprising" )}}>{{localize
+                      "BITD.PurposeSurprising"}}</label>
+                  </div>
+                  <div class="type-col">
+                    <div class="type-heading">{{localize "BITD.Style"}}</div>
+                    <p class="unique-blurb italic">{{localize "BITD.AutopodStyle"}}</p>
+                    <textarea name="system.unique-data.swinger.autopod.style"
+                      rows="2">{{system.unique-data.swinger.autopod.style}}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Veteran: used and discarded --}}
+            {{#if (eq playbookUnique "veteran")}}
+            <div class="unique-card veteran-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.VeteranUsedAndDiscardedTitle"}}</span>
+              </header>
+              <div class="unique-card-body veteran-body">
+                <div class="veteran-info">{{{localize "BITD.VeteranUsedAndDiscardedInfo"}}}</div>
+                <div class="veteran-fields">
+                  <div class="field-under">
+                    <label>{{localize "BITD.VetDamageTitle"}}</label>
+                    <p class="unique-blurb italic">{{localize "BITD.VetDamageInfo"}}</p>
+                    <input type="text" name="system.unique-data.veteran.damage" value="{{system.unique-data.veteran.damage}}">
+                  </div>
+                  <div class="field-under">
+                    <label>{{localize "BITD.VetHelpsTitle"}}</label>
+                    <p class="unique-blurb italic">{{localize "BITD.VetHelpsInfo"}}</p>
+                    <input type="text" name="system.unique-data.veteran.helps" value="{{system.unique-data.veteran.helps}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Vampire: strictures --}}
+            {{#if (eq playbookUnique "vampire")}}
+            <div class="unique-card strictures-card">
+              <header class="unique-card-header">
+                <span>{{localize "BITD.Strictures"}}</span>
+              </header>
+              <div class="unique-card-body">
+                <p class="unique-blurb italic">{{localize "BITD.StricturesBlurb"}}</p>
+                <ul class="strictures-list">
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.dayfire" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.dayfire}}><span>{{localize
+                        "BITD.StricturesDayfire"}}</span></label></li>
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.slumber" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.slumber}}><span>{{localize
+                        "BITD.StricturesSlumber"}}</span></label></li>
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.forbidden" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.forbidden}}><span>{{localize
+                        "BITD.StricturesForbidden"}}</span></label></li>
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.repelled" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.repelled}}><span>{{localize
+                        "BITD.StricturesRepelled"}}</span></label></li>
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.bestial" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.bestial}}><span>{{localize
+                        "BITD.StricturesBestial"}}</span></label></li>
+                  <li><label><input type="checkbox" name="system.unique-data.vampire.strictures.bound" data-dType="Boolean"
+                        {{checked system.unique-data.vampire.strictures.bound}}><span>{{localize
+                        "BITD.StricturesBound"}}</span></label></li>
+                </ul>
+              </div>
+            </div>
+            {{/if}}
+
+            {{!-- Time Traveler: mission --}}
+            {{#if (eq playbookUnique "time_traveler")}}
+            <div class="unique-card mission-card">
+              <div class="unique-card-body">
+                <p class="unique-blurb">{{localize "BITD.ChooseMission"}}</p>
+                <div class="mission-block">
+                  <label class="mission-title">
+                    <input type="radio" name="system.unique-data.time_traveler.mission" value="prevent" {{checked (eq
+                      system.unique-data.time_traveler.mission "prevent" )}}>
+                    <strong>{{localize "BITD.PreventTerribleFuture"}}</strong>
+                  </label>
+                  <p class="unique-blurb">{{localize "BITD.PreventTerribleFutureBlurb"}}</p>
+                  <div class="mission-details">
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.prevent.detail1.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.prevent.detail1.done}}>{{localize
+                        "BITD.TerribleFuture1"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.prevent.detail1.text"
+                        value="{{system.unique-data.time_traveler.prevent.detail1.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.prevent.detail2.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.prevent.detail2.done}}>{{localize
+                        "BITD.TerribleFuture2"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.prevent.detail2.text"
+                        value="{{system.unique-data.time_traveler.prevent.detail2.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.prevent.detail3.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.prevent.detail3.done}}>{{localize
+                        "BITD.TerribleFuture3"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.prevent.detail3.text"
+                        value="{{system.unique-data.time_traveler.prevent.detail3.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.prevent.detail4.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.prevent.detail4.done}}>{{localize
+                        "BITD.TerribleFuture4"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.prevent.detail4.text"
+                        value="{{system.unique-data.time_traveler.prevent.detail4.text}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="mission-block">
+                  <label class="mission-title">
+                    <input type="radio" name="system.unique-data.time_traveler.mission" value="chase" {{checked (eq
+                      system.unique-data.time_traveler.mission "chase" )}}>
+                    <strong>{{localize "BITD.ChaseDownBad"}}</strong>
+                  </label>
+                  <p class="unique-blurb">{{localize "BITD.ChaseDownBadBlurb"}}</p>
+                  <div class="mission-details">
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.chase.detail1.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.chase.detail1.done}}>{{localize
+                        "BITD.ChasingBad1"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.chase.detail1.text"
+                        value="{{system.unique-data.time_traveler.chase.detail1.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.chase.detail2.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.chase.detail2.done}}>{{localize
+                        "BITD.ChasingBad2"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.chase.detail2.text"
+                        value="{{system.unique-data.time_traveler.chase.detail2.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.chase.detail3.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.chase.detail3.done}}>{{localize
+                        "BITD.ChasingBad3"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.chase.detail3.text"
+                        value="{{system.unique-data.time_traveler.chase.detail3.text}}">
+                    </div>
+                    <div class="mission-detail">
+                      <label><input type="checkbox" name="system.unique-data.time_traveler.chase.detail4.done"
+                          data-dType="Boolean" {{checked system.unique-data.time_traveler.chase.detail4.done}}>{{localize
+                        "BITD.ChasingBad4"}}</label>
+                      <input type="text" name="system.unique-data.time_traveler.chase.detail4.text"
+                        value="{{system.unique-data.time_traveler.chase.detail4.text}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+
+          </div>
+          {{/if}}
         </div>
         {{/if}}
       </section>
@@ -410,7 +985,7 @@
       <section class="items-panel section-block" data-section-key="items">
         <header class="section-header">
           <span>{{localize "BITD.Loadout"}}</span>
-          <a class="item-add-popup" data-item-type="item" data-tooltip="{{localize 'BITD.AddItem'}}"><i class="fas fa-plus-square"></i></a>
+          <a class="item-add-popup" data-action="bid.itemAdd" data-item-type="item" data-tooltip="{{localize 'BITD.AddItem'}}"><i class="fas fa-plus-square"></i></a>
           <span class="load-fraction">{{system.loadout}}/{{localize system.load_level}}</span>
           <div class="dropdown">
             <select name="system.selected_load_level">
@@ -425,7 +1000,7 @@
             <li class="item-catalog-item catalog-item" data-item-type="item" data-item-name="{{item.name}}" data-source-id="{{item.id}}" data-tooltip="{{item.description}}">
               <span class="item-slots">
                 {{#each item.slotIndexes as |slotNum slotIdx|}}
-                <input type="checkbox" class="catalog-toggle" id="character-{{../../_id}}-item-catalog-{{index}}-{{slotIdx}}" data-slot="{{slotNum}}" {{#if (lteq slotNum ../ownedCount)}}checked{{/if}}>
+                <input type="checkbox" class="catalog-toggle" data-action="bid.catalogToggle" id="character-{{../../_id}}-item-catalog-{{index}}-{{slotIdx}}" data-slot="{{slotNum}}" {{#if (lteq slotNum ../ownedCount)}}checked{{/if}}>
                 {{/each}}
               </span>
               <label for="character-{{../_id}}-item-catalog-{{index}}-0">{{item.name}}</label>
@@ -452,10 +1027,10 @@
               {{#each otherItems as |item id|}}
               <li class="item-catalog-item catalog-item other-item" data-item-id="{{item._id}}" data-tooltip="{{item.description}}">
                 <span class="item-uses">
-                  <input type="checkbox" class="item-equipped-toggle" id="character-{{../_id}}-other-item-{{item._id}}"
+                  <input type="checkbox" class="item-equipped-toggle" data-action="bid.itemEquippedToggle" id="character-{{../_id}}-other-item-{{item._id}}"
                          data-item-id="{{item._id}}" {{#if item.system.equipped}}checked{{/if}}>
                   {{#each item.extraUseIndexes as |useNum useIdx|}}
-                  <input type="checkbox" class="item-use-toggle" id="character-{{../../_id}}-other-item-{{../_id}}-use-{{useIdx}}"
+                  <input type="checkbox" class="item-use-toggle" data-action="bid.itemUseToggle" id="character-{{../../_id}}-other-item-{{../_id}}-use-{{useIdx}}"
                          data-item-id="{{../_id}}" {{#if (lteq useNum ../usesSpent)}}checked{{/if}}>
                   {{/each}}
                 </span>
@@ -470,11 +1045,11 @@
                   {{/if}}
                 </span>
                 {{#if item.hasBonus}}
-                <input type="checkbox" class="item-bonus-toggle" id="character-{{../_id}}-other-item-{{item._id}}-bonus"
+                <input type="checkbox" class="item-bonus-toggle" data-action="bid.itemBonusToggle" id="character-{{../_id}}-other-item-{{item._id}}-bonus"
                        data-item-id="{{item._id}}" {{#if item.system.bonus_equipped}}checked{{/if}}>
                 <label class="item-bonus-label" for="character-{{../_id}}-other-item-{{item._id}}-bonus">{{item.bonusLabel}}</label>
                 {{/if}}
-                <a class="item-control other-item-delete" data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+                <a class="item-control other-item-delete" data-action="bid.otherItemDelete" data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
               </li>
               {{/each}}
             </ul>
@@ -486,8 +1061,8 @@
       <section class="friends-panel section-block" data-section-key="acquaintances">
         <header class="section-header">
           <span>{{localize system.acquaintances_label}}</span>
-          <a class="import-contacts" data-tooltip="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a>
-          <a class="add-custom-contact" data-tooltip="Add Custom Contact"><i class="fas fa-user-plus"></i></a>
+          <a class="import-contacts" data-action="bid.importContacts" data-tooltip="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a>
+          <a class="add-custom-contact" data-action="bid.addCustomContact" data-tooltip="Add Custom Contact"><i class="fas fa-user-plus"></i></a>
         </header>
         <div class="section-body">
           {{#if system.acquaintances}}
@@ -499,12 +1074,13 @@
               {{else if (eq this.standing "rival")}} fa-caret-down red-icon
               {{else}}fa-minus
               {{/if}}"
+                 data-action="bid.standingToggle"
                  role="button"
                  tabindex="0"
                  aria-label="{{localize 'BITD.ToggleStanding' name=this.name standing=this.standing}}"></i>
-              <class="standing-toggle"><a class="open-friend"><strong>{{this.name}}</strong></a>, {{this.description_short}}
+              <class="standing-toggle"><a class="open-friend" data-action="bid.openFriend"><strong>{{this.name}}</strong></a>, {{this.description_short}}
             </div>
-            <a class="acquaintance-delete" data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            <a class="acquaintance-delete" data-action="bid.acquaintanceDelete" data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
           </div>
           {{/each}}
           {{/if}}
@@ -551,12 +1127,52 @@
         <textarea rows="13" name="system.description">{{{system.description}}}</textarea>
       </div>
 
-      {{!-- Active Effects --}}
+      {{!-- Active Effects: inlined from templates/parts/active-effects.html (shared partial,
+            not editable here) rewritten to bid.effectControl + data-effect-action, the V2
+            convention BladesSheetV2's _onEffectControl expects. --}}
       <div id="character-{{_id}}-effects" class="tab effects flex-vertical" data-tab="effects">
         <div class="label-stripe">
           <p>{{localize "BITD.Effects"}}</p>
         </div>
-        {{> "systems/blades68/templates/parts/active-effects.html"}}
+        <table class="items-list effects-list">
+        {{#each effects as |section sid|}}
+          <thead>
+            <tr class="name-stripe-gray flex-horizontal" data-effect-type="{{section.type}}">
+                <th width="40%" class="item-name effect-name flex-horizontal">{{localize section.name}}</th>
+                <th width="20%" class="effect-source">Source</th>
+                <th width="20%" class="effect-source">Duration</th>
+                <th width="20%" class="item-control effect-control right">
+                    <a class="effect-control" data-action="bid.effectControl" data-effect-action="create" data-tooltip="{{localize 'BITD.EffectCreate'}}">
+                        <i class="fas fa-plus"></i> {{localize "BITD.Add"}}
+                    </a>
+                </th>
+            </tr>
+          </thead>
+          <tbody class="item-list">
+            {{#each section.effects as |effect|}}
+                <tr class="item effect flex-horizontal" data-effect-id="{{effect.id}}">
+                    <td width="40%" class="effect-name flex">
+                        <img class="item-image" src="{{effect.img}}" width="24" height="24"/>
+                        <h4>{{effect.name}}</h4>
+                    </td>
+                    <td width="20%" class="effect-source center">{{effect.sourceName}}</td>
+                    <td width="20%" class="effect-duration center">{{effect.duration.name}}</td>
+                    <td width="20%"><div class="item-controls effect-controls flex">
+                        <a class="effect-control" data-action="bid.effectControl" data-effect-action="toggle" data-tooltip="{{localize 'BITD.EffectToggle'}}">
+                            <i class="fas {{#if effect.disabled}}fa-check{{else}}fa-times{{/if}}"></i>
+                        </a>
+                        <a class="effect-control" data-action="bid.effectControl" data-effect-action="edit" data-tooltip="{{localize 'BITD.EffectEdit'}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="effect-control" data-action="bid.effectControl" data-effect-action="delete" data-tooltip="{{localize 'BITD.EffectDelete'}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        {{/each}}
+        </table>
       </div>
 
       {{!-- Full Item List --}}
@@ -566,13 +1182,13 @@
         </div>
         {{#each items as |item id|}}
         <div class="item flex-horizontal" data-item-id="{{item._id}}">
-          <div class="item-body item-sheet-open flex-horizontal">
+          <div class="item-body item-sheet-open flex-horizontal" data-action="bid.itemOpen">
             <img src="{{item.img}}" data-tooltip="{{item.name}}" width="24" height="24"/>
             <div class="item-name">{{item.name}}</div>
           </div>
-          <a class="item-control item-delete" style="max-width: 10px !important;" style="max-width: 10px !important;"
+          <a class="item-control item-delete" data-action="bid.itemDelete" style="max-width: 10px !important;"
             data-tooltip="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
-          <a class="item-control item-post" style="max-width: 10px !important;"
+          <a class="item-control item-post" data-action="bid.itemPost" style="max-width: 10px !important;"
             data-tooltip="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
         </div>
         {{/each}}
@@ -581,4 +1197,4 @@
     </div>
   </section>
 
-</form>
+</div>
