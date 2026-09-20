@@ -54,10 +54,20 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(foundry.applications
     return `systems/blades68/templates/items/${name}.html`;
   }
 
-  /** @override -- resolve the render template dynamically instead of a fixed PARTS map. */
+  /**
+   * @override -- resolve the render template dynamically instead of a fixed PARTS map.
+   * The base HandlebarsApplicationMixin._replaceHTML expects each part to be an already-parsed
+   * HTMLElement (it calls `element.replaceWith(htmlElement)`, and DOM's replaceWith() silently
+   * turns a bare string argument into an escaped Text node) -- so the rendered markup has to be
+   * parsed here exactly like the mixin's own (private) #parsePartHTML does.
+   */
   async _renderHTML(context, options) {
-    const html = await renderHandlebarsTemplate(this._templatePath(), context);
-    return { body: html };
+    const htmlString = await renderHandlebarsTemplate(this._templatePath(), context);
+    const tempEl = document.createElement("div");
+    tempEl.innerHTML = htmlString;
+    const element = tempEl.firstElementChild;
+    element.dataset.applicationPart = "body";
+    return { body: element };
   }
 
   /* -------------------------------------------- */

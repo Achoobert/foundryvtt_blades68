@@ -19,7 +19,7 @@ const { ActorSheetV2 } = foundry.applications.sheets;
  */
 export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
   static DEFAULT_OPTIONS = {
-    classes: ["blades-in-the-dark", "sheet", "actor"],
+    classes: ["blades-in-the-dark", "blades68", "sheet", "actor"],
     window: { resizable: true },
     position: { width: 790, height: 890 },
     form: { submitOnChange: true, closeOnSubmit: false },
