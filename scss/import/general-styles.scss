@@ -22,6 +22,15 @@ textarea {
   color: $red;
 }
 
+// Emitted at root so it isn't nested under `.blades-in-the-dark`.
+@at-root .dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+  line-height: 10px;
+  vertical-align: super;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -45,7 +54,7 @@ section {
 
   &.experience {
     margin-bottom: 0px;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -117,7 +126,8 @@ section {
   min-height: 150px;
 }
 
-.description {
+.cohort-description,
+.gang-description {
   font-style: italic;
 }
 
@@ -147,7 +157,7 @@ i {
     text-align: right;
 
     option {
-      color: white;
+      color: black;
     }
   }
 
