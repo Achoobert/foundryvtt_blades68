@@ -140,6 +140,26 @@ export const registerSystemSettings = function() {
 	requiresReload: true
   });
 
+  	game.settings.register('blades68', 'SheetBackgroundColor', {
+		name: game.i18n.localize('BITD.Settings.SheetBackgroundColor.Name'),
+		hint: game.i18n.localize('BITD.Settings.SheetBackgroundColor.Hint'),
+		config: true,
+		scope: 'world',
+		type: new foundry.data.fields.ColorField({ initial: '#382c93' }),
+		onChange: applySheetBackgroundColor
+	  });
+
+  	game.settings.register('blades68', 'SheetBackgroundOpacity', {
+		name: game.i18n.localize('BITD.Settings.SheetBackgroundOpacity.Name'),
+		hint: game.i18n.localize('BITD.Settings.SheetBackgroundOpacity.Hint'),
+		config: true,
+		scope: 'world',
+		type: Number,
+		range: { min: 0, max: 1, step: 0.05 },
+		default: 0.9,
+		onChange: applySheetBackgroundColor
+	  });
+
   	game.settings.register('blades68', 'PipIconStyle', {
 	name: game.i18n.localize('BITD.Settings.PipIconStyle.Name'),
 	hint: game.i18n.localize('BITD.Settings.PipIconStyle.Hint'),
@@ -189,6 +209,19 @@ export const registerSystemSettings = function() {
 	}
 
 };
+
+/**
+ * Push the world's chosen sheet background color (a GM setting, default
+ * matches the Blades '68 reference build's indigo) onto a CSS custom
+ * property so `.blades68 .window-content` can use it without a reload --
+ * only the "blades68-theme" world setting's parchment look overrides it.
+ */
+export function applySheetBackgroundColor() {
+	const hex = game.settings.get('blades68', 'SheetBackgroundColor') || '#382c93';
+	const opacity = game.settings.get('blades68', 'SheetBackgroundOpacity') ?? 0.9;
+	const rgba = foundry.utils.Color.from(hex).toRGBA(opacity);
+	document.documentElement.style.setProperty('--blades68-sheet-bg', rgba);
+}
 
 /**
  * Foundry registers core.tokenAutoRotate with initial:true during Game#initialize,

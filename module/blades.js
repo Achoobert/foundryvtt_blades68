@@ -10,6 +10,7 @@ import {
   applyTokenAutoRotateDefault,
   overrideTokenAutoRotateDefault,
   importExistingImagesOnce,
+  applySheetBackgroundColor,
 } from "./settings.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
@@ -178,6 +179,7 @@ Hooks.once("init", async function () {
 
   // Register System Settings
   registerSystemSettings();
+  applySheetBackgroundColor();
 
   if (game.settings.get("blades68", "PublicClocks")) {
     Hooks.on("preCreateActor", (actor, createData, options, userId) => {

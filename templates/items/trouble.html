@@ -19,7 +19,7 @@
     <input type="checkbox" name="system.ongoing" {{checked system.ongoing}}/>
 
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    {{editor system.description target="system.description" button=true editable=editable}}
+    <prose-mirror name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</prose-mirror>
 
     <label class="label-stripe">{{localize "BITD.Escalation"}}</label>
     <textarea name="system.escilation" rows="6">{{{system.escilation}}}</textarea>

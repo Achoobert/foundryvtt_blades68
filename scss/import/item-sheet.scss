@@ -40,6 +40,18 @@
   background-color: $almost_black;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+}
+
+// Item sheet header: name + short fields sit beside the portrait, matching
+// the NPC sheet layout. The long-text description stays out of the header,
+// directly underneath it in the sheet body.
+.sheet-header {
+  .header-fields {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 }
 
 // Cohort item sheet: keep the narrow Cohort Type / Gang Type rows flowing

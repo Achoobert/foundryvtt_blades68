@@ -105,9 +105,14 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(foundry.applications
     // a textarea.
     const enrichOpts = { secrets: owner, async: true };
     if (item.type !== "cohort" && item.type !== "faction") {
+      // The raw value feeds the <prose-mirror> element's `value` attribute
+      // (what ProseMirror actually edits); the enriched copy is what's
+      // shown -- as the element's innerHTML -- before the editor opens.
+      context.system.description_raw = system.description ?? "";
       context.system.description = await enrichHTML(system.description ?? "", enrichOpts);
     }
     if (item.type === "class" || item.type === "crew_type") {
+      context.system.experience_clues_raw = system.experience_clues ?? "";
       context.system.experience_clues = await enrichHTML(system.experience_clues ?? "", enrichOpts);
     }
 

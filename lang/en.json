@@ -655,6 +655,14 @@
       "Pill": "Pill",
       "Sharp": "Sharp (classic teeth)"
     },
+    "SheetBackgroundColor": {
+      "Name": "Sheet Background Color",
+      "Hint": "The background color for character, crew, NPC, faction, and item sheet windows."
+    },
+    "SheetBackgroundOpacity": {
+      "Name": "Sheet Background Opacity",
+      "Hint": "How transparent the sheet background color is. 0 is fully transparent, 1 is fully opaque."
+    },
     "PauseAnimation": {
       "Name": "Pause Screen Animation",
       "Hint": "Animated background behind the pause logo.",

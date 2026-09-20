@@ -1,6 +1,36 @@
 textarea {
   margin-top: 15px;
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Sheet background color. Overrides core's --color-cool-5-90 default with
+// the Blades '68 indigo; GM-configurable via the "SheetBackgroundColor"
+// world setting (see module/settings.js#applySheetBackgroundColor), which
+// sets --blades68-sheet-bg on :root. The "blades68-theme" parchment look
+// (scss/import/blades68-theme.scss) takes precedence over this when active,
+// since it's scoped under the higher-specificity .blades68.blades68-theme.
+.window-content {
+  background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+}
+
+// Generic "label sits above its control, control is full width" pattern
+// used by long-text fields (description/notes) across sheets. Any
+// <label class="text-line"> followed by an <input>/<textarea>, each
+// wrapped in its own <div>, gets this layout regardless of which sheet
+// it appears on.
+.text-line {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+label.text-line + input,
+label.text-line + textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .debug-toggle{
@@ -124,6 +154,38 @@ section {
 .editor,
 .editor-content {
   min-height: 150px;
+}
+
+prose-mirror {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+
+// NPC sheet layout (templates/npc-sheet.html): portrait beside a stack of
+// short fields in the header, then a stack of label-above-textbox fields
+// below. None of these classes had any rules before, so every field
+// collapsed to browser-default sizing (label + tiny inline textarea).
+.npc-header {
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  img.npc-portrait {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+}
+
+.npc-header-lines,
+.npc-lines {
+  > div {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .cohort-description,

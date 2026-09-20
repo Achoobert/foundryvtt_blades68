@@ -8,7 +8,7 @@
 
   <section class="sheet-body flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    {{editor system.description target="system.description" button=true editable=editable}}
+    <prose-mirror name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</prose-mirror>
     <label class="label-stripe">{{localize "BITD.CrewType"}}</label>
     <input type="text" name="system.class" value="{{system.class}}">
     <label class="label-stripe">{{localize "BITD.Price"}}</label>

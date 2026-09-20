@@ -96,6 +96,22 @@
 .blades68 textarea {
   margin-top: 15px;
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.blades68 .window-content {
+  background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+}
+.blades68 .text-line {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.blades68 label.text-line + input,
+.blades68 label.text-line + textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 .blades68 .debug-toggle {
   opacity: 0.1;
@@ -203,6 +219,28 @@
 .blades68 .editor,
 .blades68 .editor-content {
   min-height: 150px;
+}
+.blades68 prose-mirror {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+.blades68 .npc-header {
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.blades68 .npc-header img.npc-portrait {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+.blades68 .npc-header-lines > div,
+.blades68 .npc-lines > div {
+  margin-bottom: 10px;
+}
+.blades68 .npc-header-lines > div:last-child,
+.blades68 .npc-lines > div:last-child {
+  margin-bottom: 0;
 }
 .blades68 .cohort-description,
 .blades68 .gang-description {
@@ -2842,6 +2880,12 @@
   background-color: #191813;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+}
+.blades68.item.sheet .sheet-header .header-fields {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .blades68.item.sheet #cohort-type-list.cohort-type-row {
   flex-wrap: wrap;
