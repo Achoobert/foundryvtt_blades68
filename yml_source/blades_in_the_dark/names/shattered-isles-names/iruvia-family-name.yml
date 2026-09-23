@@ -1,0 +1,263 @@
+_id: 2cSUPoMMitjygBWh
+name: 'Iruvia - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Iruvia, for use in NPC/token/actor namer macros.'
+results:
+  - _id: uUBYeOo7ZLc9vYE7
+    type: text
+    text: 'Dalavi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: wjQwInvTi6oN2F9d
+    type: text
+    text: 'Sinha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: ZYkZ3MEugAkPXTGD
+    type: text
+    text: 'Azadeh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 5FWX5sDc0tEYdIm7
+    type: text
+    text: 'Jeduin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: UNVDR7mflx571V67
+    type: text
+    text: 'Sabbagh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: PiHxTWS355AvtrX0
+    type: text
+    text: 'Isa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: GvpivUmD2d6N2Jst
+    type: text
+    text: 'Basran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: RjP6iYjwKosUEhSz
+    type: text
+    text: 'Moheb'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: 65CoZXdtfQzP7aRj
+    type: text
+    text: 'Gaur'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: aYJLBjSzS4io5uST
+    type: text
+    text: 'Misra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: TmExtTEqyp8sgXGo
+    type: text
+    text: 'Tarrokh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: CDqz15FBVatWzOvC
+    type: text
+    text: 'Jayan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: NQRAkIBjKenlQyAz
+    type: text
+    text: 'Kardera'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: csismlJZCiZ5N6s5
+    type: text
+    text: 'Sing'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: LUrfdFGTZ1dioKtf
+    type: text
+    text: 'Bahar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: 5OoTQVoLjaNdW5pm
+    type: text
+    text: 'Kamal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: xNs52IuXkDLl48z4
+    type: text
+    text: 'Daava'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: Nn1mX1LPl7GiLC2G
+    type: text
+    text: 'Tahmas'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: N962217B5hMu7FqL
+    type: text
+    text: 'Nouzari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: RYEUUFXSqjDQcvBP
+    type: text
+    text: 'Golzara'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: 4Fh2O7MHKORzufDt
+    type: text
+    text: 'Malviya'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: 76HN6aJJFu6WzWnf
+    type: text
+    text: 'Attia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: dcecPdbQkyjr7DkQ
+    type: text
+    text: 'Athanoch'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: ZuEhgMEL81njykj0
+    type: text
+    text: 'Essa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: XnlQH3MCXmpMuSxR
+    type: text
+    text: 'Soleymani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: uXKDBRnV7MYGIPI2
+    type: text
+    text: 'Ponda'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: BytZldTWYjSCbKZY
+    type: text
+    text: 'Maroof'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: l9ItT0pEO598LgN1
+    type: text
+    text: 'Nemati'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: W2Jglwshvb5X6Ifw
+    type: text
+    text: 'Shoja'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: zgp1LkzjtcmN5ruA
+    type: text
+    text: 'Karstas'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: xW60vXBC8G3n1oty
+    type: text
+    text: 'Sharma'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: JzJuuPYIsSRA1bJs
+    type: text
+    text: 'Mustafa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: A1zRFQB28kuOY3kD
+    type: text
+    text: 'Ankhayat'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: jTKPbPbGzvIpkXhg
+    type: text
+    text: 'Farros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: ZC9VHz04PKwAqcvf
+    type: text
+    text: 'Ashgar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: XA7fwXwIUxUgTI7d
+    type: text
+    text: 'Kessarin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

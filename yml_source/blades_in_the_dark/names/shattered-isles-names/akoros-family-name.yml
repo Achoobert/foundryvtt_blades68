@@ -1,0 +1,263 @@
+_id: kTB3iNfhMu9pVk6F
+name: 'Akoros - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Akoros, for use in NPC/token/actor namer macros.'
+results:
+  - _id: O1TH9UDxFbHQEmLe
+    type: text
+    text: 'Morriston'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: Rnft7YV3lTUeisxj
+    type: text
+    text: 'Skora'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: qn5zxjFYWgO3406d
+    type: text
+    text: 'Helker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 91UUU6staMQTQWa6
+    type: text
+    text: 'Keel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: TRM0tqKIpNEMof9R
+    type: text
+    text: 'Slane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: CQ34LNzS4k4EY9cR
+    type: text
+    text: 'Lochlan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: HMwdcWkvvtY9lWFB
+    type: text
+    text: 'Lomond'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: sDGJvDPVjpvhlVA1
+    type: text
+    text: 'Acton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: 863hvOAAGrqXFX41
+    type: text
+    text: 'Barton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: QLhDsmyjI5IKR2Rr
+    type: text
+    text: 'Sevoy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: SGPLfzx1HDzfkPhj
+    type: text
+    text: 'Nash'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: dNH2ekDUNdNCu2Kk
+    type: text
+    text: 'Coleburn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: 2lyZM9T1KdAKLNBI
+    type: text
+    text: 'Clermont'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: 8fWWpZrKsjSuQTdG
+    type: text
+    text: 'Welker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: Zdvwao0cjymvTJ5y
+    type: text
+    text: 'Cochran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: Q2gQbPjVDauTfEdn
+    type: text
+    text: 'Vale'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: pFLxXK6eow2RaGIa
+    type: text
+    text: 'Ross'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: vZccw0vqGVIOvBpX
+    type: text
+    text: 'Byron'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: ajFceSiV4Fo0WuoE
+    type: text
+    text: 'Danfield'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: xxqyW16YaxFkwyRV
+    type: text
+    text: 'Reed'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: WD0yhxHS7WyPQzZd
+    type: text
+    text: 'Stafford'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: sm46Jmy6U78QmnCk
+    type: text
+    text: 'Rylan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: fqIVyecXPmPA77RJ
+    type: text
+    text: 'Miller'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: vclEf1n2m5JiDUod
+    type: text
+    text: 'Walund'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: Heke5moyWlO4I6Yp
+    type: text
+    text: 'Templeton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: ZUbR0RxrdE6WJO8k
+    type: text
+    text: 'Prichard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: Q4oAEq2A3AeUrAQD
+    type: text
+    text: 'Cook'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: XMVZudo660WPk2l4
+    type: text
+    text: 'Black'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: IORMjGyDGnseUSrj
+    type: text
+    text: 'Booker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: B51cyPYRJWyxSEY4
+    type: text
+    text: 'Skelkallan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: 685m3QOIfAavT7VG
+    type: text
+    text: 'Arran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: l4USbQJHyi8KwWrl
+    type: text
+    text: 'Gray'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: xHv3KEN4lN7lC1i7
+    type: text
+    text: 'Ward'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: cO1528zO8OMalufI
+    type: text
+    text: 'Hall'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: PP0BM4SuSa4GORow
+    type: text
+    text: 'Comber'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: dR7RbeWOJRUZ0MNQ
+    type: text
+    text: 'Porden'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

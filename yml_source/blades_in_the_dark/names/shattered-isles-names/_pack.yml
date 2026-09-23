@@ -1,0 +1,6 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+name: "shattered-isles-names"
+label: "Shattered Isles Names"
+type: "RollTable"
+path: "./packs/shattered_isles_names.db"
+banner: "systems/blades68/images/compendium-banners/Doskvol_17.webp"
