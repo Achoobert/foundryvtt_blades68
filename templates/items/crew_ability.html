@@ -8,7 +8,7 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body flex">
-      <prose-mirror name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</prose-mirror>
+      <textarea rows="3" name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</textarea>
     </section>
 
     <div class="flex-vertical">

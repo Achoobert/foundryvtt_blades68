@@ -335,6 +335,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
 
     this.loadout = this._computeLoadout();
     this.load_level = this._computeLoadLevel(this.loadout);
+    this.load_max = this._computeLoadMax(this.loadout);
 
     if (!actor) return;
 
@@ -391,6 +392,34 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
    * preserved as-is, see the legacy //@todo comment in blades-actor-sheet.js).
    */
   _computeLoadLevel(loadout) {
+    const { arr, idx } = this._loadLevelArray(loadout);
+    return arr[idx];
+  }
+
+  /**
+   * Highest loadout value that still belongs to the current encumbrance
+   * tier, i.e. the tier's item capacity shown as "current/max" on the
+   * sheet instead of the tier's name.
+   */
+  _computeLoadMax(loadout) {
+    const { arr, idx } = this._loadLevelArray(loadout);
+    const tier = arr[idx];
+    let max = idx;
+    for (let i = idx; i < arr.length; i++) {
+      if (arr[i] !== tier) break;
+      max = i;
+    }
+    return max;
+  }
+
+  /**
+   * Shared tier-array lookup for _computeLoadLevel/_computeLoadMax. Depends
+   * on the 'DeepCutLoad' game setting (Discreet/Conspicuous vs Light/Normal/
+   * Heavy scales) and on whether the actor owns the "(C) Mule" ability
+   * (English-name string match, a known pre-existing localization bug --
+   * preserved as-is, see the legacy //@todo comment in blades-actor-sheet.js).
+   */
+  _loadLevelArray(loadout) {
     let deepCut = false;
     try {
       deepCut = Boolean(game.settings?.get("blades68", "DeepCutLoad"));
@@ -417,6 +446,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       }
     }
     const idx = Math.max(0, Math.min(11, loadout));
-    return mulePresent ? mule_level[idx] : load_level[idx];
+    return { arr: mulePresent ? mule_level : load_level, idx };
   }
 }

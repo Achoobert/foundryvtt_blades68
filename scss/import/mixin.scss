@@ -3,13 +3,18 @@
 /*
 *  Elements that can be changed will hint this by dimming and fading a little on hover
 */
-@mixin changeable($transition-period, $hover-brightness, $hover-opacity, $hover-color: null) {
+@mixin changeable(
+  $transition-period,
+  $hover-brightness,
+  $hover-opacity,
+  $hover-color: null
+) {
   transition: filter $transition-period;
   cursor: pointer;
 
   @media (prefers-reduced-motion: reduce) {
-      transition: none;
-    }
+    transition: none;
+  }
   &:hover {
     filter: brightness($hover-brightness);
     opacity: $hover-opacity;
@@ -22,14 +27,18 @@
 /*
  * Toothradio. Some (eg trauma) are not changeable, hence the option.
  */
-@mixin toothradio($width, $height, $unchecked_background, $checked_background, $changeable: true) {
-
+@mixin toothradio(
+  $width,
+  $height,
+  $unchecked_background,
+  $checked_background,
+  $changeable: true
+) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
 
   label {
-
     & {
       height: $height;
       width: $width;
@@ -40,8 +49,7 @@
       @if $changeable {
         transition: filter 0.1s;
         cursor: pointer;
-      }
-      @else {
+      } @else {
         cursor: not-allowed;
       }
 
@@ -69,11 +77,9 @@
   }
 
   input {
-
     display: none;
 
     &:checked {
-
       & ~ label {
         background-image: url($unchecked_background);
       }
@@ -88,17 +94,15 @@
  * Custom Radio
  */
 @mixin custom_radio($width, $height) {
-
   $default_color: $almost_white;
-  $accent_color: $almost_black;
-  $circle_border_color: $almost_black;
+  $accent_color: green;
+  $circle_border_color: orange;
 
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
 
   label {
-
     & {
       height: $height;
       width: $width;
@@ -130,7 +134,6 @@
     display: none;
 
     &:checked {
-
       & ~ label {
         background-color: $default_color;
       }
@@ -152,7 +155,6 @@
  * Custom Radio Squared
  */
 @mixin custom_radio_square($side) {
-
   $default_color: $almost_white;
   $accent_color: $gold;
   $circle_border_color: $almost_black;
@@ -162,7 +164,6 @@
   @content;
 
   label {
-
     & {
       height: $side;
       width: $side;
@@ -185,9 +186,8 @@
 
   input {
     display: none;
-  
+
     &:checked {
-  
       & ~ label {
         background-color: $default_color;
       }
@@ -224,11 +224,11 @@
     display: none;
 
     &:checked {
-      &~label {
+      & ~ label {
         background-image: url($empty);
       }
 
-      &+label {
+      & + label {
         background-image: url($filled);
       }
     }
@@ -238,7 +238,6 @@
  * Checkboxes underscored.
  */
 @mixin check_underscore() {
-
   display: flex;
   flex-wrap: wrap;
   @content;
@@ -260,7 +259,6 @@
     }
 
     input {
-
       display: none;
 
       &:checked ~ .checkmark {
@@ -273,14 +271,18 @@
       font-weight: bold;
     }
   }
-
 }
 
 /*
  * Create Clock
  */
-@mixin clock($segments, $size, $default_color:null, $accent_color:null, $skew_override:null) {
-
+@mixin clock(
+  $segments,
+  $size,
+  $default_color: null,
+  $accent_color: null,
+  $skew_override: null
+) {
   $angle: calc(360 / $segments);
   $skew: if($skew_override != null, $skew_override, 90 + $angle);
   $border_width: 3;
@@ -289,7 +291,6 @@
   @content;
 
   .blades-clock {
-
     position: relative;
     @if $default_color {
       border: #{$border_width}px solid $almost_black;
@@ -339,14 +340,12 @@
     }
 
     @for $i from 1 through $segments {
-
       $rotate_angle: $angle * ($i - 1);
       *:nth-child(#{$i * 2 + 1}) {
         transform: rotate(#{$rotate_angle}deg) skewY(#{$skew}deg);
       }
     }
   }
-
 }
 
 /*
@@ -379,11 +378,10 @@
   }
 
   .connector {
-
     position: absolute;
     display: block;
     // Slightly darker than turf fill so unclaimed bridges stay visible on the gap.
-      background-color: #aaa;
+    background-color: #aaa;
 
     &.right,
     &.left {
@@ -411,7 +409,6 @@
       top: $turf_height;
     }
   }
-
 
   &.turf-selected {
     background-color: $gray;
@@ -454,12 +451,15 @@
   }
 }
 
-
 /*
  * Toothradio single elements
  */
- @mixin toothradio_single($width, $height, $unchecked_background, $checked_background) {
-
+@mixin toothradio_single(
+  $width,
+  $height,
+  $unchecked_background,
+  $checked_background
+) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
@@ -481,9 +481,8 @@
   }
 
   input {
-  
     display: none;
-  
+
     &:checked {
       & + label {
         background-image: url($checked_background);
@@ -495,8 +494,12 @@
 /*
  * Custom Radio Round
  */
- @mixin custom_radio_round($diameter, $circle_border_color, $default_color, $accent_color) {
-
+@mixin custom_radio_round(
+  $diameter,
+  $circle_border_color,
+  $default_color,
+  $accent_color
+) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
@@ -516,7 +519,7 @@
 
   input {
     display: none;
-  
+
     &:checked {
       & ~ label:not([for$="-0"]) {
         border-color: $circle_border_color;

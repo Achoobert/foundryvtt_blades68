@@ -94,13 +94,18 @@
   font-family: "Crimson Text", serif;
 }
 .blades68 textarea {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   width: 100%;
   box-sizing: border-box;
 }
 .blades68 .window-content {
   background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  overflow-y: auto;
+}
+.blades68.sheet.item .window-content {
+  max-height: 85vh;
+  overflow-y: auto;
 }
 .blades68 .text-line {
   display: block;
@@ -284,14 +289,20 @@
 .blades68 .loadout select:hover {
   color: red;
 }
-.blades68 .abilities .item-name, .blades68 .loadout .item-name, .blades68 .faction-items .item-name {
+.blades68 .abilities .item-name,
+.blades68 .loadout .item-name,
+.blades68 .faction-items .item-name {
   width: 100px;
   margin-left: 10px;
 }
-.blades68 .abilities .item-body, .blades68 .loadout .item-body, .blades68 .faction-items .item-body {
+.blades68 .abilities .item-body,
+.blades68 .loadout .item-body,
+.blades68 .faction-items .item-body {
   width: auto;
 }
-.blades68 .abilities .item-description, .blades68 .loadout .item-description, .blades68 .faction-items .item-description {
+.blades68 .abilities .item-description,
+.blades68 .loadout .item-description,
+.blades68 .faction-items .item-description {
   width: 260px;
 }
 .blades68 #loadout .item-control {
@@ -853,6 +864,16 @@
   border-radius: 0 4px 4px 4px;
   padding: 10px;
 }
+.blades68.crew.sheet .crew-dossier {
+  color: #191813;
+}
+.blades68.crew.sheet .crew-dossier p,
+.blades68.crew.sheet .crew-dossier span,
+.blades68.crew.sheet .crew-dossier label,
+.blades68.crew.sheet .crew-dossier .item-name,
+.blades68.crew.sheet .crew-dossier .item-description {
+  color: #191813;
+}
 .blades68.crew.sheet .crew-coins {
   display: flex;
   flex-wrap: wrap;
@@ -1387,8 +1408,8 @@
   align-items: center;
   cursor: pointer;
   margin-bottom: 0px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .blades68.crew.sheet .cohorts .item-control {
   flex-grow: 0;
@@ -1934,9 +1955,9 @@
   text-transform: uppercase;
 }
 .blades68.actor.pc * .attributes .attribute-skill-label {
-  letter-spacing: 1px;
-  color: black;
-  text-shadow: 1px 1px 2px red;
+  letter-spacing: 1.5px;
+  color: white;
+  text-shadow: 1px 1px 2px yellow;
 }
 .blades68.actor.pc * .attributes .attributes-exp {
   position: relative;
@@ -1995,9 +2016,9 @@
 .blades68.actor.pc * .attributes .attributes-container label {
   height: 15px;
   width: 15px;
-  background-color: #191813;
+  background-color: green;
   vertical-align: middle;
-  border: 2px solid #191813;
+  border: 2px solid orange;
   border-radius: 24px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -2023,7 +2044,7 @@
 .blades68.actor.pc * .attributes .attributes-container input:checked + label {
   transition: filter 0.1s;
   cursor: pointer;
-  background-color: #191813;
+  background-color: green;
 }
 .blades68.actor.pc * .attributes .attributes-container input:checked + label:hover {
   filter: brightness(0.7);
@@ -2319,6 +2340,7 @@
   text-transform: capitalize;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-drift {
+  color: white;
   font-style: italic;
   font-size: 12px;
   flex-grow: 1;
@@ -2944,10 +2966,13 @@
    */
 }
 .blades68.blades68-theme {
+  color: white;
+}
+.blades68.blades68-theme.theme-light {
   background-color: #e9e4ce;
   color: #220e10;
 }
-.blades68.blades68-theme .window-content {
+.blades68.blades68-theme.theme-light .window-content {
   background-color: #e9e4ce;
 }
 .blades68.blades68-theme .black-label,
@@ -2964,7 +2989,7 @@
 }
 .blades68.blades68-theme a.item-add-popup,
 .blades68.blades68-theme .rollable-text {
-  color: #e8c05b;
+  color: white;
   text-shadow: 1px 1px 1px black;
 }
 .blades68.blades68-theme .rollable-text:hover {

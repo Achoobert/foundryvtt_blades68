@@ -1,96 +1,55 @@
-/**
- * Lightweight compatibility helpers that prefer the V13+ namespaced APIs while
- * keeping graceful fallbacks for the V11/V12 globals this system still
- * supports. Each accessor resolves the modern entry point first so the module
- * avoids deprecation warnings once the legacy globals disappear (planned for
- * Foundry VTT V15+).
- */
 export function getActorSheetClass() {
-  return foundry?.appv1?.sheets?.ActorSheet ?? ActorSheet;
+  return foundry.appv1.sheets.ActorSheet;
 }
 
 export function getItemSheetClass() {
-  return foundry?.appv1?.sheets?.ItemSheet ?? ItemSheet;
-}
-
-let cachedSheetConfig;
-
-function getSheetConfig() {
-  if (cachedSheetConfig) return cachedSheetConfig;
-  const apiConfig = foundry?.applications?.apps?.DocumentSheetConfig ?? foundry?.applications?.config?.DocumentSheetConfig;
-  cachedSheetConfig = apiConfig ?? null;
-  return cachedSheetConfig;
-}
-
-function getActorsCollectionLegacy() {
-  return foundry?.documents?.collections?.Actors ?? Actors;
-}
-
-function getItemsCollectionLegacy() {
-  return foundry?.documents?.collections?.Items ?? Items;
+  return foundry.appv1.sheets.ItemSheet;
 }
 
 export function unregisterActorSheet(namespace, sheetClass) {
-  const sheetConfig = getSheetConfig();
-  if (sheetConfig?.unregisterSheet) {
-    return sheetConfig.unregisterSheet(CONFIG.Actor.documentClass, namespace, sheetClass);
-  }
-  return getActorsCollectionLegacy()?.unregisterSheet?.(namespace, sheetClass);
+  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(CONFIG.Actor.documentClass, namespace, sheetClass);
 }
 
 export function registerActorSheet(namespace, sheetClass, options) {
-  const sheetConfig = getSheetConfig();
-  if (sheetConfig?.registerSheet) {
-    return sheetConfig.registerSheet(CONFIG.Actor.documentClass, namespace, sheetClass, options);
-  }
-  return getActorsCollectionLegacy()?.registerSheet?.(namespace, sheetClass, options);
+  return foundry.applications.apps.DocumentSheetConfig.registerSheet(CONFIG.Actor.documentClass, namespace, sheetClass, options);
 }
 
 export function unregisterItemSheet(namespace, sheetClass) {
-  const sheetConfig = getSheetConfig();
-  if (sheetConfig?.unregisterSheet) {
-    return sheetConfig.unregisterSheet(CONFIG.Item.documentClass, namespace, sheetClass);
-  }
-  return getItemsCollectionLegacy()?.unregisterSheet?.(namespace, sheetClass);
+  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(CONFIG.Item.documentClass, namespace, sheetClass);
 }
 
 export function registerItemSheet(namespace, sheetClass, options) {
-  const sheetConfig = getSheetConfig();
-  if (sheetConfig?.registerSheet) {
-    return sheetConfig.registerSheet(CONFIG.Item.documentClass, namespace, sheetClass, options);
-  }
-  return getItemsCollectionLegacy()?.registerSheet?.(namespace, sheetClass, options);
+  return foundry.applications.apps.DocumentSheetConfig.registerSheet(CONFIG.Item.documentClass, namespace, sheetClass, options);
 }
 
 export function loadHandlebarsTemplates(paths) {
-  const loader = foundry?.applications?.handlebars?.loadTemplates ?? loadTemplates;
-  if (!loader) {
-    throw new Error("Unable to resolve a Handlebars template loader");
-  }
-  return loader(paths);
+  return foundry.applications.handlebars.loadTemplates(paths);
 }
 
 export function renderHandlebarsTemplate(...args) {
-  const renderer = foundry?.applications?.handlebars?.renderTemplate ?? renderTemplate;
-  if (!renderer) {
-    throw new Error("Unable to resolve a Handlebars template renderer");
-  }
-  return renderer(...args);
+  return foundry.applications.handlebars.renderTemplate(...args);
 }
 
 export function enrichHTML(...args) {
-  const textEditor = foundry?.applications?.ux?.TextEditor?.implementation ?? TextEditor;
-  const enrich = textEditor?.enrichHTML;
-  if (!enrich) {
-    throw new Error("Unable to resolve TextEditor.enrichHTML");
-  }
-  return enrich.apply(textEditor, args);
+  return foundry.applications.ux.TextEditor.implementation.enrichHTML(...args);
 }
 
 export function generateRandomId() {
-  const randomIdFn = foundry?.utils?.randomID ?? randomID;
-  if (!randomIdFn) {
-    throw new Error("Unable to resolve a randomID generator");
-  }
-  return randomIdFn();
+  return foundry.utils.randomID();
+}
+
+/**
+ * Toggles the world-setting-driven look classes ("blades68-theme",
+ * "sharp-icons") on an ApplicationV2 sheet's root element. AppV2's
+ * `this.element` is a plain HTMLElement (no jQuery), so this can't reuse
+ * the legacy BladesSheet.activateListeners `toggleClass` calls.
+ */
+export function applyBladesThemeClasses(element) {
+  if (!element) return;
+  try {
+    element.classList.toggle("blades68-theme", Boolean(game.settings.get("blades68", "Blades68Mode")));
+  } catch (err) { /* not registered yet */ }
+  try {
+    element.classList.toggle("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
+  } catch (err) { /* not registered yet */ }
 }

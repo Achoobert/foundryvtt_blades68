@@ -1,6 +1,7 @@
 import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { applyBladesThemeClasses } from "./compat.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -35,6 +36,12 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
 
   static _itemIdFrom(target) {
     return target.dataset.itemId ?? target.closest("[data-item-id]")?.dataset.itemId;
+  }
+
+  /** @override */
+  async _onRender(context, options) {
+    await super._onRender(context, options);
+    applyBladesThemeClasses(this.element);
   }
 
   /* -------------------------------------------- */

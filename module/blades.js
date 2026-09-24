@@ -523,19 +523,6 @@ Hooks.once("ready", async function () {
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
   await importExistingImagesOnce();
-
-  /**
-  // Determine whether a system migration is required
-  const currentVersion = game.settings.get("bitd", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = 2.15;
-
-  let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
-
-  // Perform the migration
-  if ( needMigration && game.user.isGM ) {
-    migrations.migrateWorld();
-  }
-  **/
 });
 
 /*
@@ -580,29 +567,15 @@ for (const hook of [
 
 // getSceneControlButtons
 Hooks.on("getSceneControlButtons", (controls) => {
-  if (foundry.utils.isNewerVersion(game.version, 13)) {
-    controls.tokens.tools.DiceRoller = {
-      name: "DiceRoller",
-      title: "BITD.DiceRoller",
-      icon: "fas fa-dice",
-      onChange: (event, active) => {
-        simpleRollPopup();
-      },
-      button: true,
-    };
-  }
-});
-
-Hooks.on("renderSceneControls", async (app, html) => {
-  if (foundry.utils.isNewerVersion(13, game.version)) {
-    let dice_roller = $(
-      '<li class="scene-control" data-tooltip="Dice Roll"><i class="fas fa-dice"></i></li>',
-    );
-    dice_roller.click(async function () {
-      await simpleRollPopup();
-    });
-    html.children().first().append(dice_roller);
-  }
+  controls.tokens.tools.DiceRoller = {
+    name: "DiceRoller",
+    title: "BITD.DiceRoller",
+    icon: "fas fa-dice",
+    onChange: (event, active) => {
+      simpleRollPopup();
+    },
+    button: true,
+  };
 });
 
 const PAUSE_IMAGE =

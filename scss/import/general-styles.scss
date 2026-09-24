@@ -1,6 +1,6 @@
 textarea {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -13,6 +13,12 @@ textarea {
 // since it's scoped under the higher-specificity .blades68.blades68-theme.
 .window-content {
   background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  overflow-y: auto;
+}
+
+&.sheet.item .window-content {
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
 // Generic "label sits above its control, control is full width" pattern
@@ -33,17 +39,17 @@ label.text-line + textarea {
   box-sizing: border-box;
 }
 
-.debug-toggle{
+.debug-toggle {
   opacity: 0.1;
 
-  &.on{
+  &.on {
     opacity: 0.75;
   }
 }
 
 .rollable-text {
   transition: color $transition-period;
-@media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }
@@ -99,9 +105,9 @@ section {
   flex-direction: column;
 }
 
-.tab[data-tab]{
+.tab[data-tab] {
   display: none;
-  &.active{
+  &.active {
     display: block;
   }
 }
@@ -126,7 +132,6 @@ section {
   text-transform: capitalize;
   font-family: Kirsty, serif;
 }
-
 
 .label-stripe {
   text-transform: uppercase;
@@ -195,7 +200,12 @@ prose-mirror {
 
 i {
   &.nullifier {
-    @include changeable($transition-period, $hover-brightness, $hover-opacity, $red);
+    @include changeable(
+      $transition-period,
+      $hover-brightness,
+      $hover-opacity,
+      $red
+    );
   }
 }
 
@@ -207,7 +217,8 @@ i {
     box-shadow: none;
     border: none;
     cursor: pointer;
-    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right;
+    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+      no-repeat right;
     padding: 0 20px 0 0;
     margin: 0.1em -6px 0 0;
     background-color: $almost_black;
@@ -228,7 +239,9 @@ i {
   }
 }
 
-.abilities, .loadout, .faction-items {
+.abilities,
+.loadout,
+.faction-items {
   .item-name {
     width: 100px;
     margin-left: 10px;

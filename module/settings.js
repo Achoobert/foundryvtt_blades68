@@ -54,9 +54,7 @@ export const registerSystemSettings = function() {
 		default: 0
 	});
 
-  if (foundry.utils.isNewerVersion(game.version, 12)) {
-
-    game.settings.register('blades68', 'ActionRoll', {
+  game.settings.register('blades68', 'ActionRoll', {
 	name: game.i18n.localize('BITD.Settings.Action.Name'),
 	hint: game.i18n.localize('BITD.Settings.Action.Hint'),
 	config: true,
@@ -172,41 +170,13 @@ export const registerSystemSettings = function() {
 	},
 	default: 'pill',
 	onChange: () => {
-		for (const app of Object.values(ui.windows)) {
-			if (app.element?.hasClass?.('blades68')) app.render(false);
+		for (const app of Object.values(ui.windows).concat(Array.from(foundry.applications.instances?.values?.() ?? []))) {
+			const el = app.element;
+			const hasBlades68Class = el?.classList?.contains?.('blades68') ?? el?.hasClass?.('blades68');
+			if (hasBlades68Class) app.render(false);
 		}
 	}
   });
-
-  } //end if for game.version >12
-  else {
-	  
-  const set_array = [
-    ['ActionRoll','Action', true],
-    ['ThreatRoll','Threat', false],
-    ['PushYourself','Push', false],
-    ['DeepCutLoad','Load', false],
-    ['ClockXP','ClockXP', false],
-    ['Edge','Edge', false],
-    ['PublicClocks','PublicClocks', false],
-    ['Blades68Mode','Blades68', true],
-    ['ShowKeys','ShowKeys', true]
-  ];
- 
-  for (let i=0; i<set_array.length; i++) {
-	  
-	game.settings.register('blades68', set_array[i][0], {
-		name: game.i18n.localize('BITD.Settings.'+set_array[i][1]+'.Name'),
-		hint: game.i18n.localize('BITD.Settings.'+set_array[i][1]+'.Hint'),
-		config: true,
-		scope: 'world',
-		type: Boolean,
-		default: set_array[i][2],
-		requiresReload: true
-	});
-  }
-	  
-	}
 
 };
 
