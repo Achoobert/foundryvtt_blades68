@@ -3232,6 +3232,13 @@
 
 .bitd-inline-roll {
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.bitd-inline-roll:hover i {
+  display: inline-block;
+  animation: bitd-roll-cell-shake 0.4s ease-in-out;
 }
 
 .bitd-pos-fx-table {
@@ -3239,7 +3246,8 @@
   border-collapse: collapse;
   text-align: center;
 }
-.bitd-pos-fx-table th, .bitd-pos-fx-table td {
+.bitd-pos-fx-table th,
+.bitd-pos-fx-table td {
   padding: 0.2em 0.35em;
 }
 .bitd-pos-fx-table thead th {
@@ -3255,15 +3263,31 @@
   background: rgba(128, 128, 128, 0.08);
 }
 
+@keyframes bitd-roll-cell-shake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-12deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
 .bitd-roll-cell {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
   border: 1px solid #666;
   background: #bbb;
-  color: transparent;
+  color: #EEEFFF;
   cursor: pointer;
-  font-size: 0.65em;
   line-height: 1;
   position: relative;
 }
@@ -3272,14 +3296,15 @@
 }
 .bitd-roll-cell:hover {
   background: #191813;
-  color: #EEEFFF;
-}
-.bitd-roll-cell::before {
-  content: attr(data-roll-label);
-  opacity: 0;
 }
 .bitd-roll-cell:hover::before {
-  opacity: 1;
+  display: inline-block;
+  animation: bitd-roll-cell-shake 0.4s ease-in-out;
+}
+.bitd-roll-cell.bitd-roll-cell-diagonal {
+  outline: 2px solid #EEEFFF;
+  outline-offset: 1px;
+  transition: outline-color 0.15s ease;
 }
 
 #pause {
