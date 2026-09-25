@@ -3218,10 +3218,6 @@
 .add-items-list .item-group header:first-child {
   margin-top: 0;
 }
-.add-items-list input[type=radio],
-.add-items-list input[type=checkbox] {
-  display: none;
-}
 .add-items-list input[type=radio]:checked + label,
 .add-items-list input[type=checkbox]:checked + label {
   font-weight: bold;
@@ -3239,20 +3235,6 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-.add-items-list .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #191813;
-  color: #EEEFFF;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 9999;
-}
-.add-items-list .tooltip:hover .tooltiptext {
-  visibility: visible;
 }
 
 .bitd-inline-roll {

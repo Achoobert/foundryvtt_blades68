@@ -214,8 +214,7 @@ export class BladesSheet extends BaseActorSheet {
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
 
-    // Filter out "Veteran" items and group by class
-    items = items.filter(i => !i.name.includes("Veteran"));
+    // Group by class
     const grouped_items = BladesHelpers.groupItemsByClass(items);
 
     // Build HTML with grouped items
@@ -233,7 +232,7 @@ export class BladesSheet extends BaseActorSheet {
         items_html += `
           <div class="item-block">
             <input id="select-item-${item._id}" type="${input_type}" name="select_items" value="${item._id}">
-            <label for="select-item-${item._id}" title="${escapedDescription}">
+            <label for="select-item-${item._id}" data-tooltip="${escapedDescription}">
               <div class="item-name">${game.i18n.localize(trimmedName)}</div>
               ${descriptionHtml}
             </label>

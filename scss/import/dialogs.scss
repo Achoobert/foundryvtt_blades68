@@ -36,8 +36,6 @@
 
   input[type="radio"],
   input[type="checkbox"] {
-    display: none;
-
     &:checked + label {
       font-weight: bold;
     }
@@ -63,27 +61,6 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-
-  //Tooltip.
-  .tooltip {
-    .tooltiptext {
-      visibility: hidden;
-      width: 200px;
-      background-color: $almost_black;
-      color: $almost_white;
-      text-align: center;
-      padding: 5px;
-      border-radius: 6px;
-
-      // Position
-      position: absolute;
-      z-index: 9999;
-    }
-
-    &:hover .tooltiptext {
-      visibility: visible;
-    }
   }
 }
 
