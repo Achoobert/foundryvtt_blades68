@@ -10,6 +10,7 @@ import {
   applyTokenAutoRotateDefault,
   overrideTokenAutoRotateDefault,
   importExistingImagesOnce,
+  applySheetBackgroundColor,
 } from "./settings.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
@@ -32,6 +33,23 @@ import {
   registerItemSheet,
   unregisterItemSheet,
 } from "./compat.js";
+import { ClockData } from "./data/clock.js";
+import { NPCData } from "./data/npc.js";
+import { FactionData } from "./data/faction.js";
+import { CrewData } from "./data/crew.js";
+import { CharacterData } from "./data/character.js";
+import { AbilityItemData } from "./data/items/ability.js";
+import { ClassItemData } from "./data/items/class.js";
+import { CohortItemData } from "./data/items/cohort.js";
+import { CrewAbilityItemData } from "./data/items/crew_ability.js";
+import { CrewTypeItemData } from "./data/items/crew_type.js";
+import { CrewUpgradeItemData } from "./data/items/crew_upgrade.js";
+import { FactionItemData } from "./data/items/faction.js";
+import { HuntingGroundsItemData } from "./data/items/hunting_grounds.js";
+import { ItemItemData } from "./data/items/item.js";
+import { PrisonItemData } from "./data/items/prison.js";
+import { SimpleItemData } from "./data/items/simple.js";
+import { TroubleItemData } from "./data/items/trouble.js";
 
 window.BladesHelpers = BladesHelpers;
 
@@ -133,8 +151,35 @@ Hooks.once("init", async function () {
   CONFIG.Actor.documentClass = BladesActor;
   CONFIG.ActiveEffect.documentClass = BladesActiveEffect;
 
+  CONFIG.Actor.dataModels = {
+    "🕛 clock": ClockData,
+    npc: NPCData,
+    factions: FactionData,
+    crew: CrewData,
+    character: CharacterData,
+  };
+
+  CONFIG.Item.dataModels = {
+    faction: FactionItemData,
+    item: ItemItemData,
+    class: ClassItemData,
+    ability: AbilityItemData,
+    heritage: SimpleItemData,
+    background: SimpleItemData,
+    vice: SimpleItemData,
+    hunting_grounds: HuntingGroundsItemData,
+    crew_upgrade: CrewUpgradeItemData,
+    cohort: CohortItemData,
+    crew_type: CrewTypeItemData,
+    crew_reputation: SimpleItemData,
+    crew_ability: CrewAbilityItemData,
+    prison: PrisonItemData,
+    trouble: TroubleItemData,
+  };
+
   // Register System Settings
   registerSystemSettings();
+  applySheetBackgroundColor();
 
   if (game.settings.get("blades68", "PublicClocks")) {
     Hooks.on("preCreateActor", (actor, createData, options, userId) => {
@@ -383,7 +428,7 @@ Hooks.once("init", async function () {
         let checked = parseInt(current_value) === i ? "checked" : "";
         html += `
         <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
-        <label class="radio-toggle" for="clock-${i}-${uniq_id}"></label>
+        <label class="radio-toggle" data-action="bid.radioToggle" for="clock-${i}-${uniq_id}"></label>
       `;
       }
 
@@ -478,19 +523,6 @@ Hooks.once("ready", async function () {
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
   await importExistingImagesOnce();
-
-  /**
-  // Determine whether a system migration is required
-  const currentVersion = game.settings.get("bitd", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = 2.15;
-
-  let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
-
-  // Perform the migration
-  if ( needMigration && game.user.isGM ) {
-    migrations.migrateWorld();
-  }
-  **/
 });
 
 /*
@@ -535,29 +567,15 @@ for (const hook of [
 
 // getSceneControlButtons
 Hooks.on("getSceneControlButtons", (controls) => {
-  if (foundry.utils.isNewerVersion(game.version, 13)) {
-    controls.tokens.tools.DiceRoller = {
-      name: "DiceRoller",
-      title: "BITD.DiceRoller",
-      icon: "fas fa-dice",
-      onChange: (event, active) => {
-        simpleRollPopup();
-      },
-      button: true,
-    };
-  }
-});
-
-Hooks.on("renderSceneControls", async (app, html) => {
-  if (foundry.utils.isNewerVersion(13, game.version)) {
-    let dice_roller = $(
-      '<li class="scene-control" data-tooltip="Dice Roll"><i class="fas fa-dice"></i></li>',
-    );
-    dice_roller.click(async function () {
-      await simpleRollPopup();
-    });
-    html.children().first().append(dice_roller);
-  }
+  controls.tokens.tools.DiceRoller = {
+    name: "DiceRoller",
+    title: "BITD.DiceRoller",
+    icon: "fas fa-dice",
+    onChange: (event, active) => {
+      simpleRollPopup();
+    },
+    button: true,
+  };
 });
 
 const PAUSE_IMAGE =

@@ -1,7 +1,6 @@
 & * {
   // Keys / Deadlocks
   .keys-container {
-
     .keys-header {
       display: flex;
       align-items: center;
@@ -50,6 +49,7 @@
       }
 
       .key-drift {
+        color: white;
         font-style: italic;
         font-size: 12px;
         flex-grow: 1;
@@ -62,7 +62,12 @@
 
       .key-marks {
         display: flex;
-        @include toothradio(15px, 25px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+        @include toothradio(
+          15px,
+          25px,
+          "assets/blades68/stresspill_empty.webp",
+          "assets/blades68/stresspill_filled.webp"
+        );
 
         &.is-disabled {
           opacity: 0.45;
@@ -79,16 +84,16 @@
           display: none;
         }
 
-                .boom-icon {
-                  width: 22px;
-                  height: 22px;
-                  background-image: url("assets/blades68/boom_empty.webp");
-                  background-repeat: no-repeat;
-                  background-size: 100% 100%;
+        .boom-icon {
+          width: 22px;
+          height: 22px;
+          background-image: url("assets/blades68/boom_empty.webp");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
         }
 
-                input:checked+.boom-icon {
-                  background-image: url("assets/blades68/boom_checked.webp");
+        input:checked + .boom-icon {
+          background-image: url("assets/blades68/boom_checked.webp");
         }
       }
     }

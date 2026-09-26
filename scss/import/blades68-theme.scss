@@ -16,11 +16,19 @@ $b68-gold: #e8c05b; // --b68-parchment-sheet-tabs
 $b68-border: #795c4a; // --b68-brown-light
 
 & {
-  background-color: $b68-bg;
-  color: $b68-ink;
+  color: white;
 
-  .window-content {
+  // Every sheet type keeps its normal (world-setting-configurable) sheet
+  // background regardless of Blades68Mode -- the parchment look only kicks
+  // in when Foundry's own color scheme is set to light ("theme-light",
+  // applied by core to the ApplicationV2 window element).
+  &.theme-light {
     background-color: $b68-bg;
+    color: $b68-ink;
+
+    .window-content {
+      background-color: $b68-bg;
+    }
   }
 
   .black-label,
@@ -39,7 +47,7 @@ $b68-border: #795c4a; // --b68-brown-light
 
   a.item-add-popup,
   .rollable-text {
-    color: $b68-gold;
+    color: white;
     text-shadow: 1px 1px 1px black;
   }
   .rollable-text:hover {

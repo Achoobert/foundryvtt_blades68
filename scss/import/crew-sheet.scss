@@ -156,6 +156,21 @@ section.tab-content.folder-tab-content {
   padding: 10px;
 }
 
+// Parchment-backed tab panel: force dark, legible text regardless of
+// Foundry's light/dark theme (its dark theme default text color is too
+// light against this light background).
+.crew-dossier {
+  color: $almost_black;
+
+  p,
+  span,
+  label,
+  .item-name,
+  .item-description {
+    color: $almost_black;
+  }
+}
+
 // Crew Coins
 .crew-coins {
   @include coin_stacks;
@@ -449,8 +464,8 @@ section.tab-content.folder-tab-content {
     align-items: center;
     cursor: pointer;
     margin-bottom: 0px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .item-control {

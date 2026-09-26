@@ -54,9 +54,7 @@ export const registerSystemSettings = function() {
 		default: 0
 	});
 
-  if (foundry.utils.isNewerVersion(game.version, 12)) {
-
-    game.settings.register('blades68', 'ActionRoll', {
+  game.settings.register('blades68', 'ActionRoll', {
 	name: game.i18n.localize('BITD.Settings.Action.Name'),
 	hint: game.i18n.localize('BITD.Settings.Action.Hint'),
 	config: true,
@@ -140,6 +138,26 @@ export const registerSystemSettings = function() {
 	requiresReload: true
   });
 
+  	game.settings.register('blades68', 'SheetBackgroundColor', {
+		name: game.i18n.localize('BITD.Settings.SheetBackgroundColor.Name'),
+		hint: game.i18n.localize('BITD.Settings.SheetBackgroundColor.Hint'),
+		config: true,
+		scope: 'world',
+		type: new foundry.data.fields.ColorField({ initial: '#382c93' }),
+		onChange: applySheetBackgroundColor
+	  });
+
+  	game.settings.register('blades68', 'SheetBackgroundOpacity', {
+		name: game.i18n.localize('BITD.Settings.SheetBackgroundOpacity.Name'),
+		hint: game.i18n.localize('BITD.Settings.SheetBackgroundOpacity.Hint'),
+		config: true,
+		scope: 'world',
+		type: Number,
+		range: { min: 0, max: 1, step: 0.05 },
+		default: 0.9,
+		onChange: applySheetBackgroundColor
+	  });
+
   	game.settings.register('blades68', 'PipIconStyle', {
 	name: game.i18n.localize('BITD.Settings.PipIconStyle.Name'),
 	hint: game.i18n.localize('BITD.Settings.PipIconStyle.Hint'),
@@ -152,43 +170,28 @@ export const registerSystemSettings = function() {
 	},
 	default: 'pill',
 	onChange: () => {
-		for (const app of Object.values(ui.windows)) {
-			if (app.element?.hasClass?.('blades68')) app.render(false);
+		for (const app of Object.values(ui.windows).concat(Array.from(foundry.applications.instances?.values?.() ?? []))) {
+			const el = app.element;
+			const hasBlades68Class = el?.classList?.contains?.('blades68') ?? el?.hasClass?.('blades68');
+			if (hasBlades68Class) app.render(false);
 		}
 	}
   });
 
-  } //end if for game.version >12
-  else {
-	  
-  const set_array = [
-    ['ActionRoll','Action', true],
-    ['ThreatRoll','Threat', false],
-    ['PushYourself','Push', false],
-    ['DeepCutLoad','Load', false],
-    ['ClockXP','ClockXP', false],
-    ['Edge','Edge', false],
-    ['PublicClocks','PublicClocks', false],
-    ['Blades68Mode','Blades68', true],
-    ['ShowKeys','ShowKeys', true]
-  ];
- 
-  for (let i=0; i<set_array.length; i++) {
-	  
-	game.settings.register('blades68', set_array[i][0], {
-		name: game.i18n.localize('BITD.Settings.'+set_array[i][1]+'.Name'),
-		hint: game.i18n.localize('BITD.Settings.'+set_array[i][1]+'.Hint'),
-		config: true,
-		scope: 'world',
-		type: Boolean,
-		default: set_array[i][2],
-		requiresReload: true
-	});
-  }
-	  
-	}
-
 };
+
+/**
+ * Push the world's chosen sheet background color (a GM setting, default
+ * matches the Blades '68 reference build's indigo) onto a CSS custom
+ * property so `.blades68 .window-content` can use it without a reload --
+ * only the "blades68-theme" world setting's parchment look overrides it.
+ */
+export function applySheetBackgroundColor() {
+	const hex = game.settings.get('blades68', 'SheetBackgroundColor') || '#382c93';
+	const opacity = game.settings.get('blades68', 'SheetBackgroundOpacity') ?? 0.9;
+	const rgba = foundry.utils.Color.from(hex).toRGBA(opacity);
+	document.documentElement.style.setProperty('--blades68-sheet-bg', rgba);
+}
 
 /**
  * Foundry registers core.tokenAutoRotate with initial:true during Game#initialize,

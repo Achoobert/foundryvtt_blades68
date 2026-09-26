@@ -1,0 +1,263 @@
+_id: 7d5dH7eoKHC8bnbC
+name: 'Dagger Isles - Given Name (Woman)'
+img: icons/svg/d20-grey.svg
+description: 'Feminine given names from Dagger Isles, for use in NPC/token/actor namer macros.'
+results:
+  - _id: FDMTHDzajCA2pEeP
+    type: text
+    text: 'Lynthia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: 1pOhz3LPdAnefP4m
+    type: text
+    text: 'Odrienne'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: jNtT4oQgWuvZBhvy
+    type: text
+    text: 'Daphnia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: vwU725ASnGrpExqA
+    type: text
+    text: 'Una'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: nhAm54I5YBantfOf
+    type: text
+    text: 'Carissa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: jAjFRF8AhRUrbgh3
+    type: text
+    text: 'Tesslyn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: Y5fXOzRSKYCVJcwj
+    type: text
+    text: 'Sesereth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: YpRyzOeBGU0GyzZ7
+    type: text
+    text: 'Sethla'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: HYedHt7yIvBKc9df
+    type: text
+    text: 'Ring'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: oJOkWnmo6MjcK8DN
+    type: text
+    text: 'Lorette'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: sjN1fmSqJgEujKwo
+    type: text
+    text: 'Cyrene'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: S8xeAosqMq8rxKM4
+    type: text
+    text: 'Thena'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: ztNpDW0zfzyfc8H7
+    type: text
+    text: 'Veretta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: tIbS7qNvs2y53iMA
+    type: text
+    text: 'Quess'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: 6NQKatLqsmxHySUt
+    type: text
+    text: 'Myre'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: LbriPwq8jGTIwK3p
+    type: text
+    text: 'Brena'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: Y8nfrUXqvLSixZy0
+    type: text
+    text: 'Lenia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: hPDB3mlji4CrcwMx
+    type: text
+    text: 'Vestine'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: IcHQBRxuxQocSGOq
+    type: text
+    text: 'Emeline'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: 89Z2ECrwk1Mbywfw
+    type: text
+    text: 'Volette'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: 0yvfFsRqpfrQ1TbJ
+    type: text
+    text: 'Mara'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: iZ1OKjGSjGjuC86z
+    type: text
+    text: 'Lucella'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: P3s7ttwGNmtsylRf
+    type: text
+    text: 'Lauria'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: BNcGs3YRuYRvJ8Wv
+    type: text
+    text: 'Talitha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: XF5qDboQxJJbDOFR
+    type: text
+    text: 'Polonia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: KhE7n7WGQEEMEwah
+    type: text
+    text: 'Ashlyn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: OBFwh6RCzJ5dEis2
+    type: text
+    text: 'Remira'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: zklQL9heBfJ8VShR
+    type: text
+    text: 'Naria'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: GRrqrxTWaUWfRBQu
+    type: text
+    text: 'Syra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: ThD3OyM6cQRcrTv7
+    type: text
+    text: 'Casslyn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: lQISbZjc5XVY1Spu
+    type: text
+    text: 'Arlyn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: la6wkyJ5YPnpjQSY
+    type: text
+    text: 'Zamira'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: IDPUG4AL3y3gd10t
+    type: text
+    text: 'Lizete'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: 75GqCocKZKagXpvL
+    type: text
+    text: 'Candra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: OHb0hn55cyMJteNZ
+    type: text
+    text: 'Corille'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: weEDlnM0Sltgr6CY
+    type: text
+    text: 'Sybil'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

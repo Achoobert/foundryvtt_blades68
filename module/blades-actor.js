@@ -121,7 +121,7 @@ export class BladesActor extends Actor {
             <input type="hidden" id="fx" name="fx" value="standard">
             <input type="hidden" id="rollSelection" name="rollSelection" value="actionRoll">
         <fieldset class="form-group" style="display:grid; gap:0.5em;">
-          <legend>Roll Types</legend>`;
+          <legend>Downtime Actions</legend>`;
       if (game.settings.get("blades68", "ThreatRoll")) {
         content += `
           <div style="display:grid; grid-template-columns:auto auto auto auto; gap:0.5em 1em; align-items:center;">
@@ -138,9 +138,9 @@ export class BladesActor extends Actor {
       }
       content += `
           <div style="display:grid; grid-template-columns:auto auto auto auto; column-gap:0.5em; row-gap:0.4em; align-items:center;">
-            <button type="button" class="bitd-inline-roll" data-roll-for="gatherInfo">${game.i18n.localize("BITD.GatherInformation")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="gatherInfo"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.GatherInformation")}</button>
             <span style="grid-column:2 / 5;"></span>
-            <button type="button" class="bitd-inline-roll" data-roll-for="acquireAsset">${game.i18n.localize("BITD.AcquireAsset")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="acquireAsset"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.AcquireAsset")}</button>
             <label style="margin:0; justify-self:end; white-space:nowrap;">${game.i18n.localize("BITD.CrewTier")}:</label>
             <select id="tier" name="tier" style="width:auto; min-width:4.5em; justify-self:start;"><option value="${current_tier}" selected disabled hidden>${current_tier}</option>${Array(
               5,
@@ -149,7 +149,7 @@ export class BladesActor extends Actor {
               .map((item, i) => `<option value="${i}">${i}</option>`)
               .join("")}</select>
             <span></span>
-            <button type="button" class="bitd-inline-roll" data-roll-for="reduceHeat">${game.i18n.localize("BITD.ReduceHeat")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="reduceHeat"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.ReduceHeat")}</button>
           </div>
         </fieldset>
         ${actionRollEnabled ? this._buildPositionEffectTable(rollOptionsHtml) : rollOptionsHtml}
@@ -385,11 +385,11 @@ export class BladesActor extends Actor {
       .join("");
 
     const bodyRows = positions
-      .map(([posValue, posKey]) => {
+      .map(([posValue, posKey], posIdx) => {
         const cells = effects
-          .map(([fxValue, fxKey]) => {
+          .map(([fxValue, fxKey], fxIdx) => {
             const isDefault = posValue === "risky" && fxValue === "standard";
-            return `<td><button type="button" class=" ui-control plain icon fa-solid fa-dice bitd-roll-cell${isDefault ? " is-default" : ""}" data-position="${posValue}" data-effect="${fxValue}" data-roll-label="${rollLabel}" title="${rollLabel} — ${game.i18n.localize(posKey)} / ${game.i18n.localize(fxKey)}"></button></td>`;
+            return `<td><button type="button" class=" ui-control plain icon fa-solid fa-dice bitd-roll-cell${isDefault ? " is-default" : ""}" data-position="${posValue}" data-effect="${fxValue}" data-pos-index="${posIdx}" data-fx-index="${fxIdx}" data-roll-label="${rollLabel}" title="${rollLabel} — ${game.i18n.localize(posKey)} / ${game.i18n.localize(fxKey)}"></button></td>`;
           })
           .join("");
         return `<tr><th>${game.i18n.localize(posKey)}</th>${cells}</tr>`;
@@ -423,12 +423,36 @@ export class BladesActor extends Actor {
     const fxInput = form.querySelector("#fx");
     const rollSelectionInput = form.querySelector("#rollSelection");
 
-    form.querySelectorAll(".bitd-roll-cell").forEach((cell) => {
+    const rollCells = Array.from(form.querySelectorAll(".bitd-roll-cell"));
+
+    rollCells.forEach((cell) => {
       cell.addEventListener("click", () => {
         if (posInput) posInput.value = cell.dataset.position;
         if (fxInput) fxInput.value = cell.dataset.effect;
         if (rollSelectionInput) rollSelectionInput.value = "actionRoll";
         submit();
+      });
+    });
+
+    // Highlight the diagonal of cells that trade position for effect the
+    // same way (e.g. Controlled/Zero, Risky/Limited, Desperate/Standard).
+    rollCells.forEach((cell) => {
+      const diagonal =
+        Number(cell.dataset.fxIndex) - Number(cell.dataset.posIndex);
+      cell.addEventListener("mouseenter", () => {
+        rollCells.forEach((other) => {
+          if (other === cell) return;
+          const otherDiagonal =
+            Number(other.dataset.fxIndex) - Number(other.dataset.posIndex);
+          if (otherDiagonal === diagonal) {
+            other.classList.add("bitd-roll-cell-diagonal");
+          }
+        });
+      });
+      cell.addEventListener("mouseleave", () => {
+        rollCells.forEach((other) =>
+          other.classList.remove("bitd-roll-cell-diagonal"),
+        );
       });
     });
 
