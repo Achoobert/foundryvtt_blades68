@@ -1,0 +1,263 @@
+_id: kJ6BeQz4pQ4zmY0J
+name: 'Methods'
+img: icons/svg/d20-grey.svg
+description: 'NPC preferred methods for quick NPC generation.'
+results:
+  - _id: tYHz0alqiDqWwUuw
+    type: text
+    text: 'Violence'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: zPIVEciulmj4N58A
+    type: text
+    text: 'Threats'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: 1lwA5W570nM9dzuk
+    type: text
+    text: 'Negotiation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: uoUzQATiXjphPizO
+    type: text
+    text: 'Study'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: DLjEo1VuE3hYZrUC
+    type: text
+    text: 'Manipulation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 304Gv92hyp66qRMQ
+    type: text
+    text: 'Strategy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: O2mYVw6zsCAL14oR
+    type: text
+    text: 'Violence'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: Fytt75yRELXp5Ze0
+    type: text
+    text: 'Threats'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: fhTnOwJjRh0ONTKO
+    type: text
+    text: 'Negotiation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: NGU0yRXY1y0NKeQn
+    type: text
+    text: 'Study'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: CHsQ3JWteOEenjCE
+    type: text
+    text: 'Manipulation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: 5cKCHL8spuo4SBDI
+    type: text
+    text: 'Strategy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: upLxaFPFA5sDGApK
+    type: text
+    text: 'Theft'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: fxfifqbmpvgJI2xh
+    type: text
+    text: 'Arcane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: I8z84dAWB5sVx6ZV
+    type: text
+    text: 'Commerce'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: d87KpVhBD55rPtSP
+    type: text
+    text: 'Hard work'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: 856Jgo5gPFHtloMN
+    type: text
+    text: 'Law'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: jCY5kPRhjk4MDls2
+    type: text
+    text: 'Sabotage'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: txEclrU41URn0C6e
+    type: text
+    text: 'Theft'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: YHeprr3aMaiBYpXa
+    type: text
+    text: 'Arcane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: DwrY7yzT22Kziwvp
+    type: text
+    text: 'Commerce'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: 4jhwXifQGZ6UsAWC
+    type: text
+    text: 'Hard work'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: hWFl15dkiN0ODcfa
+    type: text
+    text: 'Law'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: XsGu86XYMbkeB8He
+    type: text
+    text: 'Sabotage'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: w45iLQY2Hbnvc9gr
+    type: text
+    text: 'Subterfuge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: vwImGOwr306lay6J
+    type: text
+    text: 'Alchemy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: TwSUrV28yn2sxf5n
+    type: text
+    text: 'Blackmail'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: hlXtTdGDAV8fhcC6
+    type: text
+    text: 'Teamwork'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: yUpAk81WdUep6GeE
+    type: text
+    text: 'Espionage'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: aIiitDQOyrmwo0JR
+    type: text
+    text: 'Chaos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: tnyuP7nSrYElDdXc
+    type: text
+    text: 'Subterfuge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: JjacYJq79D5GMabe
+    type: text
+    text: 'Alchemy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: pQoZJiRPzyq6muVI
+    type: text
+    text: 'Blackmail'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: vIYcLVqF1fxDXipS
+    type: text
+    text: 'Teamwork'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: hCeSuqetoile2tUc
+    type: text
+    text: 'Espionage'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: h7gYvMB5KmX3jBrs
+    type: text
+    text: 'Chaos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

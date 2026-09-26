@@ -1,5 +1,4 @@
-<form class="{{cssClass}} actor-sheet" autocomplete="off">
-  <section class="npc-sheet flex-vertical">
+<div class="{{cssClass}} npc-sheet flex-vertical" data-application-part="body">
     <section class="npc-header flex-horizontal">
       <img
         class="npc-portrait"
@@ -52,7 +51,7 @@
           >{{localize 'BITD.Full'}} {{localize 'BITD.Description'}}:</label
         >
         <textarea
-          rows="2"
+          rows="6"
           id="character-{{_id}}-description"
           name="system.description"
         >
@@ -84,9 +83,8 @@
         <label class="text-line" for="character-{{_id}}-notes"
           >{{localize 'BITD.Notes'}}:</label
         >
-        <textarea rows="2" id="character-{{_id}}-notes" name="system.notes">
+        <textarea rows="6" id="character-{{_id}}-notes" name="system.notes">
 {{system.notes}}</textarea>
       </div>
     </section>
-  </section>
-</form>
+</div>

@@ -1,10 +1,8 @@
 // ITEM
 .item {
-
   justify-content: space-between;
 
   .item-body {
-
     margin-bottom: 10px;
     * {
       margin-right: 10px;
@@ -24,7 +22,7 @@
   }
   .item-body,
   .item-class-label {
-    width: 100px;
+    width: auto;
   }
 }
 
@@ -40,6 +38,19 @@
   background-color: $almost_black;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+  max-width: 250px;
+}
+
+// Item sheet header: name + short fields sit beside the portrait, matching
+// the NPC sheet layout. The long-text description stays out of the header,
+// directly underneath it in the sheet body.
+.sheet-header {
+  .header-fields {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 }
 
 // Cohort item sheet: keep the narrow Cohort Type / Gang Type rows flowing
@@ -70,6 +81,19 @@
       display: inline-block;
       width: auto;
       padding: 2px 6px;
+    }
+  }
+}
+
+#cohort-harm {
+  #harm-list {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    justify-content: flex-start;
+
+    label {
+      margin-right: 4px;
     }
   }
 }

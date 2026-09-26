@@ -1,0 +1,48 @@
+_id: 8Zjz22pQRaIzVbbN
+name: 'Actor Namer: Female Akoros'
+type: script
+scope: global
+img: icons/commodities/tech/electronics-button-skull-red.webp
+command: |-
+  async function drawFullName() {
+    const givenTable = await fromUuid("Compendium.blades68.shattered-isles-names.RollTable.T6U4gJAq1u8wIWWc");
+    const familyTable = await fromUuid("Compendium.blades68.shattered-isles-names.RollTable.kTB3iNfhMu9pVk6F");
+    if (!givenTable || !familyTable) {
+      ui.notifications.error("Compendium table not found!");
+      return null;
+    }
+    const givenResult = await givenTable.draw({ displayChat: false });
+    const familyResult = await familyTable.draw({ displayChat: false });
+    const given = givenResult.results[0]?.description;
+    const family = familyResult.results[0]?.description;
+    if (!given) return null;
+    return family ? `${given} ${family}` : given;
+  }
+
+  async function main() {
+    const tokens = canvas.tokens.controlled;
+    if (!tokens.length) {
+      ui.notifications.warn("No tokens were selected");
+      return;
+    }
+    const tokenUpdates = [];
+    const actorUpdates = [];
+    for (const token of tokens) {
+      const name = await drawFullName();
+      if (!name) continue;
+      tokenUpdates.push({ _id: token.id, name });
+      if (true && token.actor) {
+        actorUpdates.push({ _id: token.actor.id, name, prototypeToken: { name } });
+      }
+    }
+    if (actorUpdates.length) {
+      await Actor.implementation.updateDocuments(actorUpdates);
+    }
+    if (tokenUpdates.length) {
+      await canvas.scene.updateEmbeddedDocuments("Token", tokenUpdates);
+    }
+    ui.notifications.info(`Named ${tokenUpdates.length} actor(s).`);
+  }
+
+  main();
+flags: {}

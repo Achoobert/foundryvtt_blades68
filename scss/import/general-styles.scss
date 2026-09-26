@@ -1,25 +1,70 @@
 textarea {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.debug-toggle{
+// Sheet background color. Overrides core's --color-cool-5-90 default with
+// the Blades '68 indigo; GM-configurable via the "SheetBackgroundColor"
+// world setting (see module/settings.js#applySheetBackgroundColor), which
+// sets --blades68-sheet-bg on :root. The "blades68-theme" parchment look
+// (scss/import/blades68-theme.scss) takes precedence over this when active,
+// since it's scoped under the higher-specificity .blades68.blades68-theme.
+.window-content {
+  background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  overflow-y: auto;
+}
+
+&.sheet.item .window-content {
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+// Generic "label sits above its control, control is full width" pattern
+// used by long-text fields (description/notes) across sheets. Any
+// <label class="text-line"> followed by an <input>/<textarea>, each
+// wrapped in its own <div>, gets this layout regardless of which sheet
+// it appears on.
+.text-line {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+label.text-line + input,
+label.text-line + textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.debug-toggle {
   opacity: 0.1;
 
-  &.on{
+  &.on {
     opacity: 0.75;
   }
 }
 
 .rollable-text {
   transition: color $transition-period;
-@media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }
 .rollable-text:hover {
   cursor: pointer;
   color: $red;
+}
+
+// Emitted at root so it isn't nested under `.blades-in-the-dark`.
+@at-root .dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+  line-height: 10px;
+  vertical-align: super;
 }
 
 section {
@@ -45,7 +90,7 @@ section {
 
   &.experience {
     margin-bottom: 0px;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -60,9 +105,9 @@ section {
   flex-direction: column;
 }
 
-.tab[data-tab]{
+.tab[data-tab] {
   display: none;
-  &.active{
+  &.active {
     display: block;
   }
 }
@@ -87,7 +132,6 @@ section {
   text-transform: capitalize;
   font-family: Kirsty, serif;
 }
-
 
 .label-stripe {
   text-transform: uppercase;
@@ -117,13 +161,51 @@ section {
   min-height: 150px;
 }
 
-.description {
+prose-mirror {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+
+// NPC sheet layout (templates/npc-sheet.html): portrait beside a stack of
+// short fields in the header, then a stack of label-above-textbox fields
+// below. None of these classes had any rules before, so every field
+// collapsed to browser-default sizing (label + tiny inline textarea).
+.npc-header {
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  img.npc-portrait {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+}
+
+.npc-header-lines,
+.npc-lines {
+  > div {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cohort-description,
+.gang-description {
   font-style: italic;
 }
 
 i {
   &.nullifier {
-    @include changeable($transition-period, $hover-brightness, $hover-opacity, $red);
+    @include changeable(
+      $transition-period,
+      $hover-brightness,
+      $hover-opacity,
+      $red
+    );
   }
 }
 
@@ -135,7 +217,8 @@ i {
     box-shadow: none;
     border: none;
     cursor: pointer;
-    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right;
+    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+      no-repeat right;
     padding: 0 20px 0 0;
     margin: 0.1em -6px 0 0;
     background-color: $almost_black;
@@ -147,7 +230,7 @@ i {
     text-align: right;
 
     option {
-      color: white;
+      color: black;
     }
   }
 
@@ -156,7 +239,9 @@ i {
   }
 }
 
-.abilities, .loadout, .faction-items {
+.abilities,
+.loadout,
+.faction-items {
   .item-name {
     width: 100px;
     margin-left: 10px;
