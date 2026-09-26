@@ -3543,6 +3543,10 @@
     animation-duration: 24s;
   }
 }
+.application .window-content {
+  overflow-y: auto;
+}
+
 @keyframes bitd-stress-vibrate {
   0%, 100% {
     transform: translate(0, 0);
@@ -3560,3 +3564,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */
