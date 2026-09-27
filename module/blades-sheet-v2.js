@@ -55,7 +55,6 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     const input_type = (typeof distinct !== "undefined") ? "radio" : "checkbox";
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
-    items = items.filter(i => !i.name.includes("Veteran"));
     const grouped_items = BladesHelpers.groupItemsByClass(items);
 
     let items_html = '<div class="items-list">';
@@ -67,7 +66,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
         items_html += `
           <div class="item-block">
             <input id="select-item-${item._id}" type="${input_type}" name="select_items" value="${item._id}">
-            <label for="select-item-${item._id}" title="${description}">
+            <label for="select-item-${item._id}" data-tooltip="${foundry.utils.escapeHTML(description)}">
               ${game.i18n.localize(trimmedName)}
             </label>
           </div>`;

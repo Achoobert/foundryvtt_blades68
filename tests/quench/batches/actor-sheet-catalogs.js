@@ -257,7 +257,7 @@ export default function register(quench) {
           // is on; toggle it for the duration of this test rather than assuming the world
           // already has it set, and restore whatever the world had configured.
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', true);
+          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
 
           const actor = tracker.track(await Actor.create({ name: 'Quench Add Key PC', type: 'character' }));
           const sheet = actor.sheet;
@@ -303,7 +303,7 @@ export default function register(quench) {
           // The Keys/Deadlocks block only renders when Blades68Mode is on; toggle it for
           // the duration of this test and restore whatever the world had configured.
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', true);
+          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
 
           const actor = tracker.track(await Actor.create({ name: 'Quench Keys PC', type: 'character' }));
           const keysList = foundry.utils.deepClone(actor.system.keys.list);
@@ -330,7 +330,7 @@ export default function register(quench) {
           requireSystemActive();
 
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', true);
+          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
 
           const actor = tracker.track(await Actor.create({ name: 'Quench Deadlock Catalog PC', type: 'character' }));
           const keysList = foundry.utils.deepClone(actor.getComputedKeys());

@@ -122,9 +122,14 @@ export const registerSystemSettings = function() {
 	name: game.i18n.localize('BITD.Settings.Blades68.Name'),
 	hint: game.i18n.localize('BITD.Settings.Blades68.Hint'),
 	config: true,
-			 default: true,
 	scope: 'world',
-	type: new foundry.data.fields.BooleanField(),
+	type: String,
+	choices: {
+		bitd: game.i18n.localize('BITD.Settings.Blades68.BladesInTheDark'),
+		blades68: game.i18n.localize('BITD.Settings.Blades68.Blades68'),
+		imported: game.i18n.localize('BITD.Settings.Blades68.ImportedOnly')
+	},
+	default: 'blades68',
 	requiresReload: true
   });
 
