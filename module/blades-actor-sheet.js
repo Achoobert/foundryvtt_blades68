@@ -163,7 +163,7 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     let blades68Mode = false;
     let showKeys = false;
-    try { blades68Mode = Boolean(game.settings.get("blades68", "Blades68Mode")); } catch (err) { /* not registered yet */ }
+    try { blades68Mode = game.settings.get("blades68", "Blades68Mode") === "blades68"; } catch (err) { /* not registered yet */ }
     try { showKeys = Boolean(game.settings.get("blades68", "ShowKeys")); } catch (err) { /* not registered yet */ }
 
     // Shallow-spread the *live* system DataModel (not .toObject(), which would

@@ -48,9 +48,11 @@ export default function register(quench) {
           assert.deepEqual(commanding.deadlockedKeys, ['deferential', 'controlling']);
         });
 
-        it('registers Blades68Mode as a boolean world setting, default off', function () {
+        it('registers Blades68Mode as a string world setting with bitd/blades68/imported choices, default blades68', function () {
           requireSystemActive();
-          assert.isBoolean(game.settings.get('blades68', 'Blades68Mode'));
+          const value = game.settings.get('blades68', 'Blades68Mode');
+          assert.isString(value);
+          assert.include(['bitd', 'blades68', 'imported'], value);
         });
 
         it('disables Foundry automatic token rotation by default', function () {

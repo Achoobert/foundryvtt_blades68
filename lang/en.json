@@ -642,8 +642,11 @@
       "Hint": "Number of Gambit boxes on crew sheets."
     },
     "Blades68": {
-      "Name": "Blades '68 Mode",
-      "Hint": "Bright clocks and the Blades '68 color theme. Keys & Deadlocks and pip icon style have their own settings below."
+      "Name": "Rules & Compendium Source",
+      "Hint": "Which ruleset's terminology, color theme, and compendium content populate class/faction/item pickers. Items already imported into the world always appear regardless of this setting. Keys & Deadlocks and pip icon style have their own settings below.",
+      "BladesInTheDark": "Blades in the Dark",
+      "Blades68": "Blades '68",
+      "ImportedOnly": "Imported only"
     },
     "ShowKeys": {
       "Name": "Show Keys & Deadlocks",

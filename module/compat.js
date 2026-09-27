@@ -47,7 +47,7 @@ export function generateRandomId() {
 export function applyBladesThemeClasses(element) {
   if (!element) return;
   try {
-    element.classList.toggle("blades68-theme", Boolean(game.settings.get("blades68", "Blades68Mode")));
+    element.classList.toggle("blades68-theme", game.settings.get("blades68", "Blades68Mode") === "blades68");
   } catch (err) { /* not registered yet */ }
   try {
     element.classList.toggle("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
