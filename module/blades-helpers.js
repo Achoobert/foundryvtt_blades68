@@ -105,6 +105,7 @@ export class BladesHelpers {
       vice: "blades68_vices",
       heritage: "blades68_heritages",
       background: "blades68_backgrounds",
+      faction: "blades68_factions",
     }[item_type];
   }
 
@@ -125,18 +126,22 @@ export class BladesHelpers {
     }
 
     if (item_type != "crew") {
-      // In Blades68Mode, pull from the Blades '68 compendium instead of the vanilla Blades in
-      // the Dark one (some playbook names collide between the two rulesets, e.g. "Hound", so
-      // this must replace rather than merge with the base pack).
-      const blades68PackName = this.getBlades68PackName(item_type);
-      const useBlades68Pack = blades68PackName && (
-        item_type === "trouble" || game.settings.get("blades68", "Blades68Mode")
-      );
-      const packName = useBlades68Pack ? blades68PackName : item_type;
-      let packs = game.packs.filter(e => e.metadata.name === packName);
-      let compendium_contents = await Promise.all(packs.map(pack => pack.getDocuments()));
-      for (const compendium_content of compendium_contents) {
-        compendium_items = compendium_items.concat(compendium_content)
+      // Which compendium pack to pull from depends on the Blades68Mode source filter: it
+      // swaps the pack instead of merging both, since some playbook names collide between
+      // the two rulesets (e.g. "Hound"). "imported" mode skips compendium packs entirely,
+      // showing only world items so users can hand-build their own catalog.
+      const sourceMode = game.settings.get("blades68", "Blades68Mode");
+      if (sourceMode !== "imported") {
+        const blades68PackName = this.getBlades68PackName(item_type);
+        const useBlades68Pack = blades68PackName && (
+          item_type === "trouble" || sourceMode === "blades68"
+        );
+        const packName = useBlades68Pack ? blades68PackName : item_type;
+        let packs = game.packs.filter(e => e.metadata.name === packName);
+        let compendium_contents = await Promise.all(packs.map(pack => pack.getDocuments()));
+        for (const compendium_content of compendium_contents) {
+          compendium_items = compendium_items.concat(compendium_content)
+        }
       }
       list_of_items = world_items.concat(compendium_items);
     } else {
@@ -244,7 +249,7 @@ export class BladesHelpers {
     const size = String(type);
     const tick = String(value ?? 0);
     const themeColor = color || "black";
-    const blades68 = game.settings.get("blades68", "Blades68Mode");
+    const blades68 = game.settings.get("blades68", "Blades68Mode") === "blades68";
     if (blades68) {
       const webpColor = BladesHelpers._clockwebpColor(themeColor, size);
       if (webpColor) {

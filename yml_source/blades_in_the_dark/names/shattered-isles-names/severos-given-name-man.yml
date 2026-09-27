@@ -1,0 +1,263 @@
+_id: RDOmnrqHVCXYand3
+name: 'Severos - Given Name (Man)'
+img: icons/svg/d20-grey.svg
+description: 'Masculine given names from Severos, for use in NPC/token/actor namer macros.'
+results:
+  - _id: 8YZ4i20YuFg5laYr
+    type: text
+    text: 'Bekzhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: Y8ci36BytG8KtEFx
+    type: text
+    text: 'Jelmar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: cDz5qjuWFvWPMp1m
+    type: text
+    text: 'Hojan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: tgjV3oeIjLHgufph
+    type: text
+    text: 'Honan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: emvWLZOvSQ6501MV
+    type: text
+    text: 'Chidukhul'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: kz1eG3zBhpRsaHr1
+    type: text
+    text: 'Wakar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: fqKmgT2coqMN6ItH
+    type: text
+    text: 'Dash'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: pY6l0xJzZ11OfZhI
+    type: text
+    text: 'Kokar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: JMOh0GRrpR22PuVg
+    type: text
+    text: 'Kusinil'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: cCpt61361VtTaV1c
+    type: text
+    text: 'Timor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: Ms271UKssXVhKchd
+    type: text
+    text: 'Apash'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: GUQmjpo6CYIvpywN
+    type: text
+    text: 'Hahket'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: CmZNv70OZPQBz3Pg
+    type: text
+    text: 'Satar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: r4urSC8QnD9c1HA0
+    type: text
+    text: 'Tolus'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: bzrbqkK7fuXgIgBb
+    type: text
+    text: 'Kesag'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: UpAVgykmq5mOJwnB
+    type: text
+    text: 'Khazra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: KuAqoryEP4glRgeU
+    type: text
+    text: 'Jetei'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: l4YbEfJdSPU1EivJ
+    type: text
+    text: 'Chimbar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: d3nGnnAXMuBY4To2
+    type: text
+    text: 'Leyatim'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: hL5ZterEHTKIusqU
+    type: text
+    text: 'Arik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: PQMJnYiFVGZO4oiF
+    type: text
+    text: 'Ershom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: WpG62VHbMPMhCjlx
+    type: text
+    text: 'Kelom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: vkvVzpOzBft58No2
+    type: text
+    text: 'Ashkil'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: BVbvGnxnEqaW4Fm5
+    type: text
+    text: 'Atohi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: dLZJW4MiXS59PArt
+    type: text
+    text: 'Sahkontar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: J3Iw3KwIvVb7O6Ak
+    type: text
+    text: 'Tangak'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: rkaNTIYsJflXg9Rs
+    type: text
+    text: 'Mekdan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: OAtiY7nXSPca5bzw
+    type: text
+    text: 'Shiluguh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: VA13ZiF1ugY5K5G1
+    type: text
+    text: 'Arkotah'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: grNH587srmzoT5Ed
+    type: text
+    text: 'Minco'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: R7skAUcZ4kk21OxR
+    type: text
+    text: 'Hemenel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: aIAtnF5x1z46xy8x
+    type: text
+    text: 'Daniar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: wbqof5wcGfRzu7BX
+    type: text
+    text: 'Sukko'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: FvDgpiv8Ozt5gZUD
+    type: text
+    text: 'Khenbish'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: az5T0JdlUN5shCtD
+    type: text
+    text: 'Assyl'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: BeyZ9wXXUgoNiTOl
+    type: text
+    text: 'Matoskah'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

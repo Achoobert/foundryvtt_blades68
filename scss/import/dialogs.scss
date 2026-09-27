@@ -36,8 +36,6 @@
 
   input[type="radio"],
   input[type="checkbox"] {
-    display: none;
-
     &:checked + label {
       font-weight: bold;
     }
@@ -64,28 +62,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
- //Tooltip.
-  .tooltip {
-
-    .tooltiptext {
-      visibility: hidden;
-      width: 200px;
-      background-color: $almost_black;
-      color: $almost_white;
-      text-align: center;
-      padding: 5px;
-      border-radius: 6px;
-
-      // Position
-      position: absolute;
-      z-index: 9999;
-    }
-
-    &:hover .tooltiptext {
-      visibility: visible;
-    }
-  }
 }
 
 // Roll dialog (see BladesActor#rollAttributePopup).
@@ -94,6 +70,14 @@
 // target the content classes directly rather than scoping under the form.
 .bitd-inline-roll {
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+
+  &:hover i {
+    display: inline-block;
+    animation: bitd-roll-cell-shake 0.4s ease-in-out;
+  }
 }
 
 .bitd-pos-fx-table {
@@ -101,7 +85,8 @@
   border-collapse: collapse;
   text-align: center;
 
-  th, td {
+  th,
+  td {
     padding: 0.2em 0.35em;
   }
 
@@ -121,15 +106,33 @@
   }
 }
 
+@keyframes bitd-roll-cell-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-12deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
+
 .bitd-roll-cell {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
   border: 1px solid $darkgray;
   background: $lightgray;
-  color: transparent;
+  color: $almost_white;
   cursor: pointer;
-  font-size: 0.65em;
   line-height: 1;
   position: relative;
 
@@ -139,15 +142,16 @@
 
   &:hover {
     background: $almost_black;
-    color: $almost_white;
+
+    &::before {
+      display: inline-block;
+      animation: bitd-roll-cell-shake 0.4s ease-in-out;
+    }
   }
 
-  &::before {
-    content: attr(data-roll-label);
-    opacity: 0;
-  }
-
-  &:hover::before {
-    opacity: 1;
+  &.bitd-roll-cell-diagonal {
+    outline: 2px solid $almost_white;
+    outline-offset: 1px;
+    transition: outline-color 0.15s ease;
   }
 }

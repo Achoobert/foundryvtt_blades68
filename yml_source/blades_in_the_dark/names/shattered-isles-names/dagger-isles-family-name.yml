@@ -1,0 +1,263 @@
+_id: 1TYQKM7UOrcwYg9q
+name: 'Dagger Isles - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Dagger Isles, for use in NPC/token/actor namer macros.'
+results:
+  - _id: uUiHTLJRm3YuSJPw
+    type: text
+    text: 'Jeduin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: C5yE0SwN9egwUYtm
+    type: text
+    text: 'Rowan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: uLHugIsFx9nLxfH1
+    type: text
+    text: 'Haig'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: cIr9GDMhz5bgE9K6
+    type: text
+    text: 'Breakiron'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: uulAa7iVPQUg7U7R
+    type: text
+    text: 'Hellyers'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: NJNogV7amyuHrH3l
+    type: text
+    text: 'Strathmill'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: Ev6kBJBekoRzkDAJ
+    type: text
+    text: 'Clermont'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: UA2EbbdRmlyppFQ8
+    type: text
+    text: 'Danfield'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: ClLWuFeye7uzz7aC
+    type: text
+    text: 'Athanoch'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: mLFdZwGDJUQouxjD
+    type: text
+    text: 'Helker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: uLMRdwqTMXAzJlXp
+    type: text
+    text: 'Sevoy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: 3djpu8KZyNCZbef7
+    type: text
+    text: 'Bowman'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: X0taktOCUwxkd7vo
+    type: text
+    text: 'Boden'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: PTbOJbMmeOKvKNCl
+    type: text
+    text: 'Penderyn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: fmX9SzCFQyeMfICs
+    type: text
+    text: 'Clelland'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: sLyuCR1A5UZ5Do3g
+    type: text
+    text: 'Strangford'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: wwTsIp3ic9qPLMU5
+    type: text
+    text: 'Prichard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: FA0ZgENOagbNyo0B
+    type: text
+    text: 'Ankhayat'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: IKR0MisfocLt5eAU
+    type: text
+    text: 'Farros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: 6YTt6gonsF3EaYUS
+    type: text
+    text: 'Welker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: QFAGSRYjVO5Mkosp
+    type: text
+    text: 'Skelkallan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: A0O5JDtGwCFj2JdI
+    type: text
+    text: 'Helles'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: JQR8OLJuT7wKG7ZQ
+    type: text
+    text: 'Morriston'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: 1TSC94mgecxUBcXS
+    type: text
+    text: 'Arran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: 87APMiihdgiMINP0
+    type: text
+    text: 'Grine'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: EoqNhR2wjQMKI15B
+    type: text
+    text: 'Dalmore'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: gNki8TkvP8SeIGvt
+    type: text
+    text: 'Skora'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: LAlY8YhfCwe0Zt0S
+    type: text
+    text: 'Templeton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: GzZLfyusBR4mxcvV
+    type: text
+    text: 'Daava'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: 2HVeixpMRXQVj9GP
+    type: text
+    text: 'Maroden'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: 7PxmHmhTT0Jr3DEc
+    type: text
+    text: 'Michter'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: Zkf37TSMWyBDNSsL
+    type: text
+    text: 'Karstas'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: RBS6zdsdlz5tIxOo
+    type: text
+    text: 'Kinclaith'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: 1zSUVKtYf4EKhJHP
+    type: text
+    text: 'Keel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: pnzAb2i60KCXsfjx
+    type: text
+    text: 'Basran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: 6eYgSSiBwTkkex96
+    type: text
+    text: 'Vale'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

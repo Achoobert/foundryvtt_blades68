@@ -1,0 +1,263 @@
+_id: Yg5iOpzDnWsizlD2
+name: 'Skovlan - Given Name (Man)'
+img: icons/svg/d20-grey.svg
+description: 'Masculine given names from Skovlan, for use in NPC/token/actor namer macros.'
+results:
+  - _id: fH68HqSmx2oXgcYk
+    type: text
+    text: 'Stekar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: zTFNtRtJv6gBETFw
+    type: text
+    text: 'Arni'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: HdIEtuR2xgAS43CP
+    type: text
+    text: 'Stev'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: Xbb8WWGUhKi4onCH
+    type: text
+    text: 'Ralti'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: UYY67wil48491EqV
+    type: text
+    text: 'Havard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: wCAJIb5mV1LwEapS
+    type: text
+    text: 'Bjorn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: GnZt7KGeveVsHmCR
+    type: text
+    text: 'Chukov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: n23S0D3BlFUmNaA4
+    type: text
+    text: 'Stavrul'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: fEkQjoFV88pYdLR8
+    type: text
+    text: 'Adric'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: UMPCqQZnLiIgdJxn
+    type: text
+    text: 'Hutton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: Kb4QGztn5Yn6Og2E
+    type: text
+    text: 'Ivan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: 9Mm981dAk4trdfTD
+    type: text
+    text: 'Arik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: AKFywOffJC7wFmvU
+    type: text
+    text: 'Braug'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: NzIJKLhpvPUfC034
+    type: text
+    text: 'Corben'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: 5O2h9MRDNVO5c411
+    type: text
+    text: 'Ulf'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: vEw6WYuC1dH9ZqwO
+    type: text
+    text: 'Njal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: m28tmgZDY3JmooLG
+    type: text
+    text: 'Raski'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: 1n9AdB3ZFQ8su4A2
+    type: text
+    text: 'Gunlag'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: sbD9xlBUUGXgCQTw
+    type: text
+    text: 'Kroka'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: g3ulE21wS6jvprqN
+    type: text
+    text: 'Drav'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: o0ZY6uBIajeAIrN4
+    type: text
+    text: 'Hegg'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: B32pgnM7bt1YI4Si
+    type: text
+    text: 'Sukin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: JmV4sgMGLur4jofo
+    type: text
+    text: 'Astan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: Ax9DjijS88kJjjDZ
+    type: text
+    text: 'Haran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: NRf7vfX6riIsIA0e
+    type: text
+    text: 'Marin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: Nxk03CC2xkYB0YAR
+    type: text
+    text: 'Gunnar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: hnaiNSsm5QtZRvyo
+    type: text
+    text: 'Lief'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: X2MM6xLrvdr3zRHx
+    type: text
+    text: 'Golov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: vFt42koJBMxm3LMC
+    type: text
+    text: 'Gudrod'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: xh6TtpWkdNVKZVca
+    type: text
+    text: 'Ubba'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: pctnSHGr5L7wU7Fe
+    type: text
+    text: 'Vond'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: v8UPsnNwXZEDazi1
+    type: text
+    text: 'Hord'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: kIYspVG3p3zaB2jy
+    type: text
+    text: 'Karsi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: sTcqbCgNhVt0gWRk
+    type: text
+    text: 'Malki'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: QLaVshGWErEpyO7Z
+    type: text
+    text: 'Hafnir'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: hiYEFoKCZ7K8KTrt
+    type: text
+    text: 'Velk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

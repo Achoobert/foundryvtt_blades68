@@ -1,34 +1,10 @@
-<form class="{{cssClass}}" autocomplete="off">
+<div class="{{cssClass}}" data-application-part="body">
 
-  <header class="sheet-header">
+  <header class="sheet-header flex-horizontal">
       <img src="{{img}}" data-edit="img" title="{{name}}"/>
-      <div class="header-fields">
+      <div class="header-fields grow-one">
           <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
-      </div>
-  </header>
-
-  <section class="flex-vertical">
-
-    <div class="label-stripe">{{localize "BITD.Information"}}</div>
-
-    <div>{{{localize "BITD.AddAdditionalTypeOfGangText"}}}</div>
-  </section>
-
-  <section class="flex-vertical">
-
-    <div class="label-stripe">{{localize "BITD.CohortType"}}</div>
-
-    <div id="cohort-type-list" class="flex-horizontal cohort-type-row">
-      {{#each system.cohort_list as |cohort key|}}
-      {{#multiboxes ../system.cohort}}
-      <label for="{{key}}-cohort">{{localize cohort.label}}</label>
-      <input id="{{key}}-cohort" type="radio" name="system.cohort" value="{{key}}">
-      {{/multiboxes}}
-      {{/each}}
-    </div>
-  </section>
-
-  <section id="gang-expert-type-selector" class="flex-vertical">
+<section id="gang-expert-type-selector" class="flex-vertical">
     {{#if (eq system.cohort "Gang")}}
 
       <div class="label-stripe">{{localize "BITD.GangType"}}</div>
@@ -54,8 +30,21 @@
       <input type="text" name="system.expert_type" value="{{system.expert_type}}">
     {{/if}}
   </section>
+  <section class="flex-vertical">
 
-  {{!-- Scale and Quality: auto-computed from the actor's tier by default, but the user can override either value --}}
+    <div class="label-stripe">{{localize "BITD.CohortType"}}</div>
+
+    <div id="cohort-type-list" class="flex-horizontal cohort-type-row">
+      {{#each system.cohort_list as |cohort key|}}
+      {{#multiboxes ../system.cohort}}
+      <label for="{{key}}-cohort">{{localize cohort.label}}</label>
+      <input id="{{key}}-cohort" type="radio" name="system.cohort" value="{{key}}">
+      {{/multiboxes}}
+      {{/each}}
+    </div>
+  </section>
+
+    {{!-- Scale and Quality: auto-computed from the actor's tier by default, but the user can override either value --}}
   <section id="quality-scale" class="flex-vertical">
     <div class="label-stripe">{{localize "BITD.ScaleAndQuality"}}</div>
     <div class="flex-horizontal quality-scale-row">
@@ -79,6 +68,28 @@
       </div>
 
     </div>
+  </section>
+
+  <section id="cohort-harm" class="flex-vertical">
+    <div class="label-stripe">{{localize "BITD.Harm"}}</div>
+    <div id="harm-list" class="flex-horizontal">
+      {{#multiboxes system.harm}}
+      {{#each system.harm_list as |harm harm_key|}}
+        <input id="{{harm_key}}-harm" type="radio" name="system.harm" value="{{harm_key}}">
+        <label for="{{harm_key}}-harm">{{localize harm.label}}</label>
+      {{/each}}
+      {{/multiboxes}}
+    </div>
+  </section>
+
+      </div>
+  </header>
+
+  <section class="flex-vertical">
+
+    <div class="label-stripe">{{localize "BITD.Information"}}</div>
+
+    <div>{{{localize "BITD.AddAdditionalTypeOfGangText"}}}</div>
   </section>
 
   {{!-- Edges and Flaws --}}
@@ -115,18 +126,6 @@
 
   </section>
 
-  <section id="cohort-harm" class="flex-vertical">
-    <div class="label-stripe">{{localize "BITD.Harm"}}</div>
-    <div id="harm-list" class="flex-horizontal">
-      {{#multiboxes system.harm}}
-      {{#each system.harm_list as |harm harm_key|}}
-        <input id="{{harm_key}}-harm" type="radio" name="system.harm" value="{{harm_key}}">
-        <label for="{{harm_key}}-harm">{{localize harm.label}}</label>
-      {{/each}}
-      {{/multiboxes}}
-    </div>
-  </section>
-
   <section class="flex-horizontal" style="justify-content: unset;">
     <input id="cohort-armor" type="checkbox" data-dType="Boolean" name="system.armor" value="{{system.armor}}" {{checked system.armor}}>
     <label for="cohort-armor">{{localize "BITD.Armor"}}</label>
@@ -136,4 +135,4 @@
     <div class="label-stripe">{{localize "BITD.Description"}}</div>
     <textarea name="system.description">{{system.description}}</textarea>
   </section>
-</form>
+</div>

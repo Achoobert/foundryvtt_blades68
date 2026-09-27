@@ -1,0 +1,263 @@
+_id: QHEkZ3G3uPa7TjVx
+name: 'Goal'
+img: icons/svg/d20-grey.svg
+description: 'NPC goals/motivations for quick NPC generation.'
+results:
+  - _id: cSTwxjj5oiofvfXr
+    type: text
+    text: 'Wealth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: FaNinFcTGKnjEyMh
+    type: text
+    text: 'Power'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: XnaIUR3mnGtczd98
+    type: text
+    text: 'Authority'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: atUDjnQQhWVxDAGI
+    type: text
+    text: 'Prestige'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: ighE0w0d0vVVbrwy
+    type: text
+    text: 'Control'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: XnqTSDfZlL0Uym0b
+    type: text
+    text: 'Knowledge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: aw52pgStgGnWnuET
+    type: text
+    text: 'Wealth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: Ib1yCoSkPaKX2lox
+    type: text
+    text: 'Power'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: Hvn3fYjE67VA6jjM
+    type: text
+    text: 'Authority'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: VsTWrD3KN1jdCkYg
+    type: text
+    text: 'Prestige'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: ETmQbUOKEH7ENOBW
+    type: text
+    text: 'Control'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: TXslmfosgyB2kVlN
+    type: text
+    text: 'Knowledge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: siHztZjUajuAXjb7
+    type: text
+    text: 'Pleasure'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: wF7Ion1C1MAfJSMO
+    type: text
+    text: 'Revenge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: UwxRAwBAH65dOHFb
+    type: text
+    text: 'Freedom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: ake3MnVMyFq1PBr7
+    type: text
+    text: 'Achievement'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: llh3q032ra21dYxD
+    type: text
+    text: 'Happiness'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: a19FERnzVebcTcoF
+    type: text
+    text: 'Infamy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: 6T96JqyaujwseAXi
+    type: text
+    text: 'Pleasure'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: Xl1p2cwHC7zYG0Mp
+    type: text
+    text: 'Revenge'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: Y3PnwWDVI9M7s8ZI
+    type: text
+    text: 'Freedom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: yp2UXq4KYDWZDVxW
+    type: text
+    text: 'Achievement'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: xBDnbb6w75P5wLgK
+    type: text
+    text: 'Happiness'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: qLzkYfI7SlyDV4y6
+    type: text
+    text: 'Infamy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: T7bHzHxsQFgvEe7D
+    type: text
+    text: 'Respect'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: O9TWmpK7adOoR6UL
+    type: text
+    text: 'Love'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: qAcfY815DxAOJDev
+    type: text
+    text: 'Change'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: BsHDQha8wpZI9LhG
+    type: text
+    text: 'Destruction'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: GrIej45RB0YgJEry
+    type: text
+    text: 'Justice'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: ai8No1sHWfwO5M2P
+    type: text
+    text: 'Cooperation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: Q8wO17s5agLglsgy
+    type: text
+    text: 'Respect'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: XSf6hnuGmIwlSlzP
+    type: text
+    text: 'Love'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: He1Z5AZT1QEVe4MJ
+    type: text
+    text: 'Change'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: QpVXFEsMZIdBFOl7
+    type: text
+    text: 'Destruction'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: rrnexGFeKF9y5ecu
+    type: text
+    text: 'Justice'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: 2GteXgUGYNzencX6
+    type: text
+    text: 'Cooperation'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

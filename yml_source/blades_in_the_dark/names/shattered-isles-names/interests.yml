@@ -1,0 +1,263 @@
+_id: qbqM7nVBF7MIEFhI
+name: 'Interests'
+img: icons/svg/d20-grey.svg
+description: 'NPC interests/hobbies for quick NPC generation.'
+results:
+  - _id: 89kkBn052hRJCYsL
+    type: text
+    text: 'Fine whiskey, wine, beer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: IuP89d9IzeIISgMg
+    type: text
+    text: 'Fine food, restaurants'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: sqt47D0uGsJDxbqW
+    type: text
+    text: 'Fine clothes, jewelry, furs'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: ZFkIWZkeg7xJv4YZ
+    type: text
+    text: 'Fine arts, opera, theater'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: nwv4nOQteGwlR1uM
+    type: text
+    text: 'Painting, drawing, sculpture'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: asrv2OpbuQRdXsiM
+    type: text
+    text: 'History, legends'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: FIg7S5FewPEUs5X2
+    type: text
+    text: 'Architecture, furnishings'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: kxxoVRtIb9S0GQM2
+    type: text
+    text: 'Poetry, novels, writing'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: KjKzreMpDY48SnyC
+    type: text
+    text: 'Pit-fighting, duels'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: 21zWb3FT8fCLND2w
+    type: text
+    text: 'Forgotten gods'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: CkE7cQHAS8RgDERv
+    type: text
+    text: 'Church of Ecstasy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: zPFqVsld9VwKpsSn
+    type: text
+    text: 'Path of Echoes'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: zVOPaB2qNWaSAxx8
+    type: text
+    text: 'Weeping Lady, charity'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: nu6oSBmCHeZwwqQ5
+    type: text
+    text: 'Antiques, artifacts, curios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: PTZDoLrS15ygZYqe
+    type: text
+    text: 'Horses, riding'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: tKYb8STv7nWBdlXj
+    type: text
+    text: 'Gadgets, new technology'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: If7GbNqKVmr3I7w4
+    type: text
+    text: 'Weapons collector'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: CxmndXIGIyMStRgv
+    type: text
+    text: 'Music, instruments, dance'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: hY3AXIjZzgC8LPq2
+    type: text
+    text: 'Hunting, shooting'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: 6YoYxpUvgNJsLgzw
+    type: text
+    text: 'Cooking, gardening'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: tTbB78hRLWZc0k8M
+    type: text
+    text: 'Gambling, cards, dice'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: sm3BSmjqDjqk7Hfw
+    type: text
+    text: 'Natural philosophy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: Xda6hbRcxycHfwmC
+    type: text
+    text: 'Drugs, essences, tobacco'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: 524fED5hwE4veAC9
+    type: text
+    text: 'Lovers, romance, trysts'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: osgqanClFzwOqGTY
+    type: text
+    text: 'Parties, social events'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: kCtKklspZ0W8nr38
+    type: text
+    text: 'Exploration, adventure'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: FdM6iNSbDnz6oOVa
+    type: text
+    text: 'Pets (birds, dogs, cats)'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: iZla3S3OCZTXcgYe
+    type: text
+    text: 'Crafts (leatherwork, etc.)'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: WyTn3ZaZ5ZiRuFSA
+    type: text
+    text: 'Ships, boating'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: XDGt3cREgZjDbwad
+    type: text
+    text: 'Politics, journalism'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: KvuY6KZqmVPDJaXf
+    type: text
+    text: 'Arcane books, rituals'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: DSmolYjvQcouDPGE
+    type: text
+    text: 'Spectrology, electroplasm'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: 0R1X5p08ZeYfkqHw
+    type: text
+    text: 'Alchemy, medicine'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: HwNhyWBbQkdMMlWX
+    type: text
+    text: 'Essences, alchemy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: GL7UCpJaYNJ0N2Si
+    type: text
+    text: 'Demon lore, legends'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: qC9LgR8H6sZcObyt
+    type: text
+    text: 'Pre-cataclysm legends'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

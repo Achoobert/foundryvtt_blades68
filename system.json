@@ -176,6 +176,22 @@
       "type": "Macro"
     },
     {
+      "name": "shattered-isles-names",
+      "label": "Shattered Isles Names",
+      "system": "blades68",
+      "path": "./packs/shattered_isles_names.db",
+      "banner": "systems/blades68/images/compendium-banners/Doskvol_17.webp",
+      "type": "RollTable"
+    },
+    {
+      "name": "shattered-isles-names-macro",
+      "label": "Shattered Isles Names Macro",
+      "system": "blades68",
+      "path": "./packs/shattered_isles_names_macro.db",
+      "banner": "systems/blades68/images/compendium-banners/Doskvol_18.webp",
+      "type": "Macro"
+    },
+    {
       "name": "blades68_classes",
       "label": "Blades '68 Playbooks",
       "system": "blades68",
@@ -319,6 +335,14 @@
             "entanglements-macro",
             "entanglements",
             "entanglements-journals"
+          ]
+        },
+        {
+          "name": "Names",
+          "sorting": "m",
+          "packs": [
+            "shattered-isles-names-macro",
+            "shattered-isles-names"
           ]
         }
       ]

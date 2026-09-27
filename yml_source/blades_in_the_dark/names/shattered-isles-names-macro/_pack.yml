@@ -1,0 +1,6 @@
+# Compendium manifest — compiled by scripts/build-yml-packs.mjs
+name: "shattered-isles-names-macro"
+label: "Shattered Isles Names Macro"
+type: "Macro"
+path: "./packs/shattered_isles_names_macro.db"
+banner: "systems/blades68/images/compendium-banners/Doskvol_18.webp"

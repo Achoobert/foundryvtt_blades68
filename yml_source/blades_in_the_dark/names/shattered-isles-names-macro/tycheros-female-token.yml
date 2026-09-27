@@ -1,0 +1,44 @@
+_id: 8VmZnWRqFJ1KYgFa
+name: 'Token Namer: Female Tycheros'
+type: script
+scope: global
+img: icons/sundries/documents/passport-document-identification.webp
+command: |-
+  async function drawFullName() {
+    const givenTable = await fromUuid("Compendium.blades68.shattered-isles-names.RollTable.ssPSR1IXakk0mcFW");
+    if (!givenTable) {
+      ui.notifications.error("Compendium table not found!");
+      return null;
+    }
+    const givenResult = await givenTable.draw({ displayChat: false });
+    const given = givenResult.results[0]?.description;
+    return given || null;
+  }
+
+  async function main() {
+    const tokens = canvas.tokens.controlled;
+    if (!tokens.length) {
+      ui.notifications.warn("No tokens were selected");
+      return;
+    }
+    const tokenUpdates = [];
+    const actorUpdates = [];
+    for (const token of tokens) {
+      const name = await drawFullName();
+      if (!name) continue;
+      tokenUpdates.push({ _id: token.id, name });
+      if (false && token.actor) {
+        actorUpdates.push({ _id: token.actor.id, name, prototypeToken: { name } });
+      }
+    }
+    if (actorUpdates.length) {
+      await Actor.implementation.updateDocuments(actorUpdates);
+    }
+    if (tokenUpdates.length) {
+      await canvas.scene.updateEmbeddedDocuments("Token", tokenUpdates);
+    }
+    ui.notifications.info(`Named ${tokenUpdates.length} token(s).`);
+  }
+
+  main();
+flags: {}

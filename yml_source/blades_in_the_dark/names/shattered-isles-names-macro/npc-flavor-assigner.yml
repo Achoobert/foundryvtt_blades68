@@ -1,0 +1,56 @@
+_id: fLv0rAsgnRandm001
+name: 'NPC Flavor Assigner: Trait/Interest/Goal/Look/Method'
+type: script
+scope: global
+img: icons/sundries/documents/document-symbol-eye.webp
+command: |-
+  const OVERWRITE_NOTES = false;
+  const FIELDS = [
+    { label: "Trait", uuid: "Compendium.blades68.shattered-isles-names.RollTable.GsJhPDxXSYxLMYas" },
+    { label: "Interest", uuid: "Compendium.blades68.shattered-isles-names.RollTable.qbqM7nVBF7MIEFhI" },
+    { label: "Goal", uuid: "Compendium.blades68.shattered-isles-names.RollTable.QHEkZ3G3uPa7TjVx" },
+    { label: "Look", uuid: "Compendium.blades68.shattered-isles-names.RollTable.1i1Xbu5tutUzalRC" },
+    { label: "Method", uuid: "Compendium.blades68.shattered-isles-names.RollTable.kJ6BeQz4pQ4zmY0J" },
+  ];
+
+  async function drawFlavor() {
+    const lines = [];
+    for (const field of FIELDS) {
+      const table = await fromUuid(field.uuid);
+      if (!table) {
+        ui.notifications.error(`Compendium table not found: ${field.label}`);
+        continue;
+      }
+      const result = await table.draw({ displayChat: false });
+      const value = result.results[0]?.description;
+      if (value) lines.push(`${field.label}: ${value}`);
+    }
+    return lines.join("\n");
+  }
+
+  async function main() {
+    const tokens = canvas.tokens.controlled;
+    if (!tokens.length) {
+      ui.notifications.warn("No tokens were selected");
+      return;
+    }
+    const actorUpdates = [];
+    for (const token of tokens) {
+      const actor = token.actor;
+      if (!actor) continue;
+      const flavor = await drawFlavor();
+      if (!flavor) continue;
+      const existingNotes = actor.system.notes ?? "";
+      const notes = OVERWRITE_NOTES || !existingNotes
+        ? flavor
+        : `${existingNotes}\n\n${flavor}`;
+      actorUpdates.push({ _id: actor.id, "system.notes": notes });
+    }
+    if (actorUpdates.length) {
+      await Actor.implementation.updateDocuments(actorUpdates);
+    }
+    ui.notifications.info(`Assigned flavor to ${actorUpdates.length} NPC(s).`);
+  }
+
+  main();
+flags: {}
