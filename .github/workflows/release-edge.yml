@@ -1,8 +1,9 @@
 # Builds a prerelease GitHub Release on every push to the `edge` branch.
-# The packaged system.json is the repo file with id/title/manifest/download
-# swapped to a distinct "Blades 68 EDGE" system, plus a version whose patch
-# segment continues from the previously released edge artifact. The repo
-# file is not committed back.
+# The packaged system.json is the repo file with title/manifest/download
+# swapped so it's a "Blades 68 EDGE" build, plus a version whose patch
+# segment continues from the previously released edge artifact. The id
+# stays `blades68` so it installs into (and replaces) the main system's
+# dir. The repo file is not committed back.
 #
 #   https://github.com/<repo>/releases/download/edge/system.json
 
@@ -65,13 +66,13 @@ jobs:
           echo "released=${released_version}" >> "$GITHUB_OUTPUT"
           echo "next=${next}" >> "$GITHUB_OUTPUT"
 
-      # installs as a distinct system alongside the regular Blades '68 system rather than
-      # colliding with it. All other fields stay as committed.
+      # id stays `blades68` so this installs into the same dir as the main
+      # system (replacing it), not alongside it. All other fields stay as committed.
       - name: Update system.json and Create Module Archive
         run: |
           edge_base="https://github.com/${{ github.repository }}/releases/download/edge"
           jq --arg version "${{ steps.bump_version.outputs.next }}" \
-             --arg id "blades68-edge" \
+             --arg id "blades68" \
              --arg title "Blades 68 EDGE" \
              --arg manifest "$edge_base/system.json" \
              --arg download "$edge_base/system.zip" \
