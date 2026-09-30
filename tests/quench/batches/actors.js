@@ -1,4 +1,4 @@
-/* global Actor, game */
+
 import { createdDocsTracker, requireSystemActive } from '../helpers.js';
 
 export default function register(quench) {
@@ -58,10 +58,10 @@ export default function register(quench) {
           const actor = tracker.track(await Actor.create({ name: 'Quench Sheet Render', type: 'character' }));
           const sheet = actor.sheet;
 
-          await sheet._render(true);
+          await sheet.render(true);
           try {
             assert.isTrue(sheet.rendered);
-            assert.isAbove(sheet.element.find('.window-content').length, 0);
+            assert.isAbove(sheet.element.querySelectorAll('.window-content').length, 0);
           } finally {
             await sheet.close();
           }
@@ -117,9 +117,9 @@ export default function register(quench) {
           assert.lengthOf(character.getComputedKeys(), 5, 'crew bonus should pad one extra empty slot');
 
           const sheet = character.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.equal(data.system.keys.max, 5);
             assert.lengthOf(data.system.keys.list, 5);
           } finally {
@@ -248,12 +248,12 @@ export default function register(quench) {
           }
 
           const sheet = character.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const huntBoxes = sheet.element.find('[id^="attributes-"][id*="-hunt-"]');
-            assert.isAbove(huntBoxes.filter('[value="4"]').length, 0, 'a 4th rating radio should render');
+            const huntBoxes4th = sheet.element.querySelectorAll('[id^="attributes-"][id*="-hunt-"][value="4"]');
+            assert.isAbove(huntBoxes4th.length, 0, 'a 4th rating radio should render');
             assert.lengthOf(
-              sheet.element.find(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
+              sheet.element.querySelectorAll(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
               0,
               'the "lacks Mastery" placeholder box should be gone'
             );

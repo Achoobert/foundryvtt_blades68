@@ -2,30 +2,28 @@ import { BladesHelpers } from "../blades-helpers.js";
 
 const { fields } = foundry.data;
 
-/**
- * System DataModel for the Actor type "character".
- *
- * Field shapes are lifted verbatim from template.json's Actor.character
- * block (read before writing this file) so existing actors round-trip
- * without data loss. A few fields need call-outs:
- *
- * - `stress.value` / `trauma.value` / `healing_clock.value` / `experience` /
- *   `coins` / `coins_stashed` are ArrayField(NumberField) even though the
- *   dot-tracker radio inputs that drive them (see the `multiboxes` Handlebars
- *   helper in module/blades.js) submit a bare scalar with no array index in
- *   the input `name` -- ArrayField's `_cast` auto-wraps a submitted scalar
- *   into a single-element array, which is exactly the legacy `[0]` shape
- *   template.json stores. `edge.value` is a plain NumberField instead
- *   because template.json's default for it is a bare `0`, not `[0]`.
- * - `description` is not present in template.json at all (the old loose
- *   schema let the Notes-tab textarea write an arbitrary extra key), but
- *   the template binds `system.description` directly, so it needs a real
- *   field here or a strict DataModel would silently drop it on save.
- * - `unique-data`'s eleven playbook-keyed blobs are written out field-for-
- *   field rather than as a generic ObjectField so nothing in
- *   templates/parts/unique-data.html can silently stop persisting.
- */
+
 export class CharacterData extends foundry.abstract.TypeDataModel {
+  
+  static migrateData(source) {
+    const rawList = source?.keys?.list;
+    if (rawList && typeof rawList === "object") {
+      const slots = Array.isArray(rawList) ? rawList : Object.values(rawList);
+      for (const slot of slots) {
+        if (!slot || typeof slot !== "object") continue;
+        if ("marks" in slot) {
+          if (!("experience" in slot)) slot.experience = slot.marks;
+          delete slot.marks;
+        }
+        if ("boomed" in slot) {
+          if (!("deadlocked" in slot)) slot.deadlocked = slot.boomed;
+          delete slot.boomed;
+        }
+      }
+    }
+    return super.migrateData(source);
+  }
+
   static defineSchema() {
     const str = (initial = "") => new fields.StringField({ required: true, blank: true, initial });
     const bool = (initial = false) => new fields.BooleanField({ required: true, initial });
@@ -42,36 +40,32 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     });
 
     return {
-      // ---- Header / identity ----
+      
       alias: str(),
       pronouns: str(),
       look: str(),
-      heritage: str(), // legacy -- now really tracked via an owned Item type=heritage
+      heritage: str(), 
       background: str(),
       "background-details": str(),
       vice: str(),
       "vice-purveyor": str(),
-      playbook: str(), // legacy -- now really tracked via an owned Item type=class
-      description: str(), // Notes tab; not in template.json historically, see class doc comment
+      playbook: str(), 
+      description: str(), 
 
-      // ---- Crew link ----
-      // Only system.crew[0] is ever actually used (see BladesActor#_getCrewActor).
+      
       crew: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }),
 
-      // ---- Optional Edge attribute (gated by the 'Edge' game setting) ----
+      
       edge: new fields.SchemaField({
         value: num(0),
         max: num(1)
       }),
 
-      // ---- Acquaintances / contacts ----
-      // Free-shape objects (id, name, type, standing, description_short, ...) --
-      // an ObjectField per entry preserves legacy data exactly, including the
-      // occasional stray `_id` key referenced by BladesHelpers.removeAcquaintance.
+      
       acquaintances: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }),
       acquaintances_label: str("BITD.Acquaintances"),
 
-      // ---- Stress / Trauma ----
+      
       stress: new fields.SchemaField({
         value: numArray([0]),
         max: num(9),
@@ -101,11 +95,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         list: new fields.ArrayField(new fields.StringField({ required: true, blank: true }), { required: true, initial: [] })
       }),
 
-      // ---- Keys / Deadlocks ----
-      // Raw storage only -- BladesActor#getComputedKeys()/getMaxKeys() own the
-      // marks->experience / boomed->deadlocked migration and slot padding;
-      // this DataModel's prepareDerivedData() below calls straight into them
-      // rather than re-implementing that logic a second time.
+      
       keys: new fields.SchemaField({
         max: num(4),
         list: new fields.ArrayField(
@@ -122,30 +112,30 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         )
       }),
 
-      // ---- Healing ----
-      "healing-clock": numArray([0]), // legacy, unused alt field -- kept so old data round-trips
+      
+      "healing-clock": numArray([0]), 
       healing_clock: new fields.SchemaField({
         value: numArray([0]),
         max: num(4),
         min: num(0)
       }),
 
-      // ---- Experience ----
-      experience: numArray([0]), // single-clock XP tracker, used only when 'ClockXP' setting is OFF
+      
+      experience: numArray([0]), 
       experience_max: num(8),
       experience_clues: new fields.ArrayField(new fields.StringField({ required: true, blank: true }), {
         required: true,
         initial: ["BITD.ClassExpClue3", "BITD.ClassExpClue2"]
       }),
       exp_clock: new fields.SchemaField({
-        // used only when 'ClockXP' setting is ON
+        
         value: num(0),
         number: num(0),
         size: num(6),
         color: str("black")
       }),
 
-      // ---- Coin ----
+      
       coins: numArray([0]),
       coins_stashed: numArray([0]),
       coins_max: new fields.SchemaField({
@@ -153,14 +143,14 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         stash: num(40)
       }),
 
-      // ---- Abilities (legacy) / Loadout ----
-      special_abilities: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }), // legacy, superseded by owned Item type=ability
-      loadout: num(0), // derived every prepareDerivedData() from equipped items' load, see below
-      load_level: str(), // derived localization key, depends on 'DeepCutLoad' setting
-      selected_load_level: str(), // dropdown preference only, not used in load calc
-      base_max_load: num(0), // present in schema, unreferenced by any sheet JS -- dead field kept for round-trip safety
+      
+      special_abilities: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }), 
+      loadout: num(0), 
+      load_level: str(), 
+      selected_load_level: str(), 
+      base_max_load: num(0), 
 
-      // ---- Harm / Armor ----
+      
       harm: new fields.SchemaField({
         light: new fields.SchemaField({ one: str(), two: str() }),
         medium: new fields.SchemaField({ one: str(), two: str() }),
@@ -169,12 +159,12 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       }),
       "armor-uses": new fields.SchemaField({
         armor: bool(false),
-        heavy: bool(false), // present in schema, unused in template
+        heavy: bool(false), 
         special: bool(false),
         special_2: bool(false)
       }),
 
-      // ---- Attributes / Skills ----
+      
       attributes: new fields.SchemaField({
         insight: new fields.SchemaField({
           exp: num(0),
@@ -214,11 +204,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         })
       }),
 
-      // ---- Per-playbook unique data blocks ----
-      // Only rendered when the equipped class's name maps through the
-      // PLAYBOOK_UNIQUE table in blades-actor-sheet.js; every key is kept
-      // here regardless of which class is equipped so switching class (or a
-      // homebrew re-equip) never loses previously-entered data.
+      
       "unique-data": new fields.SchemaField({
         hound: new fields.SchemaField({
           name: str(),
@@ -314,22 +300,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     };
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Only the pieces of the legacy getData() that are intrinsic to this
-   * actor's own fields + owned items (loadout/load_level) are computed
-   * here. Everything that also depends on a linked Crew actor (stress/
-   * trauma max, healing minimum, Key slot count/list, the Mastery skill-max
-   * bump) is delegated straight to the existing BladesActor methods rather
-   * than re-implemented a second time -- those methods are also called
-   * directly by module/blades-helpers.js's Key/deadlock popups, and having
-   * two independent copies of that normalization logic drifting apart is
-   * exactly the "silent data loss" risk called out for this migration.
-   * View-only concerns that need async work (compendium catalog lookups,
-   * enrichHTML) still live on the sheet's _prepareContext(), matching the
-   * BladesClockSheet/BladesNPCSheet precedent.
-   */
+  
   prepareDerivedData() {
     const actor = this.parent;
 
@@ -352,11 +323,10 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       this.healing_clock.value = actor.getHealingMin();
     }
     if (typeof actor.getMaxKeys === "function" && typeof actor.getComputedKeys === "function") {
-      // Compute both off the *raw* max/list before overwriting either, so
-      // getComputedKeys()'s internal getMaxKeys() call doesn't see an
-      // already-bonused max and double-count the crew's bonus_keys.
+      
+      
       const maxKeys = actor.getMaxKeys();
-      const computedList = actor.getComputedKeys();
+      const computedList = actor.getComputedKeys(maxKeys);
       this.keys.max = maxKeys;
       this.keys.list = computedList.map((slot) => ({
         ...slot,
@@ -365,12 +335,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     }
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Sum of equipped/bonus-equipped owned Items' `load`, clamped 0-11.
-   * Mirrors the legacy BladesActorSheet#getData() loop exactly.
-   */
+  
   _computeLoadout() {
     const items = this.parent?.items;
     if (!items) return 0;
@@ -384,23 +349,13 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     return Math.max(0, Math.min(11, loadout));
   }
 
-  /**
-   * Encumbrance level localization key for a given loadout value. Depends on
-   * the 'DeepCutLoad' game setting (Discreet/Conspicuous vs Light/Normal/
-   * Heavy scales) and on whether the actor owns the "(C) Mule" ability
-   * (English-name string match, a known pre-existing localization bug --
-   * preserved as-is, see the legacy //@todo comment in blades-actor-sheet.js).
-   */
+  
   _computeLoadLevel(loadout) {
     const { arr, idx } = this._loadLevelArray(loadout);
     return arr[idx];
   }
 
-  /**
-   * Highest loadout value that still belongs to the current encumbrance
-   * tier, i.e. the tier's item capacity shown as "current/max" on the
-   * sheet instead of the tier's name.
-   */
+  
   _computeLoadMax(loadout) {
     const { arr, idx } = this._loadLevelArray(loadout);
     const tier = arr[idx];
@@ -412,13 +367,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     return max;
   }
 
-  /**
-   * Shared tier-array lookup for _computeLoadLevel/_computeLoadMax. Depends
-   * on the 'DeepCutLoad' game setting (Discreet/Conspicuous vs Light/Normal/
-   * Heavy scales) and on whether the actor owns the "(C) Mule" ability
-   * (English-name string match, a known pre-existing localization bug --
-   * preserved as-is, see the legacy //@todo comment in blades-actor-sheet.js).
-   */
+  
   _loadLevelArray(loadout) {
     let deepCut = false;
     try {
@@ -437,7 +386,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     const items = this.parent?.items;
     let mulePresent = false;
     if (items) {
-      // @todo fix translation -- literal English name match, same bug as legacy code.
+      
       for (const i of items) {
         if (i.type === "ability" && i.name === "(C) Mule") {
           mulePresent = true;

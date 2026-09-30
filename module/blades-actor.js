@@ -2,16 +2,13 @@ import { bladesRoll } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
 
-/**
- * Extend the basic Actor
- * @extends {Actor}
- */
+
 export class BladesActor extends Actor {
-  /** @override */
+  
   static async create(data, options = {}) {
     data.prototypeToken = data.prototypeToken || {};
 
-    // For Crew and Character set the Token to sync with charsheet.
+    
     switch (data.type) {
       case "character":
       case "crew":
@@ -25,7 +22,7 @@ export class BladesActor extends Actor {
     return super.create(data, options);
   }
 
-  /** @override */
+  
   getRollData() {
     const rollData = super.getRollData();
 
@@ -34,31 +31,28 @@ export class BladesActor extends Actor {
     return rollData;
   }
 
-  /* -------------------------------------------- */
-  /**
-   * Calculate Attribute Dice to throw.
-   */
+  
   getAttributeDiceToThrow() {
-    // Calculate Dice to throw.
+    
     let dice_amount = {};
     dice_amount["BITD.Vice"] = 4;
 
     for (var attribute_name in this.system.attributes) {
-      //dice_amount[attribute_name] = 0;
+      
       dice_amount[attribute_name] =
         this.system.attributes[attribute_name].bonus;
       for (var skill_name in this.system.attributes[attribute_name].skills) {
-        // dice_amount[skill_name] = parseInt(this.system.attributes[attribute_name].skills[skill_name]['value'][0])
+        
         dice_amount[skill_name] = parseInt(
           this.system.attributes[attribute_name].skills[skill_name]["value"],
         );
 
-        // We add a +1d for every skill higher than 0.
+        
         if (dice_amount[skill_name] > 0) {
           dice_amount[attribute_name]++;
         }
       }
-      // Vice dice roll uses lowest attribute dice amount
+      
       dice_amount["BITD.Vice"] = Math.min(
         dice_amount["insight"],
         dice_amount["prowess"],
@@ -69,8 +63,7 @@ export class BladesActor extends Actor {
     return dice_amount;
   }
 
-  /* -------------------------------------------- */
-
+  
   _getCrewActor() {
     const crewInfo = this.system?.crew?.[0];
     if (!crewInfo?.id) return null;
@@ -78,10 +71,9 @@ export class BladesActor extends Actor {
     return crewActor ?? null;
   }
 
-  /* -------------------------------------------- */
-
+  
   async rollAttributePopup(attribute_name, defaultDice = 0) {
-    // const roll = new Roll("1d20 + @abilities.wis.mod", actor.getRollData());
+    
     let attribute_label = BladesHelpers.getRollLabel(attribute_name);
 
     const sanitizedDefaultDice = (() => {
@@ -90,7 +82,7 @@ export class BladesActor extends Actor {
       return Math.max(0, Math.min(Math.floor(numeric), 10));
     })();
 
-    // get crew tier/gambits info from character sheet if available
+    
     let current_tier = 0;
     let current_gambits = 0;
     try {
@@ -337,12 +329,7 @@ export class BladesActor extends Actor {
     }
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Assist / Gambit / Push / etc. These only apply to Action rolls, so they
-   * live inside the Action fieldset (or stand alone if the pos/fx grid is off).
-   */
+  
   _buildRollOptionsHtml(current_gambits) {
     return `
         <fieldset class="roll-options-toggles" style="margin-top:0.5em;">
@@ -358,13 +345,7 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Builds the Position x Effect grid that replaces the old dropdowns for
-   * Action Rolls. Clicking a cell both picks that position/effect and
-   * immediately submits the dialog (see {@link _wireRollDialog}).
-   */
+  
   _buildPositionEffectTable(rollOptionsHtml = "") {
     const positions = [
       ["controlled", "BITD.PositionControlled"],
@@ -408,16 +389,7 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Wires up the interactive bits of the roll dialog that a plain HTML
-   * string can't attach handlers to: clicking a Position/Effect cell submits
-   * the dialog directly (there is no separate Roll button), the per-row
-   * inline Roll buttons submit for roll types the table doesn't cover, and
-   * Push Yourself / Devil's Bargain gray each other out since they can't be
-   * combined.
-   */
+  
   _wireRollDialog(form, submit) {
     const posInput = form.querySelector("#pos");
     const fxInput = form.querySelector("#fx");
@@ -434,8 +406,7 @@ export class BladesActor extends Actor {
       });
     });
 
-    // Highlight the diagonal of cells that trade position for effect the
-    // same way (e.g. Controlled/Zero, Risky/Limited, Desperate/Standard).
+    
     rollCells.forEach((cell) => {
       const diagonal =
         Number(cell.dataset.fxIndex) - Number(cell.dataset.posIndex);
@@ -478,11 +449,7 @@ export class BladesActor extends Actor {
     }
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Spends one Gambit from the linked Crew, if any is available.
-   */
+  
   async _spendGambit() {
     const crewActor = this._getCrewActor();
     const current = Number(crewActor?.system?.gambits?.value);
@@ -490,12 +457,7 @@ export class BladesActor extends Actor {
     await crewActor.update({ "system.gambits.value": current - 1 });
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Applies the 2 stress cost of Pushing Yourself and briefly vibrates the
-   * newly filled stress boxes on the character's open sheet.
-   */
+  
   async _applyPushYourselfStress() {
     const current = Number(this.system.stress.value) || 0;
     const max = Number(this.system.stress.max) || 9;
@@ -504,18 +466,12 @@ export class BladesActor extends Actor {
 
     await this.update({ "system.stress.value": next });
 
-    // The stress update re-renders the open sheet, which would replace the
-    // stress box elements and wipe a pulse class added immediately. Wait for
-    // that render (or give up after a short timeout, e.g. no sheet is open)
-    // before touching the DOM.
+    
     await this._awaitNextSheetRender();
     this._pulseStressBoxes(current, next);
   }
 
-  /**
-   * Resolves once this actor's open sheet next re-renders, or after a short
-   * timeout if it doesn't (e.g. the sheet isn't currently open).
-   */
+  
   _awaitNextSheetRender(timeoutMs = 300) {
     const sheetClassName = this.sheet?.constructor?.name;
     if (!sheetClassName) return Promise.resolve();
@@ -536,11 +492,7 @@ export class BladesActor extends Actor {
     });
   }
 
-  /**
-   * Adds a brief vibrate animation (removed after 3s) to the stress boxes
-   * between `fromValue` (exclusive) and `toValue` (inclusive) on this
-   * actor's currently rendered sheet, if any.
-   */
+  
   _pulseStressBoxes(fromValue, toValue) {
     const sheetElement = this.sheet?.rendered ? this.sheet.element : null;
     if (!sheetElement) return;
@@ -557,8 +509,7 @@ export class BladesActor extends Actor {
     }
   }
 
-  /* -------------------------------------------- */
-
+  
   async rollAttribute(
     attribute_name = "",
     additional_dice_amount = 0,
@@ -585,12 +536,7 @@ export class BladesActor extends Actor {
     );
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Create <options> for available actions
-   *  which can be performed.
-   */
+  
   createListOfActions() {
     let text, attribute, skill;
     let attributes = this.system.attributes;
@@ -611,18 +557,7 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Creates <options> modifiers for dice roll.
-   *
-   * @param {int} rs
-   *  Min die modifier
-   * @param {int} re
-   *  Max die modifier
-   * @param {int} s
-   *  Selected die
-   */
+  
   createListOfDiceMods(rs, re, s) {
     var text = ``;
     var i = 0;
@@ -647,7 +582,7 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  /* -------------------------------------------- */
+  
   getComputedAttributes() {
     let attributes = this.system.attributes;
     for (const a in attributes) {
@@ -659,13 +594,13 @@ export class BladesActor extends Actor {
           attributes[a].skills[s].max = 3;
         }
 
-        //include Active Effect alterations to skill minimums
+        
         if (attributes[a].skills[s].value <= attributes[a].skills[s].min) {
           attributes[a].skills[s].value = attributes[a].skills[s].min;
         }
       }
     }
-    //check for mastery
+    
     if (this.getHasMastery()) {
       for (const b in attributes) {
         for (const t in attributes[b].skills) {
@@ -710,11 +645,7 @@ export class BladesActor extends Actor {
     return Boolean(crew_actor?.system?.scoundrel?.mastery);
   }
 
-  /**
-   * Extra Key slots granted by the linked crew. Crew upgrades carry a transferred Active
-   * Effect that adds to the crew's `system.scoundrel.bonus_keys`, so the bonus is read off
-   * the crew actor after core has applied its effects.
-   */
+  
   getBonusKeys() {
     const crew_actor = this._getCrewActor();
     if (!crew_actor) {
@@ -724,14 +655,14 @@ export class BladesActor extends Actor {
     return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
   }
 
-  /**
-   * Key slot count: the actor's own max (which owned abilities can raise via Active Effect)
-   * plus any crew-granted slots.
-   */
+  
   getMaxKeys() {
-    const own = Number(this.system.keys?.max);
-    const base = Number.isFinite(own) ? own : 4;
-    return base + this.getBonusKeys();
+    const bonus = this.getBonusKeys();
+    const previousBonus = Number(this._appliedKeysBonus) || 0;
+    const currentMax = Number(this.system.keys?.max);
+    const own = Number.isFinite(currentMax) ? currentMax - previousBonus : 4;
+    this._appliedKeysBonus = bonus;
+    return (Number.isFinite(own) ? own : 4) + bonus;
   }
 
   getHealingMin() {
@@ -742,22 +673,12 @@ export class BladesActor extends Actor {
     return current_healing;
   }
 
-  /**
-   * Keys/Deadlocks self-heal: older actors (and the pre-fix template default) only ever
-   * seeded a single, non-empty "example" slot, which left no empty slot for Add Key to fill
-   * and only rendered 1 of the intended rows. Pad the list up to getMaxKeys() with empty
-   * slots and normalize any leftover "example" placeholder to an empty, addable slot.
-   *
-   * Also migrates legacy per-slot fields (`marks` → `experience`, `boomed` → `deadlocked`)
-   * and guarantees every slot has the canonical shape:
-   * `{ key, experience, deadlocked, deadlocked_to }`.
-   */
-  getComputedKeys() {
-    const max = this.getMaxKeys();
+  
+  getComputedKeys(maxOverride) {
+    const max = Number.isFinite(maxOverride) ? maxOverride : this.getMaxKeys();
     const rawList = this.system.keys?.list ?? [];
-    // Partial dot-notation updates (e.g. "system.keys.list.0.key") can leave Foundry's merge
-    // with a plain object keyed by index ({"0": {...}, "1": {...}}) instead of a real array;
-    // normalize either shape back into an array before working with it.
+    
+    
     const asArray = Array.isArray(rawList) ? rawList : Object.values(rawList);
     const list = foundry.utils.deepClone(asArray);
     const emptySlot = () => ({
@@ -768,8 +689,8 @@ export class BladesActor extends Actor {
     });
     const normalized = list.map((slot) => {
       const key = slot?.key === "example" ? "" : (slot?.key ?? "");
-      const experience = Number(slot?.experience ?? slot?.marks ?? 0);
-      const deadlocked = Boolean(slot?.deadlocked ?? slot?.boomed ?? false);
+      const experience = Number(slot?.experience ?? 0);
+      const deadlocked = Boolean(slot?.deadlocked ?? false);
       const deadlocked_to = deadlocked ? String(slot?.deadlocked_to ?? "") : "";
       return {
         key,

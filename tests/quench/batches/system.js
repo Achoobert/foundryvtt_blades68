@@ -1,4 +1,4 @@
-/* global game */
+
 import { requireSystemActive } from '../helpers.js';
 
 export default function register(quench) {
@@ -67,9 +67,9 @@ export default function register(quench) {
           requireSystemActive();
           const setting = game.settings.settings.get('blades68.PauseAnimation');
           assert.isOk(setting, 'PauseAnimation should be registered');
-          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla']);
+          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla', 'classic']);
           assert.equal(setting.default, 'bluetime');
-          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla']);
+          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla', 'classic']);
         });
       });
     },

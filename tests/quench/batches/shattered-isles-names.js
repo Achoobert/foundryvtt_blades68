@@ -1,15 +1,15 @@
-/* global game */
+
 import { requireSystemActive } from '../helpers.js';
 
 const ROLLTABLE_PACK = 'blades68.shattered-isles-names';
 const MACRO_PACK = 'blades68.shattered-isles-names-macro';
-const EXPECTED_TABLE_COUNT = 22;
-const EXPECTED_MACRO_COUNT = 25;
+const EXPECTED_TABLE_COUNT = 23;
+const EXPECTED_MACRO_COUNT = 26;
 
-function parseConst(command, name) {
-  const match = command.match(new RegExp(`const\\s+${name}\\s*=\\s*(null|"([^"]*)")`));
-  if (!match) return undefined;
-  return match[1] === 'null' ? null : match[2];
+
+function parseRollTableUuids(command) {
+  const matches = command.matchAll(/Compendium\.([\w-]+)\.([\w-]+)\.RollTable\.([A-Za-z0-9]+)/g);
+  return Array.from(matches, ([, system, pack, id]) => ({ pack: `${system}.${pack}`, id }));
 }
 
 export default function register(quench) {
@@ -77,27 +77,21 @@ export default function register(quench) {
         });
 
         it('every namer macro points at tables that actually exist in the roll table pack', function () {
-          const tableNames = new Set(tables.map((t) => t.name));
-          const namers = macros.filter((m) => m.name !== 'Reset Token Name');
-          assert.lengthOf(namers, EXPECTED_MACRO_COUNT - 1, 'expected 24 actor/token namer macros');
+          const tableIds = new Set(tables.map((t) => t.id));
+          const namers = macros.filter(
+            (m) => m.name !== 'Reset Token Name' && m.name !== 'NPC Flavor Assigner: Trait/Interest/Goal/Look/Method'
+          );
+          assert.lengthOf(namers, EXPECTED_MACRO_COUNT - 2, 'expected 24 actor/token namer macros');
 
           for (const macro of namers) {
-            const pack = parseConst(macro.command, 'PACK');
-            assert.equal(pack, ROLLTABLE_PACK, `${macro.name} should target ${ROLLTABLE_PACK}`);
+            const refs = parseRollTableUuids(macro.command);
+            assert.isAbove(refs.length, 0, `${macro.name} should reference at least one roll table`);
 
-            const givenTable = parseConst(macro.command, 'GIVEN_TABLE');
-            assert.isOk(givenTable, `${macro.name} should declare a GIVEN_TABLE`);
-            assert.isTrue(
-              tableNames.has(givenTable),
-              `${macro.name} references GIVEN_TABLE "${givenTable}" which is missing from ${ROLLTABLE_PACK}`
-            );
-
-            const familyTable = parseConst(macro.command, 'FAMILY_TABLE');
-            assert.isDefined(familyTable, `${macro.name} should declare FAMILY_TABLE (string or null)`);
-            if (familyTable !== null) {
+            for (const { pack, id } of refs) {
+              assert.equal(pack, ROLLTABLE_PACK, `${macro.name} should target ${ROLLTABLE_PACK}`);
               assert.isTrue(
-                tableNames.has(familyTable),
-                `${macro.name} references FAMILY_TABLE "${familyTable}" which is missing from ${ROLLTABLE_PACK}`
+                tableIds.has(id),
+                `${macro.name} references RollTable "${id}" which is missing from ${ROLLTABLE_PACK}`
               );
             }
           }
