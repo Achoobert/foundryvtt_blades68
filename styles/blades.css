@@ -874,6 +874,9 @@
 .blades68.crew.sheet .crew-dossier .item-description {
   color: #191813;
 }
+.blades68.crew.sheet .crew-dossier .on-black-banner {
+  color: white;
+}
 .blades68.crew.sheet .crew-coins {
   display: flex;
   flex-wrap: wrap;
@@ -1954,10 +1957,11 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+.blades68.actor.pc * .attributes .on-black-banner {
+  color: white;
+}
 .blades68.actor.pc * .attributes .attribute-skill-label {
   letter-spacing: 1.5px;
-  color: white;
-  text-shadow: 1px 1px 2px yellow;
 }
 .blades68.actor.pc * .attributes .attributes-exp {
   position: relative;
@@ -2958,22 +2962,26 @@
   text-align: center;
 }
 .blades68.blades68-theme {
-  /*
-   * Blades '68 theme.
-   * Applied only when the sheet root also carries .blades68-theme
-   * (toggled via the "Blades68Mode" world setting, see module/blades-sheet.js).
-   * Palette matches the reference build's CSS custom properties (--b68-*).
-   */
-}
-.blades68.blades68-theme {
-  color: white;
-}
-.blades68.blades68-theme.theme-light {
   background-color: #e9e4ce;
   color: #220e10;
 }
-.blades68.blades68-theme.theme-light .window-content {
+.blades68.blades68-theme .window-content {
   background-color: #e9e4ce;
+}
+.blades68.blades68-theme.theme-dark {
+  background-color: #e9e4ce;
+  color: white;
+}
+.blades68.blades68-theme.theme-dark .window-content {
+  background-color: #e9e4ce;
+}
+.blades68.blades68-theme.theme-dark a.item-add-popup,
+.blades68.blades68-theme.theme-dark a.import-contacts,
+.blades68.blades68-theme.theme-dark .rollable-text {
+  color: white;
+}
+.blades68.blades68-theme .on-black-banner {
+  color: white;
 }
 .blades68.blades68-theme .black-label,
 .blades68.blades68-theme .label-stripe,
@@ -2988,9 +2996,10 @@
   color: #220e10;
 }
 .blades68.blades68-theme a.item-add-popup,
+.blades68.blades68-theme a.import-contacts,
 .blades68.blades68-theme .rollable-text {
-  color: white;
-  text-shadow: 1px 1px 1px black;
+  color: #4c372a;
+  text-shadow: none;
 }
 .blades68.blades68-theme .rollable-text:hover {
   color: #eb5000;
@@ -3564,3 +3573,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */

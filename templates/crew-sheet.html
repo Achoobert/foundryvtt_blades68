@@ -356,7 +356,7 @@
     {{!-- Turfs --}}
     <div class="tab{{#if (eq activeTab "turfs")}} active{{/if}}" data-tab="turfs">
       <div class="label-stripe">
-        <p><label>{{localize "BITD.Claims"}}</label></p>
+        <p><label class="on-black-banner">{{localize "BITD.Claims"}}</label></p>
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_type")}}
@@ -395,8 +395,8 @@
     {{!-- Crew Upgrades --}}
     <div id="crew-{{_id}}-upgrades" class="crew-upgrades tab grow-two flex-vertical{{#if (eq activeTab "upgrades")}} active{{/if}}" data-tab="upgrades">
       <div class="label-stripe flex-horizontal">
-        <p>{{localize "BITD.CrewUpgrades"}}</p>
-        <p><a data-action="bid.itemAdd" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
+        <p class="on-black-banner">{{localize "BITD.CrewUpgrades"}}</p>
+        <p><a class="item-add-popup on-black-banner" data-action="bid.itemAdd" data-item-type="crew_upgrade"><i class="fas fa-plus-square"></i></a></p>
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_upgrade")}}
@@ -432,8 +432,8 @@
     {{!-- Crew Abilities --}}
     <div id="crew-{{_id}}-abilities" class="crew-abilities tab grow-two flex-vertical{{#if (eq activeTab "abilities")}} active{{/if}}" data-tab="abilities">
       <div class="label-stripe flex-horizontal">
-        <p>{{localize "BITD.SpecialAbilities"}}</p>
-        <p><a data-action="bid.itemAdd" data-item-type="crew_ability"><i class="fas fa-plus-square"></i></a></p>
+        <p class="on-black-banner">{{localize "BITD.SpecialAbilities"}}</p>
+        <p><a class="item-add-popup on-black-banner" data-action="bid.itemAdd" data-item-type="crew_ability"><i class="fas fa-plus-square"></i></a></p>
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_ability")}}
@@ -469,10 +469,10 @@
     {{!-- Contacts --}}
     <div id="crew-{{_id}}-contacts" class="tab flex-vertical{{#if (eq activeTab "contacts")}} active{{/if}}" data-tab="contacts">
       <div class="label-stripe flex-horizontal">
-        <p>{{localize "BITD.Contacts"}}</p>
+        <p class="on-black-banner">{{localize "BITD.Contacts"}}</p>
         <p>
-          <a data-action="bid.importContacts" data-tooltip="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a>
-          <a data-action="bid.addCustomContact" data-tooltip="Add Custom Contact"><i class="fas fa-user-plus"></i></a>
+          <a class="import-contacts on-black-banner" data-action="bid.importContacts" data-tooltip="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a>
+          <a class="on-black-banner" data-action="bid.addCustomContact" data-tooltip="Add Custom Contact"><i class="fas fa-user-plus"></i></a>
         </p>
       </div>
       {{#if system.acquaintances}}
@@ -498,8 +498,8 @@
     {{!-- Cohorts --}}
     <div id="crew-{{_id}}-cohorts" class="crew-cohorts tab grow-two flex-vertical{{#if (eq activeTab "cohorts")}} active{{/if}}" data-tab="cohorts">
       <div class="label-stripe flex-horizontal">
-        <p>{{localize "BITD.Cohorts"}}</p>
-        <p><a data-action="bid.addCohort" data-item-type="cohort"><i class="fas fa-plus-square"></i></a></p>
+        <p class="on-black-banner">{{localize "BITD.Cohorts"}}</p>
+        <p><a class="item-add-popup on-black-banner" data-action="bid.addCohort" data-item-type="cohort"><i class="fas fa-plus-square"></i></a></p>
       </div>
       <div class="cohorts flex-horizontal">
         {{#each items as |item id|}}
@@ -570,8 +570,8 @@
     {{!-- Prison --}}
     <div id="crew-{{_id}}-prison" class="tab{{#if (eq activeTab "prison")}} active{{/if}}" data-tab="prison">
       <div class="label-stripe flex-horizontal">
-        <p><label>{{localize "BITD.Prison"}}</label></p>
-        <p><a data-action="bid.itemAdd" data-distinct="true" data-item-type="prison"><i class="fas fa-plus-square"></i></a></p>
+        <p><label class="on-black-banner">{{localize "BITD.Prison"}}</label></p>
+        <p><a class="item-add-popup on-black-banner" data-action="bid.itemAdd" data-distinct="true" data-item-type="prison"><i class="fas fa-plus-square"></i></a></p>
       </div>
       {{#each items as |item id|}}
       {{#if (eq item.type "prison")}}
@@ -593,8 +593,8 @@
     {{!-- Troubles --}}
     <div id="crew-{{_id}}-trouble" class="tab{{#if (eq activeTab "trouble")}} active{{/if}}" data-tab="trouble">
       <div class="label-stripe flex-horizontal">
-        <p><label>{{localize "BITD.Trouble"}}</label></p>
-        <p><a data-action="bid.itemAdd" data-distinct="true" data-item-type="trouble"><i class="fas fa-plus-square"></i></a>
+        <p><label class="on-black-banner">{{localize "BITD.Trouble"}}</label></p>
+        <p><a class="item-add-popup on-black-banner" data-action="bid.itemAdd" data-distinct="true" data-item-type="trouble"><i class="fas fa-plus-square"></i></a>
         </p>
       </div>
       {{#each items as |item id|}}
@@ -624,7 +624,7 @@
     {{!-- Notes --}}
     <div id="crew-{{_id}}-notes" class="notes tab grow-two flex-vertical{{#if (eq activeTab "notes")}} active{{/if}}" data-tab="notes">
       <div class="label-stripe">
-        <p>{{localize "BITD.Notes"}}</p>
+        <p class="on-black-banner">{{localize "BITD.Notes"}}</p>
       </div>
       <textarea rows="15" name="system.description">{{{system.description}}}</textarea>
     </div>
@@ -633,17 +633,17 @@
     {{#if isGM}}
     <div id="crew-{{_id}}-effects" class="tab effects flex-vertical{{#if (eq activeTab "effects")}} active{{/if}}" data-tab="effects">
       <div class="label-stripe">
-        <p>{{localize "BITD.Effects"}}</p>
+        <p class="on-black-banner">{{localize "BITD.Effects"}}</p>
       </div>
       <table class="items-list effects-list">
         {{#each effects as |section sid|}}
         <thead>
           <tr class="name-stripe-gray flex-horizontal" data-effect-type="{{section.type}}">
-            <th width="40%" class="item-name effect-name flex-horizontal">{{localize section.name}}</th>
-            <th width="20%" class="effect-source">Source</th>
-            <th width="20%" class="effect-source">Duration</th>
+            <th width="40%" class="item-name effect-name flex-horizontal on-black-banner">{{localize section.name}}</th>
+            <th width="20%" class="effect-source on-black-banner">Source</th>
+            <th width="20%" class="effect-source on-black-banner">Duration</th>
             <th width="20%" class="item-control effect-control right">
-              <a data-action="bid.effectControl" data-effect-action="create" data-tooltip="{{localize 'BITD.EffectCreate'}}">
+              <a class="on-black-banner" data-action="bid.effectControl" data-effect-action="create" data-tooltip="{{localize 'BITD.EffectCreate'}}">
                 <i class="fas fa-plus"></i> {{localize "BITD.Add"}}
               </a>
             </th>
@@ -682,7 +682,7 @@
     {{!-- Full Item List --}}
     <div class="tab grow-two flex-vertical{{#if (eq activeTab "all-items")}} active{{/if}}" data-tab="all-items">
       <div class="label-stripe">
-        <p><label>{{localize "BITD.AllItems"}}</label></p>
+        <p><label class="on-black-banner">{{localize "BITD.AllItems"}}</label></p>
       </div>
       {{#each items as |item id|}}
       <div class="item flex-horizontal" data-item-id="{{item._id}}">

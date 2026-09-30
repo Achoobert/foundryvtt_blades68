@@ -1,41 +1,44 @@
-/*
- * Blades '68 theme.
- * Applied only when the sheet root also carries .blades68-theme
- * (toggled via the "Blades68Mode" world setting, see module/blades-sheet.js).
- * Palette matches the reference build's CSS custom properties (--b68-*).
- */
+$b68-bg: #e9e4ce;
+$b68-bg-alt: #ddd7be;
+$b68-ink: #220e10;
 
-$b68-bg: #e9e4ce; // --b68-parchment
-$b68-bg-alt: #ddd7be; // --b68-parchment-header
-$b68-ink: #220e10; // --b68-ink
+$b68-bg-dark: #e9e4ce;
+$b68-bg-alt-dark: #ddd7be;
+$b68-ink-dark: white;
 
-$b68-bg-dark: #e9e4ce; // --b68-parchment
-$b68-bg-alt-dark: #ddd7be; // --b68-parchment-header
-$b68-ink-dark: white; // --b68-ink
-
-$b68-header: #4c372a; // --b68-brown
-$b68-header-text: #e9e4ce; // --b68-parchment
-$b68-accent: #eb5000; // --b68-accent
-$b68-accent-2: #dad1bc; // --b68-parchment-dark
-$b68-gold: #e8c05b; // --b68-parchment-sheet-tabs
-$b68-border: #795c4a; // --b68-brown-light
+$b68-header: #4c372a;
+$b68-header-text: #e9e4ce;
+$b68-accent: #eb5000;
+$b68-accent-2: #dad1bc;
+$b68-gold: #e8c05b;
+$b68-border: #795c4a;
 
 & {
-  color: white;
+  background-color: $b68-bg;
+  color: $b68-ink;
 
-  // Every sheet type keeps its normal (world-setting-configurable) sheet
-  // background regardless of Blades68Mode -- the parchment look only kicks
-  // in when Foundry's own color scheme is set to light ("theme-light",
-  // applied by core to the ApplicationV2 window element).
-  &.theme-light {
+  .window-content {
     background-color: $b68-bg;
-    color: $b68-ink;
+  }
+
+  &.theme-dark {
+    background-color: $b68-bg-dark;
+    color: $b68-ink-dark;
 
     .window-content {
-      background-color: $b68-bg;
+      background-color: $b68-bg-dark;
+    }
+
+    a.item-add-popup,
+    a.import-contacts,
+    .rollable-text {
+      color: white;
     }
   }
 
+  .on-black-banner {
+    color: white;
+  }
   .black-label,
   .label-stripe,
   .label-stripe-chat {
@@ -51,9 +54,10 @@ $b68-border: #795c4a; // --b68-brown-light
   }
 
   a.item-add-popup,
+  a.import-contacts,
   .rollable-text {
-    color: white;
-    text-shadow: 1px 1px 1px black;
+    color: $b68-header;
+    text-shadow: none;
   }
   .rollable-text:hover {
     color: $b68-accent;
