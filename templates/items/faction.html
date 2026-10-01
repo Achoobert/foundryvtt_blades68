@@ -4,9 +4,9 @@
       <div class="header-fields grow-one">
           <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Faction'}}"/></h1>
           <label class="label-stripe">{{localize "BITD.Tier"}}</label>
-          <textarea rows="1" name="system.tier">{{system.tier}}</textarea>
+          <input id="system.tier" type="text" name="system.tier" value="{{system.tier}}">
           <label class="label-stripe">{{localize "BITD.FactionType"}}</label>
-          <textarea rows="1" name="system.type">{{system.type}}</textarea>
+          <input id="system.type" type="text" name="system.type" value="{{system.type}}">
           {{#if isGM}}
           <label class="label-stripe">{{localize "BITD.Allies"}}</label>
           <textarea rows="1" name="system.allies">{{system.allies}}</textarea>

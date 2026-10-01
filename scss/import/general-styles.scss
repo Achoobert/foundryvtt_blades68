@@ -137,7 +137,7 @@ section {
   text-transform: uppercase;
   background-color: $almost_black;
   color: $almost_white;
-  margin-bottom: 10px;
+  margin-top: 1px;
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
@@ -174,7 +174,7 @@ prose-mirror {
 // collapsed to browser-default sizing (label + tiny inline textarea).
 .npc-header {
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-top: 1px;
 
   img.npc-portrait {
     flex: 0 0 auto;
@@ -185,7 +185,7 @@ prose-mirror {
 .npc-header-lines,
 .npc-lines {
   > div {
-    margin-bottom: 10px;
+    margin-top: 1px;
 
     &:last-child {
       margin-bottom: 0;

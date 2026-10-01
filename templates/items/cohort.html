@@ -4,6 +4,21 @@
       <img src="{{img}}" data-edit="img" title="{{name}}"/>
       <div class="header-fields grow-one">
           <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="{{localize 'BITD.Name'}}"/></h1>
+  <section class="flex-vertical">
+
+    <div class="label-stripe">{{localize "BITD.CohortType"}}</div>
+
+    <div id="cohort-type-list" class="flex-horizontal cohort-type-row">
+      {{#each system.cohort_list as |cohort key|}}
+      {{#multiboxes ../system.cohort}}
+      <label for="{{key}}-cohort">{{localize cohort.label}}</label>
+      <input id="{{key}}-cohort" type="radio" name="system.cohort" value="{{key}}">
+      {{/multiboxes}}
+      {{/each}}
+    </div>
+  </section>
+
+
 <section id="gang-expert-type-selector" class="flex-vertical">
     {{#if (eq system.cohort "Gang")}}
 
@@ -30,20 +45,6 @@
       <input type="text" name="system.expert_type" value="{{system.expert_type}}">
     {{/if}}
   </section>
-  <section class="flex-vertical">
-
-    <div class="label-stripe">{{localize "BITD.CohortType"}}</div>
-
-    <div id="cohort-type-list" class="flex-horizontal cohort-type-row">
-      {{#each system.cohort_list as |cohort key|}}
-      {{#multiboxes ../system.cohort}}
-      <label for="{{key}}-cohort">{{localize cohort.label}}</label>
-      <input id="{{key}}-cohort" type="radio" name="system.cohort" value="{{key}}">
-      {{/multiboxes}}
-      {{/each}}
-    </div>
-  </section>
-
     {{!-- Scale and Quality: auto-computed from the actor's tier by default, but the user can override either value --}}
   <section id="quality-scale" class="flex-vertical">
     <div class="label-stripe">{{localize "BITD.ScaleAndQuality"}}</div>
@@ -70,6 +71,10 @@
     </div>
   </section>
 
+      </div>
+  </header>
+
+  <section class="flex-vertical">
   <section id="cohort-harm" class="flex-vertical">
     <div class="label-stripe">{{localize "BITD.Harm"}}</div>
     <div id="harm-list" class="flex-horizontal">
@@ -82,10 +87,6 @@
     </div>
   </section>
 
-      </div>
-  </header>
-
-  <section class="flex-vertical">
 
     <div class="label-stripe">{{localize "BITD.Information"}}</div>
 

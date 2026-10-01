@@ -204,7 +204,7 @@
   text-transform: uppercase;
   background-color: #191813;
   color: #EEEFFF;
-  margin-bottom: 10px;
+  margin-top: 1px;
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
@@ -233,7 +233,7 @@
 }
 .blades68 .npc-header {
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-top: 1px;
 }
 .blades68 .npc-header img.npc-portrait {
   flex: 0 0 auto;
@@ -241,7 +241,7 @@
 }
 .blades68 .npc-header-lines > div,
 .blades68 .npc-lines > div {
-  margin-bottom: 10px;
+  margin-top: 1px;
 }
 .blades68 .npc-header-lines > div:last-child,
 .blades68 .npc-lines > div:last-child {
@@ -2913,6 +2913,10 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+.blades68.item.sheet .sheet-header .header-fields .charname,
+.blades68.item.sheet .sheet-header .header-fields input {
+  height: 100%;
 }
 .blades68.item.sheet #cohort-type-list.cohort-type-row {
   flex-wrap: wrap;
