@@ -1,4 +1,4 @@
-// Colors
+
 $lightgray: #bbb;
 $darkgray: #666;
 $gray: #999;
@@ -11,19 +11,16 @@ $light_green: #12a012;
 $blue: #04578f;
 $orange: #E2571E;
 
-// Transition period for sheet parts that hint what they can do
+
 $transition-period: 0.2s;
 $hover-opacity: 0.9;
 $hover-brightness: 0.8;
 
 
-
-
-// Utility imports
 @import 'import/mixin';
 @import 'fonts.scss';
 
-//namespacing to avoid conflicts with other modules
+
 .blades68{
   font-family: "Crimson Text", serif;
 
@@ -49,16 +46,24 @@ $hover-brightness: 0.8;
     @import 'import/blades68-theme.scss';
   }
 
+  &.blades68-theme-light{
+    @import 'import/blades68-theme-light.scss';
+  }
+
+  &.blades68-theme-dark{
+    @import 'import/blades68-theme-dark.scss';
+  }
+
   &.sharp-icons{
     @import 'import/sharp-icons.scss';
   }
 }
 
-//top-level styles
+
 @import 'import/chat.scss';
 @import 'import/dialogs.scss';
 @import 'import/pause.scss';
-//@import 'import/tooltip.scss';
+
 
 .application .window-content {
   overflow-y: auto;

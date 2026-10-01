@@ -1,92 +1,63 @@
 @charset "UTF-8";
-/*
-*  Elements that can be changed will hint this by dimming and fading a little on hover
-*/
-/*
- * Toothradio. Some (eg trauma) are not changeable, hence the option.
- */
-/*
- * Custom Radio
- */
-/*
- * Custom Radio Squared
- */
-/*
- * Image-backed multibox radios (coins, gambits).
- * Default filled; radios after the checked value switch to empty.
- */
-/*
- * Checkboxes underscored.
- */
-/*
- * Create Clock
- */
-/*
- * Turf Block
- */
-/*
- * Toothradio single elements
- */
-/*
- * Custom Radio Round
- */
+
+
 @font-face {
   font-family: "Kirsty";
-  src: url("assets/fonts/Kirsty/Kirsty.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/Kirsty/Kirsty.ttf") format("truetype"); 
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Kirsty";
-  src: url("assets/fonts/Kirsty/KirstyBold.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/Kirsty/KirstyBold.ttf") format("truetype"); 
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "Kirsty";
-  src: url("assets/fonts/Kirsty/KirstyBoldItalic.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/Kirsty/KirstyBoldItalic.ttf") format("truetype"); 
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: "Kirsty";
-  src: url("assets/fonts/Kirsty/KirstyItalic.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/Kirsty/KirstyItalic.ttf") format("truetype"); 
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-Regular.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-Regular.ttf") format("truetype"); 
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-Bold.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-Bold.ttf") format("truetype"); 
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-BoldItalic.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-BoldItalic.ttf") format("truetype"); 
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-Italic.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-Italic.ttf") format("truetype"); 
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-SemiBold.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-SemiBold.ttf") format("truetype"); 
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Crimson Text";
-  src: url("assets/fonts/CrimsonText/CrimsonText-SemiBoldItalic.ttf") format("truetype"); /* Safari, Android, iOS */
+  src: url("assets/fonts/CrimsonText/CrimsonText-SemiBoldItalic.ttf") format("truetype"); 
   font-weight: 600;
   font-style: italic;
 }
@@ -322,12 +293,12 @@
 .blades68 td {
   padding: 5px;
 }
-/* --Controls minimum size of windows--*/
+
 .blades68 {
   min-width: 360px;
   min-height: 320px;
 }
-/* --Start Clocks--*/
+
 .blades68 .clock-zero-label {
   color: #191813;
   align-self: flex-start;
@@ -958,7 +929,7 @@
 .blades68.crew.sheet .crew-reputation {
   border-top: 3px solid #191813;
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .crew-reputation label {
   height: 50px;
@@ -1294,7 +1265,7 @@
 .blades68.crew.sheet .crew-hold {
   border-top: 3px solid #191813;
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .crew-hold label {
   transition: filter 0.1s;
@@ -1337,7 +1308,7 @@
   align-items: center;
   border-top: 3px solid #191813;
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .crew-tier label {
   transition: filter 0.1s;
@@ -1484,7 +1455,7 @@
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth label {
   height: 50px;
@@ -1522,11 +1493,11 @@
   background-image: url("assets/blades68/stresspill_filled.webp");
 }
 .blades68.crew.sheet .big-teeth-section {
-  /* Trauma */
+  
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   height: 50px;
@@ -1579,7 +1550,7 @@
   margin-right: 10px;
   transition: filter 0.1s;
   cursor: pointer;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.crew.sheet .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
@@ -1603,42 +1574,8 @@
   margin-bottom: 10px;
 }
 .blades68.actor.pc {
-  /*
-  *  Elements that can be changed will hint this by dimming and fading a little on hover
-  */
-  /*
-   * Toothradio. Some (eg trauma) are not changeable, hence the option.
-   */
-  /*
-   * Custom Radio
-   */
-  /*
-   * Custom Radio Squared
-   */
-  /*
-   * Image-backed multibox radios (coins, gambits).
-   * Default filled; radios after the checked value switch to empty.
-   */
-  /*
-   * Checkboxes underscored.
-   */
-  /*
-   * Create Clock
-   */
-  /*
-   * Turf Block
-   */
-  /*
-   * Toothradio single elements
-   */
-  /*
-   * Custom Radio Round
-   */
-  /*
-   * General Styles
-   * Cleaned out things that don't appear to apply to the character sheet, and exist in other, separated SCSS files.
-   * Some things *might* be missing, but at a glance, everything looks to be in order.
-   */
+  
+  
 }
 .blades68.actor.pc * .name-alias img.portrait {
   max-width: 200px;
@@ -1673,7 +1610,7 @@
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label {
   height: 35px;
@@ -1711,11 +1648,11 @@
   background-image: url("assets/blades68/stresspill_filled.webp");
 }
 .blades68.actor.pc * .big-teeth-section {
-  /* Trauma */
+  
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   height: 35px;
@@ -1768,7 +1705,7 @@
   margin-right: 10px;
   transition: filter 0.1s;
   cursor: pointer;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
@@ -1821,7 +1758,7 @@
 }
 .blades68.actor.pc * .teeth-experience {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .teeth-experience label {
   height: 25px;
@@ -1969,7 +1906,7 @@
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body {
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
   height: 26px;
@@ -2015,7 +1952,7 @@
   display: flex;
   margin: 3px 0px;
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .attributes .attributes-container label {
   height: 15px;
@@ -2344,7 +2281,7 @@
   text-transform: capitalize;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-drift {
-  color: white;
+  color: inherit;
   font-style: italic;
   font-size: 12px;
   flex-grow: 1;
@@ -2356,7 +2293,7 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks {
   display: flex;
   display: flex;
-  /* Hide the browser's default checkbox */
+  
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label {
   height: 25px;
@@ -2972,18 +2909,6 @@
 .blades68.blades68-theme .window-content {
   background-color: #e9e4ce;
 }
-.blades68.blades68-theme.theme-dark {
-  background-color: #e9e4ce;
-  color: white;
-}
-.blades68.blades68-theme.theme-dark .window-content {
-  background-color: #e9e4ce;
-}
-.blades68.blades68-theme.theme-dark a.item-add-popup,
-.blades68.blades68-theme.theme-dark a.import-contacts,
-.blades68.blades68-theme.theme-dark .rollable-text {
-  color: white;
-}
 .blades68.blades68-theme .on-black-banner {
   color: white;
 }
@@ -3046,15 +2971,20 @@
 .blades68.blades68-theme .keys-container .key-boom input:checked + i {
   color: #eb5000;
 }
+.blades68.blades68-theme-dark {
+  background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+  color: white;
+}
+.blades68.blades68-theme-dark .window-content {
+  background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+}
+.blades68.blades68-theme-dark a.item-add-popup,
+.blades68.blades68-theme-dark a.import-contacts,
+.blades68.blades68-theme-dark .rollable-text {
+  color: white;
+}
 .blades68.sharp-icons {
-  /*
-   * Sharp (classic "teeth") pip icon style.
-   * Applied only when the sheet root also carries .sharp-icons
-   * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
-   * Overrides the default rounded "pill" icons set in character-sheet.scss /
-   * crew-sheet.scss with the original pointy tooth assets from ../assets/teeth,
-   * unused since they were replaced in commit 847c3aa "fix pills for stress".
-   */
+  
 }
 .blades68.sharp-icons .big-teeth-section .big-teeth label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
@@ -3353,9 +3283,7 @@
   z-index: 3;
 }
 #pause {
-  /*
-  *  VHS tape: canvas static under scanlines, a colour tint, and a rolling tracking band
-  */
+  
 }
 #pause[data-b68-pause-animation=vhs] canvas.blades68-vhs-static {
   position: absolute;
@@ -3402,10 +3330,7 @@
   animation: b68-vhs-roll 6.5s linear infinite;
 }
 #pause {
-  /*
-  *  Bluetime: blurred blobs rise and fall through the bar, and the parent's contrast filter
-  *  snaps their soft edges back together so they read as liquid instead of fog.
-  */
+  
 }
 #pause[data-b68-pause-animation=bluetime] figcaption {
   color: var(--b68-bluetime-goop);
@@ -3577,5 +3502,3 @@
     transform: translate(2px, 1px);
   }
 }
-
-/*# sourceMappingURL=blades.css.map */

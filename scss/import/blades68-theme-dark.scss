@@ -1,0 +1,16 @@
+
+
+& {
+  background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+  color: white;
+
+  .window-content {
+    background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+  }
+
+  a.item-add-popup,
+  a.import-contacts,
+  .rollable-text {
+    color: white;
+  }
+}

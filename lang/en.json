@@ -643,7 +643,7 @@
     },
     "Blades68": {
       "Name": "Rules & Compendium Source",
-      "Hint": "Which ruleset's terminology, color theme, and compendium content populate class/faction/item pickers. Items already imported into the world always appear regardless of this setting. Keys & Deadlocks and pip icon style have their own settings below.",
+      "Hint": "Which ruleset's terminology and compendium content populate class/faction/item pickers and harm labels. Items already imported into the world always appear regardless of this setting. Keys & Deadlocks, pip icon style, and sheet theme have their own settings below.",
       "BladesInTheDark": "Blades in the Dark",
       "Blades68": "Blades '68",
       "ImportedOnly": "Imported only"
@@ -651,6 +651,13 @@
     "ShowKeys": {
       "Name": "Show Keys & Deadlocks",
       "Hint": "Shows the Keys & Deadlocks section on character sheets, independent of Blades '68 Mode."
+    },
+    "SheetTheme": {
+      "Name": "Sheet Theme",
+      "Hint": "Visual look of character, crew, NPC, faction, and item sheet windows. Independent of the Rules & Compendium Source setting above.",
+      "Classic": "Classic (parchment)",
+      "Light": "Light (customizable color)",
+      "Dark": "Dark (customizable color)"
     },
     "PipIconStyle": {
       "Name": "Pip Icon Style",
@@ -660,11 +667,11 @@
     },
     "SheetBackgroundColor": {
       "Name": "Sheet Background Color",
-      "Hint": "The background color for character, crew, NPC, faction, and item sheet windows."
+      "Hint": "The background color used by the Light and Dark Sheet Theme options, for character, crew, NPC, faction, and item sheet windows."
     },
     "SheetBackgroundOpacity": {
       "Name": "Sheet Background Opacity",
-      "Hint": "How transparent the sheet background color is. 0 is fully transparent, 1 is fully opaque."
+      "Hint": "How transparent the Sheet Background Color is (Light and Dark Sheet Theme options only). 0 is fully transparent, 1 is fully opaque."
     },
     "PauseAnimation": {
       "Name": "Pause Screen Animation",

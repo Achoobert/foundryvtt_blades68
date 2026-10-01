@@ -38,18 +38,16 @@ export function generateRandomId() {
   return foundry.utils.randomID();
 }
 
-/**
- * Toggles the world-setting-driven look classes ("blades68-theme",
- * "sharp-icons") on an ApplicationV2 sheet's root element. AppV2's
- * `this.element` is a plain HTMLElement (no jQuery), so this can't reuse
- * the legacy BladesSheet.activateListeners `toggleClass` calls.
- */
+
 export function applyBladesThemeClasses(element) {
   if (!element) return;
   try {
-    element.classList.toggle("blades68-theme", game.settings.get("blades68", "Blades68Mode") === "blades68");
-  } catch (err) { /* not registered yet */ }
+    const theme = game.settings.get("blades68", "SheetTheme");
+    element.classList.toggle("blades68-theme", theme === "classic");
+    element.classList.toggle("blades68-theme-light", theme === "light");
+    element.classList.toggle("blades68-theme-dark", theme === "dark");
+  } catch (err) {  }
   try {
     element.classList.toggle("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
-  } catch (err) { /* not registered yet */ }
+  } catch (err) {  }
 }
