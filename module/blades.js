@@ -520,6 +520,13 @@ Hooks.once("ready", async function () {
   unregisterItemSheet("core", itemSheetClass);
   registerItemSheet("blades", BladesItemSheet, { makeDefault: true });
 
+  for (const crewActor of game.actors) {
+    if (crewActor.type !== "crew") continue;
+    for (const item of crewActor.items) {
+      await syncCrewUpgradeEffectGate(item);
+    }
+  }
+
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
   await importExistingImagesOnce();
@@ -540,6 +547,7 @@ function rerenderLinkedCharacterSheets(crew) {
   for (const actor of game.actors) {
     if (actor.type !== "character") continue;
     if (actor.system?.crew?.[0]?.id !== crew.id) continue;
+    actor.reset();
     if (actor.sheet?.rendered) actor.sheet.render(false);
   }
 }
@@ -549,6 +557,22 @@ function ownerActorOf(doc) {
   let parent = doc?.parent;
   while (parent && parent.documentName !== "Actor") parent = parent.parent;
   return parent ?? null;
+}
+
+
+async function syncCrewUpgradeEffectGate(item) {
+  if (item?.type !== "crew_upgrade" && item?.type !== "crew_ability") return;
+  const price = Number(item.system?.price) || 0;
+  const unlocked = Number(item.system?.unlocked) || 0;
+  const shouldApply = price <= 0 || unlocked >= price;
+  const toToggle = item.effects.filter(
+    (effect) => effect.disabled === shouldApply,
+  );
+  if (!toToggle.length) return;
+  await item.updateEmbeddedDocuments(
+    "ActiveEffect",
+    toToggle.map((effect) => ({ _id: effect.id, disabled: !shouldApply })),
+  );
 }
 
 Hooks.on("updateActor", (actor) => rerenderLinkedCharacterSheets(actor));
@@ -565,7 +589,17 @@ for (const hook of [
   );
 }
 
-// getSceneControlButtons
+Hooks.on("createItem", (item) => syncCrewUpgradeEffectGate(item));
+Hooks.on("updateItem", (item, changes) => {
+  if (
+    foundry.utils.hasProperty(changes, "system.unlocked") ||
+    foundry.utils.hasProperty(changes, "system.price")
+  ) {
+    syncCrewUpgradeEffectGate(item);
+  }
+});
+
+
 Hooks.on("getSceneControlButtons", (controls) => {
   controls.tokens.tools.DiceRoller = {
     name: "DiceRoller",

@@ -9,19 +9,25 @@ system:
   logic: ''
 effects:
   - _id: A8tnAf75orjXExQO
-    changes:
-      - key: data.base_max_load
-        mode: 2
-        value: '2'
+    name: Compartments
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.base_max_load
+          type: add
+          value: '2'
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Compartments
-    origin: Item.5goOpDb9pPrONuRS
-    transfer: true
-    flags: {}
-    tint: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 0
 permission:

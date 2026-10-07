@@ -21,6 +21,8 @@
     "packs:test": "node --test scripts/test-yml-packs.mjs",
     "dev:sync": "node scripts/dev-sync.mjs",
     "dev:world": "node scripts/ensure-world.mjs",
+    "foundry:start": "scripts/start_foundry.sh",
+    "foundry:stop": "scripts/stop_foundry.sh",
     "dev": "npm run build:css && npm run packs:build && npm run dev:sync && npm run dev:world && npm run test:quench:sync",
     "test": "npm run packs:test && npm run packs:build && npm run dev:sync && npm run test:quench:sync && npm run test:e2e",
     "test:quench:sync": "node scripts/sync-quench-module.mjs",

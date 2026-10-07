@@ -655,6 +655,15 @@ export class BladesActor extends Actor {
     return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
   }
 
+  getLoadBonus() {
+    const crew_actor = this._getCrewActor();
+    if (!crew_actor) {
+      return 0;
+    }
+    const bonus = Number(crew_actor?.system?.scoundrel?.add_load);
+    return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
+  }
+
   
   getMaxKeys() {
     const bonus = this.getBonusKeys();

@@ -1,9 +1,20 @@
 import { defineConfig } from 'cypress';
+import { pathToFileURL } from 'node:url';
+import path from 'node:path';
 import { applyChromeLaunchArgs } from './cypress/chrome-launch-args.js';
 
-const baseUrl = process.env.FOUNDRY_BASE_URL || 'http://localhost:30000';
-const adminPassword = process.env.FOUNDRY_ADMIN_KEY || process.env.FOUNDRY_PASSWORD || '';
-const foundryWorld = process.env.FOUNDRY_WORLD || 'blades68';
+let fvttConfig;
+try {
+  const configPath = path.resolve(import.meta.dirname, '..', '..', 'fvtt.config.js');
+  ({ default: fvttConfig } = await import(pathToFileURL(configPath).href));
+} catch {
+  fvttConfig = undefined;
+}
+
+const baseUrl = process.env.FOUNDRY_BASE_URL || fvttConfig?.baseURL || 'http://localhost:30000';
+const adminPassword =
+  process.env.FOUNDRY_ADMIN_KEY || process.env.FOUNDRY_PASSWORD || fvttConfig?.adminPassword || '';
+const foundryWorld = process.env.FOUNDRY_WORLD || fvttConfig?.testWorldName || 'blades68';
 
 const isCiRun = process.env.CI === 'true' || process.env.CYPRESS_CI === '1';
 

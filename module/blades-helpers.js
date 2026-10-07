@@ -719,17 +719,27 @@ export class BladesHelpers {
     let grouped_items = {};
     let generics = [];
 
+    const addToGroup = (key, item) => {
+      if (!(key in grouped_items) || !Array.isArray(grouped_items[key])) {
+        grouped_items[key] = [];
+      }
+      grouped_items[key].push(item);
+    };
+
     for (const item of item_list) {
       // Crew upgrades store ownership on system.crew_type; abilities/gear use system.class.
-      let itemclass = foundry.utils.getProperty(item, "system.class")
-        || foundry.utils.getProperty(item, "system.crew_type");
-      if (!itemclass || itemclass === "") {
-        generics.push(item);
+      const classVal = foundry.utils.getProperty(item, "system.class");
+      const crewTypeVal = foundry.utils.getProperty(item, "system.crew_type");
+
+      if (classVal) {
+        addToGroup(classVal, item);
+      } else if (crewTypeVal && crewTypeVal.trim() !== "") {
+        // crew_type may be a comma-separated list (e.g. "Shadows, Smugglers")
+        // so the upgrade shows under every listed crew type's group.
+        crewTypeVal.split(",").map(t => t.trim()).filter(Boolean)
+          .forEach(t => addToGroup(t, item));
       } else {
-        if (!(itemclass in grouped_items) || !Array.isArray(grouped_items[itemclass])) {
-          grouped_items[itemclass] = [];
-        }
-        grouped_items[itemclass].push(item);
+        generics.push(item);
       }
     }
 

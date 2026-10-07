@@ -1,42 +1,42 @@
-import { spawn } from 'node:child_process';
-import { existsSync, watch } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { spawn } from "node:child_process";
+import { existsSync, watch } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const DEBOUNCE_MS = 250;
 
 const WATCH_PATHS = [
-  'styles',
-  'module',
-  'templates',
-  'lang',
-  'images',
-  'themes',
-  'assets',
-  'yml_source',
-  'system.json',
-  'template.json',
-  'tests/quench',
+  "styles",
+  "module",
+  "templates",
+  "lang",
+  "images",
+  "themes",
+  "assets",
+  "yml_source",
+  "system.json",
+  "template.json",
+  "tests/quench",
 ];
 
 function run(script) {
   return new Promise((resolve, reject) => {
-    const child = spawn('npm', ['run', script], {
+    const child = spawn("npm", ["run", script], {
       cwd: ROOT,
-      stdio: 'inherit',
+      stdio: "inherit",
       shell: true,
     });
-    child.on('exit', (code) => {
+    child.on("exit", (code) => {
       if (code === 0) resolve();
       else reject(new Error(`${script} exited ${code}`));
     });
-    child.on('error', reject);
+    child.on("error", reject);
   });
 }
 
 function rel(filePath) {
-  return path.relative(ROOT, filePath).split(path.sep).join('/');
+  return path.relative(ROOT, filePath).split(path.sep).join("/");
 }
 
 let timer;
@@ -45,8 +45,9 @@ let running = false;
 
 function schedule(filePath) {
   const r = rel(filePath);
-  if (r === 'yml_source' || r.startsWith('yml_source/')) pending.yml = true;
-  if (r === 'tests/quench' || r.startsWith('tests/quench/')) pending.quench = true;
+  if (r === "yml_source" || r.startsWith("yml_source/")) pending.yml = true;
+  if (r === "tests/quench" || r.startsWith("tests/quench/"))
+    pending.quench = true;
   else pending.sync = true;
 
   clearTimeout(timer);
@@ -72,31 +73,31 @@ async function flush() {
   if (!job.yml && !job.quench && !job.sync) return;
 
   running = true;
-  // Each step runs independently: a failure in one must not skip the others,
-  // or dev:sync silently stops pushing changes to the Foundry data dir.
-  // Must precede dev:sync so freshly compiled packs/ get copied out.
-  if (job.yml) await runSafe('packs:build');
-  if (job.sync) await runSafe('dev:sync');
-  if (job.quench) await runSafe('test:quench:sync');
+
+  if (job.yml) await runSafe("packs:build");
+  if (job.sync) await runSafe("dev:sync");
+  if (job.quench) await runSafe("test:quench:sync");
+
+  if (job.yml) await runSafe("foundry:start");
   running = false;
 }
 
-console.log('Running initial build + sync...');
-await run('build:css');
+console.log("Running initial build + sync...");
+await run("build:css");
 pending = {
-  yml: existsSync(path.join(ROOT, 'yml_source')),
+  yml: existsSync(path.join(ROOT, "yml_source")),
   quench: true,
   sync: true,
 };
 await flush();
 
-const sass = spawn('npm', ['run', 'watch:css'], {
+const sass = spawn("npm", ["run", "watch:css"], {
   cwd: ROOT,
-  stdio: 'inherit',
+  stdio: "inherit",
   shell: true,
 });
 
-sass.on('exit', (code) => {
+sass.on("exit", (code) => {
   if (code && code !== 0) process.exit(code);
 });
 
@@ -114,7 +115,7 @@ function shutdown() {
   process.exit(0);
 }
 
-process.on('SIGINT', shutdown);
-process.on('SIGTERM', shutdown);
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
 
-console.log('Watching. CSS + packs + Foundry sync + Quench.');
+console.log("Watching. CSS + packs + Foundry sync + Quench.");

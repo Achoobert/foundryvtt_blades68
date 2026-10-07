@@ -64,7 +64,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     const gambitsValue = Math.min(Math.max(Number(this.actor.system.gambits?.value) || 0, 0), gambitsMax);
 
     const system = {
-      ...this.actor.system.toObject(),
+      ...this.actor.system,
       turfs_amount: this.actor.system.turfs_amount,
       gambits: { value: gambitsValue }
     };

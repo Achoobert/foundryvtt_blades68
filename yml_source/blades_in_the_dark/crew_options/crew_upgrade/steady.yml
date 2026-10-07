@@ -1,0 +1,37 @@
+_id: ydS2afjt3GUZD7HQ
+name: Steady
+permission:
+  default: 0
+  BwbqQh8sHfeKmUax: 3
+type: crew_upgrade
+system:
+  description: Each PC gets +1 stress box.
+  class:
+  price: "3"
+  logic: ""
+  crew_type: Shadows, Smugglers
+effects:
+  - _id: 056269e25e1abe2c
+    name: +1 Stress Box
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.scoundrel.add_stress
+          type: add
+          value: "1"
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ""
+    tint: "#ffffff"
+    statuses: []
+    showIcon: 1
+    flags: {}
+folder: null
+sort: 2500000
+flags: {}

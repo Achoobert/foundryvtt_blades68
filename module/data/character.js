@@ -305,8 +305,10 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     const actor = this.parent;
 
     this.loadout = this._computeLoadout();
-    this.load_level = this._computeLoadLevel(this.loadout);
-    this.load_max = this._computeLoadMax(this.loadout);
+    const loadBonus = typeof actor?.getLoadBonus === "function" ? actor.getLoadBonus() : 0;
+    const effectiveLoadout = Math.max(0, this.loadout - loadBonus);
+    this.load_level = this._computeLoadLevel(effectiveLoadout);
+    this.load_max = this._computeLoadMax(effectiveLoadout) + loadBonus;
 
     if (!actor) return;
 

@@ -86,7 +86,9 @@ export default function register(quench) {
           const crew = tracker.track(await Actor.create({ name: 'Quench Extra Key Crew', type: 'crew' }));
           assert.equal(crew.system.scoundrel.bonus_keys, 0);
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           assert.equal(
             Number(crew.system.scoundrel.bonus_keys),
             1,
@@ -102,7 +104,9 @@ export default function register(quench) {
           assert.isOk(upgrade, 'Awakened (+1 key/deadlock) should be in the pack');
 
           const crew = tracker.track(await Actor.create({ name: 'Quench Linked Extra Key Crew', type: 'crew' }));
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
 
           const character = tracker.track(await Actor.create({ name: 'Quench Linked Extra Key PC', type: 'character' }));
           assert.equal(character.getMaxKeys(), 4, 'unlinked PC should keep the template max');
@@ -212,7 +216,9 @@ export default function register(quench) {
           const crew = tracker.track(await Actor.create({ name: 'Quench Mastery Crew', type: 'crew' }));
           assert.equal(crew.system.scoundrel.mastery, false);
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           assert.equal(
             crew.system.scoundrel.mastery,
             true,
@@ -234,7 +240,9 @@ export default function register(quench) {
           const capped = character.getComputedAttributes();
           assert.equal(capped.insight.skills.hunt.max, 3, 'action ratings cap at 3 without mastery');
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           await character.update({
             'system.crew': [{ id: crew.id, name: crew.name, description: '', img: crew.img }]
           });
@@ -256,6 +264,51 @@ export default function register(quench) {
               sheet.element.querySelectorAll(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
               0,
               'the "lacks Mastery" placeholder box should be gone'
+            );
+          } finally {
+            await sheet.close();
+          }
+        });
+      });
+
+      describe('crew Vault effect', function () {
+        async function vaultUpgradeFromPack() {
+          const pack = game.packs.get('blades68.blades68_crew_upgrades');
+          const docs = await pack.getDocuments();
+          return docs.find((doc) => doc.name === 'Vault');
+        }
+
+        it('transfers vault.max onto the owning crew once unlocked, and the sheet renders it', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const upgrade = await vaultUpgradeFromPack();
+          assert.isOk(upgrade, 'Vault should be in the blades68 crew upgrades pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Vault Crew', type: 'crew' }));
+          assert.equal(crew.system.vault.max, 0, 'vault.max should start at 0 with no Vault upgrade');
+
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
+          assert.equal(
+            Number(crew.system.vault.max),
+            16,
+            'passive upgrade effect should add to crew system.vault.max'
+          );
+
+          const sheet = crew.sheet;
+          await sheet.render(true);
+          try {
+            const data = await sheet._prepareContext();
+            assert.equal(
+              data.system.vault.max,
+              16,
+              'sheet context must reflect the effect-applied vault.max, not raw source'
+            );
+            assert.isAbove(
+              sheet.element.querySelectorAll(`#crew-${crew.id}-coins-vault`).length,
+              0,
+              'the Vault coin row should render once vault.max is non-zero'
             );
           } finally {
             await sheet.close();

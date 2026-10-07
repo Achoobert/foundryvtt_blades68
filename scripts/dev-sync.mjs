@@ -1,12 +1,12 @@
 import { cp, mkdir, readdir, rm } from 'node:fs/promises';
 import { existsSync, readFileSync } from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ClassicLevel } from 'classic-level';
+import { DATA_DIR } from './lib/fvtt-config.mjs';
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const TARGET = path.join(os.homedir(), 'foundrydata', 'Data', 'systems', 'blades68');
+const TARGET = path.join(DATA_DIR, 'systems', 'blades68');
 
 const ENTRIES_TO_SYNC = [
   'system.json',
@@ -45,12 +45,6 @@ const EMBEDDED = {
   JournalEntry: { pages: 'JournalEntryPage' }
 };
 
-/**
- * Write one document, hoisting each embedded collection into its own sublevel the way Foundry
- * does: the parent record keeps only the child ids, and every child lives under
- * `!<parent sublevel>.<field>!<parentId>.<childId>`. Writing children inline instead makes
- * Foundry read the parent with an empty collection, which silently drops item Active Effects.
- */
 
 function writeDocument(batch, doc, { documentName, sublevel, key }) {
   const record = {

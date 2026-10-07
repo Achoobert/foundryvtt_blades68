@@ -16,25 +16,35 @@ system:
   logic: ''
 effects:
   - _id: s09FPx1P0xT9I56U
-    changes:
-      - key: data.stress.name
-        mode: 5
-        value: BITD.Drain
-      - key: data.trauma.name
-        mode: 5
-        value: BITD.Gloom
-      - key: data.trauma.options
-        mode: 5
-        value: '["chaotic", "destructive", "furious", "obsessive", "territorial", "savage"]'
+    name: Ghost Form
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.stress.name
+          type: override
+          value: BITD.Drain
+          priority: null
+          phase: initial
+        - key: system.trauma.name
+          type: override
+          value: BITD.Gloom
+          priority: null
+          phase: initial
+        - key: system.trauma.options
+          type: override
+          value: '["chaotic", "destructive", "furious", "obsessive", "territorial", "savage"]'
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Ghost Form
-    origin: Item.gVmekhH5C3fudC3m
-    transfer: true
-    flags: {}
-    tint: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 0
 permission:
