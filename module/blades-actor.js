@@ -266,11 +266,13 @@ export class BladesActor extends Actor {
           "BITD.ThreatRoll",
           note,
           extraThreats,
+          undefined,
+          this,
         );
         break;
       }
       case "fortune":
-        await bladesRoll(actionDiceAmount, "BITD.Fortune", "", "", note, "");
+        await bladesRoll(actionDiceAmount, "BITD.Fortune", "", "", note, "", undefined, this);
         break;
       case "gatherInfo":
         await bladesRoll(
@@ -280,10 +282,12 @@ export class BladesActor extends Actor {
           "",
           note,
           "",
+          undefined,
+          this,
         );
         break;
       case "reduceHeat":
-        await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "");
+        await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "", undefined, this);
         break;
       case "indulgeVice":
         await bladesRoll(
@@ -300,7 +304,7 @@ export class BladesActor extends Actor {
       case "engagement": {
         const engagementDice =
           Number(dialogResult.qty ?? sanitizedDefaultDice) || 0;
-        await bladesRoll(engagementDice, "BITD.Engagement", "", "", note, "");
+        await bladesRoll(engagementDice, "BITD.Engagement", "", "", note, "", undefined, this);
         break;
       }
       case "acquireAsset": {
@@ -314,6 +318,7 @@ export class BladesActor extends Actor {
           note,
           "",
           tier,
+          this,
         );
         break;
       }
@@ -533,6 +538,8 @@ export class BladesActor extends Actor {
       effect,
       note,
       this.system.stress.value,
+      undefined,
+      this,
     );
   }
 

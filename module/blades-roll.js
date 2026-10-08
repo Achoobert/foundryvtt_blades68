@@ -38,7 +38,9 @@ export async function bladesRoll(dice_amount, attribute_name = "", position = "r
  * @param {string} effect
  */
 async function showChatRollMessage(r, zeromode, attribute_name = "", position = "", effect = "", note = "", current_stress, current_crew_tier, actor) {
-  let speaker = ChatMessage.getSpeaker();
+  let speaker = actor
+    ? ChatMessage.implementation.getSpeaker({ actor })
+    : ChatMessage.getSpeaker();
   let rolls = (r.terms)[0].results;
   let attribute_label = BladesHelpers.getRollLabel(attribute_name);
 
@@ -430,20 +432,20 @@ export async function simpleRollPopup() {
 
   switch (selection) {
     case 'gatherInfo':
-      await bladesRoll(diceQty,"BITD.GatherInformation","","",note,"");
+      await bladesRoll(diceQty,"BITD.GatherInformation","","",note,"",undefined,target_actor);
       break;
     case 'engagement':
-      await bladesRoll(diceQty,"BITD.Engagement","","",note,"");
+      await bladesRoll(diceQty,"BITD.Engagement","","",note,"",undefined,target_actor);
       break;
     case 'indulgeVice':
       await bladesRoll(diceQty,"BITD.Vice","","",note,stress,undefined,target_actor);
       break;
     case 'acquireAsset':
 	  diceQty = diceQty + tier;
-      await bladesRoll(diceQty,"BITD.AcquireAsset","","",note,"",tier);
+      await bladesRoll(diceQty,"BITD.AcquireAsset","","",note,"",tier,target_actor);
       break;
     default:
-      await bladesRoll(diceQty,"","","",note,"");
+      await bladesRoll(diceQty,"","","",note,"",undefined,target_actor);
       break;
   }
 }
