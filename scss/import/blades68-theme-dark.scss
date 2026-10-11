@@ -1,4 +1,14 @@
+$b68-bg: #e9e4ce;
+$b68-bg-alt: #ddd7be;
+$b68-ink: #220e10;
+$b68-dark-ink: black;
 
+$b68-header: #4c372a;
+$b68-header-text: #e9e4ce;
+$b68-accent: #eb5000;
+$b68-accent-2: #dad1bc;
+$b68-gold: #e8c05b;
+$b68-border: #795c4a;
 
 & {
   background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
@@ -8,9 +18,38 @@
     background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
   }
 
+  .on-light-banner {
+    color: black;
+  }
+  .on-black-banner {
+    color: white;
+  }
+
   a.item-add-popup,
   a.import-contacts,
   .rollable-text {
     color: white;
+  }
+
+  &.crew.sheet {
+    nav.tabs.folder-tabs > .item {
+      background: $b68-accent-2;
+      border-color: $b68-border;
+      color: $b68-dark-ink;
+
+      &::before,
+      &::after {
+        border-color: $b68-border;
+      }
+
+      &.active {
+        background: $b68-gold;
+      }
+    }
+
+    section.tab-content.folder-tab-content {
+      background: $b68-bg;
+      border-color: $b68-border;
+    }
   }
 }

@@ -216,7 +216,7 @@
 
       {{!-- Gambits --}}
       {{#if gambits_max}}
-      <div id="crew-{{_id}}-gambits" class="crew-coins-vault">
+      <div id="crew-{{_id}}-gambits" >
         <div class="stripe">
           <b>{{localize "BITD.Gambits"}}</b>
         </div>
@@ -338,15 +338,15 @@
 
   {{!-- Tabs --}}
   <nav class="tabs flex-horizontal folder-tabs">
-    <a class="item{{#if (eq activeTab "turfs")}} active{{/if}}" data-action="bid.tabSelect" data-tab="turfs">{{localize "BITD.Claims"}}</a>
-    <a class="item{{#if (eq activeTab "upgrades")}} active{{/if}}" data-action="bid.tabSelect" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
-    <a class="item{{#if (eq activeTab "abilities")}} active{{/if}}" data-action="bid.tabSelect" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
-    <a class="item{{#if (eq activeTab "contacts")}} active{{/if}}" data-action="bid.tabSelect" data-tab="contacts">{{localize "BITD.Contacts"}}</a>
-    <a class="item{{#if (eq activeTab "cohorts")}} active{{/if}}" data-action="bid.tabSelect" data-tab="cohorts">{{localize "BITD.Cohorts"}}</a>
-    <a class="item{{#if (eq activeTab "prison")}} active{{/if}}" data-action="bid.tabSelect" data-tab="prison">{{localize "BITD.Prison"}}</a>
-    <a class="item{{#if (eq activeTab "trouble")}} active{{/if}}" data-action="bid.tabSelect" data-tab="trouble">{{localize "BITD.Trouble"}}</a>
-    <a class="item{{#if (eq activeTab "notes")}} active{{/if}}" data-action="bid.tabSelect" data-tab="notes">{{localize "BITD.Notes"}}</a>
-    <a class="item{{#if (eq activeTab "all-items")}} active{{/if}}" data-action="bid.tabSelect" data-tab="all-items">{{localize "BITD.AllItems"}}</a>
+    <a class="item{{#if (eq activeTab "turfs")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="turfs">{{localize "BITD.Claims"}}</a>
+    <a class="item{{#if (eq activeTab "upgrades")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
+    <a class="item{{#if (eq activeTab "abilities")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
+    <a class="item{{#if (eq activeTab "contacts")}} active{{/if}}" on-light-banner data-action="bid.tabSelect" data-tab="contacts">{{localize "BITD.Contacts"}}</a>
+    <a class="item{{#if (eq activeTab "cohorts")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="cohorts">{{localize "BITD.Cohorts"}}</a>
+    <a class="item{{#if (eq activeTab "prison")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="prison">{{localize "BITD.Prison"}}</a>
+    <a class="item{{#if (eq activeTab "trouble")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="trouble">{{localize "BITD.Trouble"}}</a>
+    <a class="item{{#if (eq activeTab "notes")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="notes">{{localize "BITD.Notes"}}</a>
+    <a class="item{{#if (eq activeTab "all-items")}} active{{/if}} on-light-banner" data-action="bid.tabSelect" data-tab="all-items">{{localize "BITD.AllItems"}}</a>
     {{#if isGM}}
     <a class="item{{#if (eq activeTab "effects")}} active{{/if}}" data-action="bid.tabSelect" data-tab="effects">{{localize "BITD.Effects"}}</a>
     {{/if}}

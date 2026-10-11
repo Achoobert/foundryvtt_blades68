@@ -2421,7 +2421,7 @@
 .blades68.actor.pc * .special-playbook-section .unique-card {
   border: 1px solid #CCC;
   border-radius: 6px;
-  background: #f7f7f7;
+  background: rgba(247, 247, 247, 0.0705882353);
   margin-bottom: 8px;
   overflow: hidden;
 }
@@ -2431,14 +2431,14 @@
   align-items: center;
   gap: 8px;
   padding: 6px 10px;
-  background: #e4e4e4;
+  background: rgba(228, 228, 228, 0.0705882353);
   font-weight: bold;
   text-transform: uppercase;
   font-size: 13px;
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-header.accent {
   background: #c45a1a;
-  color: #fff;
+  color: #fff12;
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-header .unique-card-tag,
 .blades68.actor.pc * .special-playbook-section .unique-card-header .unique-card-rule {
@@ -2452,7 +2452,7 @@
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-body {
   padding: 8px 10px;
-  background: #fff;
+  background: #fff12;
 }
 .blades68.actor.pc * .special-playbook-section .unique-blurb {
   margin: 0 0 8px;
@@ -2972,6 +2972,9 @@
 .blades68.blades68-theme .window-content {
   background-color: #e9e4ce;
 }
+.blades68.blades68-theme .on-light-banner {
+  color: black;
+}
 .blades68.blades68-theme .on-black-banner {
   color: white;
 }
@@ -3012,7 +3015,7 @@
 .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item {
   background: #dad1bc;
   border-color: #795c4a;
-  color: #220e10;
+  color: black;
 }
 .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::after {
   border-color: #795c4a;
@@ -3041,10 +3044,31 @@
 .blades68.blades68-theme-dark .window-content {
   background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
 }
+.blades68.blades68-theme-dark .on-light-banner {
+  color: black;
+}
+.blades68.blades68-theme-dark .on-black-banner {
+  color: white;
+}
 .blades68.blades68-theme-dark a.item-add-popup,
 .blades68.blades68-theme-dark a.import-contacts,
 .blades68.blades68-theme-dark .rollable-text {
   color: white;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item {
+  background: #dad1bc;
+  border-color: #795c4a;
+  color: black;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item::after {
+  border-color: #795c4a;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item.active {
+  background: #e8c05b;
+}
+.blades68.blades68-theme-dark.crew.sheet section.tab-content.folder-tab-content {
+  background: #e9e4ce;
+  border-color: #795c4a;
 }
 .blades68.sharp-icons {
   /*
@@ -3577,3 +3601,5 @@
     transform: translate(2px, 1px);
   }
 }
+
+/*# sourceMappingURL=blades.css.map */
