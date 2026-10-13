@@ -1111,16 +1111,16 @@
   {{!-- Secondary tabs: free-form Notes, Active Effects, full item list --}}
   <section class="tab-space">
     <nav class="tabs flex-horizontal">
-      <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
+      <a class="item {{tabs.[character-notes].cssClass}}" data-action="tab" data-group="primary" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
       {{#if isGM}}
-      <a class="item" data-tab="effects">{{localize "BITD.Effects"}}</a>
+      <a class="item {{tabs.[effects].cssClass}}" data-action="tab" data-group="primary" data-tab="effects">{{localize "BITD.Effects"}}</a>
       {{/if}}
-      <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
+      <a class="item {{tabs.[all-character-items].cssClass}}" data-action="tab" data-group="primary" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
     </nav>
 
     <div class="tab-content flex-vertical">
 
-      <div class="tab flex-vertical" data-tab="character-notes">
+      <div class="tab flex-vertical {{tabs.[character-notes].cssClass}}" data-group="primary" data-tab="character-notes">
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
@@ -1130,7 +1130,7 @@
       {{!-- Active Effects: inlined from templates/parts/active-effects.html (shared partial,
             not editable here) rewritten to bid.effectControl + data-effect-action, the V2
             convention BladesSheetV2's _onEffectControl expects. --}}
-      <div id="character-{{_id}}-effects" class="tab effects flex-vertical" data-tab="effects">
+      <div id="character-{{_id}}-effects" class="tab effects flex-vertical {{tabs.[effects].cssClass}}" data-group="primary" data-tab="effects">
         <div class="label-stripe">
           <p>{{localize "BITD.Effects"}}</p>
         </div>
@@ -1176,7 +1176,7 @@
       </div>
 
       {{!-- Full Item List --}}
-      <div class="tab grow-two flex-vertical" data-tab="all-character-items">
+      <div class="tab grow-two flex-vertical {{tabs.[all-character-items].cssClass}}" data-group="primary" data-tab="all-character-items">
         <div class="label-stripe">
           <p><label>{{localize "BITD.AllItems"}}</label></p>
         </div>

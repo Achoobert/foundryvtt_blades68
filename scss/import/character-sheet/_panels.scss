@@ -10,23 +10,27 @@
 
       .item {
         align-items: flex-start;
-        
-          .item-name-row {
-            display: flex;
-            flex-wrap: wrap;
+
+        .item-delete {
+          max-width: 15px;
+        }
+
+        .item-name-row {
+          display: flex;
+          flex-wrap: wrap;
           align-items: center;
           gap: 4px 6px;
-            margin-bottom: 2px;
-          
-            .item-name {
-              margin: 0;
-            }
-          
-            .ability-uses-text {
-              font-size: 13px;
-              font-weight: normal;
-            }
+          margin-bottom: 2px;
+
+          .item-name {
+            margin: 0;
           }
+
+          .ability-uses-text {
+            font-size: 13px;
+            font-weight: normal;
+          }
+        }
 
         .ability-uses {
           display: flex;
@@ -110,8 +114,7 @@
     }
   }
 
-  // Compact freeform item rows (Other Abilities / Other Items): smaller icon buttons
-  // so the delete/chat controls don't dominate the row.
+  
   .item.compact {
     .item-body img {
       width: 20px;

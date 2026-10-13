@@ -1,8 +1,4 @@
-/*
- * General Styles
- * Cleaned out things that don't appear to apply to the character sheet, and exist in other, separated SCSS files.
- * Some things *might* be missing, but at a glance, everything looks to be in order.
- */
+
 
 & * {
   .name-alias {
@@ -15,6 +11,7 @@
   }
 
   .tab[data-tab] {
+    
     display: none;
     &.active {
       display: block;
@@ -99,7 +96,7 @@
     }
   }
 
-  //Abilitiers and loadout
+  
   .abilities,
   .loadout {
     .item-name {

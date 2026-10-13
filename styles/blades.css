@@ -101,11 +101,17 @@
 }
 .blades68 .window-content {
   background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.blades68 .window-content > [data-application-part] {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 .blades68.sheet.item .window-content {
   max-height: 85vh;
-  overflow-y: auto;
 }
 .blades68 .text-line {
   display: block;
@@ -1634,11 +1640,6 @@
   /*
    * Custom Radio Round
    */
-  /*
-   * General Styles
-   * Cleaned out things that don't appear to apply to the character sheet, and exist in other, separated SCSS files.
-   * Some things *might* be missing, but at a glance, everything looks to be in order.
-   */
 }
 .blades68.actor.pc * .name-alias img.portrait {
   max-width: 200px;
@@ -2221,6 +2222,9 @@
 }
 .blades68.actor.pc * .special-abilities-panel .other-abilities .item {
   align-items: flex-start;
+}
+.blades68.actor.pc * .special-abilities-panel .other-abilities .item .item-delete {
+  max-width: 15px;
 }
 .blades68.actor.pc * .special-abilities-panel .other-abilities .item .item-name-row {
   display: flex;
@@ -3580,10 +3584,6 @@
     animation-duration: 24s;
   }
 }
-.application .window-content {
-  overflow-y: auto;
-}
-
 @keyframes bitd-stress-vibrate {
   0%, 100% {
     transform: translate(0, 0);

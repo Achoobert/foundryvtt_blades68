@@ -3,13 +3,7 @@ import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { enrichHTML } from "./compat.js";
 
-/**
- * Maps an equipped class Item's display name to the key used both by
- * templates/parts/unique-data.html's per-playbook blocks and by
- * CharacterData's `unique-data` schema. "Time Traveler Future" and
- * "Time Traveler Past" are two distinct class Items that both drive the
- * same `time_traveler` unique-data block.
- */
+
 const PLAYBOOK_UNIQUE = {
   "Hound": "hound",
   "Hull": "hull",
@@ -24,28 +18,12 @@ const PLAYBOOK_UNIQUE = {
   "Time Traveler Past": "time_traveler"
 };
 
-/**
- * Character actor sheet. Field shapes and the bulk of the cross-Crew derived
- * math (stress/trauma max, healing minimum, Key slot count/list, Mastery
- * skill-max bump, loadout/encumbrance) live on CharacterData
- * (module/data/character.js) and on BladesActor's existing methods, which
- * this class simply reads. What's left here is everything that needs owned
- * Items / the compendium / async enrichment at render time (the class/
- * ability/item catalogs, the playbook-unique block, description enrichment),
- * plus every custom interaction the legacy jQuery listeners in
- * module/blades-sheet.js and module/blades-actor-sheet.js covered that
- * BladesSheetV2's shared item-CRUD / active-effect / radio-toggle plumbing
- * doesn't: Keys/deadlocks, acquaintance standing + custom contacts, the
- * class/ability/item checklist catalogs, per-item use/equip/bonus tracking,
- * and the ClockXP experience clock.
- */
+
 export class BladesActorSheet extends BladesSheetV2 {
 
   static DEFAULT_OPTIONS = {
-    // BladesSheetV2's own classes list omits "blades68", the class every
-    // rule in styles/blades.css is scoped under -- add it back plus "pc",
-    // same as the legacy sheet's defaultOptions did, so this sheet keeps
-    // its existing look.
+    
+    
     classes: [...super.DEFAULT_OPTIONS.classes, "blades68", "pc"],
     position: { width: 790, height: 890 },
     actions: {
@@ -72,7 +50,7 @@ export class BladesActorSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/actor-sheet.html", classes: ["scrollable"] }
+    body: { template: "systems/blades68/templates/actor-sheet.html", scrollable: [""] }
   };
 
   static TABS = {
@@ -86,10 +64,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     }
   };
 
-  /* -------------------------------------------- */
-  /*  Context                                      */
-  /* -------------------------------------------- */
-
+  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     const owner = this.actor.isOwner;
@@ -97,10 +72,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     const selectedClass = this.actor.items.find(i => i.type === "class") ?? null;
     const playbookUnique = selectedClass ? (PLAYBOOK_UNIQUE[selectedClass.name] ?? null) : null;
 
-    // Special Abilities: only what the actor actually owns, regardless of class --
-    // the full class ability catalog is no longer shown as an inline checklist (use
-    // the "Add Ability" compendium picker instead). Abilities with uses > 0 get
-    // per-use tracking checkboxes inline on the name line.
+    
     const ownedAbilities = this.actor.items.filter(i => i.type === "ability");
     const otherAbilities = ownedAbilities.map(i => {
       const usesMax = Math.max(0, parseInt(i.system?.uses) || 0);
@@ -123,11 +95,8 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     const itemResult = await this._buildCatalog("item", selectedClass, { slotsField: "num_available" });
     const itemCatalog = itemResult.catalog;
-    // Other Items: the first checkbox marks the item as equipped/carried (and is what
-    // counts against Load); if the item has more than one use (e.g. a gun with 3 shots),
-    // up to 2 additional checkboxes track uses spent, independent of Load. An item with
-    // num_available > 1 (e.g. carrying a second copy) also gets a bonus checkbox that
-    // counts its Load a second time, independent of the main equip/use boxes.
+    
+    
     const otherItems = itemResult.other.map(i => {
       const usesMax = parseInt(i.system?.uses) || 1;
       const numAvailable = Math.max(1, parseInt(i.system?.num_available) || 1);
@@ -163,15 +132,10 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     let blades68Mode = false;
     let showKeys = false;
-    try { blades68Mode = game.settings.get("blades68", "Blades68Mode") === "blades68"; } catch (err) { /* not registered yet */ }
-    try { showKeys = Boolean(game.settings.get("blades68", "ShowKeys")); } catch (err) { /* not registered yet */ }
+    try { blades68Mode = game.settings.get("blades68", "Blades68Mode") === "blades68"; } catch (err) {  }
+    try { showKeys = Boolean(game.settings.get("blades68", "ShowKeys")); } catch (err) {  }
 
-    // Shallow-spread the *live* system DataModel (not .toObject(), which would
-    // serialize back to raw source and drop everything CharacterData's
-    // prepareDerivedData() just overlaid -- loadout, load_level, the
-    // Mastery-adjusted attributes, crew-bonused stress/trauma/keys max, and
-    // each Key slot's computed deadlockOptions) then layer the two purely
-    // view-side, non-persisted extras on top, same as the legacy getData().
+    
     const system = {
       ...this.actor.system,
       load_levels,
@@ -192,6 +156,9 @@ export class BladesActorSheet extends BladesSheetV2 {
       editable: this.isEditable,
       cssClass: this.isEditable ? "editable" : "locked",
       isGM: game.user.isGM,
+      
+      
+      tabs: this._prepareTabs("primary"),
       effects: BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects),
       blades68: blades68Mode,
       showKeys,
@@ -205,28 +172,19 @@ export class BladesActorSheet extends BladesSheetV2 {
     };
   }
 
-  /* -------------------------------------------- */
-  /*  Post-render wiring for elements the V2       */
-  /*  actions API can't cover (native "change" on  */
-  /*  <select>, and multi-value radio groups)      */
-  /* -------------------------------------------- */
-
+  
   async _onRender(context, options) {
     await super._onRender(context, options);
 
-    // Key select / deadlock-target select: plain "change" listeners, same as
-    // the legacy jQuery .on('change', ...) binding. Deliberately NOT bound
-    // via name="system.keys.list.N.key" -- see _prepareSubmitData() below for
-    // why any system.keys.* form field would corrupt sibling Key slots.
+    
     this.element.querySelectorAll(".key-select").forEach((el) => {
       el.addEventListener("change", (ev) => this._updateKeySlotField(ev, "key", ev.currentTarget.value));
     });
     this.element.querySelectorAll(".deadlocked-to-select").forEach((el) => {
       el.addEventListener("change", (ev) => this._updateKeySlotField(ev, "deadlocked_to", ev.currentTarget.value));
     });
-    // Key XP marks: a genuine radio group (pick any value, not a cumulative
-    // dot-fill), so this uses native "change" semantics rather than the
-    // bid.radioToggle cycling widget.
+    
+    
     this.element.querySelectorAll('.key-marks input[type="radio"]').forEach((el) => {
       el.addEventListener("change", (ev) => {
         if (!ev.currentTarget.checked) return;
@@ -235,23 +193,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     });
   }
 
-  /* -------------------------------------------- */
-  /*  Catalog helper (shared: class ability/item   */
-  /*  checklists)                                  */
-  /* -------------------------------------------- */
-
-  /**
-   * Builds a checklist catalog for the actor's equipped class: every item of the given type
-   * tagged with that class's name, merged with the actor's owned items of that type to
-   * determine how many of each are already carried. Owned items that don't belong to the
-   * catalog (e.g. a Veteran pick from another class, or homebrew additions) are returned
-   * separately so nothing owned is ever hidden.
-   *
-   * @param {string} itemType - "ability" or "item"
-   * @param {Item|null} selectedClass
-   * @param {{slotsField?: string}} [options]
-   * @returns {Promise<{catalog: Array, other: Array}>}
-   */
+  
   async _buildCatalog(itemType, selectedClass, { slotsField } = {}) {
     const owned = this.actor.items.filter(i => i.type === itemType);
 
@@ -292,10 +234,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     return { catalog, other };
   }
 
-  /* -------------------------------------------- */
-  /*  Drag & drop                                  */
-  /* -------------------------------------------- */
-
+  
   async _handleDrop(droppedEntityFull) {
     if (!droppedEntityFull) return;
     switch (droppedEntityFull.type) {
@@ -308,14 +247,14 @@ export class BladesActorSheet extends BladesSheetV2 {
       case "item":
       case "ability":
       case "class":
-        // Intentional no-ops, same as the legacy handleDrop.
+        
         break;
       default:
         break;
     }
   }
 
-  /** @override */
+  
   async _onDropItem(event, data) {
     const allowed = await super._onDropItem?.(event, data);
     if (allowed === false) return false;
@@ -330,7 +269,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this._handleDrop(droppedItem);
   }
 
-  /** @override */
+  
   async _onDropActor(event, data) {
     const allowed = await super._onDropActor?.(event, data);
     if (allowed === false) return false;
@@ -345,19 +284,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this._handleDrop(droppedActor);
   }
 
-  /* -------------------------------------------- */
-  /*  Form submission                              */
-  /* -------------------------------------------- */
-
-  /**
-   * Drop ephemeral Key XP radio names (and any stray system.keys.* paths) so a
-   * normal submitOnChange form submit can never stomp Key slots -- ports the
-   * legacy BladesActorSheet#_getSubmitData override to ApplicationV2's
-   * equivalent hook. Every Key field edit instead goes through
-   * _updateKeySlotField(), which reads the full current list via
-   * actor.getComputedKeys() and writes it back whole.
-   * @override
-   */
+  
   _prepareSubmitData(event, form, formData, updateData) {
     const submitData = super._prepareSubmitData(event, form, formData, updateData);
     const flat = foundry.utils.flattenObject(submitData);
@@ -373,12 +300,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     return cleaned;
   }
 
-  /**
-   * Patch one field on one Key slot and write the full normalized list.
-   * @param {Event} ev
-   * @param {"key"|"experience"|"deadlocked_to"} field
-   * @param {string|number} value
-   */
+  
   async _updateKeySlotField(ev, field, value) {
     const slotIndex = Number(ev.currentTarget.closest(".key-slot")?.dataset?.slotIndex);
     if (!Number.isInteger(slotIndex) || slotIndex < 0) return;
@@ -389,10 +311,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this.actor.update({ "system.keys.list": keysList });
   }
 
-  /* -------------------------------------------- */
-  /*  Attribute / skill rolls                      */
-  /* -------------------------------------------- */
-
+  
   static async _onRollAttribute(event, target) {
     event.preventDefault();
     const attributeName = target.dataset.rollAttribute;
@@ -408,10 +327,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this.actor.rollAttributePopup(attributeName, sanitizedDice);
   }
 
-  /* -------------------------------------------- */
-  /*  Acquaintances / contacts                     */
-  /* -------------------------------------------- */
-
+  
   static async _onStandingToggle(event, target) {
     const acqId = target.closest(".acquaintance")?.dataset.acquaintance;
     if (!acqId) return;
@@ -449,28 +365,19 @@ export class BladesActorSheet extends BladesSheetV2 {
     await BladesHelpers.addCustomContact(this.actor);
   }
 
-  /* -------------------------------------------- */
-  /*  Crew link                                    */
-  /* -------------------------------------------- */
-
+  
   static async _onCrewDelete(event, target) {
     const itemId = BladesSheetV2._itemIdFrom(target);
     if (!itemId) return;
     await BladesHelpers.removeCrew(this.actor, itemId);
   }
 
-  /* -------------------------------------------- */
-  /*  Keys / Deadlocks                             */
-  /* -------------------------------------------- */
-
+  
   static async _onAddKeyPopup(event, target) {
     await BladesHelpers.addKeyPopup(this.actor);
   }
 
-  // Deadlock toggle: check opens a choice popup; uncheck clears deadlocked_to.
-  // preventDefault() so the checkbox's own visual state never drifts from
-  // the actor's real deadlocked flag -- the re-render after either helper
-  // call is what actually updates it.
+  
   static async _onKeyBoomToggle(event, target) {
     event.preventDefault();
     const slotIndex = Number(target.closest(".key-slot")?.dataset?.slotIndex);
@@ -484,14 +391,7 @@ export class BladesActorSheet extends BladesSheetV2 {
     }
   }
 
-  /* -------------------------------------------- */
-  /*  Special Abilities / Loadout catalogs         */
-  /* -------------------------------------------- */
-
-  // Each row's checked box count is reconciled against how many matching
-  // items the actor actually owns (creating/deleting the difference), which
-  // is what lets multi-slot Loadout entries (e.g. 2 Bandoliers) work with
-  // plain checkboxes instead of a single owned/not-owned toggle.
+  
   static async _onCatalogToggle(event, target) {
     const row = target.closest(".catalog-item");
     if (!row) return;
@@ -517,17 +417,14 @@ export class BladesActorSheet extends BladesSheetV2 {
     }
   }
 
-  // Owned items outside the class catalog (Veteran picks, homebrew additions): a plain
-  // checkbox marking whether the item is carried/in-use, persisted on system.equipped.
+  
   static async _onItemEquippedToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
     await item.update({ "system.equipped": target.checked });
   }
 
-  // Item use tracking (e.g. shots left in a gun): independent checkboxes reconciled by
-  // count, same pattern as ability-uses-toggle. Spending a use never affects Load -- only
-  // the equip checkbox above does that.
+  
   static async _onItemUseToggle(event, target) {
     const row = target.closest(".item-uses");
     if (!row) return;
@@ -537,16 +434,14 @@ export class BladesActorSheet extends BladesSheetV2 {
     await item.update({ "system.uses_used": checkedCount });
   }
 
-  // Bonus checkbox for a second carried copy (num_available > 1): an independent toggle
-  // that counts the item's Load a second time when checked.
+  
   static async _onItemBonusToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
     await item.update({ "system.bonus_equipped": target.checked });
   }
 
-  // Ability use tracking: independent checkboxes per system.uses slot, reconciled by
-  // count (like the Loadout slot checkboxes) rather than by which box was clicked.
+  
   static async _onAbilityUsesToggle(event, target) {
     const row = target.closest(".ability-uses");
     if (!row) return;
@@ -556,17 +451,14 @@ export class BladesActorSheet extends BladesSheetV2 {
     await item.update({ "system.uses_used": checkedCount });
   }
 
-  // Remove an owned item that falls outside the class catalog.
+  
   static async _onOtherItemDelete(event, target) {
     const row = target.closest(".other-item");
     if (!row) return;
     await this.actor.deleteEmbeddedDocuments("Item", [row.dataset.itemId]);
   }
 
-  /* -------------------------------------------- */
-  /*  XP clock (world setting ClockXP)              */
-  /* -------------------------------------------- */
-
+  
   static async _onExpClockUp(event, target) {
     let { value, number, size } = this.actor.system.exp_clock;
     value = value + 1;

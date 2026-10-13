@@ -25,12 +25,14 @@
       "name": "achoobert"
     }
   ],
-  "esmodules": [
-    "module/blades.js"
-  ],
-  "styles": [
-    "styles/blades.css"
-  ],
+  "esmodules": ["module/blades.js"],
+  "styles": ["styles/blades.css"],
+  "flags": {
+    "hotReload": {
+      "extensions": ["hbs", "css", "json", "js"],
+      "paths": ["styles/", "lang/", "templates/"]
+    }
+  },
   "languages": [
     {
       "lang": "en",
@@ -323,10 +325,7 @@
         {
           "name": "Factions & NPCs",
           "sorting": "m",
-          "packs": [
-            "faction",
-            "npc"
-          ]
+          "packs": ["faction", "npc"]
         },
         {
           "name": "Entanglements",
@@ -340,10 +339,7 @@
         {
           "name": "Names",
           "sorting": "m",
-          "packs": [
-            "shattered-isles-names-macro",
-            "shattered-isles-names"
-          ]
+          "packs": ["shattered-isles-names-macro", "shattered-isles-names"]
         }
       ]
     },
@@ -366,10 +362,7 @@
         {
           "name": "Blades68 Engine",
           "sorting": "m",
-          "packs": [
-            "blades68_troubles",
-            "blades68_trouble_tables"
-          ]
+          "packs": ["blades68_troubles", "blades68_trouble_tables"]
         }
       ]
     }
