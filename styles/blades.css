@@ -2510,7 +2510,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-bottom: 8px;
 }
 .blades68.actor.pc * .special-playbook-section .cohort-status-row .status-pill {

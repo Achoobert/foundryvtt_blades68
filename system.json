@@ -29,8 +29,15 @@
   "styles": ["styles/blades.css"],
   "flags": {
     "hotReload": {
-      "extensions": ["hbs", "css", "json", "js"],
-      "paths": ["styles/", "lang/", "templates/"]
+      "extensions": ["hbs", "css", "json", "js", "html"],
+      "paths": [
+        "styles/",
+        "lang/",
+        "templates/",
+        "themes/",
+        "packs/",
+        "module/"
+      ]
     }
   },
   "languages": [
