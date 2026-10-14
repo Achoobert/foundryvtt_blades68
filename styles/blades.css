@@ -328,6 +328,24 @@
 .blades68 td {
   padding: 5px;
 }
+.blades68 .xp-triggers-custom {
+  font-size: 12px;
+}
+.blades68 .xp-triggers-custom p,
+.blades68 .xp-triggers-custom ul,
+.blades68 .xp-triggers-custom ol {
+  margin: 0 0 4px;
+}
+.blades68 .xp-triggers-custom ul,
+.blades68 .xp-triggers-custom ol {
+  padding-left: 18px;
+}
+.blades68 .xp-triggers-custom li {
+  margin: 0;
+}
+.blades68 .xp-triggers-custom > :last-child {
+  margin-bottom: 0;
+}
 /* --Controls minimum size of windows--*/
 .blades68 {
   min-width: 360px;
@@ -3601,5 +3619,3 @@
     transform: translate(2px, 1px);
   }
 }
-
-/*# sourceMappingURL=blades.css.map */

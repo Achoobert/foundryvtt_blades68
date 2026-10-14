@@ -12,6 +12,7 @@ import {
   importExistingImagesOnce,
   applySheetBackgroundColor,
 } from "./settings.js";
+import { registerXpTriggerHooks } from "./xp-triggers.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -530,6 +531,7 @@ Hooks.once("ready", async function () {
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
   await importExistingImagesOnce();
+  registerXpTriggerHooks();
 });
 
 /*

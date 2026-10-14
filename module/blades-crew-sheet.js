@@ -3,6 +3,7 @@ import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { simpleRollPopup } from "./blades-roll.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { getXpTriggerHtml } from "./xp-triggers.js";
 
 
 export class BladesCrewSheet extends BladesSheetV2 {
@@ -57,6 +58,10 @@ export class BladesCrewSheet extends BladesSheetV2 {
       gambits: { value: gambitsValue }
     };
 
+
+    const crewType = this.actor.items.find(i => i.type === "crew_type") ?? null;
+    const xpTriggers = await getXpTriggerHtml("crew", crewType?.system?.experience_clues ?? "");
+
     return {
       ...ctx,
       actor: this.actor,
@@ -68,6 +73,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
       items: this.actor.items.contents,
       system,
       gambits_max: gambitsMax,
+      xpTriggers,
       
       
       repTurfThreshold: (Number(this.actor.system.max?.rep) || 0) - (Number(this.actor.system.turfs_amount) || 0) + 1,

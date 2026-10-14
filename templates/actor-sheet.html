@@ -1100,15 +1100,19 @@
       <span>{{localize "BITD.XP"}}</span>
     </header>
     <div class="section-body">
+      {{#if xpTriggers}}
+      <div class="xp-triggers-custom">{{{xpTriggers}}}</div>
+      {{else}}
       <ul>
         <li>{{{localize "BITD.ClassExpClue1"}}}</li>
         <li>{{{localize "BITD.ClassExpClue2"}}}</li>
         <p>{{localize "BITD.ClassExpClueDescription"}}</p>
         {{#if selectedClass.system.experience_clues}}
-        <li><i>{{{selectedClass.system.experience_clues}}}</i></li>
+        <li><i>{{html text=selectedClass.system.experience_clues}}</i></li>
         {{/if}}
         <li><i>{{{localize "BITD.ClassExpClue3"}}}</i></li>
       </ul>
+      {{/if}}
     </div>
   </section>
 

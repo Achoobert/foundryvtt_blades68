@@ -322,6 +322,11 @@
         </div>
       </div>
       {{/if}}
+      {{#if xpTriggers}}
+      <div class="experience-clues-container xp-triggers-custom" style="padding-top: 6px;">
+        {{{xpTriggers}}}
+      </div>
+      {{else}}
       <div class="experience-clues-container" style="padding-top: 6px;">
         <div class="experience-clues-description">{{localize "BITD.CrewExpClue1"}}</div>
         <div class="experience-clues">
@@ -332,6 +337,7 @@
           {{/each}}
         </div>
       </div>
+      {{/if}}
     </div>
 
   </section>

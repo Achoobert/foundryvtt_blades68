@@ -1,4 +1,8 @@
 import { attachExistingImportedImages } from "./pdf-import/attach-existing-images.js";
+import {
+  ensureXpTriggersJournal,
+  rerenderBlades68Sheets,
+} from "./xp-triggers.js";
 
 export const registerSystemSettings = function () {
   game.settings.register("blades68", "Blades68Mode", {
@@ -185,6 +189,18 @@ export const registerSystemSettings = function () {
     scope: "world",
     type: new foundry.data.fields.BooleanField(),
     requiresReload: true,
+  });
+
+  game.settings.register("blades68", "CustomXpTriggers", {
+    name: game.i18n.localize("BITD.Settings.CustomXpTriggers.Name"),
+    hint: game.i18n.localize("BITD.Settings.CustomXpTriggers.Hint"),
+    config: true,
+    scope: "world",
+    type: new foundry.data.fields.BooleanField(),
+    onChange: async (value) => {
+      if (value) await ensureXpTriggersJournal();
+      rerenderBlades68Sheets();
+    },
   });
 
   game.settings.register("blades68", "Edge", {

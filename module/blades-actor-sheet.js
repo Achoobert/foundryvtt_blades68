@@ -2,6 +2,7 @@ import { BladesSheetV2 } from "./blades-sheet-v2.js";
 import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { enrichHTML } from "./compat.js";
+import { getXpTriggerHtml } from "./xp-triggers.js";
 
 
 const PLAYBOOK_UNIQUE = {
@@ -71,6 +72,9 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     const selectedClass = this.actor.items.find(i => i.type === "class") ?? null;
     const playbookUnique = selectedClass ? (PLAYBOOK_UNIQUE[selectedClass.name] ?? null) : null;
+
+
+    const xpTriggers = await getXpTriggerHtml("character", selectedClass?.system?.experience_clues ?? "");
 
     
     const ownedAbilities = this.actor.items.filter(i => i.type === "ability");
@@ -164,6 +168,7 @@ export class BladesActorSheet extends BladesSheetV2 {
       showKeys,
       blades68Keys: game.system.blades68Keys,
       selectedClass: selectedClass ? selectedClass.toObject() : null,
+      xpTriggers,
       playbookUnique,
       otherAbilities,
       abilityShortList,

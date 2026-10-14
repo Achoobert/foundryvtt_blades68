@@ -273,3 +273,29 @@ i {
 td {
   padding: 5px;
 }
+
+// Custom XP trigger text pulled from the "XP Triggers" world journal. The journal
+// editor emits <p>/<ul>/<li>, so tighten the default spacing to match the built-in
+// XP block on both the character and crew sheets.
+.xp-triggers-custom {
+  font-size: 12px;
+
+  p,
+  ul,
+  ol {
+    margin: 0 0 4px;
+  }
+
+  ul,
+  ol {
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
