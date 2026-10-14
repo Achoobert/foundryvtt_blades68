@@ -30,6 +30,8 @@
   "BITD.ToggleStanding": "Toggle standing for {name}, currently {standing}",
   "BITD.TitlePostItem": "Post item",
   "BITD.Vice": "Vice",
+  "BITD.TAHActions": "Actions",
+  "BITD.TAHAttributes": "Attributes",
   "BITD.Class": "Class",
   "BITD.Stress": "Stress",
   "BITD.Alias": "Alias",

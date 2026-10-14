@@ -13,6 +13,7 @@ import {
   applySheetBackgroundColor,
 } from "./settings.js";
 import { registerXpTriggerHooks } from "./xp-triggers.js";
+import { registerTokenActionHud } from "./token-action-hud.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -181,6 +182,9 @@ Hooks.once("init", async function () {
   // Register System Settings
   registerSystemSettings();
   applySheetBackgroundColor();
+
+  // Optional: Token Action HUD Core integration (no-op without the module)
+  registerTokenActionHud();
 
   if (game.settings.get("blades68", "PublicClocks")) {
     Hooks.on("preCreateActor", (actor, createData, options, userId) => {

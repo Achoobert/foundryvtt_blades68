@@ -374,6 +374,16 @@
       ]
     }
   ],
+  "relationships": {
+    "recommends": [
+      {
+        "id": "token-action-hud-core",
+        "type": "module",
+        "compatibility": { "minimum": "2.1" },
+        "reason": "Adds a token HUD with action-rating rolls."
+      }
+    ]
+  },
   "manifest": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.json",
   "download": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.zip"
 }
