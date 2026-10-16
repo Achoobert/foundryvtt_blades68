@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 *  Elements that can be changed will hint this by dimming and fading a little on hover
 */
@@ -2149,28 +2148,50 @@
 .blades68.actor.pc * .coins.coins-stashed {
   width: 190px;
 }
-.blades68.actor.pc * .trait-line {
+.blades68.actor.pc * .header_subline .trait-line {
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid #191813;
+  border-top: 1px solid #191813;
   padding-bottom: 4px;
   margin-bottom: 4px;
+  margin-top: 4px;
   justify-content: flex-start;
 }
-.blades68.actor.pc * .trait-line .item-block {
-  align-items: baseline;
-  margin-right: 0;
-}
-.blades68.actor.pc * .trait-line .item-block .subheader-item {
+.blades68.actor.pc * .header_subline .trait-line > .item-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   min-width: fit-content;
-}
-.blades68.actor.pc * .trait-line .item-block:not(:last-child)::after {
-  content: "•";
-  margin: 0 6px;
-  color: #999;
-}
-.blades68.actor.pc * .trait-line .item-block .item-class-label {
+  margin: 5px;
   margin-bottom: 0;
+}
+.blades68.actor.pc * .header_subline .trait-line .item,
+.blades68.actor.pc * .header_subline .trait-line .item-body,
+.blades68.actor.pc * .header_subline .trait-line .item-class-label,
+.blades68.actor.pc * .header_subline .trait-line .open-friend,
+.blades68.actor.pc * .header_subline .trait-line .item-control,
+.blades68.actor.pc * .header_subline .trait-line .crew-delete {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+.blades68.actor.pc * .header_subline .trait-line .item-control,
+.blades68.actor.pc * .header_subline .trait-line .crew-delete {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+.blades68.actor.pc * .header_subline .trait-line:hover .item-control,
+.blades68.actor.pc * .header_subline .trait-line:hover .crew-delete {
+  opacity: 1;
+  pointer-events: auto;
+}
+.blades68.actor.pc * .header_subline .trait-line .subheader-item {
+  height: auto;
+}
+.blades68.actor.pc * .header_subline .trait-line img {
+  display: block;
 }
 .blades68.actor.pc * .pronouns-line,
 .blades68.actor.pc * .look-line {

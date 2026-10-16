@@ -334,6 +334,12 @@
               <label for="character-{{_id}}-armor-uses-armor">{{localize "BITD.Armor"}}</label>
               <input id="character-{{_id}}-armor-uses-armor" type="checkbox" name="system.armor-uses.armor" {{checked system.armor-uses.armor}}>
             </div>
+            {{#unless blades68}}
+            <div>
+              <label for="character-{{_id}}-armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
+              <input id="character-{{_id}}-armor-uses-heavy" type="checkbox" name="system.armor-uses.heavy" {{checked system.armor-uses.heavy}}>
+            </div>
+            {{/unless}}
             <div>
               <label for="character-{{_id}}-armor-uses-special">{{#if
                 selectedClass.system.special_resource}}{{selectedClass.system.special_resource}}{{else}}{{localize
@@ -341,8 +347,10 @@
               <span class="special-uses">
                 <input id="character-{{_id}}-armor-uses-special" type="checkbox" name="system.armor-uses.special" {{checked
                   system.armor-uses.special}}>
+                {{#if blades68}}
                 <input id="character-{{_id}}-armor-uses-special-2" type="checkbox" name="system.armor-uses.special_2" {{checked
                   system.armor-uses.special_2}}>
+                {{/if}}
                 </span>
             </div>
           </td>
