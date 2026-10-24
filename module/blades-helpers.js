@@ -236,6 +236,13 @@ export class BladesHelpers {
     return (attribute_name in attributes);
   }
 
+  /**
+   * Transient reminder that the player owes themselves an xp mark.
+   */
+  static notifyXpReminder() {
+    ui.notifications?.info?.(game.i18n.localize("BITD.XpReminder"));
+  }
+
   /* -------------------------------------------- */
   static getProperCase(name) {
     return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();

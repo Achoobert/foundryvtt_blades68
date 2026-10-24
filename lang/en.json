@@ -88,6 +88,7 @@
   "BITD.TraumaRuthless": "Ruthless",
   "BITD.TraumaSecretive": "Secretive",
   "BITD.Keys": "Keys",
+  "BITD.XpReminder": "Don't forget to mark your new xp!",
   "BITD.KeysExplanation": "Each of your 5 Keys tracks marks (0-3) as you lean into that part of your character's history or identity. When a Key hits 3 marks, you can boom it into a Deadlock — a lasting complication tied to that Key.",
   "BITD.AddKey": "Add Key",
   "BITD.CustomKey": "Custom Key",

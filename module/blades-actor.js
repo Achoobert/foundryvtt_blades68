@@ -598,6 +598,14 @@ export class BladesActor extends Actor {
     } else {
       dice_amount = 1;
     }
+
+    if (
+      BladesHelpers.isAttributeAction(attribute_name) &&
+      (position === "desperate" || dice_amount <= 0)
+    ) {
+      BladesHelpers.notifyXpReminder();
+    }
+
     dice_amount += additional_dice_amount;
 
     await bladesRoll(

@@ -312,8 +312,13 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     const keysList = this.actor.getComputedKeys();
     if (!keysList[slotIndex]) return;
+    const previous = Number(keysList[slotIndex][field]);
     keysList[slotIndex][field] = value;
     await this.actor.update({ "system.keys.list": keysList });
+
+    if (field === "experience" && Number(value) > previous) {
+      BladesHelpers.notifyXpReminder();
+    }
   }
 
   
