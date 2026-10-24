@@ -3274,6 +3274,18 @@
   color: red;
 }
 
+dialog.blades68-dialog {
+  max-height: 90vh;
+}
+dialog.blades68-dialog .window-content {
+  min-height: 0;
+  overflow: hidden auto;
+}
+dialog.blades68-dialog .form-footer {
+  position: sticky;
+  bottom: 0;
+}
+
 .items-to-add {
   display: flex;
   flex-direction: column;
@@ -3291,19 +3303,32 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 0.75em;
+  margin-top: 1.25em;
   padding-bottom: 0.15em;
   border-bottom: 1px solid currentColor;
 }
-.add-items-list .item-group header:first-child {
+.add-items-list .item-group:first-child header {
   margin-top: 0;
 }
 .add-items-list input[type=radio]:checked + label,
 .add-items-list input[type=checkbox]:checked + label {
   font-weight: bold;
 }
+.add-items-list .item-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  margin: 0.15em 0;
+}
+.add-items-list .item-block input[type=radio],
+.add-items-list .item-block input[type=checkbox] {
+  flex: 0 0 auto;
+  margin: 0;
+}
 .add-items-list .item-block label {
   display: block;
+  flex: 1 1 auto;
+  margin: 0;
 }
 .add-items-list .item-description {
   font-style: italic;
@@ -3315,6 +3340,50 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.bitd-dice-pool {
+  display: block;
+  margin-bottom: 0.5em;
+}
+.bitd-dice-pool > label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.bitd-dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+.bitd-dice-row .bitd-dice-count {
+  width: 2.2em;
+  height: 2.2em;
+  flex: 0 0 auto;
+  padding: 0;
+  line-height: 1;
+  font-weight: bold;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #bbb;
+  color: #191813;
+  cursor: pointer;
+}
+.bitd-dice-row .bitd-dice-count.is-zero {
+  background: #e08080;
+}
+.bitd-dice-row .bitd-dice-count.is-base {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.bitd-dice-row .bitd-dice-count.is-selected {
+  background: #191813;
+  color: #EEEFFF;
+  border-color: #191813;
+}
+.bitd-dice-row .bitd-dice-count:hover {
+  filter: brightness(0.8);
 }
 
 .bitd-inline-roll {

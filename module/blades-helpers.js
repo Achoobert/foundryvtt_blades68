@@ -743,14 +743,14 @@ export class BladesHelpers {
       }
     }
 
-    // Sort keys alphabetically and put generics last
+    // Generics first (they apply to everyone), then the class groups alphabetically.
     let sorted = {};
-    Object.keys(grouped_items).sort().forEach(key => {
-      sorted[key] = grouped_items[key];
-    });
     if (generics.length > 0) {
       sorted["General"] = generics;
     }
+    Object.keys(grouped_items).sort().forEach(key => {
+      sorted[key] = grouped_items[key];
+    });
 
     return sorted;
   }

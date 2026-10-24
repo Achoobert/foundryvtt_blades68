@@ -1,5 +1,6 @@
 import { renderHandlebarsTemplate as renderTemplate } from "./compat.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { buildDiceRowHtml, wireDiceRow } from "./lib/dice-row.js";
 
 /**
  * Roll Dice.
@@ -383,33 +384,32 @@ export async function simpleRollPopup() {
 	} 
 	else {console.log("No Token is selected.");}
 	
+  const showNotes = (() => {
+    try {
+      return Boolean(game.settings.get("blades68", "RollNotes"));
+    } catch (error) {
+      return false;
+    }
+  })();
+
   const content = `
       <h2>${game.i18n.localize("BITD.RollSomeDice")}</h2>
       <form class="bitd-simple-roll-dialog">
-        <div class="form-group">
-          <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
-          <select id="qty" name="qty">
-            ${Array(11).fill().map((item, i) => `<option value="${i}">${i}d</option>`).join('')}
-          </select>
-        </div>
+        ${buildDiceRowHtml({ base: 2, name: "qty" })}
         <fieldset class="form-group">
           <legend>Downtime Rolls</legend>
           <div style="display:grid; grid-template-columns:auto auto auto; column-gap:0.5em; row-gap:0.4em; align-items:center;">
             <label><input type="radio" id="fortune" name="rollSelection" value="fortune" checked=true> ${game.i18n.localize("BITD.Fortune")}</label>
             <span style="grid-column:2 / 4;"></span>
-            <label><input type="radio" id="gatherInfo" name="rollSelection" value="gatherInfo"> ${game.i18n.localize("BITD.GatherInformation")}</label>
-            <span style="grid-column:2 / 4;"></span>
             <label><input type="radio" id="engagement" name="rollSelection" value="engagement"> ${game.i18n.localize("BITD.Engagement")}</label>
             <span style="grid-column:2 / 4;"></span>
-            <label><input type="radio" id="indulgeVice" name="rollSelection" value="indulgeVice"> ${game.i18n.localize("BITD.IndulgeVice")}</label>
-            <label style="margin:0; justify-self:end; white-space:nowrap;">${game.i18n.localize('BITD.Stress')}:</label>
-            <select id="stress" name="stress" style="width:auto; min-width:4.5em; justify-self:start;"><option value="${current_stress}" selected disabled hidden>${current_stress}</option>${Array(11).fill().map((item, i) => `<option value="${i}">${i}</option>`).join('')}</select>
           </div>
         </fieldset>
-        <div className="form-group">
+        ${showNotes ? `
+        <div class="form-group">
           <label>${game.i18n.localize('BITD.Notes')}:</label>
           <input id="note" name="note" type="text" value="">
-        </div><br/>
+        </div><br/>` : `<input id="note" name="note" type="hidden" value="">`}
       </form>
     `;
 
@@ -418,6 +418,7 @@ export async function simpleRollPopup() {
     content,
     okLabel: `Roll`,
     cancelLabel: game.i18n.localize('Cancel'),
+    onRender: (form) => wireDiceRow(form),
   });
 
   if (!formResult) {
@@ -425,20 +426,13 @@ export async function simpleRollPopup() {
   }
 
   let diceQty = Number(formResult.qty ?? 0) || 0;
-  const stress = Number(formResult.stress ?? current_stress) || 0;
   const tier = Number(formResult.tier ?? current_tier) || 0;
   const note = formResult.note ?? "";
   const selection = formResult.rollSelection ?? "fortune";
 
   switch (selection) {
-    case 'gatherInfo':
-      await bladesRoll(diceQty,"BITD.GatherInformation","","",note,"",undefined,target_actor);
-      break;
     case 'engagement':
       await bladesRoll(diceQty,"BITD.Engagement","","",note,"",undefined,target_actor);
-      break;
-    case 'indulgeVice':
-      await bladesRoll(diceQty,"BITD.Vice","","",note,stress,undefined,target_actor);
       break;
     case 'acquireAsset':
 	  diceQty = diceQty + tier;

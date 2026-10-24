@@ -164,6 +164,15 @@ export const registerSystemSettings = function () {
     requiresReload: true,
   });
 
+  game.settings.register("blades68", "RollNotes", {
+    name: game.i18n.localize("BITD.Settings.RollNotes.Name"),
+    hint: game.i18n.localize("BITD.Settings.RollNotes.Hint"),
+    config: true,
+    default: false,
+    scope: "world",
+    type: new foundry.data.fields.BooleanField(),
+  });
+
   game.settings.register("blades68", "PushYourself", {
     name: game.i18n.localize("BITD.Settings.Push.Name"),
     hint: game.i18n.localize("BITD.Settings.Push.Hint"),

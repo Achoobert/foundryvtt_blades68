@@ -11,7 +11,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "lint": "eslint module",
-    "format": "prettier --write .",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "build:css": "sass scss/style.scss:styles/blades.css --style=expanded --no-source-map",
     "watch": "node scripts/watch.mjs",
     "watch:css": "sass scss/style.scss:styles/blades.css --watch --style=expanded --source-map",
@@ -34,7 +35,7 @@
     "classic-level": "^1.4.1",
     "eslint": "^9.0.0",
     "js-yaml": "^4.1.0",
-    "prettier": "^3.3.0",
+    "oxfmt": "^0.74.0",
     "sass": "^1.89.0"
   },
   "engines": {

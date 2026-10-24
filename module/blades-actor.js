@@ -1,6 +1,7 @@
 import { bladesRoll } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { buildDiceRowHtml, wireDiceRow } from "./lib/dice-row.js";
 
 
 export class BladesActor extends Actor {
@@ -98,14 +99,23 @@ export class BladesActor extends Actor {
 
     const actionRollEnabled = game.settings.get("blades68", "ActionRoll");
 
+    // The dice row shows the absolute pool, but everything downstream works in
+    // modifiers, so the row writes `mod` as (chosen - base).
+    const basePool = (() => {
+      if (sanitizedDefaultDice > 0) return sanitizedDefaultDice;
+      try {
+        const pool = Number(this.getRollData()?.dice_amount?.[attribute_name]);
+        if (!Number.isFinite(pool)) return sanitizedDefaultDice;
+        return Math.max(0, Math.min(10, Math.floor(pool)));
+      } catch (error) {
+        return sanitizedDefaultDice;
+      }
+    })();
+
     let content = `
         <form class="bitd-roll-dialog">
-          <div class="form-group">
-            <label>${game.i18n.localize("BITD.Modifier")}:</label>
-            <select id="mod" name="mod">
-              ${this.createListOfDiceMods(-3, +3, 0)}
-            </select>
-          </div>`;
+          ${buildDiceRowHtml({ base: basePool, name: "dicePool" })}
+          <input type="hidden" id="mod" name="mod" value="0">`;
     if (BladesHelpers.isAttributeAction(attribute_name)) {
       const rollOptionsHtml = this._buildRollOptionsHtml(current_gambits);
       content += `
@@ -148,10 +158,20 @@ export class BladesActor extends Actor {
             `;
     } else {
       if (BladesHelpers.isAttributeAttribute(attribute_name)) {
+        // Attribute rolls cover two very different things, so each gets its
+        // own dice button rather than a single footer "Roll".
         content += `
-            <fieldset class="roll-options-reminder" style="margin-top:0.5em;">
-              <legend>${game.i18n.localize("BITD.Resistance")}</legend>
-              <p style="margin:0;">${game.i18n.localize("BITD.RollOptionResist")}</p>
+            <input type="hidden" id="rollSelection" name="rollSelection" value="resistanceRoll">
+            <fieldset class="roll-options-reminder bitd-roll-choice" style="margin-top:0.5em;">
+              <legend>${game.i18n.localize("BITD.Downtime")}</legend>
+              <button type="button" class="bitd-inline-roll" data-roll-for="indulgeVice"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.IndulgeVice")}</button>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollIndulgeViceHint")}</p>
+            </fieldset>
+            <fieldset class="roll-options-reminder bitd-roll-choice" style="margin-top:0.5em;">
+              <legend>${game.i18n.localize("BITD.Score")}</legend>
+              <button type="button" class="bitd-inline-roll" data-roll-for="resistanceRoll"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.Resistance")}</button>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollOptionResist")}</p>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollResistHint")}</p>
             </fieldset>`;
       } else if (attribute_name === "BITD.Vice") {
         content += `
@@ -165,21 +185,32 @@ export class BladesActor extends Actor {
 			<input  id="pos2" name="pos2" type="hidden" value="">
             <input id="fx" name="fx" type="hidden" value="">`;
     }
-    content += `
-        <div className="form-group">
+    const showNotes = (() => {
+      try {
+        return Boolean(game.settings.get("blades68", "RollNotes"));
+      } catch (err) {
+        return false;
+      }
+    })();
+    content += showNotes
+      ? `
+        <div class="form-group">
           <label>${game.i18n.localize("BITD.Notes")}:</label>
           <input id="note" name="note" type="text" value="">
         </div><br/>
+       </form>
+      `
+      : `
+        <input id="note" name="note" type="hidden" value="">
        </form>
       `;
     const dialogResult = await openFormDialog({
       title: `${game.i18n.localize("BITD.Roll")} ${game.i18n.localize(attribute_label)}`,
       content,
       okLabel: game.i18n.localize("BITD.Roll"),
-      cancelLabel: game.i18n.localize("Close"),
-      defaultButton: "cancel",
       hideOkButton:
-        actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name),
+        (actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name)) ||
+        BladesHelpers.isAttributeAttribute(attribute_name),
       onRender: (form, submit) => this._wireRollDialog(form, submit),
     });
 
@@ -219,7 +250,9 @@ export class BladesActor extends Actor {
       }
     }
 
-    const modifier = (Number(dialogResult.mod ?? 0) || 0) + bonusDice;
+    // `bonusDice` only feeds the note text: the dice row already moved itself
+    // when those boxes were ticked, so adding it here would double-count.
+    const modifier = Number(dialogResult.mod ?? 0) || 0;
     let note = dialogResult.note ?? "";
     if (optionNotes.length) {
       note = note
@@ -239,6 +272,21 @@ export class BladesActor extends Actor {
     }
 
     if (!BladesHelpers.isAttributeAction(attribute_name)) {
+      if (rollSelection === "indulgeVice") {
+        // The dice row already holds the final pool for this one.
+        const vicePool = Number(dialogResult.dicePool ?? 0) || 0;
+        await bladesRoll(
+          vicePool,
+          "BITD.Vice",
+          "",
+          "",
+          note,
+          stress,
+          undefined,
+          this,
+        );
+        return;
+      }
       await this.rollAttribute(attribute_name, modifier, "", "", note);
       return;
     }
@@ -440,16 +488,37 @@ export class BladesActor extends Actor {
       });
     });
 
+    // Dice pool row: clicking a number picks the whole pool, and the +1d
+    // option checkboxes nudge the current pick up or down. Everything
+    // downstream works in modifiers, so mirror the pick into #mod.
+    const modInput = form.querySelector("#mod");
+    const { adjustPool } = wireDiceRow(form, (pool, base) => {
+      if (modInput) modInput.value = String(pool - base);
+    });
+
+    ["#opt-assist", "#opt-gambit", "#opt-push", "#opt-devils-bargain"]
+      .map((selector) => form.querySelector(selector))
+      .filter(Boolean)
+      .forEach((box) => {
+        box.addEventListener("change", () => adjustPool(box.checked ? 1 : -1));
+      });
+
     const pushCheckbox = form.querySelector("#opt-push");
     const devilsBargainCheckbox = form.querySelector("#opt-devils-bargain");
     if (pushCheckbox && devilsBargainCheckbox) {
       pushCheckbox.addEventListener("change", () => {
         devilsBargainCheckbox.disabled = pushCheckbox.checked;
-        if (pushCheckbox.checked) devilsBargainCheckbox.checked = false;
+        if (pushCheckbox.checked && devilsBargainCheckbox.checked) {
+          devilsBargainCheckbox.checked = false;
+          adjustPool(-1);
+        }
       });
       devilsBargainCheckbox.addEventListener("change", () => {
         pushCheckbox.disabled = devilsBargainCheckbox.checked;
-        if (devilsBargainCheckbox.checked) pushCheckbox.checked = false;
+        if (devilsBargainCheckbox.checked && pushCheckbox.checked) {
+          pushCheckbox.checked = false;
+          adjustPool(-1);
+        }
       });
     }
   }

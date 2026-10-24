@@ -97,8 +97,11 @@ export async function openFormDialog({
     });
   }
 
+  const { classes: extraClasses = [], ...windowRest } = windowOptions;
+
   const result = await DialogV2.wait({
-    window: { title, ...windowOptions },
+    classes: ["blades68-dialog", ...extraClasses],
+    window: { title, ...windowRest },
     content,
     buttons,
   });

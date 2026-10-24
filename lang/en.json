@@ -461,6 +461,10 @@
   "BITD.RollOptionResist": "Use your attribute to resist a consequence:<br/>Suffer stress equal to 6 minus your highest die.<br/>On a 6 you clear the consequence at no cost!",
   "BITD.RollOptionIndulgeVice": "Indulge Vice: you clear stress equal to your highest die. Rolling under your current stress risks overindulgence",
   "BITD.Resistance": "Resistance Roll",
+  "BITD.Downtime": "Downtime",
+  "BITD.Score": "Score",
+  "BITD.RollIndulgeViceHint": "You must use your lowest attribute. Warning: a result higher than your stress means Overindulgence!",
+  "BITD.RollResistHint": "Warning: this may only reduce a consequence's severity rather than eliminating it outright.",
   "BITD.ThreatRoll": "Threat",
   "BITD.PushYourself": "Push Yourself",
   "BITD.IndulgeVice": "Indulge Vice",
@@ -618,6 +622,10 @@
     "Threat": {
       "Name": "Threat Rolls",
       "Hint": "Enables the Threat Roll from the Deep Cuts supplement."
+    },
+    "RollNotes": {
+      "Name": "Roll Notes Field",
+      "Hint": "Shows a free-text Notes field on the dice roller dialog."
     },
     "Push": {
       "Name": "Push Yourself Rolls",
