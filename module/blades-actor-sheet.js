@@ -129,6 +129,16 @@ export class BladesActorSheet extends BladesSheetV2 {
       ? { "BITD.Discreet": "BITD.Discreet", "BITD.Conspicuous": "BITD.Conspicuous" }
       : { "BITD.Light": "BITD.Light", "BITD.Normal": "BITD.Normal", "BITD.Heavy": "BITD.Heavy" };
 
+    
+    const loadBonusSources = this.actor.getLoadBonusSources?.() ?? [];
+    const loadBonusTotal = loadBonusSources.reduce((sum, src) => sum + src.value, 0);
+    const loadBonusTooltip = loadBonusSources
+      .map(src => {
+        const desc = BladesHelpers.stripHtml(src.description || "").trim();
+        return desc ? `+${src.value} ${src.name}: ${desc}` : `+${src.value} ${src.name}`;
+      })
+      .join("\n");
+
     const description = await enrichHTML(this.actor.system.description, {
       secrets: owner,
       async: true
@@ -148,6 +158,8 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     return {
       ...ctx,
+      loadBonusTotal,
+      loadBonusTooltip,
       actor: this.actor,
       document: this.document,
       _id: this.actor.id,
@@ -402,6 +414,22 @@ export class BladesActorSheet extends BladesSheetV2 {
   }
 
   
+  /**
+   * Fire a one-shot warning when a toggle pushes the character past their
+   * declared load tier. Going over is allowed -- the sheet keeps the red
+   * numbers up as the standing signal, so the toast only fires on the way in.
+   */
+  _warnIfOverLoad(wasOver) {
+    const { loadout, load_max, load_level, over_load } = this.actor.system;
+    if (wasOver || !over_load) return;
+    ui.notifications?.warn?.(game.i18n.format("BITD.OverLoadWarning", {
+      load: loadout,
+      max: load_max,
+      level: game.i18n.localize(load_level)
+    }));
+  }
+
+  
   static async _onCatalogToggle(event, target) {
     const row = target.closest(".catalog-item");
     if (!row) return;
@@ -412,6 +440,7 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     const owned = this.actor.items.filter(i => i.type === itemType && BladesHelpers.trimClassFromName(i.name) === itemName);
     const diff = checkedCount - owned.length;
+    const wasOver = Boolean(this.actor.system.over_load);
 
     if (diff > 0) {
       const source = await BladesHelpers.getItemByType(itemType, sourceId);
@@ -421,6 +450,7 @@ export class BladesActorSheet extends BladesSheetV2 {
       if (data.type === "item") data.system.equipped = true;
       const toCreate = Array.from({ length: diff }, () => foundry.utils.deepClone(data));
       await this.actor.createEmbeddedDocuments("Item", toCreate);
+      this._warnIfOverLoad(wasOver);
     } else if (diff < 0) {
       const toDelete = owned.slice(0, -diff).map(i => i.id);
       await this.actor.deleteEmbeddedDocuments("Item", toDelete);
@@ -431,7 +461,9 @@ export class BladesActorSheet extends BladesSheetV2 {
   static async _onItemEquippedToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
+    const wasOver = Boolean(this.actor.system.over_load);
     await item.update({ "system.equipped": target.checked });
+    if (target.checked) this._warnIfOverLoad(wasOver);
   }
 
   
@@ -448,7 +480,9 @@ export class BladesActorSheet extends BladesSheetV2 {
   static async _onItemBonusToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
+    const wasOver = Boolean(this.actor.system.over_load);
     await item.update({ "system.bonus_equipped": target.checked });
+    if (target.checked) this._warnIfOverLoad(wasOver);
   }
 
   

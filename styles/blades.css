@@ -2291,6 +2291,14 @@
 .blades68.actor.pc * .items-panel .section-header .load-fraction {
   white-space: nowrap;
 }
+.blades68.actor.pc * .items-panel .section-header .load-fraction.over-load {
+  color: #b02020;
+  font-weight: bold;
+}
+.blades68.actor.pc * .items-panel .section-header .load-bonus {
+  cursor: help;
+  opacity: 0.85;
+}
 .blades68.actor.pc * .items-panel .item-catalog {
   list-style: none;
   margin: 0 0 6px 0;

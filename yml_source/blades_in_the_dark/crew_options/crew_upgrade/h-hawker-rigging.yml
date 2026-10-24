@@ -12,6 +12,27 @@ system:
   price: '1'
   logic: ''
   crew_type: ''
+effects:
+  - _id: bef7332607955eb3
+    name: +1 Load
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.scoundrel.add_load
+          type: add
+          value: '1'
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 1600000
 flags: {}

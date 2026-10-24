@@ -740,12 +740,60 @@ export class BladesActor extends Actor {
   }
 
   getLoadBonus() {
-    const crew_actor = this._getCrewActor();
-    if (!crew_actor) {
-      return 0;
+    return this.getLoadBonusSources().reduce((total, src) => total + src.value, 0);
+  }
+
+  /**
+   * Free load granted to this character, broken out per source so the sheet can
+   * name them on hover. Two kinds:
+   *   - owned abilities carrying system.load_bonus (Mule and friends)
+   *   - the crew's add_load, which crew_upgrade items set through an
+   *     ActiveEffect on system.scoundrel.add_load (see module/blades.js
+   *     syncCrewUpgradeEffectGate). The crew field stays the authority on the
+   *     total; the upgrade scan only supplies labels.
+   */
+  getLoadBonusSources() {
+    const sources = [];
+
+    for (const item of this.items) {
+      if (item.type !== "ability") continue;
+      const value = Number(item.system?.load_bonus);
+      if (!Number.isFinite(value) || value <= 0) continue;
+      sources.push({ name: item.name, description: item.system?.description || "", value: Math.floor(value) });
     }
-    const bonus = Number(crew_actor?.system?.scoundrel?.add_load);
-    return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
+
+    const crew_actor = this._getCrewActor();
+    if (!crew_actor) return sources;
+
+    const raw = Number(crew_actor?.system?.scoundrel?.add_load);
+    const crewTotal = Number.isFinite(raw) ? Math.max(0, Math.floor(raw)) : 0;
+    if (crewTotal <= 0) return sources;
+
+    let labelled = 0;
+    for (const item of crew_actor.items) {
+      if (item.type !== "crew_upgrade") continue;
+      let value = 0;
+      for (const effect of item.effects) {
+        if (effect.disabled) continue;
+        for (const change of effect.changes ?? []) {
+          if (change.key !== "system.scoundrel.add_load") continue;
+          const amount = Number(change.value);
+          if (Number.isFinite(amount)) value += amount;
+        }
+      }
+      
+      value = Math.min(Math.floor(value), crewTotal - labelled);
+      if (value <= 0) continue;
+      labelled += value;
+      sources.push({ name: item.name, description: item.system?.description || "", value });
+    }
+
+    
+    if (labelled < crewTotal) {
+      sources.push({ name: crew_actor.name, description: "", value: crewTotal - labelled });
+    }
+
+    return sources;
   }
 
   

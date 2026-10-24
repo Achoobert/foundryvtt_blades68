@@ -50,6 +50,16 @@
     .section-header {
       .load-fraction {
         white-space: nowrap;
+
+        &.over-load {
+          color: #b02020;
+          font-weight: bold;
+        }
+      }
+
+      .load-bonus {
+        cursor: help;
+        opacity: 0.85;
       }
     }
 

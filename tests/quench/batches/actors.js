@@ -316,6 +316,122 @@ export default function register(quench) {
         });
       });
 
+      describe('character load', function () {
+        
+        async function gearActor(name, load, count = 1) {
+          const actor = tracker.track(await Actor.create({ name, type: 'character' }));
+          const items = Array.from({ length: count }, (_, i) => ({
+            name: `Quench Gear ${i + 1}`,
+            type: 'item',
+            system: { load, equipped: true }
+          }));
+          if (count) await actor.createEmbeddedDocuments('Item', items);
+          return actor;
+        }
+
+        it('keeps the declared tier when carrying past its max', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Overload PC', 1, 5);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+
+          assert.equal(actor.system.loadout, 5);
+          assert.equal(actor.system.load_level, 'BITD.Light', 'tier must not auto-promote');
+          assert.equal(actor.system.base_max_load, 3);
+          assert.equal(actor.system.load_max, 3);
+          assert.isTrue(actor.system.over_load);
+        });
+
+        it('raises the max when the player picks a heavier tier', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Tier PC', 1, 5);
+
+          await actor.update({ 'system.selected_load_level': 'BITD.Normal' });
+          assert.equal(actor.system.base_max_load, 5);
+          assert.isFalse(actor.system.over_load);
+
+          await actor.update({ 'system.selected_load_level': 'BITD.Heavy' });
+          assert.equal(actor.system.base_max_load, 6);
+        });
+
+        it('defaults to Normal when no tier has been picked', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Default Tier PC', 0, 0);
+          assert.equal(actor.system.selected_load_level, '');
+          assert.equal(actor.system.load_level, 'BITD.Normal');
+          assert.equal(actor.system.base_max_load, 5);
+        });
+
+        it('reports no bonus and no sources without a bonus item', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench No Bonus PC', 0, 0);
+          assert.equal(actor.system.load_bonus, 0);
+          assert.lengthOf(actor.getLoadBonusSources(), 0, 'sheet hides the +N when this is empty');
+        });
+
+        it('adds an ability load_bonus on top of the tier max', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Bonus PC', 1, 1);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+          await actor.createEmbeddedDocuments('Item', [
+            { name: 'Quench Rigging', type: 'ability', system: { load_bonus: 2, description: 'Free load.' } }
+          ]);
+
+          assert.equal(actor.system.load_bonus, 2);
+          assert.equal(actor.system.base_max_load, 3);
+          assert.equal(actor.system.load_max, 5);
+
+          const sources = actor.getLoadBonusSources();
+          assert.lengthOf(sources, 1);
+          assert.equal(sources[0].name, 'Quench Rigging');
+          assert.equal(sources[0].value, 2);
+        });
+
+        it('grants Mule its +2 through load_bonus, not a name match', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const pack = game.packs.get('blades68.ability');
+          assert.isOk(pack, 'blades68.ability pack should exist');
+          const mule = (await pack.getDocuments()).find((doc) => doc.name === '(C) Mule');
+          assert.isOk(mule, '(C) Mule should be in the ability pack');
+          assert.equal(mule.system.load_bonus, 2);
+
+          const actor = await gearActor('Quench Mule PC', 0, 0);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+          await actor.createEmbeddedDocuments('Item', [mule.toObject()]);
+
+          assert.equal(actor.system.load_bonus, 2);
+          assert.equal(actor.system.load_max, 5, 'Mule turns Light 3 into Light 5');
+        });
+
+        it('names the crew upgrade behind an add_load bonus', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const pack = game.packs.get('blades68.blades68_crew_upgrades');
+          assert.isOk(pack, 'blades68.blades68_crew_upgrades pack should exist');
+          const upgrade = (await pack.getDocuments()).find((doc) => doc.name.startsWith('Militant rigging'));
+          assert.isOk(upgrade, 'Militant rigging should be in the pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Load Crew', type: 'crew' }));
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
+          assert.equal(Number(crew.system.scoundrel.add_load), 2);
+
+          const character = await gearActor('Quench Load Crew PC', 0, 0);
+          assert.equal(character.getLoadBonus(), 0, 'unlinked PC gets nothing');
+
+          await character.update({
+            'system.crew': [{ id: crew.id, name: crew.name, description: '', img: crew.img }]
+          });
+
+          assert.equal(character.getLoadBonus(), 2);
+          const sources = character.getLoadBonusSources();
+          assert.lengthOf(sources, 1);
+          assert.equal(sources[0].name, upgrade.name, 'hover should name the upgrade, not just the crew');
+          assert.equal(sources[0].value, 2);
+        });
+      });
+
       describe('crew actor defaults', function () {
         it('creates a crew with the tier/coin/turf/vault defaults', async function () {
           requireSystemActive();

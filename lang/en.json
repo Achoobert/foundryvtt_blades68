@@ -217,6 +217,8 @@
   "BITD.LessEffect": "Less Effect",
   "BITD.Description": "Description",
   "BITD.Loadout": "Loadout",
+  "BITD.OverLoadWarning": "Carrying {load} load, but {level} allows only {max}.",
+  "BITD.LoadBonus": "Bonus Load",
   "BITD.Load": "Load",
   "BITD.CrewType": "Crew Type",
   "BITD.CrewTypeBox": "Click to choose a Crew Type",

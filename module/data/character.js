@@ -2,6 +2,34 @@ import { BladesHelpers } from "../blades-helpers.js";
 
 const { fields } = foundry.data;
 
+/**
+ * Base carrying capacity per declared load tier. These are the maximums the old
+ * index-based lookup table produced, kept the same so existing characters do not
+ * shift. Deep Cuts replaces Light/Normal/Heavy with Discreet/Conspicuous (see the
+ * "DeepCutLoad" setting in module/settings.js).
+ */
+const BASE_MAX_LOAD = {
+  "BITD.Light": 3,
+  "BITD.Normal": 5,
+  "BITD.Heavy": 6,
+  "BITD.Discreet": 4,
+  "BITD.Conspicuous": 6
+};
+
+/** Which tiers the dropdown offers in each mode -- mirrors load_levels in blades-actor-sheet.js. */
+const LOAD_TIERS = {
+  base: ["BITD.Light", "BITD.Normal", "BITD.Heavy"],
+  deepCut: ["BITD.Discreet", "BITD.Conspicuous"]
+};
+
+function deepCutLoad() {
+  try {
+    return Boolean(game.settings?.get("blades68", "DeepCutLoad"));
+  } catch (err) {
+    return false;
+  }
+}
+
 
 export class CharacterData extends foundry.abstract.TypeDataModel {
   
@@ -149,6 +177,9 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       load_level: str(), 
       selected_load_level: str(), 
       base_max_load: num(0), 
+      load_max: num(0), 
+      load_bonus: num(0), 
+      over_load: bool(), 
 
       
       harm: new fields.SchemaField({
@@ -305,10 +336,11 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     const actor = this.parent;
 
     this.loadout = this._computeLoadout();
-    const loadBonus = typeof actor?.getLoadBonus === "function" ? actor.getLoadBonus() : 0;
-    const effectiveLoadout = Math.max(0, this.loadout - loadBonus);
-    this.load_level = this._computeLoadLevel(effectiveLoadout);
-    this.load_max = this._computeLoadMax(effectiveLoadout) + loadBonus;
+    this.load_bonus = typeof actor?.getLoadBonus === "function" ? actor.getLoadBonus() : 0;
+    this.load_level = this._resolveLoadLevel();
+    this.base_max_load = BASE_MAX_LOAD[this.load_level] ?? 0;
+    this.load_max = this.base_max_load + this.load_bonus;
+    this.over_load = this.loadout > this.load_max;
 
     if (!actor) return;
 
@@ -348,55 +380,21 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       if (i.system?.equipped) loadout += load;
       if (i.system?.bonus_equipped) loadout += load;
     }
-    return Math.max(0, Math.min(11, loadout));
+    return Math.max(0, loadout);
   }
 
   
-  _computeLoadLevel(loadout) {
-    const { arr, idx } = this._loadLevelArray(loadout);
-    return arr[idx];
-  }
-
-  
-  _computeLoadMax(loadout) {
-    const { arr, idx } = this._loadLevelArray(loadout);
-    const tier = arr[idx];
-    let max = idx;
-    for (let i = idx; i < arr.length; i++) {
-      if (arr[i] !== tier) break;
-      max = i;
-    }
-    return max;
-  }
-
-  
-  _loadLevelArray(loadout) {
-    let deepCut = false;
-    try {
-      deepCut = Boolean(game.settings?.get("blades68", "DeepCutLoad"));
-    } catch (err) {
-      deepCut = false;
-    }
-
-    const load_level = deepCut
-      ? ["BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Conspicuous", "BITD.Conspicuous", "BITD.Encumbered", "BITD.Encumbered", "BITD.Encumbered", "BITD.OverMax", "BITD.OverMax"]
-      : ["BITD.Light", "BITD.Light", "BITD.Light", "BITD.Light", "BITD.Normal", "BITD.Normal", "BITD.Heavy", "BITD.Encumbered", "BITD.Encumbered", "BITD.Encumbered", "BITD.OverMax", "BITD.OverMax"];
-    const mule_level = deepCut
-      ? ["BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Discreet", "BITD.Conspicuous", "BITD.Conspicuous", "BITD.Encumbered", "BITD.Encumbered", "BITD.OverMax"]
-      : ["BITD.Light", "BITD.Light", "BITD.Light", "BITD.Light", "BITD.Light", "BITD.Light", "BITD.Normal", "BITD.Normal", "BITD.Heavy", "BITD.Encumbered", "BITD.OverMax", "BITD.OverMax"];
-
-    const items = this.parent?.items;
-    let mulePresent = false;
-    if (items) {
-      
-      for (const i of items) {
-        if (i.type === "ability" && i.name === "(C) Mule") {
-          mulePresent = true;
-          break;
-        }
-      }
-    }
-    const idx = Math.max(0, Math.min(11, loadout));
-    return { arr: mulePresent ? mule_level : load_level, idx };
+  /**
+   * The load tier is whatever the player picked in the dropdown -- it is never
+   * inferred from how much is currently carried. Carrying past the tier's max
+   * is allowed; the sheet flags it (system.over_load) instead of promoting the
+   * tier. Falls back to the default tier for characters created before the
+   * dropdown was wired up.
+   */
+  _resolveLoadLevel() {
+    
+    const tiers = deepCutLoad() ? LOAD_TIERS.deepCut : LOAD_TIERS.base;
+    if (tiers.includes(this.selected_load_level)) return this.selected_load_level;
+    return deepCutLoad() ? "BITD.Discreet" : "BITD.Normal";
   }
 }

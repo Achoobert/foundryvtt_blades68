@@ -3,31 +3,11 @@ name: (C) Mule
 type: ability
 system:
   description: 'Your load limits are higher. Light: 5. Normal: 7. Heavy: 8.'
+  load_bonus: 2
   class: Cutter
   price: '1'
   purchased: false
   logic: ''
-effects:
-  - _id: 3EQJHygb3FUJuaFO
-    name: Mule
-    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    type: base
-    origin: null
-    disabled: false
-    transfer: true
-    system:
-      changes:
-        - key: system.base_max_load
-          type: add
-          value: '2'
-          priority: null
-          phase: initial
-    duration:
-      startTime: null
-    description: ''
-    tint: '#ffffff'
-    statuses: []
-    showIcon: 1
 folder: cJPDzs27jPdqAVDV
 sort: 500000
 permission:
