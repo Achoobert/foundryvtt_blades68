@@ -177,6 +177,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       load_level: str(), 
       selected_load_level: str(), 
       base_max_load: num(0), 
+      coin_load: num(0), 
       load_max: num(0), 
       load_bonus: num(0), 
       over_load: bool(), 
@@ -335,6 +336,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
   prepareDerivedData() {
     const actor = this.parent;
 
+    this.coin_load = this._computeCoinLoad();
     this.loadout = this._computeLoadout();
     this.load_bonus = typeof actor?.getLoadBonus === "function" ? actor.getLoadBonus() : 0;
     this.load_level = this._resolveLoadLevel();
@@ -372,8 +374,8 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
   
   _computeLoadout() {
     const items = this.parent?.items;
-    if (!items) return 0;
-    let loadout = 0;
+    let loadout = this._computeCoinLoad();
+    if (!items) return loadout;
     for (const i of items) {
       if (i.type !== "item") continue;
       const load = parseInt(i.system?.load) || 0;
@@ -381,6 +383,23 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       if (i.system?.bonus_equipped) loadout += load;
     }
     return Math.max(0, loadout);
+  }
+
+  /**
+   * Coin on your person is 1 load each. Only the Coin track counts -- Stash
+   * (system.coins_stashed) is money at the lair and has no weight. system.coins
+   * is an ArrayField driven by the `multiboxes` radio helper, so the marked
+   * amount is the largest entry rather than a plain number.
+   */
+  _computeCoinLoad() {
+    const coins = this.coins;
+    const values = Array.isArray(coins) ? coins : [coins];
+    let marked = 0;
+    for (const value of values) {
+      const n = parseInt(value);
+      if (Number.isFinite(n) && n > marked) marked = n;
+    }
+    return Math.max(0, marked);
   }
 
   

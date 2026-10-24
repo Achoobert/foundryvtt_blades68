@@ -403,6 +403,32 @@ export default function register(quench) {
           assert.equal(actor.system.load_max, 5, 'Mule turns Light 3 into Light 5');
         });
 
+        it('counts carried coin as 1 load each', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Coin PC', 1, 2);
+          await actor.update({ 'system.selected_load_level': 'BITD.Normal' });
+          assert.equal(actor.system.coin_load, 0);
+          assert.equal(actor.system.loadout, 2, 'gear only to start');
+
+          await actor.update({ 'system.coins': [3] });
+          assert.equal(actor.system.coin_load, 3);
+          assert.equal(actor.system.loadout, 5, '2 gear + 3 coin');
+          assert.isFalse(actor.system.over_load);
+
+          await actor.update({ 'system.coins': [4] });
+          assert.equal(actor.system.loadout, 6);
+          assert.isTrue(actor.system.over_load, 'coin alone can push you over');
+        });
+
+        it('ignores stashed coin, which has no weight', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Stash PC', 0, 0);
+          await actor.update({ 'system.coins_stashed': [12] });
+          assert.equal(actor.system.coin_load, 0);
+          assert.equal(actor.system.loadout, 0, 'stash sits at the lair');
+          assert.isFalse(actor.system.over_load);
+        });
+
         it('names the crew upgrade behind an add_load bonus', async function () {
           this.timeout(10000);
           requireSystemActive();

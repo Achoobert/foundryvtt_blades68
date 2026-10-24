@@ -217,6 +217,7 @@
   "BITD.LessEffect": "Less Effect",
   "BITD.Description": "Description",
   "BITD.Loadout": "Loadout",
+  "BITD.LoadBreakdown": "{gear} from gear, {coin} from coin",
   "BITD.OverLoadWarning": "Carrying {load} load, but {level} allows only {max}.",
   "BITD.LoadBonus": "Bonus Load",
   "BITD.Load": "Load",

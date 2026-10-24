@@ -139,6 +139,13 @@ export class BladesActorSheet extends BladesSheetV2 {
       })
       .join("\n");
 
+    
+    const coinLoad = Math.max(0, parseInt(this.actor.system.coin_load) || 0);
+    const gearLoad = Math.max(0, (parseInt(this.actor.system.loadout) || 0) - coinLoad);
+    const loadTooltip = coinLoad > 0
+      ? `${game.i18n.localize(this.actor.system.load_level)} \u2014 ${game.i18n.format("BITD.LoadBreakdown", { gear: gearLoad, coin: coinLoad })}`
+      : game.i18n.localize(this.actor.system.load_level);
+
     const description = await enrichHTML(this.actor.system.description, {
       secrets: owner,
       async: true
@@ -160,6 +167,7 @@ export class BladesActorSheet extends BladesSheetV2 {
       ...ctx,
       loadBonusTotal,
       loadBonusTooltip,
+      loadTooltip,
       actor: this.actor,
       document: this.document,
       _id: this.actor.id,
@@ -192,6 +200,8 @@ export class BladesActorSheet extends BladesSheetV2 {
   
   async _onRender(context, options) {
     await super._onRender(context, options);
+
+    this._warnIfOverLoad();
 
     
     this.element.querySelectorAll(".key-select").forEach((el) => {
@@ -415,18 +425,23 @@ export class BladesActorSheet extends BladesSheetV2 {
 
   
   /**
-   * Fire a one-shot warning when a toggle pushes the character past their
-   * declared load tier. Going over is allowed -- the sheet keeps the red
-   * numbers up as the standing signal, so the toast only fires on the way in.
+   * Warn once when the character crosses into over-load. Going over is always
+   * allowed -- the red numbers on the bar are the standing signal, so the toast
+   * only fires on the way in. Watching the derived flag across renders catches
+   * every route into it (gear, coin, dropping to a lighter tier) without a
+   * check at each call site. The first render only seeds the flag.
    */
-  _warnIfOverLoad(wasOver) {
+  _warnIfOverLoad() {
     const { loadout, load_max, load_level, over_load } = this.actor.system;
-    if (wasOver || !over_load) return;
-    ui.notifications?.warn?.(game.i18n.format("BITD.OverLoadWarning", {
-      load: loadout,
-      max: load_max,
-      level: game.i18n.localize(load_level)
-    }));
+    const isOver = Boolean(over_load);
+    if (isOver && this._overLoadSeen === false) {
+      ui.notifications?.warn?.(game.i18n.format("BITD.OverLoadWarning", {
+        load: loadout,
+        max: load_max,
+        level: game.i18n.localize(load_level)
+      }));
+    }
+    this._overLoadSeen = isOver;
   }
 
   
@@ -440,7 +455,6 @@ export class BladesActorSheet extends BladesSheetV2 {
 
     const owned = this.actor.items.filter(i => i.type === itemType && BladesHelpers.trimClassFromName(i.name) === itemName);
     const diff = checkedCount - owned.length;
-    const wasOver = Boolean(this.actor.system.over_load);
 
     if (diff > 0) {
       const source = await BladesHelpers.getItemByType(itemType, sourceId);
@@ -450,7 +464,6 @@ export class BladesActorSheet extends BladesSheetV2 {
       if (data.type === "item") data.system.equipped = true;
       const toCreate = Array.from({ length: diff }, () => foundry.utils.deepClone(data));
       await this.actor.createEmbeddedDocuments("Item", toCreate);
-      this._warnIfOverLoad(wasOver);
     } else if (diff < 0) {
       const toDelete = owned.slice(0, -diff).map(i => i.id);
       await this.actor.deleteEmbeddedDocuments("Item", toDelete);
@@ -461,9 +474,7 @@ export class BladesActorSheet extends BladesSheetV2 {
   static async _onItemEquippedToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
-    const wasOver = Boolean(this.actor.system.over_load);
     await item.update({ "system.equipped": target.checked });
-    if (target.checked) this._warnIfOverLoad(wasOver);
   }
 
   
@@ -480,9 +491,7 @@ export class BladesActorSheet extends BladesSheetV2 {
   static async _onItemBonusToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
-    const wasOver = Boolean(this.actor.system.over_load);
     await item.update({ "system.bonus_equipped": target.checked });
-    if (target.checked) this._warnIfOverLoad(wasOver);
   }
 
   

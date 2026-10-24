@@ -998,7 +998,7 @@
         <header class="section-header">
           <span>{{localize "BITD.Loadout"}}</span>
           <a class="item-add-popup" data-action="bid.itemAdd" data-item-type="item" data-tooltip="{{localize 'BITD.AddItem'}}"><i class="fas fa-plus-square"></i></a>
-          <span class="load-fraction{{#if system.over_load}} over-load{{/if}}" data-tooltip="{{localize system.load_level}}">{{system.loadout}}/{{system.base_max_load}}{{#if loadBonusTotal}}<span class="load-bonus" data-tooltip="{{loadBonusTooltip}}">+{{loadBonusTotal}}</span>{{/if}}</span>
+          <span class="load-fraction{{#if system.over_load}} over-load{{/if}}" data-tooltip="{{loadTooltip}}">{{system.loadout}}/{{system.base_max_load}}{{#if loadBonusTotal}}<span class="load-bonus" data-tooltip="{{loadBonusTooltip}}">+{{loadBonusTotal}}</span>{{/if}}</span>
           <div class="dropdown">
             <select name="system.selected_load_level">
               {{selectOptions system.load_levels selected=system.load_level localize=true}}
