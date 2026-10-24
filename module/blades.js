@@ -26,7 +26,6 @@ import { BladesCrewSheet } from "./blades-crew-sheet.js";
 import { BladesClockSheet } from "./blades-clock-sheet.js";
 import { BladesNPCSheet } from "./blades-npc-sheet.js";
 import { BladesFactionSheet } from "./blades-faction-sheet.js";
-import * as migrations from "./migration.js";
 import {
   getActorSheetClass,
   getItemSheetClass,
@@ -205,7 +204,7 @@ Hooks.once("init", async function () {
     }
   });
 
-  // The base / lair claim is owned from the start, so the sheet never offers a toggle for it.
+  
   const BASE_TURF_NAMES = [
     "base",
     "lair",
@@ -344,13 +343,7 @@ Hooks.once("init", async function () {
     return accum;
   });
 
-  // "N Times" loop for handlebars.
-  //  Block is executed N times starting from start.
-  //
-  // Usage:
-  // {{#times_from 1 10}}
-  //   <span>{{this}}</span>
-  // {{/times_from}}
+  
   Handlebars.registerHelper("times_from", function (start, n, block) {
     let accum = "";
     for (let i = start; i <= n; ++i) {
@@ -427,7 +420,7 @@ Hooks.once("init", async function () {
     }
 
     if (zeroLabel) {
-      // Label for 0
+      
       html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
     }
     html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
@@ -447,7 +440,7 @@ Hooks.once("init", async function () {
     return html;
   };
 
-  // Clocks in color for Clock Actors
+  
   Handlebars.registerHelper(
     "blades-clock-color",
     function (parameter_name, type, color, current_value, uniq_id) {
@@ -480,7 +473,7 @@ Hooks.once("init", async function () {
     return BladesHelpers.getProperCase(string);
   });
 
-  // check for game settings
+  
   Handlebars.registerHelper("getSetting", function (string) {
     return game.settings.get("blades68", string);
   });
@@ -495,8 +488,8 @@ Hooks.once("setup", function () {
 });
 
 /**
- * Once the entire VTT framework is initialized, check to see if we should perform a data migration
- * and register sheets. Sheet registration is delayed until the ready hook so the DocumentSheetConfig
+ * Once the entire VTT framework is initialized, register sheets. Sheet
+ * registration is delayed until the ready hook so the DocumentSheetConfig
  * API and the new foundry.documents collections are guaranteed to exist on V13+ while still
  * allowing the compatibility helpers to fall back on older cores.
  */

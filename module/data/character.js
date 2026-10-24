@@ -1,4 +1,5 @@
 import { BladesHelpers } from "../blades-helpers.js";
+import { ATTRIBUTES } from "./attributes.js";
 
 const { fields } = foundry.data;
 
@@ -197,44 +198,27 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       }),
 
       
-      attributes: new fields.SchemaField({
-        insight: new fields.SchemaField({
-          exp: num(0),
-          exp_max: num(6),
-          bonus: num(0),
-          label: str("BITD.SkillsInsight"),
-          skills: new fields.SchemaField({
-            hunt: new fields.SchemaField({ label: str("BITD.SkillsHunt"), value: num(0), max: num(3), min: num(0) }),
-            study: new fields.SchemaField({ label: str("BITD.SkillsStudy"), value: num(0), max: num(3), min: num(0) }),
-            survey: new fields.SchemaField({ label: str("BITD.SkillsSurvey"), value: num(0), max: num(3), min: num(0) }),
-            tinker: new fields.SchemaField({ label: str("BITD.SkillsTinker"), value: num(0), max: num(3), min: num(0) })
-          })
-        }),
-        prowess: new fields.SchemaField({
-          exp: num(0),
-          exp_max: num(6),
-          bonus: num(0),
-          label: str("BITD.SkillsProwess"),
-          skills: new fields.SchemaField({
-            finesse: new fields.SchemaField({ label: str("BITD.SkillsFinesse"), value: num(0), max: num(3), min: num(0) }),
-            prowl: new fields.SchemaField({ label: str("BITD.SkillsProwl"), value: num(0), max: num(3), min: num(0) }),
-            skirmish: new fields.SchemaField({ label: str("BITD.SkillsSkirmish"), value: num(0), max: num(3), min: num(0) }),
-            wreck: new fields.SchemaField({ label: str("BITD.SkillsWreck"), value: num(0), max: num(3), min: num(0) })
-          })
-        }),
-        resolve: new fields.SchemaField({
-          exp: num(0),
-          exp_max: num(6),
-          bonus: num(0),
-          label: str("BITD.SkillsResolve"),
-          skills: new fields.SchemaField({
-            attune: new fields.SchemaField({ label: str("BITD.SkillsAttune"), value: num(0), max: num(3), min: num(0) }),
-            command: new fields.SchemaField({ label: str("BITD.SkillsCommand"), value: num(0), max: num(3), min: num(0) }),
-            consort: new fields.SchemaField({ label: str("BITD.SkillsConsort"), value: num(0), max: num(3), min: num(0) }),
-            sway: new fields.SchemaField({ label: str("BITD.SkillsSway"), value: num(0), max: num(3), min: num(0) })
-          })
-        })
-      }),
+      attributes: new fields.SchemaField(
+        Object.fromEntries(
+          Object.entries(ATTRIBUTES).map(([attribute, { label, skills }]) => [
+            attribute,
+            new fields.SchemaField({
+              exp: num(0),
+              exp_max: num(6),
+              bonus: num(0),
+              label: str(label),
+              skills: new fields.SchemaField(
+                Object.fromEntries(
+                  Object.entries(skills).map(([skill, skillLabel]) => [
+                    skill,
+                    new fields.SchemaField({ label: str(skillLabel), value: num(0), max: num(3), min: num(0) })
+                  ])
+                )
+              )
+            })
+          ])
+        )
+      ),
 
       
       "unique-data": new fields.SchemaField({

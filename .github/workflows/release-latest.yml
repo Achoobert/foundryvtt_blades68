@@ -100,7 +100,6 @@ jobs:
             --recurse-paths                      \
             ./system.zip                         \
             system.json                          \
-            template.json                        \
             README.md                            \
             LICENSE.txt                          \
             CHANGELOG.txt                        \

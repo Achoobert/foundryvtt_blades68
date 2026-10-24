@@ -40,6 +40,32 @@
       ]
     }
   },
+  "documentTypes": {
+    "Actor": {
+      "character": { "htmlFields": ["description"] },
+      "crew": { "htmlFields": ["description"] },
+      "npc": { "htmlFields": ["description"] },
+      "factions": {},
+      "🕛 clock": {}
+    },
+    "Item": {
+      "faction": { "htmlFields": ["description"] },
+      "item": { "htmlFields": ["description"] },
+      "class": { "htmlFields": ["description", "experience_clues"] },
+      "ability": { "htmlFields": ["description"] },
+      "heritage": { "htmlFields": ["description"] },
+      "background": { "htmlFields": ["description"] },
+      "vice": { "htmlFields": ["description"] },
+      "hunting_grounds": { "htmlFields": ["description"] },
+      "cohort": { "htmlFields": ["description"] },
+      "crew_type": { "htmlFields": ["description", "experience_clues"] },
+      "crew_reputation": { "htmlFields": ["description"] },
+      "crew_upgrade": { "htmlFields": ["description"] },
+      "crew_ability": { "htmlFields": ["description"] },
+      "prison": { "htmlFields": ["description"] },
+      "trouble": { "htmlFields": ["description"] }
+    }
+  },
   "languages": [
     {
       "lang": "en",

@@ -5,13 +5,14 @@
  */
 
 import { BladesHelpers } from "./blades-helpers.js";
+import { ATTRIBUTES } from "./data/attributes.js";
 
 const CORE_MODULE_ID = "token-action-hud-core";
 
-/** Major version of Token Action HUD Core this integration targets. */
+
 const REQUIRED_CORE_MODULE_VERSION = "2";
 
-/** Dice pool key used by `getAttributeDiceToThrow()` for the vice roll. */
+
 const VICE_KEY = "BITD.Vice";
 
 const GROUP = {
@@ -24,12 +25,9 @@ const GROUP = {
 const LAYOUT_ACTIONS = "actions";
 const LAYOUT_ATTRIBUTES = "attributes";
 
-/**
- * Register the Token Action HUD handshake. Safe to call unconditionally: without the
- * core module the hook simply never fires.
- */
+
 export function registerTokenActionHud() {
-  // Exposed for the Quench batch, which exercises the builder without the core module.
+  
   game.system.tokenActionHud = {
     buildHudActionGroups,
     requiredCoreModuleVersion: REQUIRED_CORE_MODULE_VERSION,
@@ -61,9 +59,6 @@ export function registerTokenActionHud() {
   });
 }
 
-/* -------------------------------------------- */
-/*  Defaults                                    */
-/* -------------------------------------------- */
 
 function buildDefaults() {
   const groups = foundry.utils.deepClone(GROUP);
@@ -99,27 +94,15 @@ function buildDefaults() {
   };
 }
 
-/* -------------------------------------------- */
-/*  Action building                             */
-/* -------------------------------------------- */
 
-/**
- * Build every HUD group for a character, as plain data.
- *
- * Kept free of Token Action HUD Core types so it can be unit tested on its own.
- *
- * @param {Actor} actor
- * @returns {Array<{groupData: {id: string, type: string}, actions: object[]}>}
- */
 export function buildHudActionGroups(actor) {
   if (actor?.type !== "character") return [];
 
   const dice = actor.getRollData?.()?.dice_amount ?? {};
-  const attributes = game.model.Actor.character.attributes;
   const groups = [];
 
-  for (const attributeName in attributes) {
-    const skillNames = Object.keys(attributes[attributeName].skills ?? {});
+  for (const [attributeName, attribute] of Object.entries(ATTRIBUTES)) {
+    const skillNames = Object.keys(attribute.skills);
     groups.push({
       groupData: { id: attributeName, type: "system" },
       actions: skillNames.map((skillName) =>
@@ -128,7 +111,7 @@ export function buildHudActionGroups(actor) {
     });
   }
 
-  const resistance = Object.keys(attributes).map((attributeName) =>
+  const resistance = Object.keys(ATTRIBUTES).map((attributeName) =>
     buildAction(actor, dice, attributeName),
   );
   resistance.push(buildAction(actor, dice, VICE_KEY, "BITD.Vice"));
@@ -140,15 +123,7 @@ export function buildHudActionGroups(actor) {
   return groups;
 }
 
-/**
- * Build a single HUD action that opens the usual roll dialog.
- *
- * @param {Actor}  actor
- * @param {object} dice      Map of roll name to dice pool, from `getRollData()`.
- * @param {string} rollName  The key `rollAttributePopup` expects.
- * @param {string} [labelKey] Override for the localization key.
- * @returns {object}
- */
+
 function buildAction(actor, dice, rollName, labelKey) {
   const diceAmount = Number(dice[rollName] ?? 0);
   const name = game.i18n.localize(
@@ -168,17 +143,10 @@ function buildAction(actor, dice, rollName, labelKey) {
   };
 }
 
-/* -------------------------------------------- */
-/*  Action handler                              */
-/* -------------------------------------------- */
 
 function makeActionHandler(coreModule) {
   return class BladesActionHandler extends coreModule.api.ActionHandler {
-    /**
-     * Build the action-rating and resistance rolls for the selected character.
-     *
-     * @param {string[]} _groupIds
-     */
+    
     async buildSystemActions(_groupIds) {
       for (const { groupData, actions } of buildHudActionGroups(this.actor)) {
         this.addActions(actions, groupData);
@@ -187,9 +155,6 @@ function makeActionHandler(coreModule) {
   };
 }
 
-/* -------------------------------------------- */
-/*  System manager                              */
-/* -------------------------------------------- */
 
 function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
   return class BladesSystemManager extends coreModule.api.SystemManager {
@@ -201,13 +166,7 @@ function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
       return { core: "Blades '68" };
     }
 
-    /**
-     * Actions carry their own `onClick`, so the stock handler does everything we need.
-     *
-     * This must be a real instance: core does `this.getRollHandler(id) ?? new RollHandler`
-     * and `??` does not catch the `false` the base class returns, so returning `false`
-     * makes core assign onto a primitive and throw before the HUD ever renders.
-     */
+    
     getRollHandler(_rollHandlerId) {
       return new coreModule.api.RollHandler();
     }
@@ -220,11 +179,7 @@ function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
   };
 }
 
-/**
- * Whether Token Action HUD Core is available. Only used for logging and tests.
- *
- * @returns {boolean}
- */
+
 export function isTokenActionHudActive() {
   return game.modules.get(CORE_MODULE_ID)?.active === true;
 }

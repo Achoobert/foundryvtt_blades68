@@ -16,7 +16,6 @@ const WATCH_PATHS = [
   "assets",
   "yml_source",
   "system.json",
-  "template.json",
   "tests/quench",
 ];
 

@@ -10,7 +10,6 @@ const TARGET = path.join(DATA_DIR, 'systems', 'blades68');
 
 const ENTRIES_TO_SYNC = [
   'system.json',
-  'template.json',
   'module',
   'templates',
   'styles',

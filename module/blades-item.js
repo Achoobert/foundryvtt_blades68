@@ -25,63 +25,6 @@ export class BladesItem extends Item {
 
   /* -------------------------------------------- */
 
-  /* override */
-  prepareData() {
-
-    super.prepareData();
-
-    const item_data = this.system;
-
-    if (this.type === "cohort") {
-
-      this._prepareCohort(item_data);
-
-    }
-
-    if (this.type === "faction") {
-      if( !item_data.goal_1_clock_value ){ this.system.goal_1_clock_value = 0 }
-      if( item_data.goal_1_clock_max === 0 ){ this.system.goal_1_clock_max = 4 }
-      if( !item_data.goal_2_clock_value ){ this.system.goal_2_clock_value = 0 }
-      if( item_data.goal_2_clock_max === 0 ){ this.system.goal_2_clock_max = 4 }
-      this.system.size_list_1 = BladesHelpers.createListOfClockSizes( game.system.bladesClocks.sizes, this.system.goal_1_clock_max, parseInt( this.system.goal_1_clock_max ) );
-      this.system.size_list_2 = BladesHelpers.createListOfClockSizes( game.system.bladesClocks.sizes, this.system.goal_2_clock_max, parseInt( this.system.goal_2_clock_max ) );
-    }
-
-  }
-
-  /**
-   * Prepares Cohort data
-   *
-   * @param {object} data
-   */
-  _prepareCohort(item_data) {
-
-    let quality = 0;
-    let scale = 0;
-
-    // Computes the default Scale and Quality from the actor's tier
-    if (this.actor?.system) {
-      switch (item_data.cohort) {
-        case "Gang":
-          scale = parseInt(this.actor.system.tier);
-          quality = parseInt(this.actor.system.tier);
-          break;
-        case "Expert":
-          scale = 0;
-          quality = parseInt(this.actor.system.tier) + 1;
-          break;
-      }
-    }
-
-    // The computed value is only a default: once the user overrides it, leave it alone.
-    if (!item_data.scale_override) {
-      this.system.scale = scale;
-    }
-    if (!item_data.quality_override) {
-      this.system.quality = quality;
-    }
-}
-
   async sendToChat() {
     const itemData = this.toObject();
     if (itemData.img.includes("/mystery-man")) {
