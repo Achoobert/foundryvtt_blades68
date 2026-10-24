@@ -405,71 +405,74 @@ Hooks.once("init", async function () {
   /**
    * Create appropriate Blades clock
    */
+  // Shared markup for both clock helpers so the two cannot drift apart.
+  // Both emit `data-action="bid.radioToggle"` so the AppV2 sheets pick the
+  // clicks up and cycle/decrement the value.
+  const renderBladesClock = function ({
+    parameter_name,
+    type,
+    color,
+    current_value,
+    uniq_id,
+    zeroLabel,
+  }) {
+    let html = "";
+
+    if (current_value === null || current_value === "null") {
+      current_value = 0;
+    }
+
+    if (parseInt(current_value) > parseInt(type)) {
+      current_value = type;
+    }
+
+    if (zeroLabel) {
+      // Label for 0
+      html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
+    }
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
+
+    let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
+    html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
+
+    for (let i = 1; i <= parseInt(type); i++) {
+      let checked = parseInt(current_value) === i ? "checked" : "";
+      html += `
+        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
+        <label class="radio-toggle" data-action="bid.radioToggle" for="clock-${i}-${uniq_id}"></label>
+      `;
+    }
+
+    html += `</div>`;
+    return html;
+  };
+
   // Clocks in color for Clock Actors
   Handlebars.registerHelper(
     "blades-clock-color",
     function (parameter_name, type, color, current_value, uniq_id) {
-      let html = "";
-
-      if (current_value === null || current_value === "null") {
-        current_value = 0;
-      }
-      if (color === undefined) {
-        color = "black";
-      }
-
-      if (parseInt(current_value) > parseInt(type)) {
-        current_value = type;
-      }
-
-      // Label for 0
-      html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-      html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
-
-      let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
-      html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
-
-      for (let i = 1; i <= parseInt(type); i++) {
-        let checked = parseInt(current_value) === i ? "checked" : "";
-        html += `
-        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
-        <label class="radio-toggle" data-action="bid.radioToggle" for="clock-${i}-${uniq_id}"></label>
-      `;
-      }
-
-      html += `</div>`;
-      return html;
+      return renderBladesClock({
+        parameter_name,
+        type,
+        color: color === undefined ? BladesHelpers.sheetClockColor() : color,
+        current_value,
+        uniq_id,
+        zeroLabel: true,
+      });
     },
   );
-  // Clocks in black for clocks embedded in sheets
+  // Clocks embedded in sheets; color comes from the ClockColor world setting
   Handlebars.registerHelper(
     "blades-clock",
     function (parameter_name, type, current_value, uniq_id) {
-      let html = "";
-
-      if (current_value === null || current_value === "null") {
-        current_value = 0;
-      }
-
-      if (parseInt(current_value) > parseInt(type)) {
-        current_value = type;
-      }
-
-      html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, "black")}');">`;
-
-      let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
-      html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
-
-      for (let i = 1; i <= parseInt(type); i++) {
-        let checked = parseInt(current_value) === i ? "checked" : "";
-        html += `
-        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
-        <label class="radio-toggle" for="clock-${i}-${uniq_id}"></label>
-      `;
-      }
-
-      html += `</div>`;
-      return html;
+      return renderBladesClock({
+        parameter_name,
+        type,
+        color: BladesHelpers.sheetClockColor(),
+        current_value,
+        uniq_id,
+        zeroLabel: false,
+      });
     },
   );
 

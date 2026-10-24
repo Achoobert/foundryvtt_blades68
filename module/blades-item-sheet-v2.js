@@ -145,15 +145,16 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
       system.goal_2_clock_value,
       `${this.item.id}-goal2`,
     );
+    const clockColor = BladesHelpers.sheetClockColor();
     context.goalClock1Img = BladesHelpers.clockImageUrl(
       system.goal_1_clock_max,
       system.goal_1_clock_value,
-      "black",
+      clockColor,
     );
     context.goalClock2Img = BladesHelpers.clockImageUrl(
       system.goal_2_clock_max,
       system.goal_2_clock_value,
-      "black",
+      clockColor,
     );
   }
 

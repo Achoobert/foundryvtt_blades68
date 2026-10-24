@@ -252,6 +252,23 @@ export class BladesHelpers {
    * Clock face URL. Blades '68 mode uses industrial PNG clocks (yellow/blue);
    * sizes with no PNG (10) fall back to themed SVGs.
    */
+  /**
+   * Color used by clocks that are embedded in a sheet (healing, memories,
+   * faction goals). "auto" tracks the Blades68Mode: red for classic Blades
+   * in the Dark, yellow for the '68 progress-clock art.
+   */
+  static sheetClockColor() {
+    try {
+      const setting = game.settings.get("blades68", "ClockColor");
+      if (setting && setting !== "auto") return setting;
+      return game.settings.get("blades68", "Blades68Mode") === "blades68"
+        ? "yellow"
+        : "red";
+    } catch (e) {
+      return "red";
+    }
+  }
+
   static clockImageUrl(type, value, color = "black") {
     const size = String(type);
     const tick = String(value ?? 0);
@@ -269,12 +286,15 @@ export class BladesHelpers {
   static _clockwebpColor(color, size) {
     const yellowSizes = new Set(["4", "6", "8", "12"]);
     const blueSizes = new Set(["4", "6", "12"]);
-    if ((color || "").toLowerCase() === "blue" && blueSizes.has(size)) {
+    const themeColor = (color || "").toLowerCase();
+    if (themeColor === "blue" && blueSizes.has(size)) {
       return "Blue";
     }
-    if (yellowSizes.has(size)) {
+    if (themeColor === "yellow" && yellowSizes.has(size)) {
       return "Yellow";
     }
+    // No '68 webp art for this color; fall back to the SVG theme so the
+    // chosen color is honored instead of being forced to yellow.
     return null;
   }
 

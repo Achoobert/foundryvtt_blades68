@@ -676,6 +676,11 @@
       "Light": "Light (customizable color)",
       "Dark": "Dark (customizable color)"
     },
+    "ClockColor": {
+      "Name": "Clock Color",
+      "Hint": "Art used for clocks embedded in sheets (healing, memories, faction goals). Auto picks red for Blades in the Dark and yellow for Blades '68.",
+      "Auto": "Auto (match game mode)"
+    },
     "PipIconStyle": {
       "Name": "Pip Icon Style",
       "Hint": "The icon used for stress, trauma, XP, and reputation pips.",

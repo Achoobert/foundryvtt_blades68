@@ -96,6 +96,35 @@ export const registerSystemSettings = function () {
       }
     },
   });
+  game.settings.register("blades68", "ClockColor", {
+    name: game.i18n.localize("BITD.Settings.ClockColor.Name"),
+    hint: game.i18n.localize("BITD.Settings.ClockColor.Hint"),
+    config: true,
+    scope: "world",
+    type: String,
+    choices: {
+      auto: game.i18n.localize("BITD.Settings.ClockColor.Auto"),
+      black: game.i18n.localize("BITD.Colors.Black"),
+      blue: game.i18n.localize("BITD.Colors.Blue"),
+      green: game.i18n.localize("BITD.Colors.Green"),
+      grey: game.i18n.localize("BITD.Colors.Grey"),
+      red: game.i18n.localize("BITD.Colors.Red"),
+      white: game.i18n.localize("BITD.Colors.White"),
+      yellow: game.i18n.localize("BITD.Colors.Yellow"),
+    },
+    default: "auto",
+    onChange: () => {
+      for (const app of Object.values(ui.windows).concat(
+        Array.from(foundry.applications.instances?.values?.() ?? []),
+      )) {
+        const el = app.element;
+        const hasBlades68Class =
+          el?.classList?.contains?.("blades68") ?? el?.hasClass?.("blades68");
+        if (hasBlades68Class) app.render(false);
+      }
+    },
+  });
+
   game.settings.register("bitd", "systemMigrationVersion", {
     name: "System Migration Version",
     scope: "world",
