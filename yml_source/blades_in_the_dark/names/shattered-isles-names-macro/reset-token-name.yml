@@ -1,0 +1,15 @@
+_id: SupwdTFhiqygVJEr
+name: 'Reset Token Name'
+type: script
+scope: global
+img: icons/sundries/flags/banner-yellow.webp
+command: |-
+  const tokens = canvas.tokens.controlled;
+  if (!tokens.length) {
+    ui.notifications.warn("No tokens were selected");
+    return;
+  }
+  const updates = tokens.map((token) => ({ _id: token.id, name: token.actor?.name ?? token.name }));
+  await canvas.scene.updateEmbeddedDocuments("Token", updates);
+  ui.notifications.info(`Reset ${updates.length} token name(s).`);
+flags: {}

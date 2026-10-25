@@ -15,31 +15,45 @@ system:
   logic: ''
 effects:
   - _id: ron5Vdsnb8WcFrPC
-    changes:
-      - key: data.experience_max
-        mode: 5
-        value: '10'
-      - key: data.attributes.insight.exp_max
-        mode: 5
-        value: '8'
-      - key: data.attributes.prowess.exp_max
-        mode: 5
-        value: '8'
-      - key: data.attributes.resolve.exp_max
-        mode: 5
-        value: '8'
-      - key: data.stress.max
-        mode: 5
-        value: '12'
+    name: Undead
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.experience_max
+          type: override
+          value: '10'
+          priority: null
+          phase: initial
+        - key: system.attributes.insight.exp_max
+          type: override
+          value: '8'
+          priority: null
+          phase: initial
+        - key: system.attributes.prowess.exp_max
+          type: override
+          value: '8'
+          priority: null
+          phase: initial
+        - key: system.attributes.resolve.exp_max
+          type: override
+          value: '8'
+          priority: null
+          phase: initial
+        - key: system.stress.max
+          type: override
+          value: '12'
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Undead
-    origin: Item.tjZrc7AAYU8eGPWv
-    transfer: true
-    flags: {}
-    tint: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 0
 permission:

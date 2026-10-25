@@ -1,4 +1,4 @@
-/* global game */
+
 import { requireSystemActive } from '../helpers.js';
 
 export default function register(quench) {
@@ -48,9 +48,11 @@ export default function register(quench) {
           assert.deepEqual(commanding.deadlockedKeys, ['deferential', 'controlling']);
         });
 
-        it('registers Blades68Mode as a boolean world setting, default off', function () {
+        it('registers Blades68Mode as a string world setting with bitd/blades68/imported choices, default blades68', function () {
           requireSystemActive();
-          assert.isBoolean(game.settings.get('blades68', 'Blades68Mode'));
+          const value = game.settings.get('blades68', 'Blades68Mode');
+          assert.isString(value);
+          assert.include(['bitd', 'blades68', 'imported'], value);
         });
 
         it('disables Foundry automatic token rotation by default', function () {
@@ -65,9 +67,9 @@ export default function register(quench) {
           requireSystemActive();
           const setting = game.settings.settings.get('blades68.PauseAnimation');
           assert.isOk(setting, 'PauseAnimation should be registered');
-          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla']);
+          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla', 'classic']);
           assert.equal(setting.default, 'bluetime');
-          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla']);
+          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla', 'classic']);
         });
       });
     },

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 *  Elements that can be changed will hint this by dimming and fading a little on hover
 */
@@ -94,8 +93,35 @@
   font-family: "Crimson Text", serif;
 }
 .blades68 textarea {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.blades68 .window-content {
+  background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.blades68 .window-content > [data-application-part] {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.blades68.sheet.item .window-content {
+  max-height: 85vh;
+}
+.blades68 .text-line {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.blades68 label.text-line + input,
+.blades68 label.text-line + textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 .blades68 .debug-toggle {
   opacity: 0.1;
@@ -115,6 +141,14 @@
   cursor: pointer;
   color: red;
 }
+.dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+  line-height: 10px;
+  vertical-align: super;
+}
+
 .blades68 section {
   display: flex;
   flex-direction: column;
@@ -134,7 +168,7 @@
 }
 .blades68 section.experience {
   margin-bottom: 0px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .blades68 .flex-horizontal {
   display: flex;
@@ -175,7 +209,7 @@
   text-transform: uppercase;
   background-color: #191813;
   color: #EEEFFF;
-  margin-bottom: 10px;
+  margin-top: 1px;
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
@@ -196,7 +230,30 @@
 .blades68 .editor-content {
   min-height: 150px;
 }
-.blades68 .description {
+.blades68 prose-mirror {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+.blades68 .npc-header {
+  align-items: flex-start;
+  margin-top: 1px;
+}
+.blades68 .npc-header img.npc-portrait {
+  flex: 0 0 auto;
+  margin-right: 10px;
+}
+.blades68 .npc-header-lines > div,
+.blades68 .npc-lines > div {
+  margin-top: 1px;
+}
+.blades68 .npc-header-lines > div:last-child,
+.blades68 .npc-lines > div:last-child {
+  margin-bottom: 0;
+}
+.blades68 .cohort-description,
+.blades68 .gang-description {
   font-style: italic;
 }
 .blades68 i.nullifier {
@@ -232,19 +289,25 @@
   text-align: right;
 }
 .blades68 .loadout select option {
-  color: white;
+  color: black;
 }
 .blades68 .loadout select:hover {
   color: red;
 }
-.blades68 .abilities .item-name, .blades68 .loadout .item-name, .blades68 .faction-items .item-name {
+.blades68 .abilities .item-name,
+.blades68 .loadout .item-name,
+.blades68 .faction-items .item-name {
   width: 100px;
   margin-left: 10px;
 }
-.blades68 .abilities .item-body, .blades68 .loadout .item-body, .blades68 .faction-items .item-body {
+.blades68 .abilities .item-body,
+.blades68 .loadout .item-body,
+.blades68 .faction-items .item-body {
   width: auto;
 }
-.blades68 .abilities .item-description, .blades68 .loadout .item-description, .blades68 .faction-items .item-description {
+.blades68 .abilities .item-description,
+.blades68 .loadout .item-description,
+.blades68 .faction-items .item-description {
   width: 260px;
 }
 .blades68 #loadout .item-control {
@@ -264,12 +327,38 @@
 .blades68 td {
   padding: 5px;
 }
+.blades68 .xp-triggers-custom {
+  font-size: 12px;
+}
+.blades68 .xp-triggers-custom p,
+.blades68 .xp-triggers-custom ul,
+.blades68 .xp-triggers-custom ol {
+  margin: 0 0 4px;
+}
+.blades68 .xp-triggers-custom ul,
+.blades68 .xp-triggers-custom ol {
+  padding-left: 18px;
+}
+.blades68 .xp-triggers-custom li {
+  margin: 0;
+}
+.blades68 .xp-triggers-custom > :last-child {
+  margin-bottom: 0;
+}
+/* --Controls minimum size of windows--*/
 .blades68 {
-  min-width: 420px;
+  min-width: 360px;
   min-height: 320px;
 }
+/* --Start Clocks--*/
 .blades68 .clock-zero-label {
   color: #191813;
+  align-self: flex-start;
+}
+.blades68 .clocks {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 .blades68 .clocks.clocks-4 {
   position: relative;
@@ -277,8 +366,8 @@
 .blades68 .clocks.clocks-4 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -329,8 +418,8 @@
 .blades68 .clocks.clocks-6 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -387,8 +476,8 @@
 .blades68 .clocks.clocks-8 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -451,8 +540,8 @@
 .blades68 .clocks.clocks-10 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -521,8 +610,8 @@
 .blades68 .clocks.clocks-12 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -594,8 +683,43 @@
 .blades68 .blades-clock-name-type > * {
   margin-bottom: 10px;
 }
-.blades68 .blades-clock-name-type .blades-clock {
+.blades68 .clock-name {
+  height: 60px;
+  text-align: center;
   margin: 10px auto;
+}
+.blades68 .clock-name input {
+  height: 40px;
+  line-height: 48px;
+  font-size: 32px;
+  width: 100%;
+  background: none;
+  border: 1px solid transparent;
+  padding: 1px 3px;
+  font-family: "Kirsty", "Crimson Text", serif;
+  border-radius: 3px;
+  color: #191813;
+  margin: 3px;
+  text-align: center;
+}
+.blades68 .clock-name.editable input:hover, .blades68 .clock-name.editable input:focus {
+  border: 1px solid #191813;
+}
+.blades68 .clock-config {
+  text-align: center;
+}
+.blades68 .clock-config .clock-config-group {
+  margin-left: 1.5em;
+  display: inline-block;
+}
+.blades68 .clock-config .clock-config-group:first-child {
+  margin-left: 0;
+}
+.blades68 .clock-config .clock-config-group label {
+  margin-right: 3px;
+}
+.blades68 .clock-config .clock-config-group select {
+  width: 100px;
 }
 .blades68.crew.sheet .coins {
   display: flex;
@@ -763,6 +887,19 @@
   border-radius: 0 4px 4px 4px;
   padding: 10px;
 }
+.blades68.crew.sheet .crew-dossier {
+  color: #191813;
+}
+.blades68.crew.sheet .crew-dossier p,
+.blades68.crew.sheet .crew-dossier span,
+.blades68.crew.sheet .crew-dossier label,
+.blades68.crew.sheet .crew-dossier .item-name,
+.blades68.crew.sheet .crew-dossier .item-description {
+  color: #191813;
+}
+.blades68.crew.sheet .crew-dossier .on-black-banner {
+  color: white;
+}
 .blades68.crew.sheet .crew-coins {
   display: flex;
   flex-wrap: wrap;
@@ -844,6 +981,7 @@
 .blades68.crew.sheet .crew-reputation {
   border-top: 3px solid #191813;
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-reputation label {
   height: 50px;
@@ -852,6 +990,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.crew.sheet .crew-reputation label:last-of-type {
   margin-right: 0px;
@@ -865,21 +1005,9 @@
 .blades68.crew.sheet .crew-reputation label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.crew.sheet .crew-reputation label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.crew.sheet .crew-reputation label {
-    transition: none;
-  }
-}
 .blades68.crew.sheet .crew-reputation label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.crew.sheet .crew-reputation {
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-reputation input {
   display: none;
@@ -919,23 +1047,16 @@
 .blades68.crew.sheet .turf-list.section-non-editable .turf-block {
   transition: filter 0.1s;
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.crew.sheet .turf-list.section-non-editable .turf-block {
-    transition: none;
-  }
-}
-.blades68.crew.sheet .turf-list.section-non-editable .turf-block:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-.blades68.crew.sheet .turf-list.section-non-editable .turf-block {
   width: 130px;
   height: 100px;
   background-color: #bbb;
   position: relative;
   margin: 20px;
   flex-grow: initial;
+}
+.blades68.crew.sheet .turf-list.section-non-editable .turf-block:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
 }
 .blades68.crew.sheet .turf-list.section-non-editable .turf-block.turf-selected .connector {
   background-color: #999;
@@ -1002,23 +1123,16 @@
 .blades68.crew.sheet .turf-list.section-editable .turf-block {
   transition: filter 0.1s;
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.crew.sheet .turf-list.section-editable .turf-block {
-    transition: none;
-  }
-}
-.blades68.crew.sheet .turf-list.section-editable .turf-block:hover {
-  filter: brightness(0.8);
-  opacity: 0.9;
-}
-.blades68.crew.sheet .turf-list.section-editable .turf-block {
   width: 130px;
   height: 125px;
   background-color: #bbb;
   position: relative;
   margin: 20px;
   flex-grow: initial;
+}
+.blades68.crew.sheet .turf-list.section-editable .turf-block:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
 }
 .blades68.crew.sheet .turf-list.section-editable .turf-block.turf-selected .connector {
   background-color: #999;
@@ -1203,6 +1317,7 @@
 .blades68.crew.sheet .crew-hold {
   border-top: 3px solid #191813;
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-hold label {
   transition: filter 0.1s;
@@ -1228,9 +1343,6 @@
 .blades68.crew.sheet .crew-hold label:last-of-type {
   margin-right: 0px;
 }
-.blades68.crew.sheet .crew-hold {
-  /* Hide the browser's default checkbox */
-}
 .blades68.crew.sheet .crew-hold input {
   display: none;
 }
@@ -1248,6 +1360,7 @@
   align-items: center;
   border-top: 3px solid #191813;
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-tier label {
   transition: filter 0.1s;
@@ -1269,9 +1382,6 @@
   vertical-align: middle;
   border: 2px solid #191813;
   border-radius: 9px;
-}
-.blades68.crew.sheet .crew-tier {
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-tier input {
   display: none;
@@ -1324,8 +1434,8 @@
   align-items: center;
   cursor: pointer;
   margin-bottom: 0px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .blades68.crew.sheet .cohorts .item-control {
   flex-grow: 0;
@@ -1397,6 +1507,7 @@
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth label {
   height: 50px;
@@ -1405,6 +1516,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth label:last-of-type {
   margin-right: 0px;
@@ -1418,21 +1531,9 @@
 .blades68.crew.sheet .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.crew.sheet .big-teeth-section .big-teeth label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.crew.sheet .big-teeth-section .big-teeth label {
-    transition: none;
-  }
-}
 .blades68.crew.sheet .big-teeth-section .big-teeth label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.crew.sheet .big-teeth-section .big-teeth {
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth input {
   display: none;
@@ -1448,6 +1549,7 @@
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   height: 50px;
@@ -1456,6 +1558,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  cursor: not-allowed;
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label:last-of-type {
   margin-right: 0px;
@@ -1468,12 +1571,6 @@
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
   margin-top: 4px;
-}
-.blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label {
-  cursor: not-allowed;
-}
-.blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap {
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap input {
   display: none;
@@ -1505,18 +1602,11 @@
   margin-right: 10px;
   transition: filter 0.1s;
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.crew.sheet .big-teeth-section .trauma-list label {
-    transition: none;
-  }
+  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.crew.sheet .big-teeth-section .trauma-list label {
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .trauma-list label input {
   display: none;
@@ -1567,11 +1657,6 @@
   /*
    * Custom Radio Round
    */
-  /*
-   * General Styles
-   * Cleaned out things that don't appear to apply to the character sheet, and exist in other, separated SCSS files.
-   * Some things *might* be missing, but at a glance, everything looks to be in order.
-   */
 }
 .blades68.actor.pc * .name-alias img.portrait {
   max-width: 200px;
@@ -1606,6 +1691,7 @@
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label {
   height: 35px;
@@ -1614,6 +1700,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label:last-of-type {
   margin-right: 0px;
@@ -1627,21 +1715,9 @@
 .blades68.actor.pc * .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.actor.pc * .big-teeth-section .big-teeth label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .big-teeth-section .big-teeth label {
-    transition: none;
-  }
-}
 .blades68.actor.pc * .big-teeth-section .big-teeth label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.actor.pc * .big-teeth-section .big-teeth {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth input {
   display: none;
@@ -1657,6 +1733,7 @@
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   height: 35px;
@@ -1665,6 +1742,7 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  cursor: not-allowed;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label:last-of-type {
   margin-right: 0px;
@@ -1677,12 +1755,6 @@
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
   margin-top: 4px;
-}
-.blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
-  cursor: not-allowed;
-}
-.blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap input {
   display: none;
@@ -1714,18 +1786,11 @@
   margin-right: 10px;
   transition: filter 0.1s;
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .big-teeth-section .trauma-list label {
-    transition: none;
-  }
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .trauma-list label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.actor.pc * .big-teeth-section .trauma-list label {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .trauma-list label input {
   display: none;
@@ -1774,6 +1839,7 @@
 }
 .blades68.actor.pc * .teeth-experience {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .teeth-experience label {
   height: 25px;
@@ -1782,6 +1848,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.actor.pc * .teeth-experience label:last-of-type {
   margin-right: 0px;
@@ -1795,21 +1863,9 @@
 .blades68.actor.pc * .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.actor.pc * .teeth-experience label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .teeth-experience label {
-    transition: none;
-  }
-}
 .blades68.actor.pc * .teeth-experience label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.actor.pc * .teeth-experience {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .teeth-experience input {
   display: none;
@@ -1919,10 +1975,11 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+.blades68.actor.pc * .attributes .on-black-banner {
+  color: white;
+}
 .blades68.actor.pc * .attributes .attribute-skill-label {
-  letter-spacing: 1px;
-  color: black;
-  text-shadow: 1px 1px 2px red;
+  letter-spacing: 1.5px;
 }
 .blades68.actor.pc * .attributes .attributes-exp {
   position: relative;
@@ -1930,6 +1987,7 @@
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body {
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
   height: 26px;
@@ -1938,6 +1996,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label:last-of-type {
   margin-right: 0px;
@@ -1951,21 +2011,9 @@
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
-    transition: none;
-  }
-}
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body input {
   display: none;
@@ -1985,14 +2033,17 @@
   display: flex;
   margin: 3px 0px;
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .attributes .attributes-container label {
   height: 15px;
   width: 15px;
-  background-color: #191813;
+  background-color: green;
   vertical-align: middle;
-  border: 2px solid #191813;
+  border: 2px solid orange;
   border-radius: 24px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.actor.pc * .attributes .attributes-container label[for$="-0"] {
   height: 5px;
@@ -2002,21 +2053,9 @@
   background-color: red !important;
   margin-right: 0px;
 }
-.blades68.actor.pc * .attributes .attributes-container label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .attributes .attributes-container label {
-    transition: none;
-  }
-}
 .blades68.actor.pc * .attributes .attributes-container label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
-}
-.blades68.actor.pc * .attributes .attributes-container {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .attributes .attributes-container input {
   display: none;
@@ -2027,18 +2066,11 @@
 .blades68.actor.pc * .attributes .attributes-container input:checked + label {
   transition: filter 0.1s;
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .attributes .attributes-container input:checked + label {
-    transition: none;
-  }
+  background-color: green;
 }
 .blades68.actor.pc * .attributes .attributes-container input:checked + label:hover {
   filter: brightness(0.7);
   opacity: 0.7;
-}
-.blades68.actor.pc * .attributes .attributes-container input:checked + label {
-  background-color: #191813;
 }
 .blades68.actor.pc * .attributes .attributes-container * {
   margin-right: 5px;
@@ -2116,28 +2148,50 @@
 .blades68.actor.pc * .coins.coins-stashed {
   width: 190px;
 }
-.blades68.actor.pc * .trait-line {
+.blades68.actor.pc * .header_subline .trait-line {
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid #191813;
+  border-top: 1px solid #191813;
   padding-bottom: 4px;
   margin-bottom: 4px;
+  margin-top: 4px;
   justify-content: flex-start;
 }
-.blades68.actor.pc * .trait-line .item-block {
-  align-items: baseline;
-  margin-right: 0;
-}
-.blades68.actor.pc * .trait-line .item-block .subheader-item {
+.blades68.actor.pc * .header_subline .trait-line > .item-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   min-width: fit-content;
-}
-.blades68.actor.pc * .trait-line .item-block:not(:last-child)::after {
-  content: "•";
-  margin: 0 6px;
-  color: #999;
-}
-.blades68.actor.pc * .trait-line .item-block .item-class-label {
+  margin: 5px;
   margin-bottom: 0;
+}
+.blades68.actor.pc * .header_subline .trait-line .item,
+.blades68.actor.pc * .header_subline .trait-line .item-body,
+.blades68.actor.pc * .header_subline .trait-line .item-class-label,
+.blades68.actor.pc * .header_subline .trait-line .open-friend,
+.blades68.actor.pc * .header_subline .trait-line .item-control,
+.blades68.actor.pc * .header_subline .trait-line .crew-delete {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+.blades68.actor.pc * .header_subline .trait-line .item-control,
+.blades68.actor.pc * .header_subline .trait-line .crew-delete {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+.blades68.actor.pc * .header_subline .trait-line:hover .item-control,
+.blades68.actor.pc * .header_subline .trait-line:hover .crew-delete {
+  opacity: 1;
+  pointer-events: auto;
+}
+.blades68.actor.pc * .header_subline .trait-line .subheader-item {
+  height: auto;
+}
+.blades68.actor.pc * .header_subline .trait-line img {
+  display: block;
 }
 .blades68.actor.pc * .pronouns-line,
 .blades68.actor.pc * .look-line {
@@ -2208,6 +2262,9 @@
 .blades68.actor.pc * .special-abilities-panel .other-abilities .item {
   align-items: flex-start;
 }
+.blades68.actor.pc * .special-abilities-panel .other-abilities .item .item-delete {
+  max-width: 15px;
+}
 .blades68.actor.pc * .special-abilities-panel .other-abilities .item .item-name-row {
   display: flex;
   flex-wrap: wrap;
@@ -2233,6 +2290,14 @@
 }
 .blades68.actor.pc * .items-panel .section-header .load-fraction {
   white-space: nowrap;
+}
+.blades68.actor.pc * .items-panel .section-header .load-fraction.over-load {
+  color: #b02020;
+  font-weight: bold;
+}
+.blades68.actor.pc * .items-panel .section-header .load-bonus {
+  cursor: help;
+  opacity: 0.85;
 }
 .blades68.actor.pc * .items-panel .item-catalog {
   list-style: none;
@@ -2330,6 +2395,7 @@
   text-transform: capitalize;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-drift {
+  color: inherit;
   font-style: italic;
   font-size: 12px;
   flex-grow: 1;
@@ -2341,6 +2407,7 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks {
   display: flex;
   display: flex;
+  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label {
   height: 25px;
@@ -2349,6 +2416,8 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-right: 5px;
+  transition: filter 0.1s;
+  cursor: pointer;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label:last-of-type {
   margin-right: 0px;
@@ -2362,21 +2431,9 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks label[for$="-0"] i {
   margin-top: 4px;
 }
-.blades68.actor.pc * .keys-container .key-slot .key-marks label {
-  transition: filter 0.1s;
-  cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .blades68.actor.pc * .keys-container .key-slot .key-marks label {
-    transition: none;
-  }
-}
 .blades68.actor.pc * .keys-container .key-slot .key-marks label:hover {
   filter: brightness(0.8);
   opacity: 0.9;
-}
-.blades68.actor.pc * .keys-container .key-slot .key-marks {
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks input {
   display: none;
@@ -2415,7 +2472,7 @@
 .blades68.actor.pc * .special-playbook-section .unique-card {
   border: 1px solid #CCC;
   border-radius: 6px;
-  background: #f7f7f7;
+  background: rgba(247, 247, 247, 0.0705882353);
   margin-bottom: 8px;
   overflow: hidden;
 }
@@ -2425,14 +2482,14 @@
   align-items: center;
   gap: 8px;
   padding: 6px 10px;
-  background: #e4e4e4;
+  background: rgba(228, 228, 228, 0.0705882353);
   font-weight: bold;
   text-transform: uppercase;
   font-size: 13px;
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-header.accent {
   background: #c45a1a;
-  color: #fff;
+  color: #fff12;
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-header .unique-card-tag,
 .blades68.actor.pc * .special-playbook-section .unique-card-header .unique-card-rule {
@@ -2446,7 +2503,7 @@
 }
 .blades68.actor.pc * .special-playbook-section .unique-card-body {
   padding: 8px 10px;
-  background: #fff;
+  background: #fff12;
 }
 .blades68.actor.pc * .special-playbook-section .unique-blurb {
   margin: 0 0 8px;
@@ -2500,7 +2557,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: flex-end;
+  justify-content: space-around;
   margin-bottom: 8px;
 }
 .blades68.actor.pc * .special-playbook-section .cohort-status-row .status-pill {
@@ -2891,7 +2948,7 @@
 }
 .blades68.item.sheet .item .item-body,
 .blades68.item.sheet .item .item-class-label {
-  width: 100px;
+  width: auto;
 }
 .blades68.item.sheet .item-class-label {
   margin-bottom: 10px;
@@ -2900,6 +2957,17 @@
   background-color: #191813;
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  margin-right: 10px;
+  max-width: 250px;
+}
+.blades68.item.sheet .sheet-header .header-fields {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.blades68.item.sheet .sheet-header .header-fields .charname,
+.blades68.item.sheet .sheet-header .header-fields input {
+  height: 100%;
 }
 .blades68.item.sheet #cohort-type-list.cohort-type-row {
   flex-wrap: wrap;
@@ -2926,6 +2994,15 @@
   width: auto;
   padding: 2px 6px;
 }
+.blades68.item.sheet #cohort-harm #harm-list {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  justify-content: flex-start;
+}
+.blades68.item.sheet #cohort-harm #harm-list label {
+  margin-right: 4px;
+}
 .blades68.item.sheet #quality-scale .quality-scale-row {
   flex-wrap: wrap;
   gap: 10px 16px;
@@ -2940,19 +3017,17 @@
   text-align: center;
 }
 .blades68.blades68-theme {
-  /*
-   * Blades '68 theme.
-   * Applied only when the sheet root also carries .blades68-theme
-   * (toggled via the "Blades68Mode" world setting, see module/blades-sheet.js).
-   * Palette matches the reference build's CSS custom properties (--b68-*).
-   */
-}
-.blades68.blades68-theme {
   background-color: #e9e4ce;
   color: #220e10;
 }
 .blades68.blades68-theme .window-content {
   background-color: #e9e4ce;
+}
+.blades68.blades68-theme .on-light-banner {
+  color: black;
+}
+.blades68.blades68-theme .on-black-banner {
+  color: white;
 }
 .blades68.blades68-theme .black-label,
 .blades68.blades68-theme .label-stripe,
@@ -2967,9 +3042,10 @@
   color: #220e10;
 }
 .blades68.blades68-theme a.item-add-popup,
+.blades68.blades68-theme a.import-contacts,
 .blades68.blades68-theme .rollable-text {
-  color: #e8c05b;
-  text-shadow: 1px 1px 1px black;
+  color: #4c372a;
+  text-shadow: none;
 }
 .blades68.blades68-theme .rollable-text:hover {
   color: #eb5000;
@@ -2990,7 +3066,7 @@
 .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item {
   background: #dad1bc;
   border-color: #795c4a;
-  color: #220e10;
+  color: black;
 }
 .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item::after {
   border-color: #795c4a;
@@ -3011,6 +3087,39 @@
 }
 .blades68.blades68-theme .keys-container .key-boom input:checked + i {
   color: #eb5000;
+}
+.blades68.blades68-theme-dark {
+  background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+  color: white;
+}
+.blades68.blades68-theme-dark .window-content {
+  background-color: var(--blades68-sheet-bg, rgba(34, 14, 16, 0.85));
+}
+.blades68.blades68-theme-dark .on-light-banner {
+  color: black;
+}
+.blades68.blades68-theme-dark .on-black-banner {
+  color: white;
+}
+.blades68.blades68-theme-dark a.item-add-popup,
+.blades68.blades68-theme-dark a.import-contacts,
+.blades68.blades68-theme-dark .rollable-text {
+  color: white;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item {
+  background: #dad1bc;
+  border-color: #795c4a;
+  color: black;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item::before, .blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item::after {
+  border-color: #795c4a;
+}
+.blades68.blades68-theme-dark.crew.sheet nav.tabs.folder-tabs > .item.active {
+  background: #e8c05b;
+}
+.blades68.blades68-theme-dark.crew.sheet section.tab-content.folder-tab-content {
+  background: #e9e4ce;
+  border-color: #795c4a;
 }
 .blades68.sharp-icons {
   /*
@@ -3124,6 +3233,14 @@
   height: 20px !important;
 }
 
+.chat-item img {
+  width: 40px;
+  height: 40px;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
 .label-stripe-chat {
   text-transform: uppercase;
   background-color: #191813;
@@ -3165,6 +3282,18 @@
   color: red;
 }
 
+dialog.blades68-dialog {
+  max-height: 90vh;
+}
+dialog.blades68-dialog .window-content {
+  min-height: 0;
+  overflow: hidden auto;
+}
+dialog.blades68-dialog .form-footer {
+  position: sticky;
+  bottom: 0;
+}
+
 .items-to-add {
   display: flex;
   flex-direction: column;
@@ -3182,23 +3311,32 @@
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-top: 0.75em;
+  margin-top: 1.25em;
   padding-bottom: 0.15em;
   border-bottom: 1px solid currentColor;
 }
-.add-items-list .item-group header:first-child {
+.add-items-list .item-group:first-child header {
   margin-top: 0;
-}
-.add-items-list input[type=radio],
-.add-items-list input[type=checkbox] {
-  display: none;
 }
 .add-items-list input[type=radio]:checked + label,
 .add-items-list input[type=checkbox]:checked + label {
   font-weight: bold;
 }
+.add-items-list .item-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  margin: 0.15em 0;
+}
+.add-items-list .item-block input[type=radio],
+.add-items-list .item-block input[type=checkbox] {
+  flex: 0 0 auto;
+  margin: 0;
+}
 .add-items-list .item-block label {
   display: block;
+  flex: 1 1 auto;
+  margin: 0;
 }
 .add-items-list .item-description {
   font-style: italic;
@@ -3211,23 +3349,60 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.add-items-list .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #191813;
-  color: #EEEFFF;
-  text-align: center;
-  padding: 5px;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 9999;
+
+.bitd-dice-pool {
+  display: block;
+  margin-bottom: 0.5em;
 }
-.add-items-list .tooltip:hover .tooltiptext {
-  visibility: visible;
+.bitd-dice-pool > label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+
+.bitd-dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+}
+.bitd-dice-row .bitd-dice-count {
+  width: 2.2em;
+  height: 2.2em;
+  flex: 0 0 auto;
+  padding: 0;
+  line-height: 1;
+  font-weight: bold;
+  border: 1px solid #666;
+  border-radius: 4px;
+  background: #bbb;
+  color: #191813;
+  cursor: pointer;
+}
+.bitd-dice-row .bitd-dice-count.is-zero {
+  background: #e08080;
+}
+.bitd-dice-row .bitd-dice-count.is-base {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.bitd-dice-row .bitd-dice-count.is-selected {
+  background: #191813;
+  color: #EEEFFF;
+  border-color: #191813;
+}
+.bitd-dice-row .bitd-dice-count:hover {
+  filter: brightness(0.8);
 }
 
 .bitd-inline-roll {
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.bitd-inline-roll:hover i {
+  display: inline-block;
+  animation: bitd-roll-cell-shake 0.4s ease-in-out;
 }
 
 .bitd-pos-fx-table {
@@ -3235,7 +3410,8 @@
   border-collapse: collapse;
   text-align: center;
 }
-.bitd-pos-fx-table th, .bitd-pos-fx-table td {
+.bitd-pos-fx-table th,
+.bitd-pos-fx-table td {
   padding: 0.2em 0.35em;
 }
 .bitd-pos-fx-table thead th {
@@ -3251,15 +3427,31 @@
   background: rgba(128, 128, 128, 0.08);
 }
 
+@keyframes bitd-roll-cell-shake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-12deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
 .bitd-roll-cell {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
   border: 1px solid #666;
   background: #bbb;
-  color: transparent;
+  color: #EEEFFF;
   cursor: pointer;
-  font-size: 0.65em;
   line-height: 1;
   position: relative;
 }
@@ -3268,14 +3460,15 @@
 }
 .bitd-roll-cell:hover {
   background: #191813;
-  color: #EEEFFF;
-}
-.bitd-roll-cell::before {
-  content: attr(data-roll-label);
-  opacity: 0;
 }
 .bitd-roll-cell:hover::before {
-  opacity: 1;
+  display: inline-block;
+  animation: bitd-roll-cell-shake 0.4s ease-in-out;
+}
+.bitd-roll-cell.bitd-roll-cell-diagonal {
+  outline: 2px solid #EEEFFF;
+  outline-offset: 1px;
+  transition: outline-color 0.15s ease;
 }
 
 #pause {
@@ -3524,5 +3717,3 @@
     transform: translate(2px, 1px);
   }
 }
-
-/*# sourceMappingURL=blades.css.map */

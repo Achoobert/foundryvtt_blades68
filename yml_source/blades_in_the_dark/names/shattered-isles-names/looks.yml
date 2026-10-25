@@ -1,0 +1,263 @@
+_id: 1i1Xbu5tutUzalRC
+name: 'Looks'
+img: icons/svg/d20-grey.svg
+description: 'NPC physical descriptors for quick NPC generation.'
+results:
+  - _id: jefpfv5ZD7oiiKxS
+    type: text
+    text: 'Large'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: 3JhPLmfcehMKdINJ
+    type: text
+    text: 'Lovely'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: md2KGMKqlfGiZrDb
+    type: text
+    text: 'Weathered'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: OqGR581vn8Ka0WXv
+    type: text
+    text: 'Chiseled'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: 7JR9DSub8llasyYw
+    type: text
+    text: 'Handsome'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: P5LyLTfd2bQ9Rh8w
+    type: text
+    text: 'Athletic'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: CETvLGVqZaE2OJRj
+    type: text
+    text: 'Slim'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: A8BqFBK8g98cTTey
+    type: text
+    text: 'Dark'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: Rz67yZgAhNpMnvma
+    type: text
+    text: 'Fair'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: d28U61treZViZnVy
+    type: text
+    text: 'Stout'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: QODkaYqSBOSDec5S
+    type: text
+    text: 'Delicate'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: aIZwpEBKvrKyW6es
+    type: text
+    text: 'Scarred'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: AVagjWepdWCmwV8L
+    type: text
+    text: 'Bony'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: aVhLpa379agYLQOa
+    type: text
+    text: 'Worn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: zsFrcgckhbk99ZJX
+    type: text
+    text: 'Rough'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: 4Ij40leOb6N7ezf6
+    type: text
+    text: 'Plump'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: M6KvVtZnRceQks7b
+    type: text
+    text: 'Wiry'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: hZ75sYvAERyh8HJg
+    type: text
+    text: 'Striking'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: apSlIRBlTQR08t8s
+    type: text
+    text: 'Short'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: SGRu6fY9f1sY5SIO
+    type: text
+    text: 'Tall'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: usTowTEXUXzJyvt6
+    type: text
+    text: 'Sexy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: ICfhqePlHySgj0sC
+    type: text
+    text: 'Wild'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: q0SotlpXnOaohVdV
+    type: text
+    text: 'Elegant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: FrbA4FzPOXOmorA5
+    type: text
+    text: 'Stooped'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: SaPjrENQPSgrB3aI
+    type: text
+    text: 'Cute'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: OWqNmUdOC2Fa903C
+    type: text
+    text: 'Plain'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: rbMCGTdxo79MhUMr
+    type: text
+    text: 'Old'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: WNuN8g5zuEj7YxSF
+    type: text
+    text: 'Young'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: aC6io8DnrdsC4LfU
+    type: text
+    text: 'Stylish'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: E5il0VVWWQmpUCQW
+    type: text
+    text: 'Strange'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: VRVni1rnbTDEKrHE
+    type: text
+    text: 'Disfigured'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: W0VcPAFg1KeEbACV
+    type: text
+    text: 'Glasses'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: 6NckbCE5OmKTeSOP
+    type: text
+    text: 'Prosthetic'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: UPmHt3yj2WuKL5Pw
+    type: text
+    text: 'Long hair'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: L6YiSa5P3exd6cY9
+    type: text
+    text: 'Bald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: CZsTNl23dMnBH6bt
+    type: text
+    text: 'Tattooed'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

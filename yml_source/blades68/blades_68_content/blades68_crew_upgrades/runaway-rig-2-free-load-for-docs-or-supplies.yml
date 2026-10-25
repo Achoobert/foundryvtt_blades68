@@ -9,7 +9,28 @@ system:
   purchased: false
   logic: ''
   crew_type: Runaways
-effects: []
+effects:
+  - _id: f6b4a8d725eb9ae4
+    name: +2 Load
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.scoundrel.add_load
+          type: add
+          value: '2'
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
+    flags: {}
 folder: null
 sort: 0
 permission:

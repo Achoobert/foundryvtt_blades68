@@ -1,25 +1,69 @@
 textarea {
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.debug-toggle{
+
+.window-content {
+  background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.window-content > [data-application-part] {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+&.sheet.item .window-content {
+  max-height: 85vh;
+}
+
+
+.text-line {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+label.text-line + input,
+label.text-line + textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.debug-toggle {
   opacity: 0.1;
 
-  &.on{
+  &.on {
     opacity: 0.75;
   }
 }
 
 .rollable-text {
   transition: color $transition-period;
-@media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     transition: none;
   }
 }
 .rollable-text:hover {
   cursor: pointer;
   color: $red;
+}
+
+
+@at-root .dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+  line-height: 10px;
+  vertical-align: super;
 }
 
 section {
@@ -45,7 +89,7 @@ section {
 
   &.experience {
     margin-bottom: 0px;
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -60,9 +104,9 @@ section {
   flex-direction: column;
 }
 
-.tab[data-tab]{
+.tab[data-tab] {
   display: none;
-  &.active{
+  &.active {
     display: block;
   }
 }
@@ -88,12 +132,11 @@ section {
   font-family: Kirsty, serif;
 }
 
-
 .label-stripe {
   text-transform: uppercase;
   background-color: $almost_black;
   color: $almost_white;
-  margin-bottom: 10px;
+  margin-top: 1px;
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
@@ -117,13 +160,48 @@ section {
   min-height: 150px;
 }
 
-.description {
+prose-mirror {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+
+
+.npc-header {
+  align-items: flex-start;
+  margin-top: 1px;
+
+  img.npc-portrait {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+}
+
+.npc-header-lines,
+.npc-lines {
+  > div {
+    margin-top: 1px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cohort-description,
+.gang-description {
   font-style: italic;
 }
 
 i {
   &.nullifier {
-    @include changeable($transition-period, $hover-brightness, $hover-opacity, $red);
+    @include changeable(
+      $transition-period,
+      $hover-brightness,
+      $hover-opacity,
+      $red
+    );
   }
 }
 
@@ -135,7 +213,8 @@ i {
     box-shadow: none;
     border: none;
     cursor: pointer;
-    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right;
+    background: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+      no-repeat right;
     padding: 0 20px 0 0;
     margin: 0.1em -6px 0 0;
     background-color: $almost_black;
@@ -147,7 +226,7 @@ i {
     text-align: right;
 
     option {
-      color: white;
+      color: black;
     }
   }
 
@@ -156,7 +235,9 @@ i {
   }
 }
 
-.abilities, .loadout, .faction-items {
+.abilities,
+.loadout,
+.faction-items {
   .item-name {
     width: 100px;
     margin-left: 10px;
@@ -173,24 +254,15 @@ i {
   .item-control {
     max-width: 10px;
   }
-  // Faction list rows: keep the (now larger) faction art vertically
-  // centered against the name/description text instead of stretching.
+  
+  
   .item,
   .item-body {
     align-items: center;
   }
 }
 
-// Icon visibility fix (generic, applies to every sheet icon).
-//
-// Many Foundry-core placeholder icons used as default `img` values for
-// generated Blades '68 content (e.g. icons/svg/item-bag.svg, city.svg,
-// upgrade.svg, direction.svg, book.svg) are solid white shapes on a
-// transparent background. Rendered as bare <img> tags on this system's
-// light/parchment sheet backgrounds they become invisible ("white icon on
-// white background"). Give every inline item icon a small neutral dark
-// backdrop + border so both light and dark artwork stay legible, no
-// matter which icon a given item happens to use.
+
 .item-body img,
 .open-friend img,
 .item-image {
@@ -200,4 +272,30 @@ i {
 }
 td {
   padding: 5px;
+}
+
+// Custom XP trigger text pulled from the "XP Triggers" world journal. The journal
+// editor emits <p>/<ul>/<li>, so tighten the default spacing to match the built-in
+// XP block on both the character and crew sheets.
+.xp-triggers-custom {
+  font-size: 12px;
+
+  p,
+  ul,
+  ol {
+    margin: 0 0 4px;
+  }
+
+  ul,
+  ol {
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }

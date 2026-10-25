@@ -1,0 +1,263 @@
+_id: 7gBIlPQoYEVzU7Z9
+name: 'Skovlan - Given Name (Woman)'
+img: icons/svg/d20-grey.svg
+description: 'Feminine given names from Skovlan, for use in NPC/token/actor namer macros.'
+results:
+  - _id: jJ67M4Nw0Ew6k7yY
+    type: text
+    text: 'Solva'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: kRLFFD9EBpy6w70F
+    type: text
+    text: 'Thora'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: ajermJWRiVLG2Rw6
+    type: text
+    text: 'Raila'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: HynVPdYA8rvMhvTE
+    type: text
+    text: 'Marketta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: vSIZBYHa2hQV1yeS
+    type: text
+    text: 'Karina'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: cDWLOSeD3vMZ01mh
+    type: text
+    text: 'Henna'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: 9fj04NpOqZodcyqY
+    type: text
+    text: 'Anja'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: ROTyd5yFw9wYo2W8
+    type: text
+    text: 'Sayunn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: CHiWQnqybhG975vY
+    type: text
+    text: 'Lempi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: TeXuEFXNdoH6o9hO
+    type: text
+    text: 'Vivi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: 0zeDxj5ewY1kwWiK
+    type: text
+    text: 'Gilla'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: Ai6IIle5CcHolAZQ
+    type: text
+    text: 'Lea'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: tlFj7vOEke6EbLR8
+    type: text
+    text: 'Hallbera'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: IXDaqj4w1lptnylX
+    type: text
+    text: 'Bolla'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: xdvORlgHP8y69OlG
+    type: text
+    text: 'Halla'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: xiDP2hk1T6mvtbI1
+    type: text
+    text: 'Torunn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: ITlqCHoiBY3Y00uN
+    type: text
+    text: 'Evi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: 9EyLxlrXikuyp5Jm
+    type: text
+    text: 'Alfdis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: Xb5ubxiNwlNAz0My
+    type: text
+    text: 'Sari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: bbsWIBXqdjCIv3V8
+    type: text
+    text: 'Ingerd'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: GxPL6egJep51dyp2
+    type: text
+    text: 'Una'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: KSDlFhUpNwT7ua99
+    type: text
+    text: 'Asa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: CXvdC2lMCPz58R1F
+    type: text
+    text: 'Aina'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: pwmWIqyDtA7JPNBQ
+    type: text
+    text: 'Arna'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: ng9Kt5ReDPSqWhSl
+    type: text
+    text: 'Mirjam'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: IfbB79uM5RKngUMy
+    type: text
+    text: 'Belle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: UTOCOPf60todbOq9
+    type: text
+    text: 'Svanhild'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: aGYfrUfNvSj06Tjx
+    type: text
+    text: 'Rosa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: EWYpt61N1ogaicBn
+    type: text
+    text: 'Freyla'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: RQcEDpP2pYLWaKQI
+    type: text
+    text: 'Kanerva'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: OJY5s3SDTPB4UqHL
+    type: text
+    text: 'Katja'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: EAhzx8PPgD99JFes
+    type: text
+    text: 'Matilda'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: xyGz6k5XzdvMQUuR
+    type: text
+    text: 'Joreid'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: XCSs4mLlGIzFTu3o
+    type: text
+    text: 'Asta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: JeCBYBM4tEyym9wG
+    type: text
+    text: 'Marja'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: VSE1JhdNNHLyiTtC
+    type: text
+    text: 'Naimi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

@@ -10,7 +10,10 @@ import {
   applyTokenAutoRotateDefault,
   overrideTokenAutoRotateDefault,
   importExistingImagesOnce,
+  applySheetBackgroundColor,
 } from "./settings.js";
+import { registerXpTriggerHooks } from "./xp-triggers.js";
+import { registerTokenActionHud } from "./token-action-hud.js";
 import { preloadHandlebarsTemplates } from "./blades-templates.js";
 import { bladesRoll, simpleRollPopup } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
@@ -32,6 +35,23 @@ import {
   registerItemSheet,
   unregisterItemSheet,
 } from "./compat.js";
+import { ClockData } from "./data/clock.js";
+import { NPCData } from "./data/npc.js";
+import { FactionData } from "./data/faction.js";
+import { CrewData } from "./data/crew.js";
+import { CharacterData } from "./data/character.js";
+import { AbilityItemData } from "./data/items/ability.js";
+import { ClassItemData } from "./data/items/class.js";
+import { CohortItemData } from "./data/items/cohort.js";
+import { CrewAbilityItemData } from "./data/items/crew_ability.js";
+import { CrewTypeItemData } from "./data/items/crew_type.js";
+import { CrewUpgradeItemData } from "./data/items/crew_upgrade.js";
+import { FactionItemData } from "./data/items/faction.js";
+import { HuntingGroundsItemData } from "./data/items/hunting_grounds.js";
+import { ItemItemData } from "./data/items/item.js";
+import { PrisonItemData } from "./data/items/prison.js";
+import { SimpleItemData } from "./data/items/simple.js";
+import { TroubleItemData } from "./data/items/trouble.js";
 
 window.BladesHelpers = BladesHelpers;
 
@@ -133,8 +153,38 @@ Hooks.once("init", async function () {
   CONFIG.Actor.documentClass = BladesActor;
   CONFIG.ActiveEffect.documentClass = BladesActiveEffect;
 
+  CONFIG.Actor.dataModels = {
+    "🕛 clock": ClockData,
+    npc: NPCData,
+    factions: FactionData,
+    crew: CrewData,
+    character: CharacterData,
+  };
+
+  CONFIG.Item.dataModels = {
+    faction: FactionItemData,
+    item: ItemItemData,
+    class: ClassItemData,
+    ability: AbilityItemData,
+    heritage: SimpleItemData,
+    background: SimpleItemData,
+    vice: SimpleItemData,
+    hunting_grounds: HuntingGroundsItemData,
+    crew_upgrade: CrewUpgradeItemData,
+    cohort: CohortItemData,
+    crew_type: CrewTypeItemData,
+    crew_reputation: SimpleItemData,
+    crew_ability: CrewAbilityItemData,
+    prison: PrisonItemData,
+    trouble: TroubleItemData,
+  };
+
   // Register System Settings
   registerSystemSettings();
+  applySheetBackgroundColor();
+
+  // Optional: Token Action HUD Core integration (no-op without the module)
+  registerTokenActionHud();
 
   if (game.settings.get("blades68", "PublicClocks")) {
     Hooks.on("preCreateActor", (actor, createData, options, userId) => {
@@ -355,71 +405,74 @@ Hooks.once("init", async function () {
   /**
    * Create appropriate Blades clock
    */
+  // Shared markup for both clock helpers so the two cannot drift apart.
+  // Both emit `data-action="bid.radioToggle"` so the AppV2 sheets pick the
+  // clicks up and cycle/decrement the value.
+  const renderBladesClock = function ({
+    parameter_name,
+    type,
+    color,
+    current_value,
+    uniq_id,
+    zeroLabel,
+  }) {
+    let html = "";
+
+    if (current_value === null || current_value === "null") {
+      current_value = 0;
+    }
+
+    if (parseInt(current_value) > parseInt(type)) {
+      current_value = type;
+    }
+
+    if (zeroLabel) {
+      // Label for 0
+      html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
+    }
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
+
+    let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
+    html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
+
+    for (let i = 1; i <= parseInt(type); i++) {
+      let checked = parseInt(current_value) === i ? "checked" : "";
+      html += `
+        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
+        <label class="radio-toggle" data-action="bid.radioToggle" for="clock-${i}-${uniq_id}"></label>
+      `;
+    }
+
+    html += `</div>`;
+    return html;
+  };
+
   // Clocks in color for Clock Actors
   Handlebars.registerHelper(
     "blades-clock-color",
     function (parameter_name, type, color, current_value, uniq_id) {
-      let html = "";
-
-      if (current_value === null || current_value === "null") {
-        current_value = 0;
-      }
-      if (color === undefined) {
-        color = "black";
-      }
-
-      if (parseInt(current_value) > parseInt(type)) {
-        current_value = type;
-      }
-
-      // Label for 0
-      html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-      html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
-
-      let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
-      html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
-
-      for (let i = 1; i <= parseInt(type); i++) {
-        let checked = parseInt(current_value) === i ? "checked" : "";
-        html += `
-        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
-        <label class="radio-toggle" for="clock-${i}-${uniq_id}"></label>
-      `;
-      }
-
-      html += `</div>`;
-      return html;
+      return renderBladesClock({
+        parameter_name,
+        type,
+        color: color === undefined ? BladesHelpers.sheetClockColor() : color,
+        current_value,
+        uniq_id,
+        zeroLabel: true,
+      });
     },
   );
-  // Clocks in black for clocks embedded in sheets
+  // Clocks embedded in sheets; color comes from the ClockColor world setting
   Handlebars.registerHelper(
     "blades-clock",
     function (parameter_name, type, current_value, uniq_id) {
-      let html = "";
-
-      if (current_value === null || current_value === "null") {
-        current_value = 0;
-      }
-
-      if (parseInt(current_value) > parseInt(type)) {
-        current_value = type;
-      }
-
-      html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, "black")}');">`;
-
-      let zero_checked = parseInt(current_value) === 0 ? "checked" : "";
-      html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
-
-      for (let i = 1; i <= parseInt(type); i++) {
-        let checked = parseInt(current_value) === i ? "checked" : "";
-        html += `
-        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
-        <label class="radio-toggle" for="clock-${i}-${uniq_id}"></label>
-      `;
-      }
-
-      html += `</div>`;
-      return html;
+      return renderBladesClock({
+        parameter_name,
+        type,
+        color: BladesHelpers.sheetClockColor(),
+        current_value,
+        uniq_id,
+        zeroLabel: false,
+      });
     },
   );
 
@@ -475,22 +528,17 @@ Hooks.once("ready", async function () {
   unregisterItemSheet("core", itemSheetClass);
   registerItemSheet("blades", BladesItemSheet, { makeDefault: true });
 
+  for (const crewActor of game.actors) {
+    if (crewActor.type !== "crew") continue;
+    for (const item of crewActor.items) {
+      await syncCrewUpgradeEffectGate(item);
+    }
+  }
+
   await preloadHandlebarsTemplates();
   await applyTokenAutoRotateDefault();
   await importExistingImagesOnce();
-
-  /**
-  // Determine whether a system migration is required
-  const currentVersion = game.settings.get("bitd", "systemMigrationVersion");
-  const NEEDS_MIGRATION_VERSION = 2.15;
-
-  let needMigration = (currentVersion < NEEDS_MIGRATION_VERSION) || (currentVersion === null);
-
-  // Perform the migration
-  if ( needMigration && game.user.isGM ) {
-    migrations.migrateWorld();
-  }
-  **/
+  registerXpTriggerHooks();
 });
 
 /*
@@ -508,6 +556,7 @@ function rerenderLinkedCharacterSheets(crew) {
   for (const actor of game.actors) {
     if (actor.type !== "character") continue;
     if (actor.system?.crew?.[0]?.id !== crew.id) continue;
+    actor.reset();
     if (actor.sheet?.rendered) actor.sheet.render(false);
   }
 }
@@ -517,6 +566,22 @@ function ownerActorOf(doc) {
   let parent = doc?.parent;
   while (parent && parent.documentName !== "Actor") parent = parent.parent;
   return parent ?? null;
+}
+
+
+async function syncCrewUpgradeEffectGate(item) {
+  if (item?.type !== "crew_upgrade" && item?.type !== "crew_ability") return;
+  const price = Number(item.system?.price) || 0;
+  const unlocked = Number(item.system?.unlocked) || 0;
+  const shouldApply = price <= 0 || unlocked >= price;
+  const toToggle = item.effects.filter(
+    (effect) => effect.disabled === shouldApply,
+  );
+  if (!toToggle.length) return;
+  await item.updateEmbeddedDocuments(
+    "ActiveEffect",
+    toToggle.map((effect) => ({ _id: effect.id, disabled: !shouldApply })),
+  );
 }
 
 Hooks.on("updateActor", (actor) => rerenderLinkedCharacterSheets(actor));
@@ -533,31 +598,27 @@ for (const hook of [
   );
 }
 
-// getSceneControlButtons
-Hooks.on("getSceneControlButtons", (controls) => {
-  if (foundry.utils.isNewerVersion(game.version, 13)) {
-    controls.tokens.tools.DiceRoller = {
-      name: "DiceRoller",
-      title: "BITD.DiceRoller",
-      icon: "fas fa-dice",
-      onChange: (event, active) => {
-        simpleRollPopup();
-      },
-      button: true,
-    };
+Hooks.on("createItem", (item) => syncCrewUpgradeEffectGate(item));
+Hooks.on("updateItem", (item, changes) => {
+  if (
+    foundry.utils.hasProperty(changes, "system.unlocked") ||
+    foundry.utils.hasProperty(changes, "system.price")
+  ) {
+    syncCrewUpgradeEffectGate(item);
   }
 });
 
-Hooks.on("renderSceneControls", async (app, html) => {
-  if (foundry.utils.isNewerVersion(13, game.version)) {
-    let dice_roller = $(
-      '<li class="scene-control" data-tooltip="Dice Roll"><i class="fas fa-dice"></i></li>',
-    );
-    dice_roller.click(async function () {
-      await simpleRollPopup();
-    });
-    html.children().first().append(dice_roller);
-  }
+
+Hooks.on("getSceneControlButtons", (controls) => {
+  controls.tokens.tools.DiceRoller = {
+    name: "DiceRoller",
+    title: "BITD.DiceRoller",
+    icon: "fas fa-dice",
+    onChange: (event, active) => {
+      simpleRollPopup();
+    },
+    button: true,
+  };
 });
 
 const PAUSE_IMAGE =

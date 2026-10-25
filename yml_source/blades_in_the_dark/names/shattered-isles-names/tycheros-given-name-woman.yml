@@ -1,0 +1,263 @@
+_id: ssPSR1IXakk0mcFW
+name: 'Tycheros - Given Name (Woman)'
+img: icons/svg/d20-grey.svg
+description: 'Feminine given names from Tycheros, for use in NPC/token/actor namer macros.'
+results:
+  - _id: O7XTPYoNk7VwO58x
+    type: text
+    text: 'Demi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: ZybKr3sbwnHJw6Q0
+    type: text
+    text: 'Mieru'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: Zu6T9GisPQE6Duw5
+    type: text
+    text: 'Orianna'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 3hQ9LSbJLKNhRWBR
+    type: text
+    text: 'Struha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: nW4yLnfdpwE91MSk
+    type: text
+    text: 'Kanika'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: VqoUYySdwwh5Jscn
+    type: text
+    text: 'Anakis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: jOn3QfQ1OrcI2IbF
+    type: text
+    text: 'Arastellia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: IFkBnYVx1rQXUn1o
+    type: text
+    text: 'Nemeia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: 22fwA3pFzBDEsMlH
+    type: text
+    text: 'Anta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: 6GeK491b260AphKy
+    type: text
+    text: 'Maia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: 5DNuRbMFhueNQJTZ
+    type: text
+    text: 'Kaiti'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: xgKDd8nf6uqxzrQj
+    type: text
+    text: 'Lerissa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: Boui4Q0nbmq8ONYe
+    type: text
+    text: 'Rieta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: xMkq29WSGZKqt8sD
+    type: text
+    text: 'Vrohu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: GBf8FA2tqR50hD81
+    type: text
+    text: 'Akta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: Znk47CVBxiQVoLrP
+    type: text
+    text: 'Elpida'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: GbwdSHI7GU0qXUry
+    type: text
+    text: 'Brinava'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: Gz1RTtzCa2rQd7uh
+    type: text
+    text: 'Thousa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: Mwf2Q7QTDqVdym4R
+    type: text
+    text: 'Phelaia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: ebM1Vnh5EzyHggII
+    type: text
+    text: 'Damaia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: vZoBDX9OHER5a5Bb
+    type: text
+    text: 'Kalomira'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: v9N9iHIyKSuWaP0d
+    type: text
+    text: 'Chryseis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: Q8VA6Oe8eK8zDKav
+    type: text
+    text: 'Pinelope'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: VkrBiZBskUXuZ6dz
+    type: text
+    text: 'Tikar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: ce7v4Vfwh4GItWT1
+    type: text
+    text: 'Kallista'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: 9TWo5jLEWNC4OmaI
+    type: text
+    text: 'Daleira'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: 9Fx5gsGeiInomMad
+    type: text
+    text: 'Makaria'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: s3IeO5BZV5MIYUuE
+    type: text
+    text: 'Zinovia'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: ZkkC4dEd1lbfoeIs
+    type: text
+    text: 'Briar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: UJOwmtp5ITGSRH3f
+    type: text
+    text: 'Pavea'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: AhV8w6lELcOqUFAi
+    type: text
+    text: 'Ea'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: 47g26c1tBoJlh1KQ
+    type: text
+    text: 'Olenna'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: mOzMdQcimD4MfbgG
+    type: text
+    text: 'Criella'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: 97Z8hBfeKGQfQRUQ
+    type: text
+    text: 'Tuxi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: 2nNJhQT7XXJRjdVB
+    type: text
+    text: 'Solise'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: ye1TpOK153YabyYw
+    type: text
+    text: 'Bryseis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

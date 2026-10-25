@@ -1,56 +1,55 @@
+import { BladesSheetV2 } from "./blades-sheet-v2.js";
 
-import { BladesSheet } from "./blades-sheet.js";
 
-/**
- * @extends {BladesSheet}
- */
-export class BladesFactionSheet extends BladesSheet {
+export class BladesFactionSheet extends BladesSheetV2 {
 
-  /** @override */
-	static get defaultOptions() {
-	  return foundry.utils.mergeObject(super.defaultOptions, {
-  	  classes: ["blades68", "sheet", "actor", "faction"],
-  	  template: "systems/blades68/templates/faction-sheet.html",
-      width: 900,
-      height: 'auto',
-      tabs: [{navSelector: ".tabs", contentSelector: ".tab-content"}]
-    });
+  static DEFAULT_OPTIONS = {
+    
+    
+    classes: [...super.DEFAULT_OPTIONS.classes, "blades68", "faction"],
+    position: { width: 900, height: "auto" },
+    actions: {
+      "bid.updateBox": BladesFactionSheet._onUpdateBox
+    }
+  };
+
+  static PARTS = {
+    body: { template: "systems/blades68/templates/faction-sheet.html", scrollable: [""] }
+  };
+
+  
+  async _prepareContext(options) {
+    const ctx = await super._prepareContext(options);
+    return {
+      ...ctx,
+      actor: this.actor,
+      document: this.document,
+      _id: this.actor.id,
+      id: this.actor.id,
+      name: this.actor.name,
+      img: this.actor.img,
+      system: this.actor.system,
+      
+      
+      items: this.actor.items.map(i => i.toObject()),
+      owner: this.actor.isOwner,
+      editable: this.isEditable,
+      cssClass: this.isEditable ? "editable" : "locked",
+      isGM: game.user.isGM
+    };
   }
 
-  /* -------------------------------------------- */
-
-  /** @override */
-  async getData(options) {
-    const superData = await super.getData( options );
-    const sheetData = superData.data;
-    sheetData.owner = superData.owner;
-    sheetData.editable = superData.editable;
-    sheetData.isGM = game.user.isGM;
-    return sheetData;
+  
+  static async _onUpdateBox(event, target) {
+    event.preventDefault();
+    const itemId = target.dataset.item;
+    const updateType = target.dataset.utype;
+    const updateValue = target.dataset.value;
+    if (!itemId || (updateType !== "status" && updateType !== "hold")) {
+      console.log("bid.updateBox: missing item id or unrecognized utype", target.dataset);
+      return;
+    }
+    const update = { _id: itemId, system: { [updateType]: { value: updateValue } } };
+    await this.actor.updateEmbeddedDocuments("Item", [update]);
   }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-	activateListeners(html) {
-    super.activateListeners(html);
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return;
-
-    // Update Inventory Item
-    html.find('.item-body').click(ev => {
-      const element = $(ev.currentTarget).parents(".item");
-      const item = this.actor.items.get(element.data("itemId"));
-      item.sheet.render(true);
-    });
-
-    // Delete Inventory Item
-    html.find('.item-delete').click( async ev => {
-      const element = $(ev.currentTarget).parents(".item");
-      await this.actor.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
-      element.slideUp(200, () => this.render(false));
-    });
-
-	}
 }

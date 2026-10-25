@@ -79,7 +79,7 @@
   width: auto;
   height: auto;
   background-image: none !important;
-  color: #EEEFFF;
+  color: #eeefff;
 }
 & * .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
@@ -118,16 +118,32 @@
   background-size: contain;
   margin-right: 5px;
 }
-& * .big-teeth-section .small-teeth-container .small-teeth-wrap label:last-of-type {
+&
+  *
+  .big-teeth-section
+  .small-teeth-container
+  .small-teeth-wrap
+  label:last-of-type {
   margin-right: 0px;
 }
-& * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+&
+  *
+  .big-teeth-section
+  .small-teeth-container
+  .small-teeth-wrap
+  label[for$="-0"] {
   width: auto;
   height: auto;
   background-image: none !important;
-  color: #EEEFFF;
+  color: #eeefff;
 }
-& * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
+&
+  *
+  .big-teeth-section
+  .small-teeth-container
+  .small-teeth-wrap
+  label[for$="-0"]
+  i {
   margin-top: 4px;
 }
 & * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
@@ -139,10 +155,22 @@
 & * .big-teeth-section .small-teeth-container .small-teeth-wrap input {
   display: none;
 }
-& * .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
+&
+  *
+  .big-teeth-section
+  .small-teeth-container
+  .small-teeth-wrap
+  input:checked
+  ~ label {
   background-image: url("assets/blades68/stresspill_empty.webp");
 }
-& * .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
+&
+  *
+  .big-teeth-section
+  .small-teeth-container
+  .small-teeth-wrap
+  input:checked
+  + label {
   background-image: url("assets/blades68/stresspill_filled.webp");
 }
 & * .big-teeth-section .small-teeth-container .small-teeth-wrap {
@@ -191,13 +219,16 @@
 & * .character-stress label[for$="-0"] {
   margin-right: 0px;
 }
-& * .abilities .item-name, & * .loadout .item-name {
+& * .abilities .item-name,
+& * .loadout .item-name {
   width: 100px;
 }
-& * .abilities .item-body, & * .loadout .item-body {
+& * .abilities .item-body,
+& * .loadout .item-body {
   width: auto;
 }
-& * .abilities .item-description, & * .loadout .item-description {
+& * .abilities .item-description,
+& * .loadout .item-description {
   width: 260px;
 }
 & * .abilities .label-stripe p:first-child {
@@ -224,7 +255,7 @@
   width: auto;
   height: auto;
   background-image: none !important;
-  color: #EEEFFF;
+  color: #eeefff;
 }
 & * .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
@@ -265,9 +296,9 @@
 }
 & * .harm-armor .character-harm table th {
   background-color: #191813;
-  color: #EEEFFF;
+  color: #eeefff;
 }
-& * .harm-armor .character-harm table input[type=text] {
+& * .harm-armor .character-harm table input[type="text"] {
   width: 100%;
 }
 & * .harm-armor .character-health-clock {
@@ -330,7 +361,7 @@
 }
 & * .attributes .stripe {
   background-color: #191813;
-  color: #EEEFFF;
+  color: #eeefff;
   font-size: 17px;
   padding-left: 5px;
 }
@@ -364,7 +395,7 @@
   width: auto;
   height: auto;
   background-image: none !important;
-  color: #EEEFFF;
+  color: #eeefff;
 }
 & * .attributes .attributes-exp .stripe-tooth-body label[for$="-0"] i {
   margin-top: 4px;
@@ -430,7 +461,7 @@
   display: none;
 }
 & * .attributes .attributes-container input:checked ~ label {
-  background-color: #EEEFFF;
+  background-color: #eeefff;
 }
 & * .attributes .attributes-container input:checked + label {
   transition: filter 0.1s;
@@ -486,7 +517,7 @@
 & * .coins label {
   height: 15px;
   width: 15px;
-  background-color: #DAA520;
+  background-color: #daa520;
   vertical-align: middle;
   border: 1px solid #191813;
 }
@@ -508,10 +539,10 @@
   display: none;
 }
 & * .coins input:checked ~ label {
-  background-color: #EEEFFF;
+  background-color: #eeefff;
 }
 & * .coins input:checked + label {
-  background-color: #DAA520;
+  background-color: #daa520;
 }
 & * .coins {
   flex-wrap: wrap;

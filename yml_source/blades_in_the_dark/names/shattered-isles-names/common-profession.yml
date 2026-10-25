@@ -1,0 +1,263 @@
+_id: V4HfMTxM7splz0Wu
+name: 'Common Profession'
+img: icons/svg/d20-grey.svg
+description: 'Everyday professions found across the Shattered Isles.'
+results:
+  - _id: fV84vpKPM404WErj
+    type: text
+    text: 'Baker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: dtDW3rHMdVDhZSAC
+    type: text
+    text: 'Barber'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: uxyVCVaYXGEzZHpA
+    type: text
+    text: 'Blacksmith'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: RrIXRg6lTSkaN1QR
+    type: text
+    text: 'Brewer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: nHuyTs8XZkUA80Bs
+    type: text
+    text: 'Butcher'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 7wBhjbhhU3pE520v
+    type: text
+    text: 'Carpenter'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: EaBQs0gBthyuQoX3
+    type: text
+    text: 'Cartwright'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: qhfMNcn2tLZL6Ypq
+    type: text
+    text: 'Chandler'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: uefG75b4hU8omWxv
+    type: text
+    text: 'Clerk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: VheCVGrCF1xUcOCt
+    type: text
+    text: 'Cobbler'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: dDJ9tkjBTltGgSHq
+    type: text
+    text: 'Cooper'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: PeDKB29ekpPl7mvB
+    type: text
+    text: 'Cutlivator'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: sxPILeLjW8Ri7M5e
+    type: text
+    text: 'Driver'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: cB4NeLuoJ0UjyZrG
+    type: text
+    text: 'Dryer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: QtceZ1stcWWYWN3k
+    type: text
+    text: 'Embroiderer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: svLweOQWlqG8nCyL
+    type: text
+    text: 'Eeler'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: qOOJq2VKbjAhrs36
+    type: text
+    text: 'Gondolier'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: 85HGEptkNheVT0js
+    type: text
+    text: 'Guard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: T1EPHFPADzUINyIN
+    type: text
+    text: 'Leatherworker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: pYad4VEgmXsB2TXd
+    type: text
+    text: 'Mason'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: V1rZ1ZsIG9GcjggJ
+    type: text
+    text: 'Merchant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: Z2zUcY9a3m2TqEDh
+    type: text
+    text: 'Roofer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: DfpzLsCkUBhPkWIF
+    type: text
+    text: 'Ropemaker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: 9qm1TryHYAzZuW3i
+    type: text
+    text: 'Rug maker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: xigYL6p3oBJ5ygJi
+    type: text
+    text: 'Servant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: 4QzQ2MAtK9GSuYaC
+    type: text
+    text: 'Shipwright'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: VLiTKv6Bb19ns5CD
+    type: text
+    text: 'Criminal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: 0kKppGlOwnIIHvds
+    type: text
+    text: 'Tailor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: yCZ8oEeHufl72V8s
+    type: text
+    text: 'Tanner'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: OE7Oixm3LQ7PkllL
+    type: text
+    text: 'Tinkerer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: 7UnrpVTukdawfqfA
+    type: text
+    text: 'Vendor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: 7Q56dO669rgwJSRf
+    type: text
+    text: 'Weaver'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: CaNtWema1B6myJc0
+    type: text
+    text: 'Woodworker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: 7lKslnWRbUShJGAk
+    type: text
+    text: 'Goatherd'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: bdJNpxpaIpUrxIzQ
+    type: text
+    text: 'Messenger'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: FJggAbzwAGAnXCjG
+    type: text
+    text: 'Sailor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

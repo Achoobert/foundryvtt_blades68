@@ -1,3 +1,21 @@
+// DialogV2 windows auto-size to their content and are not resizable, so a tall
+// dialog grows off the top of the screen with nothing to scroll. Cap the window
+// and scroll its content; keep the button footer pinned. Structure-agnostic on
+// purpose - we only rely on .window-content existing.
+dialog.blades68-dialog {
+  max-height: 90vh;
+
+  .window-content {
+    min-height: 0;
+    overflow: hidden auto;
+  }
+
+  .form-footer {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
 // Add Items modal styling.
 // Note: DialogV2 wraps our content in its own <form class="dialog-form">,
 // so the <form class="items-to-add"> emitted alongside .add-items-list gets
@@ -24,27 +42,42 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 0.75em;
+      margin-top: 1.25em;
       padding-bottom: 0.15em;
       border-bottom: 1px solid currentColor;
+    }
 
-      &:first-child {
-        margin-top: 0;
-      }
+    &:first-child header {
+      margin-top: 0;
     }
   }
 
   input[type="radio"],
   input[type="checkbox"] {
-    display: none;
-
     &:checked + label {
       font-weight: bold;
     }
   }
 
-  .item-block label {
-    display: block;
+  // Keep the checkbox/radio on the same line as its label; the label still
+  // needs to be a block so a wrapped description sits under the name.
+  .item-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4em;
+    margin: 0.15em 0;
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      flex: 0 0 auto;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      flex: 1 1 auto;
+      margin: 0;
+    }
   }
 
   // Mirror the .item-description look used for already-added items
@@ -64,26 +97,57 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+}
 
- //Tooltip.
-  .tooltip {
+// Dice pool picker in the roll dialog: absolute dice count instead of a
+// modifier dropdown. The base pool is underlined so you can see where you
+// started after the option checkboxes move the selection around.
+.bitd-dice-pool {
+  display: block;
+  margin-bottom: 0.5em;
 
-    .tooltiptext {
-      visibility: hidden;
-      width: 200px;
-      background-color: $almost_black;
-      color: $almost_white;
-      text-align: center;
-      padding: 5px;
-      border-radius: 6px;
+  > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+  }
+}
 
-      // Position
-      position: absolute;
-      z-index: 9999;
+.bitd-dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+
+  .bitd-dice-count {
+    width: 2.2em;
+    height: 2.2em;
+    flex: 0 0 auto;
+    padding: 0;
+    line-height: 1;
+    font-weight: bold;
+    border: 1px solid $darkgray;
+    border-radius: 4px;
+    background: $lightgray;
+    color: $almost_black;
+    cursor: pointer;
+
+    &.is-zero {
+      background: #e08080;
     }
 
-    &:hover .tooltiptext {
-      visibility: visible;
+    &.is-base {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    &.is-selected {
+      background: $almost_black;
+      color: $almost_white;
+      border-color: $almost_black;
+    }
+
+    &:hover {
+      filter: brightness($hover-brightness);
     }
   }
 }
@@ -94,6 +158,14 @@
 // target the content classes directly rather than scoping under the form.
 .bitd-inline-roll {
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+
+  &:hover i {
+    display: inline-block;
+    animation: bitd-roll-cell-shake 0.4s ease-in-out;
+  }
 }
 
 .bitd-pos-fx-table {
@@ -101,7 +173,8 @@
   border-collapse: collapse;
   text-align: center;
 
-  th, td {
+  th,
+  td {
     padding: 0.2em 0.35em;
   }
 
@@ -121,15 +194,33 @@
   }
 }
 
+@keyframes bitd-roll-cell-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-12deg);
+  }
+  40% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
+
 .bitd-roll-cell {
   width: 2.2em;
   height: 2.2em;
   border-radius: 50%;
   border: 1px solid $darkgray;
   background: $lightgray;
-  color: transparent;
+  color: $almost_white;
   cursor: pointer;
-  font-size: 0.65em;
   line-height: 1;
   position: relative;
 
@@ -139,15 +230,16 @@
 
   &:hover {
     background: $almost_black;
-    color: $almost_white;
+
+    &::before {
+      display: inline-block;
+      animation: bitd-roll-cell-shake 0.4s ease-in-out;
+    }
   }
 
-  &::before {
-    content: attr(data-roll-label);
-    opacity: 0;
-  }
-
-  &:hover::before {
-    opacity: 1;
+  &.bitd-roll-cell-diagonal {
+    outline: 2px solid $almost_white;
+    outline-offset: 1px;
+    transition: outline-color 0.15s ease;
   }
 }

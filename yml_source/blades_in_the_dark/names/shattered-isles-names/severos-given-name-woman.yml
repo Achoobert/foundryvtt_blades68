@@ -1,0 +1,263 @@
+_id: 5w1I9CV4jBceqxnj
+name: 'Severos - Given Name (Woman)'
+img: icons/svg/d20-grey.svg
+description: 'Feminine given names from Severos, for use in NPC/token/actor namer macros.'
+results:
+  - _id: Yt1OumnrL1UO5otX
+    type: text
+    text: 'Altura'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: nnE7B6d7tOUMK93e
+    type: text
+    text: 'Meru'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: gHTckQlsU1RtVypy
+    type: text
+    text: 'Saya'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 6NS419Y3yjmQaxE6
+    type: text
+    text: 'Nimeda'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: TsDl74BRY43vWgKR
+    type: text
+    text: 'Ninovan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 8kTBR4O0P6qLcWwG
+    type: text
+    text: 'Mingwu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: MF99tlDbQSbLSyg1
+    type: text
+    text: 'Kalja'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: 9RZ4sMNE6x031SGc
+    type: text
+    text: 'Oyuneg'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: 2GntkSdR8ZCTImCG
+    type: text
+    text: 'Kamali'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: wGc9r9EUYG9kJnt8
+    type: text
+    text: 'Wakana'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: NQ2NwL35ynEWn18w
+    type: text
+    text: 'Osyka'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: k24nE8iab8XfXbBB
+    type: text
+    text: 'Aryalim'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: aL4BpjTog1ftUmC9
+    type: text
+    text: 'Yesa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: qfwAxRGlodVjt1je
+    type: text
+    text: 'Anaba'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: 0hdJKuTaItJlAi4p
+    type: text
+    text: 'Chambi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: i2Of08nzhnfWLbSm
+    type: text
+    text: 'Utina'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: y5yvsjHHPnKAOLzZ
+    type: text
+    text: 'Ama'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: tgfHYFTxUdylqzDu
+    type: text
+    text: 'Pauwau'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: 0Ple7KQvHHSJbEaN
+    type: text
+    text: 'Suletu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: AsG8vldyDWxog9f8
+    type: text
+    text: 'Kezhekoni'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: lFM0vNgzj21LSBFo
+    type: text
+    text: 'Doka'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: 2ecn7b65xZIaWosr
+    type: text
+    text: 'Huriti'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: R0KWwsHsQTGvrMg8
+    type: text
+    text: 'Khugurcha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: Sk1mm9rWzXrkzaIi
+    type: text
+    text: 'Oguli'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: Yfh5EDA16v9GTyNW
+    type: text
+    text: 'Fala'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: y0BPgV5i9UeyNo5m
+    type: text
+    text: 'Dariya'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: j5esNd2FEoKcu5Pg
+    type: text
+    text: 'Panola'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: O1rPe6TMrk5yGg4H
+    type: text
+    text: 'Hadisha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: E4Qe3D0tGtSFD7A4
+    type: text
+    text: 'Dolkeh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: qq8jcW8t768V24Yx
+    type: text
+    text: 'Asel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: i6NhhuhOJIkqUrQw
+    type: text
+    text: 'Mitena'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: TtQSJPgq7Cmwoc6B
+    type: text
+    text: 'Dana'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: ANGw9qoqVwtLG2V0
+    type: text
+    text: 'Abetzi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: eje1sWkatvv3sQzZ
+    type: text
+    text: 'Damira'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: it7z47raz9WqqCkU
+    type: text
+    text: 'Sorkhi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: j1k3gDHsIZYYu260
+    type: text
+    text: 'Lenmana'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

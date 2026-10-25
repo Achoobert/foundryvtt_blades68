@@ -1,17 +1,15 @@
 import { bladesRoll } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { buildDiceRowHtml, wireDiceRow } from "./lib/dice-row.js";
 
-/**
- * Extend the basic Actor
- * @extends {Actor}
- */
+
 export class BladesActor extends Actor {
-  /** @override */
+  
   static async create(data, options = {}) {
     data.prototypeToken = data.prototypeToken || {};
 
-    // For Crew and Character set the Token to sync with charsheet.
+    
     switch (data.type) {
       case "character":
       case "crew":
@@ -25,7 +23,7 @@ export class BladesActor extends Actor {
     return super.create(data, options);
   }
 
-  /** @override */
+  
   getRollData() {
     const rollData = super.getRollData();
 
@@ -34,31 +32,28 @@ export class BladesActor extends Actor {
     return rollData;
   }
 
-  /* -------------------------------------------- */
-  /**
-   * Calculate Attribute Dice to throw.
-   */
+  
   getAttributeDiceToThrow() {
-    // Calculate Dice to throw.
+    
     let dice_amount = {};
     dice_amount["BITD.Vice"] = 4;
 
     for (var attribute_name in this.system.attributes) {
-      //dice_amount[attribute_name] = 0;
+      
       dice_amount[attribute_name] =
         this.system.attributes[attribute_name].bonus;
       for (var skill_name in this.system.attributes[attribute_name].skills) {
-        // dice_amount[skill_name] = parseInt(this.system.attributes[attribute_name].skills[skill_name]['value'][0])
+        
         dice_amount[skill_name] = parseInt(
           this.system.attributes[attribute_name].skills[skill_name]["value"],
         );
 
-        // We add a +1d for every skill higher than 0.
+        
         if (dice_amount[skill_name] > 0) {
           dice_amount[attribute_name]++;
         }
       }
-      // Vice dice roll uses lowest attribute dice amount
+      
       dice_amount["BITD.Vice"] = Math.min(
         dice_amount["insight"],
         dice_amount["prowess"],
@@ -69,8 +64,7 @@ export class BladesActor extends Actor {
     return dice_amount;
   }
 
-  /* -------------------------------------------- */
-
+  
   _getCrewActor() {
     const crewInfo = this.system?.crew?.[0];
     if (!crewInfo?.id) return null;
@@ -78,10 +72,9 @@ export class BladesActor extends Actor {
     return crewActor ?? null;
   }
 
-  /* -------------------------------------------- */
-
+  
   async rollAttributePopup(attribute_name, defaultDice = 0) {
-    // const roll = new Roll("1d20 + @abilities.wis.mod", actor.getRollData());
+    
     let attribute_label = BladesHelpers.getRollLabel(attribute_name);
 
     const sanitizedDefaultDice = (() => {
@@ -90,7 +83,7 @@ export class BladesActor extends Actor {
       return Math.max(0, Math.min(Math.floor(numeric), 10));
     })();
 
-    // get crew tier/gambits info from character sheet if available
+    
     let current_tier = 0;
     let current_gambits = 0;
     try {
@@ -106,14 +99,23 @@ export class BladesActor extends Actor {
 
     const actionRollEnabled = game.settings.get("blades68", "ActionRoll");
 
+    // The dice row shows the absolute pool, but everything downstream works in
+    // modifiers, so the row writes `mod` as (chosen - base).
+    const basePool = (() => {
+      if (sanitizedDefaultDice > 0) return sanitizedDefaultDice;
+      try {
+        const pool = Number(this.getRollData()?.dice_amount?.[attribute_name]);
+        if (!Number.isFinite(pool)) return sanitizedDefaultDice;
+        return Math.max(0, Math.min(10, Math.floor(pool)));
+      } catch (error) {
+        return sanitizedDefaultDice;
+      }
+    })();
+
     let content = `
         <form class="bitd-roll-dialog">
-          <div class="form-group">
-            <label>${game.i18n.localize("BITD.Modifier")}:</label>
-            <select id="mod" name="mod">
-              ${this.createListOfDiceMods(-3, +3, 0)}
-            </select>
-          </div>`;
+          ${buildDiceRowHtml({ base: basePool, name: "dicePool" })}
+          <input type="hidden" id="mod" name="mod" value="0">`;
     if (BladesHelpers.isAttributeAction(attribute_name)) {
       const rollOptionsHtml = this._buildRollOptionsHtml(current_gambits);
       content += `
@@ -121,7 +123,7 @@ export class BladesActor extends Actor {
             <input type="hidden" id="fx" name="fx" value="standard">
             <input type="hidden" id="rollSelection" name="rollSelection" value="actionRoll">
         <fieldset class="form-group" style="display:grid; gap:0.5em;">
-          <legend>Roll Types</legend>`;
+          <legend>Downtime Actions</legend>`;
       if (game.settings.get("blades68", "ThreatRoll")) {
         content += `
           <div style="display:grid; grid-template-columns:auto auto auto auto; gap:0.5em 1em; align-items:center;">
@@ -138,9 +140,9 @@ export class BladesActor extends Actor {
       }
       content += `
           <div style="display:grid; grid-template-columns:auto auto auto auto; column-gap:0.5em; row-gap:0.4em; align-items:center;">
-            <button type="button" class="bitd-inline-roll" data-roll-for="gatherInfo">${game.i18n.localize("BITD.GatherInformation")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="gatherInfo"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.GatherInformation")}</button>
             <span style="grid-column:2 / 5;"></span>
-            <button type="button" class="bitd-inline-roll" data-roll-for="acquireAsset">${game.i18n.localize("BITD.AcquireAsset")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="acquireAsset"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.AcquireAsset")}</button>
             <label style="margin:0; justify-self:end; white-space:nowrap;">${game.i18n.localize("BITD.CrewTier")}:</label>
             <select id="tier" name="tier" style="width:auto; min-width:4.5em; justify-self:start;"><option value="${current_tier}" selected disabled hidden>${current_tier}</option>${Array(
               5,
@@ -149,17 +151,27 @@ export class BladesActor extends Actor {
               .map((item, i) => `<option value="${i}">${i}</option>`)
               .join("")}</select>
             <span></span>
-            <button type="button" class="bitd-inline-roll" data-roll-for="reduceHeat">${game.i18n.localize("BITD.ReduceHeat")}</button>
+            <button type="button" class="bitd-inline-roll" data-roll-for="reduceHeat"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.ReduceHeat")}</button>
           </div>
         </fieldset>
         ${actionRollEnabled ? this._buildPositionEffectTable(rollOptionsHtml) : rollOptionsHtml}
             `;
     } else {
       if (BladesHelpers.isAttributeAttribute(attribute_name)) {
+        // Attribute rolls cover two very different things, so each gets its
+        // own dice button rather than a single footer "Roll".
         content += `
-            <fieldset class="roll-options-reminder" style="margin-top:0.5em;">
-              <legend>${game.i18n.localize("BITD.Resistance")}</legend>
-              <p style="margin:0;">${game.i18n.localize("BITD.RollOptionResist")}</p>
+            <input type="hidden" id="rollSelection" name="rollSelection" value="resistanceRoll">
+            <fieldset class="roll-options-reminder bitd-roll-choice" style="margin-top:0.5em;">
+              <legend>${game.i18n.localize("BITD.Downtime")}</legend>
+              <button type="button" class="bitd-inline-roll" data-roll-for="indulgeVice"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.IndulgeVice")}</button>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollIndulgeViceHint")}</p>
+            </fieldset>
+            <fieldset class="roll-options-reminder bitd-roll-choice" style="margin-top:0.5em;">
+              <legend>${game.i18n.localize("BITD.Score")}</legend>
+              <button type="button" class="bitd-inline-roll" data-roll-for="resistanceRoll"><i class="fa-solid fa-dice"></i> ${game.i18n.localize("BITD.Resistance")}</button>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollOptionResist")}</p>
+              <p style="margin:0.3em 0 0;">${game.i18n.localize("BITD.RollResistHint")}</p>
             </fieldset>`;
       } else if (attribute_name === "BITD.Vice") {
         content += `
@@ -173,21 +185,32 @@ export class BladesActor extends Actor {
 			<input  id="pos2" name="pos2" type="hidden" value="">
             <input id="fx" name="fx" type="hidden" value="">`;
     }
-    content += `
-        <div className="form-group">
+    const showNotes = (() => {
+      try {
+        return Boolean(game.settings.get("blades68", "RollNotes"));
+      } catch (err) {
+        return false;
+      }
+    })();
+    content += showNotes
+      ? `
+        <div class="form-group">
           <label>${game.i18n.localize("BITD.Notes")}:</label>
           <input id="note" name="note" type="text" value="">
         </div><br/>
+       </form>
+      `
+      : `
+        <input id="note" name="note" type="hidden" value="">
        </form>
       `;
     const dialogResult = await openFormDialog({
       title: `${game.i18n.localize("BITD.Roll")} ${game.i18n.localize(attribute_label)}`,
       content,
       okLabel: game.i18n.localize("BITD.Roll"),
-      cancelLabel: game.i18n.localize("Close"),
-      defaultButton: "cancel",
       hideOkButton:
-        actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name),
+        (actionRollEnabled && BladesHelpers.isAttributeAction(attribute_name)) ||
+        BladesHelpers.isAttributeAttribute(attribute_name),
       onRender: (form, submit) => this._wireRollDialog(form, submit),
     });
 
@@ -227,7 +250,9 @@ export class BladesActor extends Actor {
       }
     }
 
-    const modifier = (Number(dialogResult.mod ?? 0) || 0) + bonusDice;
+    // `bonusDice` only feeds the note text: the dice row already moved itself
+    // when those boxes were ticked, so adding it here would double-count.
+    const modifier = Number(dialogResult.mod ?? 0) || 0;
     let note = dialogResult.note ?? "";
     if (optionNotes.length) {
       note = note
@@ -247,6 +272,21 @@ export class BladesActor extends Actor {
     }
 
     if (!BladesHelpers.isAttributeAction(attribute_name)) {
+      if (rollSelection === "indulgeVice") {
+        // The dice row already holds the final pool for this one.
+        const vicePool = Number(dialogResult.dicePool ?? 0) || 0;
+        await bladesRoll(
+          vicePool,
+          "BITD.Vice",
+          "",
+          "",
+          note,
+          stress,
+          undefined,
+          this,
+        );
+        return;
+      }
       await this.rollAttribute(attribute_name, modifier, "", "", note);
       return;
     }
@@ -274,11 +314,13 @@ export class BladesActor extends Actor {
           "BITD.ThreatRoll",
           note,
           extraThreats,
+          undefined,
+          this,
         );
         break;
       }
       case "fortune":
-        await bladesRoll(actionDiceAmount, "BITD.Fortune", "", "", note, "");
+        await bladesRoll(actionDiceAmount, "BITD.Fortune", "", "", note, "", undefined, this);
         break;
       case "gatherInfo":
         await bladesRoll(
@@ -288,10 +330,12 @@ export class BladesActor extends Actor {
           "",
           note,
           "",
+          undefined,
+          this,
         );
         break;
       case "reduceHeat":
-        await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "");
+        await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "", undefined, this);
         break;
       case "indulgeVice":
         await bladesRoll(
@@ -308,7 +352,7 @@ export class BladesActor extends Actor {
       case "engagement": {
         const engagementDice =
           Number(dialogResult.qty ?? sanitizedDefaultDice) || 0;
-        await bladesRoll(engagementDice, "BITD.Engagement", "", "", note, "");
+        await bladesRoll(engagementDice, "BITD.Engagement", "", "", note, "", undefined, this);
         break;
       }
       case "acquireAsset": {
@@ -322,6 +366,7 @@ export class BladesActor extends Actor {
           note,
           "",
           tier,
+          this,
         );
         break;
       }
@@ -337,12 +382,7 @@ export class BladesActor extends Actor {
     }
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Assist / Gambit / Push / etc. These only apply to Action rolls, so they
-   * live inside the Action fieldset (or stand alone if the pos/fx grid is off).
-   */
+  
   _buildRollOptionsHtml(current_gambits) {
     return `
         <fieldset class="roll-options-toggles" style="margin-top:0.5em;">
@@ -358,13 +398,7 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Builds the Position x Effect grid that replaces the old dropdowns for
-   * Action Rolls. Clicking a cell both picks that position/effect and
-   * immediately submits the dialog (see {@link _wireRollDialog}).
-   */
+  
   _buildPositionEffectTable(rollOptionsHtml = "") {
     const positions = [
       ["controlled", "BITD.PositionControlled"],
@@ -385,11 +419,11 @@ export class BladesActor extends Actor {
       .join("");
 
     const bodyRows = positions
-      .map(([posValue, posKey]) => {
+      .map(([posValue, posKey], posIdx) => {
         const cells = effects
-          .map(([fxValue, fxKey]) => {
+          .map(([fxValue, fxKey], fxIdx) => {
             const isDefault = posValue === "risky" && fxValue === "standard";
-            return `<td><button type="button" class=" ui-control plain icon fa-solid fa-dice bitd-roll-cell${isDefault ? " is-default" : ""}" data-position="${posValue}" data-effect="${fxValue}" data-roll-label="${rollLabel}" title="${rollLabel} — ${game.i18n.localize(posKey)} / ${game.i18n.localize(fxKey)}"></button></td>`;
+            return `<td><button type="button" class=" ui-control plain icon fa-solid fa-dice bitd-roll-cell${isDefault ? " is-default" : ""}" data-position="${posValue}" data-effect="${fxValue}" data-pos-index="${posIdx}" data-fx-index="${fxIdx}" data-roll-label="${rollLabel}" title="${rollLabel} — ${game.i18n.localize(posKey)} / ${game.i18n.localize(fxKey)}"></button></td>`;
           })
           .join("");
         return `<tr><th>${game.i18n.localize(posKey)}</th>${cells}</tr>`;
@@ -408,27 +442,41 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Wires up the interactive bits of the roll dialog that a plain HTML
-   * string can't attach handlers to: clicking a Position/Effect cell submits
-   * the dialog directly (there is no separate Roll button), the per-row
-   * inline Roll buttons submit for roll types the table doesn't cover, and
-   * Push Yourself / Devil's Bargain gray each other out since they can't be
-   * combined.
-   */
+  
   _wireRollDialog(form, submit) {
     const posInput = form.querySelector("#pos");
     const fxInput = form.querySelector("#fx");
     const rollSelectionInput = form.querySelector("#rollSelection");
 
-    form.querySelectorAll(".bitd-roll-cell").forEach((cell) => {
+    const rollCells = Array.from(form.querySelectorAll(".bitd-roll-cell"));
+
+    rollCells.forEach((cell) => {
       cell.addEventListener("click", () => {
         if (posInput) posInput.value = cell.dataset.position;
         if (fxInput) fxInput.value = cell.dataset.effect;
         if (rollSelectionInput) rollSelectionInput.value = "actionRoll";
         submit();
+      });
+    });
+
+    
+    rollCells.forEach((cell) => {
+      const diagonal =
+        Number(cell.dataset.fxIndex) - Number(cell.dataset.posIndex);
+      cell.addEventListener("mouseenter", () => {
+        rollCells.forEach((other) => {
+          if (other === cell) return;
+          const otherDiagonal =
+            Number(other.dataset.fxIndex) - Number(other.dataset.posIndex);
+          if (otherDiagonal === diagonal) {
+            other.classList.add("bitd-roll-cell-diagonal");
+          }
+        });
+      });
+      cell.addEventListener("mouseleave", () => {
+        rollCells.forEach((other) =>
+          other.classList.remove("bitd-roll-cell-diagonal"),
+        );
       });
     });
 
@@ -440,25 +488,42 @@ export class BladesActor extends Actor {
       });
     });
 
+    // Dice pool row: clicking a number picks the whole pool, and the +1d
+    // option checkboxes nudge the current pick up or down. Everything
+    // downstream works in modifiers, so mirror the pick into #mod.
+    const modInput = form.querySelector("#mod");
+    const { adjustPool } = wireDiceRow(form, (pool, base) => {
+      if (modInput) modInput.value = String(pool - base);
+    });
+
+    ["#opt-assist", "#opt-gambit", "#opt-push", "#opt-devils-bargain"]
+      .map((selector) => form.querySelector(selector))
+      .filter(Boolean)
+      .forEach((box) => {
+        box.addEventListener("change", () => adjustPool(box.checked ? 1 : -1));
+      });
+
     const pushCheckbox = form.querySelector("#opt-push");
     const devilsBargainCheckbox = form.querySelector("#opt-devils-bargain");
     if (pushCheckbox && devilsBargainCheckbox) {
       pushCheckbox.addEventListener("change", () => {
         devilsBargainCheckbox.disabled = pushCheckbox.checked;
-        if (pushCheckbox.checked) devilsBargainCheckbox.checked = false;
+        if (pushCheckbox.checked && devilsBargainCheckbox.checked) {
+          devilsBargainCheckbox.checked = false;
+          adjustPool(-1);
+        }
       });
       devilsBargainCheckbox.addEventListener("change", () => {
         pushCheckbox.disabled = devilsBargainCheckbox.checked;
-        if (devilsBargainCheckbox.checked) pushCheckbox.checked = false;
+        if (devilsBargainCheckbox.checked && pushCheckbox.checked) {
+          pushCheckbox.checked = false;
+          adjustPool(-1);
+        }
       });
     }
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Spends one Gambit from the linked Crew, if any is available.
-   */
+  
   async _spendGambit() {
     const crewActor = this._getCrewActor();
     const current = Number(crewActor?.system?.gambits?.value);
@@ -466,12 +531,7 @@ export class BladesActor extends Actor {
     await crewActor.update({ "system.gambits.value": current - 1 });
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Applies the 2 stress cost of Pushing Yourself and briefly vibrates the
-   * newly filled stress boxes on the character's open sheet.
-   */
+  
   async _applyPushYourselfStress() {
     const current = Number(this.system.stress.value) || 0;
     const max = Number(this.system.stress.max) || 9;
@@ -480,18 +540,12 @@ export class BladesActor extends Actor {
 
     await this.update({ "system.stress.value": next });
 
-    // The stress update re-renders the open sheet, which would replace the
-    // stress box elements and wipe a pulse class added immediately. Wait for
-    // that render (or give up after a short timeout, e.g. no sheet is open)
-    // before touching the DOM.
+    
     await this._awaitNextSheetRender();
     this._pulseStressBoxes(current, next);
   }
 
-  /**
-   * Resolves once this actor's open sheet next re-renders, or after a short
-   * timeout if it doesn't (e.g. the sheet isn't currently open).
-   */
+  
   _awaitNextSheetRender(timeoutMs = 300) {
     const sheetClassName = this.sheet?.constructor?.name;
     if (!sheetClassName) return Promise.resolve();
@@ -512,11 +566,7 @@ export class BladesActor extends Actor {
     });
   }
 
-  /**
-   * Adds a brief vibrate animation (removed after 3s) to the stress boxes
-   * between `fromValue` (exclusive) and `toValue` (inclusive) on this
-   * actor's currently rendered sheet, if any.
-   */
+  
   _pulseStressBoxes(fromValue, toValue) {
     const sheetElement = this.sheet?.rendered ? this.sheet.element : null;
     if (!sheetElement) return;
@@ -533,8 +583,7 @@ export class BladesActor extends Actor {
     }
   }
 
-  /* -------------------------------------------- */
-
+  
   async rollAttribute(
     attribute_name = "",
     additional_dice_amount = 0,
@@ -549,6 +598,14 @@ export class BladesActor extends Actor {
     } else {
       dice_amount = 1;
     }
+
+    if (
+      BladesHelpers.isAttributeAction(attribute_name) &&
+      (position === "desperate" || dice_amount <= 0)
+    ) {
+      BladesHelpers.notifyXpReminder();
+    }
+
     dice_amount += additional_dice_amount;
 
     await bladesRoll(
@@ -558,15 +615,12 @@ export class BladesActor extends Actor {
       effect,
       note,
       this.system.stress.value,
+      undefined,
+      this,
     );
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Create <options> for available actions
-   *  which can be performed.
-   */
+  
   createListOfActions() {
     let text, attribute, skill;
     let attributes = this.system.attributes;
@@ -587,18 +641,7 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  /* -------------------------------------------- */
-
-  /**
-   * Creates <options> modifiers for dice roll.
-   *
-   * @param {int} rs
-   *  Min die modifier
-   * @param {int} re
-   *  Max die modifier
-   * @param {int} s
-   *  Selected die
-   */
+  
   createListOfDiceMods(rs, re, s) {
     var text = ``;
     var i = 0;
@@ -623,7 +666,7 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  /* -------------------------------------------- */
+  
   getComputedAttributes() {
     let attributes = this.system.attributes;
     for (const a in attributes) {
@@ -635,13 +678,13 @@ export class BladesActor extends Actor {
           attributes[a].skills[s].max = 3;
         }
 
-        //include Active Effect alterations to skill minimums
+        
         if (attributes[a].skills[s].value <= attributes[a].skills[s].min) {
           attributes[a].skills[s].value = attributes[a].skills[s].min;
         }
       }
     }
-    //check for mastery
+    
     if (this.getHasMastery()) {
       for (const b in attributes) {
         for (const t in attributes[b].skills) {
@@ -686,11 +729,7 @@ export class BladesActor extends Actor {
     return Boolean(crew_actor?.system?.scoundrel?.mastery);
   }
 
-  /**
-   * Extra Key slots granted by the linked crew. Crew upgrades carry a transferred Active
-   * Effect that adds to the crew's `system.scoundrel.bonus_keys`, so the bonus is read off
-   * the crew actor after core has applied its effects.
-   */
+  
   getBonusKeys() {
     const crew_actor = this._getCrewActor();
     if (!crew_actor) {
@@ -700,14 +739,71 @@ export class BladesActor extends Actor {
     return Number.isFinite(bonus) ? Math.max(0, Math.floor(bonus)) : 0;
   }
 
+  getLoadBonus() {
+    return this.getLoadBonusSources().reduce((total, src) => total + src.value, 0);
+  }
+
   /**
-   * Key slot count: the actor's own max (which owned abilities can raise via Active Effect)
-   * plus any crew-granted slots.
+   * Free load granted to this character, broken out per source so the sheet can
+   * name them on hover. Two kinds:
+   *   - owned abilities carrying system.load_bonus (Mule and friends)
+   *   - the crew's add_load, which crew_upgrade items set through an
+   *     ActiveEffect on system.scoundrel.add_load (see module/blades.js
+   *     syncCrewUpgradeEffectGate). The crew field stays the authority on the
+   *     total; the upgrade scan only supplies labels.
    */
+  getLoadBonusSources() {
+    const sources = [];
+
+    for (const item of this.items) {
+      if (item.type !== "ability") continue;
+      const value = Number(item.system?.load_bonus);
+      if (!Number.isFinite(value) || value <= 0) continue;
+      sources.push({ name: item.name, description: item.system?.description || "", value: Math.floor(value) });
+    }
+
+    const crew_actor = this._getCrewActor();
+    if (!crew_actor) return sources;
+
+    const raw = Number(crew_actor?.system?.scoundrel?.add_load);
+    const crewTotal = Number.isFinite(raw) ? Math.max(0, Math.floor(raw)) : 0;
+    if (crewTotal <= 0) return sources;
+
+    let labelled = 0;
+    for (const item of crew_actor.items) {
+      if (item.type !== "crew_upgrade") continue;
+      let value = 0;
+      for (const effect of item.effects) {
+        if (effect.disabled) continue;
+        for (const change of effect.changes ?? []) {
+          if (change.key !== "system.scoundrel.add_load") continue;
+          const amount = Number(change.value);
+          if (Number.isFinite(amount)) value += amount;
+        }
+      }
+      
+      value = Math.min(Math.floor(value), crewTotal - labelled);
+      if (value <= 0) continue;
+      labelled += value;
+      sources.push({ name: item.name, description: item.system?.description || "", value });
+    }
+
+    
+    if (labelled < crewTotal) {
+      sources.push({ name: crew_actor.name, description: "", value: crewTotal - labelled });
+    }
+
+    return sources;
+  }
+
+  
   getMaxKeys() {
-    const own = Number(this.system.keys?.max);
-    const base = Number.isFinite(own) ? own : 4;
-    return base + this.getBonusKeys();
+    const bonus = this.getBonusKeys();
+    const previousBonus = Number(this._appliedKeysBonus) || 0;
+    const currentMax = Number(this.system.keys?.max);
+    const own = Number.isFinite(currentMax) ? currentMax - previousBonus : 4;
+    this._appliedKeysBonus = bonus;
+    return (Number.isFinite(own) ? own : 4) + bonus;
   }
 
   getHealingMin() {
@@ -718,22 +814,12 @@ export class BladesActor extends Actor {
     return current_healing;
   }
 
-  /**
-   * Keys/Deadlocks self-heal: older actors (and the pre-fix template default) only ever
-   * seeded a single, non-empty "example" slot, which left no empty slot for Add Key to fill
-   * and only rendered 1 of the intended rows. Pad the list up to getMaxKeys() with empty
-   * slots and normalize any leftover "example" placeholder to an empty, addable slot.
-   *
-   * Also migrates legacy per-slot fields (`marks` → `experience`, `boomed` → `deadlocked`)
-   * and guarantees every slot has the canonical shape:
-   * `{ key, experience, deadlocked, deadlocked_to }`.
-   */
-  getComputedKeys() {
-    const max = this.getMaxKeys();
+  
+  getComputedKeys(maxOverride) {
+    const max = Number.isFinite(maxOverride) ? maxOverride : this.getMaxKeys();
     const rawList = this.system.keys?.list ?? [];
-    // Partial dot-notation updates (e.g. "system.keys.list.0.key") can leave Foundry's merge
-    // with a plain object keyed by index ({"0": {...}, "1": {...}}) instead of a real array;
-    // normalize either shape back into an array before working with it.
+    
+    
     const asArray = Array.isArray(rawList) ? rawList : Object.values(rawList);
     const list = foundry.utils.deepClone(asArray);
     const emptySlot = () => ({
@@ -744,8 +830,8 @@ export class BladesActor extends Actor {
     });
     const normalized = list.map((slot) => {
       const key = slot?.key === "example" ? "" : (slot?.key ?? "");
-      const experience = Number(slot?.experience ?? slot?.marks ?? 0);
-      const deadlocked = Boolean(slot?.deadlocked ?? slot?.boomed ?? false);
+      const experience = Number(slot?.experience ?? 0);
+      const deadlocked = Boolean(slot?.deadlocked ?? false);
       const deadlocked_to = deadlocked ? String(slot?.deadlocked_to ?? "") : "";
       return {
         key,

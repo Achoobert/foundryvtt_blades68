@@ -1,4 +1,4 @@
-/* global Actor, game */
+
 import { createdDocsTracker, requireSystemActive } from '../helpers.js';
 
 export default function register(quench) {
@@ -58,10 +58,10 @@ export default function register(quench) {
           const actor = tracker.track(await Actor.create({ name: 'Quench Sheet Render', type: 'character' }));
           const sheet = actor.sheet;
 
-          await sheet._render(true);
+          await sheet.render(true);
           try {
             assert.isTrue(sheet.rendered);
-            assert.isAbove(sheet.element.find('.window-content').length, 0);
+            assert.isAbove(sheet.element.querySelectorAll('.window-content').length, 0);
           } finally {
             await sheet.close();
           }
@@ -86,7 +86,9 @@ export default function register(quench) {
           const crew = tracker.track(await Actor.create({ name: 'Quench Extra Key Crew', type: 'crew' }));
           assert.equal(crew.system.scoundrel.bonus_keys, 0);
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           assert.equal(
             Number(crew.system.scoundrel.bonus_keys),
             1,
@@ -102,7 +104,9 @@ export default function register(quench) {
           assert.isOk(upgrade, 'Awakened (+1 key/deadlock) should be in the pack');
 
           const crew = tracker.track(await Actor.create({ name: 'Quench Linked Extra Key Crew', type: 'crew' }));
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
 
           const character = tracker.track(await Actor.create({ name: 'Quench Linked Extra Key PC', type: 'character' }));
           assert.equal(character.getMaxKeys(), 4, 'unlinked PC should keep the template max');
@@ -117,9 +121,9 @@ export default function register(quench) {
           assert.lengthOf(character.getComputedKeys(), 5, 'crew bonus should pad one extra empty slot');
 
           const sheet = character.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.equal(data.system.keys.max, 5);
             assert.lengthOf(data.system.keys.list, 5);
           } finally {
@@ -212,7 +216,9 @@ export default function register(quench) {
           const crew = tracker.track(await Actor.create({ name: 'Quench Mastery Crew', type: 'crew' }));
           assert.equal(crew.system.scoundrel.mastery, false);
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           assert.equal(
             crew.system.scoundrel.mastery,
             true,
@@ -234,7 +240,9 @@ export default function register(quench) {
           const capped = character.getComputedAttributes();
           assert.equal(capped.insight.skills.hunt.max, 3, 'action ratings cap at 3 without mastery');
 
-          await crew.createEmbeddedDocuments('Item', [upgrade.toObject()]);
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
           await character.update({
             'system.crew': [{ id: crew.id, name: crew.name, description: '', img: crew.img }]
           });
@@ -248,18 +256,205 @@ export default function register(quench) {
           }
 
           const sheet = character.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const huntBoxes = sheet.element.find('[id^="attributes-"][id*="-hunt-"]');
-            assert.isAbove(huntBoxes.filter('[value="4"]').length, 0, 'a 4th rating radio should render');
+            const huntBoxes4th = sheet.element.querySelectorAll('[id^="attributes-"][id*="-hunt-"][value="4"]');
+            assert.isAbove(huntBoxes4th.length, 0, 'a 4th rating radio should render');
             assert.lengthOf(
-              sheet.element.find(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
+              sheet.element.querySelectorAll(`[data-tooltip="${game.i18n.localize('BITD.NoMastery')}"]`),
               0,
               'the "lacks Mastery" placeholder box should be gone'
             );
           } finally {
             await sheet.close();
           }
+        });
+      });
+
+      describe('crew Vault effect', function () {
+        async function vaultUpgradeFromPack() {
+          const pack = game.packs.get('blades68.blades68_crew_upgrades');
+          const docs = await pack.getDocuments();
+          return docs.find((doc) => doc.name === 'Vault');
+        }
+
+        it('transfers vault.max onto the owning crew once unlocked, and the sheet renders it', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const upgrade = await vaultUpgradeFromPack();
+          assert.isOk(upgrade, 'Vault should be in the blades68 crew upgrades pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Vault Crew', type: 'crew' }));
+          assert.equal(crew.system.vault.max, 0, 'vault.max should start at 0 with no Vault upgrade');
+
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
+          assert.equal(
+            Number(crew.system.vault.max),
+            16,
+            'passive upgrade effect should add to crew system.vault.max'
+          );
+
+          const sheet = crew.sheet;
+          await sheet.render(true);
+          try {
+            const data = await sheet._prepareContext();
+            assert.equal(
+              data.system.vault.max,
+              16,
+              'sheet context must reflect the effect-applied vault.max, not raw source'
+            );
+            assert.isAbove(
+              sheet.element.querySelectorAll(`#crew-${crew.id}-coins-vault`).length,
+              0,
+              'the Vault coin row should render once vault.max is non-zero'
+            );
+          } finally {
+            await sheet.close();
+          }
+        });
+      });
+
+      describe('character load', function () {
+        
+        async function gearActor(name, load, count = 1) {
+          const actor = tracker.track(await Actor.create({ name, type: 'character' }));
+          const items = Array.from({ length: count }, (_, i) => ({
+            name: `Quench Gear ${i + 1}`,
+            type: 'item',
+            system: { load, equipped: true }
+          }));
+          if (count) await actor.createEmbeddedDocuments('Item', items);
+          return actor;
+        }
+
+        it('keeps the declared tier when carrying past its max', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Overload PC', 1, 5);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+
+          assert.equal(actor.system.loadout, 5);
+          assert.equal(actor.system.load_level, 'BITD.Light', 'tier must not auto-promote');
+          assert.equal(actor.system.base_max_load, 3);
+          assert.equal(actor.system.load_max, 3);
+          assert.isTrue(actor.system.over_load);
+        });
+
+        it('raises the max when the player picks a heavier tier', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Tier PC', 1, 5);
+
+          await actor.update({ 'system.selected_load_level': 'BITD.Normal' });
+          assert.equal(actor.system.base_max_load, 5);
+          assert.isFalse(actor.system.over_load);
+
+          await actor.update({ 'system.selected_load_level': 'BITD.Heavy' });
+          assert.equal(actor.system.base_max_load, 6);
+        });
+
+        it('defaults to Normal when no tier has been picked', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Default Tier PC', 0, 0);
+          assert.equal(actor.system.selected_load_level, '');
+          assert.equal(actor.system.load_level, 'BITD.Normal');
+          assert.equal(actor.system.base_max_load, 5);
+        });
+
+        it('reports no bonus and no sources without a bonus item', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench No Bonus PC', 0, 0);
+          assert.equal(actor.system.load_bonus, 0);
+          assert.lengthOf(actor.getLoadBonusSources(), 0, 'sheet hides the +N when this is empty');
+        });
+
+        it('adds an ability load_bonus on top of the tier max', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Bonus PC', 1, 1);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+          await actor.createEmbeddedDocuments('Item', [
+            { name: 'Quench Rigging', type: 'ability', system: { load_bonus: 2, description: 'Free load.' } }
+          ]);
+
+          assert.equal(actor.system.load_bonus, 2);
+          assert.equal(actor.system.base_max_load, 3);
+          assert.equal(actor.system.load_max, 5);
+
+          const sources = actor.getLoadBonusSources();
+          assert.lengthOf(sources, 1);
+          assert.equal(sources[0].name, 'Quench Rigging');
+          assert.equal(sources[0].value, 2);
+        });
+
+        it('grants Mule its +2 through load_bonus, not a name match', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const pack = game.packs.get('blades68.ability');
+          assert.isOk(pack, 'blades68.ability pack should exist');
+          const mule = (await pack.getDocuments()).find((doc) => doc.name === '(C) Mule');
+          assert.isOk(mule, '(C) Mule should be in the ability pack');
+          assert.equal(mule.system.load_bonus, 2);
+
+          const actor = await gearActor('Quench Mule PC', 0, 0);
+          await actor.update({ 'system.selected_load_level': 'BITD.Light' });
+          await actor.createEmbeddedDocuments('Item', [mule.toObject()]);
+
+          assert.equal(actor.system.load_bonus, 2);
+          assert.equal(actor.system.load_max, 5, 'Mule turns Light 3 into Light 5');
+        });
+
+        it('counts carried coin as 1 load each', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Coin PC', 1, 2);
+          await actor.update({ 'system.selected_load_level': 'BITD.Normal' });
+          assert.equal(actor.system.coin_load, 0);
+          assert.equal(actor.system.loadout, 2, 'gear only to start');
+
+          await actor.update({ 'system.coins': [3] });
+          assert.equal(actor.system.coin_load, 3);
+          assert.equal(actor.system.loadout, 5, '2 gear + 3 coin');
+          assert.isFalse(actor.system.over_load);
+
+          await actor.update({ 'system.coins': [4] });
+          assert.equal(actor.system.loadout, 6);
+          assert.isTrue(actor.system.over_load, 'coin alone can push you over');
+        });
+
+        it('ignores stashed coin, which has no weight', async function () {
+          requireSystemActive();
+          const actor = await gearActor('Quench Stash PC', 0, 0);
+          await actor.update({ 'system.coins_stashed': [12] });
+          assert.equal(actor.system.coin_load, 0);
+          assert.equal(actor.system.loadout, 0, 'stash sits at the lair');
+          assert.isFalse(actor.system.over_load);
+        });
+
+        it('names the crew upgrade behind an add_load bonus', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const pack = game.packs.get('blades68.blades68_crew_upgrades');
+          assert.isOk(pack, 'blades68.blades68_crew_upgrades pack should exist');
+          const upgrade = (await pack.getDocuments()).find((doc) => doc.name.startsWith('Militant rigging'));
+          assert.isOk(upgrade, 'Militant rigging should be in the pack');
+
+          const crew = tracker.track(await Actor.create({ name: 'Quench Load Crew', type: 'crew' }));
+          const upgradeData = upgrade.toObject();
+          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
+          await crew.createEmbeddedDocuments('Item', [upgradeData]);
+          assert.equal(Number(crew.system.scoundrel.add_load), 2);
+
+          const character = await gearActor('Quench Load Crew PC', 0, 0);
+          assert.equal(character.getLoadBonus(), 0, 'unlinked PC gets nothing');
+
+          await character.update({
+            'system.crew': [{ id: crew.id, name: crew.name, description: '', img: crew.img }]
+          });
+
+          assert.equal(character.getLoadBonus(), 2);
+          const sources = character.getLoadBonusSources();
+          assert.lengthOf(sources, 1);
+          assert.equal(sources[0].name, upgrade.name, 'hover should name the upgrade, not just the crew');
+          assert.equal(sources[0].value, 2);
         });
       });
 

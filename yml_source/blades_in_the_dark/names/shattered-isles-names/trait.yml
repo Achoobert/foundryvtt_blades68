@@ -1,0 +1,263 @@
+_id: GsJhPDxXSYxLMYas
+name: 'Trait'
+img: icons/svg/d20-grey.svg
+description: 'NPC personality traits for quick NPC generation.'
+results:
+  - _id: u63N2qktW1bcXWAl
+    type: text
+    text: 'Charming'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: 3JFABoEdJyFc4aSN
+    type: text
+    text: 'Cold'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: 0XjRS8WGqObPozeM
+    type: text
+    text: 'Cavalier'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: qxPr0I2lxHnpVhGA
+    type: text
+    text: 'Brash'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: ZsycIKWeN4V9cUqF
+    type: text
+    text: 'Suspicious'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: bnduJL8ouR1YJRoZ
+    type: text
+    text: 'Obsessive'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: sYaMTx4MjfGe6zDI
+    type: text
+    text: 'Shrewd'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: iMv5cpstYA1xgnpY
+    type: text
+    text: 'Quiet'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: XYirLO44WrHUSmJv
+    type: text
+    text: 'Moody'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: 0nfGPkHTGKLyeAkf
+    type: text
+    text: 'Fierce'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: QXhDAu9YNBga6YvO
+    type: text
+    text: 'Careless'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: EvCAst3IJUAOe847
+    type: text
+    text: 'Secretive'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: UdFEYzCCRw8ZTsnE
+    type: text
+    text: 'Ruthless'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: ofsprlO0O39QpZLa
+    type: text
+    text: 'Calculating'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: ExjhkaRTrnm1h7Dx
+    type: text
+    text: 'Defiant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: tYXUnGbjyCWHJ3di
+    type: text
+    text: 'Gracious'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: Too854IwrPh2waJN
+    type: text
+    text: 'Insightful'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: 73w02NvAdjxdY0cs
+    type: text
+    text: 'Dishonest'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: oOhHINm6uU2xybXi
+    type: text
+    text: 'Patient'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: BEYGX8C9Qt9gfMJV
+    type: text
+    text: 'Vicious'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: mKPGjCCnNyPUv0s7
+    type: text
+    text: 'Sophisticated'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: cbuvM4oGUzQgTEnt
+    type: text
+    text: 'Paranoid'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: RuBuAvJKHeroTxJ9
+    type: text
+    text: 'Enthusiastic'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: Zk5TblyXJosbxpCM
+    type: text
+    text: 'Elitist'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: sMDpN4CYmrPKFciN
+    type: text
+    text: 'Savage'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: lIeY2Xz2sizJZbst
+    type: text
+    text: 'Cooperative'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: Ril8sholmI3D37Gt
+    type: text
+    text: 'Arrogant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: FdrrFrCeAZWxKNgx
+    type: text
+    text: 'Confident'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: ejslhswmiTQuwyzF
+    type: text
+    text: 'Vain'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: hkpa4aPAO0ICAZ2f
+    type: text
+    text: 'Daring'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: 2G1LMHshBDrIFlIA
+    type: text
+    text: 'Volatile'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: YWQ5GHnysjTGxbHU
+    type: text
+    text: 'Candid'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: ufr1Nl4WWnmOohxC
+    type: text
+    text: 'Subtle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: 38J4EXui0y9F5tuV
+    type: text
+    text: 'Melancholy'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: 60k7Si2RfnzFNUtG
+    type: text
+    text: 'Enigmatic'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: yqvxYE5xNFI4YeyB
+    type: text
+    text: 'Calm'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

@@ -1,0 +1,263 @@
+_id: IR145RFH9Sgel4Yu
+name: 'Tycheros - Given Name (Man)'
+img: icons/svg/d20-grey.svg
+description: 'Masculine given names from Tycheros, for use in NPC/token/actor namer macros.'
+results:
+  - _id: ILdz0mRl5F9v1Mr8
+    type: text
+    text: 'Fell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: IoY237PGsvSfrOoW
+    type: text
+    text: 'Ghukzom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: P3nQfKzEea1156f9
+    type: text
+    text: 'Ekemon'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: PWhx4dhpvCxuiHwx
+    type: text
+    text: 'Ramoses'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: v1RzhI1Peqn3vWot
+    type: text
+    text: 'Mihalis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 0n2LRIm4e9HpFhNH
+    type: text
+    text: 'Cevcol'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: byP4YJ6zpLUTsOkc
+    type: text
+    text: 'Theodar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: N7BE9j2aWXTJGyiO
+    type: text
+    text: 'Akmenos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: x4pQUY5QB6zDDyoe
+    type: text
+    text: 'Soth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: ielAQrPPGjJwn0AF
+    type: text
+    text: 'Vasilis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: 2dZkExskchgV48aG
+    type: text
+    text: 'Barakas'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: ZorZ2cmnV7KXgMTO
+    type: text
+    text: 'Therai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: rCgKOPHCeSEMHHNM
+    type: text
+    text: 'Zhezeg'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: U9fs2ZrX1JF1gA8X
+    type: text
+    text: 'Mordai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: UJbJ9JirT8re80z8
+    type: text
+    text: 'Kaustush'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: JbX8rb2M3P7MIGWu
+    type: text
+    text: 'Xhaen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: RMQraq2mTNgKn8VG
+    type: text
+    text: 'Dioz'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: 1ube1Xv4MCesyjd8
+    type: text
+    text: 'Amnon'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: zz9nR4LxPTEdcYLk
+    type: text
+    text: 'Tohir'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: tl0pNXC55X15of8K
+    type: text
+    text: 'Leucis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: MXoI3EbG4vf4qY8x
+    type: text
+    text: 'Ojak'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: Im5bidOKgeJ8Asgl
+    type: text
+    text: 'Antonis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: VVoyyPAUls6L7fLV
+    type: text
+    text: 'Kairon'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: cdIEj9dMqXeYGHoD
+    type: text
+    text: 'Zat'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: msX5e22bUQN7mxTM
+    type: text
+    text: 'Damakos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: I9xwXc0RpNB0p4fT
+    type: text
+    text: 'Lazaros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: mlWRvNcMzLXsUYWz
+    type: text
+    text: 'Rhoc'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: Rb2iWj0GnJUHiwaV
+    type: text
+    text: 'Kosris'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: 1OgP044YldKkQUBN
+    type: text
+    text: 'Iados'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: u0Af1wAneRFGLWqE
+    type: text
+    text: 'Skamos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: p81AWfCX0CejVwaM
+    type: text
+    text: 'Pelaios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: RHDre0XNqtkYkTZY
+    type: text
+    text: 'Pris'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: zYqRMeLlBCgmN1X1
+    type: text
+    text: 'Zorath'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: eioI5vyiIIPxwyoC
+    type: text
+    text: 'Morthos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: N6nD16yJ46A9OQs3
+    type: text
+    text: 'Zanin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: N9lse6Nza8jfLFum
+    type: text
+    text: 'Melech'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

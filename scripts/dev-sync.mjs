@@ -1,12 +1,12 @@
 import { cp, mkdir, readdir, rm } from 'node:fs/promises';
 import { existsSync, readFileSync } from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ClassicLevel } from 'classic-level';
+import { DATA_DIR } from './lib/fvtt-config.mjs';
 
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const TARGET = path.join(os.homedir(), 'foundrydata', 'Data', 'systems', 'blades68');
+const TARGET = path.join(DATA_DIR, 'systems', 'blades68');
 
 const ENTRIES_TO_SYNC = [
   'system.json',
@@ -21,7 +21,11 @@ const ENTRIES_TO_SYNC = [
   'packs',
 ];
 
-/** LevelDB sublevel that holds each primary document type. */
+
+const SYSTEM_MANIFEST = JSON.parse(readFileSync(path.join(ROOT, 'system.json'), 'utf8'));
+const CORE_VERSION = String(SYSTEM_MANIFEST.compatibility.minimum);
+
+
 const SUBLEVELS = {
   Item: 'items',
   Actor: 'actors',
@@ -33,7 +37,7 @@ const SUBLEVELS = {
   Scene: 'scenes'
 };
 
-/** Embedded collections Foundry stores in their own sublevels, keyed by owning document type. */
+
 const EMBEDDED = {
   Item: { effects: 'ActiveEffect' },
   Actor: { items: 'Item', effects: 'ActiveEffect' },
@@ -41,14 +45,23 @@ const EMBEDDED = {
   JournalEntry: { pages: 'JournalEntryPage' }
 };
 
-/**
- * Write one document, hoisting each embedded collection into its own sublevel the way Foundry
- * does: the parent record keeps only the child ids, and every child lives under
- * `!<parent sublevel>.<field>!<parentId>.<childId>`. Writing children inline instead makes
- * Foundry read the parent with an empty collection, which silently drops item Active Effects.
- */
+
 function writeDocument(batch, doc, { documentName, sublevel, key }) {
-  const record = { ...doc };
+  const record = {
+    ...doc,
+    _stats: {
+      coreVersion: CORE_VERSION,
+      systemId: null,
+      systemVersion: null,
+      createdTime: null,
+      modifiedTime: null,
+      lastModifiedBy: null,
+      compendiumSource: null,
+      duplicateSource: null,
+      exportSource: null,
+      ...doc._stats
+    }
+  };
   for (const [field, childName] of Object.entries(EMBEDDED[documentName] ?? {})) {
     const children = Array.isArray(doc[field]) ? doc[field] : [];
     record[field] = children.map((child) => child._id);
@@ -63,11 +76,7 @@ function writeDocument(batch, doc, { documentName, sublevel, key }) {
   batch.put(`!${sublevel}!${key}`, JSON.stringify(record));
 }
 
-/**
- * Foundry migrates NeDB `foo.db` packs into a LevelDB folder `foo/` and then
- * keeps reading that folder — later `.db` overwrites are ignored. Rebuild the
- * LevelDB companion from the synced `.db` so YAML pack updates actually show up.
- */
+
 async function rebuildPackLevelDbs(packsDir) {
   if (!existsSync(packsDir)) return;
   const system = JSON.parse(readFileSync(path.join(ROOT, 'system.json'), 'utf8'));

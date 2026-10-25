@@ -1,0 +1,76 @@
+_id: 3d2ce9aaa00285d1
+name: The Lagoon Knights
+type: faction
+img: icons/svg/city.svg
+system:
+  description: >-
+    ROLODEX CARD LOGO - A Knight Helmet and Anchor, advertising the Mer-land
+    nightclub. A pack of aristo-brats originating from the Knightshead
+    neighborhood of Brightstone, who joyride auto-scooters and speedboats
+    across the city streets and canals. Are among the most bitter rivals of
+    the Leatherbacks, flaunting their hip and chic Mod style as superior to
+    the "gutterborn" Rockers.
+  type: Underworld
+  tier: '2'
+  goal_1: Rise in Tier
+  goal_1_clock_max: 8
+  goal_2: Franchise Reed Castle
+  goal_2_clock_max: 12
+  turf: >-
+    The Mer-land nightclub in Brightstone (HQ), anywhere troublemaking youths
+    cause mischief in the "upper class" districts of Doskvol.
+  assets: >-
+    Jetset youths who can do any dirty work they put their minds to. Enough
+    auto-scooters for everyone, and larger escape vehicles such as autopods
+    and speedboats. A lucrative, famous nightclub in Brightstone.
+  quirks: >-
+    Rodney is the archetypical (near stereotypical) Mod - coiffed hair,
+    tailored suit, sharp glasses, always with a miniskirted girl or fancy lad
+    on one or both arms (if not, it's because he's got a pump-action shotgun
+    to paint a room red). Reed, by contrast, is a midlife crisis trainwreck
+    who's changed jobs more times than he changes suits, and is trying to
+    ride the Knights' coattails to live out the wild days of his own wasted
+    youth.
+  notables: >-
+    Rodney (ringleader, sharp, heartthrob, ultraviolent), Reed (Mer-land's
+    owner, middle-aged, unscrupulous, trigger-happy)
+  allies: 'Strangford-Michter Financial, Mirror House, Bluecoats, others TBD.'
+  enemies: 'Leatherbacks, The Golden Hand, others TBD.'
+  situation: >-
+    Although Rodney's muscle and Reed's financing has put the Lagoon Knights
+    on the map, they're now at loggerheads at how to best expand. Rodney
+    wants to rule the underworld, and has already declared war upon The
+    Golden Hand for control of The Docks, while planning to take Crowfoot
+    from The Keel Twins as well. Reed meanwhile is desperate to "go legit",
+    and is feverishly haggling with SMF and The Doskvol Foundation to
+    greenlight his hairbrained scheme of franchising "Reed Castle"
+    skyscrapers across Doskvol's districts.
+  goal_clock: 0
+  hold:
+    value: 2
+    max: 2
+    max_default: 2
+    name_default: BITD.Hold
+    name: BITD.Hold
+  status:
+    value:
+      - 0
+    max: 7
+    max_default: 7
+    name_default: BITD.Status
+    name: BITD.Status
+  notes: >-
+    Clocks: Rise in Tier (8). Franchise Reed Castle (12).
+
+
+    Prestige Ability - Wheeler Dealers: Once per Score, you can call up the
+    Knights (during the Score or in a flashback), and you can either summon a
+    Gang Cohort of your choice (equal to the Knights' current Tier), or an
+    Expert Getaway Driver in a fine autopod or speedboat. The next time you
+    make a Return the Favor roll for this backing faction, add +1d.
+effects: []
+folder: null
+sort: 0
+permission:
+  default: 0
+flags: {}

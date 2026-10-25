@@ -1,0 +1,263 @@
+_id: 71k8wwQJGL33uMsr
+name: 'Alias'
+img: icons/svg/d20-grey.svg
+description: 'Underworld aliases used across the Shattered Isles.'
+results:
+  - _id: 17UKcX2P1IYmnhId
+    type: text
+    text: 'Needle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: Nara3oBzfQ2AdB7E
+    type: text
+    text: 'Silver'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: iml6Mq3Ov3jofoZy
+    type: text
+    text: 'Spur'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 8lR8l9WU9iCI86C8
+    type: text
+    text: 'Whip'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: eRRBYZltW6Itenhv
+    type: text
+    text: 'Chime'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: K8qekqY7WunC1R4U
+    type: text
+    text: 'Thorn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: HitcKTgBPeI9xHsg
+    type: text
+    text: 'Bug'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: Fa6VzrFVXTRviViK
+    type: text
+    text: 'Wicker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: 8W35beaFNfDrXBWt
+    type: text
+    text: 'Frog'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: 12ENqMru9QQAIdCm
+    type: text
+    text: 'Skinner'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: MIHjSr7XREXpTN5L
+    type: text
+    text: 'Cross'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: g549Z7TeyJvoSx9S
+    type: text
+    text: 'Flint'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: 3y32254lU08Ppim8
+    type: text
+    text: 'Bell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: LCzHORTqIj1kOaqW
+    type: text
+    text: 'Mist'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: Raui0l19GxJw4YVd
+    type: text
+    text: 'Tackle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: NJ9Ore7yPuC6OAB7
+    type: text
+    text: 'Thistle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: go9hMmsxQag2aPJW
+    type: text
+    text: 'Nail'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: xQxOatWOWx7vIJ0e
+    type: text
+    text: 'Ogre'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: IbhSCrXqoCS6cVi6
+    type: text
+    text: 'Tick-Tock'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: Qv4M1OU1Sy1IyKui
+    type: text
+    text: 'Ruby'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: kGYcSXF03ohZY0Oh
+    type: text
+    text: 'Pool'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: 2oiSSejQ2KA0IRBB
+    type: text
+    text: 'Song'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: 1V32R7awjwgtFz4O
+    type: text
+    text: 'Gunner'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: 8qrqhx4enpu8QE2g
+    type: text
+    text: 'Coil'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: i4Vnue3tJP8GoBnz
+    type: text
+    text: 'Hammer'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: T0vjwGjuGyVVzxp8
+    type: text
+    text: 'Twelves'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: Xqgk99QVqDd8U5k0
+    type: text
+    text: 'Vixen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: A9clx7PSSdn1lIbm
+    type: text
+    text: 'Hook'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: LoUFBhkOFFlCFqad
+    type: text
+    text: 'Frost'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: g8wQVIBxoOfiQci5
+    type: text
+    text: 'Grip'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: BEVBQttR84gyOupy
+    type: text
+    text: 'Junker'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: uNFafaGZPgavO7FY
+    type: text
+    text: 'Echo'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: LypwNxAOQTOZkEbZ
+    type: text
+    text: 'Crow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: Zh0bpEDyw3PtsA86
+    type: text
+    text: 'Cricket'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: LbnffjHLAty2n0s9
+    type: text
+    text: 'Bricks'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: klOjqKFAeFMecBRl
+    type: text
+    text: 'Ring'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+formula: 1d36
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

@@ -134,7 +134,7 @@ export default function register(quench) {
           requireSystemActive();
 
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', true);
+          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
           try {
             const types = await BladesHelpers.getAllItemsByType('crew_type');
             for (const name of B68_CREW_TYPES) {
@@ -164,7 +164,7 @@ export default function register(quench) {
           requireSystemActive();
 
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', false);
+          await game.settings.set('blades68', 'Blades68Mode', 'bitd');
           try {
             const types = await BladesHelpers.getAllItemsByType('crew_type');
             assert.isOk(
