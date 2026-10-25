@@ -5,24 +5,21 @@ import { openFormDialog } from "./lib/dialog-compat.js";
 
 const BaseActorSheet = getActorSheetClass();
 
-/**
- * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheet}
- */
 
 export class BladesSheet extends BaseActorSheet {
 
-  /* -------------------------------------------- */
-
-  /** @override */
+  
 	activateListeners(html) {
     super.activateListeners(html);
-    this.element.toggleClass("blades68-theme", game.settings.get("blades68", "Blades68Mode") === "blades68");
+    const sheetTheme = game.settings.get("blades68", "SheetTheme");
+    this.element.toggleClass("blades68-theme", sheetTheme === "classic");
+    this.element.toggleClass("blades68-theme-light", sheetTheme === "light");
+    this.element.toggleClass("blades68-theme-dark", sheetTheme === "dark");
     this.element.toggleClass("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
     html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
 	
-	//for compatibility with bitd-alternate-sheets v1.0.10
+	
 	let alt_sheets = false;
 	try {alt_sheets = game.modules.get("bitd-alternate-sheets").active;} catch {}
 	if (alt_sheets) {
@@ -42,16 +39,16 @@ export class BladesSheet extends BaseActorSheet {
 		});		
 	}
 
-    // Post item to chat
+    
     html.find(".item-post").click((ev) => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
       item.sendToChat();
     });
 
-    // This is a workaround until is being fixed in FoundryVTT.
+    
     if ( this.options.submitOnChange ) {
-      html.on("change", "textarea", this._onChangeInput.bind(this));  // Use delegated listener on the form
+      html.on("change", "textarea", this._onChangeInput.bind(this));  
     }
 
     html.find(".roll-die-attribute").click((event) => {
@@ -70,31 +67,30 @@ export class BladesSheet extends BaseActorSheet {
       this.actor.rollAttributePopup(attributeName, sanitizedDice);
     });
 	
-    // Update Inventory Item
+    
     html.find('.item-body').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
       item.sheet.render(true);
     });
-    // Update Inventory Item
+    
     html.find('.item-sheet-open').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       const item = this.actor.items.get(element.data("itemId"));
       item.sheet.render(true);
     });
 
-    // Delete Inventory Item
+    
     html.find('.item-delete').click( async ev => {
       const element = $(ev.currentTarget).parents(".item");
       await this.actor.deleteEmbeddedDocuments("Item", [element.data("itemId")]);
       element.slideUp(200, () => this.render(false));
     });
 
-    // manage active effects
+    
     html.find(".effect-control").click(ev => BladesActiveEffect.onManageActiveEffect(ev, this.actor));	
 	
 	
-		// acquaintance status toggle
     html.find('.standing-toggle').click(ev => {
       let acquaintances = this.actor.system.acquaintances;
       let acqId = ev.target.closest('.acquaintance').dataset.acquaintance;
@@ -124,14 +120,14 @@ export class BladesSheet extends BaseActorSheet {
 	  }
 	});
 	
-	  // Open Acquaintance
+	  
     html.find('.open-friend').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
-		//acqId is the UUID of the Acquaintance
+		
 	  let acqId = element.data("itemId");
-		// if the Acquaintance is not in the world the if loop will trigger
+		
 	  if (game.actors.get(element.data("itemId")) == undefined) {
-		  //send the UUID and this actor to a helper fuction
+		  
 		  BladesHelpers.importAcquaintance(this.actor, acqId);
 	  } else {
       const actor = game.actors.get(element.data("itemId"));
@@ -139,15 +135,15 @@ export class BladesSheet extends BaseActorSheet {
 	  }
     });
 	
-	// Remove Acquaintance from character sheet
+	
     html.find('.acquaintance-delete').click(ev => {
-      //let acqId = ev.target.closest('.acquaintance').dataset.acquaintance; //used when <div class="acquaintance"
+      
 	  const element = $(ev.currentTarget).parents(".item");
 	  let acqId = element.data("itemId");
 	  BladesHelpers.removeAcquaintance(this.actor, acqId);
     });
 
-	  // Import Acquaintance by playbook
+	  
     html.find('.import-contacts').click(ev => {
 	  const actor_type = this.actor.type;
 	  let item_type;
@@ -158,7 +154,7 @@ export class BladesSheet extends BaseActorSheet {
 
     });
 
-		// Increment Exp Clock
+		
 	html.find('.up-exp-clock').click(ev => {
 		let value = this.actor.system.exp_clock.value;
 		let number = this.actor.system.exp_clock.number;
@@ -170,7 +166,7 @@ export class BladesSheet extends BaseActorSheet {
 		this.actor.update({"system.exp_clock": {value : value, number : number}});
 	});
 	
-			// Decrement Exp Clock
+			
 	html.find('.down-exp-clock').click(ev => {
 		let value = this.actor.system.exp_clock.value;
 		let number = this.actor.system.exp_clock.number;
@@ -182,14 +178,14 @@ export class BladesSheet extends BaseActorSheet {
 		this.actor.update({"system.exp_clock": {value : value, number : number}});
 	});
 	
-			// Add a whole Exp Clock
+			
 	html.find('.add-exp-clock').click(ev => {
 		let number = this.actor.system.exp_clock.number;
 		number = number + 1;
 		this.actor.update({"system.exp_clock": {number : number}});
 	});
 	
-				// Remove a whole Exp Clock
+				
 	html.find('.minus-exp-clock').click(ev => {
 		let number = this.actor.system.exp_clock.number;
 		if (number > 0) {number = number - 1;}
@@ -200,8 +196,7 @@ export class BladesSheet extends BaseActorSheet {
 	
   }
 
-  /* -------------------------------------------- */
-
+  
   async _onItemAddClick(event) {
     event.preventDefault();
     const item_type = $(event.currentTarget).data("itemType")
@@ -214,10 +209,10 @@ export class BladesSheet extends BaseActorSheet {
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
 
-    // Group by class
+    
     const grouped_items = BladesHelpers.groupItemsByClass(items);
 
-    // Build HTML with grouped items
+    
     let items_html = '<div class="items-list add-items-list">';
     for (const [itemclass, group] of Object.entries(grouped_items)) {
       items_html += `<div class="item-group"><header>${itemclass}</header>`;
@@ -262,8 +257,7 @@ export class BladesSheet extends BaseActorSheet {
     await this.addItemsToSheet(item_type, formResult.select_items);
   }
 
-  /* -------------------------------------------- */
-
+  
   async addItemsToSheet(item_type, selections) {
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
@@ -299,12 +293,8 @@ export class BladesSheet extends BaseActorSheet {
       }
 	}
   }
-  /* -------------------------------------------- */
+  
 
-  /**
-   * Roll an Attribute die.
-   * @param {*} event
-   */
   async _onRollAttributeDieClick(event) {
 
     const attribute_name = $(event.currentTarget).data("rollAttribute");
@@ -312,8 +302,7 @@ export class BladesSheet extends BaseActorSheet {
 
   }
 
-  /* -------------------------------------------- */
-
+  
   async _onUpdateBoxClick(event) {
     event.preventDefault();
     const item_id = $(event.currentTarget).data("item");
@@ -338,7 +327,6 @@ export class BladesSheet extends BaseActorSheet {
 
     }
 
-  /* -------------------------------------------- */
   
    async _onRadioToggle(event) {
     let type = event.target.tagName.toLowerCase();
@@ -349,14 +337,14 @@ export class BladesSheet extends BaseActorSheet {
     }
 
     if (target.checked || (event.type == "contextmenu")) {
-      //find the next lowest-value input with the same name and click that one instead
+      
       let name = target.name;
       let value = parseInt(target.value) - 1;
       this.element
         .find(`input[name="${name}"][value="${value}"]`)
         .trigger("click");
     } else {
-      //trigger the click on this one
+      
       $(target).trigger("click");
     }
   }	

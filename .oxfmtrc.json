@@ -1,0 +1,9 @@
+{
+  "ignorePatterns": [
+    "yml_source/**",
+    "templates/**",
+    "styles/**",
+    "css/**",
+    "themes/**"
+  ]
+}

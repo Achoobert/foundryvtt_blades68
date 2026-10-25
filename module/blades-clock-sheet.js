@@ -1,11 +1,7 @@
 import { BladesSheetV2 } from "./blades-sheet-v2.js";
 import { ClockData } from "./data/clock.js";
 
-/**
- * Clock actor sheet. The SVG image recipe and the dropdown choices both
- * live on ClockData; this class only handles rendering and the scene-level
- * side effect of pushing the new texture to placed tokens.
- */
+
 export class BladesClockSheet extends BladesSheetV2 {
 
   static DEFAULT_OPTIONS = {
@@ -19,11 +15,10 @@ export class BladesClockSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/actors/clock-sheet.html" }
+    body: { template: "systems/blades68/templates/actors/clock-sheet.html", scrollable: [""] }
   };
 
-  /* -------------------------------------------- */
-
+  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     const schema = this.actor.system.schema.fields;
@@ -47,8 +42,7 @@ export class BladesClockSheet extends BladesSheetV2 {
     };
   }
 
-  // Bake the derived img / token texture into the same update as the form
-  // change, then sync placed tokens on the current scene.
+  
   static async _onSubmitForm(event, form, formData) {
     const data = foundry.utils.expandObject(formData.object);
     const sys = data.system ?? {};

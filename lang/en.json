@@ -30,6 +30,8 @@
   "BITD.ToggleStanding": "Toggle standing for {name}, currently {standing}",
   "BITD.TitlePostItem": "Post item",
   "BITD.Vice": "Vice",
+  "BITD.TAHActions": "Actions",
+  "BITD.TAHAttributes": "Attributes",
   "BITD.Class": "Class",
   "BITD.Stress": "Stress",
   "BITD.Alias": "Alias",
@@ -86,6 +88,7 @@
   "BITD.TraumaRuthless": "Ruthless",
   "BITD.TraumaSecretive": "Secretive",
   "BITD.Keys": "Keys",
+  "BITD.XpReminder": "Don't forget to mark your new xp!",
   "BITD.KeysExplanation": "Each of your 5 Keys tracks marks (0-3) as you lean into that part of your character's history or identity. When a Key hits 3 marks, you can boom it into a Deadlock — a lasting complication tied to that Key.",
   "BITD.AddKey": "Add Key",
   "BITD.CustomKey": "Custom Key",
@@ -214,6 +217,9 @@
   "BITD.LessEffect": "Less Effect",
   "BITD.Description": "Description",
   "BITD.Loadout": "Loadout",
+  "BITD.LoadBreakdown": "{gear} from gear, {coin} from coin",
+  "BITD.OverLoadWarning": "Carrying {load} load, but {level} allows only {max}.",
+  "BITD.LoadBonus": "Bonus Load",
   "BITD.Load": "Load",
   "BITD.CrewType": "Crew Type",
   "BITD.CrewTypeBox": "Click to choose a Crew Type",
@@ -459,6 +465,10 @@
   "BITD.RollOptionResist": "Use your attribute to resist a consequence:<br/>Suffer stress equal to 6 minus your highest die.<br/>On a 6 you clear the consequence at no cost!",
   "BITD.RollOptionIndulgeVice": "Indulge Vice: you clear stress equal to your highest die. Rolling under your current stress risks overindulgence",
   "BITD.Resistance": "Resistance Roll",
+  "BITD.Downtime": "Downtime",
+  "BITD.Score": "Score",
+  "BITD.RollIndulgeViceHint": "You must use your lowest attribute. Warning: a result higher than your stress means Overindulgence!",
+  "BITD.RollResistHint": "Warning: this may only reduce a consequence's severity rather than eliminating it outright.",
   "BITD.ThreatRoll": "Threat",
   "BITD.PushYourself": "Push Yourself",
   "BITD.IndulgeVice": "Indulge Vice",
@@ -617,6 +627,10 @@
       "Name": "Threat Rolls",
       "Hint": "Enables the Threat Roll from the Deep Cuts supplement."
     },
+    "RollNotes": {
+      "Name": "Roll Notes Field",
+      "Hint": "Shows a free-text Notes field on the dice roller dialog."
+    },
     "Push": {
       "Name": "Push Yourself Rolls",
       "Hint": "Replaces the base Resistance Roll with the Push Yourself Roll from the Deep Cuts supplement."
@@ -628,6 +642,10 @@
     "ClockXP": {
       "Name": "Experience Clocks",
       "Hint": "Replaces the base Experience Rules with Experience Clocks from the Deep Cuts supplement."
+    },
+    "CustomXpTriggers": {
+      "Name": "Custom XP Triggers",
+      "Hint": "Creates new journal \"XP Triggers\". Edit to change what the sheets show."
     },
     "Edge": {
       "Name": "Edge",
@@ -643,7 +661,7 @@
     },
     "Blades68": {
       "Name": "Rules & Compendium Source",
-      "Hint": "Which ruleset's terminology, color theme, and compendium content populate class/faction/item pickers. Items already imported into the world always appear regardless of this setting. Keys & Deadlocks and pip icon style have their own settings below.",
+      "Hint": "Which compendium content populates popups. Existing items always appear.",
       "BladesInTheDark": "Blades in the Dark",
       "Blades68": "Blades '68",
       "ImportedOnly": "Imported only"
@@ -651,6 +669,18 @@
     "ShowKeys": {
       "Name": "Show Keys & Deadlocks",
       "Hint": "Shows the Keys & Deadlocks section on character sheets, independent of Blades '68 Mode."
+    },
+    "SheetTheme": {
+      "Name": "Sheet Theme",
+      "Hint": "Visual look of character, crew, NPC, faction, and item sheet windows. Independent of the Rules & Compendium Source setting above.",
+      "Classic": "Classic (parchment)",
+      "Light": "Light (customizable color)",
+      "Dark": "Dark (customizable color)"
+    },
+    "ClockColor": {
+      "Name": "Clock Color",
+      "Hint": "Art used for clocks embedded in sheets (healing, memories, faction goals). Auto picks red for Blades in the Dark and yellow for Blades '68.",
+      "Auto": "Auto (match game mode)"
     },
     "PipIconStyle": {
       "Name": "Pip Icon Style",
@@ -660,11 +690,11 @@
     },
     "SheetBackgroundColor": {
       "Name": "Sheet Background Color",
-      "Hint": "The background color for character, crew, NPC, faction, and item sheet windows."
+      "Hint": "The background color used by the Light and Dark Sheet Theme options, for character, crew, NPC, faction, and item sheet windows."
     },
     "SheetBackgroundOpacity": {
       "Name": "Sheet Background Opacity",
-      "Hint": "How transparent the sheet background color is. 0 is fully transparent, 1 is fully opaque."
+      "Hint": "How transparent the Sheet Background Color is (Light and Dark Sheet Theme options only). 0 is fully transparent, 1 is fully opaque."
     },
     "PauseAnimation": {
       "Name": "Pause Screen Animation",

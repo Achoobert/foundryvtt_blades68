@@ -1,3 +1,21 @@
+// DialogV2 windows auto-size to their content and are not resizable, so a tall
+// dialog grows off the top of the screen with nothing to scroll. Cap the window
+// and scroll its content; keep the button footer pinned. Structure-agnostic on
+// purpose - we only rely on .window-content existing.
+dialog.blades68-dialog {
+  max-height: 90vh;
+
+  .window-content {
+    min-height: 0;
+    overflow: hidden auto;
+  }
+
+  .form-footer {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
 // Add Items modal styling.
 // Note: DialogV2 wraps our content in its own <form class="dialog-form">,
 // so the <form class="items-to-add"> emitted alongside .add-items-list gets
@@ -24,13 +42,13 @@
       font-weight: bold;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 0.75em;
+      margin-top: 1.25em;
       padding-bottom: 0.15em;
       border-bottom: 1px solid currentColor;
+    }
 
-      &:first-child {
-        margin-top: 0;
-      }
+    &:first-child header {
+      margin-top: 0;
     }
   }
 
@@ -41,8 +59,25 @@
     }
   }
 
-  .item-block label {
-    display: block;
+  // Keep the checkbox/radio on the same line as its label; the label still
+  // needs to be a block so a wrapped description sits under the name.
+  .item-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4em;
+    margin: 0.15em 0;
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      flex: 0 0 auto;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      flex: 1 1 auto;
+      margin: 0;
+    }
   }
 
   // Mirror the .item-description look used for already-added items
@@ -61,6 +96,59 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+// Dice pool picker in the roll dialog: absolute dice count instead of a
+// modifier dropdown. The base pool is underlined so you can see where you
+// started after the option checkboxes move the selection around.
+.bitd-dice-pool {
+  display: block;
+  margin-bottom: 0.5em;
+
+  > label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+  }
+}
+
+.bitd-dice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+
+  .bitd-dice-count {
+    width: 2.2em;
+    height: 2.2em;
+    flex: 0 0 auto;
+    padding: 0;
+    line-height: 1;
+    font-weight: bold;
+    border: 1px solid $darkgray;
+    border-radius: 4px;
+    background: $lightgray;
+    color: $almost_black;
+    cursor: pointer;
+
+    &.is-zero {
+      background: #e08080;
+    }
+
+    &.is-base {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    &.is-selected {
+      background: $almost_black;
+      color: $almost_white;
+      border-color: $almost_black;
+    }
+
+    &:hover {
+      filter: brightness($hover-brightness);
+    }
   }
 }
 

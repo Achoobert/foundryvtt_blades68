@@ -5,27 +5,26 @@ textarea {
   box-sizing: border-box;
 }
 
-// Sheet background color. Overrides core's --color-cool-5-90 default with
-// the Blades '68 indigo; GM-configurable via the "SheetBackgroundColor"
-// world setting (see module/settings.js#applySheetBackgroundColor), which
-// sets --blades68-sheet-bg on :root. The "blades68-theme" parchment look
-// (scss/import/blades68-theme.scss) takes precedence over this when active,
-// since it's scoped under the higher-specificity .blades68.blades68-theme.
+
 .window-content {
   background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.window-content > [data-application-part] {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
 }
 
 &.sheet.item .window-content {
   max-height: 85vh;
-  overflow-y: auto;
 }
 
-// Generic "label sits above its control, control is full width" pattern
-// used by long-text fields (description/notes) across sheets. Any
-// <label class="text-line"> followed by an <input>/<textarea>, each
-// wrapped in its own <div>, gets this layout regardless of which sheet
-// it appears on.
+
 .text-line {
   display: block;
   margin-bottom: 4px;
@@ -58,7 +57,7 @@ label.text-line + textarea {
   color: $red;
 }
 
-// Emitted at root so it isn't nested under `.blades-in-the-dark`.
+
 @at-root .dice-tooltip .dice-rolls .roll.method {
   font-size: var(--font-size-10);
   background: transparent;
@@ -137,7 +136,7 @@ section {
   text-transform: uppercase;
   background-color: $almost_black;
   color: $almost_white;
-  margin-bottom: 10px;
+  margin-top: 1px;
   position: relative;
   padding-left: 10px;
   padding-right: 10px;
@@ -168,13 +167,10 @@ prose-mirror {
   margin-bottom: 10px;
 }
 
-// NPC sheet layout (templates/npc-sheet.html): portrait beside a stack of
-// short fields in the header, then a stack of label-above-textbox fields
-// below. None of these classes had any rules before, so every field
-// collapsed to browser-default sizing (label + tiny inline textarea).
+
 .npc-header {
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-top: 1px;
 
   img.npc-portrait {
     flex: 0 0 auto;
@@ -185,7 +181,7 @@ prose-mirror {
 .npc-header-lines,
 .npc-lines {
   > div {
-    margin-bottom: 10px;
+    margin-top: 1px;
 
     &:last-child {
       margin-bottom: 0;
@@ -258,24 +254,15 @@ i {
   .item-control {
     max-width: 10px;
   }
-  // Faction list rows: keep the (now larger) faction art vertically
-  // centered against the name/description text instead of stretching.
+  
+  
   .item,
   .item-body {
     align-items: center;
   }
 }
 
-// Icon visibility fix (generic, applies to every sheet icon).
-//
-// Many Foundry-core placeholder icons used as default `img` values for
-// generated Blades '68 content (e.g. icons/svg/item-bag.svg, city.svg,
-// upgrade.svg, direction.svg, book.svg) are solid white shapes on a
-// transparent background. Rendered as bare <img> tags on this system's
-// light/parchment sheet backgrounds they become invisible ("white icon on
-// white background"). Give every inline item icon a small neutral dark
-// backdrop + border so both light and dark artwork stay legible, no
-// matter which icon a given item happens to use.
+
 .item-body img,
 .open-friend img,
 .item-image {
@@ -285,4 +272,30 @@ i {
 }
 td {
   padding: 5px;
+}
+
+// Custom XP trigger text pulled from the "XP Triggers" world journal. The journal
+// editor emits <p>/<ul>/<li>, so tighten the default spacing to match the built-in
+// XP block on both the character and crew sheets.
+.xp-triggers-custom {
+  font-size: 12px;
+
+  p,
+  ul,
+  ol {
+    margin: 0 0 4px;
+  }
+
+  ul,
+  ol {
+    padding-left: 18px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }

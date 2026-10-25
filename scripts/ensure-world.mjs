@@ -1,10 +1,10 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
+import { DATA_DIR } from './lib/fvtt-config.mjs';
 
 const WORLD_ID = 'blades68';
-const WORLD_DIR = path.join(os.homedir(), 'foundrydata', 'Data', 'worlds', WORLD_ID);
+const WORLD_DIR = path.join(DATA_DIR, 'worlds', WORLD_ID);
 const WORLD_JSON_PATH = path.join(WORLD_DIR, 'world.json');
 
 await mkdir(path.join(WORLD_DIR, 'data'), { recursive: true });

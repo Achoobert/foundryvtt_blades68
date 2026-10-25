@@ -11,18 +11,21 @@
     </header>
     <div class="unique-card-body">
       <div class="cohort-status-row">
-        <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
           <input type="checkbox" name="system.unique-data.hound.weak" data-dType="Boolean" {{checked
             system.unique-data.hound.weak}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
           <input type="checkbox" name="system.unique-data.hound.impaired" data-dType="Boolean" {{checked
             system.unique-data.hound.impaired}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
           <input type="checkbox" name="system.unique-data.hound.broken" data-dType="Boolean" {{checked
             system.unique-data.hound.broken}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+        <label for="system.unique-data.hound.armor" class="" style="align-content: space-around;">
+          <span>{{localize "BITD.Armor"}}</span>
+          </label> 
+        <label class="status-checkbox">
           <input type="number" name="system.unique-data.hound.armor" value="{{system.unique-data.hound.armor}}"
-            data-dType="Number" min="0" max="9"></label>
+            data-dType="Number" min="0"></label>
       </div>
       <div class="cohort-fields">
         <div class="field-under"><input type="text" name="system.unique-data.hound.name"
@@ -122,13 +125,13 @@
         <div class="field-under"><input type="text" name="system.unique-data.intellectual.sparkmind.flaws"
             value="{{system.unique-data.intellectual.sparkmind.flaws}}"><label>{{localize "BITD.Flaws"}}</label></div>
         <div class="cohort-status-row">
-          <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
             <input type="checkbox" name="system.unique-data.intellectual.sparkmind.weak" data-dType="Boolean" {{checked
               system.unique-data.intellectual.sparkmind.weak}}></label>
-          <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
             <input type="checkbox" name="system.unique-data.intellectual.sparkmind.impaired" data-dType="Boolean"
               {{checked system.unique-data.intellectual.sparkmind.impaired}}></label>
-          <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
             <input type="checkbox" name="system.unique-data.intellectual.sparkmind.broken" data-dType="Boolean"
               {{checked system.unique-data.intellectual.sparkmind.broken}}></label>
         </div>
@@ -202,16 +205,16 @@
     </header>
     <div class="unique-card-body">
       <div class="cohort-status-row">
-        <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
           <input type="checkbox" name="system.unique-data.paranormalist.resonance.weak" data-dType="Boolean" {{checked
             system.unique-data.paranormalist.resonance.weak}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
           <input type="checkbox" name="system.unique-data.paranormalist.resonance.impaired" data-dType="Boolean"
             {{checked system.unique-data.paranormalist.resonance.impaired}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
           <input type="checkbox" name="system.unique-data.paranormalist.resonance.broken" data-dType="Boolean" {{checked
             system.unique-data.paranormalist.resonance.broken}}></label>
-        <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+        <label class="status-checkbox"><span>{{localize "BITD.Armor"}}</span>
           <input type="number" name="system.unique-data.paranormalist.resonance.armor"
             value="{{system.unique-data.paranormalist.resonance.armor}}" data-dType="Number" min="0" max="9"></label>
       </div>
@@ -296,13 +299,13 @@
         <div class="field-under grow"><input type="text" name="system.unique-data.swinger.autopod.name"
             value="{{system.unique-data.swinger.autopod.name}}"><label>{{localize "BITD.Name"}}</label></div>
         <div class="cohort-status-row">
-          <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
             <input type="checkbox" name="system.unique-data.swinger.autopod.weak" data-dType="Boolean" {{checked
               system.unique-data.swinger.autopod.weak}}></label>
-          <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
             <input type="checkbox" name="system.unique-data.swinger.autopod.impaired" data-dType="Boolean" {{checked
               system.unique-data.swinger.autopod.impaired}}></label>
-          <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+          <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
             <input type="checkbox" name="system.unique-data.swinger.autopod.broken" data-dType="Boolean" {{checked
               system.unique-data.swinger.autopod.broken}}></label>
         </div>

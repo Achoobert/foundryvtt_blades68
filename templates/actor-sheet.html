@@ -3,7 +3,7 @@
   <section id="character-{{_id}}-name-alias" class="flex-horizontal name-alias">
 
     <div class="grow-two">
-      <img src="{{img}}" data-edit="img" data-tooltip="{{name}}" class="portrait" />
+      <img src="{{img}}" data-edit="img" data-action="editImage" data-tooltip="{{name}}" class="portrait" />
     </div>
 
     <div class="grow-two">
@@ -247,7 +247,7 @@
       <div id="character-{{../_id}}-attributes-{{attribute_name}}" class="attribute">
         <div id="character-{{../_id}}-attributes-{{attribute_name}}-title" class="attributes-exp">
           <div class="stripe">
-            <a class="attribute-label roll-die-attribute rollable-text" data-action="bid.rollAttribute" data-roll-attribute="{{attribute_name}}" data-tooltip="{{localize (concat attribute.label 'Context')}}">{{localize attribute.label}}</a>
+            <a class="attribute-label roll-die-attribute rollable-text on-black-banner" data-action="bid.rollAttribute" data-roll-attribute="{{attribute_name}}" data-tooltip="{{localize (concat attribute.label 'Context')}}">{{localize attribute.label}}</a>
           </div>
           <div class="stripe-tooth-body">
             {{#if (getSetting 'ClockXP')}}
@@ -334,6 +334,12 @@
               <label for="character-{{_id}}-armor-uses-armor">{{localize "BITD.Armor"}}</label>
               <input id="character-{{_id}}-armor-uses-armor" type="checkbox" name="system.armor-uses.armor" {{checked system.armor-uses.armor}}>
             </div>
+            {{#unless blades68}}
+            <div>
+              <label for="character-{{_id}}-armor-uses-heavy">{{localize "BITD.Heavy"}}</label>
+              <input id="character-{{_id}}-armor-uses-heavy" type="checkbox" name="system.armor-uses.heavy" {{checked system.armor-uses.heavy}}>
+            </div>
+            {{/unless}}
             <div>
               <label for="character-{{_id}}-armor-uses-special">{{#if
                 selectedClass.system.special_resource}}{{selectedClass.system.special_resource}}{{else}}{{localize
@@ -341,8 +347,10 @@
               <span class="special-uses">
                 <input id="character-{{_id}}-armor-uses-special" type="checkbox" name="system.armor-uses.special" {{checked
                   system.armor-uses.special}}>
+                {{#if blades68}}
                 <input id="character-{{_id}}-armor-uses-special-2" type="checkbox" name="system.armor-uses.special_2" {{checked
                   system.armor-uses.special_2}}>
+                {{/if}}
                 </span>
             </div>
           </td>
@@ -511,18 +519,22 @@
               </header>
               <div class="unique-card-body">
                 <div class="cohort-status-row">
-                  <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
                     <input type="checkbox" name="system.unique-data.hound.weak" data-dType="Boolean" {{checked
                       system.unique-data.hound.weak}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
                     <input type="checkbox" name="system.unique-data.hound.impaired" data-dType="Boolean" {{checked
                       system.unique-data.hound.impaired}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
                     <input type="checkbox" name="system.unique-data.hound.broken" data-dType="Boolean" {{checked
                       system.unique-data.hound.broken}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+                  <label for="system.unique-data.hound.armor">
+                      {{localize "BITD.Armor"}}
+                  </label>
+                  <label>
                     <input type="number" name="system.unique-data.hound.armor" value="{{system.unique-data.hound.armor}}"
-                      data-dType="Number" min="0" max="9"></label>
+                      data-dType="Number" min="0" max="9">
+                  </label>
                 </div>
                 <div class="cohort-fields">
                   <div class="field-under"><input type="text" name="system.unique-data.hound.name"
@@ -622,13 +634,13 @@
                   <div class="field-under"><input type="text" name="system.unique-data.intellectual.sparkmind.flaws"
                       value="{{system.unique-data.intellectual.sparkmind.flaws}}"><label>{{localize "BITD.Flaws"}}</label></div>
                   <div class="cohort-status-row">
-                    <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
                       <input type="checkbox" name="system.unique-data.intellectual.sparkmind.weak" data-dType="Boolean" {{checked
                         system.unique-data.intellectual.sparkmind.weak}}></label>
-                    <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
                       <input type="checkbox" name="system.unique-data.intellectual.sparkmind.impaired" data-dType="Boolean"
                         {{checked system.unique-data.intellectual.sparkmind.impaired}}></label>
-                    <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
                       <input type="checkbox" name="system.unique-data.intellectual.sparkmind.broken" data-dType="Boolean"
                         {{checked system.unique-data.intellectual.sparkmind.broken}}></label>
                   </div>
@@ -702,16 +714,16 @@
               </header>
               <div class="unique-card-body">
                 <div class="cohort-status-row">
-                  <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
                     <input type="checkbox" name="system.unique-data.paranormalist.resonance.weak" data-dType="Boolean" {{checked
                       system.unique-data.paranormalist.resonance.weak}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
                     <input type="checkbox" name="system.unique-data.paranormalist.resonance.impaired" data-dType="Boolean"
                       {{checked system.unique-data.paranormalist.resonance.impaired}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
                     <input type="checkbox" name="system.unique-data.paranormalist.resonance.broken" data-dType="Boolean" {{checked
                       system.unique-data.paranormalist.resonance.broken}}></label>
-                  <label class="status-pill"><span>{{localize "BITD.Armor"}}</span>
+                  <label class="status-checkbox"><span>{{localize "BITD.Armor"}}</span>
                     <input type="number" name="system.unique-data.paranormalist.resonance.armor"
                       value="{{system.unique-data.paranormalist.resonance.armor}}" data-dType="Number" min="0" max="9"></label>
                 </div>
@@ -796,13 +808,13 @@
                   <div class="field-under grow"><input type="text" name="system.unique-data.swinger.autopod.name"
                       value="{{system.unique-data.swinger.autopod.name}}"><label>{{localize "BITD.Name"}}</label></div>
                   <div class="cohort-status-row">
-                    <label class="status-pill"><span>{{localize "BITD.Weak"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Weak"}}</span>
                       <input type="checkbox" name="system.unique-data.swinger.autopod.weak" data-dType="Boolean" {{checked
                         system.unique-data.swinger.autopod.weak}}></label>
-                    <label class="status-pill"><span>{{localize "BITD.Impaired"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Impaired"}}</span>
                       <input type="checkbox" name="system.unique-data.swinger.autopod.impaired" data-dType="Boolean" {{checked
                         system.unique-data.swinger.autopod.impaired}}></label>
-                    <label class="status-pill"><span>{{localize "BITD.Broken"}}</span>
+                    <label class="status-checkbox"><span>{{localize "BITD.Broken"}}</span>
                       <input type="checkbox" name="system.unique-data.swinger.autopod.broken" data-dType="Boolean" {{checked
                         system.unique-data.swinger.autopod.broken}}></label>
                   </div>
@@ -986,10 +998,10 @@
         <header class="section-header">
           <span>{{localize "BITD.Loadout"}}</span>
           <a class="item-add-popup" data-action="bid.itemAdd" data-item-type="item" data-tooltip="{{localize 'BITD.AddItem'}}"><i class="fas fa-plus-square"></i></a>
-          <span class="load-fraction" data-tooltip="{{localize system.load_level}}">{{system.loadout}}/{{system.load_max}}</span>
+          <span class="load-fraction{{#if system.over_load}} over-load{{/if}}" data-tooltip="{{loadTooltip}}">{{system.loadout}}/{{system.base_max_load}}{{#if loadBonusTotal}}<span class="load-bonus" data-tooltip="{{loadBonusTooltip}}">+{{loadBonusTotal}}</span>{{/if}}</span>
           <div class="dropdown">
             <select name="system.selected_load_level">
-              {{selectOptions system.load_levels selected=system.selected_load_level localize=true}}
+              {{selectOptions system.load_levels selected=system.load_level localize=true}}
             </select>
           </div>
         </header>
@@ -1096,31 +1108,35 @@
       <span>{{localize "BITD.XP"}}</span>
     </header>
     <div class="section-body">
+      {{#if xpTriggers}}
+      <div class="xp-triggers-custom">{{{xpTriggers}}}</div>
+      {{else}}
       <ul>
         <li>{{{localize "BITD.ClassExpClue1"}}}</li>
         <li>{{{localize "BITD.ClassExpClue2"}}}</li>
         <p>{{localize "BITD.ClassExpClueDescription"}}</p>
         {{#if selectedClass.system.experience_clues}}
-        <li><i>{{{selectedClass.system.experience_clues}}}</i></li>
+        <li><i>{{html text=selectedClass.system.experience_clues}}</i></li>
         {{/if}}
         <li><i>{{{localize "BITD.ClassExpClue3"}}}</i></li>
       </ul>
+      {{/if}}
     </div>
   </section>
 
   {{!-- Secondary tabs: free-form Notes, Active Effects, full item list --}}
   <section class="tab-space">
     <nav class="tabs flex-horizontal">
-      <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
+      <a class="item {{tabs.[character-notes].cssClass}}" data-action="tab" data-group="primary" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
       {{#if isGM}}
-      <a class="item" data-tab="effects">{{localize "BITD.Effects"}}</a>
+      <a class="item {{tabs.[effects].cssClass}}" data-action="tab" data-group="primary" data-tab="effects">{{localize "BITD.Effects"}}</a>
       {{/if}}
-      <a class="item" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
+      <a class="item {{tabs.[all-character-items].cssClass}}" data-action="tab" data-group="primary" data-tab="all-character-items">{{localize "BITD.AllItems"}}</a>
     </nav>
 
     <div class="tab-content flex-vertical">
 
-      <div class="tab flex-vertical" data-tab="character-notes">
+      <div class="tab flex-vertical {{tabs.[character-notes].cssClass}}" data-group="primary" data-tab="character-notes">
         <div class="label-stripe">
           <p>{{localize "BITD.Notes"}}</p>
         </div>
@@ -1130,7 +1146,7 @@
       {{!-- Active Effects: inlined from templates/parts/active-effects.html (shared partial,
             not editable here) rewritten to bid.effectControl + data-effect-action, the V2
             convention BladesSheetV2's _onEffectControl expects. --}}
-      <div id="character-{{_id}}-effects" class="tab effects flex-vertical" data-tab="effects">
+      <div id="character-{{_id}}-effects" class="tab effects flex-vertical {{tabs.[effects].cssClass}}" data-group="primary" data-tab="effects">
         <div class="label-stripe">
           <p>{{localize "BITD.Effects"}}</p>
         </div>
@@ -1176,7 +1192,7 @@
       </div>
 
       {{!-- Full Item List --}}
-      <div class="tab grow-two flex-vertical" data-tab="all-character-items">
+      <div class="tab grow-two flex-vertical {{tabs.[all-character-items].cssClass}}" data-group="primary" data-tab="all-character-items">
         <div class="label-stripe">
           <p><label>{{localize "BITD.AllItems"}}</label></p>
         </div>

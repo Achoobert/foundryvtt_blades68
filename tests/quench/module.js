@@ -7,6 +7,8 @@ import registerCrewTypes from './batches/crew-types.js';
 import registerPrison from './batches/prison.js';
 import registerChatCards from './batches/chat-cards.js';
 import registerShatteredIslesNames from './batches/shattered-isles-names.js';
+import registerImageEdit from './batches/image-edit.js';
+import registerTokenActionHud from './batches/token-action-hud.js';
 
 const BATCH_REGISTRARS = [
   registerSystem,
@@ -16,7 +18,9 @@ const BATCH_REGISTRARS = [
   registerCrewTypes,
   registerPrison,
   registerChatCards,
-  registerShatteredIslesNames
+  registerShatteredIslesNames,
+  registerImageEdit,
+  registerTokenActionHud
 ];
 
 Hooks.on('quenchReady', (quench) => {

@@ -1,15 +1,10 @@
-/* global Actor, Item, foundry, game */
+
 import { createdDocsTracker, requireSystemActive } from '../helpers.js';
 import { BladesHelpers } from '/systems/blades68/module/blades-helpers.js';
 
-/**
- * Fire a change event and poll `until` (if given) rather than trusting a fixed delay — the
- * listener's createEmbeddedDocuments/deleteEmbeddedDocuments round-trips through the same
- * socket as everything else in the world, so a flat sleep occasionally isn't long enough
- * under load. Always waits at least one tick even without an `until` predicate.
- */
+
 async function fireChange(checkbox, until) {
-  checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+  checkbox.click();
   if (!until) {
     await new Promise((resolve) => setTimeout(resolve, 300));
     return;
@@ -20,13 +15,7 @@ async function fireChange(checkbox, until) {
   }
 }
 
-/**
- * Poll for an open DialogV2 <dialog>. A just-closed dialog keeps its `open` attribute
- * (and an `[open]` match) for up to ~1s while Application#close animates it out via a
- * "minimizing" class, so when a test opens a second dialog right after closing the
- * first, `document.querySelector('dialog[open]')` can return that stale closing one
- * instead of the new one. Always take the last match (most recently opened) instead.
- */
+
 async function waitForOpenDialog() {
   let dialogEl;
   for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
@@ -62,12 +51,12 @@ export default function register(quench) {
           ]);
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.lengthOf(data.otherAbilities, 1);
             assert.equal(data.otherAbilities[0].name, '(Some Other Class) Borrowed Ability');
-            assert.lengthOf(sheet.element.find('.special-abilities-panel .ability-catalog'), 0);
+            assert.lengthOf(sheet.element.querySelectorAll('.special-abilities-panel .ability-catalog'), 0);
           } finally {
             await sheet.close();
           }
@@ -83,17 +72,16 @@ export default function register(quench) {
           ]);
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.equal(data.otherAbilities[0].usesMax, 3);
 
-            const usesBoxes = () => sheet.element.find(`.other-abilities [data-item-id="${ability.id}"] .ability-uses-toggle`);
+            const usesBoxes = () => sheet.element.querySelectorAll(`.other-abilities [data-item-id="${ability.id}"] .ability-uses-toggle`);
             assert.lengthOf(usesBoxes(), 3, 'should render one checkbox per uses slot');
 
-            const boxes = usesBoxes().toArray();
+            const boxes = Array.from(usesBoxes());
             boxes[0].checked = true;
-            boxes[1].checked = true;
             await fireChange(boxes[1], () => ability.system.uses_used === 2);
             assert.equal(ability.system.uses_used, 2, 'checked count should be written to system.uses_used');
           } finally {
@@ -104,9 +92,8 @@ export default function register(quench) {
 
       describe('Loadout checklist', function () {
         it('renders one checkbox per system.num_available slot and reconciles owned copies when toggled', async function () {
-          // 3 sequential toggle round-trips, each waiting on both the actor update and the
-          // sheet's own re-render to settle (up to fireChange's ~3s poll window) - under load
-          // that stacks past a 10s budget without actually being stuck.
+
+
           this.timeout(20000);
           requireSystemActive();
 
@@ -124,20 +111,19 @@ export default function register(quench) {
           await actor.createEmbeddedDocuments('Item', [classItem.toObject()]);
 
           const sheet = actor.sheet;
-          // A checkbox's change handler is bound at the render that produced it; toggling an
-          // owned count re-renders the sheet (fresh DOM, freshly-bound listeners), so each step
-          // re-queries the live element instead of reusing a reference from a prior render.
-          const slotCheckbox = (slot) => sheet.element.find(`.items-panel .catalog-toggle[data-slot="${slot}"]`).get(0);
 
-          await sheet._render(true);
+
+          const slotCheckbox = (slot) => sheet.element.querySelector(`.items-panel .catalog-toggle[data-slot="${slot}"]`);
+
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.lengthOf(data.itemCatalog, 1);
             assert.equal(data.itemCatalog[0].slots, 2);
             assert.equal(data.itemCatalog[0].ownedCount, 0);
 
             assert.lengthOf(
-              sheet.element.find('.items-panel .catalog-toggle').toArray(),
+              Array.from(sheet.element.querySelectorAll('.items-panel .catalog-toggle')),
               2,
               'should render 2 slot checkboxes for num_available: 2'
             );
@@ -145,11 +131,6 @@ export default function register(quench) {
             const ownedBandoliers = () => actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier');
 
             let checkbox = slotCheckbox(1);
-            checkbox.checked = true;
-            // The actor update and the sheet's own re-render (which rebinds fresh listeners
-            // and reflects the new ownedCount as each slot's `checked` attribute) are two
-            // separate async steps - wait for both, or the next slotCheckbox() query can
-            // still return a stale, pre-re-render node.
             await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(1)?.checked === true);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
@@ -161,13 +142,12 @@ export default function register(quench) {
               'a catalog-created copy should be equipped so it counts toward load'
             );
             assert.equal(
-              (await sheet.getData()).system.loadout,
+              (await sheet._prepareContext()).system.loadout,
               1,
               'checking a loadout slot should add its load to system.loadout'
             );
 
             checkbox = slotCheckbox(2);
-            checkbox.checked = true;
             await fireChange(checkbox, () => ownedBandoliers().length === 2 && slotCheckbox(2)?.checked === true);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
@@ -176,7 +156,6 @@ export default function register(quench) {
             );
 
             checkbox = slotCheckbox(2);
-            checkbox.checked = false;
             await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(2)?.checked === false);
             assert.lengthOf(
               actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
@@ -199,9 +178,9 @@ export default function register(quench) {
           ]);
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const data = await sheet.getData();
+            const data = await sheet._prepareContext();
             assert.equal(
               data.system.loadout,
               3,
@@ -214,18 +193,14 @@ export default function register(quench) {
       });
 
       describe('Keys & Deadlocks', function () {
-        it('normalizes a keys.list that Foundry stored as an index-keyed object instead of an array', async function () {
-          // Partial dot-notation updates (e.g. "system.keys.list.0.key", which is exactly what
-          // the per-slot <select>/<input> names on the sheet produce) can leave Foundry's merge
-          // with {"0": {...}, "1": {...}} instead of a real array. getComputedKeys() — and thus
-          // the whole sheet render — must not crash on that shape; this reproduces a live actor
-          // hitting "list.map is not a function" during getData().
+        it('normalizes a keys.list update given as an index-keyed object instead of an array', async function () {
+
+
           requireSystemActive();
           const actor = tracker.track(await Actor.create({ name: 'Quench Keys Object-Shape PC', type: 'character' }));
           await actor.update({
             'system.keys.list': { 0: { key: 'Defiant', marks: 1, deadlocked: false } }
           });
-          assert.isFalse(Array.isArray(actor.system.keys.list), 'setup should reproduce the object-shaped list');
 
           const keys = actor.getComputedKeys();
           assert.lengthOf(keys, 4, 'should still pad to 4 slots');
@@ -233,7 +208,7 @@ export default function register(quench) {
           assert.equal(keys[0].experience, 1, 'legacy marks should migrate into experience');
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
             assert.isTrue(sheet.rendered, 'the sheet should render without throwing on the object-shaped list');
           } finally {
@@ -253,18 +228,16 @@ export default function register(quench) {
           this.timeout(10000);
           requireSystemActive();
 
-          // The Keys/Deadlocks block (and its Add Key button) only renders when Blades68Mode
-          // is on; toggle it for the duration of this test rather than assuming the world
-          // already has it set, and restore whatever the world had configured.
+
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
           await game.settings.set('blades68', 'Blades68Mode', 'blades68');
 
           const actor = tracker.track(await Actor.create({ name: 'Quench Add Key PC', type: 'character' }));
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            sheet.element.find('.add-key-popup').click();
-            // Wait for the Add Key DialogV2 to render.
+            sheet.element.querySelector('.add-key-popup').click();
+
             const dialogEl = await waitForOpenDialog();
             assert.isOk(dialogEl, 'the Add Key dialog should open');
 
@@ -277,7 +250,7 @@ export default function register(quench) {
             assert.isOk(okButton, 'the dialog should have an Add button');
             okButton.click();
 
-            // Let the dialog's callback resolve and the actor update settle.
+
             await new Promise((resolve) => setTimeout(resolve, 300));
 
             const keysList = actor.system.keys.list;
@@ -300,8 +273,7 @@ export default function register(quench) {
           this.timeout(10000);
           requireSystemActive();
 
-          // The Keys/Deadlocks block only renders when Blades68Mode is on; toggle it for
-          // the duration of this test and restore whatever the world had configured.
+
           const priorMode = game.settings.get('blades68', 'Blades68Mode');
           await game.settings.set('blades68', 'Blades68Mode', 'blades68');
 
@@ -311,15 +283,15 @@ export default function register(quench) {
           await actor.update({ 'system.keys.list': keysList });
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
-            const selected = sheet.element.find('.keys-container select').first();
-            assert.isAbove(selected.length, 0, 'the Keys block should render while Blades68Mode is on');
-            assert.equal(selected.val(), 'A Totally Custom Key');
+            const selected = sheet.element.querySelector('.keys-container select');
+            assert.isOk(selected, 'the Keys block should render while Blades68Mode is on');
+            assert.equal(selected.value, 'A Totally Custom Key');
           } finally {
             await sheet.close();
-            // Restore before the next test reads this setting, and give the world a moment
-            // to settle the change (it round-trips through the same socket as everything else).
+
+
             await game.settings.set('blades68', 'Blades68Mode', priorMode);
             await new Promise((resolve) => setTimeout(resolve, 200));
           }
@@ -339,7 +311,7 @@ export default function register(quench) {
           await actor.update({ 'system.keys.list': keysList });
 
           const sheet = actor.sheet;
-          await sheet._render(true);
+          await sheet.render(true);
           try {
             const popupPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
             const dialogEl = await waitForOpenDialog();
@@ -360,11 +332,12 @@ export default function register(quench) {
             assert.equal(slot.key, 'Commanding', 'original Key should remain stored');
 
             await sheet.render(true);
-            const deadlockSelect = sheet.element.find('.deadlocked-to-select').first();
-            assert.equal(deadlockSelect.val(), 'controlling');
-            const xpInputs = sheet.element.find('.key-slot').first().find('.key-marks input[type="radio"]');
-            assert.equal(xpInputs.filter(':disabled').length, 4, 'XP radios should be disabled while deadlocked');
-            assert.isTrue(sheet.element.find('.key-slot').first().find('input[value="2"]').is(':checked'));
+            const deadlockSelect = sheet.element.querySelector('.deadlocked-to-select');
+            assert.equal(deadlockSelect.value, 'controlling');
+            const firstKeySlot = sheet.element.querySelector('.key-slot');
+            const xpInputs = Array.from(firstKeySlot.querySelectorAll('.key-marks input[type="radio"]'));
+            assert.equal(xpInputs.filter((input) => input.disabled).length, 4, 'XP radios should be disabled while deadlocked');
+            assert.isTrue(firstKeySlot.querySelector('input[value="2"]').checked);
           } finally {
             await sheet.close();
             await game.settings.set('blades68', 'Blades68Mode', priorMode);
@@ -432,7 +405,7 @@ export default function register(quench) {
           keysList[2].key = 'Flamboyant';
           await actor.update({ 'system.keys.list': keysList });
 
-          // Simulate the sheet's per-slot writer (what form submit used to stomp).
+
           const next = actor.getComputedKeys();
           next[1].experience = 3;
           await actor.update({ 'system.keys.list': next });

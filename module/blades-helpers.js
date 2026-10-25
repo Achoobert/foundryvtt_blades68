@@ -236,6 +236,13 @@ export class BladesHelpers {
     return (attribute_name in attributes);
   }
 
+  /**
+   * Transient reminder that the player owes themselves an xp mark.
+   */
+  static notifyXpReminder() {
+    ui.notifications?.info?.(game.i18n.localize("BITD.XpReminder"));
+  }
+
   /* -------------------------------------------- */
   static getProperCase(name) {
     return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
@@ -245,6 +252,23 @@ export class BladesHelpers {
    * Clock face URL. Blades '68 mode uses industrial PNG clocks (yellow/blue);
    * sizes with no PNG (10) fall back to themed SVGs.
    */
+  /**
+   * Color used by clocks that are embedded in a sheet (healing, memories,
+   * faction goals). "auto" tracks the Blades68Mode: red for classic Blades
+   * in the Dark, yellow for the '68 progress-clock art.
+   */
+  static sheetClockColor() {
+    try {
+      const setting = game.settings.get("blades68", "ClockColor");
+      if (setting && setting !== "auto") return setting;
+      return game.settings.get("blades68", "Blades68Mode") === "blades68"
+        ? "yellow"
+        : "red";
+    } catch (e) {
+      return "red";
+    }
+  }
+
   static clockImageUrl(type, value, color = "black") {
     const size = String(type);
     const tick = String(value ?? 0);
@@ -262,12 +286,15 @@ export class BladesHelpers {
   static _clockwebpColor(color, size) {
     const yellowSizes = new Set(["4", "6", "8", "12"]);
     const blueSizes = new Set(["4", "6", "12"]);
-    if ((color || "").toLowerCase() === "blue" && blueSizes.has(size)) {
+    const themeColor = (color || "").toLowerCase();
+    if (themeColor === "blue" && blueSizes.has(size)) {
       return "Blue";
     }
-    if (yellowSizes.has(size)) {
+    if (themeColor === "yellow" && yellowSizes.has(size)) {
       return "Yellow";
     }
+    // No '68 webp art for this color; fall back to the SVG theme so the
+    // chosen color is honored instead of being forced to yellow.
     return null;
   }
 
@@ -719,28 +746,38 @@ export class BladesHelpers {
     let grouped_items = {};
     let generics = [];
 
+    const addToGroup = (key, item) => {
+      if (!(key in grouped_items) || !Array.isArray(grouped_items[key])) {
+        grouped_items[key] = [];
+      }
+      grouped_items[key].push(item);
+    };
+
     for (const item of item_list) {
       // Crew upgrades store ownership on system.crew_type; abilities/gear use system.class.
-      let itemclass = foundry.utils.getProperty(item, "system.class")
-        || foundry.utils.getProperty(item, "system.crew_type");
-      if (!itemclass || itemclass === "") {
-        generics.push(item);
+      const classVal = foundry.utils.getProperty(item, "system.class");
+      const crewTypeVal = foundry.utils.getProperty(item, "system.crew_type");
+
+      if (classVal) {
+        addToGroup(classVal, item);
+      } else if (crewTypeVal && crewTypeVal.trim() !== "") {
+        // crew_type may be a comma-separated list (e.g. "Shadows, Smugglers")
+        // so the upgrade shows under every listed crew type's group.
+        crewTypeVal.split(",").map(t => t.trim()).filter(Boolean)
+          .forEach(t => addToGroup(t, item));
       } else {
-        if (!(itemclass in grouped_items) || !Array.isArray(grouped_items[itemclass])) {
-          grouped_items[itemclass] = [];
-        }
-        grouped_items[itemclass].push(item);
+        generics.push(item);
       }
     }
 
-    // Sort keys alphabetically and put generics last
+    // Generics first (they apply to everyone), then the class groups alphabetically.
     let sorted = {};
-    Object.keys(grouped_items).sort().forEach(key => {
-      sorted[key] = grouped_items[key];
-    });
     if (generics.length > 0) {
       sorted["General"] = generics;
     }
+    Object.keys(grouped_items).sort().forEach(key => {
+      sorted[key] = grouped_items[key];
+    });
 
     return sorted;
   }

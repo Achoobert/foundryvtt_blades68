@@ -33,22 +33,30 @@ system:
       - 0
 effects:
   - _id: e4KGBnKo7Wmjrz1I
-    changes:
-      - key: data.acquaintances_label
-        mode: 5
-        value: BITD.DeadlyFriends
-      - key: data.experience_clues
-        mode: 2
-        value: BITD.ExpChallengeTracking
+    name: Hound
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.acquaintances_label
+          type: override
+          value: BITD.DeadlyFriends
+          priority: null
+          phase: initial
+        - key: system.experience_clues
+          type: add
+          value: BITD.ExpChallengeTracking
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Hound
-    origin: Compendium.blades-in-the-dark.class.JGxBjlbooxuUHe4E
-    transfer: true
-    flags: {}
-    tint: ''
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 100000
 permission:

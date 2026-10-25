@@ -3,16 +3,9 @@ import { BladesActiveEffect } from "./blades-active-effect.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { simpleRollPopup } from "./blades-roll.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { getXpTriggerHtml } from "./xp-triggers.js";
 
-/**
- * Crew actor sheet. Field shapes and derived data (turfs_amount, scoundrel
- * defaults) live on CrewData (module/data/crew.js); this class only handles
- * rendering plus the type-specific interactions that don't fit the shared
- * item-CRUD / active-effect / radio-toggle plumbing on BladesSheetV2:
- * turf claims + turf headers on the owned crew_type/prison item, crew
- * upgrade/ability price pips, cohort harm, the manually-entered turf-claimed
- * count, acquaintance standing, and (world-setting gated) the XP clock.
- */
+
 export class BladesCrewSheet extends BladesSheetV2 {
 
   static DEFAULT_OPTIONS = {
@@ -47,27 +40,27 @@ export class BladesCrewSheet extends BladesSheetV2 {
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/crew-sheet.html", classes: ["scrollable"] }
+    body: { template: "systems/blades68/templates/crew-sheet.html", scrollable: [""] }
   };
 
-  /* -------------------------------------------- */
-
+  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     this._activeTab ??= "turfs";
 
-    // Gambit boxes are sized by a world setting, not per-crew data. Compute
-    // and clamp here (sheet layer) rather than in CrewData -- game.settings
-    // may not be safely readable inside DataModel prepare hooks in all
-    // lifecycle stages.
+    
     const gambitsMax = Number(game.settings.get("blades68", "GambitsMax")) || 0;
     const gambitsValue = Math.min(Math.max(Number(this.actor.system.gambits?.value) || 0, 0), gambitsMax);
 
     const system = {
-      ...this.actor.system.toObject(),
+      ...this.actor.system,
       turfs_amount: this.actor.system.turfs_amount,
       gambits: { value: gambitsValue }
     };
+
+
+    const crewType = this.actor.items.find(i => i.type === "crew_type") ?? null;
+    const xpTriggers = await getXpTriggerHtml("crew", crewType?.system?.experience_clues ?? "");
 
     return {
       ...ctx,
@@ -80,8 +73,9 @@ export class BladesCrewSheet extends BladesSheetV2 {
       items: this.actor.items.contents,
       system,
       gambits_max: gambitsMax,
-      // i > max_rep - turfs_amount, restated as i >= threshold, matching the
-      // legacy `repturf` Handlebars helper's grey-out-from-the-right math.
+      xpTriggers,
+      
+      
       repTurfThreshold: (Number(this.actor.system.max?.rep) || 0) - (Number(this.actor.system.turfs_amount) || 0) + 1,
       activeTab: this._activeTab,
       owner: this.actor.isOwner,
@@ -92,13 +86,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     };
   }
 
-  /* -------------------------------------------- */
-  /*  Item add (crew_type auto-contacts)           */
-  /* -------------------------------------------- */
-
-  // BladesSheetV2#_addItemsToSheet (shared by every actor type) doesn't know
-  // about crew_type's playbook-contact generation -- that's crew-specific, so
-  // it's layered on here rather than in the shared base class.
+  
   async _addItemsToSheet(item_type, selections) {
     await super._addItemsToSheet(item_type, selections);
     if (item_type !== "crew_type") return;
@@ -121,12 +109,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }
   }
 
-  /* -------------------------------------------- */
-  /*  Form submission                              */
-  /* -------------------------------------------- */
-
-  // Changing Tier changes derived dice/etc elsewhere on the sheet, so force a
-  // full re-render -- mirrors the legacy _updateObject override exactly.
+  
   static async _onSubmitForm(event, form, formData) {
     const data = foundry.utils.expandObject(formData.object);
     await this.actor.update(data);
@@ -135,11 +118,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }
   }
 
-  /* -------------------------------------------- */
-  /*  Drag & drop                                  */
-  /* -------------------------------------------- */
-
-  /** @override */
+  
   async _onDropActor(event, data) {
     await super._onDropActor?.(event, data);
     if (!this.actor.isOwner) {
@@ -151,20 +130,14 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }
     const droppedActor = await fromUuid(data.uuid);
     if (!droppedActor) return;
-    // Only npc drops do anything; item/crew_type/ability/class drops are
-    // explicit intentional no-ops here, same as the legacy handleDrop.
+    
+    
     if (droppedActor.type === "npc") {
       await BladesHelpers.addAcquaintance(this.actor, droppedActor);
     }
   }
 
-  /* -------------------------------------------- */
-  /*  Tabs                                         */
-  /* -------------------------------------------- */
-
-  // Self-managed tab state (rather than the ApplicationV2 TABS API) so the
-  // existing .tab[data-tab].active / nav.tabs .item.active CSS -- unchanged
-  // since the legacy AppV1 Tabs controller -- keeps working exactly as-is.
+  
   static async _onTabSelect(event, target) {
     event.preventDefault();
     const tab = target.dataset.tab;
@@ -173,18 +146,13 @@ export class BladesCrewSheet extends BladesSheetV2 {
     this.render(false);
   }
 
-  /* -------------------------------------------- */
-  /*  Quick roll / cohort add                      */
-  /* -------------------------------------------- */
-
+  
   static async _onRollQuickPopup(event, target) {
     event.preventDefault();
     await simpleRollPopup();
   }
 
-  // Cohorts are created blank (no item picker) -- mirrors
-  // BladesHelpers._addOwnedItem exactly, just reading data-item-type off the
-  // clicked V2 action target instead of a jQuery event.
+  
   static async _onAddCohort(event, target) {
     event.preventDefault();
     const item_type = target.dataset.itemType || "cohort";
@@ -194,13 +162,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }]);
   }
 
-  /* -------------------------------------------- */
-  /*  Turf claims (owned crew_type / prison item)  */
-  /* -------------------------------------------- */
-
-  // Toggle a non-base turf-block's claimed state. The base/lair claim tile
-  // never gets this action bound to it (see template), so no "is base turf"
-  // guard is needed here.
+  
   static async _onTurfClick(event, target) {
     event.preventDefault();
     const itemId = BladesCrewSheet._itemIdFrom(target);
@@ -268,13 +230,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }]);
   }
 
-  /* -------------------------------------------- */
-  /*  Crew upgrades / abilities                    */
-  /* -------------------------------------------- */
-
-  // Shared by crew_upgrade and crew_ability items: click a pip to unlock up
-  // through it, or click an already-unlocked pip to undo back to just before
-  // it (cumulative dot track).
+  
   static async _onCrewUpgradePricePip(event, target) {
     event.preventDefault();
     event.stopPropagation();
@@ -288,12 +244,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await item.update({ "system.unlocked": next });
   }
 
-  /* -------------------------------------------- */
-  /*  Cohorts                                      */
-  /* -------------------------------------------- */
-
-  // Harm is written as an array-wrapped single value (system.harm = [id]) --
-  // other code may depend on that exact shape, preserve it.
+  
   static async _onCohortHarmSet(event, target) {
     const itemId = BladesCrewSheet._itemIdFrom(target);
     const harmId = target.value;
@@ -304,10 +255,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }]);
   }
 
-  /* -------------------------------------------- */
-  /*  Turf claimed (manual entry)                  */
-  /* -------------------------------------------- */
-
+  
   static async _onTurfClaimedEdit(event, target) {
     event.preventDefault();
     const maxRep = Number(this.actor.system.max?.rep) || 0;
@@ -338,10 +286,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await this.actor.update({ "system.turf.claimed": value });
   }
 
-  /* -------------------------------------------- */
-  /*  Acquaintances / contacts                     */
-  /* -------------------------------------------- */
-
+  
   static async _onStandingToggle(event, target) {
     const acqId = target.closest(".acquaintance")?.dataset.acquaintance;
     if (!acqId) return;
@@ -379,10 +324,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await BladesHelpers.addCustomContact(this.actor);
   }
 
-  /* -------------------------------------------- */
-  /*  XP clock (world setting ClockXP)             */
-  /* -------------------------------------------- */
-
+  
   static async _onExpClockUp(event, target) {
     let { value, number, size } = this.actor.system.exp_clock;
     value = value + 1;

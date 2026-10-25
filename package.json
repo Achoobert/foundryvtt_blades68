@@ -11,7 +11,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "lint": "eslint module",
-    "format": "prettier --write .",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "build:css": "sass scss/style.scss:styles/blades.css --style=expanded --no-source-map",
     "watch": "node scripts/watch.mjs",
     "watch:css": "sass scss/style.scss:styles/blades.css --watch --style=expanded --source-map",
@@ -21,6 +22,8 @@
     "packs:test": "node --test scripts/test-yml-packs.mjs",
     "dev:sync": "node scripts/dev-sync.mjs",
     "dev:world": "node scripts/ensure-world.mjs",
+    "foundry:start": "scripts/start_foundry.sh",
+    "foundry:stop": "scripts/stop_foundry.sh",
     "dev": "npm run build:css && npm run packs:build && npm run dev:sync && npm run dev:world && npm run test:quench:sync",
     "test": "npm run packs:test && npm run packs:build && npm run dev:sync && npm run test:quench:sync && npm run test:e2e",
     "test:quench:sync": "node scripts/sync-quench-module.mjs",
@@ -32,7 +35,7 @@
     "classic-level": "^1.4.1",
     "eslint": "^9.0.0",
     "js-yaml": "^4.1.0",
-    "prettier": "^3.3.0",
+    "oxfmt": "^0.74.0",
     "sass": "^1.89.0"
   },
   "engines": {

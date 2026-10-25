@@ -80,7 +80,9 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
    * "ability" mixin -- description + price/class/uses tracking shared by
    * ability, crew_ability and crew_upgrade. uses_used/purchased/class_default/
    * unlocked have no UI on this sheet (set programmatically elsewhere, e.g.
-   * the character-sheet purchase flow) but must stay in schema.
+   * the character-sheet purchase flow) but must stay in schema. load_bonus is
+   * free load granted to the carrier (Mule, the rigging upgrades); the actor
+   * sums it in getLoadBonusSources().
    */
   static abilityFields() {
     return {
@@ -89,6 +91,7 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
       price: new fields.NumberField({ required: false, initial: 1 }),
       uses: new fields.NumberField({ required: false, initial: 0 }),
       uses_text: new fields.StringField({ required: false, blank: true, initial: "" }),
+      load_bonus: new fields.NumberField({ required: false, initial: 0, integer: true }),
       uses_used: new fields.NumberField({ required: false, initial: 0 }),
       purchased: new fields.BooleanField({ required: false, initial: false }),
       class_default: new fields.BooleanField({ required: false, initial: false }),

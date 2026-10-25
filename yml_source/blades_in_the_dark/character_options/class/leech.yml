@@ -33,22 +33,30 @@ system:
       - 0
 effects:
   - _id: N4jYP0USRceDlCC1
-    changes:
-      - key: data.acquaintances_label
-        mode: 5
-        value: BITD.CleverFriends
-      - key: data.experience_clues
-        mode: 2
-        value: BITD.ExpChallengeTechnical
+    name: Leech
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.acquaintances_label
+          type: override
+          value: BITD.CleverFriends
+          priority: null
+          phase: initial
+        - key: system.experience_clues
+          type: add
+          value: BITD.ExpChallengeTechnical
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Leech
-    origin: Compendium.blades-in-the-dark.class.8jExf4Zqad6e3bvn
-    transfer: true
-    flags: {}
-    tint: ''
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 400000
 permission:

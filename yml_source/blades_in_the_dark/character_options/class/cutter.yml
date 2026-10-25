@@ -33,22 +33,30 @@ system:
       - 0
 effects:
   - _id: y3J5ijkSzvxh6KYp
-    changes:
-      - key: data.acquaintances_label
-        mode: 5
-        value: BITD.DangerousFriends
-      - key: data.experience_clues
-        mode: 2
-        value: BITD.ExpChallengeViolence
+    name: Cutter
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.acquaintances_label
+          type: override
+          value: BITD.DangerousFriends
+          priority: null
+          phase: initial
+        - key: system.experience_clues
+          type: add
+          value: BITD.ExpChallengeViolence
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Cutter
-    origin: Compendium.blades-in-the-dark.class.tEob41rtEbHcswNM
-    transfer: true
-    flags: {}
-    tint: ''
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 300000
 permission:

@@ -33,22 +33,30 @@ system:
       - 0
 effects:
   - _id: IYpODw0CDIJni6vS
-    changes:
-      - key: data.acquaintances_label
-        mode: 5
-        value: BITD.StrangeFriends
-      - key: data.experience_clues
-        mode: 2
-        value: BITD.ExpChallengeKnowledge
+    name: Whisper
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.acquaintances_label
+          type: override
+          value: BITD.StrangeFriends
+          priority: null
+          phase: initial
+        - key: system.experience_clues
+          type: add
+          value: BITD.ExpChallengeKnowledge
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Whisper
-    origin: Compendium.blades-in-the-dark.class.zOg14xy8ZEku6bNq
-    transfer: true
-    flags: {}
-    tint: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 200000
 permission:

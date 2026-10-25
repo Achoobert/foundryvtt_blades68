@@ -15,28 +15,40 @@ system:
   logic: ''
 effects:
   - _id: xUueJ7VIRbLa7PNo
-    changes:
-      - key: data.stress.max
-        mode: 5
-        value: '10'
-      - key: data.stress.name
-        mode: 5
-        value: BITD.Drain
-      - key: data.trauma.name
-        mode: 5
-        value: BITD.Wear
-      - key: data.trauma.options
-        mode: 5
-        value: '["clanking", "leaking", "fixated", "smoking", "sparking", "unstable"]'
+    name: Automaton
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
     disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.stress.max
+          type: override
+          value: '10'
+          priority: null
+          phase: initial
+        - key: system.stress.name
+          type: override
+          value: BITD.Drain
+          priority: null
+          phase: initial
+        - key: system.trauma.name
+          type: override
+          value: BITD.Wear
+          priority: null
+          phase: initial
+        - key: system.trauma.options
+          type: override
+          value: '["clanking", "leaking", "fixated", "smoking", "sparking", "unstable"]'
+          priority: null
+          phase: initial
     duration:
       startTime: null
-    icon: systems/blades68/styles/assets/icons/Icon.3_13.webp
-    label: Automaton
-    origin: Item.z1kysRvqqbX5lRVA
-    transfer: true
-    flags: {}
-    tint: ''
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
 folder: null
 sort: 0
 permission:

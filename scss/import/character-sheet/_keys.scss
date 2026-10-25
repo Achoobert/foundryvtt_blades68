@@ -1,5 +1,5 @@
 & * {
-  // Keys / Deadlocks
+  
   .keys-container {
     .keys-header {
       display: flex;
@@ -49,7 +49,7 @@
       }
 
       .key-drift {
-        color: white;
+        color: inherit;
         font-style: italic;
         font-size: 12px;
         flex-grow: 1;

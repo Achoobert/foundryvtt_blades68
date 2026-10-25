@@ -25,12 +25,21 @@
       "name": "achoobert"
     }
   ],
-  "esmodules": [
-    "module/blades.js"
-  ],
-  "styles": [
-    "styles/blades.css"
-  ],
+  "esmodules": ["module/blades.js"],
+  "styles": ["styles/blades.css"],
+  "flags": {
+    "hotReload": {
+      "extensions": ["hbs", "css", "json", "js", "html"],
+      "paths": [
+        "styles/",
+        "lang/",
+        "templates/",
+        "themes/",
+        "packs/",
+        "module/"
+      ]
+    }
+  },
   "languages": [
     {
       "lang": "en",
@@ -323,10 +332,7 @@
         {
           "name": "Factions & NPCs",
           "sorting": "m",
-          "packs": [
-            "faction",
-            "npc"
-          ]
+          "packs": ["faction", "npc"]
         },
         {
           "name": "Entanglements",
@@ -340,10 +346,7 @@
         {
           "name": "Names",
           "sorting": "m",
-          "packs": [
-            "shattered-isles-names-macro",
-            "shattered-isles-names"
-          ]
+          "packs": ["shattered-isles-names-macro", "shattered-isles-names"]
         }
       ]
     },
@@ -366,14 +369,21 @@
         {
           "name": "Blades68 Engine",
           "sorting": "m",
-          "packs": [
-            "blades68_troubles",
-            "blades68_trouble_tables"
-          ]
+          "packs": ["blades68_troubles", "blades68_trouble_tables"]
         }
       ]
     }
   ],
+  "relationships": {
+    "recommends": [
+      {
+        "id": "token-action-hud-core",
+        "type": "module",
+        "compatibility": { "minimum": "2.1" },
+        "reason": "Adds a token HUD with action-rating rolls."
+      }
+    ]
+  },
   "manifest": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.json",
   "download": "https://github.com/Achoobert/foundryvtt_blades68/releases/latest/download/system.zip"
 }

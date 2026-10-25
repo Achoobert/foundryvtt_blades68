@@ -57,7 +57,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
     const grouped_items = BladesHelpers.groupItemsByClass(items);
 
-    let items_html = '<div class="items-list">';
+    let items_html = '<div class="items-list add-items-list">';
     for (const [itemclass, group] of Object.entries(grouped_items)) {
       items_html += `<div class="item-group"><header>${itemclass}</header>`;
       for (const item of group) {
