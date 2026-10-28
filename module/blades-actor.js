@@ -268,7 +268,7 @@ export class BladesActor extends Actor {
       await this._spendGambit();
     }
     if (applyActionOptions && dialogResult.optPush) {
-      await this._applyPushYourselfStress();
+      this._flagPushYourselfStress();
     }
 
     if (!BladesHelpers.isAttributeAction(attribute_name)) {
@@ -532,38 +532,14 @@ export class BladesActor extends Actor {
   }
 
   
-  async _applyPushYourselfStress() {
+  _flagPushYourselfStress() {
     const current = Number(this.system.stress.value) || 0;
     const max = Number(this.system.stress.max) || 9;
     const next = Math.min(current + 2, max);
     if (next === current) return;
 
-    await this.update({ "system.stress.value": next });
-
-    
-    await this._awaitNextSheetRender();
+    // Don't write stress; shake the boxes the player should fill by hand.
     this._pulseStressBoxes(current, next);
-  }
-
-  
-  _awaitNextSheetRender(timeoutMs = 300) {
-    const sheetClassName = this.sheet?.constructor?.name;
-    if (!sheetClassName) return Promise.resolve();
-
-    return new Promise((resolve) => {
-      let done = false;
-      const hookName = `render${sheetClassName}`;
-      const finish = () => {
-        if (done) return;
-        done = true;
-        Hooks.off(hookName, hookId);
-        resolve();
-      };
-      const hookId = Hooks.on(hookName, (app) => {
-        if (app.object?.id === this.id) finish();
-      });
-      setTimeout(finish, timeoutMs);
-    });
   }
 
   
