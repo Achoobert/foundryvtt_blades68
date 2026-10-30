@@ -221,6 +221,23 @@ export default function register(quench) {
           }
         });
 
+        it('Hull class renames stress to Drain and adds +1 stress box', async function () {
+          requireSystemActive();
+          const pack = game.packs.get('blades68.blades68_classes');
+          const hull = (await pack.getDocuments()).find((doc) => doc.name === 'Hull');
+          assert.isOk(hull, 'Hull should be in the blades68 classes pack');
+
+          const character = tracker.track(await Actor.create({ name: 'Quench Hull Drain PC', type: 'character' }));
+          await character.createEmbeddedDocuments('Item', [hull.toObject()]);
+
+          assert.equal(character.system.stress.name, 'BITD.Drain');
+          assert.equal(Number(character.system.stress.max), 10, 'Hull should add +1 to the default 9 stress boxes');
+
+          if (game.settings.get('blades68', 'Blades68Mode') === 'blades68') {
+            await trackHullContacts(character);
+          }
+        });
+
         it('Hull class in Blades68 mode adds On Program vice, Suspicion clock and Controller NPC', async function () {
           this.timeout(10000);
           requireSystemActive();
