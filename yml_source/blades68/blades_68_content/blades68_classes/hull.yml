@@ -55,6 +55,48 @@ effects:
     statuses: []
     showIcon: 1
     flags: {}
+  - _id: hullDrainLabel01
+    name: Drain
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.stress.name
+          type: override
+          value: BITD.Drain
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
+    flags: {}
+  - _id: hullStressBox001
+    name: +1 Stress Box
+    img: systems/blades68/styles/assets/icons/Icon.3_13.webp
+    type: base
+    origin: null
+    disabled: false
+    transfer: true
+    system:
+      changes:
+        - key: system.stress.max
+          type: add
+          value: '1'
+          priority: null
+          phase: initial
+    duration:
+      startTime: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    showIcon: 1
+    flags: {}
 folder: null
 sort: 0
 permission:

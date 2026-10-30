@@ -1,5 +1,6 @@
 import { generateRandomId } from "./compat.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
+import { ATTRIBUTES } from "./data/attributes.js";
 
 export class BladesHelpers {
 
@@ -59,40 +60,7 @@ export class BladesHelpers {
     return actor.createEmbeddedDocuments("Item", [data]);
   }
 
-  /**
-   * Get the list of all available ingame items by Type.
-   *
-   * @param {string} item_type
-   * @param {Object} game
-   */
-  /** //Accidentally duplicated this code before; I don't know if it works any differently
-   static async getAllItemsByType(item_type, game) {
-
-   let list_of_items = [];
-   let game_items = [];
-   let compendium_items = [];
-
-   game_items = game.items.filter(e => e.type === item_type).map(e => {return e.toObject()});
-
-   let pack = game.packs.find(e => e.metadata.name === item_type);
-   let compendium_content = await pack.getDocuments();
-   compendium_items = compendium_content.map(e => {return e.toObject()});
-
-   list_of_items = game_items.concat(compendium_items);
-   list_of_items.sort(function(a, b) {
-     let nameA = a.name.toUpperCase();
-     let nameB = b.name.toUpperCase();
-   return nameA.localeCompare(nameB);
-   });
-   return list_of_items;
-
-   }
-   **/
-  /**
-   * Maps a base item type to its Blades '68-specific compendium pack name, for types that have
-   * a parallel Blades '68 catalog alongside the vanilla Blades in the Dark one (e.g. "ability" ->
-   * "blades68_abilities"). Types without a Blades '68 counterpart return undefined.
-   */
+  
   static getBlades68PackName(item_type) {
     return {
       class: "blades68_classes",
@@ -167,14 +135,12 @@ export class BladesHelpers {
    */
   static getAttributeLabel(attribute_name) {
     let attribute_labels = {};
-    const attributes = game.model.Actor.character.attributes;
 
-    for (const att_name in attributes) {
-      attribute_labels[att_name] = attributes[att_name].label;
-      for (const skill_name in attributes[att_name].skills) {
-        attribute_labels[skill_name] = attributes[att_name].skills[skill_name].label;
+    for (const [att_name, attribute] of Object.entries(ATTRIBUTES)) {
+      attribute_labels[att_name] = attribute.label;
+      for (const [skill_name, skill_label] of Object.entries(attribute.skills)) {
+        attribute_labels[skill_name] = skill_label;
       }
-
     }
 
     return attribute_labels[attribute_name];
@@ -187,16 +153,13 @@ export class BladesHelpers {
    * @returns {string}
    */
   static getRollLabel(roll_name) {
-    let attribute_labels = {};
-    const attributes = game.model.Actor.character.attributes;
-
-    for (const att_name in attributes) {
+    for (const [att_name, attribute] of Object.entries(ATTRIBUTES)) {
       if (att_name == roll_name) {
-        return attributes[att_name].label;
+        return attribute.label;
       }
-      for (const skill_name in attributes[att_name].skills) {
+      for (const [skill_name, skill_label] of Object.entries(attribute.skills)) {
         if (skill_name == roll_name) {
-          return attributes[att_name].skills[skill_name].label;
+          return skill_label;
         }
       }
     }
@@ -211,13 +174,9 @@ export class BladesHelpers {
    * @returns {Boolean}
    */
   static isAttributeAction(attribute_name) {
-    const attributes = game.model.Actor.character.attributes;
-
-    for (const att_name in attributes) {
-      for (const skill_name in attributes[att_name].skills) {
-        if (skill_name == attribute_name) {
-          return true;
-        }
+    for (const attribute of Object.values(ATTRIBUTES)) {
+      if (attribute_name in attribute.skills) {
+        return true;
       }
     }
 
@@ -231,9 +190,7 @@ export class BladesHelpers {
    * @returns {Boolean}
    */
   static isAttributeAttribute(attribute_name) {
-    const attributes = game.model.Actor.character.attributes;
-
-    return (attribute_name in attributes);
+    return (attribute_name in ATTRIBUTES);
   }
 
   /**
@@ -243,7 +200,7 @@ export class BladesHelpers {
     ui.notifications?.info?.(game.i18n.localize("BITD.XpReminder"));
   }
 
-  /* -------------------------------------------- */
+  
   static getProperCase(name) {
     return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
   }
@@ -670,17 +627,7 @@ export class BladesHelpers {
       return 0;
     }
 
-    let rootFolder = game.folders.find((f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
-    if (!rootFolder) {
-      rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
-    }
-
-    let actorFolder = game.folders.find(
-      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
-    );
-    if (!actorFolder) {
-      actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
-    }
+    const actorFolder = await this.getPcContactsFolder(actor);
 
     const npcData = missing.map((c) => ({
       name: c.name,
@@ -706,7 +653,85 @@ export class BladesHelpers {
     return createdNpcs.length;
   }
 
-  // adds a crew to the character
+  /**
+   * Find or create the PC_contacts/<actor name> folder that holds an actor's generated contacts.
+   * @param {Actor} actor
+   * @returns {Promise<Folder>}
+   */
+  static async getPcContactsFolder(actor) {
+    let rootFolder = game.folders.find((f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
+    if (!rootFolder) {
+      rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
+    }
+
+    let actorFolder = game.folders.find(
+      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
+    );
+    if (!actorFolder) {
+      actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
+    }
+    return actorFolder;
+  }
+
+  /**
+   * Blades '68 Hull setup: give the "On Program" vice, add a 4-segment Suspicion clock and a
+   * Controller NPC to contacts, and link both from the vice description.
+   * Idempotent: reuses an existing vice/contacts by name and only appends links once.
+   * @param {Actor} actor - character actor that just gained the Hull class
+   */
+  static async setupHullOnProgram(actor) {
+    if (!actor || actor.type !== "character") {
+      return;
+    }
+    if (game.settings.get("blades68", "Blades68Mode") !== "blades68") {
+      return;
+    }
+
+    let vice = actor.items.find((i) => i.type === "vice" && i.name === "On Program");
+    if (!vice) {
+      const pack = game.packs.get("blades68.blades68_vices");
+      const source = await pack?.getDocument("8CVCPqlGi5TcvUwU");
+      if (!source) {
+        console.warn("blades68 | On Program vice not found in blades68.blades68_vices");
+        return;
+      }
+      [vice] = await actor.createEmbeddedDocuments("Item", [source.toObject()]);
+    }
+
+    const acquaintances = foundry.utils.deepClone(actor.system.acquaintances ?? []);
+    const findContact = (name) =>
+      acquaintances.find((acq) => String(acq?.name ?? "").trim().toLowerCase() === name.toLowerCase());
+
+    const wanted = [
+      { name: "Suspicion", type: "🕛 clock", system: { type: 4, value: 0 } },
+      { name: "Controller", type: "npc", system: { associated_class: "Hull" } },
+    ];
+    const missing = wanted.filter((data) => !findContact(data.name));
+    if (missing.length) {
+      const folder = await this.getPcContactsFolder(actor);
+      const created = await Actor.createDocuments(missing.map((data) => ({ ...data, folder: folder.id })));
+      for (const doc of created) {
+        acquaintances.push({
+          id: doc.id,
+          name: doc.name,
+          description_short: doc.system.description_short ?? "",
+          standing: "neutral",
+        });
+      }
+      await actor.update({ "system.acquaintances": acquaintances });
+    }
+
+    const clockId = findContact("Suspicion")?.id;
+    const controllerId = findContact("Controller")?.id;
+    const description = vice.system.description ?? "";
+    if (clockId && controllerId && !description.includes(`@UUID[Actor.${clockId}]`)) {
+      await vice.update({
+        "system.description": `${description}<p>@UUID[Actor.${clockId}]{Suspicion} · @UUID[Actor.${controllerId}]{Controller}</p>`,
+      });
+    }
+  }
+
+  
   static async addCrew(actor, dropped_crew) {
     let current_crew = actor.system.crew;
     let new_crew = {
@@ -728,7 +753,7 @@ export class BladesHelpers {
     }
   }
 
-  // removes a crew from the character
+  
   static async removeCrew(actor, crewId) {
     let current_crew = actor.system.crew;
     let updated_crew = current_crew.filter(acq => acq._id !== crewId && acq.id !== crewId);

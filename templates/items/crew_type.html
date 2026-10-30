@@ -69,9 +69,9 @@
 
   <section class="flex-vertical">
     <label class="label-stripe">{{localize "BITD.Description"}}</label>
-    <prose-mirror name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</prose-mirror>
+    <textarea rows="8" name="system.description" {{#unless editable}}disabled{{/unless}}>{{system.description_raw}}</textarea>
     <label class="label-stripe">{{localize "BITD.ExpClues"}}</label>
-    <prose-mirror name="system.experience_clues" value="{{system.experience_clues_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.experience_clues}}}</prose-mirror>
+    <textarea rows="8" name="system.experience_clues" {{#unless editable}}disabled{{/unless}}>{{system.experience_clues_raw}}</textarea>
 
     <label class="label-stripe">{{localize "BITD.Turf"}}</label>
     <div id="turf-container">

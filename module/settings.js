@@ -125,14 +125,6 @@ export const registerSystemSettings = function () {
     },
   });
 
-  game.settings.register("bitd", "systemMigrationVersion", {
-    name: "System Migration Version",
-    scope: "world",
-    config: false,
-    type: Number,
-    default: 0,
-  });
-
   game.settings.register("blades68", "tokenAutoRotateDefaultApplied", {
     scope: "world",
     config: false,
