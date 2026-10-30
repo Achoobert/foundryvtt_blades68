@@ -592,6 +592,16 @@ for (const hook of [
 }
 
 Hooks.on("createItem", (item) => syncCrewUpgradeEffectGate(item));
+Hooks.on("createItem", (item, _options, userId) => {
+  if (
+    userId === game.user.id &&
+    item.type === "class" &&
+    item.name === "Hull" &&
+    item.parent?.type === "character"
+  ) {
+    BladesHelpers.setupHullOnProgram(item.parent);
+  }
+});
 Hooks.on("updateItem", (item, changes) => {
   if (
     foundry.utils.hasProperty(changes, "system.unlocked") ||

@@ -627,17 +627,7 @@ export class BladesHelpers {
       return 0;
     }
 
-    let rootFolder = game.folders.find((f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
-    if (!rootFolder) {
-      rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
-    }
-
-    let actorFolder = game.folders.find(
-      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
-    );
-    if (!actorFolder) {
-      actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
-    }
+    const actorFolder = await this.getPcContactsFolder(actor);
 
     const npcData = missing.map((c) => ({
       name: c.name,
@@ -661,6 +651,84 @@ export class BladesHelpers {
     }
     await actor.update({ "system.acquaintances": acquaintances });
     return createdNpcs.length;
+  }
+
+  /**
+   * Find or create the PC_contacts/<actor name> folder that holds an actor's generated contacts.
+   * @param {Actor} actor
+   * @returns {Promise<Folder>}
+   */
+  static async getPcContactsFolder(actor) {
+    let rootFolder = game.folders.find((f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
+    if (!rootFolder) {
+      rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
+    }
+
+    let actorFolder = game.folders.find(
+      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
+    );
+    if (!actorFolder) {
+      actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
+    }
+    return actorFolder;
+  }
+
+  /**
+   * Blades '68 Hull setup: give the "On Program" vice, add a 4-segment Suspicion clock and a
+   * Controller NPC to contacts, and link both from the vice description.
+   * Idempotent: reuses an existing vice/contacts by name and only appends links once.
+   * @param {Actor} actor - character actor that just gained the Hull class
+   */
+  static async setupHullOnProgram(actor) {
+    if (!actor || actor.type !== "character") {
+      return;
+    }
+    if (game.settings.get("blades68", "Blades68Mode") !== "blades68") {
+      return;
+    }
+
+    let vice = actor.items.find((i) => i.type === "vice" && i.name === "On Program");
+    if (!vice) {
+      const pack = game.packs.get("blades68.blades68_vices");
+      const source = await pack?.getDocument("8CVCPqlGi5TcvUwU");
+      if (!source) {
+        console.warn("blades68 | On Program vice not found in blades68.blades68_vices");
+        return;
+      }
+      [vice] = await actor.createEmbeddedDocuments("Item", [source.toObject()]);
+    }
+
+    const acquaintances = foundry.utils.deepClone(actor.system.acquaintances ?? []);
+    const findContact = (name) =>
+      acquaintances.find((acq) => String(acq?.name ?? "").trim().toLowerCase() === name.toLowerCase());
+
+    const wanted = [
+      { name: "Suspicion", type: "🕛 clock", system: { type: 4, value: 0 } },
+      { name: "Controller", type: "npc", system: { associated_class: "Hull" } },
+    ];
+    const missing = wanted.filter((data) => !findContact(data.name));
+    if (missing.length) {
+      const folder = await this.getPcContactsFolder(actor);
+      const created = await Actor.createDocuments(missing.map((data) => ({ ...data, folder: folder.id })));
+      for (const doc of created) {
+        acquaintances.push({
+          id: doc.id,
+          name: doc.name,
+          description_short: doc.system.description_short ?? "",
+          standing: "neutral",
+        });
+      }
+      await actor.update({ "system.acquaintances": acquaintances });
+    }
+
+    const clockId = findContact("Suspicion")?.id;
+    const controllerId = findContact("Controller")?.id;
+    const description = vice.system.description ?? "";
+    if (clockId && controllerId && !description.includes(`@UUID[Actor.${clockId}]`)) {
+      await vice.update({
+        "system.description": `${description}<p>@UUID[Actor.${clockId}]{Suspicion} · @UUID[Actor.${controllerId}]{Controller}</p>`,
+      });
+    }
   }
 
   

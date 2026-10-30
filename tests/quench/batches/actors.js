@@ -1,5 +1,6 @@
 
 import { createdDocsTracker, requireSystemActive } from '../helpers.js';
+import { BladesHelpers } from '/systems/blades68/module/blades-helpers.js';
 
 export default function register(quench) {
   quench.registerBatch(
@@ -11,6 +12,22 @@ export default function register(quench) {
       after(async () => {
         await tracker.cleanup();
       });
+
+      // Hull setup runs from an async createItem hook; wait for its vice links, then track the
+      // generated Suspicion clock and Controller NPC so the batch cleans them up.
+      async function trackHullContacts(character) {
+        for (let i = 0; i < 30; i++) {
+          const vice = character.items.find((item) => item.type === 'vice' && item.name === 'On Program');
+          if (vice?.system.description?.includes('@UUID[Actor.')) break;
+          await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        const contact = (name) => {
+          const acq = character.system.acquaintances.find((a) => a.name === name);
+          const doc = acq && game.actors.get(acq.id);
+          return doc ? tracker.track(doc) : null;
+        };
+        return { clock: contact('Suspicion'), controller: contact('Controller') };
+      }
 
       describe('character actor defaults', function () {
         it('creates a character with the Keys/Trauma/Coin defaults', async function () {
@@ -198,6 +215,49 @@ export default function register(quench) {
           assert.equal(Number(character.system.keys.max), 1, 'add-key AE should stack on Hull override');
           assert.equal(character.getMaxKeys(), 1);
           assert.lengthOf(character.getComputedKeys(), 1);
+
+          if (game.settings.get('blades68', 'Blades68Mode') === 'blades68') {
+            await trackHullContacts(character);
+          }
+        });
+
+        it('Hull class in Blades68 mode adds On Program vice, Suspicion clock and Controller NPC', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+
+          const priorMode = game.settings.get('blades68', 'Blades68Mode');
+          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
+          try {
+            const pack = game.packs.get('blades68.blades68_classes');
+            const hull = (await pack.getDocuments()).find((doc) => doc.name === 'Hull');
+            assert.isOk(hull, 'Hull should be in the blades68 classes pack');
+
+            const character = tracker.track(await Actor.create({ name: 'Quench Hull Vice PC', type: 'character' }));
+            await character.createEmbeddedDocuments('Item', [hull.toObject()]);
+            const { clock, controller } = await trackHullContacts(character);
+
+            const vices = character.items.filter((i) => i.type === 'vice');
+            assert.lengthOf(vices, 1, 'Hull should get exactly one vice');
+            assert.equal(vices[0].name, 'On Program');
+
+            assert.isOk(clock, 'Suspicion should be in contacts and exist as a world actor');
+            assert.equal(clock.type, '🕛 clock');
+            assert.equal(clock.system.type, 4, 'Suspicion clock should have 4 segments');
+            assert.isOk(controller, 'Controller should be in contacts and exist as a world actor');
+            assert.equal(controller.type, 'npc');
+
+            const description = vices[0].system.description;
+            assert.include(description, `@UUID[Actor.${clock.id}]{Suspicion}`);
+            assert.include(description, `@UUID[Actor.${controller.id}]{Controller}`);
+
+            await BladesHelpers.setupHullOnProgram(character);
+            assert.lengthOf(character.items.filter((i) => i.type === 'vice'), 1, 'rerun should not add a second vice');
+            assert.lengthOf(character.system.acquaintances, 2, 'rerun should not add duplicate contacts');
+            const rerunDescription = character.items.find((i) => i.type === 'vice').system.description;
+            assert.equal(rerunDescription.split('@UUID[Actor.').length - 1, 2, 'rerun should not append links again');
+          } finally {
+            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+          }
         });
       });
 
@@ -272,29 +332,36 @@ export default function register(quench) {
       });
 
       describe('crew Vault effect', function () {
-        async function vaultUpgradeFromPack() {
+        async function vaultUpgradesFromPack() {
           const pack = game.packs.get('blades68.blades68_crew_upgrades');
           const docs = await pack.getDocuments();
-          return docs.find((doc) => doc.name === 'Vault');
+          return {
+            vault1: docs.find((doc) => doc.name === 'Vault 1'),
+            vault2: docs.find((doc) => doc.name === 'Vault 2')
+          };
         }
 
-        it('transfers vault.max onto the owning crew once unlocked, and the sheet renders it', async function () {
+        function unlockedData(upgrade) {
+          const data = upgrade.toObject();
+          data.system.unlocked = Number(data.system.price) || 0;
+          return data;
+        }
+
+        it('Vault 1 adds 4 to vault.max and Vault 2 stacks +8 on top, and the sheet renders it', async function () {
           this.timeout(10000);
           requireSystemActive();
-          const upgrade = await vaultUpgradeFromPack();
-          assert.isOk(upgrade, 'Vault should be in the blades68 crew upgrades pack');
+          const { vault1, vault2 } = await vaultUpgradesFromPack();
+          assert.isOk(vault1, 'Vault 1 should be in the blades68 crew upgrades pack');
+          assert.isOk(vault2, 'Vault 2 should be in the blades68 crew upgrades pack');
 
           const crew = tracker.track(await Actor.create({ name: 'Quench Vault Crew', type: 'crew' }));
           assert.equal(crew.system.vault.max, 0, 'vault.max should start at 0 with no Vault upgrade');
 
-          const upgradeData = upgrade.toObject();
-          upgradeData.system.unlocked = Number(upgradeData.system.price) || 0;
-          await crew.createEmbeddedDocuments('Item', [upgradeData]);
-          assert.equal(
-            Number(crew.system.vault.max),
-            16,
-            'passive upgrade effect should add to crew system.vault.max'
-          );
+          await crew.createEmbeddedDocuments('Item', [unlockedData(vault1)]);
+          assert.equal(Number(crew.system.vault.max), 4, 'Vault 1 should add 4 to crew system.vault.max');
+
+          await crew.createEmbeddedDocuments('Item', [unlockedData(vault2)]);
+          assert.equal(Number(crew.system.vault.max), 12, 'Vault 2 should add 8 on top of Vault 1');
 
           const sheet = crew.sheet;
           await sheet.render(true);
@@ -302,13 +369,18 @@ export default function register(quench) {
             const data = await sheet._prepareContext();
             assert.equal(
               data.system.vault.max,
-              16,
+              12,
               'sheet context must reflect the effect-applied vault.max, not raw source'
             );
-            assert.isAbove(
-              sheet.element.querySelectorAll(`#crew-${crew.id}-coins-vault`).length,
-              0,
+            assert.lengthOf(
+              sheet.element.querySelectorAll(`#crew-${crew.id}-coins-vault`),
+              1,
               'the Vault coin row should render once vault.max is non-zero'
+            );
+            assert.lengthOf(
+              sheet.element.querySelectorAll(`#crew-${crew.id}-coins-vault input[name="system.vault.value"]:not([value="0"])`),
+              12,
+              'the Vault row should have one coin box per point of vault.max'
             );
           } finally {
             await sheet.close();
