@@ -54,7 +54,7 @@
 
         <div id="character-{{_id}}-coins-hands">
           <div class="stripe">
-            <b>{{localize "BITD.Coin"}}</b>
+            <b>{{#if blades68}}{{localize "B68.Stacks"}}{{else}}{{localize "BITD.Coin"}}{{/if}}</b>
           </div>
           <div class="coins coins-hands">
             {{#multiboxes system.coins}}
@@ -69,7 +69,7 @@
 
         <div id="coins-{{_id}}-coins-stashed">
           <div class="stripe">
-            <b>{{localize "BITD.Stash"}}</b>
+            <b>{{#if blades68}}{{localize "B68.Bank"}}{{else}}{{localize "BITD.Stash"}}{{/if}}</b>
           </div>
           <div class="coins coins-stashed">
             {{#multiboxes system.coins_stashed}}

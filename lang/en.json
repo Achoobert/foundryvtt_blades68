@@ -719,5 +719,7 @@
   "B68.Critical": "Critical",
   "B68.Major": "Major",
   "B68.Passing": "Passing",
-  "B68.RESOURCES": "Resources"
+  "B68.RESOURCES": "Resources",
+  "B68.Stacks": "Stacks",
+  "B68.Bank": "Bank"
 }

@@ -418,6 +418,36 @@ export default function register(quench) {
           assert.equal(after[2].key, 'Flamboyant', 'sibling slot 2 key must survive');
         });
       });
+
+      describe('Coin labels', function () {
+        it('says Stacks/Bank in Blades68 mode and Coin/Stash otherwise', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+
+          const priorMode = game.settings.get('blades68', 'Blades68Mode');
+          const actor = tracker.track(await Actor.create({ name: 'Quench Coin Labels PC', type: 'character' }));
+          const sheet = actor.sheet;
+          const labels = () => [
+            sheet.element.querySelector('.coins-hands')?.previousElementSibling?.textContent.trim(),
+            sheet.element.querySelector('.coins-stashed')?.previousElementSibling?.textContent.trim()
+          ];
+
+          try {
+            await game.settings.set('blades68', 'Blades68Mode', 'blades68');
+            await sheet.render(true);
+            assert.deepEqual(labels(), [game.i18n.localize('B68.Stacks'), game.i18n.localize('B68.Bank')]);
+            await sheet.close();
+
+            await game.settings.set('blades68', 'Blades68Mode', 'bitd');
+            await sheet.render(true);
+            assert.deepEqual(labels(), [game.i18n.localize('BITD.Coin'), game.i18n.localize('BITD.Stash')]);
+          } finally {
+            await sheet.close();
+            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+            await new Promise((resolve) => setTimeout(resolve, 200));
+          }
+        });
+      });
     },
     { displayName: 'Actor sheet catalogs (Keys, Special Abilities, Loadout)' }
   );
