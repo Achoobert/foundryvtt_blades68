@@ -255,7 +255,455 @@ results:
     weight: 1
     range: [36, 36]
     drawn: false
-formula: 1d36
+  - _id: MRVMCrodI6Rf57Ad
+    type: text
+    text: 'Aldaro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: gTwykkDJ0lZ5PaTD
+    type: text
+    text: 'Bascaro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: ZX7aoILssus53416
+    type: text
+    text: 'Belvane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: p0HqR0P05crblSVf
+    type: text
+    text: 'Cabrera'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: w6GxLg8kWaD6QddR
+    type: text
+    text: 'Calvaro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: sb8YYXFIc8G8mAus
+    type: text
+    text: 'Carrow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: 1ZdyH7bfaRBgbpMw
+    type: text
+    text: 'Castellan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: fdgqCQ8zkH82ShmE
+    type: text
+    text: 'Corvane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: HAl0srnGBWOMBbH7
+    type: text
+    text: 'Dalvecchio'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: M5KWRBhWZmhLkTgh
+    type: text
+    text: 'Dellmaro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: DZPscMrf76yFu7tr
+    type: text
+    text: 'Durrant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: AGX0wgKhHHstE4Wz
+    type: text
+    text: 'Escalo'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: DpeYJE4ARS9oKIJb
+    type: text
+    text: 'Fennimore'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: DIBBm46NCnox2exD
+    type: text
+    text: 'Ferraro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: 2Rs36Wl9Qmrqgrci
+    type: text
+    text: 'Galliard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: Hrd2TwViMJLJBkMg
+    type: text
+    text: 'Garrone'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: SjdcDMiJEbBdNhmV
+    type: text
+    text: 'Glenmorrow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: 0Pd9dF35aw4K5sSk
+    type: text
+    text: 'Harrowgate'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: seEUJTCm0LY2n2Aw
+    type: text
+    text: 'Inverkell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: zEAaFdbfM99bHjTY
+    type: text
+    text: 'Kestrel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: M3fTn9iNRO84rfkC
+    type: text
+    text: 'Lavalle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: ScwRCJuFJVCwf2LJ
+    type: text
+    text: 'Lenarro'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: UKmGAd20CQUhUKUL
+    type: text
+    text: 'Lomasi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: dYlOMlBTXXo8NZ8r
+    type: text
+    text: 'Maddox'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: ImzQZyeUGchtp5rs
+    type: text
+    text: 'Marrone'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: MxGMCP70bBmOrvjb
+    type: text
+    text: 'Montevar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: lJ97EAuzMncsZT88
+    type: text
+    text: 'Navarre'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: rJ7h6cuMvUVXwXet
+    type: text
+    text: 'Ostrander'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: cNmiTCqsTkMVWEUk
+    type: text
+    text: 'Pellucci'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: KTYeYySpXxnkGGOm
+    type: text
+    text: 'Perrault'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: K8C5h4IwKnU4EvJj
+    type: text
+    text: 'Quillon'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: cnpLz2tzeWjGFbKQ
+    type: text
+    text: 'Rastova'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: SG7rinGW9KG7WNH1
+    type: text
+    text: 'Redrock'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: o2U7t6NqrOyty4Jh
+    type: text
+    text: 'Saltmarsh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: QbOyIrYjMSO0AwXp
+    type: text
+    text: 'Scarra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: bgtvU06B5cYB3jug
+    type: text
+    text: 'Seravine'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: ZLpsNf6q2qggSFLj
+    type: text
+    text: 'Sorrento'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: oSV2FDAHXIOmvIfF
+    type: text
+    text: 'Tallis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: xkdWiuGj5tYbR3TH
+    type: text
+    text: 'Tarrant'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: B1WVWqgkczUXrG4y
+    type: text
+    text: 'Tremaine'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: f73BlMB6CIAbXfT3
+    type: text
+    text: 'Vantaggio'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: D2Dc7ns0uce3o2oS
+    type: text
+    text: 'Varga'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: CjmKNfsojEwnY7aq
+    type: text
+    text: 'Velasco'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: lNI6JgTTuPySRZ3b
+    type: text
+    text: 'Ventris'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: 3Hnfea3gZZP855ZC
+    type: text
+    text: 'Westmoor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: l1GkiEzqQcXROYcL
+    type: text
+    text: 'Zarra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: 8bVrW7b2Y40Zaozu
+    type: text
+    text: 'Caddock'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: S3bHPWILaqoDa9D4
+    type: text
+    text: 'Dunlavin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: r324WMstKYVBbZ1D
+    type: text
+    text: 'Ferragh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: f89WEMPGjU7eysa4
+    type: text
+    text: 'Gallowglass'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: Gr5TpfAxHH5HPgqT
+    type: text
+    text: 'Kilbrannan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: Qw4vtUckMuJQHlwI
+    type: text
+    text: 'Mallin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: w8PXKM3mPdsJh10n
+    type: text
+    text: 'Morvane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: Vh6ljotkozpIg0Qe
+    type: text
+    text: 'Penhallow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: eqLFf5OKgKQBPG3w
+    type: text
+    text: 'Porthleven'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: odAZi3V1E4yzdna8
+    type: text
+    text: 'Rosscarbery'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: zEurx8hszG70oB3c
+    type: text
+    text: 'Salcedo'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: zSJt5h8yLVnd5fGv
+    type: text
+    text: 'Tavernier'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: 33F6BjCFKwEZE6yU
+    type: text
+    text: 'Treharne'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: 0uQz0vgvdvOxMl2z
+    type: text
+    text: 'Valdera'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: 9mbhTJTNKT2kDyFU
+    type: text
+    text: 'Corrigan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: lsSJCqhbIh8ItDxE
+    type: text
+    text: 'Esparza'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: bZ58YT8ZekNmcImM
+    type: text
+    text: 'Haldane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: 8bo5iQdtOrBgeKvO
+    type: text
+    text: 'Sabbadin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
 replacement: true
 displayRoll: true
 folder: null

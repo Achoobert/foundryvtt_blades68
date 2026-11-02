@@ -1,0 +1,711 @@
+_id: H451grtMnISRbakv
+name: 'Severos - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Severos, for use in NPC/token/actor namer macros.'
+results:
+  - _id: ZiKK6qozIGoJVwP1
+    type: text
+    text: 'Arkhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: U77DSfQOpYihdSpk
+    type: text
+    text: 'Batuyen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: cmlVmgxt6LI0lI9Y
+    type: text
+    text: 'Bayanchar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: bEA52LB5zJlSWcYL
+    type: text
+    text: 'Borjhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: wszzj3HJk2tpdEmv
+    type: text
+    text: 'Chagatur'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: kuX4bSGCwXrmWRA1
+    type: text
+    text: 'Chakhar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: 4daSfpCTj8K00dpz
+    type: text
+    text: 'Chimedor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: SvR8AJYuWk999HCs
+    type: text
+    text: 'Dalantu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: PgYxWzeBu8KIogfw
+    type: text
+    text: 'Dargai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: iDs3OomHpzryYSIN
+    type: text
+    text: 'Dashkhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: 5Db76KypUpL2ornD
+    type: text
+    text: 'Dovchin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: ISgBo1Y85eaZlQ5E
+    type: text
+    text: 'Erdekhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: GQQBT7UvCbCOhwml
+    type: text
+    text: 'Esenbai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: 5tFOeoaMNYzJ3eT4
+    type: text
+    text: 'Ganzorig'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: 6fxLmSHJnajwU21s
+    type: text
+    text: 'Garakh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: 4KBSSLCM2qXhdVfA
+    type: text
+    text: 'Hadakhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: jjZMudnsMSp8YLgO
+    type: text
+    text: 'Hasgai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: BxrzvEcYBDOq2RHU
+    type: text
+    text: 'Horchin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: oycMnlqBXoxcbYv5
+    type: text
+    text: 'Ilkhazar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: 7IVJEDjY0GqHAuh3
+    type: text
+    text: 'Itzakul'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: 1hnCjII2udn3vDIi
+    type: text
+    text: 'Jaghatai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: ngMKwW7cEcCgcBGV
+    type: text
+    text: 'Jelmekh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: v38lYKYxdPgiEPC2
+    type: text
+    text: 'Jochiyar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: L9zLVAmhN9MFTGFw
+    type: text
+    text: 'Kaidu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: bW7aN8XneL7DEu06
+    type: text
+    text: 'Kalmakh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: MEYN932nn59UeKym
+    type: text
+    text: 'Karagul'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: KhVw33fZkhuYqWHm
+    type: text
+    text: 'Kasharin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: ABedhx8CIsmYGU15
+    type: text
+    text: 'Kerait'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: cVwsmS6zKEKoOMYN
+    type: text
+    text: 'Khaidar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: IsQscBNLxLwPpRjI
+    type: text
+    text: 'Khazrakh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: vg97Qx0hppP79adt
+    type: text
+    text: 'Khorchi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: KEuW90kLdhe4oeUL
+    type: text
+    text: 'Kipchar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: 0wkAEpiGfo6GxFI9
+    type: text
+    text: 'Kokosh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: djUQzBQS9IetLOLq
+    type: text
+    text: 'Kurultai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: TEgmZ4mSyaiGKXTL
+    type: text
+    text: 'Kuyuk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: FHHHMr00O6eN3ksG
+    type: text
+    text: 'Malakhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+  - _id: bqxh32gj0Y4YKD3p
+    type: text
+    text: 'Menggai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: YqMDr9nNLCTDWnfr
+    type: text
+    text: 'Merkhit'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: MWdd3zM6ATDBvraK
+    type: text
+    text: 'Mongkha'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: iev6RQ64paiCLzyL
+    type: text
+    text: 'Nakhodai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: DPxOR74o9nG2PUoq
+    type: text
+    text: 'Nayantai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: C4daxuJjKdXEbRtG
+    type: text
+    text: 'Nergui'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: Cgvqu63kwpIIv5dc
+    type: text
+    text: 'Noyokhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: quBlEqh4BvyXjsIC
+    type: text
+    text: 'Ochirvan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: dUiJkwgoNXz9XeRX
+    type: text
+    text: 'Odgerel'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: tinH79jGBGJrPHJS
+    type: text
+    text: 'Olkhonar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: KuBquNFKPFnDz0EZ
+    type: text
+    text: 'Ongudai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: vQfcSg0ASReW2Op5
+    type: text
+    text: 'Orkhazar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: Ae1LhDAc3otD719l
+    type: text
+    text: 'Otchigin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: yu4wB02jcZZBcKbl
+    type: text
+    text: 'Saikhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: maQ1blhKZhvlBW5m
+    type: text
+    text: 'Sangai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: VvLRmGAsXIvsF7uE
+    type: text
+    text: 'Sartaq'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: NOsk4rGpbKTcSwz3
+    type: text
+    text: 'Setsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: cDS5kELsuylyrzF0
+    type: text
+    text: 'Shirakhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: JXbEuuCkCc0jkz2c
+    type: text
+    text: 'Sorkhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: a0ERoVIoChXuSnal
+    type: text
+    text: 'Sukhbaar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: ZphwsoYWWjnwMEiL
+    type: text
+    text: 'Tamirkhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: U03IXUOJDPJbcriN
+    type: text
+    text: 'Tangut'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: FnNAOZMViOsHEejp
+    type: text
+    text: 'Tegusar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: fO63E4704FPeZmSu
+    type: text
+    text: 'Temulin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: zvXqRvjgNGBgP9J1
+    type: text
+    text: 'Toghrai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: DEe3HAz1M0IgJt40
+    type: text
+    text: 'Tolukhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: KFs6330ChYHczv9X
+    type: text
+    text: 'Tsagaar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: G0r9j8JgcZMDIDKo
+    type: text
+    text: 'Tumenbai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: kWvvlb7Xap7qMTGK
+    type: text
+    text: 'Uighar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: OQHwkzhbSyQMGkyB
+    type: text
+    text: 'Ulaankhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: lZZBrscPxpgfIvi6
+    type: text
+    text: 'Uriang'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: XzzOe3mT5MfgNBmP
+    type: text
+    text: 'Yesugai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: cCFXstD5jzxIwCwP
+    type: text
+    text: 'Yeskhal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: 0ZjroLIJUlePJVhE
+    type: text
+    text: 'Zhambyl'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: JnfBp1LH0BleYlgW
+    type: text
+    text: 'Zhetkar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: 3UjvnnmURBHMOyyJ
+    type: text
+    text: 'Abetzan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: P11KMs8pmwWpgbnA
+    type: text
+    text: 'Anabakh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: rVMFRtsDHqZsZs3P
+    type: text
+    text: 'Ashkilai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: KQNOzBMpJ6xJmoew
+    type: text
+    text: 'Atohiru'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: SeiJqSS3s5tNB0Mq
+    type: text
+    text: 'Chambikhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: ZoqUC4meLa4rEXCU
+    type: text
+    text: 'Dolkehar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: PsXln5SY7CFF9377
+    type: text
+    text: 'Huritei'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: DcpwIjSr5u67jawB
+    type: text
+    text: 'Kezhemar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: OzB8R85zXnUJEHVh
+    type: text
+    text: 'Matoskhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: x9ZGpO7oay5JtU70
+    type: text
+    text: 'Minakhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: qfhU6Nn0aqRttWN4
+    type: text
+    text: 'Oguleshar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: J9EJ2TDaFaneWAxM
+    type: text
+    text: 'Panokhar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: ILbH99pkDimCKHlr
+    type: text
+    text: 'Sahkontei'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: PUrAd5BHSvGG0twW
+    type: text
+    text: 'Shilukhan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: YYEZxZETWAiR3HGZ
+    type: text
+    text: 'Suletai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: 3GITWQkrMkZ6kzOi
+    type: text
+    text: 'Tangakhar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: Qeadd6ifBXL78YBW
+    type: text
+    text: 'Utinkhai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: k3GDAXWzuipdlgde
+    type: text
+    text: 'Wakarin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: jf7FHrzWxhhGRotd
+    type: text
+    text: 'Arslanbek'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: QI5yhhUZY6SmK1Dr
+    type: text
+    text: 'Bozkurai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: L56nU0EcnfORWpkS
+    type: text
+    text: 'Kumystai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: Vq1piB9mKhHYPiBd
+    type: text
+    text: 'Ak-Tolu'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: 3yVnFg00sLS8Xfi6
+    type: text
+    text: 'Burkhanai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: OvAHIscOcpL4hLi4
+    type: text
+    text: 'Dzhungar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: GSmvmo1vMPtYCdSV
+    type: text
+    text: 'Ergenekai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: codZO8mfdIycBx0D
+    type: text
+    text: 'Kazagh'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: MOUzFXQ57CT8kwAx
+    type: text
+    text: 'Talgarin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: 6BRUYVnYHgTRxwI3
+    type: text
+    text: 'Zhalairi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: bVUsdQwl4guZIPRO
+    type: text
+    text: 'Kara-Ashin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

@@ -1,0 +1,711 @@
+_id: GUpbQZbDMaSnErQD
+name: 'Skovlan - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Skovlan, for use in NPC/token/actor namer macros.'
+results:
+  - _id: XBUFeSyHnVfdQk8O
+    type: text
+    text: 'Askeland'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: wmsOr0lrxEOybNqQ
+    type: text
+    text: 'Bjornsdal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: 4wzQW1tAYiw4Goha
+    type: text
+    text: 'Braugsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: 74LHbWCNZJXqiiRm
+    type: text
+    text: 'Corbensk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: Pmg1VFxoJT1NWtsF
+    type: text
+    text: 'Dravik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 9Lz0MAeVwWNsEUb4
+    type: text
+    text: 'Eldholm'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: jde124yfLpdRgKFV
+    type: text
+    text: 'Fjellstad'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: uzXlqwidE1dwpKbU
+    type: text
+    text: 'Gudrodsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: xiy8ZxeOO0HPUfQw
+    type: text
+    text: 'Gunnarsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: DdQtVT2LrvcGVPGG
+    type: text
+    text: 'Haldorsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: DkXIUuTcdPdQqDf9
+    type: text
+    text: 'Hallgrim'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: XvozVMpFmeatSNHh
+    type: text
+    text: 'Havardsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: XMxaVRPzUgOYJcyi
+    type: text
+    text: 'Heggvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: 9HdU2HcYUyn9Wdqd
+    type: text
+    text: 'Hordsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: PwV1T7jRGXd2IZMt
+    type: text
+    text: 'Ivarsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: 9DQ3QuRLHN8BU0ow
+    type: text
+    text: 'Jarnstrom'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: vJn5LRiPC3x5Lb2o
+    type: text
+    text: 'Karsikov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: s9t3MSKudl455aQW
+    type: text
+    text: 'Kettilsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: qalKuZI3JTwUGK3o
+    type: text
+    text: 'Krokvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: qvtDCVXMukavtg4B
+    type: text
+    text: 'Lindqvar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: 626ZkqvsOhzh5yZV
+    type: text
+    text: 'Malkov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: esxYAadUQSciDFx1
+    type: text
+    text: 'Njalsson'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: xa5EqGDExhJdcDsk
+    type: text
+    text: 'Oddvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: mjNxhXZf2dsctstr
+    type: text
+    text: 'Raskolov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: 3LF5PNFj6JCw54KA
+    type: text
+    text: 'Ravnsborg'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: p9JCTkW1Nt90coHA
+    type: text
+    text: 'Skarvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: 5afbwIKpQwzmSF5S
+    type: text
+    text: 'Stavrulov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: BexbDFXKCDHeofG0
+    type: text
+    text: 'Stekarsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: X3SP0fN201p8EyWt
+    type: text
+    text: 'Stormhald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: D2Trlne7LELGYrYk
+    type: text
+    text: 'Sukinov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: LGmJ4AnTtBMKxaWK
+    type: text
+    text: 'Thorvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: WpRbCJx1HW5DM2Ly
+    type: text
+    text: 'Tormund'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: QJdoaVY1VfVUHnwK
+    type: text
+    text: 'Ulfgard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: Aopz4nNRhveS0knl
+    type: text
+    text: 'Vangsnes'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: 4QsjR4LWfWHqtlt4
+    type: text
+    text: 'Velkov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: ErAqmZZr5XwNLjs6
+    type: text
+    text: 'Vondrak'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+  - _id: M3jZD4Si8MgyopVW
+    type: text
+    text: 'Aarnivaara'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: t5J9UZq56Wgng2EL
+    type: text
+    text: 'Haavisto'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: GOHhGcDIBrrsMbYv
+    type: text
+    text: 'Jarvela'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: Lpzc82cL0zZ8vXpo
+    type: text
+    text: 'Kallio'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: MoLcRkXToUHvIejz
+    type: text
+    text: 'Kivimaki'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: gooLNXTl8F5N8t1V
+    type: text
+    text: 'Koskinar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: WSBrn2MymPG7LAvM
+    type: text
+    text: 'Laakso'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: C3qpU9tYVPIncjnz
+    type: text
+    text: 'Lehtola'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: ZAsMUCYzV9J548YH
+    type: text
+    text: 'Mustonen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: VrkUWHIoeDbQZl9N
+    type: text
+    text: 'Niskala'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: E8bzJyCrcO23ENqh
+    type: text
+    text: 'Pelto'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: ykLIlk4KLDxjhwNZ
+    type: text
+    text: 'Rautio'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: 6yXnQsYcevMxXnEs
+    type: text
+    text: 'Salmela'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: ZXvySn2GHZAraiWB
+    type: text
+    text: 'Vaara'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: usNGcOyIpLVcVdAx
+    type: text
+    text: 'Ylinen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: FSCZbyTRt54AQ5TH
+    type: text
+    text: 'Barrowmund'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: WU8P9tt3nLc5n5aU
+    type: text
+    text: 'Dunhelm'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: CPajWO3a5XiT4x4g
+    type: text
+    text: 'Eiriksk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: C5ovcoAqxyEt5hA3
+    type: text
+    text: 'Frostmark'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: I4jfE6FYRzVSJC7f
+    type: text
+    text: 'Grimsvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: qLbPBjk2ZP5wCt4w
+    type: text
+    text: 'Hafnirsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: wJWxUgBzzTY7SGiq
+    type: text
+    text: 'Hrolfsen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: fLbM6LpOrvZImWSn
+    type: text
+    text: 'Ingvarsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: 7VNLhIBwak8Rb1hY
+    type: text
+    text: 'Isbrand'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: vzA6Sa5a6XxEQ1Ct
+    type: text
+    text: 'Jokul'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: HqsgzFRrsaK6SG30
+    type: text
+    text: 'Kaldvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: gPY8nKPUcxbC2n42
+    type: text
+    text: 'Ketilbjorn'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: 0pdrEyTOD6Aqx7Zc
+    type: text
+    text: 'Leifsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: EiZEvBJpCDQPNn6Z
+    type: text
+    text: 'Myrkvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: OfWu7PtROWnxKRDz
+    type: text
+    text: 'Nordgard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: 8Fha9v7Q5TqJ3ON6
+    type: text
+    text: 'Oskarov'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: YFqdV6gBcf0Z0sfk
+    type: text
+    text: 'Ragnvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: W6QRYwBkxp2ecaQj
+    type: text
+    text: 'Rimfrost'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: irARTTvLS9ajrIih
+    type: text
+    text: 'Runolf'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: uTBpWxgJfPJchbls
+    type: text
+    text: 'Saevik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: 7kMSN8cekhGFRiGt
+    type: text
+    text: 'Skjold'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: gBqQDkARTbmTEvfq
+    type: text
+    text: 'Snorrak'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: oF9qunXQg1o26Wuc
+    type: text
+    text: 'Solheim'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: uccGKTlTWRJf32ma
+    type: text
+    text: 'Steinvar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: eYN2uxzGRm9qNF3e
+    type: text
+    text: 'Svartholm'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: PDecBfFTTNCuw3uz
+    type: text
+    text: 'Torvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: IkL1tp08Rat4VIfl
+    type: text
+    text: 'Ulfhednar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: NmieS1mEZsfDYDrf
+    type: text
+    text: 'Valgard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: KiNriD8zRb66nimE
+    type: text
+    text: 'Vestfold'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: krAOghkA1Fbq2XgO
+    type: text
+    text: 'Ymirsk'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: ILjIt4xGb9z7AQvk
+    type: text
+    text: 'Askvald'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: 1mC6C3RVVJMQgkNY
+    type: text
+    text: 'Bergkvist'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: k3pOZdO8zHoDSSbv
+    type: text
+    text: 'Brekke'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: SZWgc6lTB0CVFAcC
+    type: text
+    text: 'Dalvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: vvdX4cKvQ1NcCWMw
+    type: text
+    text: 'Eklund'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: zhztUmYJgWzjEfHO
+    type: text
+    text: 'Fossum'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: mdeE3p3bQu41QFMy
+    type: text
+    text: 'Gjerde'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: HwZnq7HqY1PkWfCX
+    type: text
+    text: 'Hagen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: YYRjzjjYLtBLg1dw
+    type: text
+    text: 'Hovland'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: xhqnV7MXRni0AJVQ
+    type: text
+    text: 'Lunde'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: Xl4wCL1bdbp63a3Y
+    type: text
+    text: 'Moen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: JEtlOrC3cXSqgeYd
+    type: text
+    text: 'Nygaard'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: QYRHPfmbAvRY3C1A
+    type: text
+    text: 'Rud'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: bMUwnDoalq0g4lNf
+    type: text
+    text: 'Sandvik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: AviLcF3AdlmVAWWa
+    type: text
+    text: 'Strand'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: 7Xa57dN2L3xUSTw9
+    type: text
+    text: 'Tveit'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: rcOpkxkvfutEq6I4
+    type: text
+    text: 'Vik'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: beY8Tn0JuWCTsrmE
+    type: text
+    text: 'Aasen'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: Ht7oI6uye85OuHve
+    type: text
+    text: 'Arnhold'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}
