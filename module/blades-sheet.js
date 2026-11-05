@@ -16,6 +16,8 @@ export class BladesSheet extends BaseActorSheet {
     this.element.toggleClass("blades68-theme-light", sheetTheme === "light");
     this.element.toggleClass("blades68-theme-dark", sheetTheme === "dark");
     this.element.toggleClass("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
+    this.element.toggleClass("plain-icons", game.settings.get("blades68", "PipIconStyle") === "plain");
+    this.element.toggleClass("square-icons", game.settings.get("blades68", "PipIconStyle") === "square");
     html.find(".item-add-popup").click(this._onItemAddClick.bind(this));
     html.find(".update-box").click(this._onUpdateBoxClick.bind(this));
 	

@@ -27,6 +27,21 @@
  * Toothradio single elements
  */
 /*
+ * Single-color SVG pips. The SVG is used as a mask so its color comes from
+ * --pip-color, which the toothradio_icon mixins below switch between filled and
+ * empty. The icon is drawn on a ::before square sized to the label height, so it
+ * can be rotated without rotating the clickable label box.
+ *
+ * The pill pip reads its icon, angle and scale from --b68-pill-* custom
+ * properties so a sheet class can swap it (see sharp-icons.scss).
+ */
+/*
+ * Toothradio with an SVG icon. Same fill behavior as toothradio.
+ */
+/*
+ * Toothradio single with an SVG icon. Same behavior as toothradio_single.
+ */
+/*
  * Custom Radio Round
  */
 @font-face {
@@ -981,14 +996,27 @@
 .blades68.crew.sheet .crew-reputation {
   border-top: 3px solid #191813;
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-reputation label {
+  position: relative;
+  background-image: none;
+}
+.blades68.crew.sheet .crew-reputation label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.crew.sheet .crew-reputation label {
+  --pip-color: #E2571E;
   height: 50px;
   width: 17px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -999,8 +1027,10 @@
 .blades68.crew.sheet .crew-reputation label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.crew.sheet .crew-reputation label[for$="-0"]::before {
+  content: none;
 }
 .blades68.crew.sheet .crew-reputation label[for$="-0"] i {
   margin-top: 4px;
@@ -1013,10 +1043,10 @@
   display: none;
 }
 .blades68.crew.sheet .crew-reputation input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.crew.sheet .crew-reputation input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.crew.sheet .crew-reputation label.turf-claimed {
   opacity: 0.45;
@@ -1317,7 +1347,6 @@
 .blades68.crew.sheet .crew-hold {
   border-top: 3px solid #191813;
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .crew-hold label {
   transition: filter 0.1s;
@@ -1333,11 +1362,25 @@
   opacity: 0.9;
 }
 .blades68.crew.sheet .crew-hold label {
+  position: relative;
+  background-image: none;
+}
+.blades68.crew.sheet .crew-hold label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.crew.sheet .crew-hold label {
+  --pip-color: #666;
   height: 50px;
   width: 17px;
-  background-image: url("assets/blades68/stresspill_empty.webp");
-  background-repeat: no-repeat;
-  background-size: contain;
   margin-right: 5px;
 }
 .blades68.crew.sheet .crew-hold label:last-of-type {
@@ -1347,7 +1390,7 @@
   display: none;
 }
 .blades68.crew.sheet .crew-hold input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.crew.sheet .crew-hold {
   width: 221px;
@@ -1507,14 +1550,27 @@
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth label {
+  position: relative;
+  background-image: none;
+}
+.blades68.crew.sheet .big-teeth-section .big-teeth label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.crew.sheet .big-teeth-section .big-teeth label {
+  --pip-color: #E2571E;
   height: 50px;
   width: 17px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -1525,8 +1581,10 @@
 .blades68.crew.sheet .big-teeth-section .big-teeth label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.crew.sheet .big-teeth-section .big-teeth label[for$="-0"]::before {
+  content: none;
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
@@ -1539,24 +1597,37 @@
   display: none;
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.crew.sheet .big-teeth-section .big-teeth input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.crew.sheet .big-teeth-section {
   /* Trauma */
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  position: relative;
+  background-image: none;
+}
+.blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  --pip-color: #E2571E;
   height: 50px;
   width: 17px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   cursor: not-allowed;
 }
@@ -1566,8 +1637,10 @@
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"]::before {
+  content: none;
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
   margin-top: 4px;
@@ -1576,10 +1649,10 @@
   display: none;
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.crew.sheet .big-teeth-section .small-teeth-container .small-teeth-wrap {
   flex-direction: column;
@@ -1655,6 +1728,21 @@
    * Toothradio single elements
    */
   /*
+   * Single-color SVG pips. The SVG is used as a mask so its color comes from
+   * --pip-color, which the toothradio_icon mixins below switch between filled and
+   * empty. The icon is drawn on a ::before square sized to the label height, so it
+   * can be rotated without rotating the clickable label box.
+   *
+   * The pill pip reads its icon, angle and scale from --b68-pill-* custom
+   * properties so a sheet class can swap it (see sharp-icons.scss).
+   */
+  /*
+   * Toothradio with an SVG icon. Same fill behavior as toothradio.
+   */
+  /*
+   * Toothradio single with an SVG icon. Same behavior as toothradio_single.
+   */
+  /*
    * Custom Radio Round
    */
 }
@@ -1691,14 +1779,27 @@
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label {
+  position: relative;
+  background-image: none;
+}
+.blades68.actor.pc * .big-teeth-section .big-teeth label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.actor.pc * .big-teeth-section .big-teeth label {
+  --pip-color: #E2571E;
   height: 35px;
   width: 15px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -1709,8 +1810,10 @@
 .blades68.actor.pc * .big-teeth-section .big-teeth label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.actor.pc * .big-teeth-section .big-teeth label[for$="-0"]::before {
+  content: none;
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth label[for$="-0"] i {
   margin-top: 4px;
@@ -1723,24 +1826,37 @@
   display: none;
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .big-teeth-section .big-teeth input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.actor.pc * .big-teeth-section {
   /* Trauma */
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  position: relative;
+  background-image: none;
+}
+.blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 35px;
+  height: 35px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  --pip-color: #666;
   height: 35px;
   width: 15px;
-  background-image: url("assets/blades68/stresspill_empty.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   cursor: not-allowed;
 }
@@ -1750,8 +1866,10 @@
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"]::before {
+  content: none;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] i {
   margin-top: 4px;
@@ -1760,10 +1878,10 @@
   display: none;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .big-teeth-section .small-teeth-container .small-teeth-wrap {
   flex-direction: column;
@@ -1839,14 +1957,27 @@
 }
 .blades68.actor.pc * .teeth-experience {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .teeth-experience label {
+  position: relative;
+  background-image: none;
+}
+.blades68.actor.pc * .teeth-experience label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.actor.pc * .teeth-experience label {
+  --pip-color: #E2571E;
   height: 25px;
   width: 15px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -1857,8 +1988,10 @@
 .blades68.actor.pc * .teeth-experience label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.actor.pc * .teeth-experience label[for$="-0"]::before {
+  content: none;
 }
 .blades68.actor.pc * .teeth-experience label[for$="-0"] i {
   margin-top: 4px;
@@ -1871,10 +2004,10 @@
   display: none;
 }
 .blades68.actor.pc * .teeth-experience input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .teeth-experience input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.actor.pc * .teeth-experience {
   position: absolute;
@@ -1987,14 +2120,27 @@
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body {
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
+  position: relative;
+  background-image: none;
+}
+.blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%) rotate(var(--b68-pill-rotate, -50deg)) scale(var(--b68-pill-scale, 1));
+  background-color: var(--pip-color);
+  mask: var(--b68-pill-icon, url("assets/icons/pill.svg")) no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label {
+  --pip-color: #E2571E;
   height: 26px;
   width: 15px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -2005,8 +2151,10 @@
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label[for$="-0"]::before {
+  content: none;
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body label[for$="-0"] i {
   margin-top: 4px;
@@ -2019,10 +2167,10 @@
   display: none;
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.actor.pc * .attributes .attributes-exp .stripe-tooth-body {
   position: absolute;
@@ -2407,14 +2555,27 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks {
   display: flex;
   display: flex;
-  /* Hide the browser's default checkbox */
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label {
+  position: relative;
+  background-image: none;
+}
+.blades68.actor.pc * .keys-container .key-slot .key-marks label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  background-color: var(--pip-color);
+  mask: url("assets/icons/key.svg") no-repeat center/contain;
+  pointer-events: none;
+}
+.blades68.actor.pc * .keys-container .key-slot .key-marks label {
+  --pip-color: #E2571E;
   height: 25px;
   width: 15px;
-  background-image: url("assets/blades68/stresspill_filled.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   margin-right: 5px;
   transition: filter 0.1s;
   cursor: pointer;
@@ -2425,8 +2586,10 @@
 .blades68.actor.pc * .keys-container .key-slot .key-marks label[for$="-0"] {
   width: auto;
   height: auto;
-  background-image: none !important;
   color: #EEEFFF;
+}
+.blades68.actor.pc * .keys-container .key-slot .key-marks label[for$="-0"]::before {
+  content: none;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks label[for$="-0"] i {
   margin-top: 4px;
@@ -2439,10 +2602,10 @@
   display: none;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks input:checked ~ label {
-  background-image: url("assets/blades68/stresspill_empty.webp");
+  --pip-color: #666;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks input:checked + label {
-  background-image: url("assets/blades68/stresspill_filled.webp");
+  --pip-color: #E2571E;
 }
 .blades68.actor.pc * .keys-container .key-slot .key-marks.is-disabled {
   opacity: 0.45;
@@ -3063,6 +3226,27 @@
   background-color: #4c372a;
   color: #e9e4ce;
 }
+.blades68.blades68-theme table.effects-list {
+  --table-background: #ddd7be;
+  --table-header-bg-color: #dad1bc;
+  --table-header-text-color: #220e10;
+  --table-row-color-odd: #ddd7be;
+  --table-row-color-even: #e9e4ce;
+  background: #ddd7be;
+  color: #220e10;
+}
+.blades68.blades68-theme table.effects-list thead,
+.blades68.blades68-theme table.effects-list tbody,
+.blades68.blades68-theme table.effects-list tr {
+  background: transparent;
+}
+.blades68.blades68-theme table.effects-list th,
+.blades68.blades68-theme table.effects-list td,
+.blades68.blades68-theme table.effects-list a,
+.blades68.blades68-theme table.effects-list .on-black-banner {
+  color: #220e10;
+  text-shadow: none;
+}
 .blades68.blades68-theme.crew.sheet nav.tabs.folder-tabs > .item {
   background: #dad1bc;
   border-color: #795c4a;
@@ -3123,93 +3307,331 @@
 }
 .blades68.sharp-icons {
   /*
-   * Sharp (classic "teeth") pip icon style.
+   * Sharp pip icon style: knives instead of pills.
    * Applied only when the sheet root also carries .sharp-icons
    * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
-   * Overrides the default rounded "pill" icons set in character-sheet.scss /
-   * crew-sheet.scss with the original pointy tooth assets from ../assets/teeth,
-   * unused since they were replaced in commit 847c3aa "fix pills for stress".
+   * Swaps the icon used by the toothradio_icon mixins (see mixin.scss). Key pips
+   * keep their key icon.
    */
 }
-.blades68.sharp-icons .big-teeth-section .big-teeth label {
-  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+.blades68.sharp-icons {
+  --b68-pill-icon: url("assets/icons/bowie-knife_blade.svg");
+  --b68-pill-rotate: -35deg;
+  --b68-pill-scale: 0.75;
 }
-.blades68.sharp-icons .big-teeth-section .big-teeth input:checked ~ label {
+.blades68.plain-icons {
+  /*
+   * Plain pip icon style: the original orange and yellow pill images.
+   * Applied only when the sheet root also carries .plain-icons
+   * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+   * Hides the SVG icon drawn by the toothradio_icon mixins (see mixin.scss) and
+   * paints the webp pills as label backgrounds, as the sheets did before.
+   */
+}
+.blades68.plain-icons .big-teeth-section .big-teeth label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .big-teeth-section .big-teeth label::before {
+  content: none !important;
+}
+.blades68.plain-icons .big-teeth-section .big-teeth label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .big-teeth-section .big-teeth input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .big-teeth-section .big-teeth input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label::before {
+  content: none !important;
+}
+.blades68.plain-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .attributes-exp .stripe-tooth-body label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .attributes-exp .stripe-tooth-body label::before {
+  content: none !important;
+}
+.blades68.plain-icons .attributes-exp .stripe-tooth-body label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .attributes-exp .stripe-tooth-body input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .attributes-exp .stripe-tooth-body input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .teeth-experience label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .teeth-experience label::before {
+  content: none !important;
+}
+.blades68.plain-icons .teeth-experience label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .teeth-experience input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .teeth-experience input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .key-marks label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .key-marks label::before {
+  content: none !important;
+}
+.blades68.plain-icons .key-marks label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .key-marks input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .key-marks input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .crew-reputation label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .crew-reputation label::before {
+  content: none !important;
+}
+.blades68.plain-icons .crew-reputation label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .crew-reputation input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .crew-reputation input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .crew-hold label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.blades68.plain-icons .crew-hold label::before {
+  content: none !important;
+}
+.blades68.plain-icons .crew-hold input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .big-teeth label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .big-teeth label::before {
+  content: none !important;
+}
+.blades68.plain-icons .big-teeth label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .big-teeth input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .big-teeth input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.plain-icons .small-teeth-container .small-teeth-wrap label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.plain-icons .small-teeth-container .small-teeth-wrap label::before {
+  content: none !important;
+}
+.blades68.plain-icons .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.plain-icons .small-teeth-container .small-teeth-wrap input:checked ~ label {
+  background-image: url("assets/blades68/stresspill_empty.webp") !important;
+}
+.blades68.plain-icons .small-teeth-container .small-teeth-wrap input:checked + label {
+  background-image: url("assets/blades68/stresspill_filled.webp") !important;
+}
+.blades68.square-icons {
+  /*
+   * Square (classic "teeth") pip icon style.
+   * Applied only when the sheet root also carries .square-icons
+   * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+   * Hides the SVG icon drawn by the toothradio_icon mixins (see mixin.scss) and
+   * paints the original pointy tooth assets from ../assets/teeth.
+   */
+}
+.blades68.square-icons .big-teeth-section .big-teeth label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.square-icons .big-teeth-section .big-teeth label::before {
+  content: none !important;
+}
+.blades68.square-icons .big-teeth-section .big-teeth label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .big-teeth-section .big-teeth input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
-.blades68.sharp-icons .big-teeth-section .big-teeth input:checked + label {
+.blades68.square-icons .big-teeth-section .big-teeth input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label {
+.blades68.square-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label {
   background-image: url("assets/teeth/shorttooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
+.blades68.square-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label::before {
+  content: none !important;
+}
+.blades68.square-icons .big-teeth-section .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked ~ label {
   background-image: url("assets/teeth/shorttooth-grey.webp") !important;
 }
-.blades68.sharp-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
+.blades68.square-icons .big-teeth-section .small-teeth-container .small-teeth-wrap input:checked + label {
   background-image: url("assets/teeth/shorttooth-red.webp") !important;
 }
-.blades68.sharp-icons .attributes-exp .stripe-tooth-body label {
+.blades68.square-icons .attributes-exp .stripe-tooth-body label {
   background-image: url("assets/teeth/xptooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .attributes-exp .stripe-tooth-body input:checked ~ label {
+.blades68.square-icons .attributes-exp .stripe-tooth-body label::before {
+  content: none !important;
+}
+.blades68.square-icons .attributes-exp .stripe-tooth-body label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .attributes-exp .stripe-tooth-body input:checked ~ label {
   background-image: url("assets/teeth/xptooth-white.webp") !important;
 }
-.blades68.sharp-icons .attributes-exp .stripe-tooth-body input:checked + label {
+.blades68.square-icons .attributes-exp .stripe-tooth-body input:checked + label {
   background-image: url("assets/teeth/xptooth-red.webp") !important;
 }
-.blades68.sharp-icons .teeth-experience label {
+.blades68.square-icons .teeth-experience label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .teeth-experience input:checked ~ label {
+.blades68.square-icons .teeth-experience label::before {
+  content: none !important;
+}
+.blades68.square-icons .teeth-experience label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .teeth-experience input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
-.blades68.sharp-icons .teeth-experience input:checked + label {
+.blades68.square-icons .teeth-experience input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .key-marks label {
+.blades68.square-icons .key-marks label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .key-marks input:checked ~ label {
+.blades68.square-icons .key-marks label::before {
+  content: none !important;
+}
+.blades68.square-icons .key-marks label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .key-marks input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
-.blades68.sharp-icons .key-marks input:checked + label {
+.blades68.square-icons .key-marks input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .crew-reputation label {
+.blades68.square-icons .crew-reputation label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .crew-reputation input:checked ~ label {
+.blades68.square-icons .crew-reputation label::before {
+  content: none !important;
+}
+.blades68.square-icons .crew-reputation label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .crew-reputation input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
-.blades68.sharp-icons .crew-reputation input:checked + label {
+.blades68.square-icons .crew-reputation input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .crew-reputation label.turf-claimed {
+.blades68.square-icons .crew-reputation label.turf-claimed {
   opacity: 0.45;
 }
-.blades68.sharp-icons .crew-hold label {
+.blades68.square-icons .crew-hold label {
+  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.blades68.square-icons .crew-hold label::before {
+  content: none !important;
+}
+.blades68.square-icons .crew-hold input:checked + label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+}
+.blades68.square-icons .big-teeth label {
+  background-image: url("assets/teeth/stresstooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.blades68.square-icons .big-teeth label::before {
+  content: none !important;
+}
+.blades68.square-icons .big-teeth label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .big-teeth input:checked ~ label {
   background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
 }
-.blades68.sharp-icons .crew-hold input:checked + label {
+.blades68.square-icons .big-teeth input:checked + label {
   background-image: url("assets/teeth/stresstooth-red.webp") !important;
 }
-.blades68.sharp-icons .big-teeth label {
-  background-image: url("assets/teeth/stresstooth-red.webp") !important;
-}
-.blades68.sharp-icons .big-teeth input:checked ~ label {
-  background-image: url("assets/teeth/stresstooth-halfgrey.webp") !important;
-}
-.blades68.sharp-icons .big-teeth input:checked + label {
-  background-image: url("assets/teeth/stresstooth-red.webp") !important;
-}
-.blades68.sharp-icons .small-teeth-container .small-teeth-wrap label {
+.blades68.square-icons .small-teeth-container .small-teeth-wrap label {
   background-image: url("assets/teeth/shorttooth-red.webp") !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.blades68.sharp-icons .small-teeth-container .small-teeth-wrap input:checked ~ label {
+.blades68.square-icons .small-teeth-container .small-teeth-wrap label::before {
+  content: none !important;
+}
+.blades68.square-icons .small-teeth-container .small-teeth-wrap label[for$="-0"] {
+  background-image: none !important;
+}
+.blades68.square-icons .small-teeth-container .small-teeth-wrap input:checked ~ label {
   background-image: url("assets/teeth/shorttooth-grey.webp") !important;
 }
-.blades68.sharp-icons .small-teeth-container .small-teeth-wrap input:checked + label {
+.blades68.square-icons .small-teeth-container .small-teeth-wrap input:checked + label {
   background-image: url("assets/teeth/shorttooth-red.webp") !important;
 }
 

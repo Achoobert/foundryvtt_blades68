@@ -1,5 +1,4 @@
 & * {
-  
   .keys-container {
     .keys-header {
       display: flex;
@@ -62,12 +61,7 @@
 
       .key-marks {
         display: flex;
-        @include toothradio(
-          15px,
-          25px,
-          "assets/blades68/stresspill_empty.webp",
-          "assets/blades68/stresspill_filled.webp"
-        );
+        @include toothradio_icon(15px, 25px, $key_icon);
 
         &.is-disabled {
           opacity: 0.45;

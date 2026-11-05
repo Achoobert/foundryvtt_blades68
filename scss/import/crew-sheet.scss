@@ -193,12 +193,7 @@ section.tab-content.folder-tab-content {
 // Reputation
 .crew-reputation {
   border-top: 3px solid $almost_black;
-  @include toothradio(
-    17px,
-    50px,
-    "assets/blades68/stresspill_empty.webp",
-    "assets/blades68/stresspill_filled.webp"
-  );
+  @include toothradio_icon(17px, 50px, $pill_icon, $pill_rotate, $scale: $pill_scale);
 
   // Claimed turf: greyed like a disabled pip, but stays clickable.
   label.turf-claimed {
@@ -388,12 +383,7 @@ section.tab-content.folder-tab-content {
 }
 .crew-hold {
   border-top: 3px solid $almost_black;
-  @include toothradio_single(
-    17px,
-    50px,
-    "assets/blades68/stresspill_empty.webp",
-    "assets/blades68/stresspill_filled.webp"
-  );
+  @include toothradio_icon_single(17px, 50px, $pill_icon, $pill_rotate, $scale: $pill_scale);
   width: 221px;
 }
 
@@ -558,24 +548,13 @@ section.tab-content.folder-tab-content {
 
   // Stress
   .big-teeth {
-    @include toothradio(
-      17px,
-      50px,
-      "assets/blades68/stresspill_empty.webp",
-      "assets/blades68/stresspill_filled.webp"
-    );
+    @include toothradio_icon(17px, 50px, $pill_icon, $pill_rotate, $scale: $pill_scale);
   }
 
   /* Trauma */
   .small-teeth-container {
     .small-teeth-wrap {
-      @include toothradio(
-        17px,
-        50px,
-        "assets/blades68/stresspill_empty.webp",
-        "assets/blades68/stresspill_filled.webp",
-        false
-      );
+      @include toothradio_icon(17px, 50px, $pill_icon, $pill_rotate, false, $scale: $pill_scale);
       flex-direction: column;
 
       .small-teeth {

@@ -417,6 +417,32 @@ export default function register(quench) {
           assert.equal(after[1].experience, 3);
           assert.equal(after[2].key, 'Flamboyant', 'sibling slot 2 key must survive');
         });
+
+        it('clicking the filled top Key XP pip clears it, like other trackers', async function () {
+          this.timeout(10000);
+          requireSystemActive();
+          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Clear PC', type: 'character' }));
+          const keysList = actor.getComputedKeys();
+          keysList[0].key = 'Arrogant';
+          keysList[0].experience = 0;
+          await actor.update({ 'system.keys.list': keysList });
+
+          const sheet = actor.sheet;
+          await sheet.render(true);
+          try {
+            const pip = (n) =>
+              sheet.element.querySelector(`.key-slot[data-slot-index="0"] .key-marks label[for$="-xp-${n}"]`);
+            const xp = () => actor.getComputedKeys()[0].experience;
+
+            await fireChange(pip(1), () => xp() === 1);
+            assert.equal(xp(), 1, 'clicking an empty pip selects it');
+
+            await fireChange(pip(1), () => xp() === 0);
+            assert.equal(xp(), 0, 'clicking the selected pip again clears it');
+          } finally {
+            await sheet.close();
+          }
+        });
       });
 
       describe('Coin labels', function () {

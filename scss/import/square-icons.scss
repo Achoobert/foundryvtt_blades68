@@ -1,0 +1,109 @@
+/*
+ * Square (classic "teeth") pip icon style.
+ * Applied only when the sheet root also carries .square-icons
+ * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+ * Hides the SVG icon drawn by the toothradio_icon mixins (see mixin.scss) and
+ * paints the original pointy tooth assets from ../assets/teeth.
+ */
+
+@mixin square_pips($unchecked, $checked) {
+  label {
+    background-image: url($checked) !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    &::before {
+      content: none !important;
+    }
+
+    &[for$="-0"] {
+      background-image: none !important;
+    }
+  }
+  input:checked ~ label {
+    background-image: url($unchecked) !important;
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
+// For exclusive either/or toggles (e.g. crew hold: weak vs strong), not a
+// progressive fill scale. Each label defaults to unchecked and only its own
+// radio being checked lights it up.
+@mixin square_pip_single($unchecked, $checked) {
+  label {
+    background-image: url($unchecked) !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &::before {
+      content: none !important;
+    }
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
+// Character sheet: stress
+.big-teeth-section .big-teeth {
+  @include square_pips(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+}
+
+// Character sheet: trauma
+.big-teeth-section .small-teeth-container .small-teeth-wrap {
+  @include square_pips("assets/teeth/shorttooth-grey.webp", "assets/teeth/shorttooth-red.webp");
+}
+
+// Character sheet: attribute/action experience pips
+.attributes-exp .stripe-tooth-body {
+  @include square_pips("assets/teeth/xptooth-white.webp", "assets/teeth/xptooth-red.webp");
+}
+
+// Character sheet: playbook experience clock teeth
+.teeth-experience {
+  @include square_pips(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+}
+
+// Character sheet: Keys XP pips (no historical "square" precedent; use the stress pair for consistency)
+.key-marks {
+  @include square_pips(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+}
+
+// Crew sheet: reputation and hold
+.crew-reputation {
+  @include square_pips(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+  label.turf-claimed {
+    opacity: 0.45;
+  }
+}
+.crew-hold {
+  @include square_pip_single(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+}
+
+// Crew sheet: per-member stress/trauma roster
+.big-teeth {
+  @include square_pips(
+    "assets/teeth/stresstooth-halfgrey.webp",
+    "assets/teeth/stresstooth-red.webp"
+  );
+}
+.small-teeth-container .small-teeth-wrap {
+  @include square_pips("assets/teeth/shorttooth-grey.webp", "assets/teeth/shorttooth-red.webp");
+}

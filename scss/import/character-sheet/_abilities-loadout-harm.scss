@@ -20,19 +20,17 @@
 
   // Experience teeth
   .teeth-experience {
-    @include toothradio(15px, 25px, "assets/blades68/stresspill_empty.webp", "assets/blades68/stresspill_filled.webp");
+    @include toothradio_icon(15px, 25px, $pill_icon, $pill_rotate, $scale: $pill_scale);
     position: absolute;
     top: 0px;
     right: 10px;
   }
 
   .harm-armor {
-
     display: flex;
 
     // Harm
     .character-harm {
-
       width: 100%;
 
       table {
@@ -56,16 +54,15 @@
     }
 
     .character-armor-uses {
-
       div {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
       }
-.special-uses {
-  display: flex;
-  flex-direction: row;
-}
+      .special-uses {
+        display: flex;
+        flex-direction: row;
+      }
     }
   }
 }

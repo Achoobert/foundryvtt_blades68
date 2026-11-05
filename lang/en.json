@@ -686,7 +686,9 @@
       "Name": "Pip Icon Style",
       "Hint": "The icon used for stress, trauma, XP, and reputation pips.",
       "Pill": "Pill",
-      "Sharp": "Sharp (classic teeth)"
+      "Sharp": "Sharp (knife)",
+      "Plain": "Plain (classic pills)",
+      "Square": "Square (classic teeth)"
     },
     "SheetBackgroundColor": {
       "Name": "Sheet Background Color",

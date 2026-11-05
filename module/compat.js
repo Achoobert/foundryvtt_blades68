@@ -50,4 +50,10 @@ export function applyBladesThemeClasses(element) {
   try {
     element.classList.toggle("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
   } catch (err) {  }
+  try {
+    element.classList.toggle("plain-icons", game.settings.get("blades68", "PipIconStyle") === "plain");
+  } catch (err) {  }
+  try {
+    element.classList.toggle("square-icons", game.settings.get("blades68", "PipIconStyle") === "square");
+  } catch (err) {  }
 }

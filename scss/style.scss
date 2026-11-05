@@ -57,6 +57,14 @@ $hover-brightness: 0.8;
   &.sharp-icons{
     @import 'import/sharp-icons.scss';
   }
+
+  &.plain-icons{
+    @import 'import/plain-icons.scss';
+  }
+
+  &.square-icons{
+    @import 'import/square-icons.scss';
+  }
 }
 
 
