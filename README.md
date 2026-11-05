@@ -89,6 +89,10 @@ Local `npm run watch` / `npm run dev` rebuild packs from YAML before syncing int
 - TODO attribute trouble engine
 - This game system for FoundryVTT was originally made and maintained by Megastruktur (<https://github.com/megastruktur/foundryvtt-blades-in-the-dark>_)
 - Some assets were taken from here (thank you timdenee and joesinghaus): <https://github.com/joesinghaus/Blades-in-the-Dark>
+- Some icons are from <https://game-icons.net/>, licensed under CC BY 3.0 (<https://creativecommons.org/licenses/by/3.0/>):
+  - [Bowie knife](https://game-icons.net/1x1/skoll/bowie-knife.html) by Skoll (modified)
+  - [Key](https://game-icons.net/1x1/sbed/key.html) by sbed
+  - [Pill](https://game-icons.net/1x1/lorc/pill.html) by Lorc
 
 [screenshot_all]: ./info_images/screenshot_all.webp "screenshot_all"
 [industrial_clock]: ./info_images/industrial_clocks.webp "industrial clocks from old dog games"
