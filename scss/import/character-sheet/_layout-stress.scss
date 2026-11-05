@@ -1,5 +1,3 @@
-
-
 & * {
   .name-alias {
     img.portrait {
@@ -11,7 +9,6 @@
   }
 
   .tab[data-tab] {
-    
     display: none;
     &.active {
       display: block;
@@ -47,24 +44,13 @@
 
     // Stress
     .big-teeth {
-      @include toothradio(
-        15px,
-        35px,
-        "assets/blades68/stresspill_empty.webp",
-        "assets/blades68/stresspill_filled.webp"
-      );
+      @include toothradio_icon(15px, 35px, $pill_icon, $pill_rotate, $scale: $pill_scale);
     }
 
     /* Trauma */
     .small-teeth-container {
       .small-teeth-wrap {
-        @include toothradio(
-          15px,
-          35px,
-          "assets/blades68/stresspill_empty.webp",
-          "assets/blades68/stresspill_empty.webp",
-          false
-        );
+        @include toothradio_icon(15px, 35px, $pill_icon, $pill_rotate, false, $pip_empty_color, $scale: $pill_scale);
         flex-direction: column;
 
         .small-teeth {
@@ -96,7 +82,6 @@
     }
   }
 
-  
   .abilities,
   .loadout {
     .item-name {

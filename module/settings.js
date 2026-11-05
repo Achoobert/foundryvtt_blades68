@@ -83,6 +83,8 @@ export const registerSystemSettings = function () {
     choices: {
       pill: game.i18n.localize("BITD.Settings.PipIconStyle.Pill"),
       sharp: game.i18n.localize("BITD.Settings.PipIconStyle.Sharp"),
+      plain: game.i18n.localize("BITD.Settings.PipIconStyle.Plain"),
+      square: game.i18n.localize("BITD.Settings.PipIconStyle.Square"),
     },
     default: "pill",
     onChange: () => {

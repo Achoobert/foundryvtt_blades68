@@ -435,13 +435,13 @@
             <label class="radio-toggle" for="character-{{../_id}}-keys-{{i}}-xp-0"></label>
             <input type="radio" id="character-{{../_id}}-keys-{{i}}-xp-1" name="key-xp-{{../_id}}-{{i}}" value="1" {{#if (eq
               slot.experience 1)}}checked{{/if}} {{#if slot.deadlocked}}disabled{{/if}}>
-            <label class="radio-toggle" for="character-{{../_id}}-keys-{{i}}-xp-1"></label>
+            <label class="radio-toggle" data-action="bid.radioToggle" for="character-{{../_id}}-keys-{{i}}-xp-1"></label>
             <input type="radio" id="character-{{../_id}}-keys-{{i}}-xp-2" name="key-xp-{{../_id}}-{{i}}" value="2" {{#if (eq
               slot.experience 2)}}checked{{/if}} {{#if slot.deadlocked}}disabled{{/if}}>
-            <label class="radio-toggle" for="character-{{../_id}}-keys-{{i}}-xp-2"></label>
+            <label class="radio-toggle" data-action="bid.radioToggle" for="character-{{../_id}}-keys-{{i}}-xp-2"></label>
             <input type="radio" id="character-{{../_id}}-keys-{{i}}-xp-3" name="key-xp-{{../_id}}-{{i}}" value="3" {{#if (eq
               slot.experience 3)}}checked{{/if}} {{#if slot.deadlocked}}disabled{{/if}}>
-            <label class="radio-toggle" for="character-{{../_id}}-keys-{{i}}-xp-3"></label>
+            <label class="radio-toggle" data-action="bid.radioToggle" for="character-{{../_id}}-keys-{{i}}-xp-3"></label>
           </span>
           <label class="key-boom" data-tooltip="{{localize 'BITD.Deadlocks'}}">
             <input type="checkbox" data-action="bid.keyBoomToggle" {{checked slot.deadlocked}}>

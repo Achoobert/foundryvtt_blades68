@@ -3,12 +3,7 @@
 /*
 *  Elements that can be changed will hint this by dimming and fading a little on hover
 */
-@mixin changeable(
-  $transition-period,
-  $hover-brightness,
-  $hover-opacity,
-  $hover-color: null
-) {
+@mixin changeable($transition-period, $hover-brightness, $hover-opacity, $hover-color: null) {
   transition: filter $transition-period;
   cursor: pointer;
 
@@ -27,13 +22,7 @@
 /*
  * Toothradio. Some (eg trauma) are not changeable, hence the option.
  */
-@mixin toothradio(
-  $width,
-  $height,
-  $unchecked_background,
-  $checked_background,
-  $changeable: true
-) {
+@mixin toothradio($width, $height, $unchecked_background, $checked_background, $changeable: true) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
@@ -276,13 +265,7 @@
 /*
  * Create Clock
  */
-@mixin clock(
-  $segments,
-  $size,
-  $default_color: null,
-  $accent_color: null,
-  $skew_override: null
-) {
+@mixin clock($segments, $size, $default_color: null, $accent_color: null, $skew_override: null) {
   $angle: calc(360 / $segments);
   $skew: if($skew_override != null, $skew_override, 90 + $angle);
   $border_width: 3;
@@ -454,12 +437,7 @@
 /*
  * Toothradio single elements
  */
-@mixin toothradio_single(
-  $width,
-  $height,
-  $unchecked_background,
-  $checked_background
-) {
+@mixin toothradio_single($width, $height, $unchecked_background, $checked_background) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
@@ -492,14 +470,154 @@
 }
 
 /*
+ * Single-color SVG pips. The SVG is used as a mask so its color comes from
+ * --pip-color, which the toothradio_icon mixins below switch between filled and
+ * empty. The icon is drawn on a ::before square sized to the label height, so it
+ * can be rotated without rotating the clickable label box.
+ *
+ * The pill pip reads its icon, angle and scale from --b68-pill-* custom
+ * properties so a sheet class can swap it (see sharp-icons.scss).
+ */
+$pip_filled_color: $orange;
+$pip_empty_color: $darkgray;
+$pill_icon: var(--b68-pill-icon, url("assets/icons/pill.svg"));
+$pill_rotate: var(--b68-pill-rotate, -50deg);
+$pill_scale: var(--b68-pill-scale, 1);
+$key_icon: url("assets/icons/key.svg");
+
+@mixin icon_pip($height, $icon, $rotate, $scale: 1) {
+  position: relative;
+  background-image: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $height;
+    height: $height;
+    transform: translate(-50%, -50%) rotate($rotate) scale($scale);
+    background-color: var(--pip-color);
+    mask: $icon no-repeat center / contain;
+    pointer-events: none;
+  }
+}
+
+/*
+ * Toothradio with an SVG icon. Same fill behavior as toothradio.
+ */
+@mixin toothradio_icon(
+  $width,
+  $height,
+  $icon,
+  $rotate: 0deg,
+  $changeable: true,
+  $filled_color: $pip_filled_color,
+  $empty_color: $pip_empty_color,
+  $scale: 1
+) {
+  display: flex;
+  @content;
+
+  label {
+    @include icon_pip($height, $icon, $rotate, $scale);
+    & {
+      --pip-color: #{$filled_color};
+      height: $height;
+      width: $width;
+      margin-right: 5px;
+      @if $changeable {
+        transition: filter 0.1s;
+        cursor: pointer;
+      } @else {
+        cursor: not-allowed;
+      }
+
+      &:last-of-type {
+        margin-right: 0px;
+      }
+      &[for$="-0"] {
+        width: auto;
+        height: auto;
+        color: $almost_white;
+
+        &::before {
+          content: none;
+        }
+
+        i {
+          margin-top: 4px;
+        }
+      }
+
+      @if $changeable {
+        &:hover {
+          filter: brightness(0.8);
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+      & ~ label {
+        --pip-color: #{$empty_color};
+      }
+      & + label {
+        --pip-color: #{$filled_color};
+      }
+    }
+  }
+}
+
+/*
+ * Toothradio single with an SVG icon. Same behavior as toothradio_single.
+ */
+@mixin toothradio_icon_single(
+  $width,
+  $height,
+  $icon,
+  $rotate: 0deg,
+  $filled_color: $pip_filled_color,
+  $empty_color: $pip_empty_color,
+  $scale: 1
+) {
+  display: flex;
+  @content;
+
+  label {
+    @include changeable(0.1s, 0.8, 0.9);
+    @include icon_pip($height, $icon, $rotate, $scale);
+    & {
+      --pip-color: #{$empty_color};
+      height: $height;
+      width: $width;
+      margin-right: 5px;
+
+      &:last-of-type {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+      & + label {
+        --pip-color: #{$filled_color};
+      }
+    }
+  }
+}
+
+/*
  * Custom Radio Round
  */
-@mixin custom_radio_round(
-  $diameter,
-  $circle_border_color,
-  $default_color,
-  $accent_color
-) {
+@mixin custom_radio_round($diameter, $circle_border_color, $default_color, $accent_color) {
   display: flex;
   /* Hide the browser's default checkbox */
   @content;
