@@ -19,7 +19,7 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
   /** Every Item type in this system carries at least a description. */
   static defaultFields() {
     return {
-      description: new fields.HTMLField({ required: true, blank: true, initial: "" })
+      description: new fields.HTMLField({ required: true, blank: true, initial: "" }),
     };
   }
 
@@ -31,7 +31,7 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
    */
   static logicFields() {
     return {
-      logic: new fields.StringField({ required: false, blank: true, initial: "" })
+      logic: new fields.StringField({ required: false, blank: true, initial: "" }),
     };
   }
 
@@ -46,33 +46,43 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
       activation: new fields.SchemaField({
         type: new fields.StringField({ required: false, blank: true, initial: "" }),
         cost: new fields.NumberField({ required: false, initial: 0 }),
-        condition: new fields.StringField({ required: false, blank: true, initial: "" })
+        condition: new fields.StringField({ required: false, blank: true, initial: "" }),
       }),
       duration: new fields.SchemaField({
         value: new fields.NumberField({ required: false, initial: null, nullable: true }),
-        units: new fields.StringField({ required: false, blank: true, initial: "" })
+        units: new fields.StringField({ required: false, blank: true, initial: "" }),
       }),
       target: new fields.SchemaField({
         value: new fields.NumberField({ required: false, initial: null, nullable: true }),
         width: new fields.NumberField({ required: false, initial: null, nullable: true }),
         units: new fields.StringField({ required: false, blank: true, initial: "" }),
-        type: new fields.StringField({ required: false, blank: true, initial: "" })
+        type: new fields.StringField({ required: false, blank: true, initial: "" }),
       }),
       range: new fields.SchemaField({
         value: new fields.NumberField({ required: false, initial: null, nullable: true }),
         long: new fields.NumberField({ required: false, initial: null, nullable: true }),
-        units: new fields.StringField({ required: false, blank: true, initial: "" })
+        units: new fields.StringField({ required: false, blank: true, initial: "" }),
       }),
       uses: new fields.SchemaField({
         value: new fields.NumberField({ required: false, initial: 0 }),
         max: new fields.NumberField({ required: false, initial: 0 }),
-        per: new fields.StringField({ required: false, blank: true, nullable: true, initial: null })
+        per: new fields.StringField({
+          required: false,
+          blank: true,
+          nullable: true,
+          initial: null,
+        }),
       }),
       consume: new fields.SchemaField({
         type: new fields.StringField({ required: false, blank: true, initial: "" }),
-        target: new fields.StringField({ required: false, blank: true, nullable: true, initial: null }),
-        amount: new fields.NumberField({ required: false, initial: null, nullable: true })
-      })
+        target: new fields.StringField({
+          required: false,
+          blank: true,
+          nullable: true,
+          initial: null,
+        }),
+        amount: new fields.NumberField({ required: false, initial: null, nullable: true }),
+      }),
     };
   }
 
@@ -95,7 +105,7 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
       uses_used: new fields.NumberField({ required: false, initial: 0 }),
       purchased: new fields.BooleanField({ required: false, initial: false }),
       class_default: new fields.BooleanField({ required: false, initial: false }),
-      unlocked: new fields.NumberField({ required: false, initial: 0 })
+      unlocked: new fields.NumberField({ required: false, initial: 0 }),
     };
   }
 
@@ -119,8 +129,15 @@ export class BladesItemData extends foundry.abstract.TypeDataModel {
       const headers = {};
       for (let i = 1; i <= count; i++) {
         headers[String(i)] = {
-          name: "", subheader: "", unlock: "", select: 0,
-          options: [], selected: [], units: 0, value: false, units_filled: 0
+          name: "",
+          subheader: "",
+          unlock: "",
+          select: 0,
+          options: [],
+          selected: [],
+          units: 0,
+          value: false,
+          units_filled: 0,
         };
       }
       return headers;

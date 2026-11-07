@@ -32,7 +32,7 @@
   }
 
   const crewTypeItems = (await crewTypePack.getDocuments()).sort((a, b) =>
-    a.name.localeCompare(b.name)
+    a.name.localeCompare(b.name),
   );
   const options = crewTypeItems.map((i) => `<option value="${i.name}">${i.name}</option>`).join("");
 
@@ -70,6 +70,6 @@
 
   const created = await BladesHelpers.generateCrewTypeContacts(actor, chosen);
   ui.notifications.info(
-    `${actor.name} is now ${chosen}. Created ${created} contact${created === 1 ? "" : "s"}.`
+    `${actor.name} is now ${chosen}. Created ${created} contact${created === 1 ? "" : "s"}.`,
   );
 })();

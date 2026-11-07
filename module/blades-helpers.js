@@ -3,7 +3,6 @@ import { openFormDialog } from "./lib/dialog-compat.js";
 import { ATTRIBUTES } from "./data/attributes.js";
 
 export class BladesHelpers {
-
   /**
    * Identifies duplicate items by type and returns a array of item ids to remove
    *
@@ -14,17 +13,30 @@ export class BladesHelpers {
    */
   static removeDuplicatedItemType(item_data, actor) {
     let dupe_list = [];
-    let distinct_types = ["crew_type", "crew_reputation", "class", "vice", "background", "heritage", "prison"];
+    let distinct_types = [
+      "crew_type",
+      "crew_reputation",
+      "class",
+      "vice",
+      "background",
+      "heritage",
+      "prison",
+    ];
     let allowed_types = ["item"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
     // Remove Duplicate items from the array.
-    actor.items.forEach(i => {
-      let has_double = (item_data.type === i.type);
-      const same_name = item_data.type === "trouble"
-        ? (i.name === item_data.name && (item_data.system?.group ?? "") === (i.system?.group ?? ""))
-        : (i.name === item_data.name);
-      if ((same_name || (should_be_distinct && has_double)) && !(allowed_types.includes(item_data.type)) && (item_data._id !== i.id)) {
+    actor.items.forEach((i) => {
+      let has_double = item_data.type === i.type;
+      const same_name =
+        item_data.type === "trouble"
+          ? i.name === item_data.name && (item_data.system?.group ?? "") === (i.system?.group ?? "")
+          : i.name === item_data.name;
+      if (
+        (same_name || (should_be_distinct && has_double)) &&
+        !allowed_types.includes(item_data.type) &&
+        item_data._id !== i.id
+      ) {
         dupe_list.push(i.id);
       }
     });
@@ -38,29 +50,26 @@ export class BladesHelpers {
    * @param {string} property
    */
   static getNestedProperty(obj, property) {
-    return property.split('.').reduce((r, e) => {
+    return property.split(".").reduce((r, e) => {
       return r[e];
     }, obj);
   }
-
 
   /**
    * Add item functionality
    */
   static _addOwnedItem(event, actor) {
-
     event.preventDefault();
     const a = event.currentTarget;
     const item_type = a.dataset.itemType;
 
     let data = {
       name: generateRandomId(),
-      type: item_type
+      type: item_type,
     };
     return actor.createEmbeddedDocuments("Item", [data]);
   }
 
-  
   static getBlades68PackName(item_type) {
     return {
       class: "blades68_classes",
@@ -78,19 +87,22 @@ export class BladesHelpers {
   }
 
   static async getAllItemsByType(item_type) {
-
     let list_of_items = [];
     let world_items = [];
     let compendium_items = [];
 
     if (item_type === "npc" || item_type === "crew") {
-      world_items = game.actors.filter(e => e.type === item_type).map(e => {
-        return e
-      });
+      world_items = game.actors
+        .filter((e) => e.type === item_type)
+        .map((e) => {
+          return e;
+        });
     } else {
-      world_items = game.items.filter(e => e.type === item_type).map(e => {
-        return e
-      });
+      world_items = game.items
+        .filter((e) => e.type === item_type)
+        .map((e) => {
+          return e;
+        });
     }
 
     if (item_type != "crew") {
@@ -101,14 +113,13 @@ export class BladesHelpers {
       const sourceMode = game.settings.get("blades68", "Blades68Mode");
       if (sourceMode !== "imported") {
         const blades68PackName = this.getBlades68PackName(item_type);
-        const useBlades68Pack = blades68PackName && (
-          item_type === "trouble" || sourceMode === "blades68"
-        );
+        const useBlades68Pack =
+          blades68PackName && (item_type === "trouble" || sourceMode === "blades68");
         const packName = useBlades68Pack ? blades68PackName : item_type;
-        let packs = game.packs.filter(e => e.metadata.name === packName);
-        let compendium_contents = await Promise.all(packs.map(pack => pack.getDocuments()));
+        let packs = game.packs.filter((e) => e.metadata.name === packName);
+        let compendium_contents = await Promise.all(packs.map((pack) => pack.getDocuments()));
         for (const compendium_content of compendium_contents) {
-          compendium_items = compendium_items.concat(compendium_content)
+          compendium_items = compendium_items.concat(compendium_content);
         }
       }
       list_of_items = world_items.concat(compendium_items);
@@ -122,7 +133,6 @@ export class BladesHelpers {
       return nameA.localeCompare(nameB);
     });
     return list_of_items;
-
   }
 
   /* -------------------------------------------- */
@@ -190,7 +200,7 @@ export class BladesHelpers {
    * @returns {Boolean}
    */
   static isAttributeAttribute(attribute_name) {
-    return (attribute_name in ATTRIBUTES);
+    return attribute_name in ATTRIBUTES;
   }
 
   /**
@@ -200,7 +210,6 @@ export class BladesHelpers {
     ui.notifications?.info?.(game.i18n.localize("BITD.XpReminder"));
   }
 
-  
   static getProperCase(name) {
     return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
   }
@@ -218,9 +227,7 @@ export class BladesHelpers {
     try {
       const setting = game.settings.get("blades68", "ClockColor");
       if (setting && setting !== "auto") return setting;
-      return game.settings.get("blades68", "Blades68Mode") === "blades68"
-        ? "yellow"
-        : "red";
+      return game.settings.get("blades68", "Blades68Mode") === "blades68" ? "yellow" : "red";
     } catch (e) {
       return "red";
     }
@@ -268,12 +275,11 @@ export class BladesHelpers {
    *  html-formatted option string
    */
   static createListOfClockSizes(sizes, default_size, current_size) {
-
     let text = ``;
 
-    sizes.forEach(size => {
+    sizes.forEach((size) => {
       text += `<option value="${size}"`;
-      if (!(current_size) && (size === default_size)) {
+      if (!current_size && size === default_size) {
         text += ` selected`;
       } else if (size === current_size) {
         text += ` selected`;
@@ -283,7 +289,6 @@ export class BladesHelpers {
     });
 
     return text;
-
   }
 
   // adds an NPC to the character as an acquaintance of neutral standing
@@ -293,13 +298,15 @@ export class BladesHelpers {
       id: acq.id,
       name: acq.name,
       description_short: acq.system.description_short,
-      standing: "neutral"
+      standing: "neutral",
     };
     let unique_id = !current_acquaintances.some((oldAcq) => {
       return oldAcq.id == acq.id;
     });
     if (unique_id) {
-      await actor.update({ system: { acquaintances: current_acquaintances.concat([acquaintance]) } });
+      await actor.update({
+        system: { acquaintances: current_acquaintances.concat([acquaintance]) },
+      });
     } else {
       ui.notifications.info(game.i18n.localize("BITD.log.info.SameNPC"));
     }
@@ -307,7 +314,9 @@ export class BladesHelpers {
 
   static async removeAcquaintance(actor, acqId) {
     let current_acquaintances = actor.system.acquaintances;
-    let updated_acquaintances = current_acquaintances.filter(acq => acq._id !== acqId && acq.id !== acqId);
+    let updated_acquaintances = current_acquaintances.filter(
+      (acq) => acq._id !== acqId && acq.id !== acqId,
+    );
     await actor.update({ system: { acquaintances: updated_acquaintances } });
   }
 
@@ -319,14 +328,14 @@ export class BladesHelpers {
       let new_id = new_actor.id;
       console.log(new_id);
       //get array index of Acquaintance being updated
-      let old_index = await actor.system.acquaintances.findIndex(e => e.id == acqId);
+      let old_index = await actor.system.acquaintances.findIndex((e) => e.id == acqId);
       // update Acquaintance on actor with new UUID
       let updated_acquaintances = actor.system.acquaintances;
       updated_acquaintances[old_index].id = new_id;
       await actor.update({ system: { acquaintances: updated_acquaintances } });
       await new_actor.sheet.render(true);
     } catch (error) {
-      ui.notifications.warn(game.i18n.localize(("BITD.log.warn.NoNPC")));
+      ui.notifications.warn(game.i18n.localize("BITD.log.warn.NoNPC"));
       console.error(error);
     }
   }
@@ -386,16 +395,20 @@ export class BladesHelpers {
 
   static async addKeyPopup(actor) {
     const keyOptions = game.system.blades68Keys || [];
-    const options_html = keyOptions.map(opt => `
+    const options_html = keyOptions
+      .map(
+        (opt) => `
       <div class="item-block">
         <input id="select-key-${opt.id}" type="checkbox" name="select_keys" value="${opt.id}">
         <label for="select-key-${opt.id}" title="${game.i18n.localize(opt.drift)}">${game.i18n.localize(opt.label)}</label>
-      </div>`).join("");
+      </div>`,
+      )
+      .join("");
 
     const dialogContent = `
       <form class="items-to-add">
         <div class="form-group">
-          <label>${game.i18n.localize('BITD.CustomKey')}:</label>
+          <label>${game.i18n.localize("BITD.CustomKey")}:</label>
           <input type="text" name="custom_key">
         </div>
         <div class="items-list add-items-list">
@@ -407,10 +420,10 @@ export class BladesHelpers {
     `;
 
     const result = await openFormDialog({
-      title: game.i18n.localize('BITD.AddKey'),
+      title: game.i18n.localize("BITD.AddKey"),
       content: dialogContent,
-      okLabel: game.i18n.localize('Add'),
-      cancelLabel: game.i18n.localize('Cancel'),
+      okLabel: game.i18n.localize("Add"),
+      cancelLabel: game.i18n.localize("Cancel"),
       defaultButton: "ok",
     });
 
@@ -436,7 +449,7 @@ export class BladesHelpers {
     const keysList = actor.getComputedKeys();
     const emptySlotIndexes = keysList
       .map((slot, idx) => (slot.key ? null : idx))
-      .filter(idx => idx !== null);
+      .filter((idx) => idx !== null);
 
     if (!emptySlotIndexes.length) {
       ui.notifications?.warn?.("No empty Key slots are available.");
@@ -444,7 +457,9 @@ export class BladesHelpers {
     }
 
     if (chosen.length > emptySlotIndexes.length) {
-      ui.notifications?.warn?.(`Only ${emptySlotIndexes.length} Key slot(s) available; extra selections were ignored.`);
+      ui.notifications?.warn?.(
+        `Only ${emptySlotIndexes.length} Key slot(s) available; extra selections were ignored.`,
+      );
       chosen = chosen.slice(0, emptySlotIndexes.length);
     }
 
@@ -483,31 +498,35 @@ export class BladesHelpers {
 
     const deadlockOptions = this.getDeadlockedKeysFor(slot.key);
     const escapeHtml = (value) => foundry.utils.escapeHTML(String(value ?? ""));
-    const options_html = deadlockOptions.map((opt, i) => `
+    const options_html = deadlockOptions
+      .map(
+        (opt, i) => `
       <div class="item-block">
         <input id="select-deadlock-${i}" type="radio" name="select_deadlock" value="${escapeHtml(opt)}">
         <label for="select-deadlock-${i}">${escapeHtml(opt)}</label>
-      </div>`).join("");
+      </div>`,
+      )
+      .join("");
 
     const dialogContent = `
       <form class="items-to-add">
         <div class="form-group">
-          <label>${game.i18n.localize('BITD.CustomDeadlock')}:</label>
+          <label>${game.i18n.localize("BITD.CustomDeadlock")}:</label>
           <input type="text" name="custom_deadlock">
         </div>
         <div class="items-list add-items-list">
           <div class="item-group">
-            ${options_html || `<p class="notes">${game.i18n.localize('BITD.NoCatalogDeadlocks')}</p>`}
+            ${options_html || `<p class="notes">${game.i18n.localize("BITD.NoCatalogDeadlocks")}</p>`}
           </div>
         </div>
       </form>
     `;
 
     const result = await openFormDialog({
-      title: game.i18n.localize('BITD.ChooseDeadlock'),
+      title: game.i18n.localize("BITD.ChooseDeadlock"),
       content: dialogContent,
-      okLabel: game.i18n.localize('Add'),
-      cancelLabel: game.i18n.localize('Cancel'),
+      okLabel: game.i18n.localize("Add"),
+      cancelLabel: game.i18n.localize("Cancel"),
       defaultButton: "ok",
     });
 
@@ -551,20 +570,23 @@ export class BladesHelpers {
 
   static async getItemByType(item_type, item_id) {
     let game_items = await this.getAllItemsByType(item_type);
-    let item = game_items.find(item => item.id === item_id);
+    let item = game_items.find((item) => item.id === item_id);
     return item;
   }
 
   static async getPlaybookAcquaintances(actor_type, selected_playbook) {
-    let all_acquaintances = await this.getSourcedItemsByType('npc');
+    let all_acquaintances = await this.getSourcedItemsByType("npc");
     let playbook_acquaintances = [];
     if (actor_type == "character") {
-      playbook_acquaintances = all_acquaintances.filter(i => i.system.associated_class === selected_playbook);
+      playbook_acquaintances = all_acquaintances.filter(
+        (i) => i.system.associated_class === selected_playbook,
+      );
     } else if (actor_type == "crew") {
-      playbook_acquaintances = all_acquaintances.filter(i => i.system.associated_crew_type === selected_playbook);
+      playbook_acquaintances = all_acquaintances.filter(
+        (i) => i.system.associated_crew_type === selected_playbook,
+      );
     }
     return playbook_acquaintances;
-
   }
 
   static async import_pb_contacts(actor, playbook) {
@@ -588,7 +610,9 @@ export class BladesHelpers {
       return this._crewSetupCache;
     }
     try {
-      const setupUrl = foundry.utils.getRoute("systems/blades68/module/data/blades68-crew-setup.json");
+      const setupUrl = foundry.utils.getRoute(
+        "systems/blades68/module/data/blades68-crew-setup.json",
+      );
       this._crewSetupCache = await (await fetch(setupUrl)).json();
     } catch (err) {
       console.error("Failed to load blades68-crew-setup.json", err);
@@ -617,7 +641,13 @@ export class BladesHelpers {
 
     const existing = foundry.utils.deepClone(actor.system.acquaintances ?? []);
     const existingNames = new Set(
-      existing.map((acq) => String(acq?.name ?? "").trim().toLowerCase()).filter(Boolean)
+      existing
+        .map((acq) =>
+          String(acq?.name ?? "")
+            .trim()
+            .toLowerCase(),
+        )
+        .filter(Boolean),
     );
     const missing = crewSetup.contacts.filter((c) => {
       const name = String(c?.name ?? "").trim();
@@ -659,13 +689,15 @@ export class BladesHelpers {
    * @returns {Promise<Folder>}
    */
   static async getPcContactsFolder(actor) {
-    let rootFolder = game.folders.find((f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
+    let rootFolder = game.folders.find(
+      (f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder,
+    );
     if (!rootFolder) {
       rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
     }
 
     let actorFolder = game.folders.find(
-      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
+      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id,
     );
     if (!actorFolder) {
       actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
@@ -700,7 +732,12 @@ export class BladesHelpers {
 
     const acquaintances = foundry.utils.deepClone(actor.system.acquaintances ?? []);
     const findContact = (name) =>
-      acquaintances.find((acq) => String(acq?.name ?? "").trim().toLowerCase() === name.toLowerCase());
+      acquaintances.find(
+        (acq) =>
+          String(acq?.name ?? "")
+            .trim()
+            .toLowerCase() === name.toLowerCase(),
+      );
 
     const wanted = [
       { name: "Suspicion", type: "🕛 clock", system: { type: 4, value: 0 } },
@@ -709,7 +746,9 @@ export class BladesHelpers {
     const missing = wanted.filter((data) => !findContact(data.name));
     if (missing.length) {
       const folder = await this.getPcContactsFolder(actor);
-      const created = await Actor.createDocuments(missing.map((data) => ({ ...data, folder: folder.id })));
+      const created = await Actor.createDocuments(
+        missing.map((data) => ({ ...data, folder: folder.id })),
+      );
       for (const doc of created) {
         acquaintances.push({
           id: doc.id,
@@ -731,14 +770,13 @@ export class BladesHelpers {
     }
   }
 
-  
   static async addCrew(actor, dropped_crew) {
     let current_crew = actor.system.crew;
     let new_crew = {
       id: dropped_crew.id,
       name: dropped_crew.name,
       description: dropped_crew.system.description,
-      img: dropped_crew.img
+      img: dropped_crew.img,
     };
 
     let unique_id = !current_crew.some((oldAcq) => {
@@ -747,16 +785,14 @@ export class BladesHelpers {
 
     if (unique_id) {
       actor.update({ system: { crew: [new_crew] } });
-
     } else {
       ui.notifications.info(game.i18n.localize("BITD.log.info.SameCrew"));
     }
   }
 
-  
   static async removeCrew(actor, crewId) {
     let current_crew = actor.system.crew;
-    let updated_crew = current_crew.filter(acq => acq._id !== crewId && acq.id !== crewId);
+    let updated_crew = current_crew.filter((acq) => acq._id !== crewId && acq.id !== crewId);
     await actor.update({ system: { crew: updated_crew } });
   }
 
@@ -788,8 +824,11 @@ export class BladesHelpers {
       } else if (crewTypeVal && crewTypeVal.trim() !== "") {
         // crew_type may be a comma-separated list (e.g. "Shadows, Smugglers")
         // so the upgrade shows under every listed crew type's group.
-        crewTypeVal.split(",").map(t => t.trim()).filter(Boolean)
-          .forEach(t => addToGroup(t, item));
+        crewTypeVal
+          .split(",")
+          .map((t) => t.trim())
+          .filter(Boolean)
+          .forEach((t) => addToGroup(t, item));
       } else {
         generics.push(item);
       }
@@ -800,9 +839,11 @@ export class BladesHelpers {
     if (generics.length > 0) {
       sorted["General"] = generics;
     }
-    Object.keys(grouped_items).sort().forEach(key => {
-      sorted[key] = grouped_items[key];
-    });
+    Object.keys(grouped_items)
+      .sort()
+      .forEach((key) => {
+        sorted[key] = grouped_items[key];
+      });
 
     return sorted;
   }

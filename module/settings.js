@@ -1,8 +1,5 @@
 import { attachExistingImportedImages } from "./pdf-import/attach-existing-images.js";
-import {
-  ensureXpTriggersJournal,
-  rerenderBlades68Sheets,
-} from "./xp-triggers.js";
+import { ensureXpTriggersJournal, rerenderBlades68Sheets } from "./xp-triggers.js";
 
 export const registerSystemSettings = function () {
   game.settings.register("blades68", "Blades68Mode", {
@@ -255,10 +252,8 @@ export const registerSystemSettings = function () {
 };
 
 export function applySheetBackgroundColor() {
-  const hex =
-    game.settings.get("blades68", "SheetBackgroundColor") || "#382c93";
-  const opacity =
-    game.settings.get("blades68", "SheetBackgroundOpacity") ?? 0.9;
+  const hex = game.settings.get("blades68", "SheetBackgroundColor") || "#382c93";
+  const opacity = game.settings.get("blades68", "SheetBackgroundOpacity") ?? 0.9;
   const rgba = foundry.utils.Color.from(hex).toRGBA(opacity);
   document.documentElement.style.setProperty("--blades68-sheet-bg", rgba);
 }
@@ -284,10 +279,7 @@ export async function importExistingImagesOnce() {
   try {
     await attachExistingImportedImages();
   } catch (err) {
-    console.error(
-      "blades68 | Failed to import previously-uploaded faction/map images:",
-      err,
-    );
+    console.error("blades68 | Failed to import previously-uploaded faction/map images:", err);
   }
   await game.settings.set("blades68", "existingImagesImported", true);
 }

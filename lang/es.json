@@ -140,7 +140,8 @@
   "BITD.AddXP": "Add XP",
   "BITD.MinusXP": "Minus XP",
   "BITD.AddXPClock": "Add XP Clock",
-  "BITD.MinusXPClock": "Minus XP Clock",  "BITD.CrewExpClue1": "Al final de la sesión, marcad 1 PX por cada punto siguiente, si se ha cumplido, o 2 PX si se ha cumplido varias veces.",
+  "BITD.MinusXPClock": "Minus XP Clock",
+  "BITD.CrewExpClue1": "Al final de la sesión, marcad 1 PX por cada punto siguiente, si se ha cumplido, o 2 PX si se ha cumplido varias veces.",
   "BITD.SpecialAbilities": "Capacidades Especiales",
   "BITD.Claimed": "Reclamado",
 
@@ -253,7 +254,7 @@
   "BITD.Drain": "Drenaje",
   "BITD.Wear": "Desgaste",
   "BITD.Gloom": "Desolación",
-  
+
   "BITD.Add": "Agregar",
   "BITD.Effects": "Efectos",
   "BITD.EffectCreate": "Crear Efecto",
@@ -278,7 +279,7 @@
   "BITD.StrangeFriends": "Amigos Extraño",
   "BITD.Acquaintances": "Conocidos",
   "BITD.Contacts": "Contactos",
- 
+
   "BITD.HuntingGrounds": "Tierras de Caza",
   "BITD.SacredSites": "Lugares Sagrados",
   "BITD.SalesTerritory": "Territorio de Ventas",
@@ -332,7 +333,7 @@
   "BITD.Edge": "Edge",
   "BITD.GainEdge": "Gain an <strong>Edge</strong>.",
   "BITD.DiceRoller": "Dice Roller",
-  
+
   "BITD.Colors": {
     "Black": "Black",
     "Blue": "Blue",
@@ -342,7 +343,7 @@
     "White": "White",
     "Yellow": "Yellow"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Action Rolls",

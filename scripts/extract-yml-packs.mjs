@@ -91,7 +91,16 @@ export async function extractYmlPacks({
   fs.mkdirSync(sourceDir, { recursive: true });
 
   // Remove leftover curated trees that aren't the final hierarchy.
-  for (const leftover of ["playbooks", "crews", "prisons", "abilities", "items", "factions", "macros", "og_blades"]) {
+  for (const leftover of [
+    "playbooks",
+    "crews",
+    "prisons",
+    "abilities",
+    "items",
+    "factions",
+    "macros",
+    "og_blades",
+  ]) {
     const p = path.join(sourceDir, leftover);
     if (fs.existsSync(p)) rmrf(p);
   }
@@ -110,7 +119,9 @@ export async function extractYmlPacks({
       source = "leveldb";
     }
     if (!docs) {
-      throw new Error(`No NeDB or LevelDB data for pack "${packName}" (${resolvedDb} / ${levelDir})`);
+      throw new Error(
+        `No NeDB or LevelDB data for pack "${packName}" (${resolvedDb} / ${levelDir})`,
+      );
     }
 
     const packDir = path.join(sourceDir, game, folderSlug, pack.name);
@@ -132,12 +143,14 @@ export async function extractYmlPacks({
         if (usedIds.has(doc._id) || doc._id === old) {
           doc._id = crypto
             .createHash("sha256")
-            .update(`${old}:${usedIds.size}:${doc.system?.class ?? ""}:${doc.system?.description ?? ""}`)
+            .update(
+              `${old}:${usedIds.size}:${doc.system?.class ?? ""}:${doc.system?.description ?? ""}`,
+            )
             .digest("hex")
             .slice(0, 16);
         }
         console.warn(
-          `WARN ${packName}: duplicate _id ${old} for "${doc.name}" (${doc.system?.class || "no class"}); reassigned ${doc._id}`
+          `WARN ${packName}: duplicate _id ${old} for "${doc.name}" (${doc.system?.class || "no class"}); reassigned ${doc._id}`,
         );
       }
       usedIds.set(doc._id, doc.name);
@@ -162,7 +175,7 @@ export async function extractYmlPacks({
       dir: path.relative(root, packDir),
     });
     console.log(
-      `${packName}: ${docs.length} docs from ${source} -> ${path.relative(root, packDir)}`
+      `${packName}: ${docs.length} docs from ${source} -> ${path.relative(root, packDir)}`,
     );
   }
 
@@ -180,7 +193,11 @@ export async function extractYmlPacks({
   // Clean empty blades_in_the_dark placeholder dirs that aren't folder slugs
   const bitdRoot = path.join(sourceDir, "blades_in_the_dark");
   if (fs.existsSync(bitdRoot)) {
-    const valid = new Set([...placement.values()].filter((p) => p.game === "blades_in_the_dark").map((p) => p.folderSlug));
+    const valid = new Set(
+      [...placement.values()]
+        .filter((p) => p.game === "blades_in_the_dark")
+        .map((p) => p.folderSlug),
+    );
     for (const entry of fs.readdirSync(bitdRoot, { withFileTypes: true })) {
       if (!entry.isDirectory()) continue;
       if (valid.has(entry.name)) continue;

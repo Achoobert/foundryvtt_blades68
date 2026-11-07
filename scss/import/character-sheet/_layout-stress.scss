@@ -50,7 +50,15 @@
     /* Trauma */
     .small-teeth-container {
       .small-teeth-wrap {
-        @include toothradio_icon(15px, 35px, $pill_icon, $pill_rotate, false, $pip_empty_color, $scale: $pill_scale);
+        @include toothradio_icon(
+          15px,
+          35px,
+          $pill_icon,
+          $pill_rotate,
+          false,
+          $pip_empty_color,
+          $scale: $pill_scale
+        );
         flex-direction: column;
 
         .small-teeth {

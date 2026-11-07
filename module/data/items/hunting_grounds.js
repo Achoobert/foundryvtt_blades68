@@ -8,7 +8,7 @@ export class HuntingGroundsItemData extends BladesItemData {
     return {
       ...BladesItemData.defaultFields(),
       ...BladesItemData.activatedEffectFields(),
-      class: new fields.StringField({ required: false, blank: true, initial: "" })
+      class: new fields.StringField({ required: false, blank: true, initial: "" }),
     };
   }
 }

@@ -9,9 +9,7 @@ import { ATTRIBUTES } from "./data/attributes.js";
 
 const CORE_MODULE_ID = "token-action-hud-core";
 
-
 const REQUIRED_CORE_MODULE_VERSION = "2";
-
 
 const VICE_KEY = "BITD.Vice";
 
@@ -25,9 +23,7 @@ const GROUP = {
 const LAYOUT_ACTIONS = "actions";
 const LAYOUT_ATTRIBUTES = "attributes";
 
-
 export function registerTokenActionHud() {
-  
   game.system.tokenActionHud = {
     buildHudActionGroups,
     requiredCoreModuleVersion: REQUIRED_CORE_MODULE_VERSION,
@@ -37,11 +33,7 @@ export function registerTokenActionHud() {
   Hooks.once("tokenActionHudCoreApiReady", (coreModule) => {
     const DEFAULTS = buildDefaults();
     const BladesActionHandler = makeActionHandler(coreModule);
-    const BladesSystemManager = makeSystemManager(
-      coreModule,
-      BladesActionHandler,
-      DEFAULTS,
-    );
+    const BladesSystemManager = makeSystemManager(coreModule, BladesActionHandler, DEFAULTS);
 
     Object.assign(game.system.tokenActionHud, {
       registered: true,
@@ -58,7 +50,6 @@ export function registerTokenActionHud() {
     });
   });
 }
-
 
 function buildDefaults() {
   const groups = foundry.utils.deepClone(GROUP);
@@ -94,7 +85,6 @@ function buildDefaults() {
   };
 }
 
-
 export function buildHudActionGroups(actor) {
   if (actor?.type !== "character") return [];
 
@@ -105,9 +95,7 @@ export function buildHudActionGroups(actor) {
     const skillNames = Object.keys(attribute.skills);
     groups.push({
       groupData: { id: attributeName, type: "system" },
-      actions: skillNames.map((skillName) =>
-        buildAction(actor, dice, skillName),
-      ),
+      actions: skillNames.map((skillName) => buildAction(actor, dice, skillName)),
     });
   }
 
@@ -123,12 +111,9 @@ export function buildHudActionGroups(actor) {
   return groups;
 }
 
-
 function buildAction(actor, dice, rollName, labelKey) {
   const diceAmount = Number(dice[rollName] ?? 0);
-  const name = game.i18n.localize(
-    labelKey ?? BladesHelpers.getRollLabel(rollName),
-  );
+  const name = game.i18n.localize(labelKey ?? BladesHelpers.getRollLabel(rollName));
 
   return {
     id: rollName,
@@ -143,10 +128,8 @@ function buildAction(actor, dice, rollName, labelKey) {
   };
 }
 
-
 function makeActionHandler(coreModule) {
   return class BladesActionHandler extends coreModule.api.ActionHandler {
-    
     async buildSystemActions(_groupIds) {
       for (const { groupData, actions } of buildHudActionGroups(this.actor)) {
         this.addActions(actions, groupData);
@@ -154,7 +137,6 @@ function makeActionHandler(coreModule) {
     }
   };
 }
-
 
 function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
   return class BladesSystemManager extends coreModule.api.SystemManager {
@@ -166,7 +148,6 @@ function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
       return { core: "Blades '68" };
     }
 
-    
     getRollHandler(_rollHandlerId) {
       return new coreModule.api.RollHandler();
     }
@@ -178,7 +159,6 @@ function makeSystemManager(coreModule, BladesActionHandler, DEFAULTS) {
     registerSettings(_coreUpdate) {}
   };
 }
-
 
 export function isTokenActionHudActive() {
   return game.modules.get(CORE_MODULE_ID)?.active === true;

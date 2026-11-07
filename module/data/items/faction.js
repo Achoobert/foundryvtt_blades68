@@ -45,11 +45,23 @@ export class FactionItemData extends BladesItemData {
       notes: new fields.StringField({ required: false, blank: true, initial: "" }),
 
       hold: new fields.ObjectField({
-        initial: () => ({ value: [1], max: 2, max_default: 2, name_default: "BITD.Hold", name: "BITD.Hold" })
+        initial: () => ({
+          value: [1],
+          max: 2,
+          max_default: 2,
+          name_default: "BITD.Hold",
+          name: "BITD.Hold",
+        }),
       }),
       status: new fields.ObjectField({
-        initial: () => ({ value: [4], max: 7, max_default: 7, name_default: "BITD.Status", name: "BITD.Status" })
-      })
+        initial: () => ({
+          value: [4],
+          max: 7,
+          max_default: 7,
+          name_default: "BITD.Status",
+          name: "BITD.Status",
+        }),
+      }),
     };
   }
 

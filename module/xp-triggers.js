@@ -31,12 +31,9 @@ function defaultCharacterHtml() {
 
 function defaultCrewHtml() {
   const description = game.i18n.localize("BITD.CrewExpClue1");
-  return [
-    `<p>${description}</p>`,
-    "<ul>",
-    `<li>${XP_TRIGGERS_PLACEHOLDER}</li>`,
-    "</ul>",
-  ].join("\n");
+  return [`<p>${description}</p>`, "<ul>", `<li>${XP_TRIGGERS_PLACEHOLDER}</li>`, "</ul>"].join(
+    "\n",
+  );
 }
 
 function isEnabled() {
@@ -87,10 +84,7 @@ function substituteClues(content, cluesHtml) {
   const clues = nl2br(cluesHtml).trim();
   if (clues) return content.split(XP_TRIGGERS_PLACEHOLDER).join(clues);
 
-  const placeholder = XP_TRIGGERS_PLACEHOLDER.replace(
-    /[.*+?^${}()|[\]\\]/g,
-    "\\$&",
-  );
+  const placeholder = XP_TRIGGERS_PLACEHOLDER.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const emptyLine = new RegExp(
     `<(li|p)\\b[^>]*>(?:\\s|<[^>]+>)*${placeholder}(?:\\s|<[^>]+>)*</\\1>`,
     "gi",
@@ -127,8 +121,7 @@ export function rerenderBlades68Sheets() {
     Array.from(foundry.applications.instances?.values?.() ?? []),
   )) {
     const el = app.element;
-    const hasBlades68Class =
-      el?.classList?.contains?.("blades68") ?? el?.hasClass?.("blades68");
+    const hasBlades68Class = el?.classList?.contains?.("blades68") ?? el?.hasClass?.("blades68");
     if (hasBlades68Class) app.render(false);
   }
 }

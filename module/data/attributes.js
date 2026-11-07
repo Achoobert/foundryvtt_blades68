@@ -13,8 +13,8 @@ export const ATTRIBUTES = {
       hunt: "BITD.SkillsHunt",
       study: "BITD.SkillsStudy",
       survey: "BITD.SkillsSurvey",
-      tinker: "BITD.SkillsTinker"
-    }
+      tinker: "BITD.SkillsTinker",
+    },
   },
   prowess: {
     label: "BITD.SkillsProwess",
@@ -22,8 +22,8 @@ export const ATTRIBUTES = {
       finesse: "BITD.SkillsFinesse",
       prowl: "BITD.SkillsProwl",
       skirmish: "BITD.SkillsSkirmish",
-      wreck: "BITD.SkillsWreck"
-    }
+      wreck: "BITD.SkillsWreck",
+    },
   },
   resolve: {
     label: "BITD.SkillsResolve",
@@ -31,7 +31,7 @@ export const ATTRIBUTES = {
       attune: "BITD.SkillsAttune",
       command: "BITD.SkillsCommand",
       consort: "BITD.SkillsConsort",
-      sway: "BITD.SkillsSway"
-    }
-  }
+      sway: "BITD.SkillsSway",
+    },
+  },
 };

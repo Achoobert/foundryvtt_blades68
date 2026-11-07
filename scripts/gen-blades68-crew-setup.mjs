@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const translation = JSON.parse(
-  fs.readFileSync(path.join(root, "reference/blades68-translation.json"), "utf8")
+  fs.readFileSync(path.join(root, "reference/blades68-translation.json"), "utf8"),
 );
 
 // Maps Roll20 crew slug -> crew_type Item name (packs/blades68_crew_types.db).
@@ -23,7 +23,9 @@ const CREW_NAME_BY_SHEET_KEY = {
 };
 
 function stripHtml(str) {
-  return String(str ?? "").replace(/<[^>]*>/g, "").trim();
+  return String(str ?? "")
+    .replace(/<[^>]*>/g, "")
+    .trim();
 }
 
 const setup = {};

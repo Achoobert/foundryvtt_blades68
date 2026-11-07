@@ -14,13 +14,13 @@ const BASE_MAX_LOAD = {
   "BITD.Normal": 5,
   "BITD.Heavy": 6,
   "BITD.Discreet": 4,
-  "BITD.Conspicuous": 6
+  "BITD.Conspicuous": 6,
 };
 
 /** Which tiers the dropdown offers in each mode -- mirrors load_levels in blades-actor-sheet.js. */
 const LOAD_TIERS = {
   base: ["BITD.Light", "BITD.Normal", "BITD.Heavy"],
-  deepCut: ["BITD.Discreet", "BITD.Conspicuous"]
+  deepCut: ["BITD.Discreet", "BITD.Conspicuous"],
 };
 
 function deepCutLoad() {
@@ -31,9 +31,7 @@ function deepCutLoad() {
   }
 }
 
-
 export class CharacterData extends foundry.abstract.TypeDataModel {
-  
   static migrateData(source) {
     const rawList = source?.keys?.list;
     if (rawList && typeof rawList === "object") {
@@ -57,50 +55,49 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     const str = (initial = "") => new fields.StringField({ required: true, blank: true, initial });
     const bool = (initial = false) => new fields.BooleanField({ required: true, initial });
     const num = (initial = 0) => new fields.NumberField({ required: true, initial, integer: true });
-    const numArray = (initial = [0]) => new fields.ArrayField(
-      new fields.NumberField({ required: true, initial: 0, integer: true }),
-      { required: true, initial }
-    );
+    const numArray = (initial = [0]) =>
+      new fields.ArrayField(new fields.NumberField({ required: true, initial: 0, integer: true }), {
+        required: true,
+        initial,
+      });
 
     const cohortStatus = () => ({
       weak: bool(),
       impaired: bool(),
-      broken: bool()
+      broken: bool(),
     });
 
     return {
-      
       alias: str(),
       pronouns: str(),
       look: str(),
-      heritage: str(), 
+      heritage: str(),
       background: str(),
       "background-details": str(),
       vice: str(),
       "vice-purveyor": str(),
-      playbook: str(), 
-      description: str(), 
+      playbook: str(),
+      description: str(),
 
-      
       crew: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }),
 
-      
       edge: new fields.SchemaField({
         value: num(0),
-        max: num(1)
+        max: num(1),
       }),
 
-      
-      acquaintances: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }),
+      acquaintances: new fields.ArrayField(new fields.ObjectField(), {
+        required: true,
+        initial: [],
+      }),
       acquaintances_label: str("BITD.Acquaintances"),
 
-      
       stress: new fields.SchemaField({
         value: numArray([0]),
         max: num(9),
         max_default: num(9),
         name: str("BITD.Stress"),
-        name_default: str("BITD.Stress")
+        name_default: str("BITD.Stress"),
       }),
       trauma: new fields.SchemaField({
         max: num(4),
@@ -118,13 +115,15 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             "BITD.TraumaReckless",
             "BITD.TraumaSoft",
             "BITD.TraumaUnstable",
-            "BITD.TraumaVicious"
-          ]
+            "BITD.TraumaVicious",
+          ],
         }),
-        list: new fields.ArrayField(new fields.StringField({ required: true, blank: true }), { required: true, initial: [] })
+        list: new fields.ArrayField(new fields.StringField({ required: true, blank: true }), {
+          required: true,
+          initial: [],
+        }),
       }),
 
-      
       keys: new fields.SchemaField({
         max: num(4),
         list: new fields.ArrayField(
@@ -132,72 +131,76 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             key: str(),
             experience: num(0),
             deadlocked: bool(false),
-            deadlocked_to: str()
+            deadlocked_to: str(),
           }),
           {
             required: true,
-            initial: Array.from({ length: 4 }, () => ({ key: "", experience: 0, deadlocked: false, deadlocked_to: "" }))
-          }
-        )
+            initial: Array.from({ length: 4 }, () => ({
+              key: "",
+              experience: 0,
+              deadlocked: false,
+              deadlocked_to: "",
+            })),
+          },
+        ),
       }),
 
-      
-      "healing-clock": numArray([0]), 
+      "healing-clock": numArray([0]),
       healing_clock: new fields.SchemaField({
         value: numArray([0]),
         max: num(4),
-        min: num(0)
+        min: num(0),
       }),
 
-      
-      experience: numArray([0]), 
+      experience: numArray([0]),
       experience_max: num(8),
-      experience_clues: new fields.ArrayField(new fields.StringField({ required: true, blank: true }), {
-        required: true,
-        initial: ["BITD.ClassExpClue3", "BITD.ClassExpClue2"]
-      }),
+      experience_clues: new fields.ArrayField(
+        new fields.StringField({ required: true, blank: true }),
+        {
+          required: true,
+          initial: ["BITD.ClassExpClue3", "BITD.ClassExpClue2"],
+        },
+      ),
       exp_clock: new fields.SchemaField({
-        
         value: num(0),
         number: num(0),
         size: num(6),
-        color: str("black")
+        color: str("black"),
       }),
 
-      
       coins: numArray([0]),
       coins_stashed: numArray([0]),
       coins_max: new fields.SchemaField({
         hand: num(4),
-        stash: num(40)
+        stash: num(40),
       }),
 
-      
-      special_abilities: new fields.ArrayField(new fields.ObjectField(), { required: true, initial: [] }), 
-      loadout: num(0), 
-      load_level: str(), 
-      selected_load_level: str(), 
-      base_max_load: num(0), 
-      coin_load: num(0), 
-      load_max: num(0), 
-      load_bonus: num(0), 
-      over_load: bool(), 
+      special_abilities: new fields.ArrayField(new fields.ObjectField(), {
+        required: true,
+        initial: [],
+      }),
+      loadout: num(0),
+      load_level: str(),
+      selected_load_level: str(),
+      base_max_load: num(0),
+      coin_load: num(0),
+      load_max: num(0),
+      load_bonus: num(0),
+      over_load: bool(),
 
-      
       harm: new fields.SchemaField({
         light: new fields.SchemaField({ one: str(), two: str() }),
         medium: new fields.SchemaField({ one: str(), two: str() }),
         heavy: new fields.SchemaField({ one: str() }),
-        deadly: new fields.SchemaField({ one: str() })
+        deadly: new fields.SchemaField({ one: str() }),
       }),
       "armor-uses": new fields.SchemaField({
         armor: bool(false),
-        heavy: bool(false), 
+        heavy: bool(false),
         special: bool(false),
-        special_2: bool(false)
+        special_2: bool(false),
       }),
 
-      
       attributes: new fields.SchemaField(
         Object.fromEntries(
           Object.entries(ATTRIBUTES).map(([attribute, { label, skills }]) => [
@@ -211,16 +214,20 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
                 Object.fromEntries(
                   Object.entries(skills).map(([skill, skillLabel]) => [
                     skill,
-                    new fields.SchemaField({ label: str(skillLabel), value: num(0), max: num(3), min: num(0) })
-                  ])
-                )
-              )
-            })
-          ])
-        )
+                    new fields.SchemaField({
+                      label: str(skillLabel),
+                      value: num(0),
+                      max: num(3),
+                      min: num(0),
+                    }),
+                  ]),
+                ),
+              ),
+            }),
+          ]),
+        ),
       ),
 
-      
       "unique-data": new fields.SchemaField({
         hound: new fields.SchemaField({
           name: str(),
@@ -229,15 +236,15 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
           type: str(),
           abilities: str(),
           ...cohortStatus(),
-          armor: num(0)
+          armor: num(0),
         }),
         hull: new fields.SchemaField({
           memories: new fields.SchemaField({
             name_heritage: new fields.SchemaField({ text: str(), clock: num(0) }),
             unfinished: new fields.SchemaField({ text: str(), clock: num(0) }),
             background_love: new fields.SchemaField({ text: str(), clock: num(0) }),
-            crime: new fields.SchemaField({ text: str(), clock: num(0) })
-          })
+            crime: new fields.SchemaField({ text: str(), clock: num(0) }),
+          }),
         }),
         intellectual: new fields.SchemaField({
           sparkmind: new fields.SchemaField({
@@ -247,16 +254,16 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             abilities: str(),
             function: str(),
             housing: str(),
-            ...cohortStatus()
-          })
+            ...cohortStatus(),
+          }),
         }),
         operative: new fields.SchemaField({
           backing_faction: new fields.SchemaField({
             faction: str(),
             personal_mission: str(),
             prestige_ability: str(),
-            failure: num(0)
-          })
+            failure: num(0),
+          }),
         }),
         paranormalist: new fields.SchemaField({
           resonance: new fields.SchemaField({
@@ -266,26 +273,26 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             type: str("Paranormal assistant"),
             abilities: str(),
             ...cohortStatus(),
-            armor: num(0)
-          })
+            armor: num(0),
+          }),
         }),
         radical: new fields.SchemaField({
           explosives: new fields.SchemaField({
             bandolier1: new fields.SchemaField({ slot1: bool(), slot2: bool(), slot3: bool() }),
-            bandolier2: new fields.SchemaField({ slot1: bool(), slot2: bool(), slot3: bool() })
-          })
+            bandolier2: new fields.SchemaField({ slot1: bool(), slot2: bool(), slot3: bool() }),
+          }),
         }),
         swinger: new fields.SchemaField({
           autopod: new fields.SchemaField({
             name: str(),
             style: str(),
             type: str(),
-            ...cohortStatus()
-          })
+            ...cohortStatus(),
+          }),
         }),
         veteran: new fields.SchemaField({
           damage: str(),
-          helps: str()
+          helps: str(),
         }),
         vampire: new fields.SchemaField({
           strictures: new fields.SchemaField({
@@ -294,8 +301,8 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             forbidden: bool(false),
             repelled: bool(false),
             bestial: bool(false),
-            bound: bool(false)
-          })
+            bound: bool(false),
+          }),
         }),
         time_traveler: new fields.SchemaField({
           mission: str(),
@@ -303,20 +310,19 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
             detail1: new fields.SchemaField({ done: bool(), text: str() }),
             detail2: new fields.SchemaField({ done: bool(), text: str() }),
             detail3: new fields.SchemaField({ done: bool(), text: str() }),
-            detail4: new fields.SchemaField({ done: bool(), text: str() })
+            detail4: new fields.SchemaField({ done: bool(), text: str() }),
           }),
           chase: new fields.SchemaField({
             detail1: new fields.SchemaField({ done: bool(), text: str() }),
             detail2: new fields.SchemaField({ done: bool(), text: str() }),
             detail3: new fields.SchemaField({ done: bool(), text: str() }),
-            detail4: new fields.SchemaField({ done: bool(), text: str() })
-          })
-        })
-      })
+            detail4: new fields.SchemaField({ done: bool(), text: str() }),
+          }),
+        }),
+      }),
     };
   }
 
-  
   prepareDerivedData() {
     const actor = this.parent;
 
@@ -343,19 +349,16 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
       this.healing_clock.value = actor.getHealingMin();
     }
     if (typeof actor.getMaxKeys === "function" && typeof actor.getComputedKeys === "function") {
-      
-      
       const maxKeys = actor.getMaxKeys();
       const computedList = actor.getComputedKeys(maxKeys);
       this.keys.max = maxKeys;
       this.keys.list = computedList.map((slot) => ({
         ...slot,
-        deadlockOptions: BladesHelpers.getDeadlockedKeysFor(slot.key)
+        deadlockOptions: BladesHelpers.getDeadlockedKeysFor(slot.key),
       }));
     }
   }
 
-  
   _computeLoadout() {
     const items = this.parent?.items;
     let loadout = this._computeCoinLoad();
@@ -386,7 +389,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     return Math.max(0, marked);
   }
 
-  
   /**
    * The load tier is whatever the player picked in the dropdown -- it is never
    * inferred from how much is currently carried. Carrying past the tier's max
@@ -395,7 +397,6 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
    * dropdown was wired up.
    */
   _resolveLoadLevel() {
-    
     const tiers = deepCutLoad() ? LOAD_TIERS.deepCut : LOAD_TIERS.base;
     if (tiers.includes(this.selected_load_level)) return this.selected_load_level;
     return deepCutLoad() ? "BITD.Discreet" : "BITD.Normal";

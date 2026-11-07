@@ -22,7 +22,7 @@ export class ItemItemData extends BladesItemData {
       additional_info: new fields.StringField({ required: false, blank: true, initial: "" }),
       equipped: new fields.BooleanField({ required: false, initial: false }),
       bonus_equipped: new fields.BooleanField({ required: false, initial: false }),
-      num_available: new fields.NumberField({ required: false, initial: 1 })
+      num_available: new fields.NumberField({ required: false, initial: 1 }),
     };
   }
 }

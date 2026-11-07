@@ -1,7 +1,5 @@
-
-import { createdDocsTracker, requireSystemActive } from '../helpers.js';
-import { BladesHelpers } from '/systems/blades68/module/blades-helpers.js';
-
+import { createdDocsTracker, requireSystemActive } from "../helpers.js";
+import { BladesHelpers } from "/systems/blades68/module/blades-helpers.js";
 
 async function fireChange(checkbox, until) {
   checkbox.click();
@@ -15,12 +13,11 @@ async function fireChange(checkbox, until) {
   }
 }
 
-
 async function waitForOpenDialog() {
   let dialogEl;
   for (let attempt = 0; attempt < 20 && !dialogEl; attempt++) {
     await new Promise((resolve) => setTimeout(resolve, 150));
-    const open = document.querySelectorAll('dialog[open]:not(.minimizing)');
+    const open = document.querySelectorAll("dialog[open]:not(.minimizing)");
     dialogEl = open[open.length - 1];
   }
   return dialogEl ?? null;
@@ -28,7 +25,7 @@ async function waitForOpenDialog() {
 
 export default function register(quench) {
   quench.registerBatch(
-    'blades68.actor-sheet-catalogs',
+    "blades68.actor-sheet-catalogs",
     (context) => {
       const { describe, it, assert, after } = context;
       const tracker = createdDocsTracker();
@@ -37,17 +34,23 @@ export default function register(quench) {
         await tracker.cleanup();
       });
 
-      describe('Special Abilities list', function () {
-        it('shows only abilities the actor actually owns, regardless of class', async function () {
+      describe("Special Abilities list", function () {
+        it("shows only abilities the actor actually owns, regardless of class", async function () {
           requireSystemActive();
 
           const className = `Quench Class ${foundry.utils.randomID()}`;
-          const classItem = tracker.track(await Item.create({ name: className, type: 'class' }));
+          const classItem = tracker.track(await Item.create({ name: className, type: "class" }));
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Abilities PC', type: 'character' }));
-          await actor.createEmbeddedDocuments('Item', [
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Abilities PC", type: "character" }),
+          );
+          await actor.createEmbeddedDocuments("Item", [
             classItem.toObject(),
-            { name: '(Some Other Class) Borrowed Ability', type: 'ability', system: { class: 'Some Other Class' } }
+            {
+              name: "(Some Other Class) Borrowed Ability",
+              type: "ability",
+              system: { class: "Some Other Class" },
+            },
           ]);
 
           const sheet = actor.sheet;
@@ -55,20 +58,29 @@ export default function register(quench) {
           try {
             const data = await sheet._prepareContext();
             assert.lengthOf(data.otherAbilities, 1);
-            assert.equal(data.otherAbilities[0].name, '(Some Other Class) Borrowed Ability');
-            assert.lengthOf(sheet.element.querySelectorAll('.special-abilities-panel .ability-catalog'), 0);
+            assert.equal(data.otherAbilities[0].name, "(Some Other Class) Borrowed Ability");
+            assert.lengthOf(
+              sheet.element.querySelectorAll(".special-abilities-panel .ability-catalog"),
+              0,
+            );
           } finally {
             await sheet.close();
           }
         });
 
-        it('tracks ability uses with independent checkboxes reconciled by count', async function () {
+        it("tracks ability uses with independent checkboxes reconciled by count", async function () {
           this.timeout(10000);
           requireSystemActive();
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Ability Uses PC', type: 'character' }));
-          const [ability] = await actor.createEmbeddedDocuments('Item', [
-            { name: 'Limited Use Ability', type: 'ability', system: { uses: 3, uses_text: '', uses_used: 0 } }
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Ability Uses PC", type: "character" }),
+          );
+          const [ability] = await actor.createEmbeddedDocuments("Item", [
+            {
+              name: "Limited Use Ability",
+              type: "ability",
+              system: { uses: 3, uses_text: "", uses_used: 0 },
+            },
           ]);
 
           const sheet = actor.sheet;
@@ -77,43 +89,50 @@ export default function register(quench) {
             const data = await sheet._prepareContext();
             assert.equal(data.otherAbilities[0].usesMax, 3);
 
-            const usesBoxes = () => sheet.element.querySelectorAll(`.other-abilities [data-item-id="${ability.id}"] .ability-uses-toggle`);
-            assert.lengthOf(usesBoxes(), 3, 'should render one checkbox per uses slot');
+            const usesBoxes = () =>
+              sheet.element.querySelectorAll(
+                `.other-abilities [data-item-id="${ability.id}"] .ability-uses-toggle`,
+              );
+            assert.lengthOf(usesBoxes(), 3, "should render one checkbox per uses slot");
 
             const boxes = Array.from(usesBoxes());
             boxes[0].checked = true;
             await fireChange(boxes[1], () => ability.system.uses_used === 2);
-            assert.equal(ability.system.uses_used, 2, 'checked count should be written to system.uses_used');
+            assert.equal(
+              ability.system.uses_used,
+              2,
+              "checked count should be written to system.uses_used",
+            );
           } finally {
             await sheet.close();
           }
         });
       });
 
-      describe('Loadout checklist', function () {
-        it('renders one checkbox per system.num_available slot and reconciles owned copies when toggled', async function () {
-
-
+      describe("Loadout checklist", function () {
+        it("renders one checkbox per system.num_available slot and reconciles owned copies when toggled", async function () {
           this.timeout(20000);
           requireSystemActive();
 
           const className = `Quench Class ${foundry.utils.randomID()}`;
-          const classItem = tracker.track(await Item.create({ name: className, type: 'class' }));
+          const classItem = tracker.track(await Item.create({ name: className, type: "class" }));
           tracker.track(
             await Item.create({
-              name: 'Test Bandolier',
-              type: 'item',
-              system: { class: className, num_available: 2, load: 1 }
-            })
+              name: "Test Bandolier",
+              type: "item",
+              system: { class: className, num_available: 2, load: 1 },
+            }),
           );
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Loadout PC', type: 'character' }));
-          await actor.createEmbeddedDocuments('Item', [classItem.toObject()]);
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Loadout PC", type: "character" }),
+          );
+          await actor.createEmbeddedDocuments("Item", [classItem.toObject()]);
 
           const sheet = actor.sheet;
 
-
-          const slotCheckbox = (slot) => sheet.element.querySelector(`.items-panel .catalog-toggle[data-slot="${slot}"]`);
+          const slotCheckbox = (slot) =>
+            sheet.element.querySelector(`.items-panel .catalog-toggle[data-slot="${slot}"]`);
 
           await sheet.render(true);
           try {
@@ -123,58 +142,70 @@ export default function register(quench) {
             assert.equal(data.itemCatalog[0].ownedCount, 0);
 
             assert.lengthOf(
-              Array.from(sheet.element.querySelectorAll('.items-panel .catalog-toggle')),
+              Array.from(sheet.element.querySelectorAll(".items-panel .catalog-toggle")),
               2,
-              'should render 2 slot checkboxes for num_available: 2'
+              "should render 2 slot checkboxes for num_available: 2",
             );
 
-            const ownedBandoliers = () => actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier');
+            const ownedBandoliers = () =>
+              actor.items.filter((i) => i.type === "item" && i.name === "Test Bandolier");
 
             let checkbox = slotCheckbox(1);
-            await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(1)?.checked === true);
+            await fireChange(
+              checkbox,
+              () => ownedBandoliers().length === 1 && slotCheckbox(1)?.checked === true,
+            );
             assert.lengthOf(
-              actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
+              actor.items.filter((i) => i.type === "item" && i.name === "Test Bandolier"),
               1,
-              'checking one slot should create one owned copy'
+              "checking one slot should create one owned copy",
             );
             assert.isTrue(
               ownedBandoliers()[0].system.equipped,
-              'a catalog-created copy should be equipped so it counts toward load'
+              "a catalog-created copy should be equipped so it counts toward load",
             );
             assert.equal(
               (await sheet._prepareContext()).system.loadout,
               1,
-              'checking a loadout slot should add its load to system.loadout'
+              "checking a loadout slot should add its load to system.loadout",
             );
 
             checkbox = slotCheckbox(2);
-            await fireChange(checkbox, () => ownedBandoliers().length === 2 && slotCheckbox(2)?.checked === true);
+            await fireChange(
+              checkbox,
+              () => ownedBandoliers().length === 2 && slotCheckbox(2)?.checked === true,
+            );
             assert.lengthOf(
-              actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
+              actor.items.filter((i) => i.type === "item" && i.name === "Test Bandolier"),
               2,
-              'checking both slots should create a second owned copy'
+              "checking both slots should create a second owned copy",
             );
 
             checkbox = slotCheckbox(2);
-            await fireChange(checkbox, () => ownedBandoliers().length === 1 && slotCheckbox(2)?.checked === false);
+            await fireChange(
+              checkbox,
+              () => ownedBandoliers().length === 1 && slotCheckbox(2)?.checked === false,
+            );
             assert.lengthOf(
-              actor.items.filter((i) => i.type === 'item' && i.name === 'Test Bandolier'),
+              actor.items.filter((i) => i.type === "item" && i.name === "Test Bandolier"),
               1,
-              'unchecking a slot should remove one owned copy'
+              "unchecking a slot should remove one owned copy",
             );
           } finally {
             await sheet.close();
           }
         });
 
-        it('only counts items with system.equipped true toward system.loadout', async function () {
+        it("only counts items with system.equipped true toward system.loadout", async function () {
           requireSystemActive();
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Load Sum PC', type: 'character' }));
-          await actor.createEmbeddedDocuments('Item', [
-            { name: 'Carried Sword', type: 'item', system: { load: 3, equipped: true } },
-            { name: 'Stashed Anchor', type: 'item', system: { load: 5, equipped: false } },
-            { name: 'Unset Equip Item', type: 'item', system: { load: 2 } }
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Load Sum PC", type: "character" }),
+          );
+          await actor.createEmbeddedDocuments("Item", [
+            { name: "Carried Sword", type: "item", system: { load: 3, equipped: true } },
+            { name: "Stashed Anchor", type: "item", system: { load: 5, equipped: false } },
+            { name: "Unset Equip Item", type: "item", system: { load: 2 } },
           ]);
 
           const sheet = actor.sheet;
@@ -184,7 +215,7 @@ export default function register(quench) {
             assert.equal(
               data.system.loadout,
               3,
-              'only the equipped item\'s load should count toward system.loadout'
+              "only the equipped item's load should count toward system.loadout",
             );
           } finally {
             await sheet.close();
@@ -192,25 +223,32 @@ export default function register(quench) {
         });
       });
 
-      describe('Keys & Deadlocks', function () {
-        it('normalizes a keys.list update given as an index-keyed object instead of an array', async function () {
-
-
+      describe("Keys & Deadlocks", function () {
+        it("normalizes a keys.list update given as an index-keyed object instead of an array", async function () {
           requireSystemActive();
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Object-Shape PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys Object-Shape PC", type: "character" }),
+          );
           await actor.update({
-            'system.keys.list': { 0: { key: 'Defiant', marks: 1, deadlocked: false } }
+            "system.keys.list": { 0: { key: "Defiant", marks: 1, deadlocked: false } },
           });
 
           const keys = actor.getComputedKeys();
-          assert.lengthOf(keys, 4, 'should still pad to 4 slots');
-          assert.equal(keys[0].key, 'Defiant', 'the existing slot should be preserved, not dropped');
-          assert.equal(keys[0].experience, 1, 'legacy marks should migrate into experience');
+          assert.lengthOf(keys, 4, "should still pad to 4 slots");
+          assert.equal(
+            keys[0].key,
+            "Defiant",
+            "the existing slot should be preserved, not dropped",
+          );
+          assert.equal(keys[0].experience, 1, "legacy marks should migrate into experience");
 
           const sheet = actor.sheet;
           await sheet.render(true);
           try {
-            assert.isTrue(sheet.rendered, 'the sheet should render without throwing on the object-shaped list');
+            assert.isTrue(
+              sheet.rendered,
+              "the sheet should render without throwing on the object-shaped list",
+            );
           } finally {
             await sheet.close();
           }
@@ -218,263 +256,301 @@ export default function register(quench) {
 
         it('pads a fresh actor to 4 empty Key slots (no leftover "example" placeholder)', async function () {
           requireSystemActive();
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Padding PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys Padding PC", type: "character" }),
+          );
           const keys = actor.getComputedKeys();
           assert.lengthOf(keys, 4);
-          assert.isTrue(keys.every((slot) => slot.key === ''), 'every slot should start empty and addable');
+          assert.isTrue(
+            keys.every((slot) => slot.key === ""),
+            "every slot should start empty and addable",
+          );
         });
 
-        it('Add Key succeeds on a fresh actor and fills an empty slot', async function () {
+        it("Add Key succeeds on a fresh actor and fills an empty slot", async function () {
           this.timeout(10000);
           requireSystemActive();
 
+          const priorMode = game.settings.get("blades68", "Blades68Mode");
+          await game.settings.set("blades68", "Blades68Mode", "blades68");
 
-          const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
-
-          const actor = tracker.track(await Actor.create({ name: 'Quench Add Key PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Add Key PC", type: "character" }),
+          );
           const sheet = actor.sheet;
           await sheet.render(true);
           try {
-            sheet.element.querySelector('.add-key-popup').click();
+            sheet.element.querySelector(".add-key-popup").click();
 
             const dialogEl = await waitForOpenDialog();
-            assert.isOk(dialogEl, 'the Add Key dialog should open');
+            assert.isOk(dialogEl, "the Add Key dialog should open");
 
             const checkbox = dialogEl.querySelector('input[name="select_keys"]');
-            assert.isOk(checkbox, 'at least one Key checkbox should be offered');
+            assert.isOk(checkbox, "at least one Key checkbox should be offered");
             checkbox.checked = true;
-            checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+            checkbox.dispatchEvent(new Event("change", { bubbles: true }));
 
             const okButton = dialogEl.querySelector('button[data-action="ok"]');
-            assert.isOk(okButton, 'the dialog should have an Add button');
+            assert.isOk(okButton, "the dialog should have an Add button");
             okButton.click();
-
 
             await new Promise((resolve) => setTimeout(resolve, 300));
 
             const keysList = actor.system.keys.list;
             assert.isTrue(
               keysList.some((slot) => slot.key === checkbox.value),
-              'the chosen Key should be saved into a slot (this is the "no empty Key slots" bug: it used to warn and fail here)'
+              'the chosen Key should be saved into a slot (this is the "no empty Key slots" bug: it used to warn and fail here)',
             );
             assert.isTrue(
-              keysList.some((slot) => slot.key === ''),
-              'other slots should remain empty and still addable'
+              keysList.some((slot) => slot.key === ""),
+              "other slots should remain empty and still addable",
             );
           } finally {
             await sheet.close();
-            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+            await game.settings.set("blades68", "Blades68Mode", priorMode);
             await new Promise((resolve) => setTimeout(resolve, 200));
           }
         });
 
-        it('falls back to a plain option for a custom Key name that has no catalog entry', async function () {
+        it("falls back to a plain option for a custom Key name that has no catalog entry", async function () {
           this.timeout(10000);
           requireSystemActive();
 
+          const priorMode = game.settings.get("blades68", "Blades68Mode");
+          await game.settings.set("blades68", "Blades68Mode", "blades68");
 
-          const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
-
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys PC", type: "character" }),
+          );
           const keysList = foundry.utils.deepClone(actor.system.keys.list);
-          keysList[0].key = 'A Totally Custom Key';
-          await actor.update({ 'system.keys.list': keysList });
+          keysList[0].key = "A Totally Custom Key";
+          await actor.update({ "system.keys.list": keysList });
 
           const sheet = actor.sheet;
           await sheet.render(true);
           try {
-            const selected = sheet.element.querySelector('.keys-container select');
-            assert.isOk(selected, 'the Keys block should render while Blades68Mode is on');
-            assert.equal(selected.value, 'A Totally Custom Key');
+            const selected = sheet.element.querySelector(".keys-container select");
+            assert.isOk(selected, "the Keys block should render while Blades68Mode is on");
+            assert.equal(selected.value, "A Totally Custom Key");
           } finally {
             await sheet.close();
 
-
-            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+            await game.settings.set("blades68", "Blades68Mode", priorMode);
             await new Promise((resolve) => setTimeout(resolve, 200));
           }
         });
 
-        it('deadlock popup saves a catalog choice and replaces the Key select', async function () {
+        it("deadlock popup saves a catalog choice and replaces the Key select", async function () {
           this.timeout(10000);
           requireSystemActive();
 
-          const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          await game.settings.set('blades68', 'Blades68Mode', 'blades68');
+          const priorMode = game.settings.get("blades68", "Blades68Mode");
+          await game.settings.set("blades68", "Blades68Mode", "blades68");
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Deadlock Catalog PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Deadlock Catalog PC", type: "character" }),
+          );
           const keysList = foundry.utils.deepClone(actor.getComputedKeys());
-          keysList[0].key = 'Commanding';
+          keysList[0].key = "Commanding";
           keysList[0].experience = 2;
-          await actor.update({ 'system.keys.list': keysList });
+          await actor.update({ "system.keys.list": keysList });
 
           const sheet = actor.sheet;
           await sheet.render(true);
           try {
             const popupPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
             const dialogEl = await waitForOpenDialog();
-            assert.isOk(dialogEl, 'the Choose Deadlock dialog should open');
+            assert.isOk(dialogEl, "the Choose Deadlock dialog should open");
 
-            const radio = dialogEl.querySelector('input[name="select_deadlock"][value="controlling"]');
-            assert.isOk(radio, 'Commanding should offer controlling');
+            const radio = dialogEl.querySelector(
+              'input[name="select_deadlock"][value="controlling"]',
+            );
+            assert.isOk(radio, "Commanding should offer controlling");
             radio.checked = true;
-            radio.dispatchEvent(new Event('change', { bubbles: true }));
+            radio.dispatchEvent(new Event("change", { bubbles: true }));
 
             dialogEl.querySelector('button[data-action="ok"]').click();
             assert.isTrue(await popupPromise);
 
             const slot = actor.getComputedKeys()[0];
             assert.equal(slot.deadlocked, true);
-            assert.equal(slot.deadlocked_to, 'controlling');
-            assert.equal(slot.experience, 2, 'XP should persist through deadlock');
-            assert.equal(slot.key, 'Commanding', 'original Key should remain stored');
+            assert.equal(slot.deadlocked_to, "controlling");
+            assert.equal(slot.experience, 2, "XP should persist through deadlock");
+            assert.equal(slot.key, "Commanding", "original Key should remain stored");
 
             await sheet.render(true);
-            const deadlockSelect = sheet.element.querySelector('.deadlocked-to-select');
-            assert.equal(deadlockSelect.value, 'controlling');
-            const firstKeySlot = sheet.element.querySelector('.key-slot');
-            const xpInputs = Array.from(firstKeySlot.querySelectorAll('.key-marks input[type="radio"]'));
-            assert.equal(xpInputs.filter((input) => input.disabled).length, 4, 'XP radios should be disabled while deadlocked');
+            const deadlockSelect = sheet.element.querySelector(".deadlocked-to-select");
+            assert.equal(deadlockSelect.value, "controlling");
+            const firstKeySlot = sheet.element.querySelector(".key-slot");
+            const xpInputs = Array.from(
+              firstKeySlot.querySelectorAll('.key-marks input[type="radio"]'),
+            );
+            assert.equal(
+              xpInputs.filter((input) => input.disabled).length,
+              4,
+              "XP radios should be disabled while deadlocked",
+            );
             assert.isTrue(firstKeySlot.querySelector('input[value="2"]').checked);
           } finally {
             await sheet.close();
-            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+            await game.settings.set("blades68", "Blades68Mode", priorMode);
             await new Promise((resolve) => setTimeout(resolve, 200));
           }
         });
 
-        it('deadlock popup accepts a custom deadlock and cancel leaves the slot unlocked', async function () {
+        it("deadlock popup accepts a custom deadlock and cancel leaves the slot unlocked", async function () {
           this.timeout(10000);
           requireSystemActive();
 
-          const actor = tracker.track(await Actor.create({ name: 'Quench Deadlock Custom PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Deadlock Custom PC", type: "character" }),
+          );
           const keysList = foundry.utils.deepClone(actor.getComputedKeys());
-          keysList[0].key = 'Commanding';
-          await actor.update({ 'system.keys.list': keysList });
+          keysList[0].key = "Commanding";
+          await actor.update({ "system.keys.list": keysList });
 
           const cancelPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
           let dialogEl = await waitForOpenDialog();
-          assert.isOk(dialogEl, 'cancel dialog should open');
+          assert.isOk(dialogEl, "cancel dialog should open");
           dialogEl.querySelector('button[data-action="cancel"]').click();
           assert.isNotOk(await cancelPromise);
-          assert.equal(actor.getComputedKeys()[0].deadlocked, false, 'cancel must leave slot unlocked');
-          assert.equal(actor.getComputedKeys()[0].deadlocked_to, '');
+          assert.equal(
+            actor.getComputedKeys()[0].deadlocked,
+            false,
+            "cancel must leave slot unlocked",
+          );
+          assert.equal(actor.getComputedKeys()[0].deadlocked_to, "");
 
           const customPromise = BladesHelpers.deadlockKeyPopup(actor, 0);
           dialogEl = await waitForOpenDialog();
-          assert.isOk(dialogEl, 'custom dialog should open');
+          assert.isOk(dialogEl, "custom dialog should open");
           const customInput = dialogEl.querySelector('input[name="custom_deadlock"]');
-          customInput.value = 'overbearing';
-          customInput.dispatchEvent(new Event('input', { bubbles: true }));
+          customInput.value = "overbearing";
+          customInput.dispatchEvent(new Event("input", { bubbles: true }));
           dialogEl.querySelector('button[data-action="ok"]').click();
           assert.isTrue(await customPromise);
 
           const locked = actor.getComputedKeys()[0];
           assert.equal(locked.deadlocked, true);
-          assert.equal(locked.deadlocked_to, 'overbearing');
+          assert.equal(locked.deadlocked_to, "overbearing");
 
           assert.isTrue(await BladesHelpers.clearKeyDeadlock(actor, 0));
           const cleared = actor.getComputedKeys()[0];
           assert.equal(cleared.deadlocked, false);
-          assert.equal(cleared.deadlocked_to, '', 'unlock should clear deadlocked_to');
-          assert.equal(cleared.key, 'Commanding', 'unlock should keep the original Key');
+          assert.equal(cleared.deadlocked_to, "", "unlock should clear deadlocked_to");
+          assert.equal(cleared.key, "Commanding", "unlock should keep the original Key");
         });
 
-        it('normalizes legacy marks into experience on object-shaped lists', async function () {
+        it("normalizes legacy marks into experience on object-shaped lists", async function () {
           requireSystemActive();
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Marks Migrate PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys Marks Migrate PC", type: "character" }),
+          );
           await actor.update({
-            'system.keys.list': { 0: { key: 'Defiant', marks: 1, boomed: false } }
+            "system.keys.list": { 0: { key: "Defiant", marks: 1, boomed: false } },
           });
           const keys = actor.getComputedKeys();
           assert.equal(keys[0].experience, 1);
           assert.equal(keys[0].deadlocked, false);
-          assert.equal(keys[0].deadlocked_to, '');
+          assert.equal(keys[0].deadlocked_to, "");
         });
 
-        it('updating one Key slot field does not blank sibling Key slots', async function () {
+        it("updating one Key slot field does not blank sibling Key slots", async function () {
           requireSystemActive();
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Sibling PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys Sibling PC", type: "character" }),
+          );
           const keysList = actor.getComputedKeys();
-          keysList[0].key = 'Arrogant';
+          keysList[0].key = "Arrogant";
           keysList[0].experience = 1;
-          keysList[1].key = 'Blunt';
+          keysList[1].key = "Blunt";
           keysList[1].experience = 2;
-          keysList[2].key = 'Flamboyant';
-          await actor.update({ 'system.keys.list': keysList });
-
+          keysList[2].key = "Flamboyant";
+          await actor.update({ "system.keys.list": keysList });
 
           const next = actor.getComputedKeys();
           next[1].experience = 3;
-          await actor.update({ 'system.keys.list': next });
+          await actor.update({ "system.keys.list": next });
 
           const after = actor.getComputedKeys();
-          assert.equal(after[0].key, 'Arrogant', 'sibling slot 0 key must survive');
-          assert.equal(after[0].experience, 1, 'sibling slot 0 XP must survive');
-          assert.equal(after[1].key, 'Blunt', 'edited slot key must survive');
+          assert.equal(after[0].key, "Arrogant", "sibling slot 0 key must survive");
+          assert.equal(after[0].experience, 1, "sibling slot 0 XP must survive");
+          assert.equal(after[1].key, "Blunt", "edited slot key must survive");
           assert.equal(after[1].experience, 3);
-          assert.equal(after[2].key, 'Flamboyant', 'sibling slot 2 key must survive');
+          assert.equal(after[2].key, "Flamboyant", "sibling slot 2 key must survive");
         });
 
-        it('clicking the filled top Key XP pip clears it, like other trackers', async function () {
+        it("clicking the filled top Key XP pip clears it, like other trackers", async function () {
           this.timeout(10000);
           requireSystemActive();
-          const actor = tracker.track(await Actor.create({ name: 'Quench Keys Clear PC', type: 'character' }));
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Keys Clear PC", type: "character" }),
+          );
           const keysList = actor.getComputedKeys();
-          keysList[0].key = 'Arrogant';
+          keysList[0].key = "Arrogant";
           keysList[0].experience = 0;
-          await actor.update({ 'system.keys.list': keysList });
+          await actor.update({ "system.keys.list": keysList });
 
           const sheet = actor.sheet;
           await sheet.render(true);
           try {
             const pip = (n) =>
-              sheet.element.querySelector(`.key-slot[data-slot-index="0"] .key-marks label[for$="-xp-${n}"]`);
+              sheet.element.querySelector(
+                `.key-slot[data-slot-index="0"] .key-marks label[for$="-xp-${n}"]`,
+              );
             const xp = () => actor.getComputedKeys()[0].experience;
 
             await fireChange(pip(1), () => xp() === 1);
-            assert.equal(xp(), 1, 'clicking an empty pip selects it');
+            assert.equal(xp(), 1, "clicking an empty pip selects it");
 
             await fireChange(pip(1), () => xp() === 0);
-            assert.equal(xp(), 0, 'clicking the selected pip again clears it');
+            assert.equal(xp(), 0, "clicking the selected pip again clears it");
           } finally {
             await sheet.close();
           }
         });
       });
 
-      describe('Coin labels', function () {
-        it('says Stacks/Bank in Blades68 mode and Coin/Stash otherwise', async function () {
+      describe("Coin labels", function () {
+        it("says Stacks/Bank in Blades68 mode and Coin/Stash otherwise", async function () {
           this.timeout(10000);
           requireSystemActive();
 
-          const priorMode = game.settings.get('blades68', 'Blades68Mode');
-          const actor = tracker.track(await Actor.create({ name: 'Quench Coin Labels PC', type: 'character' }));
+          const priorMode = game.settings.get("blades68", "Blades68Mode");
+          const actor = tracker.track(
+            await Actor.create({ name: "Quench Coin Labels PC", type: "character" }),
+          );
           const sheet = actor.sheet;
           const labels = () => [
-            sheet.element.querySelector('.coins-hands')?.previousElementSibling?.textContent.trim(),
-            sheet.element.querySelector('.coins-stashed')?.previousElementSibling?.textContent.trim()
+            sheet.element.querySelector(".coins-hands")?.previousElementSibling?.textContent.trim(),
+            sheet.element
+              .querySelector(".coins-stashed")
+              ?.previousElementSibling?.textContent.trim(),
           ];
 
           try {
-            await game.settings.set('blades68', 'Blades68Mode', 'blades68');
+            await game.settings.set("blades68", "Blades68Mode", "blades68");
             await sheet.render(true);
-            assert.deepEqual(labels(), [game.i18n.localize('B68.Stacks'), game.i18n.localize('B68.Bank')]);
+            assert.deepEqual(labels(), [
+              game.i18n.localize("B68.Stacks"),
+              game.i18n.localize("B68.Bank"),
+            ]);
             await sheet.close();
 
-            await game.settings.set('blades68', 'Blades68Mode', 'bitd');
+            await game.settings.set("blades68", "Blades68Mode", "bitd");
             await sheet.render(true);
-            assert.deepEqual(labels(), [game.i18n.localize('BITD.Coin'), game.i18n.localize('BITD.Stash')]);
+            assert.deepEqual(labels(), [
+              game.i18n.localize("BITD.Coin"),
+              game.i18n.localize("BITD.Stash"),
+            ]);
           } finally {
             await sheet.close();
-            await game.settings.set('blades68', 'Blades68Mode', priorMode);
+            await game.settings.set("blades68", "Blades68Mode", priorMode);
             await new Promise((resolve) => setTimeout(resolve, 200));
           }
         });
       });
     },
-    { displayName: 'Actor sheet catalogs (Keys, Special Abilities, Loadout)' }
+    { displayName: "Actor sheet catalogs (Keys, Special Abilities, Loadout)" },
   );
 }

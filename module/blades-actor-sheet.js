@@ -4,81 +4,72 @@ import { BladesHelpers } from "./blades-helpers.js";
 import { enrichHTML } from "./compat.js";
 import { getXpTriggerHtml } from "./xp-triggers.js";
 
-
 const PLAYBOOK_UNIQUE = {
-  "Hound": "hound",
-  "Hull": "hull",
-  "Intellectual": "intellectual",
-  "Operative": "operative",
-  "Paranormalist": "paranormalist",
-  "Radical": "radical",
-  "Swinger": "swinger",
-  "Veteran": "veteran",
-  "Vampire": "vampire",
+  Hound: "hound",
+  Hull: "hull",
+  Intellectual: "intellectual",
+  Operative: "operative",
+  Paranormalist: "paranormalist",
+  Radical: "radical",
+  Swinger: "swinger",
+  Veteran: "veteran",
+  Vampire: "vampire",
   "Time Traveler Future": "time_traveler",
-  "Time Traveler Past": "time_traveler"
+  "Time Traveler Past": "time_traveler",
 };
 
-
 export class BladesActorSheet extends BladesSheetV2 {
-
   static DEFAULT_OPTIONS = {
-    
-    
     classes: [...super.DEFAULT_OPTIONS.classes, "blades68", "pc"],
     position: { width: 790, height: 890 },
     actions: {
-      "bid.rollAttribute":      BladesActorSheet._onRollAttribute,
-      "bid.standingToggle":     BladesActorSheet._onStandingToggle,
-      "bid.openFriend":         BladesActorSheet._onOpenFriend,
+      "bid.rollAttribute": BladesActorSheet._onRollAttribute,
+      "bid.standingToggle": BladesActorSheet._onStandingToggle,
+      "bid.openFriend": BladesActorSheet._onOpenFriend,
       "bid.acquaintanceDelete": BladesActorSheet._onAcquaintanceDelete,
-      "bid.importContacts":     BladesActorSheet._onImportContacts,
-      "bid.addCustomContact":   BladesActorSheet._onAddCustomContact,
-      "bid.crewDelete":         BladesActorSheet._onCrewDelete,
-      "bid.addKeyPopup":        BladesActorSheet._onAddKeyPopup,
-      "bid.keyBoomToggle":      BladesActorSheet._onKeyBoomToggle,
-      "bid.catalogToggle":      BladesActorSheet._onCatalogToggle,
+      "bid.importContacts": BladesActorSheet._onImportContacts,
+      "bid.addCustomContact": BladesActorSheet._onAddCustomContact,
+      "bid.crewDelete": BladesActorSheet._onCrewDelete,
+      "bid.addKeyPopup": BladesActorSheet._onAddKeyPopup,
+      "bid.keyBoomToggle": BladesActorSheet._onKeyBoomToggle,
+      "bid.catalogToggle": BladesActorSheet._onCatalogToggle,
       "bid.itemEquippedToggle": BladesActorSheet._onItemEquippedToggle,
-      "bid.itemUseToggle":      BladesActorSheet._onItemUseToggle,
-      "bid.itemBonusToggle":    BladesActorSheet._onItemBonusToggle,
-      "bid.abilityUsesToggle":  BladesActorSheet._onAbilityUsesToggle,
-      "bid.otherItemDelete":    BladesActorSheet._onOtherItemDelete,
-      "bid.expClockUp":         BladesActorSheet._onExpClockUp,
-      "bid.expClockDown":       BladesActorSheet._onExpClockDown,
-      "bid.addExpClock":        BladesActorSheet._onAddExpClock,
-      "bid.minusExpClock":      BladesActorSheet._onMinusExpClock
-    }
+      "bid.itemUseToggle": BladesActorSheet._onItemUseToggle,
+      "bid.itemBonusToggle": BladesActorSheet._onItemBonusToggle,
+      "bid.abilityUsesToggle": BladesActorSheet._onAbilityUsesToggle,
+      "bid.otherItemDelete": BladesActorSheet._onOtherItemDelete,
+      "bid.expClockUp": BladesActorSheet._onExpClockUp,
+      "bid.expClockDown": BladesActorSheet._onExpClockDown,
+      "bid.addExpClock": BladesActorSheet._onAddExpClock,
+      "bid.minusExpClock": BladesActorSheet._onMinusExpClock,
+    },
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/actor-sheet.html", scrollable: [""] }
+    body: { template: "systems/blades68/templates/actor-sheet.html", scrollable: [""] },
   };
 
   static TABS = {
     primary: {
-      tabs: [
-        { id: "character-notes" },
-        { id: "effects" },
-        { id: "all-character-items" }
-      ],
-      initial: "character-notes"
-    }
+      tabs: [{ id: "character-notes" }, { id: "effects" }, { id: "all-character-items" }],
+      initial: "character-notes",
+    },
   };
 
-  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     const owner = this.actor.isOwner;
 
-    const selectedClass = this.actor.items.find(i => i.type === "class") ?? null;
+    const selectedClass = this.actor.items.find((i) => i.type === "class") ?? null;
     const playbookUnique = selectedClass ? (PLAYBOOK_UNIQUE[selectedClass.name] ?? null) : null;
 
+    const xpTriggers = await getXpTriggerHtml(
+      "character",
+      selectedClass?.system?.experience_clues ?? "",
+    );
 
-    const xpTriggers = await getXpTriggerHtml("character", selectedClass?.system?.experience_clues ?? "");
-
-    
-    const ownedAbilities = this.actor.items.filter(i => i.type === "ability");
-    const otherAbilities = ownedAbilities.map(i => {
+    const ownedAbilities = this.actor.items.filter((i) => i.type === "ability");
+    const otherAbilities = ownedAbilities.map((i) => {
       const usesMax = Math.max(0, parseInt(i.system?.uses) || 0);
       const usesUsed = Math.max(0, parseInt(i.system?.uses_used) || 0);
       const usesText = (i.system?.uses_text || "").trim();
@@ -90,18 +81,19 @@ export class BladesActorSheet extends BladesSheetV2 {
         usesMax,
         usesUsed,
         usesText,
-        usesIndexes: Array.from({ length: usesMax }, (_, idx) => idx + 1)
+        usesIndexes: Array.from({ length: usesMax }, (_, idx) => idx + 1),
       };
     });
     const abilityShortList = ownedAbilities
-      .map(i => BladesHelpers.trimClassFromName(i.name))
+      .map((i) => BladesHelpers.trimClassFromName(i.name))
       .join(" - ");
 
-    const itemResult = await this._buildCatalog("item", selectedClass, { slotsField: "num_available" });
+    const itemResult = await this._buildCatalog("item", selectedClass, {
+      slotsField: "num_available",
+    });
     const itemCatalog = itemResult.catalog;
-    
-    
-    const otherItems = itemResult.other.map(i => {
+
+    const otherItems = itemResult.other.map((i) => {
       const usesMax = parseInt(i.system?.uses) || 1;
       const numAvailable = Math.max(1, parseInt(i.system?.num_available) || 1);
       const loadValue = Math.max(0, parseInt(i.system?.load) || 0);
@@ -115,7 +107,7 @@ export class BladesActorSheet extends BladesSheetV2 {
         hasBonus: numAvailable > 1,
         bonusLabel: `x${numAvailable}`,
         loadIndexes: Array.from({ length: loadValue }, (_, idx) => idx + 1),
-        hasNoLoad: loadValue === 0
+        hasNoLoad: loadValue === 0,
       };
     });
 
@@ -129,38 +121,40 @@ export class BladesActorSheet extends BladesSheetV2 {
       ? { "BITD.Discreet": "BITD.Discreet", "BITD.Conspicuous": "BITD.Conspicuous" }
       : { "BITD.Light": "BITD.Light", "BITD.Normal": "BITD.Normal", "BITD.Heavy": "BITD.Heavy" };
 
-    
     const loadBonusSources = this.actor.getLoadBonusSources?.() ?? [];
     const loadBonusTotal = loadBonusSources.reduce((sum, src) => sum + src.value, 0);
     const loadBonusTooltip = loadBonusSources
-      .map(src => {
+      .map((src) => {
         const desc = BladesHelpers.stripHtml(src.description || "").trim();
         return desc ? `+${src.value} ${src.name}: ${desc}` : `+${src.value} ${src.name}`;
       })
       .join("\n");
 
-    
     const coinLoad = Math.max(0, parseInt(this.actor.system.coin_load) || 0);
     const gearLoad = Math.max(0, (parseInt(this.actor.system.loadout) || 0) - coinLoad);
-    const loadTooltip = coinLoad > 0
-      ? `${game.i18n.localize(this.actor.system.load_level)} \u2014 ${game.i18n.format("BITD.LoadBreakdown", { gear: gearLoad, coin: coinLoad })}`
-      : game.i18n.localize(this.actor.system.load_level);
+    const loadTooltip =
+      coinLoad > 0
+        ? `${game.i18n.localize(this.actor.system.load_level)} \u2014 ${game.i18n.format("BITD.LoadBreakdown", { gear: gearLoad, coin: coinLoad })}`
+        : game.i18n.localize(this.actor.system.load_level);
 
     const description = await enrichHTML(this.actor.system.description, {
       secrets: owner,
-      async: true
+      async: true,
     });
 
     let blades68Mode = false;
     let showKeys = false;
-    try { blades68Mode = game.settings.get("blades68", "Blades68Mode") === "blades68"; } catch (err) {  }
-    try { showKeys = Boolean(game.settings.get("blades68", "ShowKeys")); } catch (err) {  }
+    try {
+      blades68Mode = game.settings.get("blades68", "Blades68Mode") === "blades68";
+    } catch (err) {}
+    try {
+      showKeys = Boolean(game.settings.get("blades68", "ShowKeys"));
+    } catch (err) {}
 
-    
     const system = {
       ...this.actor.system,
       load_levels,
-      description
+      description,
     };
 
     return {
@@ -174,14 +168,13 @@ export class BladesActorSheet extends BladesSheetV2 {
       id: this.actor.id,
       name: this.actor.name,
       img: this.actor.img,
-      items: this.actor.items.map(i => i.toObject()),
+      items: this.actor.items.map((i) => i.toObject()),
       system,
       owner,
       editable: this.isEditable,
       cssClass: this.isEditable ? "editable" : "locked",
       isGM: game.user.isGM,
-      
-      
+
       tabs: this._prepareTabs("primary"),
       effects: BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects),
       blades68: blades68Mode,
@@ -193,25 +186,26 @@ export class BladesActorSheet extends BladesSheetV2 {
       otherAbilities,
       abilityShortList,
       itemCatalog,
-      otherItems
+      otherItems,
     };
   }
 
-  
   async _onRender(context, options) {
     await super._onRender(context, options);
 
     this._warnIfOverLoad();
 
-    
     this.element.querySelectorAll(".key-select").forEach((el) => {
-      el.addEventListener("change", (ev) => this._updateKeySlotField(ev, "key", ev.currentTarget.value));
+      el.addEventListener("change", (ev) =>
+        this._updateKeySlotField(ev, "key", ev.currentTarget.value),
+      );
     });
     this.element.querySelectorAll(".deadlocked-to-select").forEach((el) => {
-      el.addEventListener("change", (ev) => this._updateKeySlotField(ev, "deadlocked_to", ev.currentTarget.value));
+      el.addEventListener("change", (ev) =>
+        this._updateKeySlotField(ev, "deadlocked_to", ev.currentTarget.value),
+      );
     });
-    
-    
+
     this.element.querySelectorAll('.key-marks input[type="radio"]').forEach((el) => {
       el.addEventListener("change", (ev) => {
         if (!ev.currentTarget.checked) return;
@@ -220,9 +214,8 @@ export class BladesActorSheet extends BladesSheetV2 {
     });
   }
 
-  
   async _buildCatalog(itemType, selectedClass, { slotsField } = {}) {
-    const owned = this.actor.items.filter(i => i.type === itemType);
+    const owned = this.actor.items.filter((i) => i.type === itemType);
 
     if (!selectedClass) {
       return { catalog: [], other: owned };
@@ -240,7 +233,9 @@ export class BladesActorSheet extends BladesSheetV2 {
       seen.add(displayName);
 
       const slots = slotsField ? Math.max(1, parseInt(source.system?.[slotsField]) || 1) : 1;
-      const ownedMatches = owned.filter(i => BladesHelpers.trimClassFromName(i.name) === displayName);
+      const ownedMatches = owned.filter(
+        (i) => BladesHelpers.trimClassFromName(i.name) === displayName,
+      );
       const loadValue = Math.max(0, parseInt(source.system?.load) || 0);
       catalog.push({
         id: source.id,
@@ -250,18 +245,17 @@ export class BladesActorSheet extends BladesSheetV2 {
         slotIndexes: Array.from({ length: slots }, (_, i) => i + 1),
         ownedCount: ownedMatches.length,
         loadIndexes: Array.from({ length: loadValue }, (_, i) => i + 1),
-        hasNoLoad: loadValue === 0
+        hasNoLoad: loadValue === 0,
       });
     }
     catalog.sort((a, b) => a.name.localeCompare(b.name));
 
-    const catalogNames = new Set(catalog.map(c => c.name));
-    const other = owned.filter(i => !catalogNames.has(BladesHelpers.trimClassFromName(i.name)));
+    const catalogNames = new Set(catalog.map((c) => c.name));
+    const other = owned.filter((i) => !catalogNames.has(BladesHelpers.trimClassFromName(i.name)));
 
     return { catalog, other };
   }
 
-  
   async _handleDrop(droppedEntityFull) {
     if (!droppedEntityFull) return;
     switch (droppedEntityFull.type) {
@@ -274,21 +268,19 @@ export class BladesActorSheet extends BladesSheetV2 {
       case "item":
       case "ability":
       case "class":
-        
         break;
       default:
         break;
     }
   }
 
-  
   async _onDropItem(event, data) {
     const allowed = await super._onDropItem?.(event, data);
     if (allowed === false) return false;
     if (!this.actor.isOwner) {
       ui.notifications.error(
         "You do not have sufficient permissions to edit this character. Please speak to your GM if you feel you have reached this message in error.",
-        { permanent: true }
+        { permanent: true },
       );
       return false;
     }
@@ -296,14 +288,13 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this._handleDrop(droppedItem);
   }
 
-  
   async _onDropActor(event, data) {
     const allowed = await super._onDropActor?.(event, data);
     if (allowed === false) return false;
     if (!this.actor.isOwner) {
       ui.notifications.error(
         "You do not have sufficient permissions to edit this character. Please speak to your GM if you feel you have reached this message in error.",
-        { permanent: true }
+        { permanent: true },
       );
       return false;
     }
@@ -311,7 +302,6 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this._handleDrop(droppedActor);
   }
 
-  
   _prepareSubmitData(event, form, formData, updateData) {
     const submitData = super._prepareSubmitData(event, form, formData, updateData);
     const flat = foundry.utils.flattenObject(submitData);
@@ -327,7 +317,6 @@ export class BladesActorSheet extends BladesSheetV2 {
     return cleaned;
   }
 
-  
   async _updateKeySlotField(ev, field, value) {
     const slotIndex = Number(ev.currentTarget.closest(".key-slot")?.dataset?.slotIndex);
     if (!Number.isInteger(slotIndex) || slotIndex < 0) return;
@@ -343,7 +332,6 @@ export class BladesActorSheet extends BladesSheetV2 {
     }
   }
 
-  
   static async _onRollAttribute(event, target) {
     event.preventDefault();
     const attributeName = target.dataset.rollAttribute;
@@ -359,12 +347,11 @@ export class BladesActorSheet extends BladesSheetV2 {
     await this.actor.rollAttributePopup(attributeName, sanitizedDice);
   }
 
-  
   static async _onStandingToggle(event, target) {
     const acqId = target.closest(".acquaintance")?.dataset.acquaintance;
     if (!acqId) return;
     const acquaintances = foundry.utils.deepClone(this.actor.system.acquaintances ?? []);
-    const idx = acquaintances.findIndex(a => a.id == acqId);
+    const idx = acquaintances.findIndex((a) => a.id == acqId);
     if (idx < 0) return;
     const order = { friend: "rival", rival: "neutral", neutral: "friend" };
     acquaintances[idx].standing = order[acquaintances[idx].standing] ?? "neutral";
@@ -389,7 +376,7 @@ export class BladesActorSheet extends BladesSheetV2 {
   }
 
   static async _onImportContacts(event, target) {
-    const playbook = this.actor.items.find(i => i.type === "class")?.name;
+    const playbook = this.actor.items.find((i) => i.type === "class")?.name;
     await BladesHelpers.import_pb_contacts(this.actor, playbook);
   }
 
@@ -397,19 +384,16 @@ export class BladesActorSheet extends BladesSheetV2 {
     await BladesHelpers.addCustomContact(this.actor);
   }
 
-  
   static async _onCrewDelete(event, target) {
     const itemId = BladesSheetV2._itemIdFrom(target);
     if (!itemId) return;
     await BladesHelpers.removeCrew(this.actor, itemId);
   }
 
-  
   static async _onAddKeyPopup(event, target) {
     await BladesHelpers.addKeyPopup(this.actor);
   }
 
-  
   static async _onKeyBoomToggle(event, target) {
     event.preventDefault();
     const slotIndex = Number(target.closest(".key-slot")?.dataset?.slotIndex);
@@ -423,7 +407,6 @@ export class BladesActorSheet extends BladesSheetV2 {
     }
   }
 
-  
   /**
    * Warn once when the character crosses into over-load. Going over is always
    * allowed -- the red numbers on the bar are the standing signal, so the toast
@@ -435,16 +418,17 @@ export class BladesActorSheet extends BladesSheetV2 {
     const { loadout, load_max, load_level, over_load } = this.actor.system;
     const isOver = Boolean(over_load);
     if (isOver && this._overLoadSeen === false) {
-      ui.notifications?.warn?.(game.i18n.format("BITD.OverLoadWarning", {
-        load: loadout,
-        max: load_max,
-        level: game.i18n.localize(load_level)
-      }));
+      ui.notifications?.warn?.(
+        game.i18n.format("BITD.OverLoadWarning", {
+          load: loadout,
+          max: load_max,
+          level: game.i18n.localize(load_level),
+        }),
+      );
     }
     this._overLoadSeen = isOver;
   }
 
-  
   static async _onCatalogToggle(event, target) {
     const row = target.closest(".catalog-item");
     if (!row) return;
@@ -453,7 +437,9 @@ export class BladesActorSheet extends BladesSheetV2 {
     const sourceId = row.dataset.sourceId;
     const checkedCount = row.querySelectorAll(".catalog-toggle:checked").length;
 
-    const owned = this.actor.items.filter(i => i.type === itemType && BladesHelpers.trimClassFromName(i.name) === itemName);
+    const owned = this.actor.items.filter(
+      (i) => i.type === itemType && BladesHelpers.trimClassFromName(i.name) === itemName,
+    );
     const diff = checkedCount - owned.length;
 
     if (diff > 0) {
@@ -465,19 +451,17 @@ export class BladesActorSheet extends BladesSheetV2 {
       const toCreate = Array.from({ length: diff }, () => foundry.utils.deepClone(data));
       await this.actor.createEmbeddedDocuments("Item", toCreate);
     } else if (diff < 0) {
-      const toDelete = owned.slice(0, -diff).map(i => i.id);
+      const toDelete = owned.slice(0, -diff).map((i) => i.id);
       await this.actor.deleteEmbeddedDocuments("Item", toDelete);
     }
   }
 
-  
   static async _onItemEquippedToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
     await item.update({ "system.equipped": target.checked });
   }
 
-  
   static async _onItemUseToggle(event, target) {
     const row = target.closest(".item-uses");
     if (!row) return;
@@ -487,14 +471,12 @@ export class BladesActorSheet extends BladesSheetV2 {
     await item.update({ "system.uses_used": checkedCount });
   }
 
-  
   static async _onItemBonusToggle(event, target) {
     const item = this.actor.items.get(target.dataset.itemId);
     if (!item) return;
     await item.update({ "system.bonus_equipped": target.checked });
   }
 
-  
   static async _onAbilityUsesToggle(event, target) {
     const row = target.closest(".ability-uses");
     if (!row) return;
@@ -504,14 +486,12 @@ export class BladesActorSheet extends BladesSheetV2 {
     await item.update({ "system.uses_used": checkedCount });
   }
 
-  
   static async _onOtherItemDelete(event, target) {
     const row = target.closest(".other-item");
     if (!row) return;
     await this.actor.deleteEmbeddedDocuments("Item", [row.dataset.itemId]);
   }
 
-  
   static async _onExpClockUp(event, target) {
     let { value, number, size } = this.actor.system.exp_clock;
     value = value + 1;

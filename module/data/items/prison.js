@@ -13,8 +13,8 @@ export class PrisonItemData extends BladesItemData {
     return {
       ...BladesItemData.defaultFields(),
       turfs: new fields.ObjectField({
-        initial: BladesItemData.turfsInitial(9, { 4: { name: "BITD.Prison", value: 1 } })
-      })
+        initial: BladesItemData.turfsInitial(9, { 4: { name: "BITD.Prison", value: 1 } }),
+      }),
     };
   }
 }

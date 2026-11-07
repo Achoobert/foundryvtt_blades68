@@ -4,6 +4,7 @@
     "templates/**",
     "styles/**",
     "css/**",
-    "themes/**"
+    "themes/**",
+    "module/vendor/**"
   ]
 }

@@ -1,14 +1,14 @@
-import { mkdir, writeFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
-import path from 'node:path';
-import { DATA_DIR } from './lib/fvtt-config.mjs';
+import { mkdir, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { DATA_DIR } from "./lib/fvtt-config.mjs";
 
-const WORLD_ID = 'blades68';
-const WORLD_DIR = path.join(DATA_DIR, 'worlds', WORLD_ID);
-const WORLD_JSON_PATH = path.join(WORLD_DIR, 'world.json');
+const WORLD_ID = "blades68";
+const WORLD_DIR = path.join(DATA_DIR, "worlds", WORLD_ID);
+const WORLD_JSON_PATH = path.join(WORLD_DIR, "world.json");
 
-await mkdir(path.join(WORLD_DIR, 'data'), { recursive: true });
-await mkdir(path.join(WORLD_DIR, 'scenes'), { recursive: true });
+await mkdir(path.join(WORLD_DIR, "data"), { recursive: true });
+await mkdir(path.join(WORLD_DIR, "scenes"), { recursive: true });
 
 if (existsSync(WORLD_JSON_PATH)) {
   console.log(`World already exists at ${WORLD_JSON_PATH}`);
@@ -16,18 +16,18 @@ if (existsSync(WORLD_JSON_PATH)) {
 }
 
 const worldJson = {
-  title: 'Blades68',
-  system: 'blades68',
+  title: "Blades68",
+  system: "blades68",
   id: WORLD_ID,
-  coreVersion: '14',
-  compatibility: { minimum: '13', verified: '14' },
-  systemVersion: '0.1.0',
-  description: 'Local dev world for the Blades68 system.',
-  flags: {}
+  coreVersion: "14",
+  compatibility: { minimum: "13", verified: "14" },
+  systemVersion: "0.1.0",
+  description: "Local dev world for the Blades68 system.",
+  flags: {},
 };
 
 await writeFile(WORLD_JSON_PATH, JSON.stringify(worldJson, null, 2));
 console.log(`Created dev world at ${WORLD_JSON_PATH}`);
 console.log(
-  `Set FOUNDRY_WORLD=${WORLD_ID} in ~/tools/local_containers/foundry_14 (or launch it from /setup) to play-test.`
+  `Set FOUNDRY_WORLD=${WORLD_ID} in ~/tools/local_containers/foundry_14 (or launch it from /setup) to play-test.`,
 );

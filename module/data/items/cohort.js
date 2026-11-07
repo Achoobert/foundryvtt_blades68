@@ -24,7 +24,10 @@ export class CohortItemData extends BladesItemData {
       ...BladesItemData.defaultFields(),
 
       cohort: new fields.StringField({
-        required: false, blank: false, initial: "Gang", choices: ["Gang", "Expert"]
+        required: false,
+        blank: false,
+        initial: "Gang",
+        choices: ["Gang", "Expert"],
       }),
       scale: new fields.NumberField({ required: false, initial: 0 }),
       quality: new fields.NumberField({ required: false, initial: 0 }),
@@ -33,8 +36,8 @@ export class CohortItemData extends BladesItemData {
       cohort_list: new fields.ObjectField({
         initial: () => ({
           Gang: { label: "BITD.Gang" },
-          Expert: { label: "BITD.Expert" }
-        })
+          Expert: { label: "BITD.Expert" },
+        }),
       }),
 
       gang_type: new fields.ArrayField(new fields.StringField(), { initial: ["Adepts"] }),
@@ -44,8 +47,8 @@ export class CohortItemData extends BladesItemData {
           Rooks: { label: "BITD.GangTypeRooks", description: "BITD.GangTypeRooksDescription" },
           Rovers: { label: "BITD.GangTypeRovers", description: "BITD.GangTypeRoversDescription" },
           Skulks: { label: "BITD.GangTypeSkulks", description: "BITD.GangTypeSkulksDescription" },
-          Thugs: { label: "BITD.GangTypeThugs", description: "BITD.GangTypeThugsDescription" }
-        })
+          Thugs: { label: "BITD.GangTypeThugs", description: "BITD.GangTypeThugsDescription" },
+        }),
       }),
       expert_type: new fields.StringField({ required: false, blank: true, initial: "" }),
 
@@ -58,36 +61,78 @@ export class CohortItemData extends BladesItemData {
 
       edges_list: new fields.ObjectField({
         initial: () => ({
-          Fearsome: { label: "BITD.EdgesFearsome", description: "BITD.EdgesFearsomeDescription", selected: false },
-          Independent: { label: "BITD.EdgesIndependent", description: "BITD.EdgesIndependentDescription", selected: false },
-          Loyal: { label: "BITD.EdgesLoyal", description: "BITD.EdgesLoyalDescription", selected: false },
-          Tenacious: { label: "BITD.EdgesTenacious", description: "BITD.EdgesTenaciousDescription", selected: false }
-        })
+          Fearsome: {
+            label: "BITD.EdgesFearsome",
+            description: "BITD.EdgesFearsomeDescription",
+            selected: false,
+          },
+          Independent: {
+            label: "BITD.EdgesIndependent",
+            description: "BITD.EdgesIndependentDescription",
+            selected: false,
+          },
+          Loyal: {
+            label: "BITD.EdgesLoyal",
+            description: "BITD.EdgesLoyalDescription",
+            selected: false,
+          },
+          Tenacious: {
+            label: "BITD.EdgesTenacious",
+            description: "BITD.EdgesTenaciousDescription",
+            selected: false,
+          },
+        }),
       }),
       flaws_list: new fields.ObjectField({
         initial: () => ({
-          Principled: { label: "BITD.FlawsPrincipled", description: "BITD.FlawsPrincipledDescription", selected: false },
-          Savage: { label: "BITD.FlawsSavage", description: "BITD.FlawsSavageDescription", selected: false },
-          Unreliable: { label: "BITD.FlawsUnreliable", description: "BITD.FlawsUnreliableDescription", selected: false },
-          Wild: { label: "BITD.FlawsWild", description: "BITD.FlawsWildDescription", selected: false }
-        })
+          Principled: {
+            label: "BITD.FlawsPrincipled",
+            description: "BITD.FlawsPrincipledDescription",
+            selected: false,
+          },
+          Savage: {
+            label: "BITD.FlawsSavage",
+            description: "BITD.FlawsSavageDescription",
+            selected: false,
+          },
+          Unreliable: {
+            label: "BITD.FlawsUnreliable",
+            description: "BITD.FlawsUnreliableDescription",
+            selected: false,
+          },
+          Wild: {
+            label: "BITD.FlawsWild",
+            description: "BITD.FlawsWildDescription",
+            selected: false,
+          },
+        }),
       }),
 
       harm: new fields.StringField({
-        required: false, blank: false, initial: "No",
-        choices: ["No", "Weakened", "Impaired", "Broken", "Dead"]
+        required: false,
+        blank: false,
+        initial: "No",
+        choices: ["No", "Weakened", "Impaired", "Broken", "Dead"],
       }),
       harm_list: new fields.ObjectField({
         initial: () => ({
           No: { label: "BITD.HarmNoHarm", description: "BITD.HarmNoHarmDescription", value: 0 },
-          Weakened: { label: "BITD.HarmWeakened", description: "BITD.HarmWeakenedDescription", value: 1 },
-          Impaired: { label: "BITD.HarmImpaired", description: "BITD.HarmImpairedDescription", value: 2 },
+          Weakened: {
+            label: "BITD.HarmWeakened",
+            description: "BITD.HarmWeakenedDescription",
+            value: 1,
+          },
+          Impaired: {
+            label: "BITD.HarmImpaired",
+            description: "BITD.HarmImpairedDescription",
+            value: 2,
+          },
           Broken: { label: "BITD.HarmBroken", description: "BITD.HarmBrokenDescription", value: 3 },
-          Dead: { label: "BITD.HarmDead", description: "BITD.HarmDeadDescription", value: 4 }
-        })
+          Dead: { label: "BITD.HarmDead", description: "BITD.HarmDeadDescription", value: 4 },
+        }),
       }),
 
-      armor: new fields.BooleanField({ required: false, initial: false })
+      armor: new fields.BooleanField({ required: false, initial: false }),
     };
   }
 

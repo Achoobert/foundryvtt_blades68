@@ -45,8 +45,7 @@ let running = false;
 function schedule(filePath) {
   const r = rel(filePath);
   if (r === "yml_source" || r.startsWith("yml_source/")) pending.yml = true;
-  if (r === "tests/quench" || r.startsWith("tests/quench/"))
-    pending.quench = true;
+  if (r === "tests/quench" || r.startsWith("tests/quench/")) pending.quench = true;
   else pending.sync = true;
 
   clearTimeout(timer);

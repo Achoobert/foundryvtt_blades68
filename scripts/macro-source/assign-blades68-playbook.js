@@ -32,7 +32,7 @@
   }
 
   const classItems = (await classPack.getDocuments()).sort((a, b) => a.name.localeCompare(b.name));
-  const options = classItems.map(i => `<option value="${i.name}">${i.name}</option>`).join("");
+  const options = classItems.map((i) => `<option value="${i.name}">${i.name}</option>`).join("");
 
   const existingWarning = actor.system.playbook
     ? `<p style="color:#a33"><strong>Note:</strong> ${actor.name} is already a ${actor.system.playbook}. Re-running will add duplicate items/contacts.</p>`
@@ -55,17 +55,28 @@
   if (!result?.playbook) return;
 
   const chosen = result.playbook;
-  const classItem = classItems.find(i => i.name === chosen);
+  const classItem = classItems.find((i) => i.name === chosen);
 
-  const setupUrl = foundry.utils.getRoute(`systems/${SYSTEM_ID}/module/data/blades68-playbook-setup.json`);
+  const setupUrl = foundry.utils.getRoute(
+    `systems/${SYSTEM_ID}/module/data/blades68-playbook-setup.json`,
+  );
   const allSetup = await (await fetch(setupUrl)).json();
   const pbSetup = allSetup[chosen] ?? { contacts: [], firstAbilityName: null };
 
   // --- Playbook + base skill pips ---
   const skillToAttr = {
-    hunt: "insight", study: "insight", survey: "insight", tinker: "insight",
-    finesse: "prowess", prowl: "prowess", skirmish: "prowess", wreck: "prowess",
-    attune: "resolve", command: "resolve", consort: "resolve", sway: "resolve",
+    hunt: "insight",
+    study: "insight",
+    survey: "insight",
+    tinker: "insight",
+    finesse: "prowess",
+    prowl: "prowess",
+    skirmish: "prowess",
+    wreck: "prowess",
+    attune: "resolve",
+    command: "resolve",
+    consort: "resolve",
+    sway: "resolve",
   };
   const actorUpdate = { "system.playbook": chosen };
   for (const [skill, pips] of Object.entries(classItem.system.base_skills ?? {})) {
@@ -80,28 +91,32 @@
   // --- First playbook ability + loadout items ---
   const abilityItems = await abilityPack.getDocuments();
   const firstAbility = abilityItems.find(
-    i => i.system.class === chosen && i.name === pbSetup.firstAbilityName
+    (i) => i.system.class === chosen && i.name === pbSetup.firstAbilityName,
   );
   const itemsToCreate = [];
   if (firstAbility) itemsToCreate.push(firstAbility.toObject());
   else ui.notifications.warn(`No starting ability found for ${chosen}.`);
 
   const itemPackItems = await itemPack.getDocuments();
-  const loadoutItems = itemPackItems.filter(i => i.system.class === chosen);
-  const frameFeatureItems = loadoutItems.filter(i => i.system.additional_info === "frame_feature");
-  const gearItems = loadoutItems.filter(i => i.system.additional_info !== "frame_feature");
-  const universalItems = itemPackItems.filter(i => i.system.class === "");
+  const loadoutItems = itemPackItems.filter((i) => i.system.class === chosen);
+  const frameFeatureItems = loadoutItems.filter(
+    (i) => i.system.additional_info === "frame_feature",
+  );
+  const gearItems = loadoutItems.filter((i) => i.system.additional_info !== "frame_feature");
+  const universalItems = itemPackItems.filter((i) => i.system.class === "");
   for (const item of [...gearItems, ...universalItems]) itemsToCreate.push(item.toObject());
 
   // Frame features (e.g. Hull's "choose two") aren't auto-granted like gear -
   // prompt for a pick among the class's available options instead.
   if (frameFeatureItems.length) {
     const featureOptions = frameFeatureItems
-      .map(i => `
+      .map(
+        (i) => `
         <div class="form-group">
           <label><input type="checkbox" name="frameFeature" value="${i.name}"> ${i.name}</label>
         </div>
-      `)
+      `,
+      )
       .join("");
     const featureResult = await openFormDialog({
       title: `${chosen} Frame Features`,
@@ -114,10 +129,8 @@
       okLabel: "Add Features",
       cancelLabel: "Skip",
     });
-    const picked = featureResult?.frameFeature
-      ? [].concat(featureResult.frameFeature)
-      : [];
-    for (const item of frameFeatureItems.filter(i => picked.includes(i.name))) {
+    const picked = featureResult?.frameFeature ? [].concat(featureResult.frameFeature) : [];
+    for (const item of frameFeatureItems.filter((i) => picked.includes(i.name))) {
       itemsToCreate.push(item.toObject());
     }
   }
@@ -126,17 +139,19 @@
 
   // --- Contacts: create NPC actors in PC_contacts/<actor name>, link as acquaintances ---
   if (pbSetup.contacts?.length) {
-    let rootFolder = game.folders.find(f => f.type === "Actor" && f.name === "PC_contacts" && !f.folder);
+    let rootFolder = game.folders.find(
+      (f) => f.type === "Actor" && f.name === "PC_contacts" && !f.folder,
+    );
     if (!rootFolder) rootFolder = await Folder.create({ name: "PC_contacts", type: "Actor" });
 
     let actorFolder = game.folders.find(
-      f => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id
+      (f) => f.type === "Actor" && f.name === actor.name && f.folder === rootFolder.id,
     );
     if (!actorFolder) {
       actorFolder = await Folder.create({ name: actor.name, type: "Actor", folder: rootFolder.id });
     }
 
-    const npcData = pbSetup.contacts.map(c => ({
+    const npcData = pbSetup.contacts.map((c) => ({
       name: c.name,
       type: "npc",
       folder: actorFolder.id,

@@ -88,22 +88,24 @@
     return;
   }
 
-  const sceneData = pages.map((page) => ({
-    name: pages.length > 1 ? `${SCENE_NAME} (${page.pageNumber})` : SCENE_NAME,
-    background: { src: page.path },
-    width: page.width,
-    height: page.height,
-    padding: 0,
-    backgroundColor: "#000000",
-    grid: { type: gridless, size: 100 },
-    tokenVision: false,
-    fog: { exploration: false },
-  })).filter((data) => !game.scenes.getName(data.name));
+  const sceneData = pages
+    .map((page) => ({
+      name: pages.length > 1 ? `${SCENE_NAME} (${page.pageNumber})` : SCENE_NAME,
+      background: { src: page.path },
+      width: page.width,
+      height: page.height,
+      padding: 0,
+      backgroundColor: "#000000",
+      grid: { type: gridless, size: 100 },
+      tokenVision: false,
+      fog: { exploration: false },
+    }))
+    .filter((data) => !game.scenes.getName(data.name));
 
   const created = sceneData.length ? await SceneClass.createDocuments(sceneData) : [];
   const skipped = pages.length - created.length;
   ui.notifications.info(
     `Saved ${pages.length} map image${pages.length === 1 ? "" : "s"} to ${SYSTEM_ID}/${MAP_SUBDIR} and created ${created.length} scene${created.length === 1 ? "" : "s"}` +
-    (skipped ? ` (${skipped} scene name already existed).` : ".")
+      (skipped ? ` (${skipped} scene name already existed).` : "."),
   );
 })();

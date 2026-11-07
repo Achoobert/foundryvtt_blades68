@@ -13,7 +13,7 @@ export class SimpleItemData extends BladesItemData {
   static defineSchema() {
     return {
       ...BladesItemData.defaultFields(),
-      ...BladesItemData.activatedEffectFields()
+      ...BladesItemData.activatedEffectFields(),
     };
   }
 }

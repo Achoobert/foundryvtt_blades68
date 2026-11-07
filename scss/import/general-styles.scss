@@ -5,14 +5,12 @@ textarea {
   box-sizing: border-box;
 }
 
-
 .window-content {
   background-color: var(--blades68-sheet-bg, rgba(56, 44, 147, 0.9));
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-
 
 .window-content > [data-application-part] {
   flex: 1;
@@ -23,7 +21,6 @@ textarea {
 &.sheet.item .window-content {
   max-height: 85vh;
 }
-
 
 .text-line {
   display: block;
@@ -56,7 +53,6 @@ label.text-line + textarea {
   cursor: pointer;
   color: $red;
 }
-
 
 @at-root .dice-tooltip .dice-rolls .roll.method {
   font-size: var(--font-size-10);
@@ -167,7 +163,6 @@ prose-mirror {
   margin-bottom: 10px;
 }
 
-
 .npc-header {
   align-items: flex-start;
   margin-top: 1px;
@@ -196,12 +191,7 @@ prose-mirror {
 
 i {
   &.nullifier {
-    @include changeable(
-      $transition-period,
-      $hover-brightness,
-      $hover-opacity,
-      $red
-    );
+    @include changeable($transition-period, $hover-brightness, $hover-opacity, $red);
   }
 }
 
@@ -254,14 +244,12 @@ i {
   .item-control {
     max-width: 10px;
   }
-  
-  
+
   .item,
   .item-body {
     align-items: center;
   }
 }
-
 
 .item-body img,
 .open-friend img,

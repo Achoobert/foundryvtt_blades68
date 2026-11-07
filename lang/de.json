@@ -23,7 +23,7 @@
   "BITD.Background": "Vorgeschichte",
   "BITD.TitleDeleteItem": "Löschen",
   "BITD.ToggleStanding": "Beziehung für {name} umschalten (aktuell {standing})",
-  "BITD.TitlePostItem": "Artikel Senden",									
+  "BITD.TitlePostItem": "Artikel Senden",
   "BITD.Vice": "Laster",
   "BITD.Class": "Klasse",
   "BITD.Stress": "Stress",
@@ -257,7 +257,7 @@
   "BITD.Drain": "Verfall",
   "BITD.Wear": "Verschleiss",
   "BITD.Gloom": "Gram",
- "BITD.Add": "Hinzufügen",
+  "BITD.Add": "Hinzufügen",
   "BITD.Effects": "Effekte",
   "BITD.EffectCreate": "Effekt erstellen",
   "BITD.EffectToggle": "Effekt de/aktivieren",
@@ -280,7 +280,7 @@
   "BITD.StrangeFriends": "Seltsame Freunde",
   "BITD.Acquaintances": "Bekanntschaften",
   "BITD.Contacts": "Kontakte",
- 
+
   "BITD.HuntingGrounds": "Jagdgründe",
   "BITD.SacredSites": "Heilige Stätten",
   "BITD.SalesTerritory": "Verkaufsgebiet",
@@ -334,7 +334,7 @@
   "BITD.Edge": "Edge",
   "BITD.GainEdge": "Gain an <strong>Edge</strong>.",
   "BITD.DiceRoller": "Dice Roller",
-  
+
   "BITD.Colors": {
     "Black": "Black",
     "Blue": "Blue",
@@ -344,7 +344,7 @@
     "White": "White",
     "Yellow": "Yellow"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Action Rolls",
@@ -383,6 +383,5 @@
     "warn": {
       "NoNPC": "This NPC does not exist in the World or in a Compendium."
     }
-  }								   
-
+  }
 }

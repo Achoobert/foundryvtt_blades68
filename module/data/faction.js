@@ -27,8 +27,8 @@ export class FactionData extends foundry.abstract.TypeDataModel {
       name: new fields.StringField({
         required: false,
         blank: true,
-        initial: ""
-      })
+        initial: "",
+      }),
     };
   }
 

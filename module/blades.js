@@ -139,14 +139,12 @@ Hooks.once("init", async function () {
     Witty: ["serious", "goofy"],
   };
 
-  game.system.blades68Keys = Object.keys(blades68DeadlockedKeys).map(
-    (name) => ({
-      id: name,
-      label: `BITD.Key${name}`,
-      drift: `BITD.Key${name}Drift`,
-      deadlockedKeys: blades68DeadlockedKeys[name],
-    }),
-  );
+  game.system.blades68Keys = Object.keys(blades68DeadlockedKeys).map((name) => ({
+    id: name,
+    label: `BITD.Key${name}`,
+    drift: `BITD.Key${name}Drift`,
+    deadlockedKeys: blades68DeadlockedKeys[name],
+  }));
 
   CONFIG.Item.documentClass = BladesItem;
   CONFIG.Actor.documentClass = BladesActor;
@@ -204,15 +202,7 @@ Hooks.once("init", async function () {
     }
   });
 
-  
-  const BASE_TURF_NAMES = [
-    "base",
-    "lair",
-    "prison",
-    "bitd.base",
-    "bitd.lair",
-    "bitd.prison",
-  ];
+  const BASE_TURF_NAMES = ["base", "lair", "prison", "bitd.base", "bitd.lair", "bitd.prison"];
   Handlebars.registerHelper("is_base_turf", (name) => {
     return BASE_TURF_NAMES.includes(
       String(name ?? "")
@@ -233,9 +223,7 @@ Hooks.once("init", async function () {
     if (typeof selected !== "undefined") {
       selected.forEach((selected_value) => {
         if (selected_value !== false) {
-          let escapedValue = RegExp.escape(
-            Handlebars.escapeExpression(selected_value),
-          );
+          let escapedValue = RegExp.escape(Handlebars.escapeExpression(selected_value));
           let rgx = new RegExp(' value=\"' + escapedValue + '\"');
           let oldHtml = html;
           html = html.replace(rgx, "$& checked");
@@ -303,20 +291,16 @@ Hooks.once("init", async function () {
   });
 
   //Reputation and Turf Bar on Crew Sheet
-  Handlebars.registerHelper(
-    "repturf",
-    (_id, turfs_amount, max_rep, options) => {
-      let html = options.fn(this);
-      var turfs_amount_int = parseInt(turfs_amount) || 0;
-      for (let i = 1; i <= max_rep; i++) {
-        const claimedClass =
-          i > max_rep - turfs_amount_int ? " turf-claimed" : "";
-        html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle${claimedClass}" for="crew-${_id}-reputation-${i}"></label>`;
-      }
+  Handlebars.registerHelper("repturf", (_id, turfs_amount, max_rep, options) => {
+    let html = options.fn(this);
+    var turfs_amount_int = parseInt(turfs_amount) || 0;
+    for (let i = 1; i <= max_rep; i++) {
+      const claimedClass = i > max_rep - turfs_amount_int ? " turf-claimed" : "";
+      html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle${claimedClass}" for="crew-${_id}-reputation-${i}"></label>`;
+    }
 
-      return html;
-    },
-  );
+    return html;
+  });
 
   // Enrich the HTML replace /n with <br>
   Handlebars.registerHelper("html", (options) => {
@@ -343,7 +327,6 @@ Hooks.once("init", async function () {
     return accum;
   });
 
-  
   Handlebars.registerHelper("times_from", function (start, n, block) {
     let accum = "";
     for (let i = start; i <= n; ++i) {
@@ -370,30 +353,26 @@ Hooks.once("init", async function () {
    * Takes label from Selected option instead of just plain value.
    */
 
-  Handlebars.registerHelper(
-    "selectOptionsWithLabel",
-    function (choices, options) {
-      const localize = options.hash["localize"] ?? false;
-      let selected = options.hash["selected"] ?? null;
-      let blank = options.hash["blank"] || null;
-      selected =
-        selected instanceof Array ? selected.map(String) : [String(selected)];
+  Handlebars.registerHelper("selectOptionsWithLabel", function (choices, options) {
+    const localize = options.hash["localize"] ?? false;
+    let selected = options.hash["selected"] ?? null;
+    let blank = options.hash["blank"] || null;
+    selected = selected instanceof Array ? selected.map(String) : [String(selected)];
 
-      // Create an option
-      const option = (key, object) => {
-        if (localize) object.label = game.i18n.localize(object.label);
-        let isSelected = selected.includes(key);
-        html += `<option value="${key}" ${isSelected ? "selected" : ""}>${object.label}</option>`;
-      };
+    // Create an option
+    const option = (key, object) => {
+      if (localize) object.label = game.i18n.localize(object.label);
+      let isSelected = selected.includes(key);
+      html += `<option value="${key}" ${isSelected ? "selected" : ""}>${object.label}</option>`;
+    };
 
-      // Create the options
-      let html = "";
-      if (blank) option("", blank);
-      Object.entries(choices).forEach((e) => option(...e));
+    // Create the options
+    let html = "";
+    if (blank) option("", blank);
+    Object.entries(choices).forEach((e) => option(...e));
 
-      return new Handlebars.SafeString(html);
-    },
-  );
+    return new Handlebars.SafeString(html);
+  });
 
   /**
    * Create appropriate Blades clock
@@ -420,7 +399,6 @@ Hooks.once("init", async function () {
     }
 
     if (zeroLabel) {
-      
       html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
     }
     html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
@@ -440,7 +418,6 @@ Hooks.once("init", async function () {
     return html;
   };
 
-  
   Handlebars.registerHelper(
     "blades-clock-color",
     function (parameter_name, type, color, current_value, uniq_id) {
@@ -473,7 +450,6 @@ Hooks.once("init", async function () {
     return BladesHelpers.getProperCase(string);
   });
 
-  
   Handlebars.registerHelper("getSetting", function (string) {
     return game.settings.get("blades68", string);
   });
@@ -561,15 +537,12 @@ function ownerActorOf(doc) {
   return parent ?? null;
 }
 
-
 async function syncCrewUpgradeEffectGate(item) {
   if (item?.type !== "crew_upgrade" && item?.type !== "crew_ability") return;
   const price = Number(item.system?.price) || 0;
   const unlocked = Number(item.system?.unlocked) || 0;
   const shouldApply = price <= 0 || unlocked >= price;
-  const toToggle = item.effects.filter(
-    (effect) => effect.disabled === shouldApply,
-  );
+  const toToggle = item.effects.filter((effect) => effect.disabled === shouldApply);
   if (!toToggle.length) return;
   await item.updateEmbeddedDocuments(
     "ActiveEffect",
@@ -581,14 +554,8 @@ Hooks.on("updateActor", (actor) => rerenderLinkedCharacterSheets(actor));
 for (const hook of ["createItem", "updateItem", "deleteItem"]) {
   Hooks.on(hook, (item) => rerenderLinkedCharacterSheets(ownerActorOf(item)));
 }
-for (const hook of [
-  "createActiveEffect",
-  "updateActiveEffect",
-  "deleteActiveEffect",
-]) {
-  Hooks.on(hook, (effect) =>
-    rerenderLinkedCharacterSheets(ownerActorOf(effect)),
-  );
+for (const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"]) {
+  Hooks.on(hook, (effect) => rerenderLinkedCharacterSheets(ownerActorOf(effect)));
 }
 
 Hooks.on("createItem", (item) => syncCrewUpgradeEffectGate(item));
@@ -611,7 +578,6 @@ Hooks.on("updateItem", (item, changes) => {
   }
 });
 
-
 Hooks.on("getSceneControlButtons", (controls) => {
   controls.tokens.tools.DiceRoller = {
     name: "DiceRoller",
@@ -624,8 +590,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
   };
 });
 
-const PAUSE_IMAGE =
-  "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
+const PAUSE_IMAGE = "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
 const PAUSE_IMAGE_CLASSIC = "systems/blades68/images/BITD_logo.webp";
 
 // VHS static is drawn at low resolution and stretched by CSS, so the loop stays cheap
@@ -665,9 +630,7 @@ function prefersReducedMotion() {
   } catch (error) {
     // settings are not registered yet; fall back to the media query alone
   }
-  return (
-    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false
-  );
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 }
 
 /** Which pause background the world asked for: "vhs", "bluetime" or "vanilla" (logo only). */
@@ -728,9 +691,7 @@ function runPauseStatic(canvas) {
       last = now;
       drawPauseStatic(canvas);
       // horizontal jitter, like a tape losing tracking
-      canvas.style.transform = calm
-        ? ""
-        : `translateX(${(Math.random() - 0.5) * 8}px)`;
+      canvas.style.transform = calm ? "" : `translateX(${(Math.random() - 0.5) * 8}px)`;
     }
 
     pauseStaticFrame = requestAnimationFrame(loop);

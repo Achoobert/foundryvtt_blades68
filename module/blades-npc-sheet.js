@@ -1,27 +1,23 @@
 import { BladesSheetV2 } from "./blades-sheet-v2.js";
 import { enrichHTML } from "./compat.js";
 
-
 export class BladesNPCSheet extends BladesSheetV2 {
-
   static DEFAULT_OPTIONS = {
     classes: [...super.DEFAULT_OPTIONS.classes, "npc"],
-    position: { width: 510, height: "auto" }
+    position: { width: 510, height: "auto" },
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/npc-sheet.html", scrollable: [""] }
+    body: { template: "systems/blades68/templates/npc-sheet.html", scrollable: [""] },
   };
 
-  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     const owner = this.actor.isOwner;
 
-    
     const enrichedDescription = await enrichHTML(this.actor.system.description, {
       secrets: owner,
-      async: true
+      async: true,
     });
 
     return {
@@ -34,12 +30,12 @@ export class BladesNPCSheet extends BladesSheetV2 {
       img: this.actor.img,
       system: {
         ...this.actor.system.toObject(),
-        description: enrichedDescription
+        description: enrichedDescription,
       },
       owner,
       isGM: game.user.isGM,
       editable: this.isEditable,
-      cssClass: this.isEditable ? "editable" : "locked"
+      cssClass: this.isEditable ? "editable" : "locked",
     };
   }
 }

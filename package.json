@@ -1,14 +1,14 @@
 {
   "name": "blades68",
   "version": "0.1.0",
-  "description": "Foundry VTT system for Blades68, a Forged in the Dark hack.",
-  "type": "module",
   "private": true,
+  "description": "Foundry VTT system for Blades68, a Forged in the Dark hack.",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Achoobert/blades68.git"
   },
-  "license": "UNLICENSED",
+  "type": "module",
   "scripts": {
     "lint": "eslint module",
     "format": "oxfmt",
@@ -31,6 +31,9 @@
     "test:e2e": "cd tests/e2e && npm run tests:ci",
     "test:e2e:open": "cd tests/e2e && npm run tests"
   },
+  "dependencies": {
+    "pdfjs-dist": "^6.2.108"
+  },
   "devDependencies": {
     "classic-level": "^1.4.1",
     "eslint": "^9.0.0",
@@ -40,8 +43,5 @@
   },
   "engines": {
     "node": ">=20.9.0"
-  },
-  "dependencies": {
-    "pdfjs-dist": "^6.2.108"
   }
 }
