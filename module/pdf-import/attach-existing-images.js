@@ -18,7 +18,9 @@ const IMAGE_EXT_RE = /\.(webp|png|jpe?g|gif)$/i;
 const MAP_FILE_RE = /^city_map(?:_p(\d+))?\.(?:webp|png|jpe?g|gif)$/i;
 
 function getFilePickerClass() {
-  return foundry.applications.apps?.FilePicker?.implementation ?? foundry.applications.apps.FilePicker;
+  return (
+    foundry.applications.apps?.FilePicker?.implementation ?? foundry.applications.apps.FilePicker
+  );
 }
 
 async function listImageFiles(subdir) {
@@ -32,7 +34,10 @@ async function listImageFiles(subdir) {
   }
 }
 
-const normalize = (name) => String(name).toLowerCase().replace(/[^a-z0-9]+/g, "");
+const normalize = (name) =>
+  String(name)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
 const filenameOf = (path) => path.split("/").pop();
 const stripExt = (name) => name.replace(/\.[^.]+$/, "");
 
@@ -143,7 +148,7 @@ export async function attachExistingImportedImages() {
   if (updated || created) {
     ui.notifications.info(
       `Blades '68: found previously imported art - updated ${updated} faction image${updated === 1 ? "" : "s"} ` +
-      `and created ${created} scene${created === 1 ? "" : "s"}.`
+        `and created ${created} scene${created === 1 ? "" : "s"}.`,
     );
   }
 }

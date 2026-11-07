@@ -20,11 +20,11 @@ export class CrewTypeItemData extends BladesItemData {
       experience_clues: new fields.HTMLField({ required: false, blank: true, initial: "" }),
       ...BladesItemData.activatedEffectFields(),
       turfs: new fields.ObjectField({
-        initial: BladesItemData.turfsInitial(20, { 8: { name: "BITD.Lair", value: 1 } })
+        initial: BladesItemData.turfsInitial(20, { 8: { name: "BITD.Lair", value: 1 } }),
       }),
       turf_headers: new fields.ObjectField({
-        initial: BladesItemData.turfHeadersInitial(4)
-      })
+        initial: BladesItemData.turfHeadersInitial(4),
+      }),
     };
   }
 }

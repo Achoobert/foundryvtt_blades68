@@ -119,7 +119,7 @@
   "BITD.Coin": "Dukat",
   "BITD.Coins": "Dukaty",
   "BITD.Stash": "Skrytka",
-   "BITD.DeityDescription": "Deity Description",
+  "BITD.DeityDescription": "Deity Description",
   "BITD.CrewUpgrades": "Ulepszenia Szajki",
   "BITD.Hold": "Kont.",
   "BITD.Weak": "Słaba",
@@ -164,7 +164,7 @@
   "BITD.EdgesLoyalDescription": "Kohorty nie można przekupić lub nastawić przeciwko wam.",
   "BITD.EdgesTenacious": "Nieustępliwa",
   "BITD.EdgesTenaciousDescription": "Kohorty nie można odciągnąć od wykonywanego zadania.",
-  
+
   "BITD.FlawsPrincipled": "Pryncypialna",
   "BITD.FlawsPrincipledDescription": "Kohorta wyznaje etykę lub wartości, których nie porzuci.",
   "BITD.FlawsSavage": "Brutalna",
@@ -173,7 +173,7 @@
   "BITD.FlawsUnreliableDescription": "Kohorta nie jest zawsze dostępna, ponieważ ma inne zobowiązania, jest oszołomiona z powodu swoich słabości itd.",
   "BITD.FlawsWild": "Hulaszcza",
   "BITD.FlawsWildDescription": "Kohorta jest rozpita, rozpustna i pyskata.",
-  
+
   "BITD.HarmNoHarm": "Bez Ran",
   "BITD.HarmNoHarmDescription": "Kohorta jest zdrowa.",
   "BITD.HarmWeakened": "Zmęczona",
@@ -184,7 +184,7 @@
   "BITD.HarmBrokenDescription": "Kohorta nie może nic zrobić do czasu, aż jej stan się poprawi..",
   "BITD.HarmDead": "Martwa",
   "BITD.HarmDeadDescription": "Kohorta zostaje zniszczona. Możecie wydać <strong>dukaty</strong> w liczbie równej waszemu Kręgowi +2, aby odbudować kohortę oraz dodatkowo dwie aktywności przestoju, aby znaleźć nowych członków gangu lub zatrudnić eksperta.",
-  
+
   "BITD.Roll": "Rzut na ",
   "BITD.RollFailure": "Porażka",
   "BITD.RollCriticalSuccess": "Krytyczny Sukces!",
@@ -212,43 +212,43 @@
   "BITD.EffectLimited": "Ograniczony",
   "BITD.EffectStandard": "Normalny",
   "BITD.EffectGreat": "Duży",
-  
+
   "BITD.SkillsInsight": "Wnikliwość",
   "BITD.SkillsInsightShort": "Wnikliw.",
   "BITD.SkillsHunt": "Polowanie",
   "BITD.SkillsStudy": "Analizowanie",
   "BITD.SkillsSurvey": "Obserwow.",
   "BITD.SkillsTinker": "Majsterk,",
-  
+
   "BITD.SkillsProwess": "Sprawność",
   "BITD.SkillsProwessShort": "Sprawn.",
   "BITD.SkillsFinesse": "Wyrafin.",
   "BITD.SkillsProwl": "Przemykanie",
   "BITD.SkillsSkirmish": "Wojowanie",
   "BITD.SkillsWreck": "Demolowanie",
-  
+
   "BITD.SkillsResolve": "Śmiałość",
   "BITD.SkillsResolveShort": "Śmiałość",
   "BITD.SkillsAttune": "Dostrojenie",
   "BITD.SkillsCommand": "Przewodzenie",
   "BITD.SkillsConsort": "Bratanie",
   "BITD.SkillsSway": "Przekonyw.",
-  
+
   "BITD.AddAbility": "Dodaj Zdolność",
   "BITD.AddItem": "Dodaj Obiekt",
   "BITD.ImportPlaybookContacts": "Import Playbook Contacts",
   "BITD.Uses": "No. of Uses",
   "BITD.NumberAvailable": "Number Available",
-  "BITD.AdditionalInfo": "Additional Information",									  
+  "BITD.AdditionalInfo": "Additional Information",
   "BITD.Position": "Pozycja",
   "BITD.Effect": "Efekt",
   "BITD.Modifier": "Modifikator",
-  
+
   "BITD.Encumbered": "encumbered",
   "BITD.OverMax": "over max",
   "BITD.Discreet": "Discreet",
   "BITD.Conspicuous": "Conspicuous",
-  
+
   "BITD.Drain": "Drenaż",
   "BITD.Wear": "Zużycie",
   "BITD.Gloom": "Smutek",
@@ -276,7 +276,7 @@
   "BITD.StrangeFriends": "Dziwni Przyjaciele",
   "BITD.Acquaintances": "Znajomi",
   "BITD.Contacts": "Kontakt",
- 
+
   "BITD.HuntingGrounds": "Tereny łowieckie",
   "BITD.SacredSites": "Miejsca Święte",
   "BITD.SalesTerritory": "Obszar Sprzedaży",
@@ -292,7 +292,7 @@
   "BITD.CrewTier": "Poziom Banda",
   "BITD.ExtraThreats": "Extra Threats",
   "BITD.Threats": "Threats",
-  
+
   "BITD.RollVice": "Rozkoszujesz się swoim głosem.<br/>Wyraźny <strong>{clear_stress} stres</strong>.",
   "BITD.RollViceFailure": "<strong>Przesadzasz</strong>. Wyeliminuj <strong>{clear_stress} stres</strong> i wybierz <strong>jedną</strong> z następujących konsekwencji:",
   "BITD.RollViceFailureAttactTrouble": "<strong>Przyciągnij kłopoty.</strong> Wybierz lub wylosuj dodatkowe <strong>splątanie.</strong>",
@@ -329,7 +329,7 @@
   "BITD.Edge": "Edge",
   "BITD.GainEdge": "Gain an <strong>Edge</strong>.",
   "BITD.DiceRoller": "Dice Roller",
-  
+
   "BITD.Colors": {
     "Black": "Black",
     "Blue": "Blue",
@@ -339,7 +339,7 @@
     "White": "White",
     "Yellow": "Yellow"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Action Rolls",
@@ -379,5 +379,4 @@
       "NoNPC": "This NPC does not exist in the World or in a Compendium."
     }
   }
-
 }

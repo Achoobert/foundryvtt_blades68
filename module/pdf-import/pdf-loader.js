@@ -5,7 +5,7 @@ export async function getPdfJs() {
     pdfjsLibPromise = import("../vendor/pdfjs/pdf.mjs").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = new URL(
         "systems/blades68/module/vendor/pdfjs/pdf.worker.mjs",
-        window.location.origin
+        window.location.origin,
       ).href;
       return lib;
     });

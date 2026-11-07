@@ -133,7 +133,8 @@
   });
   if (!fileResult) return;
 
-  const isUsableFile = (file) => Boolean(file) && typeof file.arrayBuffer === "function" && file.size > 0;
+  const isUsableFile = (file) =>
+    Boolean(file) && typeof file.arrayBuffer === "function" && file.size > 0;
   const selectedDecks = DECKS.filter((deck) => isUsableFile(fileResult[deck.field]));
   if (!selectedDecks.length) {
     ui.notifications.warn("No PDF was selected.");
@@ -145,7 +146,10 @@
     ui.notifications.error("No faction items were found in the compendium.");
     return;
   }
-  const normalize = (name) => String(name).toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const normalize = (name) =>
+    String(name)
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "");
   const docsByName = new Map(factionDocs.map((doc) => [normalize(doc.name), doc]));
 
   const wasLocked = pack.locked;

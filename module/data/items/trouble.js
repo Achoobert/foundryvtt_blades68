@@ -22,9 +22,11 @@ export class TroubleItemData extends BladesItemData {
       // Plain textarea (triple-stash render, not the {{editor}} widget) -- StringField, not HTMLField.
       escilation: new fields.StringField({ required: false, blank: true, initial: "" }),
       group: new fields.StringField({
-        required: false, blank: true, initial: "",
-        choices: ["", "light_crew", "heavy_crew", "light_local", "heavy_local"]
-      })
+        required: false,
+        blank: true,
+        initial: "",
+        choices: ["", "light_crew", "heavy_crew", "light_local", "heavy_local"],
+      }),
     };
   }
 }

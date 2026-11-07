@@ -1,8 +1,8 @@
 {
   "name": "blades68-e2e",
   "version": "0.1.0",
-  "description": "Cypress harness that drives a live Foundry instance to run the Blades68 Quench suite.",
   "private": true,
+  "description": "Cypress harness that drives a live Foundry instance to run the Blades68 Quench suite.",
   "type": "module",
   "scripts": {
     "cypress:install": "cypress install",

@@ -5,11 +5,9 @@
  */
 import { loadHandlebarsTemplates } from "./compat.js";
 
-export const preloadHandlebarsTemplates = async function() {
-
+export const preloadHandlebarsTemplates = async function () {
   // Define template paths to load
   const templatePaths = [
-
     // Actor Sheet Partials
     "systems/blades68/templates/parts/coins.html",
     "systems/blades68/templates/parts/attributes.html",

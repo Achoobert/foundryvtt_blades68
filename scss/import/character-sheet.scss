@@ -1,14 +1,14 @@
 // Character sheet styles, split into focused partials under ./character-sheet/
 // (kept as one directory so this stays a drop-in replacement for the old
 // single-file version — the @import path below is unchanged).
-@import 'character-sheet/variables';
-@import 'character-sheet/layout-stress';
-@import 'character-sheet/abilities-loadout-harm';
-@import 'character-sheet/attributes-items';
-@import 'character-sheet/traits-sections';
-@import 'character-sheet/panels';
-@import 'character-sheet/keys';
-@import 'character-sheet/special-playbook-shared';
-@import 'character-sheet/special-playbook-cohort';
-@import 'character-sheet/special-playbook-misc';
-@import 'character-sheet/special-playbook-veteran';
+@import "character-sheet/variables";
+@import "character-sheet/layout-stress";
+@import "character-sheet/abilities-loadout-harm";
+@import "character-sheet/attributes-items";
+@import "character-sheet/traits-sections";
+@import "character-sheet/panels";
+@import "character-sheet/keys";
+@import "character-sheet/special-playbook-shared";
+@import "character-sheet/special-playbook-cohort";
+@import "character-sheet/special-playbook-misc";
+@import "character-sheet/special-playbook-veteran";

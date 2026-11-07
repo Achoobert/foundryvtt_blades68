@@ -1,13 +1,8 @@
 import { prepareActiveEffectCategories } from "./effects.js";
 import { BladesHelpers } from "./blades-helpers.js";
-import {
-  enrichHTML,
-  renderHandlebarsTemplate,
-  applyBladesThemeClasses,
-} from "./compat.js";
+import { enrichHTML, renderHandlebarsTemplate, applyBladesThemeClasses } from "./compat.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
-
 
 export class ItemSheetV2 extends HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
@@ -30,7 +25,6 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     body: { template: "systems/blades68/templates/items/item.html", scrollable: [""] },
   };
 
-  
   static TEMPLATE_BY_TYPE = {
     heritage: "simple",
     background: "simple",
@@ -43,18 +37,13 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     return `systems/blades68/templates/items/${name}.html`;
   }
 
-  
   async _onRender(context, options) {
     await super._onRender(context, options);
     applyBladesThemeClasses(this.element);
   }
 
-  
   async _renderHTML(context, options) {
-    const htmlString = await renderHandlebarsTemplate(
-      this._templatePath(),
-      context,
-    );
+    const htmlString = await renderHandlebarsTemplate(this._templatePath(), context);
     const tempEl = document.createElement("div");
     tempEl.innerHTML = htmlString;
     const element = tempEl.firstElementChild;
@@ -62,7 +51,6 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     return { body: element };
   }
 
-  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     const item = this.item;
@@ -85,23 +73,14 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
       effects: prepareActiveEffectCategories(item.effects),
     };
 
-    
     const enrichOpts = { secrets: owner, async: true };
     if (item.type !== "cohort" && item.type !== "faction") {
-      
-      
       context.system.description_raw = system.description ?? "";
-      context.system.description = await enrichHTML(
-        system.description ?? "",
-        enrichOpts,
-      );
+      context.system.description = await enrichHTML(system.description ?? "", enrichOpts);
     }
     if (item.type === "class" || item.type === "crew_type") {
       context.system.experience_clues_raw = system.experience_clues ?? "";
-      context.system.experience_clues = await enrichHTML(
-        system.experience_clues ?? "",
-        enrichOpts,
-      );
+      context.system.experience_clues = await enrichHTML(system.experience_clues ?? "", enrichOpts);
     }
 
     if (item.type === "faction") {
@@ -121,16 +100,12 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     return context;
   }
 
-  
   _prepareFactionContext(context, system) {
     const sizes = game.system.bladesClocks?.sizes ?? [4, 6, 8, 10, 12];
 
     const sizeOptions = (max) =>
       sizes
-        .map(
-          (size) =>
-            `<option value="${size}"${size === max ? " selected" : ""}>${size}</option>`,
-        )
+        .map((size) => `<option value="${size}"${size === max ? " selected" : ""}>${size}</option>`)
         .join("");
 
     context.size_list_1 = sizeOptions(system.goal_1_clock_max);
@@ -158,7 +133,6 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     );
   }
 
-  
   _buildClockDots(max, value, idPrefix) {
     max = parseInt(max) || 0;
     value = parseInt(value) || 0;
@@ -171,7 +145,6 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     return { zeroId: `${idPrefix}-0`, zeroChecked: value === 0, dots };
   }
 
-  
   static _onEffectControl(event, target) {
     if (this.item.isOwned) {
       ui.notifications.warn(game.i18n.localize("BITD.EffectWarning"));
@@ -180,9 +153,7 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
 
     const action = target.dataset.effectAction;
     const row = target.closest("tr");
-    const effect = row?.dataset.effectId
-      ? this.item.effects.get(row.dataset.effectId)
-      : null;
+    const effect = row?.dataset.effectId ? this.item.effects.get(row.dataset.effectId) : null;
 
     switch (action) {
       case "create":
@@ -191,8 +162,7 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
             name: "New Effect",
             img: "systems/blades68/styles/assets/icons/Icon.3_13.webp",
             origin: this.item.uuid,
-            "duration.rounds":
-              row?.dataset.effectType === "temporary" ? 1 : undefined,
+            "duration.rounds": row?.dataset.effectType === "temporary" ? 1 : undefined,
             disabled: row?.dataset.effectType === "inactive",
           },
         ]);
@@ -205,7 +175,6 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     }
   }
 
-  
   static async _onRadioToggle(event, target) {
     const input =
       target.tagName === "LABEL"
@@ -229,9 +198,7 @@ export class ItemSheetV2 extends HandlebarsApplicationMixin(
     const wasChecked = input.checked || event.type === "contextmenu";
     const targetValue = wasChecked ? ctx.value - 1 : ctx.value;
     const targetInput = wasChecked
-      ? this.element.querySelector(
-          `input[name="${ctx.name}"][value="${targetValue}"]`,
-        )
+      ? this.element.querySelector(`input[name="${ctx.name}"][value="${targetValue}"]`)
       : input;
     if (!targetInput) return;
 

@@ -1,0 +1,91 @@
+/*
+ * Plain pip icon style: the original orange and yellow pill images.
+ * Applied only when the sheet root also carries .plain-icons
+ * (toggled via the "PipIconStyle" world setting, see module/blades-sheet.js).
+ * Hides the SVG icon drawn by the toothradio_icon mixins (see mixin.scss) and
+ * paints the webp pills as label backgrounds, as the sheets did before.
+ */
+
+$plain_empty: "assets/blades68/stresspill_empty.webp";
+$plain_filled: "assets/blades68/stresspill_filled.webp";
+
+@mixin plain_pips($unchecked, $checked) {
+  label {
+    background-image: url($checked) !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    &::before {
+      content: none !important;
+    }
+
+    &[for$="-0"] {
+      background-image: none !important;
+    }
+  }
+  input:checked ~ label {
+    background-image: url($unchecked) !important;
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
+// For exclusive either/or toggles (e.g. crew hold: weak vs strong), not a
+// progressive fill scale. Each label defaults to unchecked and only its own
+// radio being checked lights it up.
+@mixin plain_pip_single($unchecked, $checked) {
+  label {
+    background-image: url($unchecked) !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &::before {
+      content: none !important;
+    }
+  }
+  input:checked + label {
+    background-image: url($checked) !important;
+  }
+}
+
+// Character sheet: stress
+.big-teeth-section .big-teeth {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+
+// Character sheet: trauma (always drawn empty)
+.big-teeth-section .small-teeth-container .small-teeth-wrap {
+  @include plain_pips($plain_empty, $plain_empty);
+}
+
+// Character sheet: attribute/action experience pips
+.attributes-exp .stripe-tooth-body {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+
+// Character sheet: playbook experience pips
+.teeth-experience {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+
+// Character sheet: Keys XP pips
+.key-marks {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+
+// Crew sheet: reputation and hold
+.crew-reputation {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+.crew-hold {
+  @include plain_pip_single($plain_empty, $plain_filled);
+}
+
+// Crew sheet: per-member stress/trauma roster
+.big-teeth {
+  @include plain_pips($plain_empty, $plain_filled);
+}
+.small-teeth-container .small-teeth-wrap {
+  @include plain_pips($plain_empty, $plain_filled);
+}

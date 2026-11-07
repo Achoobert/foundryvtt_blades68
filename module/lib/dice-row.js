@@ -54,10 +54,7 @@ export function wireDiceRow(form, onChange) {
   const setPool = (value) => {
     selected = Math.max(0, Math.min(max, value));
     cells.forEach((cell) =>
-      cell.classList.toggle(
-        "is-selected",
-        Number(cell.dataset.dice) === selected,
-      ),
+      cell.classList.toggle("is-selected", Number(cell.dataset.dice) === selected),
     );
     if (input) input.value = String(selected);
     if (typeof onChange === "function") onChange(selected, base);

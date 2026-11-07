@@ -3,7 +3,13 @@ $coin_height: 20px;
 $coin_margin: 3px;
 
 @mixin coin_stacks {
-  @include image_multibox($coin_width, $coin_height, "assets/blades68/stack_filled.webp", "assets/blades68/stack_empty.webp", $coin_margin);
+  @include image_multibox(
+    $coin_width,
+    $coin_height,
+    "assets/blades68/stack_filled.webp",
+    "assets/blades68/stack_empty.webp",
+    $coin_margin
+  );
 }
 
 .coins {
@@ -15,6 +21,5 @@ $coin_margin: 3px;
 
   &.coins-stashed {
     width: 190px;
-  
-}
+  }
 }

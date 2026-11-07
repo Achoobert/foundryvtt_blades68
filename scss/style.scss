@@ -1,74 +1,87 @@
-
 $lightgray: #bbb;
 $darkgray: #666;
 $gray: #999;
 $red: red;
 $almost_black: #191813;
-$almost_white: #EEEFFF;
-$gold: #DAA520;
+$almost_white: #eeefff;
+$gold: #daa520;
 $green: #008000;
 $light_green: #12a012;
 $blue: #04578f;
-$orange: #E2571E;
-
+$orange: #e2571e;
 
 $transition-period: 0.2s;
 $hover-opacity: 0.9;
 $hover-brightness: 0.8;
 
+@import "import/mixin";
+@import "fonts.scss";
 
-@import 'import/mixin';
-@import 'fonts.scss';
-
-
-.blades68{
+.blades68 {
   font-family: "Crimson Text", serif;
 
-  @import 'import/general-styles.scss';
-  @import 'import/clocks.scss';
+  @import "import/general-styles.scss";
+  @import "import/clocks.scss";
 
-  &.crew.sheet{
-    @import 'import/crew-sheet.scss';
+  &.crew.sheet {
+    @import "import/crew-sheet.scss";
   }
 
-  &.actor.pc{
-    @import 'import/character-sheet.scss';
+  &.actor.pc {
+    @import "import/character-sheet.scss";
   }
 
-  &.actor.clock{
+  &.actor.clock {
   }
 
-  &.item.sheet{
-    @import 'import/item-sheet.scss';
+  &.item.sheet {
+    @import "import/item-sheet.scss";
   }
 
-  &.blades68-theme{
-    @import 'import/blades68-theme.scss';
+  &.blades68-theme {
+    @import "import/blades68-theme.scss";
   }
 
-  &.blades68-theme-light{
-    @import 'import/blades68-theme-light.scss';
+  &.blades68-theme-light {
+    @import "import/blades68-theme-light.scss";
   }
 
-  &.blades68-theme-dark{
-    @import 'import/blades68-theme-dark.scss';
+  &.blades68-theme-dark {
+    @import "import/blades68-theme-dark.scss";
   }
 
-  &.sharp-icons{
-    @import 'import/sharp-icons.scss';
+  &.sharp-icons {
+    @import "import/sharp-icons.scss";
+  }
+
+  &.plain-icons {
+    @import "import/plain-icons.scss";
+  }
+
+  &.square-icons {
+    @import "import/square-icons.scss";
   }
 }
 
-
-@import 'import/chat.scss';
-@import 'import/dialogs.scss';
-@import 'import/pause.scss';
-
+@import "import/chat.scss";
+@import "import/dialogs.scss";
+@import "import/pause.scss";
 
 @keyframes bitd-stress-vibrate {
-  0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-2px, 1px); }
-  40% { transform: translate(2px, -1px); }
-  60% { transform: translate(-2px, -1px); }
-  80% { transform: translate(2px, 1px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-2px, -1px);
+  }
+  80% {
+    transform: translate(2px, 1px);
+  }
 }

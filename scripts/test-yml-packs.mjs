@@ -30,7 +30,12 @@ test("packPlacement uses nested packFolders leaves", () => {
   const placement = packPlacement({
     packs: [
       { name: "class", label: "Classes", type: "Item", path: "./packs/classes.db" },
-      { name: "blades68_classes", label: "Playbooks", type: "Item", path: "./packs/blades68_classes.db" },
+      {
+        name: "blades68_classes",
+        label: "Playbooks",
+        type: "Item",
+        path: "./packs/blades68_classes.db",
+      },
     ],
     packFolders: [
       {
@@ -76,7 +81,10 @@ test("writeNedb sorts by _id and is deterministic", () => {
     { _id: "a", name: "A" },
   ]);
   assert.equal(fs.readFileSync(file, "utf8"), once);
-  assert.deepEqual(readNedb(file).map((d) => d._id), ["a", "b"]);
+  assert.deepEqual(
+    readNedb(file).map((d) => d._id),
+    ["a", "b"],
+  );
 });
 
 test("loadPackDocuments accepts multi-document YAML in one file", () => {
@@ -92,11 +100,14 @@ test("loadPackDocuments accepts multi-document YAML in one file", () => {
       "_id: id2",
       "type: item",
       "",
-    ].join("\n")
+    ].join("\n"),
   );
   const { docs, problems } = loadPackDocuments(dir);
   assert.deepEqual(problems, []);
-  assert.deepEqual(docs.map((d) => d._id), ["id1", "id2"]);
+  assert.deepEqual(
+    docs.map((d) => d._id),
+    ["id1", "id2"],
+  );
 });
 
 test("loadPackDocuments rejects missing _id and duplicates", () => {
@@ -111,12 +122,7 @@ test("loadPackDocuments rejects missing _id and duplicates", () => {
 });
 
 test("Runaways ships its abilities and crew upgrades", () => {
-  const contentDir = path.join(
-    process.cwd(),
-    "yml_source",
-    "blades68",
-    "blades_68_content"
-  );
+  const contentDir = path.join(process.cwd(), "yml_source", "blades68", "blades_68_content");
   const abilities = loadPackDocuments(path.join(contentDir, "blades68_crew_abilities")).docs;
   const upgrades = loadPackDocuments(path.join(contentDir, "blades68_crew_upgrades")).docs;
 
@@ -183,7 +189,7 @@ test("compileYmlPacks discovers manifests and emits lossless NeDB", () => {
   fs.mkdirSync(packDir, { recursive: true });
   fs.writeFileSync(
     path.join(packDir, PACK_MANIFEST),
-    ["name: demo", "label: Demo", 'type: Item', "path: ./packs/demo.db", ""].join("\n")
+    ["name: demo", "label: Demo", "type: Item", "path: ./packs/demo.db", ""].join("\n"),
   );
   const doc = {
     _id: "zz99",
@@ -213,7 +219,7 @@ test("compileYmlPacks fails when system.json pack missing from YAML", () => {
     JSON.stringify({
       packs: [{ name: "missing", label: "Missing", type: "Item", path: "./packs/missing.db" }],
       packFolders: [{ name: "Character Options", packs: ["missing"] }],
-    })
+    }),
   );
   const { problems } = compileYmlPacks({ root, sourceDir, packsDir });
   assert.ok(problems.some((p) => p.includes('pack "missing" has no YAML source')));
@@ -244,9 +250,11 @@ test("resolveItemRefs reuses pack documents and applies overrides", () => {
       _id: "actor01",
       name: "Example",
       type: "character",
-      item_refs: [{ pack: "gear", name: "Armor", overrides: { system: { uses_used: 2, equipped: true } } }],
+      item_refs: [
+        { pack: "gear", name: "Armor", overrides: { system: { uses_used: 2, equipped: true } } },
+      ],
     },
-    { index: REF_INDEX, scope: "blades68" }
+    { index: REF_INDEX, scope: "blades68" },
   );
 
   assert.deepEqual(problems, []);
@@ -275,12 +283,18 @@ test("resolveItemRefs keeps inline documents and orders items by ref position", 
         { inline: { name: "Getaway drivers", type: "cohort", system: { cohort: "Gang" } } },
       ],
     },
-    { index: REF_INDEX, scope: "blades68" }
+    { index: REF_INDEX, scope: "blades68" },
   );
 
   assert.deepEqual(problems, []);
-  assert.deepEqual(doc.items.map((i) => i.name), ["Armor", "Getaway drivers"]);
-  assert.deepEqual(doc.items.map((i) => i.sort), [100000, 200000]);
+  assert.deepEqual(
+    doc.items.map((i) => i.name),
+    ["Armor", "Getaway drivers"],
+  );
+  assert.deepEqual(
+    doc.items.map((i) => i.sort),
+    [100000, 200000],
+  );
   assert.equal(doc.items[1]._stats, undefined);
   assert.ok(doc.items[1]._id);
 });
@@ -297,7 +311,7 @@ test("resolveItemRefs reports unknown and ambiguous references", () => {
         { pack: "gear", id: "nope" },
       ],
     },
-    { index: REF_INDEX, scope: "blades68" }
+    { index: REF_INDEX, scope: "blades68" },
   );
 
   assert.equal(problems.length, 3);
@@ -327,7 +341,7 @@ test("compileYmlPacks compiles build_order: last packs after the rest", () => {
         { name: "examples", label: "Examples", type: "Actor", path: "./packs/examples.db" },
       ],
       packFolders: [{ name: "Blades '68 Content", packs: ["gear", "examples"] }],
-    })
+    }),
   );
 
   // "examples" sorts before "gear" on disk, so only build_order can fix the order.
@@ -335,11 +349,11 @@ test("compileYmlPacks compiles build_order: last packs after the rest", () => {
   fs.mkdirSync(gearDir, { recursive: true });
   fs.writeFileSync(
     path.join(gearDir, PACK_MANIFEST),
-    ["name: gear", "label: Gear", "type: Item", "path: ./packs/gear.db", ""].join("\n")
+    ["name: gear", "label: Gear", "type: Item", "path: ./packs/gear.db", ""].join("\n"),
   );
   fs.writeFileSync(
     path.join(gearDir, "armor.yml"),
-    dumpDocumentYamlSmart({ _id: "armor01", name: "Armor", type: "item", system: { load: "1" } })
+    dumpDocumentYamlSmart({ _id: "armor01", name: "Armor", type: "item", system: { load: "1" } }),
   );
 
   const exDir = path.join(sourceDir, "blades68", "blades_68_content", "examples");
@@ -353,7 +367,7 @@ test("compileYmlPacks compiles build_order: last packs after the rest", () => {
       "path: ./packs/examples.db",
       'build_order: "last"',
       "",
-    ].join("\n")
+    ].join("\n"),
   );
   fs.writeFileSync(
     path.join(exDir, "scoundrel.yml"),
@@ -362,7 +376,7 @@ test("compileYmlPacks compiles build_order: last packs after the rest", () => {
       name: "Scoundrel",
       type: "character",
       item_refs: [{ pack: "gear", name: "Armor", overrides: { system: { equipped: true } } }],
-    })
+    }),
   );
 
   const { built, problems } = compileYmlPacks({ root, sourceDir, packsDir });
@@ -386,7 +400,7 @@ test("compileYmlPacks rejects a build_order: last pack with a dangling reference
       id: "blades68",
       packs: [{ name: "examples", label: "Examples", type: "Actor", path: "./packs/examples.db" }],
       packFolders: [{ name: "Blades '68 Content", packs: ["examples"] }],
-    })
+    }),
   );
   const exDir = path.join(sourceDir, "blades68", "blades_68_content", "examples");
   fs.mkdirSync(exDir, { recursive: true });
@@ -399,7 +413,7 @@ test("compileYmlPacks rejects a build_order: last pack with a dangling reference
       "path: ./packs/examples.db",
       'build_order: "last"',
       "",
-    ].join("\n")
+    ].join("\n"),
   );
   fs.writeFileSync(
     path.join(exDir, "scoundrel.yml"),
@@ -408,7 +422,7 @@ test("compileYmlPacks rejects a build_order: last pack with a dangling reference
       name: "Scoundrel",
       type: "character",
       item_refs: [{ pack: "gear", name: "Armor" }],
-    })
+    }),
   );
 
   const { built, problems } = compileYmlPacks({ root, sourceDir, packsDir });
@@ -422,7 +436,7 @@ test("example actors reuse compendium documents instead of copying them", () => 
     "yml_source",
     "blades68",
     "blades_68_examples",
-    "blades68_example_characters"
+    "blades68_example_characters",
   );
   const { docs, problems } = loadPackDocuments(exampleDir);
   assert.deepEqual(problems, []);
@@ -432,7 +446,10 @@ test("example actors reuse compendium documents instead of copying them", () => 
     assert.ok(doc.item_refs?.length, `${doc.name} should declare item_refs`);
     // Only the bespoke cohort may be inlined; everything else is a reference.
     const inlined = doc.item_refs.filter((ref) => ref.inline).map((ref) => ref.inline.type);
-    assert.ok(inlined.every((type) => type === "cohort"), `${doc.name} inlines ${inlined.join(", ")}`);
+    assert.ok(
+      inlined.every((type) => type === "cohort"),
+      `${doc.name} inlines ${inlined.join(", ")}`,
+    );
     for (const ref of doc.item_refs.filter((r) => !r.inline)) {
       assert.ok(ref.pack, `${doc.name}: ref missing pack`);
       assert.ok(ref.name || ref.id, `${doc.name}: ref missing name/id`);

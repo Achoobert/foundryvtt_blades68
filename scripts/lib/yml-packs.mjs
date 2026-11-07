@@ -23,12 +23,13 @@ export function folderSlug(name) {
 
 /** Safe document filename from name (+ optional id suffix on collision). */
 export function docSlug(name, id = "") {
-  const base = String(name || "unnamed")
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 80) || "unnamed";
+  const base =
+    String(name || "unnamed")
+      .toLowerCase()
+      .replace(/['’]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .slice(0, 80) || "unnamed";
   return id ? `${base}--${id}` : base;
 }
 
@@ -86,7 +87,10 @@ export function writeNedb(filePath, docs) {
     if (ida && idb && ida !== idb) return ida.localeCompare(idb);
     return String(a.name ?? "").localeCompare(String(b.name ?? ""));
   });
-  fs.writeFileSync(filePath, sorted.map((d) => JSON.stringify(d)).join("\n") + (sorted.length ? "\n" : ""));
+  fs.writeFileSync(
+    filePath,
+    sorted.map((d) => JSON.stringify(d)).join("\n") + (sorted.length ? "\n" : ""),
+  );
   return sorted;
 }
 
@@ -116,7 +120,7 @@ export function loadPackManifest(manifestPath) {
   }
   if (raw.build_order != null && raw.build_order !== BUILD_ORDER_LAST) {
     throw new Error(
-      `${manifestPath}: build_order must be "${BUILD_ORDER_LAST}" when set (got "${raw.build_order}")`
+      `${manifestPath}: build_order must be "${BUILD_ORDER_LAST}" when set (got "${raw.build_order}")`,
     );
   }
   return raw;
@@ -226,7 +230,10 @@ export function mergeDeep(base, patch) {
   }
   const out = structuredClone(base);
   for (const [key, value] of Object.entries(patch)) {
-    out[key] = isPlainObject(value) && isPlainObject(out[key]) ? mergeDeep(out[key], value) : structuredClone(value);
+    out[key] =
+      isPlainObject(value) && isPlainObject(out[key])
+        ? mergeDeep(out[key], value)
+        : structuredClone(value);
   }
   return out;
 }
@@ -242,7 +249,7 @@ function lookupRef(ref, index) {
 
   const wantedType = ref.type ? String(ref.type).toLowerCase() : null;
   const matches = (index.byName.get(indexKey(pack, String(ref.name).toLowerCase())) ?? []).filter(
-    (entry) => !wantedType || String(entry.doc.type ?? "").toLowerCase() === wantedType
+    (entry) => !wantedType || String(entry.doc.type ?? "").toLowerCase() === wantedType,
   );
   if (!matches.length) {
     const typeHint = ref.type ? ` of type "${ref.type}"` : "";

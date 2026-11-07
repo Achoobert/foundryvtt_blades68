@@ -7,19 +7,37 @@ export function getItemSheetClass() {
 }
 
 export function unregisterActorSheet(namespace, sheetClass) {
-  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(CONFIG.Actor.documentClass, namespace, sheetClass);
+  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(
+    CONFIG.Actor.documentClass,
+    namespace,
+    sheetClass,
+  );
 }
 
 export function registerActorSheet(namespace, sheetClass, options) {
-  return foundry.applications.apps.DocumentSheetConfig.registerSheet(CONFIG.Actor.documentClass, namespace, sheetClass, options);
+  return foundry.applications.apps.DocumentSheetConfig.registerSheet(
+    CONFIG.Actor.documentClass,
+    namespace,
+    sheetClass,
+    options,
+  );
 }
 
 export function unregisterItemSheet(namespace, sheetClass) {
-  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(CONFIG.Item.documentClass, namespace, sheetClass);
+  return foundry.applications.apps.DocumentSheetConfig.unregisterSheet(
+    CONFIG.Item.documentClass,
+    namespace,
+    sheetClass,
+  );
 }
 
 export function registerItemSheet(namespace, sheetClass, options) {
-  return foundry.applications.apps.DocumentSheetConfig.registerSheet(CONFIG.Item.documentClass, namespace, sheetClass, options);
+  return foundry.applications.apps.DocumentSheetConfig.registerSheet(
+    CONFIG.Item.documentClass,
+    namespace,
+    sheetClass,
+    options,
+  );
 }
 
 export function loadHandlebarsTemplates(paths) {
@@ -38,7 +56,6 @@ export function generateRandomId() {
   return foundry.utils.randomID();
 }
 
-
 export function applyBladesThemeClasses(element) {
   if (!element) return;
   try {
@@ -46,8 +63,23 @@ export function applyBladesThemeClasses(element) {
     element.classList.toggle("blades68-theme", theme === "classic");
     element.classList.toggle("blades68-theme-light", theme === "light");
     element.classList.toggle("blades68-theme-dark", theme === "dark");
-  } catch (err) {  }
+  } catch (err) {}
   try {
-    element.classList.toggle("sharp-icons", game.settings.get("blades68", "PipIconStyle") === "sharp");
-  } catch (err) {  }
+    element.classList.toggle(
+      "sharp-icons",
+      game.settings.get("blades68", "PipIconStyle") === "sharp",
+    );
+  } catch (err) {}
+  try {
+    element.classList.toggle(
+      "plain-icons",
+      game.settings.get("blades68", "PipIconStyle") === "plain",
+    );
+  } catch (err) {}
+  try {
+    element.classList.toggle(
+      "square-icons",
+      game.settings.get("blades68", "PipIconStyle") === "square",
+    );
+  } catch (err) {}
 }

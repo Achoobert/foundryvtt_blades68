@@ -1,0 +1,9 @@
+{
+  "defaultBrowser": "chrome",
+  "defaultTimeout": 900000,
+  "cypressConfigFile": "cypress.config.js",
+  "specPattern": ["cypress/e2e/**/*.cy.js"],
+  "supportFile": "cypress/support/e2e.js",
+  "titleFilterSupport": false,
+  "screenshotsDir": "cypress/screenshots"
+}

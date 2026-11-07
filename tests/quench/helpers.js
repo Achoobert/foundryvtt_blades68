@@ -1,10 +1,12 @@
 /* global game */
 
-export const SYSTEM_ID = 'blades68';
+export const SYSTEM_ID = "blades68";
 
 export function requireSystemActive() {
   if (game.system.id !== SYSTEM_ID) {
-    throw new Error(`Expected system "${SYSTEM_ID}" active, got "${game.system.id}" — is Blades68 the world's system?`);
+    throw new Error(
+      `Expected system "${SYSTEM_ID}" active, got "${game.system.id}" — is Blades68 the world's system?`,
+    );
   }
   return game.system;
 }
@@ -22,6 +24,6 @@ export function createdDocsTracker() {
       for (const doc of created.splice(0)) {
         await doc.delete();
       }
-    }
+    },
   };
 }

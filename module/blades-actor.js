@@ -3,13 +3,10 @@ import { BladesHelpers } from "./blades-helpers.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
 import { buildDiceRowHtml, wireDiceRow } from "./lib/dice-row.js";
 
-
 export class BladesActor extends Actor {
-  
   static async create(data, options = {}) {
     data.prototypeToken = data.prototypeToken || {};
 
-    
     switch (data.type) {
       case "character":
       case "crew":
@@ -23,7 +20,6 @@ export class BladesActor extends Actor {
     return super.create(data, options);
   }
 
-  
   getRollData() {
     const rollData = super.getRollData();
 
@@ -32,28 +28,22 @@ export class BladesActor extends Actor {
     return rollData;
   }
 
-  
   getAttributeDiceToThrow() {
-    
     let dice_amount = {};
     dice_amount["BITD.Vice"] = 4;
 
     for (var attribute_name in this.system.attributes) {
-      
-      dice_amount[attribute_name] =
-        this.system.attributes[attribute_name].bonus;
+      dice_amount[attribute_name] = this.system.attributes[attribute_name].bonus;
       for (var skill_name in this.system.attributes[attribute_name].skills) {
-        
         dice_amount[skill_name] = parseInt(
           this.system.attributes[attribute_name].skills[skill_name]["value"],
         );
 
-        
         if (dice_amount[skill_name] > 0) {
           dice_amount[attribute_name]++;
         }
       }
-      
+
       dice_amount["BITD.Vice"] = Math.min(
         dice_amount["insight"],
         dice_amount["prowess"],
@@ -64,7 +54,6 @@ export class BladesActor extends Actor {
     return dice_amount;
   }
 
-  
   _getCrewActor() {
     const crewInfo = this.system?.crew?.[0];
     if (!crewInfo?.id) return null;
@@ -72,9 +61,7 @@ export class BladesActor extends Actor {
     return crewActor ?? null;
   }
 
-  
   async rollAttributePopup(attribute_name, defaultDice = 0) {
-    
     let attribute_label = BladesHelpers.getRollLabel(attribute_name);
 
     const sanitizedDefaultDice = (() => {
@@ -83,7 +70,6 @@ export class BladesActor extends Actor {
       return Math.max(0, Math.min(Math.floor(numeric), 10));
     })();
 
-    
     let current_tier = 0;
     let current_gambits = 0;
     try {
@@ -238,9 +224,7 @@ export class BladesActor extends Actor {
       }
       if (dialogResult.optDevilsBargain) {
         bonusDice += 1;
-        optionNotes.push(
-          game.i18n.localize("BITD.RollOptionDevilsBargainShort"),
-        );
+        optionNotes.push(game.i18n.localize("BITD.RollOptionDevilsBargainShort"));
       }
       if (dialogResult.optGroupAction) {
         optionNotes.push(game.i18n.localize("BITD.RollOptionGroupActionShort"));
@@ -255,9 +239,7 @@ export class BladesActor extends Actor {
     const modifier = Number(dialogResult.mod ?? 0) || 0;
     let note = dialogResult.note ?? "";
     if (optionNotes.length) {
-      note = note
-        ? `${note} (${optionNotes.join(", ")})`
-        : optionNotes.join(", ");
+      note = note ? `${note} (${optionNotes.join(", ")})` : optionNotes.join(", ");
     }
     const rollData = this.getRollData();
     const actionDiceAmount = rollData.dice_amount[attribute_name] + modifier;
@@ -268,23 +250,14 @@ export class BladesActor extends Actor {
       await this._spendGambit();
     }
     if (applyActionOptions && dialogResult.optPush) {
-      await this._applyPushYourselfStress();
+      this._flagPushYourselfStress();
     }
 
     if (!BladesHelpers.isAttributeAction(attribute_name)) {
       if (rollSelection === "indulgeVice") {
         // The dice row already holds the final pool for this one.
         const vicePool = Number(dialogResult.dicePool ?? 0) || 0;
-        await bladesRoll(
-          vicePool,
-          "BITD.Vice",
-          "",
-          "",
-          note,
-          stress,
-          undefined,
-          this,
-        );
+        await bladesRoll(vicePool, "BITD.Vice", "", "", note, stress, undefined, this);
         return;
       }
       await this.rollAttribute(attribute_name, modifier, "", "", note);
@@ -296,13 +269,7 @@ export class BladesActor extends Actor {
 
     switch (rollSelection) {
       case "actionRoll":
-        await this.rollAttribute(
-          attribute_name,
-          modifier,
-          position,
-          effect,
-          note,
-        );
+        await this.rollAttribute(attribute_name, modifier, position, effect, note);
         break;
       case "threatRoll": {
         const extraThreats = Number(dialogResult.extraThreats ?? 0) || 0;
@@ -338,51 +305,25 @@ export class BladesActor extends Actor {
         await bladesRoll(actionDiceAmount, "BITD.ReduceHeat", "", "", note, "", undefined, this);
         break;
       case "indulgeVice":
-        await bladesRoll(
-          viceDiceAmount,
-          "BITD.Vice",
-          "",
-          "",
-          note,
-          stress,
-          undefined,
-          this,
-        );
+        await bladesRoll(viceDiceAmount, "BITD.Vice", "", "", note, stress, undefined, this);
         break;
       case "engagement": {
-        const engagementDice =
-          Number(dialogResult.qty ?? sanitizedDefaultDice) || 0;
+        const engagementDice = Number(dialogResult.qty ?? sanitizedDefaultDice) || 0;
         await bladesRoll(engagementDice, "BITD.Engagement", "", "", note, "", undefined, this);
         break;
       }
       case "acquireAsset": {
         const tier = Number(dialogResult.tier ?? current_tier) || 0;
         const assetDice = tier + modifier;
-        await bladesRoll(
-          assetDice,
-          "BITD.AcquireAsset",
-          "",
-          "",
-          note,
-          "",
-          tier,
-          this,
-        );
+        await bladesRoll(assetDice, "BITD.AcquireAsset", "", "", note, "", tier, this);
         break;
       }
       default:
-        await this.rollAttribute(
-          attribute_name,
-          modifier,
-          position,
-          effect,
-          note,
-        );
+        await this.rollAttribute(attribute_name, modifier, position, effect, note);
         break;
     }
   }
 
-  
   _buildRollOptionsHtml(current_gambits) {
     return `
         <fieldset class="roll-options-toggles" style="margin-top:0.5em;">
@@ -398,7 +339,6 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  
   _buildPositionEffectTable(rollOptionsHtml = "") {
     const positions = [
       ["controlled", "BITD.PositionControlled"],
@@ -414,9 +354,7 @@ export class BladesActor extends Actor {
     ];
     const rollLabel = game.i18n.localize("BITD.Roll");
 
-    const headerCells = effects
-      .map(([, key]) => `<th>${game.i18n.localize(key)}</th>`)
-      .join("");
+    const headerCells = effects.map(([, key]) => `<th>${game.i18n.localize(key)}</th>`).join("");
 
     const bodyRows = positions
       .map(([posValue, posKey], posIdx) => {
@@ -442,7 +380,6 @@ export class BladesActor extends Actor {
         </fieldset>`;
   }
 
-  
   _wireRollDialog(form, submit) {
     const posInput = form.querySelector("#pos");
     const fxInput = form.querySelector("#fx");
@@ -459,31 +396,25 @@ export class BladesActor extends Actor {
       });
     });
 
-    
     rollCells.forEach((cell) => {
-      const diagonal =
-        Number(cell.dataset.fxIndex) - Number(cell.dataset.posIndex);
+      const diagonal = Number(cell.dataset.fxIndex) - Number(cell.dataset.posIndex);
       cell.addEventListener("mouseenter", () => {
         rollCells.forEach((other) => {
           if (other === cell) return;
-          const otherDiagonal =
-            Number(other.dataset.fxIndex) - Number(other.dataset.posIndex);
+          const otherDiagonal = Number(other.dataset.fxIndex) - Number(other.dataset.posIndex);
           if (otherDiagonal === diagonal) {
             other.classList.add("bitd-roll-cell-diagonal");
           }
         });
       });
       cell.addEventListener("mouseleave", () => {
-        rollCells.forEach((other) =>
-          other.classList.remove("bitd-roll-cell-diagonal"),
-        );
+        rollCells.forEach((other) => other.classList.remove("bitd-roll-cell-diagonal"));
       });
     });
 
     form.querySelectorAll("[data-roll-for]").forEach((button) => {
       button.addEventListener("click", () => {
-        if (rollSelectionInput)
-          rollSelectionInput.value = button.dataset.rollFor;
+        if (rollSelectionInput) rollSelectionInput.value = button.dataset.rollFor;
         submit();
       });
     });
@@ -523,7 +454,6 @@ export class BladesActor extends Actor {
     }
   }
 
-  
   async _spendGambit() {
     const crewActor = this._getCrewActor();
     const current = Number(crewActor?.system?.gambits?.value);
@@ -531,42 +461,16 @@ export class BladesActor extends Actor {
     await crewActor.update({ "system.gambits.value": current - 1 });
   }
 
-  
-  async _applyPushYourselfStress() {
+  _flagPushYourselfStress() {
     const current = Number(this.system.stress.value) || 0;
     const max = Number(this.system.stress.max) || 9;
     const next = Math.min(current + 2, max);
     if (next === current) return;
 
-    await this.update({ "system.stress.value": next });
-
-    
-    await this._awaitNextSheetRender();
+    // Don't write stress; shake the boxes the player should fill by hand.
     this._pulseStressBoxes(current, next);
   }
 
-  
-  _awaitNextSheetRender(timeoutMs = 300) {
-    const sheetClassName = this.sheet?.constructor?.name;
-    if (!sheetClassName) return Promise.resolve();
-
-    return new Promise((resolve) => {
-      let done = false;
-      const hookName = `render${sheetClassName}`;
-      const finish = () => {
-        if (done) return;
-        done = true;
-        Hooks.off(hookName, hookId);
-        resolve();
-      };
-      const hookId = Hooks.on(hookName, (app) => {
-        if (app.object?.id === this.id) finish();
-      });
-      setTimeout(finish, timeoutMs);
-    });
-  }
-
-  
   _pulseStressBoxes(fromValue, toValue) {
     const sheetElement = this.sheet?.rendered ? this.sheet.element : null;
     if (!sheetElement) return;
@@ -574,23 +478,14 @@ export class BladesActor extends Actor {
     if (!root) return;
 
     for (let i = fromValue + 1; i <= toValue; i++) {
-      const label = root.querySelector(
-        `label[for="character-${this.id}-stress-${i}"]`,
-      );
+      const label = root.querySelector(`label[for="character-${this.id}-stress-${i}"]`);
       if (!label) continue;
       label.classList.add("bitd-stress-pulse");
       setTimeout(() => label.classList.remove("bitd-stress-pulse"), 3000);
     }
   }
 
-  
-  async rollAttribute(
-    attribute_name = "",
-    additional_dice_amount = 0,
-    position,
-    effect,
-    note,
-  ) {
+  async rollAttribute(attribute_name = "", additional_dice_amount = 0, position, effect, note) {
     let dice_amount = 0;
     if (attribute_name !== "") {
       let roll_data = this.getRollData();
@@ -620,7 +515,6 @@ export class BladesActor extends Actor {
     );
   }
 
-  
   createListOfActions() {
     let text, attribute, skill;
     let attributes = this.system.attributes;
@@ -641,7 +535,6 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  
   createListOfDiceMods(rs, re, s) {
     var text = ``;
     var i = 0;
@@ -666,25 +559,20 @@ export class BladesActor extends Actor {
     return text;
   }
 
-  
   getComputedAttributes() {
     let attributes = this.system.attributes;
     for (const a in attributes) {
       for (const s in attributes[a].skills) {
-        if (
-          attributes[a].skills[s].max === undefined ||
-          attributes[a].skills[s].max === 4
-        ) {
+        if (attributes[a].skills[s].max === undefined || attributes[a].skills[s].max === 4) {
           attributes[a].skills[s].max = 3;
         }
 
-        
         if (attributes[a].skills[s].value <= attributes[a].skills[s].min) {
           attributes[a].skills[s].value = attributes[a].skills[s].min;
         }
       }
     }
-    
+
     if (this.getHasMastery()) {
       for (const b in attributes) {
         for (const t in attributes[b].skills) {
@@ -729,7 +617,6 @@ export class BladesActor extends Actor {
     return Boolean(crew_actor?.system?.scoundrel?.mastery);
   }
 
-  
   getBonusKeys() {
     const crew_actor = this._getCrewActor();
     if (!crew_actor) {
@@ -759,7 +646,11 @@ export class BladesActor extends Actor {
       if (item.type !== "ability") continue;
       const value = Number(item.system?.load_bonus);
       if (!Number.isFinite(value) || value <= 0) continue;
-      sources.push({ name: item.name, description: item.system?.description || "", value: Math.floor(value) });
+      sources.push({
+        name: item.name,
+        description: item.system?.description || "",
+        value: Math.floor(value),
+      });
     }
 
     const crew_actor = this._getCrewActor();
@@ -781,14 +672,13 @@ export class BladesActor extends Actor {
           if (Number.isFinite(amount)) value += amount;
         }
       }
-      
+
       value = Math.min(Math.floor(value), crewTotal - labelled);
       if (value <= 0) continue;
       labelled += value;
       sources.push({ name: item.name, description: item.system?.description || "", value });
     }
 
-    
     if (labelled < crewTotal) {
       sources.push({ name: crew_actor.name, description: "", value: crewTotal - labelled });
     }
@@ -796,7 +686,6 @@ export class BladesActor extends Actor {
     return sources;
   }
 
-  
   getMaxKeys() {
     const bonus = this.getBonusKeys();
     const previousBonus = Number(this._appliedKeysBonus) || 0;
@@ -814,12 +703,10 @@ export class BladesActor extends Actor {
     return current_healing;
   }
 
-  
   getComputedKeys(maxOverride) {
     const max = Number.isFinite(maxOverride) ? maxOverride : this.getMaxKeys();
     const rawList = this.system.keys?.list ?? [];
-    
-    
+
     const asArray = Array.isArray(rawList) ? rawList : Object.values(rawList);
     const list = foundry.utils.deepClone(asArray);
     const emptySlot = () => ({
@@ -835,9 +722,7 @@ export class BladesActor extends Actor {
       const deadlocked_to = deadlocked ? String(slot?.deadlocked_to ?? "") : "";
       return {
         key,
-        experience: Number.isFinite(experience)
-          ? Math.max(0, Math.min(3, experience))
-          : 0,
+        experience: Number.isFinite(experience) ? Math.max(0, Math.min(3, experience)) : 0,
         deadlocked,
         deadlocked_to,
       };

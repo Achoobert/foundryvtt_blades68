@@ -15,7 +15,7 @@ export class NPCData extends foundry.abstract.TypeDataModel {
       associated_class: new fields.StringField({ required: true, initial: "", blank: true }),
       associated_faction: new fields.StringField({ required: true, initial: "", blank: true }),
       associated_crew_type: new fields.StringField({ required: true, initial: "", blank: true }),
-      notes: new fields.StringField({ required: true, initial: "", blank: true })
+      notes: new fields.StringField({ required: true, initial: "", blank: true }),
     };
   }
 }

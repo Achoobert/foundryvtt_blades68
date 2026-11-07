@@ -89,6 +89,7 @@
   "BITD.TraumaSecretive": "Secretive",
   "BITD.Keys": "Keys",
   "BITD.XpReminder": "Don't forget to mark your new xp!",
+  "BITD.StressReminder": "Update your stress tracker!",
   "BITD.KeysExplanation": "Each of your 5 Keys tracks marks (0-3) as you lean into that part of your character's history or identity. When a Key hits 3 marks, you can boom it into a Deadlock — a lasting complication tied to that Key.",
   "BITD.AddKey": "Add Key",
   "BITD.CustomKey": "Custom Key",
@@ -686,7 +687,9 @@
       "Name": "Pip Icon Style",
       "Hint": "The icon used for stress, trauma, XP, and reputation pips.",
       "Pill": "Pill",
-      "Sharp": "Sharp (classic teeth)"
+      "Sharp": "Sharp (knife)",
+      "Plain": "Plain (classic pills)",
+      "Square": "Square (classic teeth)"
     },
     "SheetBackgroundColor": {
       "Name": "Sheet Background Color",
@@ -719,5 +722,7 @@
   "B68.Critical": "Critical",
   "B68.Major": "Major",
   "B68.Passing": "Passing",
-  "B68.RESOURCES": "Resources"
+  "B68.RESOURCES": "Resources",
+  "B68.Stacks": "Stacks",
+  "B68.Bank": "Bank"
 }

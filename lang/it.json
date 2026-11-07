@@ -201,7 +201,7 @@
   "BITD.RollPartialSuccessPosition": "Ci riesci ma soffri delle conseguenze: subisci un <strong>danno grave</strong>, una <strong>complicazione seria</strong>, l’efficacia è <strong>ridotta</strong>.",
   "BITD.RollFailurePositionControlled": "Vacilli. Puoi continuare tirando in posizione <strong>rischiosa</strong> oppure abbandoni e provi un approccio diverso",
   "BITD.RollFailurePositionRisky": "Le cose vanno storte. Subisci <strong>danno</strong>, subisci una <strong>complicazione</strong>, la tua posizione è ora <strong>disperata</strong>, <strong>perdi</strong> questa opportunità.",
-  "BITD.RollFailurePositionDesperate":"È il risultato peggiore. Subisci un <strong>danno grave</strong>, una <strong>complicazione seria</strong>, <strong>perdi</strong> questa opportunità.",
+  "BITD.RollFailurePositionDesperate": "È il risultato peggiore. Subisci un <strong>danno grave</strong>, una <strong>complicazione seria</strong>, <strong>perdi</strong> questa opportunità.",
   "BITD.RollResistance": "<strong>Riduci</strong> o <strong>eviti </strong>gli effetti di una conseguenza (il GM decide). <br>Subisci <strong>{stress} stress</strong>",
   "BITD.RollResistanceCritical": "<strong>Riduci</strong> o <strong>eviti </strong>gli effetti di una conseguenza (il GM decide). <br/>recupera <strong>1 stress</strong>.",
   "BITD.RollPeril": "Peril",
@@ -281,7 +281,7 @@
   "BITD.StrangeFriends": "Amici strani",
   "BITD.Acquaintances": "Conoscenti",
   "BITD.Contacts": "Contatti",
- 
+
   "BITD.HuntingGrounds": "Territori di caccia",
   "BITD.SacredSites": "Siti sacri",
   "BITD.SalesTerritory": "Zone di vendita",
@@ -337,7 +337,7 @@
   "BITD.Edge": "Edge",
   "BITD.GainEdge": "Gain an <strong>Edge</strong>.",
   "BITD.DiceRoller": "Dice Roller",
-  
+
   "BITD.Colors": {
     "Black": "Black",
     "Blue": "Blue",
@@ -347,7 +347,7 @@
     "White": "White",
     "Yellow": "Yellow"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Action Rolls",
@@ -387,5 +387,4 @@
       "NoNPC": "This NPC does not exist in the World or in a Compendium."
     }
   }
-
 }

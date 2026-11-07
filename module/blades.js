@@ -26,7 +26,6 @@ import { BladesCrewSheet } from "./blades-crew-sheet.js";
 import { BladesClockSheet } from "./blades-clock-sheet.js";
 import { BladesNPCSheet } from "./blades-npc-sheet.js";
 import { BladesFactionSheet } from "./blades-faction-sheet.js";
-import * as migrations from "./migration.js";
 import {
   getActorSheetClass,
   getItemSheetClass,
@@ -140,14 +139,12 @@ Hooks.once("init", async function () {
     Witty: ["serious", "goofy"],
   };
 
-  game.system.blades68Keys = Object.keys(blades68DeadlockedKeys).map(
-    (name) => ({
-      id: name,
-      label: `BITD.Key${name}`,
-      drift: `BITD.Key${name}Drift`,
-      deadlockedKeys: blades68DeadlockedKeys[name],
-    }),
-  );
+  game.system.blades68Keys = Object.keys(blades68DeadlockedKeys).map((name) => ({
+    id: name,
+    label: `BITD.Key${name}`,
+    drift: `BITD.Key${name}Drift`,
+    deadlockedKeys: blades68DeadlockedKeys[name],
+  }));
 
   CONFIG.Item.documentClass = BladesItem;
   CONFIG.Actor.documentClass = BladesActor;
@@ -205,15 +202,7 @@ Hooks.once("init", async function () {
     }
   });
 
-  // The base / lair claim is owned from the start, so the sheet never offers a toggle for it.
-  const BASE_TURF_NAMES = [
-    "base",
-    "lair",
-    "prison",
-    "bitd.base",
-    "bitd.lair",
-    "bitd.prison",
-  ];
+  const BASE_TURF_NAMES = ["base", "lair", "prison", "bitd.base", "bitd.lair", "bitd.prison"];
   Handlebars.registerHelper("is_base_turf", (name) => {
     return BASE_TURF_NAMES.includes(
       String(name ?? "")
@@ -234,9 +223,7 @@ Hooks.once("init", async function () {
     if (typeof selected !== "undefined") {
       selected.forEach((selected_value) => {
         if (selected_value !== false) {
-          let escapedValue = RegExp.escape(
-            Handlebars.escapeExpression(selected_value),
-          );
+          let escapedValue = RegExp.escape(Handlebars.escapeExpression(selected_value));
           let rgx = new RegExp(' value=\"' + escapedValue + '\"');
           let oldHtml = html;
           html = html.replace(rgx, "$& checked");
@@ -304,20 +291,16 @@ Hooks.once("init", async function () {
   });
 
   //Reputation and Turf Bar on Crew Sheet
-  Handlebars.registerHelper(
-    "repturf",
-    (_id, turfs_amount, max_rep, options) => {
-      let html = options.fn(this);
-      var turfs_amount_int = parseInt(turfs_amount) || 0;
-      for (let i = 1; i <= max_rep; i++) {
-        const claimedClass =
-          i > max_rep - turfs_amount_int ? " turf-claimed" : "";
-        html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle${claimedClass}" for="crew-${_id}-reputation-${i}"></label>`;
-      }
+  Handlebars.registerHelper("repturf", (_id, turfs_amount, max_rep, options) => {
+    let html = options.fn(this);
+    var turfs_amount_int = parseInt(turfs_amount) || 0;
+    for (let i = 1; i <= max_rep; i++) {
+      const claimedClass = i > max_rep - turfs_amount_int ? " turf-claimed" : "";
+      html += `<input type="radio" id="crew-${_id}-reputation-${i}" name="system.reputation" value="${i}" dtype="Radio"><label class="radio-toggle${claimedClass}" for="crew-${_id}-reputation-${i}"></label>`;
+    }
 
-      return html;
-    },
-  );
+    return html;
+  });
 
   // Enrich the HTML replace /n with <br>
   Handlebars.registerHelper("html", (options) => {
@@ -344,13 +327,6 @@ Hooks.once("init", async function () {
     return accum;
   });
 
-  // "N Times" loop for handlebars.
-  //  Block is executed N times starting from start.
-  //
-  // Usage:
-  // {{#times_from 1 10}}
-  //   <span>{{this}}</span>
-  // {{/times_from}}
   Handlebars.registerHelper("times_from", function (start, n, block) {
     let accum = "";
     for (let i = start; i <= n; ++i) {
@@ -377,30 +353,26 @@ Hooks.once("init", async function () {
    * Takes label from Selected option instead of just plain value.
    */
 
-  Handlebars.registerHelper(
-    "selectOptionsWithLabel",
-    function (choices, options) {
-      const localize = options.hash["localize"] ?? false;
-      let selected = options.hash["selected"] ?? null;
-      let blank = options.hash["blank"] || null;
-      selected =
-        selected instanceof Array ? selected.map(String) : [String(selected)];
+  Handlebars.registerHelper("selectOptionsWithLabel", function (choices, options) {
+    const localize = options.hash["localize"] ?? false;
+    let selected = options.hash["selected"] ?? null;
+    let blank = options.hash["blank"] || null;
+    selected = selected instanceof Array ? selected.map(String) : [String(selected)];
 
-      // Create an option
-      const option = (key, object) => {
-        if (localize) object.label = game.i18n.localize(object.label);
-        let isSelected = selected.includes(key);
-        html += `<option value="${key}" ${isSelected ? "selected" : ""}>${object.label}</option>`;
-      };
+    // Create an option
+    const option = (key, object) => {
+      if (localize) object.label = game.i18n.localize(object.label);
+      let isSelected = selected.includes(key);
+      html += `<option value="${key}" ${isSelected ? "selected" : ""}>${object.label}</option>`;
+    };
 
-      // Create the options
-      let html = "";
-      if (blank) option("", blank);
-      Object.entries(choices).forEach((e) => option(...e));
+    // Create the options
+    let html = "";
+    if (blank) option("", blank);
+    Object.entries(choices).forEach((e) => option(...e));
 
-      return new Handlebars.SafeString(html);
-    },
-  );
+    return new Handlebars.SafeString(html);
+  });
 
   /**
    * Create appropriate Blades clock
@@ -427,7 +399,6 @@ Hooks.once("init", async function () {
     }
 
     if (zeroLabel) {
-      // Label for 0
       html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
     }
     html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('${BladesHelpers.clockImageUrl(type, current_value, color)}');">`;
@@ -447,7 +418,6 @@ Hooks.once("init", async function () {
     return html;
   };
 
-  // Clocks in color for Clock Actors
   Handlebars.registerHelper(
     "blades-clock-color",
     function (parameter_name, type, color, current_value, uniq_id) {
@@ -480,7 +450,6 @@ Hooks.once("init", async function () {
     return BladesHelpers.getProperCase(string);
   });
 
-  // check for game settings
   Handlebars.registerHelper("getSetting", function (string) {
     return game.settings.get("blades68", string);
   });
@@ -495,8 +464,8 @@ Hooks.once("setup", function () {
 });
 
 /**
- * Once the entire VTT framework is initialized, check to see if we should perform a data migration
- * and register sheets. Sheet registration is delayed until the ready hook so the DocumentSheetConfig
+ * Once the entire VTT framework is initialized, register sheets. Sheet
+ * registration is delayed until the ready hook so the DocumentSheetConfig
  * API and the new foundry.documents collections are guaranteed to exist on V13+ while still
  * allowing the compatibility helpers to fall back on older cores.
  */
@@ -568,15 +537,12 @@ function ownerActorOf(doc) {
   return parent ?? null;
 }
 
-
 async function syncCrewUpgradeEffectGate(item) {
   if (item?.type !== "crew_upgrade" && item?.type !== "crew_ability") return;
   const price = Number(item.system?.price) || 0;
   const unlocked = Number(item.system?.unlocked) || 0;
   const shouldApply = price <= 0 || unlocked >= price;
-  const toToggle = item.effects.filter(
-    (effect) => effect.disabled === shouldApply,
-  );
+  const toToggle = item.effects.filter((effect) => effect.disabled === shouldApply);
   if (!toToggle.length) return;
   await item.updateEmbeddedDocuments(
     "ActiveEffect",
@@ -588,17 +554,21 @@ Hooks.on("updateActor", (actor) => rerenderLinkedCharacterSheets(actor));
 for (const hook of ["createItem", "updateItem", "deleteItem"]) {
   Hooks.on(hook, (item) => rerenderLinkedCharacterSheets(ownerActorOf(item)));
 }
-for (const hook of [
-  "createActiveEffect",
-  "updateActiveEffect",
-  "deleteActiveEffect",
-]) {
-  Hooks.on(hook, (effect) =>
-    rerenderLinkedCharacterSheets(ownerActorOf(effect)),
-  );
+for (const hook of ["createActiveEffect", "updateActiveEffect", "deleteActiveEffect"]) {
+  Hooks.on(hook, (effect) => rerenderLinkedCharacterSheets(ownerActorOf(effect)));
 }
 
 Hooks.on("createItem", (item) => syncCrewUpgradeEffectGate(item));
+Hooks.on("createItem", (item, _options, userId) => {
+  if (
+    userId === game.user.id &&
+    item.type === "class" &&
+    item.name === "Hull" &&
+    item.parent?.type === "character"
+  ) {
+    BladesHelpers.setupHullOnProgram(item.parent);
+  }
+});
 Hooks.on("updateItem", (item, changes) => {
   if (
     foundry.utils.hasProperty(changes, "system.unlocked") ||
@@ -607,7 +577,6 @@ Hooks.on("updateItem", (item, changes) => {
     syncCrewUpgradeEffectGate(item);
   }
 });
-
 
 Hooks.on("getSceneControlButtons", (controls) => {
   controls.tokens.tools.DiceRoller = {
@@ -621,8 +590,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
   };
 });
 
-const PAUSE_IMAGE =
-  "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
+const PAUSE_IMAGE = "systems/blades68/styles/assets/blades68/bladesin68_logo.webp";
 const PAUSE_IMAGE_CLASSIC = "systems/blades68/images/BITD_logo.webp";
 
 // VHS static is drawn at low resolution and stretched by CSS, so the loop stays cheap
@@ -662,9 +630,7 @@ function prefersReducedMotion() {
   } catch (error) {
     // settings are not registered yet; fall back to the media query alone
   }
-  return (
-    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false
-  );
+  return window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 }
 
 /** Which pause background the world asked for: "vhs", "bluetime" or "vanilla" (logo only). */
@@ -725,9 +691,7 @@ function runPauseStatic(canvas) {
       last = now;
       drawPauseStatic(canvas);
       // horizontal jitter, like a tape losing tracking
-      canvas.style.transform = calm
-        ? ""
-        : `translateX(${(Math.random() - 0.5) * 8}px)`;
+      canvas.style.transform = calm ? "" : `translateX(${(Math.random() - 0.5) * 8}px)`;
     }
 
     pauseStaticFrame = requestAnimationFrame(loop);

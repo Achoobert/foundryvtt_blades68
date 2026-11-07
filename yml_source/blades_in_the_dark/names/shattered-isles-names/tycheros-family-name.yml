@@ -1,0 +1,711 @@
+_id: P7zyLV5FtkmnoCIt
+name: 'Tycheros - Family Name'
+img: icons/svg/d20-grey.svg
+description: 'Family names from Tycheros, for use in NPC/token/actor namer macros.'
+results:
+  - _id: 5msElRCuH6o36BN1
+    type: text
+    text: 'Akmenides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [1, 1]
+    drawn: false
+  - _id: GfCE5KLFFKL8F9Cu
+    type: text
+    text: 'Amnonai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [2, 2]
+    drawn: false
+  - _id: HBaUZ70epYzWI7aC
+    type: text
+    text: 'Anakisar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [3, 3]
+    drawn: false
+  - _id: gD7oLmIbjoCgHlWb
+    type: text
+    text: 'Arastos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [4, 4]
+    drawn: false
+  - _id: tUFc2UV8PnOTRr0A
+    type: text
+    text: 'Barakai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [5, 5]
+    drawn: false
+  - _id: 74SEJ35AMN6V53Rq
+    type: text
+    text: 'Brinavos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [6, 6]
+    drawn: false
+  - _id: Q9uor2tGXckWkwi2
+    type: text
+    text: 'Cevcolai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [7, 7]
+    drawn: false
+  - _id: VvhY1Q0lVatlG7mt
+    type: text
+    text: 'Chryssos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [8, 8]
+    drawn: false
+  - _id: qnPDUB4k61GXRVOo
+    type: text
+    text: 'Daleiros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [9, 9]
+    drawn: false
+  - _id: WL4AqLSHj5Z2SOWx
+    type: text
+    text: 'Damakides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [10, 10]
+    drawn: false
+  - _id: 4QIDj32MMt7olAli
+    type: text
+    text: 'Demetrakos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [11, 11]
+    drawn: false
+  - _id: 90oqj3pudnZDtQ2l
+    type: text
+    text: 'Diozanis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [12, 12]
+    drawn: false
+  - _id: bRmZsRQzeeo0Let1
+    type: text
+    text: 'Ekemonos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [13, 13]
+    drawn: false
+  - _id: EREoQbmpefi2mzdS
+    type: text
+    text: 'Elpidis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [14, 14]
+    drawn: false
+  - _id: LxzpZ7wVVe5f29b6
+    type: text
+    text: 'Fellanthos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [15, 15]
+    drawn: false
+  - _id: WyKOOUYBSfiepjfW
+    type: text
+    text: 'Ghukzar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [16, 16]
+    drawn: false
+  - _id: nWCuT2Dp9UvpLaxU
+    type: text
+    text: 'Iadoros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [17, 17]
+    drawn: false
+  - _id: dCZIRbFzezdpR3XM
+    type: text
+    text: 'Kaironis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [18, 18]
+    drawn: false
+  - _id: 6M0q76Hzqs1SxkpH
+    type: text
+    text: 'Kallistratos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [19, 19]
+    drawn: false
+  - _id: Da9HbcE9fuZYCjBq
+    type: text
+    text: 'Kalomiros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [20, 20]
+    drawn: false
+  - _id: lcIbfdgvMV4TZmHR
+    type: text
+    text: 'Kaustari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [21, 21]
+    drawn: false
+  - _id: CSCof5wdEz4IqlG4
+    type: text
+    text: 'Kosrides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [22, 22]
+    drawn: false
+  - _id: z3Q3erMZkIrKxVKK
+    type: text
+    text: 'Lazarakis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [23, 23]
+    drawn: false
+  - _id: cjfi2raEegyiYdFE
+    type: text
+    text: 'Lerissos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [24, 24]
+    drawn: false
+  - _id: 8PBWVhDexCple5SG
+    type: text
+    text: 'Leucanthe'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [25, 25]
+    drawn: false
+  - _id: IkW06hspOQQNa5yD
+    type: text
+    text: 'Makarios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [26, 26]
+    drawn: false
+  - _id: SwiIUDIQHDXCl0U4
+    type: text
+    text: 'Melechai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [27, 27]
+    drawn: false
+  - _id: oJLEvZz9G6iCkRgX
+    type: text
+    text: 'Mieruth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [28, 28]
+    drawn: false
+  - _id: I3oDVFcynilAGTIc
+    type: text
+    text: 'Mihalidis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [29, 29]
+    drawn: false
+  - _id: jcAriGKCNN37uO8K
+    type: text
+    text: 'Mordaxis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [30, 30]
+    drawn: false
+  - _id: 6NK7OMh0VMP8DyGy
+    type: text
+    text: 'Morthenai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [31, 31]
+    drawn: false
+  - _id: VgogWra7pvBk4ND4
+    type: text
+    text: 'Nemeides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [32, 32]
+    drawn: false
+  - _id: CutevyiBsi63HRlv
+    type: text
+    text: 'Ojakai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [33, 33]
+    drawn: false
+  - _id: E1sgNIPni2Kg6eiw
+    type: text
+    text: 'Olennos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [34, 34]
+    drawn: false
+  - _id: m1VcnT6BQH5U9P6z
+    type: text
+    text: 'Orianthe'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [35, 35]
+    drawn: false
+  - _id: sRJHrEctz0Q84ALM
+    type: text
+    text: 'Pavelios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [36, 36]
+    drawn: false
+  - _id: EuUS6HcTx9j66m0k
+    type: text
+    text: 'Pelaiodes'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: QyUDT2DvDDb5ypqc
+    type: text
+    text: 'Phelaidros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: jzaCjOyJ12YgGoh4
+    type: text
+    text: 'Pinelos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: Q4grYpOhl8TrICVm
+    type: text
+    text: 'Priskos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: xBz4Z7pvDdQrW6K3
+    type: text
+    text: 'Ramosin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: OFiYBCXG4MubY0GK
+    type: text
+    text: 'Rhocaius'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: xiGQ5gMRT23ohYGI
+    type: text
+    text: 'Rietanos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: SF4XDFFnAJDlS3Y1
+    type: text
+    text: 'Skamandros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: nt1Kb7r4BJyu1euM
+    type: text
+    text: 'Sothereus'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: aqmb6y7Zo4vfHtYO
+    type: text
+    text: 'Struhal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: L98cNLvB5szB1WDP
+    type: text
+    text: 'Theodaris'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: NexNuNmZH27oD9n4
+    type: text
+    text: 'Theraios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: POln12MUotjFmc9C
+    type: text
+    text: 'Thousides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: gAawZKv4u1LYgT8O
+    type: text
+    text: 'Tikaros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: FA7oNIpDEqNopXrQ
+    type: text
+    text: 'Tohiran'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: I3qCY7OL5x4iOScR
+    type: text
+    text: 'Vasilakos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: 9oq0rLVB86CUMO23
+    type: text
+    text: 'Vrohuun'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: k1v5FH7vamBFs3vN
+    type: text
+    text: 'Xhaenos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: mGpmv6DxMMjIycai
+    type: text
+    text: 'Zanides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: YmFExBG8McQb6nDS
+    type: text
+    text: 'Zatheus'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: hi1QyrddIAwS413f
+    type: text
+    text: 'Zhezegai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: MiZQUYUjesDaadMf
+    type: text
+    text: 'Zinovides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: fnRInDopTk9Jr8ac
+    type: text
+    text: 'Zorathis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: fVDn1uaUyHJpQWCI
+    type: text
+    text: 'Aeonides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: xzJFbZTXzpMA3ezm
+    type: text
+    text: 'Amarantos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: IwOATW63dKUnVIC8
+    type: text
+    text: 'Asphodelos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: AN8OgJ3QyfWUxYnA
+    type: text
+    text: 'Chalkeion'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: xYFA1NYLrX8INqUh
+    type: text
+    text: 'Corvanthes'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: qY1Fn7epiQ8Nnmdw
+    type: text
+    text: 'Drakontos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: AFxSEmMXiE5t6XuK
+    type: text
+    text: 'Eidolos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: Osy2itc7yl0ancph
+    type: text
+    text: 'Eskhatos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: uZyiYjnRC56wTP2h
+    type: text
+    text: 'Gorgonai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: d6iknkwrueF13TGR
+    type: text
+    text: 'Halkyon'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: bbY45EGSKa69Knjg
+    type: text
+    text: 'Heliodar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: vdyTI8lMfYlHUIsQ
+    type: text
+    text: 'Hesperos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: Em1rqbXYq4WvBgtC
+    type: text
+    text: 'Hydrakos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: rx5irrWITiXEj1fx
+    type: text
+    text: 'Iridanos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: CgIo7JRjgy31vfCF
+    type: text
+    text: 'Kallimachar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: HzSOdruCW3obWyJv
+    type: text
+    text: 'Kerberai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: ENMYvVM1svalcuGz
+    type: text
+    text: 'Labyrinthos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: FQ0VG5XH09P8DUyP
+    type: text
+    text: 'Melanthios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: QUuUbgisClIDzDpY
+    type: text
+    text: 'Mnemonis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: 4fX8F7gzABR0gs7Z
+    type: text
+    text: 'Myrrhidos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: VcaDeYa46IHqMJBh
+    type: text
+    text: 'Nyktos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: E8tnM0nnqYK0Sm5G
+    type: text
+    text: 'Oneiros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: wy7GSbCsruEYyAtJ
+    type: text
+    text: 'Opalides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: VLnK3VRGztVSE4f3
+    type: text
+    text: 'Pyrrhos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: rkYUrCGhMWBsQiiI
+    type: text
+    text: 'Selenaios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: OKRWZwn9NFlHpD7u
+    type: text
+    text: 'Sphinxar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: IFO6BNETSur48Eof
+    type: text
+    text: 'Stygios'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: dAL4K4QtbU8iRQvk
+    type: text
+    text: 'Tantalis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: owQ7mdIfDx2iw43g
+    type: text
+    text: 'Thanatai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: TP9eHGLaNtwEev1T
+    type: text
+    text: 'Umbraxis'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: Ye5AXM7A61jBUWeG
+    type: text
+    text: 'Velothos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: PXUdpbzF12eLbd9X
+    type: text
+    text: 'Xenarchos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: NU08CJGZ8vEB0fIG
+    type: text
+    text: 'Zephyrides'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: Wvr05nvfMyOX0pjf
+    type: text
+    text: 'Abraxai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: SIdFXCqS5YPr9K9k
+    type: text
+    text: 'Ankhemet'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: 5STAlNa8ylcFDx0H
+    type: text
+    text: 'Chthonar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: Sf6OSqAps1CZmXhq
+    type: text
+    text: 'Mordekai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: O47JIZVSRY8BDgiq
+    type: text
+    text: 'Phosphoros'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: 5OWAnqYBe4UKczo1
+    type: text
+    text: 'Sarkophos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: V5nHx8HUbBT06PCI
+    type: text
+    text: 'Vesperos'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: hh2FGbxzttPuRK2J
+    type: text
+    text: 'Ythrai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
+replacement: true
+displayRoll: true
+folder: null
+sort: 0
+flags: {}

@@ -282,7 +282,7 @@
   "BITD.StrangeFriends": "Amigos Estranhos",
   "BITD.Acquaintances": "Conhecidos",
   "BITD.Contacts": "Contatos",
- 
+
   "BITD.HuntingGrounds": "Área de Caça",
   "BITD.SacredSites": "Locais Sagrados",
   "BITD.SalesTerritory": "Pontos de Venda",
@@ -338,7 +338,7 @@
   "BITD.Edge": "Vantagem",
   "BITD.GainEdge": "Ganhe uma <strong>Vantagem</strong>.",
   "BITD.DiceRoller": "Rolador de Dados",
-  
+
   "BITD.Colors": {
     "Black": "Preto",
     "Blue": "Azul",
@@ -348,7 +348,7 @@
     "White": "Branco",
     "Yellow": "Amarelo"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Rolagens de Ação",
@@ -388,5 +388,4 @@
       "NoNPC": "Este PdM não existe no Mundo ou no Compêndio."
     }
   }
-
 }

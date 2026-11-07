@@ -5,8 +5,18 @@ const { fields } = foundry.data;
 // The 12 Blades attributes (legacy schema key is "base_skills" -- misnamed,
 // these are attributes not actions -- kept verbatim for compendium compat).
 const ATTRIBUTES = [
-  "hunt", "study", "survey", "tinker", "finesse", "prowl",
-  "skirmish", "wreck", "attune", "command", "consort", "sway"
+  "hunt",
+  "study",
+  "survey",
+  "tinker",
+  "finesse",
+  "prowl",
+  "skirmish",
+  "wreck",
+  "attune",
+  "command",
+  "consort",
+  "sway",
 ];
 
 /**
@@ -31,12 +41,20 @@ export class ClassItemData extends BladesItemData {
       ...BladesItemData.activatedEffectFields(),
       experience_clues: new fields.HTMLField({ required: false, blank: true, initial: "" }),
       base_skills: new fields.SchemaField(
-        Object.fromEntries(ATTRIBUTES.map((attr) => [
-          attr,
-          new fields.ArrayField(new fields.NumberField({ required: false, initial: 0 }), { initial: [0] })
-        ]))
+        Object.fromEntries(
+          ATTRIBUTES.map((attr) => [
+            attr,
+            new fields.ArrayField(new fields.NumberField({ required: false, initial: 0 }), {
+              initial: [0],
+            }),
+          ]),
+        ),
       ),
-      special_resource: new fields.StringField({ required: false, blank: true, initial: "Special" })
+      special_resource: new fields.StringField({
+        required: false,
+        blank: true,
+        initial: "Special",
+      }),
     };
   }
 }

@@ -255,7 +255,455 @@ results:
     weight: 1
     range: [36, 36]
     drawn: false
-formula: 1d36
+  - _id: CPJJY14JUOKF3iC0
+    type: text
+    text: 'Ashworth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: svN22GkewTKVWyPc
+    type: text
+    text: 'Blackwood'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: jpXBrWUHNxXSDtAR
+    type: text
+    text: 'Brannock'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: lSe5bLQ0O3IciUyc
+    type: text
+    text: 'Calder'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: qC3YVzV99vCayaYe
+    type: text
+    text: 'Carrick'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: B8VRph0Mg8rLaakz
+    type: text
+    text: 'Corwin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: LLHePTYGTBcfPsBs
+    type: text
+    text: 'Crane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: n5zh29nJ5nx0ni0L
+    type: text
+    text: 'Dunmore'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: AvHLzltVbJoQYNvn
+    type: text
+    text: 'Eastley'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: nUbA4txOW4eJLWeZ
+    type: text
+    text: 'Fairbank'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: imzg8rKZXFVYDUr6
+    type: text
+    text: 'Fenwick'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: CkMzLMY9TzgUJCLP
+    type: text
+    text: 'Galloway'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: HrXTbQIHHbwr1b8h
+    type: text
+    text: 'Garrow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: t2dj1ea4pXuUtE3v
+    type: text
+    text: 'Hargreave'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: asoisxUO2ZQXlhtG
+    type: text
+    text: 'Hartley'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: CiWfHKCAtTjMilLZ
+    type: text
+    text: 'Holloway'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: GFkF8lXgCSfROBTy
+    type: text
+    text: 'Kendrick'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: zZqcn6QHPU5IJgmy
+    type: text
+    text: 'Kirkwall'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: cTNGcT6LviXc0oGu
+    type: text
+    text: 'Lindell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: 2wFkT3QssC4Nt56Q
+    type: text
+    text: 'Marlow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: IPFRNE7Xf9Y45PHn
+    type: text
+    text: 'Merrick'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: uJ0Ex2XpPhYSblYD
+    type: text
+    text: 'Norcross'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: DJLUo24v0HLLmgMI
+    type: text
+    text: 'Oakley'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: ZoX2jCLdAtIt8joM
+    type: text
+    text: 'Pembrook'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: IZGiaL1iR2QHIW7P
+    type: text
+    text: 'Quarry'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: UNO1tM1JvsgIysTR
+    type: text
+    text: 'Radcliffe'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: Hi1rQyi3RIDaEvma
+    type: text
+    text: 'Redmayne'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: BAxfKnfRQ51WZlIK
+    type: text
+    text: 'Rookwood'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: avyqVm76yzV7fx6k
+    type: text
+    text: 'Salter'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: r8r3EU2lPeByXvYq
+    type: text
+    text: 'Shale'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: 2dQq1bzFSH6tkoOn
+    type: text
+    text: 'Smeaton'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: JgH4B3NSE1aEONfs
+    type: text
+    text: 'Stroud'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: SJWA2Ptpvfriomvo
+    type: text
+    text: 'Thackery'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: q9VfDzPCLOvw6nRP
+    type: text
+    text: 'Thorne'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: nvFkonXuOjPhuuaG
+    type: text
+    text: 'Tolland'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: y69i1oeDuOhEP3lO
+    type: text
+    text: 'Underhill'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: pA0Y9gMsLDMo4Q72
+    type: text
+    text: 'Vickers'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: ulsRTbZapZaQpQqI
+    type: text
+    text: 'Wainwright'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: gxjKaY6TjGyIIxP5
+    type: text
+    text: 'Warrick'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: vwNAdXRyD9m4uWc4
+    type: text
+    text: 'Westlake'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: 4CT7uvszjAMXLtLS
+    type: text
+    text: 'Whitcombe'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: 0prATNSb0ChZRyKR
+    type: text
+    text: 'Winslow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: wHZgzpBTGqshDzap
+    type: text
+    text: 'Yarrow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: KV5uqmbSfOQ5Lapw
+    type: text
+    text: 'Aldane'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: NBcaMfQcC61T0cyC
+    type: text
+    text: 'Beckett'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: SbLAIjusD5DvCVne
+    type: text
+    text: 'Bramwell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: TLxR9VVMARykjvz4
+    type: text
+    text: 'Carver'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: 1qGII1IaeK9BKMU5
+    type: text
+    text: 'Dalby'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: R5QRZEvWyVxIJFb8
+    type: text
+    text: 'Elsworth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: pYijSYvJv9T2deLG
+    type: text
+    text: 'Farrow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: dU4zqDUpDB5IEeOF
+    type: text
+    text: 'Grimsby'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: 28obvlz8sN4IjD6S
+    type: text
+    text: 'Hawley'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: Xpf8vuZCc2toHceF
+    type: text
+    text: 'Ironside'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: nhcRBTCJ5HC8axD1
+    type: text
+    text: 'Jessop'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: M3krcUdaKSiQDYl4
+    type: text
+    text: 'Kettle'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: EvuL9fAaUecpTiRI
+    type: text
+    text: 'Lark'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: ad5heWbcWfMomUb8
+    type: text
+    text: 'Mallory'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: uKoeZ59wgzcnhDRf
+    type: text
+    text: 'Netherby'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: 0B0eRawsqmBz8bp9
+    type: text
+    text: 'Pell'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: o7hev7avNic1ExS0
+    type: text
+    text: 'Ravensworth'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: u0s4QsWqTV1eP0Xh
+    type: text
+    text: 'Sallow'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: T7L8hBcI5X173QIu
+    type: text
+    text: 'Tanner'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: 3tYwveqFbz3T2t7K
+    type: text
+    text: 'Wexley'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: p9CxqNjMrEVqzzLB
+    type: text
+    text: 'Ashby'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
 replacement: true
 displayRoll: true
 folder: null

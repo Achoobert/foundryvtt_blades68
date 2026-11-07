@@ -8,7 +8,7 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body flex">
-      <textarea rows="3" name="system.description" value="{{system.description_raw}}" toggled {{#unless editable}}disabled{{/unless}}>{{{system.description}}}</textarea>
+      <textarea rows="3" name="system.description" {{#unless editable}}disabled{{/unless}}>{{system.description_raw}}</textarea>
     </section>
 
     <div class="flex-vertical">

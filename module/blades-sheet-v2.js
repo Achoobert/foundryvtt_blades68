@@ -25,13 +25,13 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     position: { width: 790, height: 890 },
     form: { submitOnChange: true, closeOnSubmit: false },
     actions: {
-      "bid.itemAdd":       BladesSheetV2._onItemAdd,
-      "bid.itemPost":      BladesSheetV2._onItemPost,
-      "bid.itemOpen":      BladesSheetV2._onItemOpen,
-      "bid.itemDelete":    BladesSheetV2._onItemDelete,
+      "bid.itemAdd": BladesSheetV2._onItemAdd,
+      "bid.itemPost": BladesSheetV2._onItemPost,
+      "bid.itemOpen": BladesSheetV2._onItemOpen,
+      "bid.itemDelete": BladesSheetV2._onItemDelete,
       "bid.effectControl": BladesSheetV2._onEffectControl,
-      "bid.radioToggle":   { handler: BladesSheetV2._onRadioToggle, buttons: [0, 2] }
-    }
+      "bid.radioToggle": { handler: BladesSheetV2._onRadioToggle, buttons: [0, 2] },
+    },
   };
 
   static _itemIdFrom(target) {
@@ -52,7 +52,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     event.preventDefault();
     const item_type = target.dataset.itemType;
     const distinct = target.dataset.distinct;
-    const input_type = (typeof distinct !== "undefined") ? "radio" : "checkbox";
+    const input_type = typeof distinct !== "undefined" ? "radio" : "checkbox";
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
     const grouped_items = BladesHelpers.groupItemsByClass(items);
@@ -80,7 +80,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
       title: `${game.i18n.localize("Add")} ${item_type}`,
       content,
       okLabel: game.i18n.localize("Add"),
-      cancelLabel: game.i18n.localize("Cancel")
+      cancelLabel: game.i18n.localize("Cancel"),
     });
 
     if (!formResult || !formResult.select_items) return;
@@ -92,9 +92,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
     let selectedIds = selections;
     if (!Array.isArray(selectedIds)) selectedIds = selectedIds ? [selectedIds] : [];
 
-    const items_to_add = selectedIds
-      .map(id => items.find(e => e._id === id))
-      .filter(Boolean);
+    const items_to_add = selectedIds.map((id) => items.find((e) => e._id === id)).filter(Boolean);
     if (items_to_add.length === 0) return;
 
     if (item_type === "crew") {
@@ -149,9 +147,10 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
    * cycles via the DOM.
    */
   static async _onRadioToggle(event, target) {
-    const input = target.tagName === "LABEL"
-      ? this.element.querySelector(`#${CSS.escape(target.htmlFor)}`)
-      : target;
+    const input =
+      target.tagName === "LABEL"
+        ? this.element.querySelector(`#${CSS.escape(target.htmlFor)}`)
+        : target;
     if (!input) return;
 
     const ctx = {
@@ -161,7 +160,7 @@ export class BladesSheetV2 extends HandlebarsApplicationMixin(ActorSheetV2) {
       event,
       name: input.name,
       value: Number.parseInt(input.value, 10),
-      isContextMenu: event.type === "contextmenu"
+      isContextMenu: event.type === "contextmenu",
     };
     if (Hooks.call("bladesRadioToggle", ctx) === false) return;
 

@@ -5,61 +5,59 @@ import { simpleRollPopup } from "./blades-roll.js";
 import { openFormDialog } from "./lib/dialog-compat.js";
 import { getXpTriggerHtml } from "./xp-triggers.js";
 
-
 export class BladesCrewSheet extends BladesSheetV2 {
-
   static DEFAULT_OPTIONS = {
     classes: [...super.DEFAULT_OPTIONS.classes, "crew"],
     position: { width: 940, height: 940 },
     form: {
       handler: BladesCrewSheet._onSubmitForm,
       submitOnChange: true,
-      closeOnSubmit: false
+      closeOnSubmit: false,
     },
     actions: {
-      "bid.tabSelect":          BladesCrewSheet._onTabSelect,
-      "bid.rollQuickPopup":     BladesCrewSheet._onRollQuickPopup,
-      "bid.addCohort":          BladesCrewSheet._onAddCohort,
-      "bid.turfClick":          BladesCrewSheet._onTurfClick,
-      "bid.turfHeaderUnlock":   BladesCrewSheet._onTurfHeaderUnlock,
-      "bid.turfHeaderUnit":     BladesCrewSheet._onTurfHeaderUnit,
-      "bid.turfHeaderOption":   BladesCrewSheet._onTurfHeaderOption,
+      "bid.tabSelect": BladesCrewSheet._onTabSelect,
+      "bid.rollQuickPopup": BladesCrewSheet._onRollQuickPopup,
+      "bid.addCohort": BladesCrewSheet._onAddCohort,
+      "bid.turfClick": BladesCrewSheet._onTurfClick,
+      "bid.turfHeaderUnlock": BladesCrewSheet._onTurfHeaderUnlock,
+      "bid.turfHeaderUnit": BladesCrewSheet._onTurfHeaderUnit,
+      "bid.turfHeaderOption": BladesCrewSheet._onTurfHeaderOption,
       "bid.crewUpgradePricePip": BladesCrewSheet._onCrewUpgradePricePip,
-      "bid.cohortHarmSet":      BladesCrewSheet._onCohortHarmSet,
-      "bid.turfClaimedEdit":    BladesCrewSheet._onTurfClaimedEdit,
-      "bid.standingToggle":     BladesCrewSheet._onStandingToggle,
-      "bid.openFriend":         BladesCrewSheet._onOpenFriend,
+      "bid.cohortHarmSet": BladesCrewSheet._onCohortHarmSet,
+      "bid.turfClaimedEdit": BladesCrewSheet._onTurfClaimedEdit,
+      "bid.standingToggle": BladesCrewSheet._onStandingToggle,
+      "bid.openFriend": BladesCrewSheet._onOpenFriend,
       "bid.acquaintanceDelete": BladesCrewSheet._onAcquaintanceDelete,
-      "bid.importContacts":     BladesCrewSheet._onImportContacts,
-      "bid.addCustomContact":   BladesCrewSheet._onAddCustomContact,
-      "bid.expClockUp":         BladesCrewSheet._onExpClockUp,
-      "bid.expClockDown":       BladesCrewSheet._onExpClockDown,
-      "bid.addExpClock":        BladesCrewSheet._onAddExpClock,
-      "bid.minusExpClock":      BladesCrewSheet._onMinusExpClock
-    }
+      "bid.importContacts": BladesCrewSheet._onImportContacts,
+      "bid.addCustomContact": BladesCrewSheet._onAddCustomContact,
+      "bid.expClockUp": BladesCrewSheet._onExpClockUp,
+      "bid.expClockDown": BladesCrewSheet._onExpClockDown,
+      "bid.addExpClock": BladesCrewSheet._onAddExpClock,
+      "bid.minusExpClock": BladesCrewSheet._onMinusExpClock,
+    },
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/crew-sheet.html", scrollable: [""] }
+    body: { template: "systems/blades68/templates/crew-sheet.html", scrollable: [""] },
   };
 
-  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     this._activeTab ??= "turfs";
 
-    
     const gambitsMax = Number(game.settings.get("blades68", "GambitsMax")) || 0;
-    const gambitsValue = Math.min(Math.max(Number(this.actor.system.gambits?.value) || 0, 0), gambitsMax);
+    const gambitsValue = Math.min(
+      Math.max(Number(this.actor.system.gambits?.value) || 0, 0),
+      gambitsMax,
+    );
 
     const system = {
       ...this.actor.system,
       turfs_amount: this.actor.system.turfs_amount,
-      gambits: { value: gambitsValue }
+      gambits: { value: gambitsValue },
     };
 
-
-    const crewType = this.actor.items.find(i => i.type === "crew_type") ?? null;
+    const crewType = this.actor.items.find((i) => i.type === "crew_type") ?? null;
     const xpTriggers = await getXpTriggerHtml("crew", crewType?.system?.experience_clues ?? "");
 
     return {
@@ -74,19 +72,20 @@ export class BladesCrewSheet extends BladesSheetV2 {
       system,
       gambits_max: gambitsMax,
       xpTriggers,
-      
-      
-      repTurfThreshold: (Number(this.actor.system.max?.rep) || 0) - (Number(this.actor.system.turfs_amount) || 0) + 1,
+
+      repTurfThreshold:
+        (Number(this.actor.system.max?.rep) || 0) -
+        (Number(this.actor.system.turfs_amount) || 0) +
+        1,
       activeTab: this._activeTab,
       owner: this.actor.isOwner,
       editable: this.isEditable,
       cssClass: this.isEditable ? "editable" : "locked",
       isGM: game.user.isGM,
-      effects: BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects)
+      effects: BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects),
     };
   }
 
-  
   async _addItemsToSheet(item_type, selections) {
     await super._addItemsToSheet(item_type, selections);
     if (item_type !== "crew_type") return;
@@ -95,7 +94,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
     let selectedIds = selections;
     if (!Array.isArray(selectedIds)) selectedIds = selectedIds ? [selectedIds] : [];
     const crewTypeName = selectedIds
-      .map(id => items.find(e => e._id === id))
+      .map((id) => items.find((e) => e._id === id))
       .filter(Boolean)[0]?.name;
     if (!crewTypeName) return;
 
@@ -104,12 +103,11 @@ export class BladesCrewSheet extends BladesSheetV2 {
     } catch (err) {
       console.error("Failed to generate crew type contacts", err);
       ui.notifications?.warn?.(
-        `Crew type added, but contacts for ${crewTypeName} could not be generated.`
+        `Crew type added, but contacts for ${crewTypeName} could not be generated.`,
       );
     }
   }
 
-  
   static async _onSubmitForm(event, form, formData) {
     const data = foundry.utils.expandObject(formData.object);
     await this.actor.update(data);
@@ -118,26 +116,23 @@ export class BladesCrewSheet extends BladesSheetV2 {
     }
   }
 
-  
   async _onDropActor(event, data) {
     await super._onDropActor?.(event, data);
     if (!this.actor.isOwner) {
       ui.notifications.error(
         "You do not have sufficient permissions to edit this character. Please speak to your GM if you feel you have reached this message in error.",
-        { permanent: true }
+        { permanent: true },
       );
       return false;
     }
     const droppedActor = await fromUuid(data.uuid);
     if (!droppedActor) return;
-    
-    
+
     if (droppedActor.type === "npc") {
       await BladesHelpers.addAcquaintance(this.actor, droppedActor);
     }
   }
 
-  
   static async _onTabSelect(event, target) {
     event.preventDefault();
     const tab = target.dataset.tab;
@@ -146,33 +141,34 @@ export class BladesCrewSheet extends BladesSheetV2 {
     this.render(false);
   }
 
-  
   static async _onRollQuickPopup(event, target) {
     event.preventDefault();
     await simpleRollPopup();
   }
 
-  
   static async _onAddCohort(event, target) {
     event.preventDefault();
     const item_type = target.dataset.itemType || "cohort";
-    await this.actor.createEmbeddedDocuments("Item", [{
-      name: foundry.utils.randomID(),
-      type: item_type
-    }]);
+    await this.actor.createEmbeddedDocuments("Item", [
+      {
+        name: foundry.utils.randomID(),
+        type: item_type,
+      },
+    ]);
   }
 
-  
   static async _onTurfClick(event, target) {
     event.preventDefault();
     const itemId = BladesCrewSheet._itemIdFrom(target);
     const turfId = target.dataset.turfId;
     if (!itemId || turfId == null) return;
     const current = target.dataset.turfStatus === "true";
-    await this.actor.updateEmbeddedDocuments("Item", [{
-      _id: itemId,
-      [`system.turfs.${turfId}.value`]: !current
-    }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: itemId,
+        [`system.turfs.${turfId}.value`]: !current,
+      },
+    ]);
   }
 
   static async _onTurfHeaderUnlock(event, target) {
@@ -183,10 +179,12 @@ export class BladesCrewSheet extends BladesSheetV2 {
     if (!itemId || headerId == null) return;
     const item = this.actor.items.get(itemId);
     const current = item?.system?.turf_headers?.[headerId]?.value === true;
-    await this.actor.updateEmbeddedDocuments("Item", [{
-      _id: itemId,
-      [`system.turf_headers.${headerId}.value`]: !current
-    }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: itemId,
+        [`system.turf_headers.${headerId}.value`]: !current,
+      },
+    ]);
   }
 
   static async _onTurfHeaderUnit(event, target) {
@@ -199,10 +197,12 @@ export class BladesCrewSheet extends BladesSheetV2 {
     const item = this.actor.items.get(itemId);
     const current = Number(item?.system?.turf_headers?.[headerId]?.units_filled ?? 0) || 0;
     const next = current === unitIndex ? 0 : unitIndex;
-    await this.actor.updateEmbeddedDocuments("Item", [{
-      _id: itemId,
-      [`system.turf_headers.${headerId}.units_filled`]: next
-    }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: itemId,
+        [`system.turf_headers.${headerId}.units_filled`]: next,
+      },
+    ]);
   }
 
   static async _onTurfHeaderOption(event, target) {
@@ -224,13 +224,14 @@ export class BladesCrewSheet extends BladesSheetV2 {
     } else {
       return;
     }
-    await this.actor.updateEmbeddedDocuments("Item", [{
-      _id: itemId,
-      [`system.turf_headers.${headerId}.selected`]: selected
-    }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: itemId,
+        [`system.turf_headers.${headerId}.selected`]: selected,
+      },
+    ]);
   }
 
-  
   static async _onCrewUpgradePricePip(event, target) {
     event.preventDefault();
     event.stopPropagation();
@@ -244,18 +245,18 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await item.update({ "system.unlocked": next });
   }
 
-  
   static async _onCohortHarmSet(event, target) {
     const itemId = BladesCrewSheet._itemIdFrom(target);
     const harmId = target.value;
     if (!itemId) return;
-    await this.actor.updateEmbeddedDocuments("Item", [{
-      _id: itemId,
-      "system.harm": [harmId]
-    }]);
+    await this.actor.updateEmbeddedDocuments("Item", [
+      {
+        _id: itemId,
+        "system.harm": [harmId],
+      },
+    ]);
   }
 
-  
   static async _onTurfClaimedEdit(event, target) {
     event.preventDefault();
     const maxRep = Number(this.actor.system.max?.rep) || 0;
@@ -274,7 +275,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
       title: game.i18n.localize("BITD.TurfClaimedDialogTitle"),
       content,
       okLabel: game.i18n.localize("Save"),
-      cancelLabel: game.i18n.localize("Cancel")
+      cancelLabel: game.i18n.localize("Cancel"),
     });
 
     if (!formResult) return;
@@ -286,12 +287,11 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await this.actor.update({ "system.turf.claimed": value });
   }
 
-  
   static async _onStandingToggle(event, target) {
     const acqId = target.closest(".acquaintance")?.dataset.acquaintance;
     if (!acqId) return;
     const acquaintances = foundry.utils.deepClone(this.actor.system.acquaintances ?? []);
-    const idx = acquaintances.findIndex(a => a.id == acqId);
+    const idx = acquaintances.findIndex((a) => a.id == acqId);
     if (idx < 0) return;
     const order = { friend: "rival", rival: "neutral", neutral: "friend" };
     acquaintances[idx].standing = order[acquaintances[idx].standing] ?? "neutral";
@@ -316,7 +316,7 @@ export class BladesCrewSheet extends BladesSheetV2 {
   }
 
   static async _onImportContacts(event, target) {
-    const playbook = this.actor.items.find(i => i.type === "crew_type")?.name;
+    const playbook = this.actor.items.find((i) => i.type === "crew_type")?.name;
     await BladesHelpers.import_pb_contacts(this.actor, playbook);
   }
 
@@ -324,7 +324,6 @@ export class BladesCrewSheet extends BladesSheetV2 {
     await BladesHelpers.addCustomContact(this.actor);
   }
 
-  
   static async _onExpClockUp(event, target) {
     let { value, number, size } = this.actor.system.exp_clock;
     value = value + 1;

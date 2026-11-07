@@ -1,0 +1,18 @@
+_id: 8CVCPqlGi5TcvUwU
+name: On Program
+img: systems/blades68/styles/assets/icons/Icon.7_74.webp
+permission:
+  default: 0
+type: vice
+system:
+  description: |-
+    <p>Spend a downtime action going ON PROGRAM. In this state, you do the work assigned by your controller.
+    The GM will tell you what you did. Each downtime phase you skip this, tick the “Suspicion” clock. When full, your
+    owning faction will take steps against you, including cutting you off from their industrial-grade generator.</p>
+    <p>Recharge your capacitors by connecting to an industrial-grade generator (downtime action). When you do this,
+    clear 5 Drain. When you mark your last Drain box, you go ON PROGRAM immediately (the GM will tell you what
+    you do). Deadlock a key as normal. If you have no keys yet, choose a robotic deadlock:</p>
+    <p>BRUTAL ― DETACHED ― RUTHLESS ― UNSTABLE</p>
+folder: null
+sort: 700000
+flags: {}

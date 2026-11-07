@@ -1,23 +1,18 @@
 import { BladesSheetV2 } from "./blades-sheet-v2.js";
 
-
 export class BladesFactionSheet extends BladesSheetV2 {
-
   static DEFAULT_OPTIONS = {
-    
-    
     classes: [...super.DEFAULT_OPTIONS.classes, "blades68", "faction"],
     position: { width: 900, height: "auto" },
     actions: {
-      "bid.updateBox": BladesFactionSheet._onUpdateBox
-    }
+      "bid.updateBox": BladesFactionSheet._onUpdateBox,
+    },
   };
 
   static PARTS = {
-    body: { template: "systems/blades68/templates/faction-sheet.html", scrollable: [""] }
+    body: { template: "systems/blades68/templates/faction-sheet.html", scrollable: [""] },
   };
 
-  
   async _prepareContext(options) {
     const ctx = await super._prepareContext(options);
     return {
@@ -29,17 +24,15 @@ export class BladesFactionSheet extends BladesSheetV2 {
       name: this.actor.name,
       img: this.actor.img,
       system: this.actor.system,
-      
-      
-      items: this.actor.items.map(i => i.toObject()),
+
+      items: this.actor.items.map((i) => i.toObject()),
       owner: this.actor.isOwner,
       editable: this.isEditable,
       cssClass: this.isEditable ? "editable" : "locked",
-      isGM: game.user.isGM
+      isGM: game.user.isGM,
     };
   }
 
-  
   static async _onUpdateBox(event, target) {
     event.preventDefault();
     const itemId = target.dataset.item;

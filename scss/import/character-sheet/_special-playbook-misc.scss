@@ -1,113 +1,113 @@
 & * {
   .special-playbook-section {
-      .type-columns {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        margin-top: 6px;
+    .type-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .type-heading {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .radio-line {
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 1.3;
+
+      input {
+        margin-top: 2px;
+        flex-shrink: 0;
       }
-  
-      .type-heading {
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .memory-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .memory-box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid $lightgray;
+      border-radius: 2px;
+      padding: 8px;
+      min-height: 110px;
+      background: #fafafa;
+
+      .memory-prompt {
         font-weight: bold;
-        text-transform: uppercase;
-        font-size: 11px;
-        margin-bottom: 4px;
-      }
-  
-      .radio-line {
-        display: flex;
-        gap: 6px;
-        align-items: flex-start;
-        margin-bottom: 4px;
         font-size: 12px;
-        line-height: 1.3;
-  
-        input {
-          margin-top: 2px;
-          flex-shrink: 0;
-        }
+        max-width: 80%;
+        margin-bottom: 1px;
       }
-  
-      .memory-grid {
+
+      .memory-clock {
+        @include clock(8, 56);
+        flex: 0 0 auto;
+      }
+
+      textarea {
+        width: 100%;
+        border: none;
+        background: transparent;
+        resize: vertical;
+        min-height: 48px;
+      }
+
+      .memory-footer {
+        margin: 4px 0 0;
+        font-size: 10px;
+        color: #666;
+        font-style: italic;
+      }
+    }
+
+    .backing-faction-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+
+      .unique-blurb {
+        grid-column: 1 / -1;
+      }
+
+      .backing-fields {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-bottom: 10px;
+        gap: 8px 12px;
       }
-            .memory-box-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              width: 100%;
-            }
-      .memory-box {
-        position: relative;
-        display: flex;
-          flex-direction: column;
-        border: 1px solid $lightgray;
-        border-radius: 2px;
-        padding: 8px;
-        min-height: 110px;
-        background: #fafafa;
-  
-        .memory-prompt {
+
+      .failure-clock {
+        @include clock(4, 56);
+        text-align: center;
+        .blades-clock {
+          margin: 0 auto;
+        }
+
+        .failure-label {
           font-weight: bold;
-          font-size: 12px;
-          max-width: 80%;
-            margin-bottom: 1px;
-        }
-  
-        .memory-clock {
-          @include clock(8, 56);
-          flex: 0 0 auto;
-        }
-  
-        textarea {
-          width: 100%;
-          border: none;
-          background: transparent;
-          resize: vertical;
-          min-height: 48px;
-        }
-  
-        .memory-footer {
-          margin: 4px 0 0;
-          font-size: 10px;
-          color: #666;
-          font-style: italic;
+          text-transform: uppercase;
+          font-size: 11px;
+          margin-top: 4px;
         }
       }
-  
-      .backing-faction-body {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 10px;
-        align-items: start;
-  
-        .unique-blurb {
-          grid-column: 1 / -1;
-        }
-  
-        .backing-fields {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px 12px;
-        }
-  
-        .failure-clock {
-          @include clock(4, 56);
-          text-align: center;
-.blades-clock {
-    margin: 0 auto;
-  }
-  
-          .failure-label {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 11px;
-            margin-top: 4px;
-          }
-        }
-      }
+    }
   }
 }

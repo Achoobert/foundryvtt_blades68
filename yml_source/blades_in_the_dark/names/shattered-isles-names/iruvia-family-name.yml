@@ -255,7 +255,455 @@ results:
     weight: 1
     range: [36, 36]
     drawn: false
-formula: 1d36
+  - _id: cxoV2mkRry1bp4Ek
+    type: text
+    text: 'Abadi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [37, 37]
+    drawn: false
+  - _id: 2ftJzTbTMXRcI9ST
+    type: text
+    text: 'Afshar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [38, 38]
+    drawn: false
+  - _id: pXZCEu9F1GTz450D
+    type: text
+    text: 'Ahmadi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [39, 39]
+    drawn: false
+  - _id: xoGlXq3WUr7pUdBK
+    type: text
+    text: 'Alavi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [40, 40]
+    drawn: false
+  - _id: eljUkDvuF6fIM1lj
+    type: text
+    text: 'Ansari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [41, 41]
+    drawn: false
+  - _id: bgHMv8bMysKnjHso
+    type: text
+    text: 'Arjani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [42, 42]
+    drawn: false
+  - _id: pTtyCRoSyu3zZocz
+    type: text
+    text: 'Asadi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [43, 43]
+    drawn: false
+  - _id: p5Uy0fRmhsE4OB7x
+    type: text
+    text: 'Bakhtiar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [44, 44]
+    drawn: false
+  - _id: 0IlD3KI9WBo5oLO4
+    type: text
+    text: 'Bharani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [45, 45]
+    drawn: false
+  - _id: 2zBOtinWeq8Znldn
+    type: text
+    text: 'Chandra'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [46, 46]
+    drawn: false
+  - _id: UqXxcoExN5V4z4nW
+    type: text
+    text: 'Darabi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [47, 47]
+    drawn: false
+  - _id: 1WDoxxvds0XDkV3E
+    type: text
+    text: 'Dastani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [48, 48]
+    drawn: false
+  - _id: p4rSfdwEcOTGFSUm
+    type: text
+    text: 'Desai'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [49, 49]
+    drawn: false
+  - _id: 6BbtzPuCdA6HtZB4
+    type: text
+    text: 'Erfani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [50, 50]
+    drawn: false
+  - _id: 5plD23tib0qg7ehX
+    type: text
+    text: 'Farahani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [51, 51]
+    drawn: false
+  - _id: YnJcGtHQHFU6PAG0
+    type: text
+    text: 'Faridun'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [52, 52]
+    drawn: false
+  - _id: CfAdPF9b77U8XPwm
+    type: text
+    text: 'Ghazali'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [53, 53]
+    drawn: false
+  - _id: V3l5svVTrNEHt6UB
+    type: text
+    text: 'Hakimi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [54, 54]
+    drawn: false
+  - _id: cTQuYtMENjNZIPut
+    type: text
+    text: 'Hashemi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [55, 55]
+    drawn: false
+  - _id: 9RoD6ajhB13mS3Zw
+    type: text
+    text: 'Iqbal'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [56, 56]
+    drawn: false
+  - _id: MUrUF9LiLLL5UzB5
+    type: text
+    text: 'Jahandar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [57, 57]
+    drawn: false
+  - _id: pZpxsgAgfqpV31fw
+    type: text
+    text: 'Javadi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [58, 58]
+    drawn: false
+  - _id: rmRx0Vy0j7fl8jtj
+    type: text
+    text: 'Kapoor'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [59, 59]
+    drawn: false
+  - _id: 4C4zHc4XMjJvDWyu
+    type: text
+    text: 'Karimi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [60, 60]
+    drawn: false
+  - _id: GnrHJfa51aaJJM79
+    type: text
+    text: 'Khoury'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [61, 61]
+    drawn: false
+  - _id: UAiRCYBoMWCLD5Hm
+    type: text
+    text: 'Mahdavi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [62, 62]
+    drawn: false
+  - _id: wfdKC237rg7aQCKu
+    type: text
+    text: 'Majidi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [63, 63]
+    drawn: false
+  - _id: HRXRITJ4gJVqLl0V
+    type: text
+    text: 'Mansour'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [64, 64]
+    drawn: false
+  - _id: TBbknLvZwRjRQvWq
+    type: text
+    text: 'Mehta'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [65, 65]
+    drawn: false
+  - _id: xsq21PL5ILYTXwrr
+    type: text
+    text: 'Mirza'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [66, 66]
+    drawn: false
+  - _id: 6FaFdesJfSZMTqIz
+    type: text
+    text: 'Nadiri'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [67, 67]
+    drawn: false
+  - _id: TeWRLx49dnL2hLva
+    type: text
+    text: 'Naqvi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [68, 68]
+    drawn: false
+  - _id: A0Ac4KvsCUF6DVqn
+    type: text
+    text: 'Parsa'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [69, 69]
+    drawn: false
+  - _id: QYRVjdsBVrVtzhF6
+    type: text
+    text: 'Qadiri'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [70, 70]
+    drawn: false
+  - _id: zKToM0XARsOdAjZh
+    type: text
+    text: 'Rahimi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [71, 71]
+    drawn: false
+  - _id: HpRzJwS07XUPEaFL
+    type: text
+    text: 'Rastegar'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [72, 72]
+    drawn: false
+  - _id: O8tSUE1kSJ4N477N
+    type: text
+    text: 'Rezaei'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [73, 73]
+    drawn: false
+  - _id: vo7PoN9flmyc4PWa
+    type: text
+    text: 'Saberi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [74, 74]
+    drawn: false
+  - _id: YkO1nQGxGKsjLnla
+    type: text
+    text: 'Sadri'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [75, 75]
+    drawn: false
+  - _id: 2ZlgL0EwxtXGxOli
+    type: text
+    text: 'Samadi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [76, 76]
+    drawn: false
+  - _id: pkGppW9QmfbtHFbI
+    type: text
+    text: 'Sarkari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [77, 77]
+    drawn: false
+  - _id: JYGuDfSUO1uVQjlA
+    type: text
+    text: 'Shahbazi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [78, 78]
+    drawn: false
+  - _id: Bhd7hj9F2pyCQQ5U
+    type: text
+    text: 'Sohrabi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [79, 79]
+    drawn: false
+  - _id: 66xPFTiM6yqfgYZj
+    type: text
+    text: 'Tabrizi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [80, 80]
+    drawn: false
+  - _id: EbuFfCEKIGGtTyAy
+    type: text
+    text: 'Taheri'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [81, 81]
+    drawn: false
+  - _id: DG4HsWLjotghJ1TM
+    type: text
+    text: 'Varma'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [82, 82]
+    drawn: false
+  - _id: yAoBUvH57oERho0Q
+    type: text
+    text: 'Yazdani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [83, 83]
+    drawn: false
+  - _id: SLGJE5xPNxEVQFRc
+    type: text
+    text: 'Zamani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [84, 84]
+    drawn: false
+  - _id: X3Y0hYBZRgfa8eCp
+    type: text
+    text: 'Zand'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [85, 85]
+    drawn: false
+  - _id: 1v3I2NqOBXUThfP2
+    type: text
+    text: 'Anvari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [86, 86]
+    drawn: false
+  - _id: XvNFuZ6pAD8jgfjf
+    type: text
+    text: 'Barzani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [87, 87]
+    drawn: false
+  - _id: HL9VOrOw1K24mYAo
+    type: text
+    text: 'Daryani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [88, 88]
+    drawn: false
+  - _id: WSNF0oJkFKlRnXHt
+    type: text
+    text: 'Esfandi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [89, 89]
+    drawn: false
+  - _id: u0nXnoMR6gUHkb8m
+    type: text
+    text: 'Haddad'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [90, 90]
+    drawn: false
+  - _id: hSvnEHqRlvl26vFj
+    type: text
+    text: 'Jalali'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [91, 91]
+    drawn: false
+  - _id: ZyZ2QKJfCVXlk5hD
+    type: text
+    text: 'Kashani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [92, 92]
+    drawn: false
+  - _id: i2uzyGdiTsnP9KTF
+    type: text
+    text: 'Lahiri'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [93, 93]
+    drawn: false
+  - _id: BDPpyvoMHdPw4Jxl
+    type: text
+    text: 'Morvari'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [94, 94]
+    drawn: false
+  - _id: RRrtKlYL7dZW3EJj
+    type: text
+    text: 'Navabi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [95, 95]
+    drawn: false
+  - _id: QGnxpKsJPM4s0l8e
+    type: text
+    text: 'Pahlevan'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [96, 96]
+    drawn: false
+  - _id: t5GSW3B3qkmbOv3l
+    type: text
+    text: 'Roshani'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [97, 97]
+    drawn: false
+  - _id: DxNoWbLFOuVLPoiD
+    type: text
+    text: 'Sepahi'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [98, 98]
+    drawn: false
+  - _id: htNtGBQenHWULKdH
+    type: text
+    text: 'Tavakoli'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [99, 99]
+    drawn: false
+  - _id: CnvAyY7of1O9G04F
+    type: text
+    text: 'Zarrin'
+    img: icons/svg/d20-black.svg
+    weight: 1
+    range: [100, 100]
+    drawn: false
+formula: 1d100
 replacement: true
 displayRoll: true
 folder: null

@@ -27,12 +27,7 @@
       margin-bottom: 10px;
 
       .stripe-tooth-body {
-        @include toothradio(
-          15px,
-          26px,
-          "assets/blades68/stresspill_empty.webp",
-          "assets/blades68/stresspill_filled.webp"
-        );
+        @include toothradio_icon(15px, 26px, $pill_icon, $pill_rotate, $scale: $pill_scale);
         position: absolute;
         top: 0px;
         right: 1px;

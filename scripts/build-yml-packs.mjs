@@ -33,7 +33,11 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = path.join(ROOT, "yml_source");
 const PACKS_DIR = path.join(ROOT, "packs");
 
-export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir = PACKS_DIR } = {}) {
+export function compileYmlPacks({
+  root = ROOT,
+  sourceDir = SOURCE_DIR,
+  packsDir = PACKS_DIR,
+} = {}) {
   const system = loadSystemManifest(root);
   const expected = new Map((system.packs ?? []).map((p) => [p.name, p]));
   const problems = [];
@@ -65,19 +69,15 @@ export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir 
     } else {
       if (systemPack.label !== meta.label) {
         problems.push(
-          `${manifestPath}: label "${meta.label}" != system.json "${systemPack.label}"`
+          `${manifestPath}: label "${meta.label}" != system.json "${systemPack.label}"`,
         );
       }
       if (systemPack.type !== meta.type) {
-        problems.push(
-          `${manifestPath}: type "${meta.type}" != system.json "${systemPack.type}"`
-        );
+        problems.push(`${manifestPath}: type "${meta.type}" != system.json "${systemPack.type}"`);
       }
       const norm = (p) => String(p).replace(/^\.\//, "");
       if (norm(systemPack.path) !== norm(meta.path)) {
-        problems.push(
-          `${manifestPath}: path "${meta.path}" != system.json "${systemPack.path}"`
-        );
+        problems.push(`${manifestPath}: path "${meta.path}" != system.json "${systemPack.path}"`);
       }
     }
 
@@ -113,7 +113,9 @@ export function compileYmlPacks({ root = ROOT, sourceDir = SOURCE_DIR, packsDir 
   }
 
   if (last.length) {
-    const index = buildPackIndex(first.map((c) => ({ name: c.meta.name, type: c.meta.type, docs: c.docs })));
+    const index = buildPackIndex(
+      first.map((c) => ({ name: c.meta.name, type: c.meta.type, docs: c.docs })),
+    );
     for (const { manifestPath, meta, outPath, docs } of last) {
       const resolved = [];
       let failed = false;

@@ -280,7 +280,7 @@
   "BITD.StrangeFriends": "Странные друзья",
   "BITD.Acquaintances": "Знакомства",
   "BITD.Contacts": "Контакты",
- 
+
   "BITD.HuntingGrounds": "Охотничьи угодья",
   "BITD.SacredSites": "Священные места",
   "BITD.SalesTerritory": "Территория продаж",
@@ -334,7 +334,7 @@
   "BITD.Edge": "Edge",
   "BITD.GainEdge": "Gain an <strong>Edge</strong>.",
   "BITD.DiceRoller": "Dice Roller",
-  
+
   "BITD.Colors": {
     "Black": "Black",
     "Blue": "Blue",
@@ -344,7 +344,7 @@
     "White": "White",
     "Yellow": "Yellow"
   },
-  
+
   "BITD.Settings": {
     "Action": {
       "Name": "Action Rolls",

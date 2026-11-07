@@ -1,7 +1,9 @@
 const UPLOAD_DIR = "blades68";
 
 function getFilePickerClass() {
-  return foundry.applications.apps?.FilePicker?.implementation ?? foundry.applications.apps.FilePicker;
+  return (
+    foundry.applications.apps?.FilePicker?.implementation ?? foundry.applications.apps.FilePicker
+  );
 }
 
 export async function ensureUploadDirectory(subdir = "") {
@@ -35,7 +37,11 @@ export async function uploadImageBlob(blob, filename, subdir = "") {
  * `maxPixels` caps the rendered longest side, lowering `scale` to fit rather
  * than asking the browser for a canvas it will refuse to allocate.
  */
-export async function renderPdfPage(pdfDoc, pageNumber, { scale = 2, maxPixels = 0, type = "image/png", quality = 0.92 } = {}) {
+export async function renderPdfPage(
+  pdfDoc,
+  pageNumber,
+  { scale = 2, maxPixels = 0, type = "image/png", quality = 0.92 } = {},
+) {
   const page = await pdfDoc.getPage(pageNumber);
   let viewport = page.getViewport({ scale });
   if (maxPixels > 0) {
@@ -48,7 +54,13 @@ export async function renderPdfPage(pdfDoc, pageNumber, { scale = 2, maxPixels =
   const context = canvas.getContext("2d");
   await page.render({ canvasContext: context, viewport }).promise;
   const blob = await new Promise((resolve) => canvas.toBlob(resolve, type, quality));
-  return { pageNumber, blob, url: URL.createObjectURL(blob), width: canvas.width, height: canvas.height };
+  return {
+    pageNumber,
+    blob,
+    url: URL.createObjectURL(blob),
+    width: canvas.width,
+    height: canvas.height,
+  };
 }
 
 /**

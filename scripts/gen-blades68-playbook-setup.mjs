@@ -7,8 +7,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const sheetData = JSON.parse(fs.readFileSync(path.join(root, "reference/blades68-sheetdata.json"), "utf8"));
-const translation = JSON.parse(fs.readFileSync(path.join(root, "reference/blades68-translation.json"), "utf8"));
+const sheetData = JSON.parse(
+  fs.readFileSync(path.join(root, "reference/blades68-sheetdata.json"), "utf8"),
+);
+const translation = JSON.parse(
+  fs.readFileSync(path.join(root, "reference/blades68-translation.json"), "utf8"),
+);
 
 // Maps the Roll20 sheet's playbook key to this system's class Item name
 // (see packs/blades68_classes.db).
@@ -28,7 +32,9 @@ const CLASS_NAME_BY_SHEET_KEY = {
 };
 
 function stripHtml(str) {
-  return String(str ?? "").replace(/<[^>]*>/g, "").trim();
+  return String(str ?? "")
+    .replace(/<[^>]*>/g, "")
+    .trim();
 }
 
 const setup = {};
@@ -68,5 +74,7 @@ fs.mkdirSync(path.dirname(outPath), { recursive: true });
 fs.writeFileSync(outPath, JSON.stringify(setup, null, 2) + "\n");
 console.log(`Wrote ${outPath}`);
 for (const [className, data] of Object.entries(setup)) {
-  console.log(`  ${className}: firstAbility="${data.firstAbilityName}" contacts=${data.contacts.length}`);
+  console.log(
+    `  ${className}: firstAbility="${data.firstAbilityName}" contacts=${data.contacts.length}`,
+  );
 }

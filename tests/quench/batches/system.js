@@ -1,35 +1,34 @@
-
-import { requireSystemActive } from '../helpers.js';
+import { requireSystemActive } from "../helpers.js";
 
 export default function register(quench) {
   quench.registerBatch(
-    'blades68.system',
+    "blades68.system",
     (context) => {
       const { describe, it, assert } = context;
 
-      describe('Blades68 system config', function () {
-        it('is the active system', function () {
+      describe("Blades68 system config", function () {
+        it("is the active system", function () {
           const system = requireSystemActive();
-          assert.equal(system.id, 'blades68');
+          assert.equal(system.id, "blades68");
         });
 
-        it('exposes the dice API on game.blades', function () {
+        it("exposes the dice API on game.blades", function () {
           requireSystemActive();
-          assert.isFunction(game.blades?.dice, 'game.blades.dice');
-          assert.isFunction(game.blades?.roller, 'game.blades.roller');
+          assert.isFunction(game.blades?.dice, "game.blades.dice");
+          assert.isFunction(game.blades?.roller, "game.blades.roller");
         });
 
-        it('registers the standard clock sizes', function () {
+        it("registers the standard clock sizes", function () {
           requireSystemActive();
           assert.deepEqual(game.system.bladesClocks?.sizes, [4, 6, 8, 10, 12]);
         });
 
-        it('registers the 8 core trauma types', function () {
+        it("registers the 8 core trauma types", function () {
           requireSystemActive();
           assert.lengthOf(game.system.traumas, 8);
         });
 
-        it('registers 55 Blades68 personality Keys with matching localization keys', function () {
+        it("registers 55 Blades68 personality Keys with matching localization keys", function () {
           requireSystemActive();
           const keys = game.system.blades68Keys;
           assert.lengthOf(keys, 55);
@@ -37,42 +36,51 @@ export default function register(quench) {
             assert.equal(key.label, `BITD.Key${key.id}`);
             assert.equal(key.drift, `BITD.Key${key.id}Drift`);
             assert.isArray(key.deadlockedKeys, `${key.id} should expose deadlockedKeys`);
-            assert.lengthOf(key.deadlockedKeys, 2, `${key.id} should have exactly two deadlock outcomes`);
+            assert.lengthOf(
+              key.deadlockedKeys,
+              2,
+              `${key.id} should have exactly two deadlock outcomes`,
+            );
           }
         });
 
-        it('maps Commanding deadlocks to deferential and controlling', function () {
+        it("maps Commanding deadlocks to deferential and controlling", function () {
           requireSystemActive();
-          const commanding = game.system.blades68Keys.find((k) => k.id === 'Commanding');
+          const commanding = game.system.blades68Keys.find((k) => k.id === "Commanding");
           assert.isOk(commanding);
-          assert.deepEqual(commanding.deadlockedKeys, ['deferential', 'controlling']);
+          assert.deepEqual(commanding.deadlockedKeys, ["deferential", "controlling"]);
         });
 
-        it('registers Blades68Mode as a string world setting with bitd/blades68/imported choices, default blades68', function () {
+        it("registers Blades68Mode as a string world setting with bitd/blades68/imported choices, default blades68", function () {
           requireSystemActive();
-          const value = game.settings.get('blades68', 'Blades68Mode');
+          const value = game.settings.get("blades68", "Blades68Mode");
           assert.isString(value);
-          assert.include(['bitd', 'blades68', 'imported'], value);
+          assert.include(["bitd", "blades68", "imported"], value);
         });
 
-        it('disables Foundry automatic token rotation by default', function () {
+        it("disables Foundry automatic token rotation by default", function () {
           requireSystemActive();
-          const setting = game.settings.settings.get('core.tokenAutoRotate');
+          const setting = game.settings.settings.get("core.tokenAutoRotate");
           if (!setting) this.skip();
           assert.equal(setting.default, false);
-          assert.equal(game.settings.get('core', 'tokenAutoRotate'), false);
+          assert.equal(game.settings.get("core", "tokenAutoRotate"), false);
         });
 
-        it('offers every pause background as a world setting', function () {
+        it("offers every pause background as a world setting", function () {
           requireSystemActive();
-          const setting = game.settings.settings.get('blades68.PauseAnimation');
-          assert.isOk(setting, 'PauseAnimation should be registered');
-          assert.deepEqual(Object.keys(setting.choices), ['vhs', 'bluetime', 'vanilla', 'classic']);
-          assert.equal(setting.default, 'bluetime');
-          assert.oneOf(game.settings.get('blades68', 'PauseAnimation'), ['vhs', 'bluetime', 'vanilla', 'classic']);
+          const setting = game.settings.settings.get("blades68.PauseAnimation");
+          assert.isOk(setting, "PauseAnimation should be registered");
+          assert.deepEqual(Object.keys(setting.choices), ["vhs", "bluetime", "vanilla", "classic"]);
+          assert.equal(setting.default, "bluetime");
+          assert.oneOf(game.settings.get("blades68", "PauseAnimation"), [
+            "vhs",
+            "bluetime",
+            "vanilla",
+            "classic",
+          ]);
         });
       });
     },
-    { displayName: 'System config' }
+    { displayName: "System config" },
   );
 }
