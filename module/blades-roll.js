@@ -168,20 +168,16 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   // Check for Indugle Vice roll
   else if (attribute_name == 'BITD.Vice') {
     let clear_stress = getBladesRollVice(rolls, zeromode);
-    let stress_remaining;
 
     if (current_stress - clear_stress >= 0) {
       roll_status = "success";
-      stress_remaining = current_stress - clear_stress;
     } else {
       roll_status = "failure";
       clear_stress = current_stress;
-      stress_remaining = 0;
     }
 
-    if (actor) {
-      await actor.update({"system.stress.value": stress_remaining});
-    }
+    // Don't write stress; the player updates their tracker by hand.
+    ui.notifications?.info?.(game.i18n.localize("BITD.StressReminder"));
 
     result = await renderTemplate("systems/blades68/templates/chat/vice-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, clear_stress: clear_stress, note: note, edge: edge});
   }
